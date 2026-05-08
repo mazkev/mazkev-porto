@@ -8,11 +8,17 @@ const skills = [
   { name: 'Next.js', icon: 'https://cdn.simpleicons.org/nextdotjs' },
   { name: 'React', icon: 'https://cdn.simpleicons.org/react' },
   { name: 'Laravel', icon: 'https://cdn.simpleicons.org/laravel' },
-  { name: 'Tailwind', icon: 'https://cdn.simpleicons.org/tailwindcss' },
+  { name: 'PHP', icon: 'https://cdn.simpleicons.org/php' },
+  { name: 'Python', icon: 'https://cdn.simpleicons.org/python' },
+  { name: 'Vue', icon: 'https://cdn.simpleicons.org/vuedotjs' },
+  { name: 'Angular', icon: 'https://cdn.simpleicons.org/angular' },
+  { name: 'Firebase', icon: 'https://cdn.simpleicons.org/firebase' },
   { name: 'PostgreSQL', icon: 'https://cdn.simpleicons.org/postgresql' },
+  { name: 'MySQL', icon: 'https://cdn.simpleicons.org/mysql' },
   { name: 'TypeScript', icon: 'https://cdn.simpleicons.org/typescript' },
   { name: 'AWS', icon: 'https://cdn.simpleicons.org/amazonaws' },
   { name: 'Docker', icon: 'https://cdn.simpleicons.org/docker' },
+  { name: 'Vercel', icon: 'https://cdn.simpleicons.org/vercel' },
 ];
 
 export default function About() {

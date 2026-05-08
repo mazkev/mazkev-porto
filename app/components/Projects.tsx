@@ -8,27 +8,51 @@ import { cn } from '@/app/lib/utils';
 
 const projects = [
   {
-    title: 'Semarketplace',
-    description: 'A high-performance marketplace with fast payment.',
-    tech: ['Next.js', 'Tailwind'],
+    title: 'Semarketplace Pro',
+    description: 'An enterprise-grade e-commerce ecosystem engineered for high-velocity transactions, featuring optimized checkout flows and real-time inventory synchronization.',
+    tech: ['Next.js', 'Tailwind CSS', 'Redux'],
     image: '/projects/semarketplace.jpg',
     live: 'https://semarketplace.vercel.app/',
     github: '#',
   },
   {
-    title: 'Indofooty',
-    description: 'A Portal News with specific to Football.',
-    tech: ['React', 'FastAPI'],
+    title: 'Indofooty Hub',
+    description: 'A dynamic sports journalism platform delivering lightning-fast football updates, interactive match statistics, and a seamless multimedia experience for global fans.',
+    tech: ['React', 'FastAPI', 'PostgreSQL'],
     image: '/projects/indofooty.jpg',
     live: 'https://indofooty.vercel.app/',
     github: '#',
   },
   {
-    title: 'Netflix Clone App',
-    description: 'A Clone netflix App with clean UI and smooth animation.',
-    tech: ['TypeScript', 'React Js'],
+    title: 'StreamX: Cinema Reimagined',
+    description: 'A premium video-on-demand architectural demonstration featuring advanced content delivery, fluid glassmorphism UI, and ultra-responsive interaction patterns.',
+    tech: ['TypeScript', 'React Js', 'Framer Motion'],
     image: '/projects/netflix.jpg',
     live: 'https://netflix-asli.vercel.app/',
+    github: '#',
+  },
+  {
+    title: 'MazChat: Real-time Messaging',
+    description: 'A high-fidelity communication platform featuring a personalized "Mulai Percakapan" onboarding flow, secure unique ID authentication, and a pixel-perfect conversational interface.',
+    tech: ['React', 'Firebase', 'Tailwind CSS'],
+    image: '/projects/whatsapp.png',
+    live: 'https://whatsapp-rect.vercel.app/',
+    github: '#',
+  },
+  {
+    title: 'Instavision: Social Media Clone',
+    description: 'A sleek, dark-mode social networking demonstration featuring an elegant login ecosystem, cross-platform authentication patterns, and high-fidelity UI components.',
+    tech: ['React', 'Next.js', 'PostgreSQL'],
+    image: '/projects/instagram.png',
+    live: 'https://instgram1.vercel.app/',
+    github: '#',
+  },
+  {
+    title: 'InsightFlow: Modern Publishing',
+    description: 'A vibrant publishing platform where "good ideas find you." Features a sophisticated Bootstrap-powered interface designed for maximum readability and engagement.',
+    tech: ['React', 'Bootstrap', 'Node.js'],
+    image: '/projects/medium.png',
+    live: 'https://small-medium1.vercel.app/',
     github: '#',
   },
 ];
@@ -45,7 +69,7 @@ export default function Projects() {
             <h3 className="text-4xl md:text-5xl font-bold font-outfit">Featured <span className="text-gradient">Projects</span></h3>
           </div>
           <p className="text-slate-600 dark:text-slate-400 max-w-md">
-            A curated selection of digital products I've built from the ground up, focusing on performance, scalability, and UX.
+            Explore a showcase of high-impact digital solutions where cutting-edge technology meets intuitive design. Each project is a testament to technical precision and user-centric problem solving.
           </p>
         </div>
 
@@ -67,10 +91,10 @@ export default function Projects() {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                  <a href={project.live} className="p-3 bg-white text-slate-900 rounded-full hover:bg-brand-500 hover:text-white transition-colors">
+                  <a href={project.live} target="_blank" rel="noopener noreferrer" className="p-3 bg-white text-slate-900 rounded-full hover:bg-brand-500 hover:text-white transition-colors">
                     <ExternalLink size={20} />
                   </a>
-                  <a href={project.github} className="p-3 bg-white text-slate-900 rounded-full hover:bg-brand-500 hover:text-white transition-colors">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-3 bg-white text-slate-900 rounded-full hover:bg-brand-500 hover:text-white transition-colors">
                     <Github size={20} />
                   </a>
                 </div>
@@ -89,7 +113,7 @@ export default function Projects() {
                   {project.description}
                 </p>
                 <div className="mt-auto pt-6 border-t border-slate-100 dark:border-slate-800">
-                  <a href={project.live} className="text-sm font-bold flex items-center gap-2 text-brand-600 hover:gap-3 transition-all">
+                  <a href={project.live} target="_blank" rel="noopener noreferrer" className="text-sm font-bold flex items-center gap-2 text-brand-600 hover:gap-3 transition-all">
                     View Case Study <ExternalLink size={16} />
                   </a>
                 </div>

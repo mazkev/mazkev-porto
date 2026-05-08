@@ -8,15 +8,36 @@ import { cn } from '@/app/lib/utils';
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
-    setTimeout(() => {
+
+    const formData = new FormData(e.currentTarget);
+    setError(null);
+    
+    try {
+      // Replace 'mqakpneq' with your actual Formspree ID from formspree.io
+      const response = await fetch("https://formspree.io/f/mqakpneq", {
+        method: "POST",
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      } else {
+        const data = await response.json();
+        setError(data.error || "Submission failed. Please check your Formspree ID.");
+      }
+    } catch (err) {
+      setError("Network error. Please try again later.");
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-    }, 2000);
+    }
   };
 
   return (
@@ -90,6 +111,7 @@ export default function ContactForm() {
                   <label className="text-sm font-bold ml-1">Full Name</label>
                   <input
                     required
+                    name="name"
                     type="text"
                     placeholder="John Doe"
                     className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 focus:ring-2 ring-brand-500 transition-all outline-none"
@@ -99,6 +121,7 @@ export default function ContactForm() {
                   <label className="text-sm font-bold ml-1">Email Address</label>
                   <input
                     required
+                    name="email"
                     type="email"
                     placeholder="john@example.com"
                     className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 focus:ring-2 ring-brand-500 transition-all outline-none"
@@ -109,11 +132,17 @@ export default function ContactForm() {
                 <label className="text-sm font-bold ml-1">Message</label>
                 <textarea
                   required
+                  name="message"
                   rows={5}
                   placeholder="Tell me about your project..."
                   className="w-full px-6 py-4 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 focus:ring-2 ring-brand-500 transition-all outline-none resize-none"
                 />
               </div>
+              {error && (
+                <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 text-sm font-medium">
+                  {error}
+                </div>
+              )}
               <button
                 type="submit"
                 disabled={isSubmitting}
