@@ -1,21 +1,96 @@
 'use client';
 
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Mail, MapPin, Phone, Github, Linkedin, Twitter, MessageSquare } from 'lucide-react';
 import { cn } from '@/app/lib/utils';
 
+const Confetti = () => {
+  const [particles, setParticles] = useState<{
+    id: number;
+    targetX: number;
+    targetY: number;
+    color: string;
+    size: number;
+    shape: 'circle' | 'square';
+    delay: number;
+    rotate: number;
+    duration: number;
+  }[]>([]);
+
+  useEffect(() => {
+    const colors = ['#ef4444', '#f97316', '#f59e0b', '#10b981', '#3b82f6', '#6366f1', '#8b5cf6', '#ec4899'];
+    const generated = Array.from({ length: 60 }).map((_, i) => {
+      const angle = (Math.random() * 360 * Math.PI) / 180;
+      const velocity = 100 + Math.random() * 220;
+      return {
+        id: i,
+        targetX: Math.cos(angle) * velocity,
+        targetY: -120 - Math.random() * 220, // Shoot upwards
+        color: colors[Math.floor(Math.random() * colors.length)],
+        size: Math.random() * 8 + 6, // 6px to 14px
+        shape: (Math.random() > 0.5 ? 'circle' : 'square') as 'circle' | 'square',
+        delay: Math.random() * 0.25, // staggered start
+        rotate: Math.random() * 1080,
+        duration: 1.2 + Math.random() * 0.8,
+      };
+    });
+    const handle = requestAnimationFrame(() => {
+      setParticles(generated);
+    });
+    return () => cancelAnimationFrame(handle);
+  }, []);
+
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-visible z-50">
+      {particles.map((p) => (
+        <motion.div
+          key={p.id}
+          initial={{ 
+            x: 'calc(50% - 0px)', 
+            y: 'calc(92% - 0px)', 
+            scale: 0, 
+            rotate: 0, 
+            opacity: 1 
+          }}
+          animate={{
+            x: `calc(50% + ${p.targetX}px)`,
+            y: `calc(92% + ${p.targetY}px)`,
+            scale: [0, 1, 1, 0.8, 0],
+            rotate: p.rotate,
+            opacity: [1, 1, 1, 0.6, 0],
+          }}
+          transition={{
+            duration: p.duration,
+            ease: "easeOut",
+            delay: p.delay,
+          }}
+          style={{
+            position: 'absolute',
+            width: p.size,
+            height: p.shape === 'circle' ? p.size : p.size * 0.5,
+            backgroundColor: p.color,
+            borderRadius: p.shape === 'circle' ? '50%' : '2px',
+            transformOrigin: 'center',
+          }}
+        />
+      ))}
+    </div>
+  );
+};
+
 export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [isSuccessAnimating, setIsSuccessAnimating] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
 
     const formData = new FormData(e.currentTarget);
-    setError(null);
     
     try {
       // Replace 'mqakpneq' with your actual Formspree ID from formspree.io
@@ -28,14 +103,21 @@ export default function ContactForm() {
       });
 
       if (response.ok) {
-        setSubmitted(true);
+        setIsSubmitting(false);
+        setIsSuccessAnimating(true);
+        
+        // Wait for paper airplane and confetti burst animations to finish
+        setTimeout(() => {
+          setShowSuccess(true);
+          setIsSuccessAnimating(false);
+        }, 1500);
       } else {
         const data = await response.json();
         setError(data.error || "Submission failed. Please check your Formspree ID.");
+        setIsSubmitting(false);
       }
-    } catch (err) {
+    } catch {
       setError("Network error. Please try again later.");
-    } finally {
       setIsSubmitting(false);
     }
   };
@@ -88,9 +170,11 @@ export default function ContactForm() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="glass p-8 rounded-[2.5rem] shadow-2xl relative"
+          className="glass p-8 rounded-[2.5rem] shadow-2xl relative overflow-visible"
         >
-          {submitted ? (
+          {isSuccessAnimating && <Confetti />}
+
+          {showSuccess ? (
             <div className="h-full flex flex-col items-center justify-center text-center py-12">
               <div className="w-20 h-20 bg-emerald-500/10 text-emerald-500 rounded-full flex items-center justify-center mb-6 animate-bounce">
                 <Send size={32} />
@@ -98,8 +182,10 @@ export default function ContactForm() {
               <h4 className="text-2xl font-bold mb-2">Message Sent!</h4>
               <p className="text-slate-600 dark:text-slate-400">Thanks for reaching out. I&apos;ll get back to you shortly.</p>
               <button
-                onClick={() => setSubmitted(false)}
-                className="mt-8 text-sm font-bold text-brand-600 hover:underline"
+                onClick={() => {
+                  setShowSuccess(false);
+                }}
+                className="mt-8 text-sm font-bold text-brand-600 hover:underline cursor-pointer"
               >
                 Send another message
               </button>
@@ -145,14 +231,67 @@ export default function ContactForm() {
               )}
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || isSuccessAnimating}
                 className={cn(
-                  "w-full py-4 bg-brand-600 text-white rounded-2xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-brand-600/20 hover:bg-brand-700 transition-all",
-                  isSubmitting && "opacity-70 cursor-not-allowed"
+                  "w-full py-4 bg-brand-600 text-white rounded-2xl font-bold flex items-center justify-center gap-2 shadow-lg shadow-brand-600/20 hover:bg-brand-700 transition-all overflow-hidden relative min-h-[56px]",
+                  (isSubmitting || isSuccessAnimating) && "opacity-80 cursor-not-allowed"
                 )}
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
-                {!isSubmitting && <Send size={20} />}
+                <AnimatePresence mode="wait">
+                  {!isSubmitting && !isSuccessAnimating ? (
+                    <motion.span
+                      key="default"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="flex items-center gap-2"
+                    >
+                      Send Message
+                      <Send size={20} />
+                    </motion.span>
+                  ) : isSubmitting ? (
+                    <motion.span
+                      key="submitting"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.8 }}
+                      className="flex items-center gap-2"
+                    >
+                      <motion.div
+                        animate={{
+                          x: [0, -2, 2, -2, 0],
+                          y: [0, -1, 1, -1, 0],
+                        }}
+                        transition={{
+                          repeat: Infinity,
+                          duration: 0.5,
+                          ease: "linear"
+                        }}
+                      >
+                        <Send size={20} />
+                      </motion.div>
+                      Sending...
+                    </motion.span>
+                  ) : (
+                    <motion.span
+                      key="launching"
+                      initial={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+                      animate={{
+                        x: 500,
+                        y: -400,
+                        scale: 0.3,
+                        opacity: 0,
+                      }}
+                      transition={{
+                        duration: 1.0,
+                        ease: [0.4, 0, 0.2, 1]
+                      }}
+                      className="absolute"
+                    >
+                      <Send size={24} />
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </button>
             </form>
           )}

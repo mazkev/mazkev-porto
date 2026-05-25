@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const techLogos = [
   { name: 'Next.js', icon: 'nextdotjs' },
@@ -11,7 +12,7 @@ const techLogos = [
   { name: 'Laravel', icon: 'laravel' },
   { name: 'PostgreSQL', icon: 'postgresql' },
   { name: 'Docker', icon: 'docker' },
-  { name: 'AWS', icon: 'amazonaws' },
+  { name: 'AWS', icon: 'aws' },
   { name: 'Framer', icon: 'framer' },
   { name: 'Node.js', icon: 'nodedotjs' },
   { name: 'Prisma', icon: 'prisma' },
@@ -51,9 +52,11 @@ export default function LogoMarquee() {
               key={`${logo.name}-${index}`}
               className="flex items-center gap-3 group transition-all duration-300"
             >
-              <img
+              <Image
                 src={`https://cdn.simpleicons.org/${logo.icon}`}
                 alt={logo.name}
+                width={40}
+                height={40}
                 className="h-8 w-8 md:h-10 md:w-10 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
               />
               <span className="text-sm md:text-base font-bold text-slate-400 dark:text-slate-600 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
-import { Moon, Sun, Menu, X, Terminal } from 'lucide-react';
+import { Moon, Sun, Menu, X, Terminal, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/app/lib/utils';
 
@@ -15,16 +15,36 @@ const navLinks = [
 
 export default function Navbar() {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    const handle = requestAnimationFrame(() => {
+      setMounted(true);
+    });
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      cancelAnimationFrame(handle);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
+
+  const toggleTheme = (e: React.MouseEvent) => {
+    const nextTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
+    
+    document.documentElement.style.setProperty('--click-x', `${e.clientX}px`);
+    document.documentElement.style.setProperty('--click-y', `${e.clientY}px`);
+    
+    if ('startViewTransition' in document) {
+      (document as unknown as { startViewTransition: (cb: () => void) => void }).startViewTransition(() => {
+        setTheme(nextTheme);
+      });
+    } else {
+      setTheme(nextTheme);
+    }
+  };
 
   if (!mounted) return null;
 
@@ -57,18 +77,32 @@ export default function Navbar() {
             </Link>
           ))}
           <button
-            onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-            className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 ring-brand-500 transition-all"
+            onClick={() => window.dispatchEvent(new CustomEvent('toggle-command-palette'))}
+            className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 ring-brand-500 transition-all cursor-pointer text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 mr-1"
+            title="Command Palette (Ctrl+K)"
+          >
+            <Search size={20} />
+          </button>
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 ring-brand-500 transition-all cursor-pointer"
           >
             {resolvedTheme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
           </button>
         </div>
 
         {/* Mobile Nav Toggle */}
-        <div className="md:hidden flex items-center gap-4">
+        <div className="md:hidden flex items-center gap-2">
           <button
-            onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
-            className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800"
+            onClick={() => window.dispatchEvent(new CustomEvent('toggle-command-palette'))}
+            className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 cursor-pointer text-slate-500 dark:text-slate-400"
+            title="Command Palette"
+          >
+            <Search size={20} />
+          </button>
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 cursor-pointer"
           >
             {resolvedTheme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
           </button>

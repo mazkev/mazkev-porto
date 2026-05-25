@@ -1,16 +1,207 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Download, Code, Cpu, Globe } from 'lucide-react';
+import { ArrowRight, Download, Terminal as TerminalIcon, Send } from 'lucide-react';
 import { cn } from '@/app/lib/utils';
+import Image from 'next/image';
+import InteractiveMesh from './InteractiveMesh';
+import ResumeViewer from './ResumeViewer';
+
+interface TerminalLine {
+  text: string;
+  type: 'input' | 'output' | 'error' | 'success';
+}
+
+function HeroTerminal() {
+  const [mounted, setMounted] = useState(false);
+  const [history, setHistory] = useState<TerminalLine[]>([
+    { text: 'guest-login', type: 'input' },
+    { text: 'Access Granted! Secure session initialized.', type: 'success' },
+    { text: "Welcome to Mazkev CLI. Type 'help' to see list of active commands.", type: 'output' },
+  ]);
+  const [inputValue, setInputValue] = useState('');
+  const historyRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handle = requestAnimationFrame(() => {
+      setMounted(true);
+    });
+    return () => cancelAnimationFrame(handle);
+  }, []);
+
+  useEffect(() => {
+    if (historyRef.current) {
+      historyRef.current.scrollTop = historyRef.current.scrollHeight;
+    }
+  }, [history]);
+
+  if (!mounted) {
+    return (
+      <div className="glass bg-slate-950/90 text-slate-400 font-mono text-xs rounded-2xl overflow-hidden shadow-2xl border border-slate-800/80 h-96 flex items-center justify-center">
+        <div className="w-6 h-6 border-2 border-brand-600/30 border-t-brand-600 rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  const handleCommand = (e: React.FormEvent) => {
+    e.preventDefault();
+    const command = inputValue.trim();
+    if (!command) return;
+
+    const newHistory = [...history, { text: `guest@mazkev-terminal:~$ ${command}`, type: 'input' as const }];
+    const cmdLower = command.toLowerCase();
+
+    let replyText = '';
+    let replyType: 'output' | 'error' | 'success' = 'output';
+
+    if (cmdLower === 'help') {
+      replyText = `Available commands:
+  • about    - Professional overview
+  • skills   - Technical stacks
+  • projects - Core project works
+  • contact  - Email, LinkedIn and GitHub handles
+  • clear    - Clear terminal history
+  • sudo     - System admin override
+  (Try 'projects go [name]' to open a project live demo!)`;
+    } else if (cmdLower === 'about') {
+      replyText = `Mazkev (Kevin Pratama) is a Fullstack Developer with 3+ years experience building high-performance web applications using React, Next.js, and Laravel. Specializes in custom UI/UX, caching strategies, and database index tuning.`;
+      replyType = 'success';
+    } else if (cmdLower === 'skills') {
+      replyText = `--- TECHNICAL MATRIX ---
+  • Frontend: Next.js, React, TypeScript, Tailwind CSS, Vue
+  • Backend:  Laravel, Node.js, PHP, PostgreSQL, MySQL
+  • DevOps:   Docker, AWS, Vercel, Firebase`;
+    } else if (cmdLower === 'projects') {
+      replyText = `--- FEATURED PROJECTS ---
+  • semarketplace - E-commerce transaction engine
+  • indofooty     - Sports statistics dashboard
+  • streamx       - Video-on-demand platform mockup
+  (Type e.g., 'projects go semarketplace' to visit live site!)`;
+    } else if (cmdLower.startsWith('projects go ')) {
+      const proj = cmdLower.substring(12).trim();
+      const urls: Record<string, string> = {
+        semarketplace: 'https://semarketplace.vercel.app/',
+        indofooty: 'https://indofooty.vercel.app/',
+        streamx: 'https://netflix-asli.vercel.app/',
+      };
+      if (urls[proj]) {
+        try {
+          window.open(urls[proj], '_blank');
+          replyText = `Redirecting to ${proj} live demo in a new tab...`;
+          replyType = 'success';
+        } catch {
+          replyText = `Browser blocked popup. URL: ${urls[proj]}`;
+          replyType = 'error';
+        }
+      } else {
+        replyText = `Unknown project '${proj}'. Available: semarketplace, indofooty, streamx`;
+        replyType = 'error';
+      }
+    } else if (cmdLower === 'contact') {
+      replyText = `--- CONNECT CHANNELS ---
+  • Email:    kevinekapratama@gmail.com
+  • GitHub:   github.com/mazkev
+  • LinkedIn: linkedin.com/in/mazkev`;
+    } else if (cmdLower === 'clear') {
+      setHistory([]);
+      setInputValue('');
+      return;
+    } else if (cmdLower.startsWith('sudo')) {
+      if (cmdLower === 'sudo rm -rf /') {
+        replyText = `Permission Denied: System protection active. This incident has been logged and reported to the system administrator.`;
+        replyType = 'error';
+      } else {
+        replyText = `sudo: password required for guest. Authorization failed.`;
+        replyType = 'error';
+      }
+    } else {
+      replyText = `Command not found: '${command}'. Type 'help' to see list of valid commands.`;
+      replyType = 'error';
+    }
+
+    setHistory([...newHistory, { text: replyText, type: replyType }]);
+    setInputValue('');
+  };
+
+  return (
+    <div className="glass bg-slate-950/90 text-slate-300 font-mono text-[11px] rounded-2xl overflow-hidden shadow-2xl border border-slate-800/80 h-96 flex flex-col">
+      {/* Terminal Titlebar */}
+      <div className="bg-slate-900 px-4 py-3 flex items-center justify-between border-b border-slate-800/60 select-none flex-shrink-0">
+        <div className="flex items-center gap-2">
+          <div className="w-3.5 h-3.5 rounded-full bg-[#ff5f56] flex items-center justify-center text-[8px]" />
+          <div className="w-3.5 h-3.5 rounded-full bg-[#ffbd2e]" />
+          <div className="w-3.5 h-3.5 rounded-full bg-[#27c93f]" />
+        </div>
+        <span className="text-slate-500 font-bold text-[9px] flex items-center gap-1.5">
+          <TerminalIcon size={12} className="text-slate-600" />
+          guest@mazkev-terminal: ~
+        </span>
+        <div className="w-10 h-1" />
+      </div>
+
+      {/* Terminal Screen History */}
+      <div 
+        ref={historyRef}
+        className="flex-grow p-4 overflow-y-auto space-y-2.5 scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent leading-relaxed"
+      >
+        {history.map((line, idx) => (
+          <div 
+            key={idx} 
+            className={cn(
+              "whitespace-pre-wrap break-all",
+              line.type === 'input' && "text-brand-400 font-bold",
+              line.type === 'success' && "text-emerald-400",
+              line.type === 'error' && "text-rose-400 font-medium"
+            )}
+          >
+            {line.text}
+          </div>
+        ))}
+      </div>
+
+      {/* Terminal Input Form */}
+      <form 
+        onSubmit={handleCommand}
+        className="bg-slate-900/60 border-t border-slate-800/60 px-4 py-3 flex items-center gap-2 flex-shrink-0"
+      >
+        <span className="text-brand-500 font-extrabold select-none">$</span>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          placeholder="Type a command (e.g. 'help')..."
+          className="flex-grow bg-transparent border-0 outline-none text-slate-200 placeholder-slate-600 focus:ring-0 focus:outline-none py-0.5"
+          autoFocus
+        />
+        <button 
+          type="submit" 
+          className="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors cursor-pointer"
+        >
+          <Send size={12} />
+        </button>
+      </form>
+    </div>
+  );
+}
 
 export default function Hero() {
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOpenResume = () => setIsResumeOpen(true);
+    window.addEventListener('open-resume', handleOpenResume);
+    return () => window.removeEventListener('open-resume', handleOpenResume);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-grid">
+      {/* Dynamic Interactive Mesh Background */}
+      <InteractiveMesh />
+
       {/* Decorative Blur Orbs */}
-      <div className="absolute top-1/4 -left-20 w-72 h-72 bg-brand-600/30 rounded-full blur-[128px] animate-pulse" />
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-indigo-600/20 rounded-full blur-[128px] animate-pulse delay-1000" />
+      <div className="absolute top-1/4 -left-20 w-72 h-72 bg-brand-600/30 rounded-full blur-[128px]" />
+      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-indigo-600/20 rounded-full blur-[128px]" />
 
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
         <motion.div
@@ -44,25 +235,26 @@ export default function Hero() {
               View Projects <ArrowRight size={20} />
             </motion.a>
             
-            <motion.a
-              href="/cv.pdf"
-              target="_blank"
+            <motion.button
+              onClick={() => setIsResumeOpen(true)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl font-bold flex items-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-sm cursor-pointer"
+              className="px-8 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl font-bold flex items-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-sm cursor-pointer text-slate-800 dark:text-slate-200"
             >
-              Download CV <Download size={20} />
-            </motion.a>
+              View Resume / CV <Download size={20} />
+            </motion.button>
           </div>
 
           <div className="flex items-center gap-6 pt-4 border-t border-slate-100 dark:border-slate-800">
             <span className="text-xs font-bold uppercase tracking-widest text-slate-400">Tech Stack |</span>
             <div className="flex gap-4 items-center">
               {['nextdotjs', 'react', 'laravel', 'tailwindcss', 'typescript'].map((icon) => (
-                <img 
+                <Image 
                   key={icon} 
                   src={`https://cdn.simpleicons.org/${icon}`} 
                   alt={icon} 
+                  width={20}
+                  height={20}
                   className="h-5 w-5 opacity-40 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" 
                 />
               ))}
@@ -76,51 +268,14 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.2 }}
           className="relative hidden md:block"
         >
-          {/* Glass Card Interface Mockup */}
-          <div className="glass p-8 rounded-3xl shadow-2xl relative overflow-hidden group">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-3 h-3 rounded-full bg-red-500" />
-              <div className="w-3 h-3 rounded-full bg-amber-500" />
-              <div className="w-3 h-3 rounded-full bg-emerald-500" />
-            </div>
-            
-            <div className="space-y-4">
-              <div className="flex items-center gap-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50">
-                <div className="w-12 h-12 rounded-lg bg-indigo-500/10 flex items-center justify-center text-indigo-500">
-                  <Code size={24} />
-                </div>
-                <div>
-                  <div className="text-sm font-bold">Frontend Architecture</div>
-                  <div className="text-xs text-slate-500">React, Next.js, Framer Motion</div>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50 transform translate-x-4">
-                <div className="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500">
-                  <Cpu size={24} />
-                </div>
-                <div>
-                  <div className="text-sm font-bold">Backend Mastery</div>
-                  <div className="text-xs text-slate-500">Node.js, Laravel, PostgreSQL</div>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50">
-                <div className="w-12 h-12 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-500">
-                  <Globe size={24} />
-                </div>
-                <div>
-                  <div className="text-sm font-bold">Scalable Deployment</div>
-                  <div className="text-xs text-slate-500">AWS, Docker, Vercel</div>
-                </div>
-              </div>
-            </div>
-
-            {/* Background elements */}
-            <div className="absolute -top-10 -right-10 w-40 h-40 bg-brand-500/10 rounded-full blur-3xl group-hover:bg-brand-500/20 transition-colors" />
-          </div>
+          <HeroTerminal />
+          
+          {/* Decorative absolute element */}
+          <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
         </motion.div>
       </div>
+
+      <ResumeViewer isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
     </section>
   );
 }

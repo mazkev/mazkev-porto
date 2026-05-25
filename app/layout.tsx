@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
+import CustomCursor from "./components/CustomCursor";
+import CommandPalette from "./components/CommandPalette";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -61,6 +63,8 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <CustomCursor />
+          <CommandPalette />
           {children}
         </ThemeProvider>
       </body>

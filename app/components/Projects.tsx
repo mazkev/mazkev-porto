@@ -1,12 +1,12 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Layers } from 'lucide-react';
 import Image from 'next/image';
-import { cn } from '@/app/lib/utils';
+import ProjectDrawer, { ProjectData } from './ProjectDrawer';
 
-const projects = [
+const projects: ProjectData[] = [
   {
     title: 'Semarketplace Pro',
     description: 'An enterprise-grade e-commerce ecosystem engineered for high-velocity transactions, featuring optimized checkout flows and real-time inventory synchronization.',
@@ -58,6 +58,28 @@ const projects = [
 ];
 
 export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const handleOpenDrawer = (project: ProjectData) => {
+    setSelectedProject(project);
+    setIsDrawerOpen(true);
+  };
+
+  useEffect(() => {
+    const handleOpenProject = (e: Event) => {
+      const customEvent = e as CustomEvent<string>;
+      const projectTitle = customEvent.detail;
+      const found = projects.find(p => p.title === projectTitle);
+      if (found) {
+        setSelectedProject(found);
+        setIsDrawerOpen(true);
+      }
+    };
+    window.addEventListener('open-project', handleOpenProject);
+    return () => window.removeEventListener('open-project', handleOpenProject);
+  }, []);
+
   return (
     <section id="projects" className="py-24 px-6 bg-slate-50 dark:bg-slate-900/50">
       <div className="max-w-7xl mx-auto">
@@ -82,21 +104,38 @@ export default function Projects() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -10 }}
-              className="group glass rounded-3xl overflow-hidden flex flex-col h-full shadow-xl shadow-slate-200/50 dark:shadow-none"
+              onClick={() => handleOpenDrawer(project)}
+              className="group glass rounded-3xl overflow-hidden flex flex-col h-full shadow-xl shadow-slate-200/50 dark:shadow-none cursor-pointer"
             >
               <div className="relative h-56 overflow-hidden">
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
+                  width={400}
+                  height={250}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                  <a href={project.live} target="_blank" rel="noopener noreferrer" className="p-3 bg-white text-slate-900 rounded-full hover:bg-brand-500 hover:text-white transition-colors">
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="p-3 bg-white text-slate-900 rounded-full hover:bg-brand-500 hover:text-white transition-colors"
+                  >
                     <ExternalLink size={20} />
                   </a>
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-3 bg-white text-slate-900 rounded-full hover:bg-brand-500 hover:text-white transition-colors">
-                    <Github size={20} />
-                  </a>
+                  {project.github !== '#' && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="p-3 bg-white text-slate-900 rounded-full hover:bg-brand-500 hover:text-white transition-colors"
+                    >
+                      <Github size={20} />
+                    </a>
+                  )}
                 </div>
               </div>
 
@@ -113,15 +152,31 @@ export default function Projects() {
                   {project.description}
                 </p>
                 <div className="mt-auto pt-6 border-t border-slate-100 dark:border-slate-800">
-                  <a href={project.live} target="_blank" rel="noopener noreferrer" className="text-sm font-bold flex items-center gap-2 text-brand-600 hover:gap-3 transition-all">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleOpenDrawer(project);
+                    }}
+                    className="text-sm font-bold flex items-center gap-2 text-brand-600 hover:gap-3 transition-all cursor-pointer bg-transparent border-none p-0 text-left"
+                  >
                     View Case Study <ExternalLink size={16} />
-                  </a>
+                  </button>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {isDrawerOpen && (
+          <ProjectDrawer
+            isOpen={isDrawerOpen}
+            onClose={() => setIsDrawerOpen(false)}
+            project={selectedProject}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }
