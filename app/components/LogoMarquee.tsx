@@ -12,7 +12,7 @@ const techLogos = [
   { name: 'Laravel', icon: 'laravel' },
   { name: 'PostgreSQL', icon: 'postgresql' },
   { name: 'Docker', icon: 'docker' },
-  { name: 'AWS', icon: 'aws' },
+  { name: 'AWS', icon: 'amazonwebservices' },
   { name: 'Framer', icon: 'framer' },
   { name: 'Node.js', icon: 'nodedotjs' },
   { name: 'Prisma', icon: 'prisma' },
