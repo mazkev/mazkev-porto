@@ -3,7 +3,6 @@ import Hero from "./components/Hero";
 import LogoMarquee from "./components/LogoMarquee";
 import About from "./components/About";
 import Projects from "./components/Projects";
-import CodePlayground from "./components/CodePlayground";
 import ContactForm from "./components/ContactForm";
 
 export default function Home() {
@@ -14,7 +13,6 @@ export default function Home() {
       <LogoMarquee />
       <About />
       <Projects />
-      <CodePlayground />
       <ContactForm />
       
       <footer className="py-12 border-t border-slate-100 dark:border-slate-900 bg-slate-50 dark:bg-slate-950/50">
