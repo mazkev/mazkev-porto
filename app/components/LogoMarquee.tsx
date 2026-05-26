@@ -12,7 +12,7 @@ const techLogos = [
   { name: 'Laravel', icon: 'laravel' },
   { name: 'PostgreSQL', icon: 'postgresql' },
   { name: 'Docker', icon: 'docker' },
-  { name: 'AWS', icon: 'amazonwebservices' },
+  { name: 'AWS', icon: '/aws.svg' },
   { name: 'Framer', icon: 'framer' },
   { name: 'Node.js', icon: 'nodedotjs' },
   { name: 'Prisma', icon: 'prisma' },
@@ -53,7 +53,7 @@ export default function LogoMarquee() {
               className="flex items-center gap-3 group transition-all duration-300"
             >
               <Image
-                src={`https://cdn.simpleicons.org/${logo.icon}`}
+                src={logo.icon.startsWith('/') ? logo.icon : `https://cdn.simpleicons.org/${logo.icon}`}
                 alt={logo.name}
                 width={40}
                 height={40}

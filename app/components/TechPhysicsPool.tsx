@@ -29,7 +29,7 @@ const skillsData = [
   { name: 'Python', icon: 'https://cdn.simpleicons.org/python', category: 'backend' },
   { name: 'PostgreSQL', icon: 'https://cdn.simpleicons.org/postgresql', category: 'backend' },
   { name: 'MySQL', icon: 'https://cdn.simpleicons.org/mysql', category: 'backend' },
-  { name: 'AWS', icon: 'https://cdn.simpleicons.org/amazonwebservices', category: 'devops' },
+  { name: 'AWS', icon: '/aws.svg', category: 'devops' },
   { name: 'Docker', icon: 'https://cdn.simpleicons.org/docker', category: 'devops' },
   { name: 'Vercel', icon: 'https://cdn.simpleicons.org/vercel', category: 'devops' },
   { name: 'Firebase', icon: 'https://cdn.simpleicons.org/firebase', category: 'devops' },
