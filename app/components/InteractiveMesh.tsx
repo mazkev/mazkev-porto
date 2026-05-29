@@ -117,11 +117,11 @@ export default function InteractiveMesh() {
       if (!grid.length) return;
 
       const strokeColor = resolvedTheme === 'dark' 
-        ? 'rgba(99, 102, 241, 0.06)' 
-        : 'rgba(99, 102, 241, 0.04)';
+        ? 'rgba(14, 165, 233, 0.06)' 
+        : 'rgba(14, 165, 233, 0.04)';
       const dotColor = resolvedTheme === 'dark'
-        ? 'rgba(99, 102, 241, 0.12)'
-        : 'rgba(99, 102, 241, 0.08)';
+        ? 'rgba(14, 165, 233, 0.12)'
+        : 'rgba(14, 165, 233, 0.08)';
 
       ctx.strokeStyle = strokeColor;
       ctx.lineWidth = 1;

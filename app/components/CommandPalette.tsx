@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal, Sun, Moon, FileText, ArrowRight, CornerDownLeft, Layers, Mail, User, ShieldAlert } from 'lucide-react';
+import { Terminal, Sun, Moon, FileText, ArrowRight, CornerDownLeft, Layers, Mail, User, ShieldAlert, Video } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 interface CommandItem {
@@ -124,6 +124,14 @@ export default function CommandPalette() {
       action: () => handleScrollTo('projects'),
     },
     {
+      id: 'nav-videos',
+      name: 'Go to Demo Videos / Dashboard',
+      category: 'Navigation',
+      description: 'Scroll to product walkthroughs and video showcase.',
+      icon: Video,
+      action: () => handleScrollTo('videos'),
+    },
+    {
       id: 'nav-contact',
       name: 'Go to Contact Form',
       category: 'Navigation',
@@ -154,6 +162,30 @@ export default function CommandPalette() {
       description: 'Open structural breakdown for VOD backdrop blur.',
       icon: ArrowRight,
       action: () => triggerCustomEvent('open-project', 'StreamX: Cinema Reimagined'),
+    },
+    {
+      id: 'project-twitter',
+      name: 'Twitter Clonex Case Study',
+      category: 'Projects',
+      description: 'Open real-time snapshot sync details.',
+      icon: ArrowRight,
+      action: () => triggerCustomEvent('open-project', 'Twitter Clonex'),
+    },
+    {
+      id: 'project-airbnb',
+      name: 'Airbnb Clonex Case Study',
+      category: 'Projects',
+      description: 'Open travel rental search and Mapbox overlays details.',
+      icon: ArrowRight,
+      action: () => triggerCustomEvent('open-project', 'Airbnb Clonex'),
+    },
+    {
+      id: 'project-maztube',
+      name: 'MazTube Video Share Case Study',
+      category: 'Projects',
+      description: 'Open lazy-loaded video player control layouts.',
+      icon: ArrowRight,
+      action: () => triggerCustomEvent('open-project', 'MazTube: Video Sharing'),
     },
     {
       id: 'project-mazchat',

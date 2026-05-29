@@ -21,6 +21,17 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
       {/* Print-specific style override */}
       <style jsx global>{`
         @media print {
+          .no-print {
+            display: none !important;
+          }
+          html, body {
+            height: auto !important;
+            overflow: visible !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: white !important;
+            color: black !important;
+          }
           body * {
             visibility: hidden;
           }
@@ -38,9 +49,6 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
             color: black !important;
             box-shadow: none !important;
             border: none !important;
-          }
-          .no-print {
-            display: none !important;
           }
           /* Ensure text colors are dark for high-contrast printing */
           #print-area h1, #print-area h2, #print-area h3, #print-area h4 {

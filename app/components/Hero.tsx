@@ -77,6 +77,9 @@ function HeroTerminal() {
   • semarketplace - E-commerce transaction engine
   • indofooty     - Sports statistics dashboard
   • streamx       - Video-on-demand platform mockup
+  • twitter       - Social media dashboard clone
+  • airbnb        - Travel rental platform mockup
+  • maztube       - Video sharing platform demo
   (Type e.g., 'projects go semarketplace' to visit live site!)`;
     } else if (cmdLower.startsWith('projects go ')) {
       const proj = cmdLower.substring(12).trim();
@@ -84,6 +87,9 @@ function HeroTerminal() {
         semarketplace: 'https://semarketplace.vercel.app/',
         indofooty: 'https://indofooty.vercel.app/',
         streamx: 'https://netflix-asli.vercel.app/',
+        twitter: 'https://twitter-clonex1.vercel.app/',
+        airbnb: 'https://airbnb-clonex.vercel.app/',
+        maztube: 'https://maztube.vercel.app/',
       };
       if (urls[proj]) {
         try {
@@ -95,7 +101,7 @@ function HeroTerminal() {
           replyType = 'error';
         }
       } else {
-        replyText = `Unknown project '${proj}'. Available: semarketplace, indofooty, streamx`;
+        replyText = `Unknown project '${proj}'. Available: semarketplace, indofooty, streamx, twitter, airbnb, maztube`;
         replyType = 'error';
       }
     } else if (cmdLower === 'contact') {
@@ -196,14 +202,14 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-grid">
-      {/* Dynamic Interactive Mesh Background */}
-      <InteractiveMesh />
+      {/* Dynamic Interactive Mesh Background & Decorative Blur Orbs */}
+      <div className="no-print">
+        <InteractiveMesh />
+        <div className="absolute top-1/4 -left-20 w-72 h-72 bg-brand-600/30 rounded-full blur-[128px]" />
+        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-sky-600/20 rounded-full blur-[128px]" />
+      </div>
 
-      {/* Decorative Blur Orbs */}
-      <div className="absolute top-1/4 -left-20 w-72 h-72 bg-brand-600/30 rounded-full blur-[128px]" />
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-indigo-600/20 rounded-full blur-[128px]" />
-
-      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10">
+      <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10 no-print">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -217,7 +223,7 @@ export default function Hero() {
             Available for new projects
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold font-outfit leading-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-outfit leading-tight mb-6">
             Crafting <span className="text-gradient">Digital</span> Experiences
           </h1>
           
@@ -271,7 +277,7 @@ export default function Hero() {
           <HeroTerminal />
           
           {/* Decorative absolute element */}
-          <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
+          <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-sky-500/10 rounded-full blur-2xl pointer-events-none" />
         </motion.div>
       </div>
 

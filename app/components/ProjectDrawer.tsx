@@ -110,6 +110,81 @@ export function MovieGrid({ movies, onSelect }) {
 }`,
     codeLang: 'typescript',
   },
+  'Twitter Clonex': {
+    challenge: 'Replicating fluid real-time feed updates with dynamic content loading, while managing dark mode transitions without UI flashes.',
+    solution: 'Leveraged Next.js Server Components integrated with Firebase snapshot listeners. Managed theme values in state using CSS custom properties combined with local storage persistence.',
+    contributions: [
+      'Built a fully responsive layout with left sidebar, central feed, and right trends pane.',
+      'Wired instant post publishing and real-time state syncing with Firestore.',
+      'Optimized media file compression and uploads directly from the frontend.',
+    ],
+    codeSnippet: `// Firebase real-time query listener hook for feed logs
+useEffect(() => {
+  const feedQuery = query(
+    collection(db, "posts"),
+    orderBy("createdAt", "desc"),
+    limit(20)
+  );
+  const unsubscribe = onSnapshot(feedQuery, (snapshot) => {
+    setPosts(snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    })));
+  });
+  return () => unsubscribe();
+}, []);`,
+    codeLang: 'typescript',
+  },
+  'Airbnb Clonex': {
+    challenge: 'Structuring quick-search filter queries across hundreds of rental listings, and rendering high-fidelity interactive map cards smoothly.',
+    solution: 'Constructed an optimized API routing handler matching SQL indexed parameters. Used Mapbox responsive clusters with memoized coordinate markers to prevent duplicate render passes.',
+    contributions: [
+      'Integrated dynamic header search boxes and category filter sliders.',
+      'Coded a beautiful listing details page with pricing calculator components.',
+      'Engineered responsive grid displays supporting full dark mode styling.',
+    ],
+    codeSnippet: `// Server-side filtered query executor with PostgreSQL indexes
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const category = searchParams.get('category');
+  const location = searchParams.get('location');
+
+  const listings = await prisma.listing.findMany({
+    where: {
+      category: category || undefined,
+      location: location ? { contains: location, mode: 'insensitive' } : undefined,
+    },
+    orderBy: { createdAt: 'desc' }
+  });
+  return NextResponse.json(listings);
+}`,
+    codeLang: 'typescript',
+  },
+  'MazTube: Video Sharing': {
+    challenge: 'Optimizing high-bitrate media playback without UI blockages, and managing responsive sidebars across varying display sizes.',
+    solution: 'Wired dynamic react-player lazy loading to decouple heavy playback code from main bundle. Used tailwind container queries to adjust layout layers based on player dimensions.',
+    contributions: [
+      'Built custom overlay video controllers with volume and progression trackers.',
+      'Designed responsive grid displaying dynamic video thumbnails and categories.',
+      'Coded smooth backdrop blur transition wipes for a premium dark aesthetics vibe.',
+    ],
+    codeSnippet: `// Lazy loaded custom player wrapper with state callback handlers
+export function CustomPlayer({ url, onProgress }) {
+  return (
+    <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl">
+      <ReactPlayer
+        url={url}
+        width="100%"
+        height="100%"
+        controls={false}
+        playing={true}
+        onProgress={(state) => onProgress(state.playedSeconds)}
+      />
+    </div>
+  );
+}`,
+    codeLang: 'typescript',
+  },
   'MazChat: Real-time Messaging': {
     challenge: 'Syncing massive chat logs in real-time while avoiding runaway Firestore read costs and memory leaks caused by multiple active collection subscriptions.',
     solution: 'Designed collection snapshot listeners throttled with a 100ms window hook. Configured state cleaning in React useEffect cleanup callbacks to close open database ports immediately on unmount.',
@@ -184,6 +259,241 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 }`,
     codeLang: 'typescript',
   },
+  'MazMarket: Premium Marketplace': {
+    challenge: 'Implementing a highly-responsive product search grid that filters thousands of items dynamically without triggering heavy layouts or blocking the client rendering thread.',
+    solution: 'Leveraged Vue 3 reactive computed properties combined with a debounced virtual scrolling system, keeping DOM node count constant and execution times under 8ms.',
+    contributions: [
+      'Developed the dynamic product card grid with skeleton loading state animations.',
+      'Configured Vite asset-chunking pipelines to optimize initial bundle sizes by 30%.',
+      'Wired Tailwind container queries to ensure fluid responsive card scaling.',
+    ],
+    codeSnippet: `// Vue 3 computed filter pipeline for high-performance sorting
+const filteredProducts = computed(() => {
+  if (!searchQuery.value) return products.value;
+  const term = searchQuery.value.toLowerCase();
+  return products.value.filter(p => 
+    p.name.toLowerCase().includes(term) || 
+    p.category.toLowerCase().includes(term)
+  );
+});`,
+    codeLang: 'typescript',
+  },
+  'MarketX: Angular E-Commerce': {
+    challenge: 'Managing multi-step purchase flows and user cart states across deep navigation hierarchies without losing transient data or creating memory leaks.',
+    solution: 'Designed a centralized state service utilizing RxJS BehaviorSubjects. Bound UI components via the AsyncPipe, which automatically manages subscriptions and garbage collection.',
+    contributions: [
+      'Implemented a secure, reactive checkout form with dynamic field validation.',
+      'Wired an RxJS-based toast notification service for instant user action feedback.',
+      'Built custom structural directives to toggle dark and light theme classes across the app.',
+    ],
+    codeSnippet: `// Angular cart state service utilizing RxJS BehaviorSubject
+@Injectable({ providedIn: 'root' })
+export class CartService {
+  private cartSubject = new BehaviorSubject<CartItem[]>([]);
+  cart$ = this.cartSubject.asObservable();
+
+  addToCart(item: CartItem) {
+    const current = this.cartSubject.value;
+    const exists = current.find(i => i.id === item.id);
+    if (exists) {
+      exists.quantity += 1;
+      this.cartSubject.next([...current]);
+    } else {
+      this.cartSubject.next([...current, { ...item, quantity: 1 }]);
+    }
+  }
+}`,
+    codeLang: 'typescript',
+  },
+  'MarketInvent: Inventory Control': {
+    challenge: 'Parsing legacy jQuery-based Bootstrap plugins in a modern single-page-application lifecycle without causing memory leaks or layout mismatches.',
+    solution: 'Encapsulated jQuery data-table initializations strictly within Vue lifecycle hook wrappers (mounted/beforeDestroy), ensuring cleanup of events and DOM references.',
+    contributions: [
+      'Created reusable Vue wrappers for legacy jQuery Bootstrap table elements.',
+      'Designed visual inventory stock status cards with responsive CSS rules.',
+      'Configured dynamic stock level alert triggers and CSV export handlers.',
+    ],
+    codeSnippet: `// Vue lifecycle encapsulation for legacy jQuery plugins
+mounted() {
+  this.$nextTick(() => {
+    this.tableElement = $(this.$refs.table).DataTable({
+      data: this.inventoryData,
+      columns: [
+        { title: "Product" },
+        { title: "Stock" },
+        { title: "Status" }
+      ]
+    });
+  });
+},
+beforeDestroy() {
+  if (this.tableElement) {
+    this.tableElement.destroy(true);
+  }
+}`,
+    codeLang: 'javascript',
+  },
+  'Gojek Super-App Clone': {
+    challenge: 'Developing a highly interactive multi-service booking interface that manages complex map positioning and service sheet animations seamlessly on mobile displays.',
+    solution: 'Leveraged Framer-like transition states in CSS combined with dynamic Vue ref components to trigger slide-up drawer animations and state tracking without stuttering.',
+    contributions: [
+      'Designed pixel-perfect service shortcut menus matching the official Gojek brand styling.',
+      'Wired booking flow simulator with progressive active-state checks.',
+      'Optimized mobile touch gesture triggers for slide-up booking drawers.',
+    ],
+    codeSnippet: `// Vue 3 composition drawer toggle and active state coordinator
+const isDrawerExpanded = ref(false);
+const activeService = ref<string | null>(null);
+
+const selectService = (service: string) => {
+  activeService.value = service;
+  isDrawerExpanded.value = true;
+};
+
+const closeDrawer = () => {
+  isDrawerExpanded.value = false;
+  activeService.value = null;
+};`,
+    codeLang: 'typescript',
+  },
+  'Tokopedia Commerce Clone': {
+    challenge: 'Building a complex multi-row nested navigation header that supports dynamic categories, sticky headers, and smooth hover menus without layout shift.',
+    solution: 'Implemented CSS Grid layouts combined with memoized React category drop-down overlays, utilizing custom hooks to handle scroll offsets and state caching.',
+    contributions: [
+      'Developed the responsive search input with auto-suggestions and historical term tags.',
+      'Created slick promo banners using swiper-carousel components.',
+      'Integrated theme-conforming green accent configurations matching official brand identity.',
+    ],
+    codeSnippet: `// React memoized suggestion filtering hook for responsive search
+export function SearchSuggestions({ query, items }) {
+  const suggestions = useMemo(() => {
+    if (!query) return [];
+    const filter = query.toLowerCase();
+    return items.filter(item => 
+      item.name.toLowerCase().startsWith(filter)
+    ).slice(0, 5);
+  }, [query, items]);
+
+  return (
+    <ul className="absolute left-0 right-0 bg-white border rounded-b-xl shadow-lg z-50">
+      {suggestions.map(s => <li key={s.id} className="p-3 hover:bg-slate-50">{s.name}</li>)}
+    </ul>
+  );
+}`,
+    codeLang: 'typescript',
+  },
+  'Spotify Web Player Clone': {
+    challenge: 'Synchronizing the media playback state, volume controls, and active playlist queue across sidebars, grid cards, and footer controls without prop drilling.',
+    solution: 'Utilized React Context API combined with custom play/pause hooks. Used CSS custom properties in gradient headers to dynamically reflect playlist color schemes.',
+    contributions: [
+      'Built glassmorphism sidebar navigation and responsive playlist libraries.',
+      'Coded sleek player progress slider bars and volume controls with hover states.',
+      'Designed fluid gradient backdrops that shift colors based on selected album cards.',
+    ],
+    codeSnippet: `// Next.js React Context provider for global media player control
+export const PlayerContext = createContext<PlayerContextType | null>(null);
+
+export function PlayerProvider({ children }) {
+  const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const playTrack = (track: Track) => {
+    setCurrentTrack(track);
+    setIsPlaying(true);
+  };
+
+  return (
+    <PlayerContext.Provider value={{ currentTrack, isPlaying, playTrack, setIsPlaying }}>
+      {children}
+    </PlayerContext.Provider>
+  );
+}`,
+    codeLang: 'typescript',
+  },
+  'CryptoDash: Elite Fintech Dashboard': {
+    challenge: 'Rendering rapid real-time price tick variations and multi-series line charts simultaneously without causing lag on long-running client sessions.',
+    solution: 'Optimized React component rendering by memoizing high-frequency table cells and scheduling price tick updates with custom requestAnimationFrame throttling.',
+    contributions: [
+      'Designed interactive Recharts area charts with custom color gradients.',
+      'Implemented multi-currency coin selection menus with quick search filters.',
+      'Wired mock portfolio distribution pie charts with dynamic hover tooltips.',
+    ],
+    codeSnippet: `// React area chart component rendering live asset histories
+export function CryptoAreaChart({ data }) {
+  return (
+    <ResponsiveContainer width="100%" height={300}>
+      <AreaChart data={data}>
+        <defs>
+          <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.4}/>
+            <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
+          </linearGradient>
+        </defs>
+        <XAxis dataKey="time" stroke="#64748b" />
+        <YAxis stroke="#64748b" domain={['auto', 'auto']} />
+        <Tooltip content={<CustomTooltip />} />
+        <Area type="monotone" dataKey="price" stroke="#8b5cf6" strokeWidth={2} fillOpacity={1} fill="url(#colorPrice)" />
+      </AreaChart>
+    </ResponsiveContainer>
+  );
+}`,
+    codeLang: 'typescript',
+  },
+  'Trello Kanban Workspace': {
+    challenge: 'Implementing a fluid multi-axis drag-and-drop mechanism for both tasks and columns while ensuring local storage state saves remain consistently in sync.',
+    solution: 'Utilized React DnB hooks with customized collision detection math, scheduling state updates to save to local storage inside debounced hook triggers.',
+    contributions: [
+      'Developed vertical column cards with dynamic titles and scrollable task lists.',
+      'Created card edit modals with subtask lists, labels, and due dates.',
+      'Integrated horizontal scroll boundaries for multi-column board layouts.',
+    ],
+    codeSnippet: `// React DnD drop container ref handling tasks reordering
+export function BoardColumn({ id, cards, moveCard }) {
+  const [, drop] = useDrop({
+    accept: 'CARD',
+    hover: (item: { id: string; index: number }) => {
+      if (item.id !== id) {
+        moveCard(item.id, id);
+      }
+    }
+  });
+
+  return (
+    <div ref={drop} className="w-80 bg-slate-100 dark:bg-slate-900 p-4 rounded-2xl flex flex-col min-h-[400px]">
+      {cards.map(c => <TaskCard key={c.id} card={c} />)}
+    </div>
+  );
+}`,
+    codeLang: 'typescript',
+  },
+  'Canvass: Premium Design Studio': {
+    challenge: 'Managing canvas layout hierarchies, element selections, color changes, and high-quality image exports cleanly in single-session client scopes.',
+    solution: 'Constructed a single-source-of-truth Zustand store to track all visual attributes, and used html-to-image library utilities to parse elements into PNG binaries.',
+    contributions: [
+      'Built the visual edit canvas supporting mouse resize anchors and drag positioning.',
+      'Coded sidebar layout panels containing fonts, shapes, layers, and color selectors.',
+      'Integrated html-to-image export utilities for download actions.',
+    ],
+    codeSnippet: `// Zustand store managing visual element layers on Canva board
+interface CanvasStore {
+  elements: VisualElement[];
+  selectedId: string | null;
+  addElement: (type: string) => void;
+  updateElement: (id: string, attrs: Partial<VisualElement>) => void;
+}
+
+export const useCanvasStore = create<CanvasStore>((set) => ({
+  elements: [],
+  selectedId: null,
+  addElement: (type) => set((state) => ({
+    elements: [...state.elements, { id: uuid(), type, x: 50, y: 50, w: 100, h: 100, color: '#000000' }]
+  })),
+  updateElement: (id, attrs) => set((state) => ({
+    elements: state.elements.map(e => e.id === id ? { ...e, ...attrs } : e)
+  }))
+}));`,
+    codeLang: 'typescript',
+  },
 };
 
 export default function ProjectDrawer({ isOpen, onClose, project }: ProjectDrawerProps) {
@@ -220,13 +530,13 @@ export default function Component({ name }) {
         className="relative w-full max-w-3xl h-full bg-white dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col z-10"
       >
         {/* Header Actions */}
-        <div className="px-6 py-4 bg-slate-50 dark:bg-slate-950/40 border-b border-slate-200 dark:border-slate-800/80 flex items-center justify-between flex-shrink-0">
-          <div className="flex items-center gap-2">
+        <div className="px-4 sm:px-6 py-4 bg-slate-50 dark:bg-slate-950/40 border-b border-slate-200 dark:border-slate-800/80 flex items-center justify-between flex-shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2">
             <a
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl flex items-center gap-2 transition-all cursor-pointer shadow-md shadow-brand-600/10"
+              className="px-3 py-1.5 sm:px-4 sm:py-2 bg-brand-600 hover:bg-brand-700 text-white text-[10px] sm:text-xs font-bold rounded-xl flex items-center gap-1.5 sm:gap-2 transition-all cursor-pointer shadow-md shadow-brand-600/10"
             >
               <ExternalLink size={14} /> Visit Site
             </a>
@@ -235,7 +545,7 @@ export default function Component({ name }) {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold rounded-xl flex items-center gap-2 transition-all cursor-pointer border border-slate-200/40 dark:border-slate-700/60"
+                className="px-3 py-1.5 sm:px-4 sm:py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-[10px] sm:text-xs font-bold rounded-xl flex items-center gap-1.5 sm:gap-2 transition-all cursor-pointer border border-slate-200/40 dark:border-slate-700/60"
               >
                 <Github size={14} /> View Code
               </a>
@@ -251,10 +561,10 @@ export default function Component({ name }) {
         </div>
 
         {/* Content Body */}
-        <div className="flex-grow overflow-y-auto p-8 md:p-12 space-y-10">
+        <div className="flex-grow overflow-y-auto p-5 sm:p-8 md:p-12 space-y-8 sm:space-y-10">
           {/* Cover & Title */}
           <div className="space-y-4">
-            <div className="h-64 rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-800/60 shadow-md">
+            <div className="h-48 sm:h-64 rounded-3xl overflow-hidden border border-slate-100 dark:border-slate-800/60 shadow-md">
               <Image 
                 src={project.image} 
                 alt={project.title} 

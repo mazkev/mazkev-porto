@@ -91,39 +91,29 @@ export default function ContactForm() {
     setError(null);
 
     const formData = new FormData(e.currentTarget);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const message = formData.get('message') as string;
     
-    try {
-      // Replace 'mqakpneq' with your actual Formspree ID from formspree.io
-      const response = await fetch("https://formspree.io/f/mqakpneq", {
-        method: "POST",
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
+    // Format the message for WhatsApp
+    const phoneNumber = '628130000000';
+    const text = `Hello Kevin! My name is ${name} (${email}).\n\n${message}`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
+    
+    window.open(whatsappUrl, '_blank');
 
-      if (response.ok) {
-        setIsSubmitting(false);
-        setIsSuccessAnimating(true);
-        
-        // Wait for paper airplane and confetti burst animations to finish
-        setTimeout(() => {
-          setShowSuccess(true);
-          setIsSuccessAnimating(false);
-        }, 1500);
-      } else {
-        const data = await response.json();
-        setError(data.error || "Submission failed. Please check your Formspree ID.");
-        setIsSubmitting(false);
-      }
-    } catch {
-      setError("Network error. Please try again later.");
-      setIsSubmitting(false);
-    }
+    setIsSubmitting(false);
+    setIsSuccessAnimating(true);
+    
+    // Wait for paper airplane and confetti burst animations to finish
+    setTimeout(() => {
+      setShowSuccess(true);
+      setIsSuccessAnimating(false);
+    }, 1500);
   };
 
   return (
-    <section id="contact" className="py-24 px-6 relative overflow-hidden bg-white dark:bg-slate-950">
+    <section id="contact" className="py-24 px-6 relative overflow-hidden bg-white dark:bg-slate-950 no-print">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
         <div>
           <h2 className="text-sm font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest mb-2 flex items-center gap-2">

@@ -15,7 +15,7 @@ export default function Home() {
       <Projects />
       <ContactForm />
       
-      <footer className="py-12 border-t border-slate-100 dark:border-slate-900 bg-slate-50 dark:bg-slate-950/50">
+      <footer className="py-12 border-t border-slate-100 dark:border-slate-900 bg-slate-50 dark:bg-slate-950/50 no-print">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white text-xs font-bold">

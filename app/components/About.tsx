@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { User, Brain, Briefcase, Code, GraduationCap, Sparkles } from 'lucide-react';
 import { cn } from '@/app/lib/utils';
 import Image from 'next/image';
-import TechPhysicsPool from './TechPhysicsPool';
 
 interface SkillItem {
   name: string;
@@ -74,7 +73,7 @@ export default function About() {
   if (!mounted) return null;
 
   return (
-    <section id="about" className="py-24 px-6 relative bg-white dark:bg-slate-950">
+    <section id="about" className="py-24 px-6 relative bg-white dark:bg-slate-950 no-print">
       {/* Narrative Bio & Profile Card */}
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center mb-28">
         <motion.div
@@ -103,7 +102,7 @@ export default function About() {
           </div>
           
           <div className="absolute -top-6 -left-6 glass p-6 rounded-3xl shadow-xl animate-float delay-700">
-            <div className="text-3xl font-bold text-indigo-500">10+</div>
+            <div className="text-3xl font-bold text-sky-500">10+</div>
             <div className="text-xs font-bold uppercase tracking-widest text-slate-500">Projects</div>
           </div>
         </motion.div>
@@ -134,66 +133,58 @@ export default function About() {
           <h3 className="text-3xl md:text-4xl font-bold font-outfit">Core <span className="text-gradient">Competencies</span></h3>
         </div>
 
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
-          {/* Skills Categorization Tabs & Grid (7 Cols) */}
-          <div className="lg:col-span-7 space-y-8">
-            {/* Filter Tabs */}
-            <div className="flex flex-wrap gap-2 p-1 bg-slate-50 dark:bg-slate-900/60 rounded-2xl border border-slate-100 dark:border-slate-800/80 max-w-max">
-              {(['all', 'frontend', 'backend', 'devops'] as const).map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={cn(
-                    "px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xl transition-all duration-300 cursor-pointer",
-                    activeTab === tab 
-                      ? "bg-brand-600 text-white shadow-md shadow-brand-600/10" 
-                      : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-                  )}
+        <div className="w-full space-y-8">
+          {/* Filter Tabs */}
+          <div className="flex flex-wrap gap-2 p-1 bg-slate-50 dark:bg-slate-900/60 rounded-2xl border border-slate-100 dark:border-slate-800/80 max-w-max">
+            {(['all', 'frontend', 'backend', 'devops'] as const).map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={cn(
+                  "px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-xl transition-all duration-300 cursor-pointer",
+                  activeTab === tab 
+                    ? "bg-brand-600 text-white shadow-md shadow-brand-600/10" 
+                    : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                )}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+
+          {/* Grid display with Framer Motion layout animations */}
+          <motion.div 
+            layout 
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4"
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredSkills.map((skill) => (
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.2 }}
+                  key={skill.name}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  className="flex items-center gap-3 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-all group cursor-default"
                 >
-                  {tab}
-                </button>
+                  <div className="w-8 h-8 flex items-center justify-center flex-shrink-0">
+                    <Image 
+                      src={skill.icon} 
+                      alt={skill.name} 
+                      width={28}
+                      height={28}
+                      className="w-7 h-7 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-300" 
+                    />
+                  </div>
+                  <span className="text-xs font-bold text-slate-700 dark:text-slate-300 group-hover:text-brand-600 transition-colors truncate">
+                    {skill.name}
+                  </span>
+                </motion.div>
               ))}
-            </div>
-
-            {/* Grid display with Framer Motion layout animations */}
-            <motion.div 
-              layout 
-              className="grid grid-cols-2 md:grid-cols-3 gap-4"
-            >
-              <AnimatePresence mode="popLayout">
-                {filteredSkills.map((skill) => (
-                  <motion.div
-                    layout
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.2 }}
-                    key={skill.name}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    className="flex items-center gap-3 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-md transition-all group cursor-default"
-                  >
-                    <div className="w-8 h-8 flex items-center justify-center flex-shrink-0">
-                      <Image 
-                        src={skill.icon} 
-                        alt={skill.name} 
-                        width={28}
-                        height={28}
-                        className="w-7 h-7 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-300" 
-                      />
-                    </div>
-                    <span className="text-xs font-bold text-slate-700 dark:text-slate-300 group-hover:text-brand-600 transition-colors truncate">
-                      {skill.name}
-                    </span>
-                  </motion.div>
-                ))}
-              </AnimatePresence>
-            </motion.div>
-          </div>
-
-          {/* Physics Badge Pool (5 Cols) */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center">
-            <TechPhysicsPool />
-          </div>
+            </AnimatePresence>
+          </motion.div>
         </div>
       </div>
 

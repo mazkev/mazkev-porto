@@ -4,29 +4,29 @@
   --font-outfit: var(--font-outfit);
   --font-inter: var(--font-inter);
   
-  --color-brand-50: #f5f7ff;
-  --color-brand-100: #ebf0fe;
-  --color-brand-200: #dce4fd;
-  --color-brand-300: #c2cffb;
-  --color-brand-400: #9eaff7;
-  --color-brand-500: #7586f1;
-  --color-brand-600: #575de7;
-  --color-brand-700: #4648d4;
-  --color-brand-800: #3b3caf;
-  --color-brand-900: #34368b;
-  --color-brand-950: #212251;
+  --color-brand-50: #eff6ff;
+  --color-brand-100: #dbeafe;
+  --color-brand-200: #bfdbfe;
+  --color-brand-300: #93c5fd;
+  --color-brand-400: #60a5fa;
+  --color-brand-500: #3b82f6;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+  --color-brand-800: #1e40af;
+  --color-brand-900: #1e3a8a;
+  --color-brand-950: #172554;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
-  --foreground: #0f172a;
+  --foreground: #172554;
 }
 
 .dark {
-  --background: #020617;
-  --foreground: #f8fafc;
+  --background: #0a1029;
+  --foreground: #eff6ff;
 }
 
 @layer base {
@@ -47,7 +47,7 @@
   }
   
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-indigo-400 dark:from-brand-400 dark:to-indigo-300;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-blue-400 dark:from-brand-400 dark:to-blue-300;
   }
 
   .bg-grid {
