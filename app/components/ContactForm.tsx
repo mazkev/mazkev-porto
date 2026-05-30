@@ -184,8 +184,9 @@ export default function ContactForm() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-sm font-bold ml-1">Full Name</label>
+                  <label htmlFor="name" className="text-sm font-bold ml-1">Full Name</label>
                   <input
+                    id="name"
                     required
                     name="name"
                     type="text"
@@ -194,8 +195,9 @@ export default function ContactForm() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-bold ml-1">Email Address</label>
+                  <label htmlFor="email" className="text-sm font-bold ml-1">Email Address</label>
                   <input
+                    id="email"
                     required
                     name="email"
                     type="email"
@@ -205,8 +207,9 @@ export default function ContactForm() {
                 </div>
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-bold ml-1">Message</label>
+                <label htmlFor="message" className="text-sm font-bold ml-1">Message</label>
                 <textarea
+                  id="message"
                   required
                   name="message"
                   rows={5}

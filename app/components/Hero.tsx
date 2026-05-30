@@ -261,6 +261,7 @@ export default function Hero() {
                   alt={icon} 
                   width={20}
                   height={20}
+                  priority
                   className="h-5 w-5 opacity-40 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" 
                 />
               ))}
