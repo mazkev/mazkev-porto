@@ -31,7 +31,7 @@ export default function LogoMarquee() {
 
       <div className="max-w-7xl mx-auto px-6 mb-8 text-center">
         <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-slate-400 dark:text-slate-500">
-          Empowering digital experiences with modern technologies
+          Tools and technologies I work with daily
         </span>
       </div>
 

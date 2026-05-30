@@ -65,7 +65,7 @@ function HeroTerminal() {
   • sudo     - System admin override
   (Try 'projects go [name]' to open a project live demo!)`;
     } else if (cmdLower === 'about') {
-      replyText = `Mazkev (Kevin Pratama) is a Fullstack Developer with 3+ years experience building high-performance web applications using React, Next.js, and Laravel. Specializes in custom UI/UX, caching strategies, and database index tuning.`;
+      replyText = `Kevin Eka Pratama is a Front end Engineer with fullstack experience. Specializes in React, Next.js, and writing clean, maintainable code.`;
       replyType = 'success';
     } else if (cmdLower === 'skills') {
       replyText = `--- TECHNICAL MATRIX ---
@@ -224,11 +224,11 @@ export default function Hero() {
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold font-outfit leading-tight mb-6">
-            Crafting <span className="text-gradient">Digital</span> Experiences
+            Building web apps that <span className="text-gradient">just work.</span>
           </h1>
           
           <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-10 max-w-lg leading-relaxed">
-            Fullstack Developer specializing in React, Next.js, and Scalable Backend Solutions. I turn complex problems into elegant, high-performance web applications.
+            Hi, I'm Kevin. I'm a Front end Engineer specializing in React, Next.js, and Laravel. I focus on writing clean code and shipping fast, reliable products.
           </p>
           
           <div className="flex flex-wrap gap-4 mb-10">

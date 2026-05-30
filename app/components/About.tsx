@@ -109,16 +109,16 @@ export default function About() {
 
         <div>
           <h2 className="text-sm font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest mb-2 flex items-center gap-2">
-            <User size={18} /> My Journey
+            <User size={18} /> Background
           </h2>
-          <h3 className="text-4xl md:text-5xl font-bold font-outfit mb-8">Passionate about <span className="text-gradient">Problem Solving</span></h3>
+          <h3 className="text-4xl md:text-5xl font-bold font-outfit mb-8">How I got <span className="text-gradient">here</span></h3>
           
           <div className="space-y-6 text-slate-600 dark:text-slate-400 text-lg leading-relaxed max-w-xl">
             <p>
-              I&apos;m a digital craftsman with over 3 years of experience in building scalable web applications. My dual expertise in high-performance frontend frameworks and robust backend architectures allows me to bridge the gap between design and functionality.
+              I&apos;m a Front end Engineer with over 3 years of experience building web applications. I enjoy working across the entire stack, from designing resilient APIs in Laravel to building interactive user interfaces in React.
             </p>
             <p>
-              From architecting complex Laravel backends to crafting pixel-perfect React interfaces, I thrive on the challenge of turning visionary ideas into tangible digital experiences.
+              Currently, I work in Technical Support at PT PLN Icon+, where I deal with enterprise networks and database systems. Before that, I spent a few years as a freelance developer building custom solutions for various clients.
             </p>
           </div>
         </div>
@@ -128,9 +128,9 @@ export default function About() {
       <div className="max-w-7xl mx-auto mb-28">
         <div className="mb-12">
           <h2 className="text-sm font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest mb-2 flex items-center gap-2">
-            <Brain size={18} /> Skill Matrix
+            <Brain size={18} /> Skills
           </h2>
-          <h3 className="text-3xl md:text-4xl font-bold font-outfit">Core <span className="text-gradient">Competencies</span></h3>
+          <h3 className="text-3xl md:text-4xl font-bold font-outfit">Technologies I <span className="text-gradient">Use</span></h3>
         </div>
 
         <div className="w-full space-y-8">
@@ -193,9 +193,9 @@ export default function About() {
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-sm font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest mb-2 flex items-center justify-center gap-2">
-            <Sparkles size={18} /> Career Roadmap
+            <Sparkles size={18} /> Timeline
           </h2>
-          <h3 className="text-3xl md:text-4xl font-bold font-outfit">Professional <span className="text-gradient">Experience</span></h3>
+          <h3 className="text-3xl md:text-4xl font-bold font-outfit">Work <span className="text-gradient">Experience</span></h3>
         </div>
 
         {/* Timeline body */}
