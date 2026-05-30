@@ -4,11 +4,13 @@ import LogoMarquee from "./components/LogoMarquee";
 import About from "./components/About";
 import Projects from "./components/Projects";
 import ContactForm from "./components/ContactForm";
+import MobileNav from "./components/MobileNav";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <Navbar />
+      <MobileNav />
       <Hero />
       <LogoMarquee />
       <About />
