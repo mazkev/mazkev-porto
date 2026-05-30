@@ -175,6 +175,7 @@ export default function About() {
                       alt={skill.name} 
                       width={28}
                       height={28}
+                      unoptimized
                       className="w-7 h-7 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-300" 
                     />
                   </div>
