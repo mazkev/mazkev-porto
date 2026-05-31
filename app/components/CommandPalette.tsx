@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Terminal, Sun, Moon, FileText, ArrowRight, CornerDownLeft, Layers, Mail, User, ShieldAlert, Video } from 'lucide-react';
+import { Search, Sun, Moon, FileText, ArrowRight, CornerDownLeft, Layers, Mail, User, ShieldAlert, Video } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 interface CommandItem {
@@ -100,7 +100,7 @@ export default function CommandPalette() {
     },
     {
       id: 'resume',
-      name: 'Open Resume / CV Drawer',
+      name: 'Open Resume Drawer',
       category: 'Resume',
       description: 'Slide open work history, skills matrix and print layouts.',
       icon: FileText,
@@ -246,6 +246,16 @@ export default function CommandPalette() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, selectedIndex, filteredCommands]);
 
+  // Scroll selected item into view
+  useEffect(() => {
+    if (isOpen) {
+      const activeItem = document.getElementById(`command-item-${selectedIndex}`);
+      if (activeItem) {
+        activeItem.scrollIntoView({ block: 'nearest' });
+      }
+    }
+  }, [selectedIndex, isOpen]);
+
   // Click outside listener
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -275,7 +285,7 @@ export default function CommandPalette() {
           >
             {/* Header search bar */}
             <div className="flex items-center gap-3 px-6 py-4 border-b border-slate-200/60 dark:border-slate-800/50 bg-slate-50/50 dark:bg-slate-950/30">
-              <Terminal size={18} className="text-brand-500" />
+              <Search size={18} className="text-slate-400 dark:text-slate-500" />
               <input
                 ref={inputRef}
                 type="text"
@@ -284,8 +294,8 @@ export default function CommandPalette() {
                   setSearch(e.target.value);
                   setSelectedIndex(0);
                 }}
-                placeholder="Type a command or search..."
-                className="flex-grow bg-transparent border-none outline-none font-mono text-sm text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500"
+                placeholder="Search for projects, pages, or actions..."
+                className="flex-grow bg-transparent border-none outline-none font-sans text-sm text-slate-800 dark:text-slate-200 placeholder-slate-400 dark:placeholder-slate-500"
               />
               <div className="px-2 py-1 rounded bg-slate-100 dark:bg-slate-800 text-[10px] font-mono font-bold text-slate-400 border border-slate-200/40 dark:border-slate-700/40">
                 ESC
@@ -301,6 +311,7 @@ export default function CommandPalette() {
                   return (
                     <button
                       key={cmd.id}
+                      id={`command-item-${idx}`}
                       onClick={() => cmd.action()}
                       onMouseEnter={() => setSelectedIndex(idx)}
                       className={`w-full p-3 rounded-2xl flex items-center justify-between text-left transition-all duration-150 border cursor-pointer ${

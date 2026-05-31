@@ -85,7 +85,7 @@ export default function About() {
         >
           <div className="relative rounded-[2.5rem] overflow-hidden aspect-square shadow-2xl">
             <Image
-              src="/profile/me.jpg"
+              src="/profile/avatar-nobeard.png"
               alt="Profile"
               width={500}
               height={500}

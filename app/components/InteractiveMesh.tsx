@@ -105,8 +105,14 @@ export default function InteractiveMesh() {
       mouseRef.current.active = false;
     };
 
+    const handleMouseOut = (e: MouseEvent) => {
+      if (!e.relatedTarget) {
+        handleMouseLeave();
+      }
+    };
+
     window.addEventListener('mousemove', handleMouseMove);
-    canvas.addEventListener('mouseleave', handleMouseLeave);
+    document.addEventListener('mouseout', handleMouseOut);
 
     // Animation Loop
     const draw = () => {
@@ -205,9 +211,7 @@ export default function InteractiveMesh() {
       cancelAnimationFrame(animationFrameId);
       resizeObserver.disconnect();
       window.removeEventListener('mousemove', handleMouseMove);
-      if (canvas) {
-        canvas.removeEventListener('mouseleave', handleMouseLeave);
-      }
+      document.removeEventListener('mouseout', handleMouseOut);
     };
   }, [mounted, resolvedTheme]);
 

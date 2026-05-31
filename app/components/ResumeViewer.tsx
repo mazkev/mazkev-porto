@@ -89,12 +89,12 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               onClick={handlePrint}
               className="px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white text-xs font-bold rounded-xl flex items-center gap-2 transition-all cursor-pointer shadow-md shadow-brand-600/10"
             >
-              <Printer size={14} /> Print CV
+              <Printer size={14} /> Print Resume
             </button>
             <a
-              href="/cv.pdf"
+              href="/resume.pdf"
               target="_blank"
-              download
+              download="resume.pdf"
               className="px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold rounded-xl flex items-center gap-2 transition-all cursor-pointer border border-slate-200/40 dark:border-slate-700/60"
             >
               <Download size={14} /> Download PDF
@@ -109,7 +109,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
           </button>
         </div>
 
-        {/* CV Scrollable Content */}
+        {/* Resume Scrollable Content */}
         <div className="flex-grow overflow-y-auto p-8 md:p-12" id="print-area">
           <div className="max-w-2xl mx-auto space-y-10">
             {/* Header info */}

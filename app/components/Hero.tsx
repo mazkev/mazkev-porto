@@ -1,192 +1,54 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Download, Terminal as TerminalIcon, Send } from 'lucide-react';
+import { ArrowRight, Download, Code, Star, CheckCircle } from 'lucide-react';
 import { cn } from '@/app/lib/utils';
 import Image from 'next/image';
-import InteractiveMesh from './InteractiveMesh';
 import ResumeViewer from './ResumeViewer';
 
-interface TerminalLine {
-  text: string;
-  type: 'input' | 'output' | 'error' | 'success';
-}
-
-function HeroTerminal() {
-  const [mounted, setMounted] = useState(false);
-  const [history, setHistory] = useState<TerminalLine[]>([
-    { text: 'guest-login', type: 'input' },
-    { text: 'Access Granted! Secure session initialized.', type: 'success' },
-    { text: "Welcome to Mazkev CLI. Type 'help' to see list of active commands.", type: 'output' },
-  ]);
-  const [inputValue, setInputValue] = useState('');
-  const historyRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handle = requestAnimationFrame(() => {
-      setMounted(true);
-    });
-    return () => cancelAnimationFrame(handle);
-  }, []);
-
-  useEffect(() => {
-    if (historyRef.current) {
-      historyRef.current.scrollTop = historyRef.current.scrollHeight;
-    }
-  }, [history]);
-
-  if (!mounted) {
-    return (
-      <div className="glass bg-slate-950/90 text-slate-400 font-mono text-xs rounded-2xl overflow-hidden shadow-2xl border border-slate-800/80 h-96 flex items-center justify-center">
-        <div className="w-6 h-6 border-2 border-brand-600/30 border-t-brand-600 rounded-full animate-spin" />
-      </div>
-    );
-  }
-
-  const handleCommand = (e: React.FormEvent) => {
-    e.preventDefault();
-    const command = inputValue.trim();
-    if (!command) return;
-
-    const newHistory = [...history, { text: `guest@mazkev-terminal:~$ ${command}`, type: 'input' as const }];
-    const cmdLower = command.toLowerCase();
-
-    let replyText = '';
-    let replyType: 'output' | 'error' | 'success' = 'output';
-
-    if (cmdLower === 'help') {
-      replyText = `Available commands:
-  • about    - Professional overview
-  • skills   - Technical stacks
-  • projects - Core project works
-  • contact  - Email, LinkedIn and GitHub handles
-  • clear    - Clear terminal history
-  • sudo     - System admin override
-  (Try 'projects go [name]' to open a project live demo!)`;
-    } else if (cmdLower === 'about') {
-      replyText = `Kevin Eka Pratama is a Front end Engineer with fullstack experience. Specializes in React, Next.js, and writing clean, maintainable code.`;
-      replyType = 'success';
-    } else if (cmdLower === 'skills') {
-      replyText = `--- TECHNICAL MATRIX ---
-  • Frontend: Next.js, React, TypeScript, Tailwind CSS, Vue
-  • Backend:  Laravel, Node.js, PHP, PostgreSQL, MySQL
-  • DevOps:   Docker, AWS, Vercel, Firebase`;
-    } else if (cmdLower === 'projects') {
-      replyText = `--- FEATURED PROJECTS ---
-  • semarketplace - E-commerce transaction engine
-  • indofooty     - Sports statistics dashboard
-  • streamx       - Video-on-demand platform mockup
-  • twitter       - Social media dashboard clone
-  • airbnb        - Travel rental platform mockup
-  • maztube       - Video sharing platform demo
-  (Type e.g., 'projects go semarketplace' to visit live site!)`;
-    } else if (cmdLower.startsWith('projects go ')) {
-      const proj = cmdLower.substring(12).trim();
-      const urls: Record<string, string> = {
-        semarketplace: 'https://semarketplace.vercel.app/',
-        indofooty: 'https://indofooty.vercel.app/',
-        streamx: 'https://netflix-asli.vercel.app/',
-        twitter: 'https://twitter-clonex1.vercel.app/',
-        airbnb: 'https://airbnb-clonex.vercel.app/',
-        maztube: 'https://maztube.vercel.app/',
-      };
-      if (urls[proj]) {
-        try {
-          window.open(urls[proj], '_blank');
-          replyText = `Redirecting to ${proj} live demo in a new tab...`;
-          replyType = 'success';
-        } catch {
-          replyText = `Browser blocked popup. URL: ${urls[proj]}`;
-          replyType = 'error';
-        }
-      } else {
-        replyText = `Unknown project '${proj}'. Available: semarketplace, indofooty, streamx, twitter, airbnb, maztube`;
-        replyType = 'error';
-      }
-    } else if (cmdLower === 'contact') {
-      replyText = `--- CONNECT CHANNELS ---
-  • Email:    kevinekapratama@gmail.com
-  • GitHub:   github.com/mazkev
-  • LinkedIn: linkedin.com/in/mazkev`;
-    } else if (cmdLower === 'clear') {
-      setHistory([]);
-      setInputValue('');
-      return;
-    } else if (cmdLower.startsWith('sudo')) {
-      if (cmdLower === 'sudo rm -rf /') {
-        replyText = `Permission Denied: System protection active. This incident has been logged and reported to the system administrator.`;
-        replyType = 'error';
-      } else {
-        replyText = `sudo: password required for guest. Authorization failed.`;
-        replyType = 'error';
-      }
-    } else {
-      replyText = `Command not found: '${command}'. Type 'help' to see list of valid commands.`;
-      replyType = 'error';
-    }
-
-    setHistory([...newHistory, { text: replyText, type: replyType }]);
-    setInputValue('');
-  };
-
+function ProfileCard() {
   return (
-    <div className="glass bg-slate-950/90 text-slate-300 font-mono text-[11px] rounded-2xl overflow-hidden shadow-2xl border border-slate-800/80 h-96 flex flex-col">
-      {/* Terminal Titlebar */}
-      <div className="bg-slate-900 px-4 py-3 flex items-center justify-between border-b border-slate-800/60 select-none flex-shrink-0">
-        <div className="flex items-center gap-2">
-          <div className="w-3.5 h-3.5 rounded-full bg-[#ff5f56] flex items-center justify-center text-[8px]" />
-          <div className="w-3.5 h-3.5 rounded-full bg-[#ffbd2e]" />
-          <div className="w-3.5 h-3.5 rounded-full bg-[#27c93f]" />
+    <div className="glass bg-white/50 dark:bg-slate-900/50 p-8 rounded-[2.5rem] shadow-2xl border border-slate-200/60 dark:border-slate-800/60 relative overflow-hidden">
+      {/* Subtle backdrop gradient instead of neon glow */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-brand-500/5 rounded-full blur-3xl" />
+      
+      <div className="relative z-10 flex flex-col items-center text-center">
+        <div className="w-24 h-24 rounded-full border-4 border-white dark:border-slate-800 overflow-hidden mb-6 shadow-lg bg-slate-100 dark:bg-slate-900">
+          <Image
+            src="/profile/avatar-nobeard.png"
+            alt="Kevin Eka Pratama"
+            width={96}
+            height={96}
+            className="w-full h-full object-cover"
+          />
         </div>
-        <span className="text-slate-500 font-bold text-[9px] flex items-center gap-1.5">
-          <TerminalIcon size={12} className="text-slate-600" />
-          guest@mazkev-terminal: ~
-        </span>
-        <div className="w-10 h-1" />
-      </div>
+        
+        <h3 className="text-2xl font-bold font-outfit text-slate-800 dark:text-white mb-2">
+          Kevin Eka Pratama
+        </h3>
+        <p className="text-sm font-semibold text-brand-600 dark:text-brand-400 mb-6 uppercase tracking-wider">
+          Front end Engineer
+        </p>
 
-      {/* Terminal Screen History */}
-      <div 
-        ref={historyRef}
-        className="flex-grow p-4 overflow-y-auto space-y-2.5 scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent leading-relaxed"
-      >
-        {history.map((line, idx) => (
-          <div 
-            key={idx} 
-            className={cn(
-              "whitespace-pre-wrap break-all",
-              line.type === 'input' && "text-brand-400 font-bold",
-              line.type === 'success' && "text-emerald-400",
-              line.type === 'error' && "text-rose-400 font-medium"
-            )}
-          >
-            {line.text}
+        <div className="w-full grid grid-cols-2 gap-4">
+          <div className="bg-white/60 dark:bg-slate-950/60 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 flex flex-col items-center transition-transform hover:scale-105 cursor-default">
+            <Code className="text-brand-500 mb-2" size={24} />
+            <span className="text-xl font-bold text-slate-800 dark:text-white">10+</span>
+            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-1">Projects</span>
           </div>
-        ))}
+          <div className="bg-white/60 dark:bg-slate-950/60 p-4 rounded-2xl border border-slate-100 dark:border-slate-800 flex flex-col items-center transition-transform hover:scale-105 cursor-default">
+            <Star className="text-amber-500 mb-2" size={24} />
+            <span className="text-xl font-bold text-slate-800 dark:text-white">3+</span>
+            <span className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mt-1">Years Exp</span>
+          </div>
+        </div>
+        
+        <div className="w-full mt-6 flex items-center justify-center gap-3 bg-white/60 dark:bg-slate-950/60 py-3 px-4 rounded-xl border border-slate-100 dark:border-slate-800">
+          <CheckCircle className="text-emerald-500" size={16} />
+          <span className="text-xs font-bold text-slate-600 dark:text-slate-300">Clean code & architecture</span>
+        </div>
       </div>
-
-      {/* Terminal Input Form */}
-      <form 
-        onSubmit={handleCommand}
-        className="bg-slate-900/60 border-t border-slate-800/60 px-4 py-3 flex items-center gap-2 flex-shrink-0"
-      >
-        <span className="text-brand-500 font-extrabold select-none">$</span>
-        <input
-          type="text"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          placeholder="Type a command (e.g. 'help')..."
-          className="flex-grow bg-transparent border-0 outline-none text-slate-200 placeholder-slate-600 focus:ring-0 focus:outline-none py-0.5"
-          autoFocus
-        />
-        <button 
-          type="submit" 
-          className="p-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors cursor-pointer"
-        >
-          <Send size={12} />
-        </button>
-      </form>
     </div>
   );
 }
@@ -202,12 +64,7 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-grid">
-      {/* Dynamic Interactive Mesh Background & Decorative Blur Orbs */}
-      <div className="no-print">
-        <InteractiveMesh />
-        <div className="absolute top-1/4 -left-20 w-72 h-72 bg-brand-600/30 rounded-full blur-[128px]" />
-        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-sky-600/20 rounded-full blur-[128px]" />
-      </div>
+      {/* Removed Interactive Mesh & Blur Orbs for cleaner design */}
 
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10 no-print">
         <motion.div
@@ -247,7 +104,7 @@ export default function Hero() {
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl font-bold flex items-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all shadow-sm cursor-pointer text-slate-800 dark:text-slate-200"
             >
-              View Resume / CV <Download size={20} />
+              View Resume <Download size={20} />
             </motion.button>
           </div>
 
@@ -271,15 +128,12 @@ export default function Hero() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           className="relative hidden md:block"
         >
-          <HeroTerminal />
-          
-          {/* Decorative absolute element */}
-          <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-sky-500/10 rounded-full blur-2xl pointer-events-none" />
+          <ProfileCard />
         </motion.div>
       </div>
 

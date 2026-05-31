@@ -16,8 +16,8 @@ const projects: ProjectData[] = [
     github: '#',
   },
   {
-    title: 'Nexus Enterprise System',
-    description: 'A futuristic developer dashboard and enterprise system interface. Features real-time activity graphs, dark mode components, and complex data visualizations.',
+    title: 'Enterprise Operations Dashboard',
+    description: 'A modern enterprise dashboard and system operations interface. Features real-time activity graphs, scalable data grids, and complex data visualizations.',
     tech: ['Next.js', 'TypeScript', 'Recharts'],
     image: '/projects/nexus.png',
     live: 'https://nexus-project-mu.vercel.app/',
