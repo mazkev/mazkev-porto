@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { X, Printer, Download, Mail, Phone, MapPin, Code, Award, Briefcase, GraduationCap } from 'lucide-react';
+import Image from 'next/image';
 
 interface ResumeViewerProps {
   isOpen: boolean;
@@ -113,28 +114,38 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
         <div className="flex-grow overflow-y-auto p-8 md:p-12" id="print-area">
           <div className="max-w-2xl mx-auto space-y-10">
             {/* Header info */}
-            <div className="border-b border-slate-100 dark:border-slate-800/80 pb-8 text-center md:text-left md:flex justify-between items-start gap-8">
-              <div className="space-y-2">
-                <h1 className="text-4xl font-extrabold font-outfit text-slate-900 dark:text-white">
-                  Kevin Eka Pratama
-                </h1>
-                <p className="text-xs font-bold text-brand-600 dark:text-brand-400 font-outfit uppercase tracking-widest">
-                  Fullstack Developer & Digital Craftsman
-                </p>
+            <div className="border-b border-slate-100 dark:border-slate-800/80 pb-8 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
+              {/* Profile Photo */}
+              <div className="w-24 h-24 md:w-28 md:h-28 flex-shrink-0 rounded-2xl overflow-hidden border-4 border-slate-100 dark:border-slate-800 shadow-lg bg-slate-50 dark:bg-slate-900 print:border-none print:shadow-none">
+                <Image
+                  src="/profile/avatar-nobeard.png"
+                  alt="Kevin Eka Pratama"
+                  width={112}
+                  height={112}
+                  className="w-full h-full object-cover"
+                />
               </div>
 
-              <div className="mt-4 md:mt-0 space-y-2.5 text-sm text-slate-500 dark:text-slate-400 font-medium">
-                <div className="flex items-center gap-2 justify-center md:justify-start">
-                  <Mail size={14} className="text-slate-400" />
-                  <span>kevinekapratama@gmail.com</span>
-                </div>
-                <div className="flex items-center gap-2 justify-center md:justify-start">
-                  <Phone size={14} className="text-slate-400" />
-                  <span>+62 (813) 000-0000</span>
-                </div>
-                <div className="flex items-center gap-2 justify-center md:justify-start">
-                  <MapPin size={14} className="text-slate-400" />
-                  <span>Jakarta, Indonesia</span>
+              <div className="flex-grow text-center md:text-left space-y-2 pt-1 md:pt-2">
+                <h1 className="text-4xl md:text-5xl font-extrabold font-outfit text-slate-900 dark:text-white">
+                  Kevin Eka Pratama
+                </h1>
+                <p className="text-sm font-bold text-brand-600 dark:text-brand-400 font-outfit uppercase tracking-widest">
+                  Fullstack Developer & Digital Craftsman
+                </p>
+                <div className="pt-3 flex flex-wrap justify-center md:justify-start gap-y-2 gap-x-5 text-sm text-slate-500 dark:text-slate-400 font-medium">
+                  <div className="flex items-center gap-2">
+                    <Mail size={14} className="text-slate-400" />
+                    <span>kevinekapratama@gmail.com</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Phone size={14} className="text-slate-400" />
+                    <span>+62 (813) 000-0000</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPin size={14} className="text-slate-400" />
+                    <span>Jakarta, Indonesia</span>
+                  </div>
                 </div>
               </div>
             </div>
