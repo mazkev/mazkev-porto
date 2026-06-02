@@ -21,6 +21,10 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
     <div className="fixed inset-0 z-50 flex justify-end">
       {/* Print-specific style override */}
       <style jsx global>{`
+        @page {
+          size: A4;
+          margin: 15mm;
+        }
         @media print {
           .no-print {
             display: none !important;
@@ -104,6 +108,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
 
           <button
             onClick={onClose}
+            aria-label="Close resume"
             className="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-white rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
           >
             <X size={20} />
@@ -111,40 +116,40 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
         </div>
 
         {/* Resume Scrollable Content */}
-        <div className="flex-grow overflow-y-auto p-8 md:p-12" id="print-area">
-          <div className="max-w-2xl mx-auto space-y-10">
+        <div className="flex-grow overflow-y-auto p-6 md:p-8 print:p-0 print:overflow-hidden" id="print-area">
+          <div className="max-w-2xl mx-auto space-y-8 print:space-y-4">
             {/* Header info */}
-            <div className="border-b border-slate-100 dark:border-slate-800/80 pb-8 flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
+            <div className="border-b border-slate-100 dark:border-slate-800/80 pb-6 print:pb-4 flex flex-row items-center justify-between gap-6">
               {/* Profile Photo */}
-              <div className="w-24 h-24 md:w-28 md:h-28 flex-shrink-0 rounded-2xl overflow-hidden border-4 border-slate-100 dark:border-slate-800 shadow-lg bg-slate-50 dark:bg-slate-900 print:border-none print:shadow-none">
+              <div className="w-20 h-20 md:w-24 md:h-24 print:w-20 print:h-20 flex-shrink-0 rounded-2xl overflow-hidden border-4 border-slate-100 dark:border-slate-800 shadow-lg bg-slate-50 dark:bg-slate-900 print:border-none print:shadow-none print:rounded-lg">
                 <Image
                   src="/profile/avatar-nobeard.png"
                   alt="Kevin Eka Pratama"
-                  width={112}
-                  height={112}
+                  width={96}
+                  height={96}
                   className="w-full h-full object-cover"
                 />
               </div>
 
-              <div className="flex-grow text-center md:text-left space-y-2 pt-1 md:pt-2">
-                <h1 className="text-4xl md:text-5xl font-extrabold font-outfit text-slate-900 dark:text-white">
+              <div className="flex-grow text-right space-y-1">
+                <h1 className="text-3xl md:text-4xl print:text-3xl font-extrabold font-outfit text-slate-900 dark:text-white leading-none">
                   Kevin Eka Pratama
                 </h1>
-                <p className="text-sm font-bold text-brand-600 dark:text-brand-400 font-outfit uppercase tracking-widest">
+                <p className="text-xs md:text-sm font-bold text-brand-600 dark:text-brand-400 font-outfit uppercase tracking-widest pt-1">
                   Fullstack Developer & Digital Craftsman
                 </p>
-                <div className="pt-3 flex flex-wrap justify-center md:justify-start gap-y-2 gap-x-5 text-sm text-slate-500 dark:text-slate-400 font-medium">
-                  <div className="flex items-center gap-2">
-                    <Mail size={14} className="text-slate-400" />
+                <div className="pt-2 flex flex-col sm:flex-row items-end sm:items-center justify-end gap-y-1 gap-x-4 text-xs text-slate-500 dark:text-slate-400 font-medium">
+                  <div className="flex items-center gap-1.5">
                     <span>kevinekapratama@gmail.com</span>
+                    <Mail size={12} className="text-slate-400" />
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Phone size={14} className="text-slate-400" />
+                  <div className="flex items-center gap-1.5">
                     <span>+62 (813) 000-0000</span>
+                    <Phone size={12} className="text-slate-400" />
                   </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin size={14} className="text-slate-400" />
+                  <div className="flex items-center gap-1.5">
                     <span>Jakarta, Indonesia</span>
+                    <MapPin size={12} className="text-slate-400" />
                   </div>
                 </div>
               </div>
@@ -156,7 +161,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 <Award size={18} className="text-brand-500" /> Executive Summary
               </h2>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
-                Versatile Fullstack Developer with 3+ years of experience engineering high-performance web applications using React, Next.js, and Laravel. Proven track record in building secure database schemas, scaling API endpoints, and implementing pixel-perfect interfaces with advanced client state caching. Experienced in maintaining system operations and troubleshooting complex systems in enterprise environments.
+                Versatile Fullstack Engineer with 3+ years of experience building high-fidelity consumer applications and robust enterprise systems. Expertise spans across modern frontend frameworks (Next.js, Vue, Angular) and scalable backend architectures (PostgreSQL, Firebase, FastAPI). Proven track record in real-time engineering, complex state management, and delivering premium UI/UX aesthetics while maintaining enterprise system operations.
               </p>
             </div>
 
@@ -205,9 +210,9 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     </span>
                   </div>
                   <ul className="list-disc pl-4 text-slate-600 dark:text-slate-400 text-xs leading-relaxed space-y-1.5">
-                    <li>Designed and deployed 10+ custom web apps using Next.js, React, Tailwind CSS, and Laravel.</li>
-                    <li>Built real-time messaging ecosystems incorporating Firebase syncing and secure route authorization keys.</li>
-                    <li>Engineered custom relational database models in PostgreSQL and MySQL, tuning index layouts to slash page speeds.</li>
+                    <li>Designed and deployed 20+ custom web apps and enterprise dashboards using Next.js, Vue 3, Angular, and React.</li>
+                    <li>Engineered real-time WebSocket pipelines in FastAPI and Firebase, capable of broadcasting data in &lt;30ms.</li>
+                    <li>Implemented complex browser state architectures using Redux, Zustand, and RxJS for infinite canvas and e-commerce platforms.</li>
                   </ul>
                 </div>
               </div>
@@ -223,7 +228,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 <div>
                   <h4 className="font-bold text-slate-800 dark:text-white mb-2 uppercase tracking-wide">Frontend</h4>
                   <div className="flex flex-wrap gap-1.5">
-                    {['Next.js', 'React.js', 'TypeScript', 'Tailwind', 'Vue'].map((s) => (
+                    {['Next.js', 'React.js', 'Vue 3', 'Angular', 'TypeScript', 'Tailwind'].map((s) => (
                       <span key={s} className="px-2 py-1 bg-slate-50 dark:bg-slate-800/60 rounded-md border border-slate-100 dark:border-slate-700/50 text-slate-600 dark:text-slate-300 font-semibold pill">{s}</span>
                     ))}
                   </div>
@@ -231,7 +236,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 <div>
                   <h4 className="font-bold text-slate-800 dark:text-white mb-2 uppercase tracking-wide">Backend</h4>
                   <div className="flex flex-wrap gap-1.5">
-                    {['Laravel', 'Node.js', 'PHP', 'PostgreSQL', 'MySQL'].map((s) => (
+                    {['Node.js', 'FastAPI', 'Python', 'PostgreSQL', 'MySQL'].map((s) => (
                       <span key={s} className="px-2 py-1 bg-slate-50 dark:bg-slate-800/60 rounded-md border border-slate-100 dark:border-slate-700/50 text-slate-600 dark:text-slate-300 font-semibold pill">{s}</span>
                     ))}
                   </div>

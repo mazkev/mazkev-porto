@@ -2,8 +2,9 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, Sun, Moon, FileText, ArrowRight, CornerDownLeft, Layers, Mail, User, ShieldAlert, Video } from 'lucide-react';
+import { Search, Sun, Moon, FileText, ArrowRight, CornerDownLeft, Layers, Mail, User, ShieldAlert } from 'lucide-react';
 import { useTheme } from 'next-themes';
+import { projects } from '../lib/data/projects';
 
 interface CommandItem {
   id: string;
@@ -88,7 +89,7 @@ export default function CommandPalette() {
     }, 150);
   };
 
-  const commands: CommandItem[] = [
+  const staticCommands: CommandItem[] = [
     {
       id: 'theme',
       name: 'Toggle Dark/Light Theme',
@@ -124,14 +125,6 @@ export default function CommandPalette() {
       action: () => handleScrollTo('projects'),
     },
     {
-      id: 'nav-videos',
-      name: 'Go to Demo Videos / Dashboard',
-      category: 'Navigation',
-      description: 'Scroll to product walkthroughs and video showcase.',
-      icon: Video,
-      action: () => handleScrollTo('videos'),
-    },
-    {
       id: 'nav-contact',
       name: 'Go to Contact Form',
       category: 'Navigation',
@@ -139,79 +132,18 @@ export default function CommandPalette() {
       icon: Mail,
       action: () => handleScrollTo('contact'),
     },
-    {
-      id: 'project-semarketplace',
-      name: 'Semarketplace Pro Case Study',
-      category: 'Projects',
-      description: 'Open technical details for e-commerce checkouts.',
-      icon: ArrowRight,
-      action: () => triggerCustomEvent('open-project', 'Semarketplace Pro'),
-    },
-    {
-      id: 'project-indofooty',
-      name: 'Indofooty Hub Case Study',
-      category: 'Projects',
-      description: 'Open details for live WebSockets feeds.',
-      icon: ArrowRight,
-      action: () => triggerCustomEvent('open-project', 'Indofooty Hub'),
-    },
-    {
-      id: 'project-streamx',
-      name: 'StreamX Cinema Case Study',
-      category: 'Projects',
-      description: 'Open structural breakdown for VOD backdrop blur.',
-      icon: ArrowRight,
-      action: () => triggerCustomEvent('open-project', 'StreamX: Cinema Reimagined'),
-    },
-    {
-      id: 'project-twitter',
-      name: 'Twitter Clonex Case Study',
-      category: 'Projects',
-      description: 'Open real-time snapshot sync details.',
-      icon: ArrowRight,
-      action: () => triggerCustomEvent('open-project', 'Twitter Clonex'),
-    },
-    {
-      id: 'project-airbnb',
-      name: 'Airbnb Clonex Case Study',
-      category: 'Projects',
-      description: 'Open travel rental search and Mapbox overlays details.',
-      icon: ArrowRight,
-      action: () => triggerCustomEvent('open-project', 'Airbnb Clonex'),
-    },
-    {
-      id: 'project-maztube',
-      name: 'MazTube Video Share Case Study',
-      category: 'Projects',
-      description: 'Open lazy-loaded video player control layouts.',
-      icon: ArrowRight,
-      action: () => triggerCustomEvent('open-project', 'MazTube: Video Sharing'),
-    },
-    {
-      id: 'project-mazchat',
-      name: 'MazChat Real-time Case Study',
-      category: 'Projects',
-      description: 'Open snapshot connection logic details.',
-      icon: ArrowRight,
-      action: () => triggerCustomEvent('open-project', 'MazChat: Real-time Messaging'),
-    },
-    {
-      id: 'project-instavision',
-      name: 'Instavision Social Case Study',
-      category: 'Projects',
-      description: 'Open image compression and security configurations.',
-      icon: ArrowRight,
-      action: () => triggerCustomEvent('open-project', 'Instavision: Social Media Clone'),
-    },
-    {
-      id: 'project-insightflow',
-      name: 'InsightFlow Publishing Case Study',
-      category: 'Projects',
-      description: 'Open details on static parameter routing layouts.',
-      icon: ArrowRight,
-      action: () => triggerCustomEvent('open-project', 'InsightFlow: Modern Publishing'),
-    },
   ];
+
+  const projectCommands: CommandItem[] = projects.map(p => ({
+    id: `project-${p.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+    name: `${p.title} Case Study`,
+    category: 'Projects',
+    description: p.description.length > 50 ? p.description.substring(0, 50) + '...' : p.description,
+    icon: ArrowRight,
+    action: () => triggerCustomEvent('open-project', p.title),
+  }));
+
+  const commands = [...staticCommands, ...projectCommands];
 
   // Filter commands based on search
   const filteredCommands = commands.filter((cmd) => {

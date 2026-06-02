@@ -16,6 +16,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kevinpratama.dev"),
   title: "Kevin Eka Pratama | Front end Engineer",
   description: "Front end Engineer specializing in React and Next.js, with fullstack experience. I build fast, scalable, and reliable web applications.",
   keywords: ["Front end Engineer", "Next.js", "React", "TypeScript", "Tailwind CSS", "Portfolio", "Web Development"],

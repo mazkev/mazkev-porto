@@ -78,6 +78,7 @@ export default function Navbar() {
           ))}
           <button
             onClick={() => window.dispatchEvent(new CustomEvent('toggle-command-palette'))}
+            aria-label="Open command palette"
             className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 ring-brand-500 transition-all cursor-pointer text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 mr-1"
             title="Command Palette (Ctrl+K)"
           >
@@ -85,6 +86,7 @@ export default function Navbar() {
           </button>
           <button
             onClick={toggleTheme}
+            aria-label="Toggle theme"
             className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 ring-brand-500 transition-all cursor-pointer"
           >
             {resolvedTheme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
@@ -95,6 +97,7 @@ export default function Navbar() {
         <div className="md:hidden flex items-center gap-2">
           <button
             onClick={() => window.dispatchEvent(new CustomEvent('toggle-command-palette'))}
+            aria-label="Open command palette"
             className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 cursor-pointer text-slate-500 dark:text-slate-400"
             title="Command Palette"
           >
@@ -102,12 +105,14 @@ export default function Navbar() {
           </button>
           <button
             onClick={toggleTheme}
+            aria-label="Toggle theme"
             className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 cursor-pointer"
           >
             {resolvedTheme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
           </button>
           <button
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle mobile menu"
             className="p-2 text-slate-600 dark:text-slate-300"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}

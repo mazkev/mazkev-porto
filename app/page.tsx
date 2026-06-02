@@ -1,10 +1,12 @@
+import dynamic from "next/dynamic";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import LogoMarquee from "./components/LogoMarquee";
-import About from "./components/About";
-import Projects from "./components/Projects";
-import ContactForm from "./components/ContactForm";
 import MobileNav from "./components/MobileNav";
+
+const About = dynamic(() => import("./components/About"));
+const Projects = dynamic(() => import("./components/Projects"));
+const ContactForm = dynamic(() => import("./components/ContactForm"));
 
 export default function Home() {
   return (

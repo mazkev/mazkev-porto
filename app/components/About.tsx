@@ -115,10 +115,10 @@ export default function About() {
           
           <div className="space-y-6 text-slate-600 dark:text-slate-400 text-lg leading-relaxed max-w-xl">
             <p>
-              I&apos;m a Front end Engineer with over 3 years of experience building web applications. I enjoy working across the entire stack, from designing resilient APIs in Laravel to building interactive user interfaces in React.
+              I&apos;m a versatile Fullstack Engineer with over 3 years of experience building both high-fidelity consumer applications and robust enterprise systems. My expertise spans across modern frontend frameworks like Next.js, Vue 3, and Angular, paired with scalable backend solutions using PostgreSQL, Firebase, and FastAPI.
             </p>
             <p>
-              Currently, I work in Technical Support at PT PLN Icon+, where I deal with enterprise networks and database systems. Before that, I spent a few years as a freelance developer building custom solutions for various clients.
+              From engineering real-time WebSocket pipelines capable of broadcasting to thousands of users, to managing complex browser state for infinite canvas editors, I thrive on solving hard technical challenges without sacrificing premium UI/UX aesthetics. Currently, I bring this systematic approach to my role in Technical Support at PT PLN Icon+, where I maintain enterprise network architectures and database systems.
             </p>
           </div>
         </div>
