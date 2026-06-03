@@ -1,15 +1,15 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
-import { Moon, Sun, Menu, X, Terminal, Search } from 'lucide-react';
+import { Moon, Sun, Menu, X, Terminal } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { cn } from '@/app/lib/utils';
 
 const navLinks = [
   { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
+  { name: 'Exp', href: '#experience' },
+  { name: 'Work', href: '#projects' },
   { name: 'Contact', href: '#contact' },
 ];
 
@@ -17,23 +17,13 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
   const { setTheme, resolvedTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
+  
   useEffect(() => {
-    const handle = requestAnimationFrame(() => {
-      setMounted(true);
-    });
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      cancelAnimationFrame(handle);
-      window.removeEventListener('scroll', handleScroll);
-    };
+    setMounted(true);
   }, []);
 
   const toggleTheme = (e: React.MouseEvent) => {
     const nextTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
-    
     document.documentElement.style.setProperty('--click-x', `${e.clientX}px`);
     document.documentElement.style.setProperty('--click-y', `${e.clientY}px`);
     
@@ -46,74 +36,78 @@ export default function Navbar() {
     }
   };
 
+  const handleMagneticMove = (e: React.MouseEvent<HTMLElement>) => {
+    const btn = e.currentTarget;
+    const rect = btn.getBoundingClientRect();
+    const mx = (e.clientX - rect.left - rect.width / 2) * 0.4;
+    const my = (e.clientY - rect.top - rect.height / 2) * 0.4;
+    btn.style.transition = 'none';
+    btn.style.transform = `translate3d(${mx}px, ${my}px, 0)`;
+  };
+
+  const handleMagneticLeave = (e: React.MouseEvent<HTMLElement>) => {
+    const btn = e.currentTarget;
+    btn.style.transition = 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+    btn.style.transform = `translate3d(0, 0, 0)`;
+  };
+
   if (!mounted) return null;
 
   return (
-    <nav
-      className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4 no-print',
-        scrolled ? 'bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg shadow-md' : 'bg-transparent'
-      )}
-    >
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white group-hover:rotate-12 transition-transform duration-300">
-            <Terminal size={24} />
-          </div>
-          <span className="text-xl font-bold font-outfit tracking-tight">
-            Mazkev<span className="text-brand-600">.</span>
-          </span>
+    <header className="fixed top-0 w-full z-50 glass h-20 no-print print:hidden">
+      <div className="container-max flex justify-between items-center h-full px-6">
+        <Link href="#hero" className="text-xl font-black text-primary tracking-tighter flex items-center gap-2">
+          <Terminal size={24} /> MAZKEV
         </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-10">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm font-medium hover:text-brand-600 transition-colors"
+              className="nav-link text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-all"
             >
               {link.name}
             </Link>
           ))}
-          <button
-            onClick={() => window.dispatchEvent(new CustomEvent('toggle-command-palette'))}
-            aria-label="Open command palette"
-            className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 ring-brand-500 transition-all cursor-pointer text-slate-500 dark:text-slate-400 hover:text-brand-600 dark:hover:text-brand-400 mr-1"
-            title="Command Palette (Ctrl+K)"
-          >
-            <Search size={20} />
-          </button>
+        </nav>
+
+        <div className="hidden md:flex items-center gap-4">
           <button
             onClick={toggleTheme}
+            onMouseMove={handleMagneticMove}
+            onMouseLeave={handleMagneticLeave}
+            className="m-btn p-2 rounded-full hover:bg-slate-100 dark:hover:bg-white/10 transition-all cursor-pointer"
             aria-label="Toggle theme"
-            className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:ring-2 ring-brand-500 transition-all cursor-pointer"
           >
-            {resolvedTheme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            {resolvedTheme === 'dark' ? (
+              <Sun size={20} className="text-gray-300" />
+            ) : (
+              <Moon size={20} className="text-gray-500" />
+            )}
+          </button>
+          
+          <button
+            onMouseMove={handleMagneticMove}
+            onMouseLeave={handleMagneticLeave}
+            onClick={() => window.dispatchEvent(new CustomEvent('open-resume'))}
+            className="m-btn border-2 border-primary/20 hover:border-primary text-primary px-7 py-2.5 rounded-full text-xs font-black uppercase transition-all cursor-pointer"
+          >
+            Resume
           </button>
         </div>
 
         {/* Mobile Nav Toggle */}
-        <div className="md:hidden flex items-center gap-2">
-          <button
-            onClick={() => window.dispatchEvent(new CustomEvent('toggle-command-palette'))}
-            aria-label="Open command palette"
-            className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 cursor-pointer text-slate-500 dark:text-slate-400"
-            title="Command Palette"
-          >
-            <Search size={20} />
-          </button>
+        <div className="md:hidden flex items-center gap-4">
           <button
             onClick={toggleTheme}
-            aria-label="Toggle theme"
-            className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 cursor-pointer"
+            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-white/10 transition-all cursor-pointer"
           >
-            {resolvedTheme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            {resolvedTheme === 'dark' ? <Sun size={20} className="text-gray-300"/> : <Moon size={20} className="text-gray-500"/>}
           </button>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            aria-label="Toggle mobile menu"
-            className="p-2 text-slate-600 dark:text-slate-300"
+            className="text-slate-600 dark:text-slate-300"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -127,7 +121,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute top-full left-0 right-0 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-6 md:hidden"
+            className="absolute top-full left-0 right-0 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 p-6 md:hidden glass"
           >
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
@@ -135,15 +129,24 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-lg font-medium py-2 border-b border-slate-100 dark:border-slate-800"
+                  className="text-sm font-bold uppercase tracking-widest py-2 border-b border-slate-100 dark:border-slate-800 text-slate-500 hover:text-primary transition-all"
                 >
                   {link.name}
                 </Link>
               ))}
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  window.dispatchEvent(new CustomEvent('open-resume'));
+                }}
+                className="text-sm font-bold uppercase tracking-widest py-2 text-primary text-left"
+              >
+                Resume
+              </button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </header>
   );
 }

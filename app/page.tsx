@@ -10,34 +10,32 @@ const ContactForm = dynamic(() => import("./components/ContactForm"));
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <>
       <Navbar />
       <MobileNav />
-      <Hero />
-      <LogoMarquee />
-      <About />
-      <Projects />
-      <ContactForm />
-      
-      <footer className="py-12 border-t border-slate-100 dark:border-slate-900 bg-slate-50 dark:bg-slate-950/50 no-print">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white text-xs font-bold">
-              P.
-            </div>
-            <span className="font-bold font-outfit">Portfolio<span className="text-brand-600">.</span></span>
+      <main>
+        <Hero />
+        <LogoMarquee />
+        <About />
+        <Projects />
+        <ContactForm />
+      </main>
+
+      <footer className="print:hidden py-16 border-t border-slate-200 dark:border-slate-800 container-max px-6 flex flex-col md:flex-row justify-between items-center text-[10px] font-mono text-slate-500 dark:text-slate-400 font-bold uppercase tracking-[0.2em] gap-6">
+        <div className="flex items-center gap-2">
+          <div className="w-6 h-6 bg-primary rounded-lg flex items-center justify-center text-black text-xs font-bold">
+            P.
           </div>
-          
-          <div className="text-slate-500 text-sm">
-            © {new Date().getFullYear()} All rights reserved. Built with Next.js & Tailwind.
-          </div>
-          
-          <div className="flex gap-6">
-            <a href="#" className="text-sm text-slate-500 hover:text-brand-600 transition-colors">Privacy</a>
-            <a href="#" className="text-sm text-slate-500 hover:text-brand-600 transition-colors">Terms</a>
-          </div>
+          <span className="font-bold font-geist">Mazkev<span className="text-primary">.</span></span>
+        </div>
+        
+        <span>© {new Date().getFullYear()} All rights reserved. build by mazkev.</span>
+        
+        <div className="flex gap-6">
+          <a href="#" className="hover:text-primary transition-all cursor-pointer">Privacy</a>
+          <a href="#" className="hover:text-primary transition-all cursor-pointer">Terms</a>
         </div>
       </footer>
-    </main>
+    </>
   );
 }

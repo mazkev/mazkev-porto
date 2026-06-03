@@ -113,7 +113,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 relative overflow-hidden bg-white dark:bg-slate-950 no-print">
+    <section id="contact" className="py-24 px-6 relative overflow-hidden bg-white dark:bg-slate-950 no-print print:hidden">
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
         <div>
           <h2 className="text-sm font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest mb-2 flex items-center gap-2">

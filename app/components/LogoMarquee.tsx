@@ -24,7 +24,7 @@ export default function LogoMarquee() {
   const duplicatedLogos = [...techLogos, ...techLogos];
 
   return (
-    <section className="py-12 bg-white dark:bg-slate-950 overflow-hidden relative border-y border-slate-100 dark:border-slate-900 no-print">
+    <section className="py-12 bg-white dark:bg-slate-950 overflow-hidden relative border-y border-slate-100 dark:border-slate-900 no-print print:hidden">
       {/* Masking for fading edges */}
       <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white dark:from-slate-950 to-transparent z-10" />
       <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white dark:from-slate-950 to-transparent z-10" />

@@ -5,107 +5,83 @@ import { cn } from '@/app/lib/utils';
 
 export default function CustomCursor() {
   const [mounted, setMounted] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
-  const [magneticElement, setMagneticElement] = useState<HTMLElement | null>(null);
 
   const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
+  const ringInnerRef = useRef<HTMLDivElement>(null);
+  const spotlightRef = useRef<HTMLDivElement>(null);
+  const pBarRef = useRef<HTMLDivElement>(null);
 
-  const mouseX = useRef(0);
-  const mouseY = useRef(0);
-  const ringX = useRef(0);
-  const ringY = useRef(0);
+  const state = useRef({ x: 0, y: 0, fx: 0, fy: 0 });
 
   useEffect(() => {
-    // Only activate custom cursor on devices that support hover (fine pointer)
+    // Only activate custom effects on devices that support hover (fine pointer)
     const mediaQuery = window.matchMedia('(pointer: fine)');
     if (mediaQuery.matches) {
-      const handle = requestAnimationFrame(() => {
-        setMounted(true);
-      });
-      return () => cancelAnimationFrame(handle);
+      setMounted(true);
     }
   }, []);
 
   useEffect(() => {
     if (!mounted) return;
 
-    // Enable cursor hiding in CSS
-    document.documentElement.classList.add('custom-cursor-active');
-
     const handleMouseMove = (e: MouseEvent) => {
-      setIsVisible(true);
+      state.current.x = e.clientX;
+      state.current.y = e.clientY;
+    };
 
-      mouseX.current = e.clientX;
-      mouseY.current = e.clientY;
-
-      // Check if hovering over interactive elements
+    const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const interactive = target.closest('a, button, [role="button"], input[type="submit"], input[type="button"]');
+      const interactive = target.closest('a, button, [role="button"], input, .nav-link, #term-input');
       
       if (interactive) {
-        setIsHovered(true);
-        // If it has a specific magnetic attribute, lock cursor onto it
-        if (interactive.classList.contains('cursor-pointer') || interactive.tagName === 'BUTTON' || interactive.tagName === 'A') {
-          setMagneticElement(interactive as HTMLElement);
-        } else {
-          setMagneticElement(null);
+        if (ringInnerRef.current && dotRef.current) {
+          ringInnerRef.current.style.transform = 'scale(1.66)';
+          ringInnerRef.current.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+          dotRef.current.style.opacity = '0';
         }
-      } else {
-        setIsHovered(false);
-        setMagneticElement(null);
       }
     };
 
-    const handleMouseDown = () => setIsClicked(true);
-    const handleMouseUp = () => setIsClicked(false);
-    const handleMouseLeave = () => setIsVisible(false);
-    const handleMouseEnter = () => setIsVisible(true);
+    const handleMouseOut = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const interactive = target.closest('a, button, [role="button"], input, .nav-link, #term-input');
+      
+      if (interactive) {
+        if (ringInnerRef.current && dotRef.current) {
+          ringInnerRef.current.style.transform = 'scale(1)';
+          ringInnerRef.current.style.backgroundColor = 'transparent';
+          dotRef.current.style.opacity = '1';
+        }
+      }
+    };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
-    document.addEventListener('mouseleave', handleMouseLeave);
-    document.addEventListener('mouseenter', handleMouseEnter);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    document.addEventListener('mouseover', handleMouseOver);
+    document.addEventListener('mouseout', handleMouseOut);
 
-    // Physics loop to animate the ring trailing behind the dot
     let animationFrameId: number;
     const animate = () => {
-      // Direct DOM mutation for high performance (60+ FPS)
+      state.current.fx += (state.current.x - state.current.fx) * 0.15;
+      state.current.fy += (state.current.y - state.current.fy) * 0.15;
+
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${mouseX.current}px, ${mouseY.current}px, 0)`;
+        dotRef.current.style.transform = `translate3d(${state.current.x - 4}px, ${state.current.y - 4}px, 0)`;
       }
 
       if (ringRef.current) {
-        if (magneticElement) {
-          const rect = magneticElement.getBoundingClientRect();
-          const targetX = rect.left + rect.width / 2;
-          const targetY = rect.top + rect.height / 2;
+        ringRef.current.style.transform = `translate3d(${state.current.fx - 18}px, ${state.current.fy - 18}px, 0)`;
+      }
 
-          // Faster snapping onto magnetic targets
-          ringX.current += (targetX - ringX.current) * 0.25;
-          ringY.current += (targetY - ringY.current) * 0.25;
-          
-          // Size ring to fit the button
-          const pad = 12;
-          ringRef.current.style.width = `${rect.width + pad}px`;
-          ringRef.current.style.height = `${rect.height + pad}px`;
-          ringRef.current.style.borderRadius = window.getComputedStyle(magneticElement).borderRadius;
-        } else {
-          // Standard fluid trailing effect (lerp lag)
-          ringX.current += (mouseX.current - ringX.current) * 0.15;
-          ringY.current += (mouseY.current - ringY.current) * 0.15;
+      if (spotlightRef.current) {
+        spotlightRef.current.style.setProperty('--x', `${state.current.x}px`);
+        spotlightRef.current.style.setProperty('--y', `${state.current.y}px`);
+      }
 
-          // Return to default round shape and size
-          ringRef.current.style.width = isHovered ? '48px' : '24px';
-          ringRef.current.style.height = isHovered ? '48px' : '24px';
-          ringRef.current.style.borderRadius = '50%';
-        }
-
-        // Apply translation
-        ringRef.current.style.transform = `translate3d(${ringX.current}px, ${ringY.current}px, 0)`;
+      if (pBarRef.current) {
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
+        pBarRef.current.style.width = scrollPercent + '%';
       }
 
       animationFrameId = requestAnimationFrame(animate);
@@ -114,49 +90,37 @@ export default function CustomCursor() {
     animate();
 
     return () => {
-      document.documentElement.classList.remove('custom-cursor-active');
       window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mouseup', handleMouseUp);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      document.removeEventListener('mouseenter', handleMouseEnter);
+      document.removeEventListener('mouseover', handleMouseOver);
+      document.removeEventListener('mouseout', handleMouseOut);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [mounted, isHovered, magneticElement]);
+  }, [mounted]);
 
   if (!mounted) return null;
 
   return (
     <>
-      {/* Global CSS override for cursor none, scoped to fine pointer desktop systems */}
-      <style jsx global>{`
-        @media (pointer: fine) {
-          .custom-cursor-active,
-          .custom-cursor-active * {
-            cursor: none !important;
-          }
-        }
-      `}</style>
-
-      {/* Center Dot */}
+      <div className="progress-bar" id="p-bar" ref={pBarRef} style={{ position: 'fixed', top: 0, left: 0, height: '3px', background: 'var(--primary)', zIndex: 10001, transition: 'width 0.1s' }}></div>
+      <div className="noise"></div>
+      
       <div
+        id="cursor"
         ref={dotRef}
-        className={cn(
-          "fixed top-0 left-0 w-2 h-2 -translate-x-1/2 -translate-y-1/2 bg-brand-600 dark:bg-brand-400 rounded-full pointer-events-none z-9999 transition-opacity duration-300",
-          isVisible ? "opacity-100" : "opacity-0"
-        )}
+        style={{ position: 'fixed', left: 0, top: 0, pointerEvents: 'none', zIndex: 10000, borderRadius: '50%', width: '8px', height: '8px', background: 'white', boxShadow: '0 0 4px rgba(0,0,0,0.5)' }}
       />
-
-      {/* Lagging Outer Ring */}
       <div
+        id="cursor-f"
         ref={ringRef}
-        className={cn(
-          "fixed top-0 left-0 w-6 h-6 -translate-x-1/2 -translate-y-1/2 border border-brand-500/50 dark:border-brand-400/50 rounded-full pointer-events-none z-9998 transition-all duration-150 ease-out",
-          isVisible ? "opacity-100" : "opacity-0",
-          isClicked && "scale-75 border-brand-700 bg-brand-500/10",
-          magneticElement && "border-brand-600 bg-brand-600/5 duration-75"
-        )}
-      />
+        style={{ position: 'fixed', left: 0, top: 0, pointerEvents: 'none', zIndex: 10000 }}
+      >
+        <div 
+          ref={ringInnerRef}
+          style={{ width: '36px', height: '36px', borderRadius: '50%', border: '1.5px solid var(--primary)', transition: 'transform 0.3s, background-color 0.3s', boxShadow: '0 0 10px rgba(5, 150, 105, 0.3)' }}
+        />
+      </div>
+      
+      <div className="spotlight" id="spotlight" ref={spotlightRef}></div>
     </>
   );
 }

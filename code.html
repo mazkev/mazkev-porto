@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>DevShell | Interactive Performance Architect</title>
+    
+    <!-- Tailwind CSS with custom theme config to resolve missing utility mappings -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: 'var(--primary)',
+                        secondary: 'var(--secondary)',
+                    }
+                }
+            }
+        }
+        
+        // Immediate theme initialization to prevent UI flashing
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700&display=swap" rel="stylesheet"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+        
+        :root {
+            --geist: 'Plus Jakarta Sans', system-ui, sans-serif;
+            --mono: 'JetBrains Mono', monospace;
+            --primary: #059669;
+            --secondary: #2563eb;
+            --bg: #f8fafc;
+            --text: #0f172a;
+            --surface: rgba(255, 255, 255, 0.8);
+            --border: rgba(15, 23, 42, 0.08);
+            --term-bg: #0f172a;
+        }
+
+        /* Standardized to .dark to align with Tailwind class-based dark mode */
+        .dark {
+            --bg: #020617;
+            --text: #f8fafc;
+            --surface: rgba(15, 23, 42, 0.6);
+            --border: rgba(255, 255, 255, 0.08);
+            --term-bg: #000;
+        }
+
+        * { cursor: none !important; margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--geist);
+            background-color: var(--bg);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        .gpu { transform: translate3d(0,0,0); will-change: transform, opacity; }
+        .noise { position: fixed; inset: 0; z-index: 9999; opacity: 0.05; pointer-events: none; background-image: url("https://grainy-gradients.vercel.app/noise.svg"); }
+
+        /* Anchor custom cursor elements to viewport (left: 0, top: 0) to prevent layout offset */
+        #cursor, #cursor-f { position: fixed; left: 0; top: 0; pointer-events: none; z-index: 10000; border-radius: 50%; }
+        #cursor { width: 8px; height: 8px; background: var(--primary); }
+        #cursor-f { width: 36px; height: 36px; border: 1.5px solid var(--primary); transition: width 0.3s, height 0.3s, border 0.3s; }
+
+        .glass { background: var(--surface); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border); box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05); }
+        .spotlight { position: fixed; inset: 0; pointer-events: none; z-index: -1; background: radial-gradient(circle at var(--x) var(--y), rgba(5, 150, 105, 0.05) 0%, transparent 40%); }
+
+        section { min-height: 100vh; padding: 10rem 2rem; display: flex; align-items: center; justify-content: center; }
+        .container-max { width: 100%; max-width: 1300px; margin: 0 auto; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .tilt-inner { transition: transform 0.1s linear; transform-style: preserve-3d; }
+        .nav-link.active { color: var(--primary); font-weight: 700; }
+
+        /* Terminal Styles */
+        #terminal {
+            background: var(--term-bg);
+            color: #10b981;
+            font-family: var(--mono);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            height: 350px;
+            overflow-y: auto;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        #terminal::-webkit-scrollbar { width: 4px; }
+        #terminal::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        
+        .term-input-line { display: flex; gap: 10px; align-items: center; }
+        #term-prompt { color: #3b82f6; font-weight: bold; }
+        #term-input { background: transparent; border: none; outline: none; color: #fff; width: 100%; font-family: var(--mono); cursor: text !important; }
+        .term-output { margin-bottom: 8px; font-size: 13px; line-height: 1.6; }
+        .term-cmd { color: #facc15; }
+
+        .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--primary); z-index: 10001; transition: width 0.1s; }
+    </style>
+</head>
+<body class="gpu">
+    <div class="progress-bar" id="p-bar"></div>
+    <div class="noise"></div>
+    <div id="cursor"></div>
+    <div id="cursor-f"></div>
+    <div class="spotlight" id="spotlight"></div>
+
+    <header class="fixed top-0 w-full z-50 glass h-20">
+        <div class="container-max flex justify-between items-center h-full px-6">
+            <a class="text-xl font-black text-primary tracking-tighter flex items-center gap-2" href="#hero">
+                <span class="material-symbols-outlined">terminal</span> DEVSHELL
+            </a>
+            <nav class="hidden md:flex items-center gap-10">
+                <a class="nav-link text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-primary transition-all" href="#about">About</a>
+                <a class="nav-link text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-primary transition-all" href="#experience">Exp</a>
+                <a class="nav-link text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-primary transition-all" href="#projects">Work</a>
+                <a class="nav-link text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-primary transition-all" href="#contact">Contact</a>
+            </nav>
+            <div class="flex items-center gap-4">
+                <button onclick="toggleTheme()" class="m-btn p-2 rounded-full hover:bg-slate-100 dark:hover:bg-white/10 transition-all">
+                    <span class="material-symbols-outlined text-sm text-gray-500 dark:text-gray-300">contrast</span>
+                </button>
+                <button class="m-btn border-2 border-primary/20 hover:border-primary text-primary px-7 py-2.5 rounded-full text-xs font-black uppercase transition-all">Resume</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container-max grid lg:grid-cols-2 gap-16 items-center px-6">
+                <div class="reveal">
+                    <span class="text-primary font-mono text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">Command-Line Portfolio</span>
+                    <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] mb-8">
+                        The Shell<br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-600">Expert.</span>
+                    </h1>
+                    <p class="text-lg text-slate-500 dark:text-slate-400 max-w-md mb-10 leading-relaxed font-medium">An interactive, high-performance terminal experience for the modern web engineer.</p>
+                    <div class="flex gap-4">
+                        <a href="#projects" class="m-btn bg-slate-900 dark:bg-slate-800 text-white px-9 py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] shadow-2xl">Explore Work</a>
+                        <a href="#contact" class="m-btn border-2 border-slate-200 dark:border-slate-800 px-9 py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-slate-50 dark:hover:bg-slate-900 transition-all text-slate-700 dark:text-slate-300">Inquire</a>
+                    </div>
+                </div>
+                <div class="tilt-card reveal">
+                    <div class="tilt-inner" id="terminal-container">
+                        <div id="terminal">
+                            <div id="term-output-area">
+                                <div class="term-output">Welcome to <span class="term-cmd">DevShell v2.4.0</span>.</div>
+                                <div class="term-output">Type <span class="term-cmd">'help'</span> to see available commands.</div>
+                            </div>
+                            <div class="term-input-line">
+                                <span id="term-prompt">guest@devshell:~$</span>
+                                <input type="text" id="term-input" autocomplete="off" spellcheck="false"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container-max px-6 reveal">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="relative">
+                        <div class="aspect-square rounded-[40px] overflow-hidden glass shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800" alt="Dev" class="w-full h-full object-cover"/>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <h2 class="text-5xl font-black tracking-tighter uppercase">Beyond Code<span class="text-primary">.</span></h2>
+                        <p class="text-slate-500 dark:text-slate-400 text-lg leading-relaxed">I am a systems architect who believes that every line of code should contribute to a seamless, high-performance user story. My approach merges technical rigor with aesthetic precision.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="bg-slate-50/50 dark:bg-slate-950/20">
+            <div class="container-max px-6">
+                <div class="mb-20 reveal">
+                    <h2 class="text-5xl font-black uppercase tracking-tighter">Experience<span class="text-primary">.</span></h2>
+                </div>
+                <div class="grid gap-px bg-slate-100 dark:bg-slate-800 rounded-[40px] overflow-hidden shadow-sm">
+                    <div class="glass p-12 group reveal">
+                        <div class="grid md:grid-cols-12 gap-8 items-center">
+                            <div class="md:col-span-3 font-mono text-[10px] text-slate-400 font-bold uppercase tracking-widest">2022 — PRESENT</div>
+                            <div class="md:col-span-6">
+                                <h3 class="text-3xl font-black mb-3 group-hover:text-primary transition-all">Lead Systems Architect</h3>
+                                <p class="text-slate-500 dark:text-slate-400 font-medium">Engineering core infrastructures at <span class="text-primary font-bold italic">DEVSHELL</span>.</p>
+                            </div>
+                            <div class="md:col-span-3 text-right">
+                                <span class="material-symbols-outlined text-primary text-4xl">cloud_done</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container-max px-6">
+                <div class="mb-20 reveal">
+                    <h2 class="text-5xl font-black uppercase tracking-tighter">Work<span class="text-primary">.</span></h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="tilt-card reveal">
+                        <div class="tilt-inner group">
+                            <div class="relative aspect-[16/10] rounded-[40px] overflow-hidden glass mb-8 shadow-2xl">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" alt="Nexus" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000"/>
+                            </div>
+                            <h3 class="text-3xl font-black mb-2">Nexus Core</h3>
+                            <p class="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-widest">Enterprise • 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="text-center bg-slate-900 dark:bg-black py-32 text-white">
+            <div class="reveal">
+                <h2 class="text-7xl md:text-9xl font-black tracking-tighter mb-10 leading-none">CONNECT<span class="text-emerald-400">.</span></h2>
+                <a href="mailto:hello@devshell.com" class="m-btn text-3xl md:text-5xl font-black text-emerald-400 underline underline-offset-[12px] hover:text-white transition-all">hello@devshell.com</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-16 border-t border-slate-100 dark:border-slate-800 container-max px-6 flex justify-between items-center text-[10px] font-mono text-slate-400 font-bold uppercase tracking-[0.2em]">
+        <span>© 2024 DEVSHELL INTERACTIVE</span>
+        <div class="flex gap-12">
+            <a href="#" class="hover:text-primary transition-all">Twitter</a>
+            <a href="#" class="hover:text-primary transition-all">GitHub</a>
+        </div>
+    </footer>
+
+    <script>
+        const DOM = {
+            cursor: document.getElementById('cursor'),
+            cursorF: document.getElementById('cursor-f'),
+            spotlight: document.getElementById('spotlight'),
+            reveals: document.querySelectorAll('.reveal'),
+            tiltCards: document.querySelectorAll('.tilt-card'),
+            mBtns: document.querySelectorAll('.m-btn'),
+            links: document.querySelectorAll('.nav-link'),
+            sections: document.querySelectorAll('section'),
+            pBar: document.getElementById('p-bar'),
+            termInput: document.getElementById('term-input'),
+            termOutput: document.getElementById('term-output-area'),
+            terminal: document.getElementById('terminal')
+        };
+
+        const state = { x: 0, y: 0, fx: 0, fy: 0 };
+
+        window.addEventListener('mousemove', (e) => {
+            state.x = e.clientX;
+            state.y = e.clientY;
+        }, { passive: true });
+
+        function update() {
+            state.fx += (state.x - state.fx) * 0.15;
+            state.fy += (state.y - state.fy) * 0.15;
+
+            DOM.cursor.style.transform = `translate3d(${state.x - 4}px, ${state.y - 4}px, 0)`;
+            DOM.cursorF.style.transform = `translate3d(${state.fx - 18}px, ${state.fy - 18}px, 0)`;
+            DOM.spotlight.style.setProperty('--x', `${state.x}px`);
+            DOM.spotlight.style.setProperty('--y', `${state.y}px`);
+
+            // Safe scroll progress calculation avoiding division by zero
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
+            DOM.pBar.style.width = scrollPercent + '%';
+
+            requestAnimationFrame(update);
+        }
+        update();
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        DOM.reveals.forEach(el => revealObserver.observe(el));
+
+        DOM.tiltCards.forEach(card => {
+            const inner = card.querySelector('.tilt-inner');
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const rx = ((e.clientY - rect.top) / rect.height - 0.5) * 20;
+                const ry = ((e.clientX - rect.left) / rect.width - 0.5) * -20;
+                inner.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.05, 1.05, 1.05)`;
+            }, { passive: true });
+            card.addEventListener('mouseleave', () => {
+                inner.style.transform = `rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            });
+        });
+
+        // Interactive Terminal Commands (Added 'about' command and updated help command output)
+        const commands = {
+            help: () => "Available: <span class='term-cmd'>about</span>, <span class='term-cmd'>projects</span>, <span class='term-cmd'>experience</span>, <span class='term-cmd'>contact</span>, <span class='term-cmd'>theme</span>, <span class='term-cmd'>clear</span>, <span class='term-cmd'>whoami</span>",
+            whoami: () => "You are a visitor in the world of DevShell - an Elite Performance Architect.",
+            clear: () => { DOM.termOutput.innerHTML = ""; return ""; },
+            theme: () => { toggleTheme(); return "Switching visual engine mode..."; },
+            about: () => { document.querySelector('#about').scrollIntoView({ behavior: 'smooth' }); return "Navigating to About section..."; },
+            projects: () => { document.querySelector('#projects').scrollIntoView({ behavior: 'smooth' }); return "Navigating to Work section..."; },
+            experience: () => { document.querySelector('#experience').scrollIntoView({ behavior: 'smooth' }); return "Navigating to Experience section..."; },
+            contact: () => { document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' }); return "Opening contact portal..."; }
+        };
+
+        // Terminal command history implementation
+        const cmdHistory = [];
+        let historyIndex = -1;
+
+        DOM.termInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const cmd = e.target.value.toLowerCase().trim();
+                const output = document.createElement('div');
+                output.className = "term-output";
+                
+                if (cmd === "") {
+                    // Safe empty terminal input check
+                    output.innerHTML = `guest@devshell:~$ `;
+                } else {
+                    output.innerHTML = `guest@devshell:~$ ${cmd}<br/>${commands[cmd] ? commands[cmd]() : "Command not found. Type 'help'."}`;
+                    if (cmdHistory.length === 0 || cmdHistory[cmdHistory.length - 1] !== cmd) {
+                        cmdHistory.push(cmd);
+                    }
+                }
+                DOM.termOutput.appendChild(output);
+                e.target.value = "";
+                historyIndex = -1;
+                DOM.terminal.scrollTop = DOM.terminal.scrollHeight;
+            } else if (e.key === 'ArrowUp') {
+                if (cmdHistory.length > 0) {
+                    e.preventDefault();
+                    if (historyIndex === -1) {
+                        historyIndex = cmdHistory.length - 1;
+                    } else if (historyIndex > 0) {
+                        historyIndex--;
+                    }
+                    e.target.value = cmdHistory[historyIndex];
+                }
+            } else if (e.key === 'ArrowDown') {
+                if (cmdHistory.length > 0) {
+                    e.preventDefault();
+                    if (historyIndex !== -1) {
+                        if (historyIndex < cmdHistory.length - 1) {
+                            historyIndex++;
+                            e.target.value = cmdHistory[historyIndex];
+                        } else {
+                            historyIndex = -1;
+                            e.target.value = "";
+                        }
+                    }
+                }
+            }
+        });
+
+        // Theme Toggle with state persistence and Tailwind class-based support
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        // Magnetic button movement setup - disables transitions during hover-drag for high-performance visual tracking
+        DOM.mBtns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const mx = (e.clientX - rect.left - rect.width / 2) * 0.4;
+                const my = (e.clientY - rect.top - rect.height / 2) * 0.4;
+                btn.style.transition = 'none';
+                btn.style.transform = `translate3d(${mx}px, ${my}px, 0)`;
+            }, { passive: true });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transition = 'transform 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
+                btn.style.transform = `translate3d(0, 0, 0)`;
+            });
+        });
+
+        // Fix scroll link highlighting bug (switched pageYOffset to window.scrollY and exact matches to prevent multi-highlighting at scroll = 0)
+        window.addEventListener('scroll', () => {
+            let curr = '';
+            DOM.sections.forEach(s => {
+                if (window.scrollY >= s.offsetTop - 300) curr = s.id;
+            });
+            DOM.links.forEach(l => {
+                l.classList.toggle('active', curr && l.getAttribute('href') === '#' + curr);
+            });
+        }, { passive: true });
+
+        document.querySelectorAll('a, button, #term-input').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                DOM.cursorF.style.width = '60px'; DOM.cursorF.style.height = '60px';
+                DOM.cursorF.style.backgroundColor = 'rgba(5, 150, 105, 0.05)';
+                DOM.cursor.style.opacity = '0';
+            });
+            el.addEventListener('mouseleave', () => {
+                DOM.cursorF.style.width = '36px'; DOM.cursorF.style.height = '36px';
+                DOM.cursorF.style.backgroundColor = 'transparent';
+                DOM.cursor.style.opacity = '1';
+            });
+        });
+
+        // IN-BROWSER AUTOMATED TEST RUNNER (Triggers if URL contains ?test=true)
+        if (new URLSearchParams(window.location.search).get('test') === 'true') {
+            runBrowserTests();
+        }
+
+        function runBrowserTests() {
+            const dashboard = document.createElement('div');
+            dashboard.style.position = 'fixed';
+            dashboard.style.bottom = '20px';
+            dashboard.style.right = '20px';
+            dashboard.style.width = '320px';
+            dashboard.style.backgroundColor = 'rgba(15, 23, 42, 0.95)';
+            dashboard.style.color = '#fff';
+            dashboard.style.fontFamily = 'monospace';
+            dashboard.style.fontSize = '12px';
+            dashboard.style.padding = '15px';
+            dashboard.style.borderRadius = '12px';
+            dashboard.style.boxShadow = '0 10px 25px rgba(0,0,0,0.5)';
+            dashboard.style.zIndex = '99999';
+            dashboard.style.border = '1px solid rgba(255,255,255,0.15)';
+            dashboard.style.cursor = 'default';
+            
+            dashboard.innerHTML = `
+                <div style="font-weight: bold; border-bottom: 1px solid #334155; padding-bottom: 5px; margin-bottom: 10px; display: flex; justify-content: space-between;">
+                    <span>DevShell Test Suite</span>
+                    <span style="color: #38bdf8;">Running...</span>
+                </div>
+                <div id="test-results" style="max-height: 200px; overflow-y: auto; margin-bottom: 10px;"></div>
+                <div id="test-summary" style="font-weight: bold; border-top: 1px solid #334155; padding-top: 5px;"></div>
+            `;
+            document.body.appendChild(dashboard);
+
+            const resultsDiv = document.getElementById('test-results');
+            const summaryDiv = document.getElementById('test-summary');
+            
+            const results = [];
+            
+            function logResult(name, passed, detail = '') {
+                results.push({ name, passed, detail });
+                const item = document.createElement('div');
+                item.style.marginBottom = '6px';
+                item.style.color = passed ? '#4ade80' : '#f87171';
+                item.innerHTML = `${passed ? '✓' : '✗'} ${name} ${detail ? `<span style="color: #94a3b8; font-size: 10px;">(${detail})</span>` : ''}`;
+                resultsDiv.appendChild(item);
+                resultsDiv.scrollTop = resultsDiv.scrollHeight;
+            }
+
+            setTimeout(async () => {
+                try {
+                    // Test 1: DOM Elements
+                    const elements = ['cursor', 'cursor-f', 'terminal', 'term-input', 'p-bar'];
+                    let domPassed = true;
+                    elements.forEach(id => {
+                        if (!document.getElementById(id)) {
+                            domPassed = false;
+                            logResult(`DOM: #${id} exists`, false);
+                        }
+                    });
+                    if (domPassed) logResult('DOM elements verified', true);
+
+                    // Test 2: Theme Toggling
+                    const initialDark = document.documentElement.classList.contains('dark');
+                    toggleTheme();
+                    const state1 = document.documentElement.classList.contains('dark') !== initialDark;
+                    toggleTheme();
+                    const state2 = document.documentElement.classList.contains('dark') === initialDark;
+                    logResult('Theme toggle state changes', state1 && state2);
+
+                    // Test 3: Terminal Command Execution
+                    const termInput = DOM.termInput;
+                    const runCmd = (cmd) => {
+                        termInput.value = cmd;
+                        const enterEvent = new KeyboardEvent('keydown', { key: 'Enter', bubbles: true });
+                        termInput.dispatchEvent(enterEvent);
+                    };
+
+                    // help command
+                    runCmd('help');
+                    await new Promise(r => setTimeout(r, 100));
+                    const outputHtml = DOM.termOutput.innerHTML;
+                    logResult("Terminal 'help' command works", outputHtml.includes('Available:') && outputHtml.includes('whoami'));
+
+                    // whoami command
+                    runCmd('whoami');
+                    await new Promise(r => setTimeout(r, 100));
+                    logResult("Terminal 'whoami' command works", DOM.termOutput.innerHTML.includes('visitor in the world'));
+
+                    // about command
+                    runCmd('about');
+                    await new Promise(r => setTimeout(r, 100));
+                    logResult("Terminal 'about' command works", DOM.termOutput.innerHTML.includes('Navigating to About'));
+
+                    // invalid command
+                    runCmd('invalid_command_123');
+                    await new Promise(r => setTimeout(r, 100));
+                    logResult("Terminal invalid command handles gracefully", DOM.termOutput.innerHTML.includes('Command not found'));
+
+                    // empty command
+                    const beforeEmptyCount = DOM.termOutput.children.length;
+                    runCmd('');
+                    await new Promise(r => setTimeout(r, 100));
+                    const afterEmptyCount = DOM.termOutput.children.length;
+                    const emptyLineAdded = afterEmptyCount > beforeEmptyCount;
+                    const noErrorText = !DOM.termOutput.lastElementChild.innerHTML.includes('Command not found');
+                    logResult("Terminal empty command handled", emptyLineAdded && noErrorText);
+
+                    // clear command
+                    runCmd('clear');
+                    await new Promise(r => setTimeout(r, 100));
+                    logResult("Terminal 'clear' command works", DOM.termOutput.innerHTML.trim() === '');
+
+                    // Test 4: Nav active scroll state
+                    window.scrollTo(0, 0);
+                    window.dispatchEvent(new Event('scroll'));
+                    await new Promise(r => setTimeout(r, 100));
+                    let activeCount = 0;
+                    DOM.links.forEach(l => { if (l.classList.contains('active')) activeCount++; });
+                    logResult("Nav active state correct at scroll = 0", activeCount === 0);
+
+                    // Summarize
+                    const passedCount = results.filter(r => r.passed).length;
+                    const totalCount = results.length;
+                    summaryDiv.innerHTML = `Result: ${passedCount}/${totalCount} Passed ${passedCount === totalCount ? '🎉' : '❌'}`;
+                    summaryDiv.style.color = passedCount === totalCount ? '#4ade80' : '#f87171';
+                } catch (e) {
+                    console.error("Test execution error:", e);
+                    summaryDiv.innerHTML = `Test Error: ${e.message}`;
+                    summaryDiv.style.color = '#f87171';
+                }
+            }, 500);
+        }
+    </script>
+</body>
+</html>

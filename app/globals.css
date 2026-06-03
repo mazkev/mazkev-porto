@@ -1,32 +1,45 @@
 @import "tailwindcss";
 
 @theme {
-  --font-outfit: var(--font-outfit);
-  --font-inter: var(--font-inter);
+  --font-sans: var(--font-jakarta);
+  --font-geist: var(--font-jakarta);
+  --font-outfit: var(--font-jakarta);
+  --font-mono: var(--font-jetbrains);
   
-  --color-brand-50: #eff6ff;
-  --color-brand-100: #dbeafe;
-  --color-brand-200: #bfdbfe;
-  --color-brand-300: #93c5fd;
-  --color-brand-400: #60a5fa;
-  --color-brand-500: #3b82f6;
-  --color-brand-600: #2563eb;
-  --color-brand-700: #1d4ed8;
-  --color-brand-800: #1e40af;
-  --color-brand-900: #1e3a8a;
-  --color-brand-950: #172554;
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  
+  --color-brand-50: var(--color-emerald-50);
+  --color-brand-100: var(--color-emerald-100);
+  --color-brand-200: var(--color-emerald-200);
+  --color-brand-300: var(--color-emerald-300);
+  --color-brand-400: var(--color-emerald-400);
+  --color-brand-500: var(--color-emerald-500);
+  --color-brand-600: var(--color-emerald-600);
+  --color-brand-700: var(--color-emerald-700);
+  --color-brand-800: var(--color-emerald-800);
+  --color-brand-900: var(--color-emerald-900);
+  --color-brand-950: var(--color-emerald-950);
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #172554;
+  --primary: #059669;
+  --secondary: #2563eb;
+  --bg: #f8fafc;
+  --text: #0f172a;
+  --surface: rgba(255, 255, 255, 0.8);
+  --border: rgba(15, 23, 42, 0.08);
+  --term-bg: #0f172a;
 }
 
 .dark {
-  --background: #0a1029;
-  --foreground: #eff6ff;
+  --bg: #020617;
+  --text: #f8fafc;
+  --surface: rgba(15, 23, 42, 0.6);
+  --border: rgba(255, 255, 255, 0.08);
+  --term-bg: #000;
 }
 
 @layer base {
@@ -34,54 +47,72 @@
     scroll-behavior: smooth;
   }
   * {
-    @apply border-slate-200 dark:border-slate-800;
+    cursor: none !important;
   }
   body {
-    @apply bg-[var(--background)] text-[var(--foreground)];
+    font-family: var(--font-jakarta);
+    background-color: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-white/20 dark:border-slate-800/50;
+    background: var(--surface); 
+    backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px); 
+    border: 1px solid var(--border); 
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
   }
   
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-blue-400 dark:from-brand-400 dark:to-blue-300;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-blue-600 dark:from-emerald-400 dark:to-blue-400;
   }
 
-  .bg-grid {
-    background-size: 40px 40px;
-    background-image: 
-      linear-gradient(to right, rgba(148, 163, 184, 0.1) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(148, 163, 184, 0.1) 1px, transparent 1px);
+  .gpu { transform: translate3d(0,0,0); will-change: transform, opacity; }
+  
+  .noise { 
+    position: fixed; 
+    inset: 0; 
+    z-index: 9999; 
+    opacity: 0.05; 
+    pointer-events: none; 
+    background-image: url("https://grainy-gradients.vercel.app/noise.svg"); 
   }
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-/* Radial View Transition Theme Wipe styles */
-::view-transition-old(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-::view-transition-new(root) {
-  animation: clipPathSweep 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  mix-blend-mode: normal;
-}
-@keyframes clipPathSweep {
-  from {
-    clip-path: circle(0% at var(--click-x, 50%) var(--click-y, 50%));
+  
+  .spotlight { 
+    position: fixed; 
+    inset: 0; 
+    pointer-events: none; 
+    z-index: -1; 
+    background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(5, 150, 105, 0.05) 0%, transparent 40%); 
   }
-  to {
-    clip-path: circle(150% at var(--click-x, 50%) var(--click-y, 50%));
+  
+  .container-max { 
+    width: 100%; 
+    max-width: 1300px; 
+    margin: 0 auto; 
+  }
+
+  .reveal { 
+    opacity: 0; 
+    transform: translateY(30px); 
+    transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); 
+  }
+  .reveal.active { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+
+  .tilt-inner { 
+    transition: transform 0.1s linear; 
+    transform-style: preserve-3d; 
+  }
+
+  .m-btn {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 }
