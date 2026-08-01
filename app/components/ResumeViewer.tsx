@@ -300,7 +300,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 <LayoutGrid size={16} className="text-slate-900 print:w-3 print:h-3" /> {t.projectsTitle}
               </h2>
               <div className="space-y-2 print:space-y-1 text-xs print:text-[10.5px]">
-                {projects.map((project, idx) => (
+                {projects.slice(0, 10).map((project, idx) => (
                   <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-200 pb-1.5 print:pb-1 last:border-none print:break-inside-avoid">
                     <div className="font-bold text-slate-900">
                       • {project.title}
