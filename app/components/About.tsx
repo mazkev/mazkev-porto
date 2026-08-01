@@ -40,7 +40,7 @@ const timelineData = [
     date: '2023 — PRESENT',
     role: 'Technical Support Specialist',
     company: 'PT PLN Icon+',
-    description: 'Provide operational and technical support for enterprise systems. Ensure high availability and performance of critical applications through proactive monitoring and rapid issue resolution.',
+    description: 'Listen to user complaints, build complex SQL database queries, and perform application debugging to trace software bugs.',
     icon: Cloud,
   },
   {
