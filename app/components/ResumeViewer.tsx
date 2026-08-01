@@ -294,25 +294,24 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               </div>
             </div>
 
-            {/* Selected Projects */}
-            <div className="space-y-3 print:space-y-2">
+            {/* Selected / Key Projects - Clean ATS List */}
+            <div className="space-y-2 print:space-y-1">
               <h2 className="text-sm print:text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-1 flex items-center gap-2">
                 <LayoutGrid size={16} className="text-slate-900 print:w-3 print:h-3" /> {t.projectsTitle}
               </h2>
-              <div className="grid sm:grid-cols-2 gap-3 print:gap-2">
-                {projects.slice(0, 4).map((project, idx) => (
-                  <div key={idx} className="p-3 rounded-lg bg-slate-50 border border-slate-300 print:break-inside-avoid">
-                    <h3 className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[11px] mb-1">{project.title}</h3>
-                    <div className="flex flex-wrap gap-1 mb-2 print:mb-1">
-                      {project.tech.slice(0, 3).map((tItem, i) => (
-                        <span key={i} className="text-[9px] print:text-[8px] font-bold uppercase text-slate-900 bg-white border border-slate-300 px-1.5 py-0.5 rounded pill">
+              <div className="space-y-2 print:space-y-1 text-xs print:text-[10.5px]">
+                {projects.map((project, idx) => (
+                  <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-200 pb-1.5 print:pb-1 last:border-none print:break-inside-avoid">
+                    <div className="font-bold text-slate-900">
+                      • {project.title}
+                    </div>
+                    <div className="flex flex-wrap gap-1">
+                      {project.tech.map((tItem, i) => (
+                        <span key={i} className="text-[9px] print:text-[8px] font-mono font-bold uppercase text-slate-900 bg-slate-100 border border-slate-300 px-1.5 py-0.5 rounded pill">
                           {tItem}
                         </span>
                       ))}
                     </div>
-                    <p className="text-xs print:text-[10px] text-slate-700 leading-relaxed print:leading-normal font-medium">
-                      {project.description}
-                    </p>
                   </div>
                 ))}
               </div>
