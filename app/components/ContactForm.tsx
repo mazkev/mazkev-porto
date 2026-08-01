@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Mail, MapPin, Phone, Github, Linkedin, Twitter, MessageSquare } from 'lucide-react';
+import { Send, Mail, MapPin, Phone, Github, Linkedin, Twitter, MessageSquare, Globe } from 'lucide-react';
 import { cn } from '@/app/lib/utils';
 
 const Confetti = () => {
@@ -143,11 +143,14 @@ export default function ContactForm() {
           </div>
 
 <div className="flex gap-4">
-  <a href="https://github.com/mazkev" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-900 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all">
+  <a href="https://github.com/mazkev" target="_blank" rel="noopener noreferrer" title="GitHub Profile" className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-900 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all">
     <Github size={20} />
   </a>
-  <a href="https://www.linkedin.com/in/kevin-eka-pratama-a75024166/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-900 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all">
+  <a href="https://www.linkedin.com/in/kevin-eka-pratama-a75024166/" target="_blank" rel="noopener noreferrer" title="LinkedIn Profile" className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-900 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all">
     <Linkedin size={20} />
+  </a>
+  <a href="https://mazkev.vercel.app" target="_blank" rel="noopener noreferrer" title="Portfolio Website" className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-900 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all">
+    <Globe size={20} />
   </a>
 </div>
 

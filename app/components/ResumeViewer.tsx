@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { X, Printer, Download, Mail, Phone, MapPin, Code, Award, Briefcase, GraduationCap, LayoutGrid } from 'lucide-react';
+import { X, Printer, Download, Mail, Phone, MapPin, Code, Award, Briefcase, GraduationCap, LayoutGrid, Globe, Github } from 'lucide-react';
 import Image from 'next/image';
 import { projects } from '../lib/data/projects';
 
@@ -214,15 +214,23 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 <p className="text-xs md:text-sm print:text-[10px] font-bold text-slate-800 uppercase tracking-widest pt-1 print:pt-0">
                   {t.title}
                 </p>
-                <div className="pt-2 print:pt-1 flex flex-col sm:flex-row items-end sm:items-center justify-end gap-y-1 gap-x-4 print:gap-x-3 text-xs print:text-[10px] text-slate-800 font-semibold">
-                  <div className="flex items-center gap-1.5">
+                <div className="pt-2 print:pt-1 flex flex-wrap items-end sm:items-center justify-end gap-y-1 gap-x-4 print:gap-x-3 text-xs print:text-[10px] text-slate-800 font-semibold">
+                  <a href="mailto:kevinekapratama@gmail.com" className="flex items-center gap-1.5 hover:underline">
                     <span>kevinekapratama@gmail.com</span>
                     <Mail size={12} className="text-slate-900" />
-                  </div>
-                  <div className="flex items-center gap-1.5">
+                  </a>
+                  <a href="tel:+6281326612344" className="flex items-center gap-1.5 hover:underline">
                     <span>+62 (813) 2661-2344</span>
                     <Phone size={12} className="text-slate-900" />
-                  </div>
+                  </a>
+                  <a href="https://mazkev.vercel.app" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:underline">
+                    <span>mazkev.vercel.app</span>
+                    <Globe size={12} className="text-slate-900" />
+                  </a>
+                  <a href="https://github.com/mazkev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:underline">
+                    <span>github.com/mazkev</span>
+                    <Github size={12} className="text-slate-900" />
+                  </a>
                   <div className="flex items-center gap-1.5">
                     <span>Jakarta, Indonesia</span>
                     <MapPin size={12} className="text-slate-900" />
