@@ -7,16 +7,17 @@ import Image from 'next/image';
 const techLogos = [
   { name: 'Next.js', icon: 'nextdotjs' },
   { name: 'React', icon: 'react' },
+  { name: 'Spring Boot', icon: 'springboot' },
+  { name: 'Golang', icon: 'go' },
+  { name: 'Express', icon: 'express' },
+  { name: 'MongoDB', icon: 'mongodb' },
   { name: 'TypeScript', icon: 'typescript' },
   { name: 'Tailwind', icon: 'tailwindcss' },
   { name: 'Laravel', icon: 'laravel' },
   { name: 'PostgreSQL', icon: 'postgresql' },
   { name: 'Docker', icon: 'docker' },
   { name: 'AWS', icon: '/aws.svg' },
-  { name: 'Framer', icon: 'framer' },
   { name: 'Node.js', icon: 'nodedotjs' },
-  { name: 'Prisma', icon: 'prisma' },
-  { name: 'Redis', icon: 'redis' },
 ];
 
 export default function LogoMarquee() {

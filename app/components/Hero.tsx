@@ -30,17 +30,17 @@ export default function Hero() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            Available for new projects
+            Available for freelance projects
           </div>
           <span className="text-primary font-mono text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">
-            Kevin Eka Pratama — Front End Engineer
+            Kevin Eka Pratama — Fullstack Engineer
           </span>
           <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[1] mb-8 font-geist">
-            Building web apps that<br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-600 dark:from-emerald-400 dark:to-blue-400">just work.</span>
+            Creating seamless<br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-600 dark:from-emerald-400 dark:to-blue-400">digital experiences.</span>
           </h1>
           <p className="text-lg text-slate-500 dark:text-slate-400 max-w-md mb-10 leading-relaxed font-medium">
-            Hi, I'm Kevin. I'm a Front end Engineer specializing in React, Next.js, and Laravel. I focus on writing clean code and shipping fast, reliable products.
+            Hi, I&apos;m Kevin. I&apos;m a Fullstack Engineer specializing in React, Next.js, Java Spring Boot, Golang, Express.js, and MongoDB. I focus on writing clean code and shipping fast, reliable products.
           </p>
           
           <div className="flex flex-wrap gap-4">

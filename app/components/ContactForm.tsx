@@ -96,7 +96,7 @@ export default function ContactForm() {
     const message = formData.get('message') as string;
     
     // Format the message for WhatsApp
-    const phoneNumber = '628130000000';
+    const phoneNumber = '6281326612344';
     const text = `Hello Kevin! My name is ${name} (${email}).\n\n${message}`;
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`;
     
@@ -142,17 +142,15 @@ export default function ContactForm() {
             ))}
           </div>
 
-          <div className="flex gap-4">
-            {[Github, Linkedin, Twitter].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-900 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all"
-              >
-                <Icon size={20} />
-              </a>
-            ))}
-          </div>
+<div className="flex gap-4">
+  <a href="https://github.com/mazkev" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-900 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all">
+    <Github size={20} />
+  </a>
+  <a href="https://www.linkedin.com/in/kevin-eka-pratama-a75024166/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-slate-100 dark:bg-slate-900 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all">
+    <Linkedin size={20} />
+  </a>
+</div>
+
         </div>
 
         <motion.div

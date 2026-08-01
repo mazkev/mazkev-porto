@@ -34,23 +34,23 @@ const skills: SkillItem[] = [
 const timelineData = [
   {
     date: '2023 — PRESENT',
-    role: 'Junior Technical Support',
+    role: 'Technical Support Specialist',
     company: 'PT PLN Icon+',
-    description: 'Providing advanced system operations support, troubleshooting network architectures, and maintaining internal database systems.',
+    description: 'Provide operational and technical support for enterprise systems. Ensure high availability and performance of critical applications through proactive monitoring and rapid issue resolution.',
     icon: Cloud,
   },
   {
     date: '2023 — 2026',
     role: 'Freelance Fullstack Developer',
     company: 'Personal',
-    description: 'Designed and deployed high-performance web applications using React, Next.js, and Laravel. Specialized in customized database optimization and serverless configurations.',
+    description: 'Designed and built customized and scalable fullstack applications for clients using modern web technologies.',
     icon: Code,
   },
   {
     date: '2017 — 2022',
-    role: 'Academic ',
-    company: 'Informatics Studies',
-    description: 'Studied core computer science foundations, built responsive portfolio works, and contributed to open-source UI libraries.',
+    role: 'Students of Informatics Studies ',
+    company: 'Universitas Amikom Yogyakarta',
+    description: 'Focus on fundamental computer science concepts, software engineering methodologies, and building scalable web applications.',
     icon: GraduationCap,
   },
 ];
@@ -99,10 +99,10 @@ export default function About() {
                 How I got <span className="text-primary">here.</span>
               </h3>
               <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed">
-                I&apos;m a Fullstack Engineer with over 3 years of experience building both high-fidelity consumer applications and robust enterprise systems. My expertise spans across modern frontend frameworks like Next.js, Vue 3, and Angular, paired with scalable backend solutions using PostgreSQL, Firebase, and FastAPI.
+                I&apos;m a Fullstack Engineer with 3 years of experience building high-fidelity consumer applications and robust enterprise systems. My expertise spans across modern frontend frameworks like Next.js, Vue 3, and Angular, paired with scalable backend solutions using PostgreSQL, Firebase, and FastAPI.
               </p>
               <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed">
-                From engineering real-time WebSocket pipelines capable of broadcasting to thousands of users, to managing complex browser state for infinite canvas editors, I thrive on solving hard technical challenges without sacrificing premium UI/UX aesthetics. Currently, I bring this systematic approach to my role in Technical Support at PT PLN Icon+, where I maintain enterprise network architectures and database systems.
+                I am a detail-oriented and innovative individual with a strong foundation in computer science and a passion for building high-quality, scalable, and efficient software solutions. I have experience working with various technologies and frameworks and enjoy solving complex problems. My goal is to continuously improve my skills and contribute to meaningful projects that make a positive impact.
               </p>
             </div>
           </div>
