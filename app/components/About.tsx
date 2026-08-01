@@ -103,7 +103,7 @@ export default function About() {
                 How I got <span className="text-primary">here.</span>
               </h3>
               <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed">
-                I&apos;m a Fullstack Engineer with 3 years of experience building high-fidelity consumer applications and robust enterprise systems. My expertise spans across modern frontend frameworks like Next.js, Vue 3, and Angular, paired with scalable backend solutions using PostgreSQL, Firebase, and FastAPI.
+                I&apos;m a Fullstack Engineer with 3+ years of experience building high-fidelity consumer applications and robust enterprise systems. My expertise spans across modern frontend frameworks like Next.js, Vue 3, and Angular, paired with scalable backend solutions using Java Spring Boot, Golang, Express.js, Node.js, MongoDB, PostgreSQL, and FastAPI.
               </p>
               <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed">
                 I am a detail-oriented and innovative individual with a strong foundation in computer science and a passion for building high-quality, scalable, and efficient software solutions. I have experience working with various technologies and frameworks and enjoy solving complex problems. My goal is to continuously improve my skills and contribute to meaningful projects that make a positive impact.
