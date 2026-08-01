@@ -83,7 +83,7 @@ export default function About() {
             <div className="relative">
               <div className="aspect-square rounded-[40px] overflow-hidden glass shadow-2xl">
                 <Image 
-                  src="/profile/avatar-nobeard.png" 
+                  src="/profile/kev.png" 
                   alt="Kevin Eka Pratama"
                   width={800}
                   height={800}
