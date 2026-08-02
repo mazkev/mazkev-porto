@@ -208,7 +208,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               </div>
 
               <div className="flex-grow text-right space-y-1 print:space-y-0.5">
-                <h1 className="text-3xl md:text-4xl print:text-2xl font-extrabold text-slate-900 leading-none uppercase tracking-tight">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl print:text-2xl font-extrabold text-slate-900 leading-none uppercase tracking-tight">
                   Kevin Eka Pratama
                 </h1>
                 <p className="text-xs md:text-sm print:text-[10px] font-bold text-slate-800 uppercase tracking-widest pt-1 print:pt-0">

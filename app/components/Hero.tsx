@@ -35,24 +35,24 @@ export default function Hero() {
           <span className="text-primary font-mono text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">
             Kevin Eka Pratama — Fullstack Engineer
           </span>
-          <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-[1] mb-8 font-geist">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-[1.1] mb-8 font-geist">
             Creating seamless<br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-600 dark:from-emerald-400 dark:to-blue-400">digital experiences.</span>
           </h1>
-          <p className="text-lg text-slate-500 dark:text-slate-400 max-w-md mb-10 leading-relaxed font-medium">
+          <p className="text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-md mb-10 leading-relaxed font-medium">
             Hi, I&apos;m Kevin. I&apos;m a Fullstack Engineer specializing in React, Next.js, Java Spring Boot, Golang, Express.js, and MongoDB. I focus on writing clean code and shipping fast, reliable products.
           </p>
           
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
             <a 
               href="#projects" 
-              className="bg-slate-900 dark:bg-slate-800 text-white px-9 py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] shadow-2xl hover:scale-105 transition-transform flex items-center gap-2"
+              className="w-full sm:w-auto justify-center bg-slate-900 dark:bg-slate-800 text-white px-8 py-4 sm:px-9 sm:py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] shadow-2xl hover:scale-105 transition-transform flex items-center gap-2"
             >
               View Projects <MessageSquare size={14} />
             </a>
             <button 
               onClick={() => setIsResumeOpen(true)}
-              className="border-2 border-slate-200 dark:border-slate-800 px-9 py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-slate-50 dark:hover:bg-slate-900 transition-all text-slate-700 dark:text-slate-300 cursor-pointer"
+              className="w-full sm:w-auto justify-center border-2 border-slate-200 dark:border-slate-800 px-8 py-4 sm:px-9 sm:py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-slate-50 dark:hover:bg-slate-900 transition-all text-slate-700 dark:text-slate-300 cursor-pointer"
             >
               View Resume
             </button>
