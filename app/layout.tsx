@@ -5,9 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
 import CustomCursor from "./components/CustomCursor";
 
-const CommandPalette = dynamic(() => import("./components/CommandPalette"), {
-  ssr: false,
-});
+const CommandPalette = dynamic(() => import("./components/CommandPalette"));
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
