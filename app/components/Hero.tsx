@@ -6,13 +6,21 @@ import { ArrowRight, MessageSquare } from 'lucide-react';
 import Terminal from './Terminal';
 import ResumeViewer from './ResumeViewer';
 
+import CoverLetterViewer from './CoverLetterViewer';
+
 export default function Hero() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [isCoverLetterOpen, setIsCoverLetterOpen] = useState(false);
 
   useEffect(() => {
     const handleOpenResume = () => setIsResumeOpen(true);
+    const handleOpenLetter = () => setIsCoverLetterOpen(true);
     window.addEventListener('open-resume', handleOpenResume);
-    return () => window.removeEventListener('open-resume', handleOpenResume);
+    window.addEventListener('open-cover-letter', handleOpenLetter);
+    return () => {
+      window.removeEventListener('open-resume', handleOpenResume);
+      window.removeEventListener('open-cover-letter', handleOpenLetter);
+    };
   }, []);
 
   return (
@@ -43,18 +51,24 @@ export default function Hero() {
             Hi, I&apos;m Kevin. I&apos;m a Fullstack Engineer specializing in React, Next.js, Java Spring Boot, Golang, Express.js, and MongoDB. I focus on writing clean code and shipping fast, reliable products.
           </p>
           
-          <div className="flex flex-col sm:flex-row flex-wrap gap-4">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
             <a 
               href="#projects" 
-              className="w-full sm:w-auto justify-center bg-slate-900 dark:bg-slate-800 text-white px-8 py-4 sm:px-9 sm:py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] shadow-2xl hover:scale-105 transition-transform flex items-center gap-2"
+              className="w-full sm:w-auto justify-center bg-slate-900 dark:bg-slate-800 text-white px-7 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] shadow-2xl hover:scale-105 transition-transform flex items-center gap-2"
             >
               View Projects <MessageSquare size={14} />
             </a>
             <button 
               onClick={() => setIsResumeOpen(true)}
-              className="w-full sm:w-auto justify-center border-2 border-slate-200 dark:border-slate-800 px-8 py-4 sm:px-9 sm:py-5 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-slate-50 dark:hover:bg-slate-900 transition-all text-slate-700 dark:text-slate-300 cursor-pointer"
+              className="w-full sm:w-auto justify-center border-2 border-slate-200 dark:border-slate-800 px-7 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-slate-50 dark:hover:bg-slate-900 transition-all text-slate-700 dark:text-slate-300 cursor-pointer"
             >
               View Resume
+            </button>
+            <button 
+              onClick={() => setIsCoverLetterOpen(true)}
+              className="w-full sm:w-auto justify-center bg-emerald-600 text-white px-7 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-emerald-500 transition-all cursor-pointer shadow-lg shadow-emerald-600/20"
+            >
+              Surat Lamaran
             </button>
           </div>
         </motion.div>
@@ -69,6 +83,7 @@ export default function Hero() {
       </div>
 
       <ResumeViewer isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
+      <CoverLetterViewer isOpen={isCoverLetterOpen} onClose={() => setIsCoverLetterOpen(false)} />
     </section>
   );
 }
