@@ -47,7 +47,7 @@ export default function Terminal() {
         output = "Available: <span class='text-yellow-400'>about</span>, <span class='text-yellow-400'>projects</span>, <span class='text-yellow-400'>experience</span>, <span class='text-yellow-400'>contact</span>, <span class='text-yellow-400'>theme</span>, <span class='text-yellow-400'>clear</span>, <span class='text-yellow-400'>whoami</span>";
         break;
       case 'whoami':
-        output = "You are a visitor in the world of DevShell - an Elite Performance Architect.";
+        output = "You are a visitor in mazkev - landing page";
         break;
       case 'clear':
         setHistory([]);
@@ -131,19 +131,19 @@ export default function Terminal() {
           onClick={() => inputRef.current?.focus()}
         >
           <div className="mb-2 text-[13px] leading-relaxed">
-            <div>Welcome to <span className="text-yellow-400">DevShell v2.4.0</span>.</div>
-            <div>Type <span className="text-yellow-400">'help'</span> to see available commands.</div>
+            <div>Welcome to <span className="text-yellow-400">mazkev v1.1.0</span>.</div>
+            <div>Type <span className="text-yellow-400">&apos;help&apos;</span> to see available commands.</div>
           </div>
           
           {history.map((h, i) => (
             <div key={i} className="mb-2 text-[13px] leading-relaxed">
-              <div>guest@devshell:~$ {h.command}</div>
+              <div>guest@mazkev:~$ {h.command}</div>
               {h.output && <div dangerouslySetInnerHTML={{ __html: h.output }} />}
             </div>
           ))}
           
           <div className="flex items-center gap-2">
-            <span className="text-blue-500 font-bold">guest@devshell:~$</span>
+            <span className="text-blue-500 font-bold">guest@mazkev:~$</span>
             <input
               ref={inputRef}
               type="text"
