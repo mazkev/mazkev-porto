@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { X, Printer, Download, Mail, Phone, MapPin, Code, Award, Briefcase, GraduationCap, LayoutGrid, Globe, Github } from 'lucide-react';
+import { X, Printer, Download, Mail, Phone, MapPin, Code, Award, Briefcase, GraduationCap, LayoutGrid, Globe, Github, Layers, Server, Cpu } from 'lucide-react';
 import Image from 'next/image';
 import { projects } from '../lib/data/projects';
 
@@ -11,11 +11,49 @@ interface ResumeViewerProps {
   onClose: () => void;
 }
 
-const content = {
+export type ResumeRole = 'fullstack' | 'frontend' | 'backend';
+
+const roleContent = {
+  fullstack: {
+    en: {
+      title: 'Fullstack Engineer & Technical Support Specialist',
+      executiveSummaryTitle: 'Professional Summary',
+      executiveSummary: 'Fullstack Engineer with over 3+ years of experience building high-fidelity consumer applications and robust enterprise systems. Expertise spans across modern frontend frameworks (Next.js, Vue, Angular) and scalable backend architectures (Java Spring Boot, Golang, Express.js, Node.js, MongoDB, PostgreSQL, and FastAPI). Proven track record in real-time engineering, complex state management, and delivering premium UI/UX aesthetics while maintaining enterprise system operations.',
+    },
+    id: {
+      title: 'Fullstack Engineer & Technical Support Specialist',
+      executiveSummaryTitle: 'Ringkasan Profesional',
+      executiveSummary: 'Fullstack Engineer berpengalaman 3+ tahun dalam membangun aplikasi konsumen berkualitas tinggi dan sistem enterprise yang tangguh. Keahlian mencakup framework frontend modern (Next.js, Vue, Angular) dan arsitektur backend yang scalable (Java Spring Boot, Golang, Express.js, Node.js, MongoDB, PostgreSQL, dan FastAPI). Terbukti berpengalaman dalam engineering real-time, manajemen state kompleks, dan menyajikan estetika UI/UX premium.',
+    }
+  },
+  frontend: {
+    en: {
+      title: 'Front End Engineer & UI/UX Specialist',
+      executiveSummaryTitle: 'Professional Summary',
+      executiveSummary: 'Front End Engineer specializing in React, Next.js 16, Vue 3, Angular, TypeScript, and Tailwind CSS. Experienced in building responsive, micro-animated user interfaces, implementing complex state management (Redux, Zustand, RxJS), and optimizing frontend rendering performance (SSR/SSG, Turbopack, Core Web Vitals) for high-traffic consumer web applications.',
+    },
+    id: {
+      title: 'Front End Engineer & UI/UX Specialist',
+      executiveSummaryTitle: 'Ringkasan Profesional',
+      executiveSummary: 'Front End Engineer berpengalaman dalam React, Next.js 16, Vue 3, Angular, TypeScript, dan Tailwind CSS. Ahli dalam merancang antarmuka pengguna interaktif yang responsif dengan animasi mikroskopis, mengelola state aplikasi kompleks (Redux, Zustand, RxJS), dan mengoptimalkan performa render frontend (SSR/SSG, Turbopack, Core Web Vitals).',
+    }
+  },
+  backend: {
+    en: {
+      title: 'Back End Engineer & API Architect',
+      executiveSummaryTitle: 'Professional Summary',
+      executiveSummary: 'Back End Engineer specializing in building scalable RESTful APIs, concurrent microservices, and database systems using Java Spring Boot, Golang, Express.js, Node.js, and FastAPI. Proficient in database modeling (PostgreSQL, MongoDB, SQL queries, Prisma ORM), authentication security (JWT, OAuth2), real-time WebSockets, and production debugging.',
+    },
+    id: {
+      title: 'Back End Engineer & API Architect',
+      executiveSummaryTitle: 'Ringkasan Profesional',
+      executiveSummary: 'Back End Engineer berpengalaman dalam membangun API RESTful yang scalable, microservice terkonkurensi tinggi, dan sistem database menggunakan Java Spring Boot, Golang, Express.js, Node.js, dan FastAPI. Ahli dalam pemodelan database (PostgreSQL, MongoDB, SQL query, Prisma ORM), keamanan otentikasi (JWT, OAuth2), WebSocket real-time, serta debugging sistem produksi.',
+    }
+  }
+};
+
+const commonText = {
   en: {
-    title: 'Fullstack Developer & Technical Support Specialist',
-    executiveSummaryTitle: 'Professional Summary',
-    executiveSummary: 'Fullstack Engineer with over 3+ years of experience building high-fidelity consumer applications and robust enterprise systems. Expertise spans across modern frontend frameworks (Next.js, Vue, Angular) and scalable backend architectures (Java Spring Boot, Golang, Express.js, Node.js, MongoDB, PostgreSQL, and FastAPI). Proven track record in real-time engineering, complex state management, and delivering premium UI/UX aesthetics while maintaining enterprise system operations.',
     experienceTitle: 'Professional Experience',
     job1Title: 'Technical Support Specialist',
     job1Date: '2023 - Present',
@@ -37,9 +75,6 @@ const content = {
     downloadBtn: 'Download PDF',
   },
   id: {
-    title: 'Fullstack Developer & Technical Support Specialist',
-    executiveSummaryTitle: 'Ringkasan Profesional',
-    executiveSummary: 'Fullstack Engineer berpengalaman 3+ tahun dalam membangun aplikasi konsumen berkualitas tinggi dan sistem enterprise yang tangguh. Keahlian mencakup framework frontend modern (Next.js, Vue, Angular) dan arsitektur backend yang scalable (Java Spring Boot, Golang, Express.js, Node.js, MongoDB, PostgreSQL, dan FastAPI). Terbukti berpengalaman dalam engineering real-time, manajemen state kompleks, dan menyajikan estetika UI/UX premium.',
     experienceTitle: 'Pengalaman Kerja',
     job1Title: 'Technical Support Specialist',
     job1Date: '2023 - Sekarang',
@@ -64,13 +99,23 @@ const content = {
 
 export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
   const [lang, setLang] = useState<'en' | 'id'>('en');
-  const t = content[lang];
+  const [activeRole, setActiveRole] = useState<ResumeRole>('fullstack');
+
+  const currentRoleContent = roleContent[activeRole][lang];
+  const t = commonText[lang];
 
   const handlePrint = () => {
     window.print();
   };
 
   if (!isOpen) return null;
+
+  // Filter projects dynamically based on selected role profile
+  const roleProjects = activeRole === 'frontend'
+    ? projects.filter(p => p.category === 'Front End')
+    : activeRole === 'backend'
+    ? projects.filter(p => p.category === 'Back End')
+    : projects.filter(p => p.category === 'Full Stack' || p.category === 'Back End').slice(0, 10);
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end print:absolute print:inset-auto print:w-full print:h-auto print:block">
@@ -141,9 +186,43 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
       >
         {/* Actions Bar (Top) */}
         <div className="px-6 py-4 bg-slate-100 dark:bg-slate-900 border-b border-slate-300 dark:border-slate-800 flex items-center justify-between no-print flex-shrink-0 flex-wrap gap-3">
-          <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-center gap-3 flex-wrap">
+            {/* ROLE SELECTOR TABS */}
+            <div className="flex items-center bg-slate-200 dark:bg-slate-800 p-1 rounded-xl border border-slate-300 dark:border-slate-700">
+              <button
+                onClick={() => setActiveRole('fullstack')}
+                className={`px-3 py-1 text-xs font-bold rounded-lg transition-all flex items-center gap-1 cursor-pointer ${
+                  activeRole === 'fullstack'
+                    ? 'bg-slate-900 text-white dark:bg-white dark:text-black shadow'
+                    : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
+                }`}
+              >
+                <Layers size={13} /> Fullstack
+              </button>
+              <button
+                onClick={() => setActiveRole('frontend')}
+                className={`px-3 py-1 text-xs font-bold rounded-lg transition-all flex items-center gap-1 cursor-pointer ${
+                  activeRole === 'frontend'
+                    ? 'bg-emerald-600 text-white shadow'
+                    : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
+                }`}
+              >
+                <Cpu size={13} /> Front End
+              </button>
+              <button
+                onClick={() => setActiveRole('backend')}
+                className={`px-3 py-1 text-xs font-bold rounded-lg transition-all flex items-center gap-1 cursor-pointer ${
+                  activeRole === 'backend'
+                    ? 'bg-sky-600 text-white shadow'
+                    : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
+                }`}
+              >
+                <Server size={13} /> Back End
+              </button>
+            </div>
+
             {/* TOGGLE BAHASA / TRANSLATE CV */}
-            <div className="flex items-center bg-slate-200 dark:bg-slate-800 p-1 rounded-xl border border-slate-400 dark:border-slate-700">
+            <div className="flex items-center bg-slate-200 dark:bg-slate-800 p-1 rounded-xl border border-slate-300 dark:border-slate-700">
               <button
                 onClick={() => setLang('en')}
                 className={`px-3 py-1 text-xs font-bold rounded-lg transition-all flex items-center gap-1 cursor-pointer ${
@@ -152,7 +231,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
                 }`}
               >
-                🇬🇧 English
+                🇬🇧 EN
               </button>
               <button
                 onClick={() => setLang('id')}
@@ -162,7 +241,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
                 }`}
               >
-                🇮🇩 Indonesia
+                🇮🇩 ID
               </button>
             </div>
 
@@ -212,7 +291,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                   Kevin Eka Pratama
                 </h1>
                 <p className="text-xs md:text-sm print:text-[10px] font-bold text-slate-800 uppercase tracking-widest pt-1 print:pt-0">
-                  {t.title}
+                  {currentRoleContent.title}
                 </p>
                 <div className="pt-2 print:pt-1 flex flex-wrap items-end sm:items-center justify-end gap-y-1 gap-x-4 print:gap-x-3 text-xs print:text-[10px] text-slate-800 font-semibold">
                   <a href="mailto:kevinekapratama@gmail.com" className="flex items-center gap-1.5 hover:underline">
@@ -242,10 +321,10 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
             {/* Profile summary */}
             <div className="space-y-2 print:space-y-1">
               <h2 className="text-sm print:text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-1 flex items-center gap-2">
-                <Award size={16} className="text-slate-900 print:w-3 print:h-3" /> {t.executiveSummaryTitle}
+                <Award size={16} className="text-slate-900 print:w-3 print:h-3" /> {currentRoleContent.executiveSummaryTitle}
               </h2>
               <p className="text-slate-800 leading-relaxed text-xs md:text-sm print:text-[11px] print:leading-normal font-medium">
-                {t.executiveSummary}
+                {currentRoleContent.executiveSummary}
               </p>
             </div>
 
@@ -302,16 +381,21 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               </div>
             </div>
 
-            {/* Selected / Key Projects - Clean ATS List */}
+            {/* Key Projects Filtered By Active Role */}
             <div className="space-y-2 print:space-y-1">
-              <h2 className="text-sm print:text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-1 flex items-center gap-2">
-                <LayoutGrid size={16} className="text-slate-900 print:w-3 print:h-3" /> {t.projectsTitle}
+              <h2 className="text-sm print:text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-1 flex items-center justify-between">
+                <span className="flex items-center gap-2">
+                  <LayoutGrid size={16} className="text-slate-900 print:w-3 print:h-3" /> {t.projectsTitle} ({activeRole.toUpperCase()})
+                </span>
+                <span className="text-[10px] font-mono font-normal uppercase text-slate-600 no-print">
+                  {roleProjects.length} Projects Selected
+                </span>
               </h2>
               <div className="space-y-2 print:space-y-1 text-xs print:text-[10.5px]">
-                {projects.slice(0, 10).map((project, idx) => (
+                {roleProjects.slice(0, 10).map((project, idx) => (
                   <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-200 pb-1.5 print:pb-1 last:border-none print:break-inside-avoid">
                     <div className="font-bold text-slate-900">
-                      • {project.title}
+                      • {project.title} <span className="font-mono text-[9px] text-slate-500 uppercase">({project.category})</span>
                     </div>
                     <div className="flex flex-wrap gap-1">
                       {project.tech.map((tItem, i) => (
@@ -332,18 +416,22 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               </h2>
               
               <div className="grid md:grid-cols-3 gap-3 print:gap-2 text-xs print:text-[10px]">
-                <div>
-                  <h4 className="font-bold text-slate-900 mb-1.5 print:mb-1 uppercase tracking-wide">Frontend</h4>
+                <div className={activeRole === 'frontend' ? 'font-black' : ''}>
+                  <h4 className="font-bold text-slate-900 mb-1.5 print:mb-1 uppercase tracking-wide flex items-center gap-1">
+                    Frontend {activeRole === 'frontend' && <span className="text-[9px] bg-emerald-100 text-emerald-800 px-1.5 rounded">PRIMARY</span>}
+                  </h4>
                   <div className="flex flex-wrap gap-1 print:gap-1">
-                    {['Next.js', 'React.js', 'Vue 3', 'Angular', 'TypeScript', 'Tailwind'].map((s) => (
+                    {['Next.js', 'React.js', 'Vue 3', 'Angular', 'TypeScript', 'Tailwind CSS', 'Framer Motion'].map((s) => (
                       <span key={s} className="px-2 py-0.5 bg-slate-100 rounded border border-slate-300 text-slate-900 font-bold pill">{s}</span>
                     ))}
                   </div>
                 </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 mb-1.5 print:mb-1 uppercase tracking-wide">Backend</h4>
+                <div className={activeRole === 'backend' ? 'font-black' : ''}>
+                  <h4 className="font-bold text-slate-900 mb-1.5 print:mb-1 uppercase tracking-wide flex items-center gap-1">
+                    Backend {activeRole === 'backend' && <span className="text-[9px] bg-sky-100 text-sky-800 px-1.5 rounded">PRIMARY</span>}
+                  </h4>
                   <div className="flex flex-wrap gap-1 print:gap-1">
-                    {['Java Spring Boot', 'Golang', 'Express.js', 'Node.js', 'MongoDB', 'PostgreSQL', 'MySQL', 'FastAPI'].map((s) => (
+                    {['Java Spring Boot', 'Golang', 'Express.js', 'Node.js', 'PostgreSQL', 'Prisma ORM', 'MongoDB', 'FastAPI'].map((s) => (
                       <span key={s} className="px-2 py-0.5 bg-slate-100 rounded border border-slate-300 text-slate-900 font-bold pill">{s}</span>
                     ))}
                   </div>
@@ -351,7 +439,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 <div>
                   <h4 className="font-bold text-slate-900 mb-1.5 print:mb-1 uppercase tracking-wide">DevOps & Tools</h4>
                   <div className="flex flex-wrap gap-1 print:gap-1">
-                    {['Docker', 'AWS', 'Vercel', 'Git', 'Firebase'].map((s) => (
+                    {['Docker', 'AWS', 'Vercel', 'Git & GitHub', 'Firebase', 'Postman'].map((s) => (
                       <span key={s} className="px-2 py-0.5 bg-slate-100 rounded border border-slate-300 text-slate-900 font-bold pill">{s}</span>
                     ))}
                   </div>
