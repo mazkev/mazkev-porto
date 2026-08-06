@@ -90,7 +90,10 @@ export default function Component({ name }) {
                 className="w-full h-full object-cover" 
               />
             </div>
-            <div className="flex flex-wrap gap-2 pt-2">
+            <div className="flex flex-wrap gap-2 pt-2 items-center">
+              <span className="px-3 py-1 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold rounded-xl border border-emerald-500/20 uppercase tracking-wider font-mono">
+                {project.category}
+              </span>
               {project.tech.map((t) => (
                 <span
                   key={t}

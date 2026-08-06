@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
-import dynamic from "next/dynamic";
 import "./globals.css";
 import { ThemeProvider } from "./components/ThemeProvider";
 import CustomCursor from "./components/CustomCursor";
-
-const CommandPalette = dynamic(() => import("./components/CommandPalette"));
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -75,7 +72,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <CustomCursor />
-          <CommandPalette />
           {children}
         </ThemeProvider>
       </body>

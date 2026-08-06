@@ -86,7 +86,7 @@ export default function Navbar() {
               <Moon size={20} className="text-gray-500" />
             )}
           </button>
-          
+
           <button
             onMouseMove={handleMagneticMove}
             onMouseLeave={handleMagneticLeave}

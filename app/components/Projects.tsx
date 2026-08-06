@@ -2,15 +2,18 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { projects, type ProjectData } from '../lib/data/projects';
+import { projects, type ProjectData, type ProjectCategory } from '../lib/data/projects';
 import ProjectDrawer from './ProjectDrawer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/app/lib/utils';
+
+const CATEGORIES: ('All' | ProjectCategory)[] = ['All', 'Front End', 'Back End', 'Full Stack'];
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [activeCategory, setActiveCategory] = useState<'All' | ProjectCategory>('All');
 
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 4;
@@ -29,6 +32,11 @@ export default function Projects() {
     window.addEventListener('open-project', handleOpenProject);
     return () => window.removeEventListener('open-project', handleOpenProject);
   }, []);
+
+  const handleCategoryChange = (cat: 'All' | ProjectCategory) => {
+    setActiveCategory(cat);
+    setCurrentPage(1);
+  };
 
   const handleOpenDrawer = (project: ProjectData) => {
     setSelectedProject(project);
@@ -56,10 +64,14 @@ export default function Projects() {
 
   if (!mounted) return null;
 
+  const filteredProjects = activeCategory === 'All' 
+    ? projects 
+    : projects.filter(p => p.category === activeCategory);
+
   const indexOfLastProject = currentPage * projectsPerPage;
   const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-  const currentProjects = projects.slice(indexOfFirstProject, indexOfLastProject);
-  const totalPages = Math.ceil(projects.length / projectsPerPage);
+  const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
+  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -68,23 +80,49 @@ export default function Projects() {
 
   return (
     <section id="projects" className="min-h-screen flex items-center justify-center py-20 px-6 print:hidden">
-      <div className="container-max">
+      <div className="container-max w-full">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mb-20"
+          className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
-          <h2 className="text-5xl font-black uppercase tracking-tighter font-geist">
-            Work<span className="text-primary">.</span>
-          </h2>
+          <div>
+            <h2 className="text-5xl font-black uppercase tracking-tighter font-geist">
+              Work<span className="text-primary">.</span>
+            </h2>
+            <p className="text-slate-400 font-mono text-xs mt-2 uppercase tracking-widest">
+              Selected Projects & Case Studies
+            </p>
+          </div>
+
+          {/* Category Filter Tabs */}
+          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+            {CATEGORIES.map((cat) => {
+              const isActive = activeCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => handleCategoryChange(cat)}
+                  className={cn(
+                    "px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer",
+                    isActive
+                      ? "bg-primary text-black shadow-md"
+                      : "text-slate-500 hover:text-slate-900 dark:hover:text-white"
+                  )}
+                >
+                  {cat}
+                </button>
+              );
+            })}
+          </div>
         </motion.div>
         
         <div className="grid md:grid-cols-2 gap-12">
           {currentProjects.map((project, idx) => (
             <motion.div 
-              key={`${project.title}-${currentPage}`}
+              key={`${project.title}-${currentPage}-${activeCategory}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -103,12 +141,23 @@ export default function Projects() {
                     height={500}
                     className="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000"
                   />
+                  {/* Category Pill Tag Overlay */}
+                  <div className="absolute top-4 right-4 z-10">
+                    <span className={cn(
+                      "px-3 py-1.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider backdrop-blur-md border shadow-lg",
+                      project.category === 'Front End' && "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
+                      project.category === 'Back End' && "bg-sky-500/20 text-sky-300 border-sky-500/30",
+                      project.category === 'Full Stack' && "bg-purple-500/20 text-purple-300 border-purple-500/30"
+                    )}>
+                      {project.category}
+                    </span>
+                  </div>
                 </div>
-                <h3 className="text-3xl font-black mb-2 group-hover:text-primary transition-colors font-geist">
-                  {project.title}
+                <h3 className="text-3xl font-black mb-2 group-hover:text-primary transition-colors font-geist flex items-center justify-between">
+                  <span>{project.title}</span>
                 </h3>
                 <p className="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-widest">
-                  {project.tech.slice(0, 3).join(' • ')}
+                  {project.tech.slice(0, 4).join(' • ')}
                 </p>
               </div>
             </motion.div>
