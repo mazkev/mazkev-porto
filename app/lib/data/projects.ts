@@ -539,7 +539,7 @@ export const projects: ProjectData[] = [
     image: '/projects/miro.png',
     live: 'https://github.com/mazkev/ai-ui-wireframe',
     github: 'https://github.com/mazkev/ai-ui-wireframe',
-    category: 'Front End',
+    category: 'Full Stack',
   },
   {
     title: 'OmniDesk AI Support Console',
@@ -602,7 +602,7 @@ export const projects: ProjectData[] = [
     image: '/projects/gojek.png',
     live: 'https://github.com/mazkev/Duolingo-clone-react-native-expo',
     github: 'https://github.com/mazkev/Duolingo-clone-react-native-expo',
-    category: 'Front End',
+    category: 'Full Stack',
   },
   {
     title: 'Shopee E-Commerce Mobile App Clone',
@@ -638,7 +638,7 @@ export const projects: ProjectData[] = [
     image: '/projects/grab.png',
     live: 'https://grab-clone-three.vercel.app/',
     github: 'https://github.com/mazkev/grab-clone',
-    category: 'Front End',
+    category: 'Full Stack',
   },
   {
     title: 'HubSpot CRM Clone',
@@ -647,7 +647,7 @@ export const projects: ProjectData[] = [
     image: '/projects/hubspot.png',
     live: 'https://hub-spot-clone-five.vercel.app/',
     github: 'https://github.com/mazkev/HubSpot-clone',
-    category: 'Front End',
+    category: 'Full Stack',
   },
   {
     title: 'Miro Infinite Canvas Clone',
@@ -656,7 +656,7 @@ export const projects: ProjectData[] = [
     image: '/projects/miro.png',
     live: 'https://miro-clone-kappa-livid.vercel.app/',
     github: 'https://github.com/mazkev/Miro-Clone',
-    category: 'Front End',
+    category: 'Full Stack',
   },
   {
     title: 'Semarketplace Pro',
@@ -683,7 +683,7 @@ export const projects: ProjectData[] = [
     image: '/projects/netflix.jpg',
     live: 'https://netflix-asli.vercel.app/',
     github: 'https://github.com/mazkev/Netflix-Clone',
-    category: 'Front End',
+    category: 'Full Stack',
   },
   {
     title: 'Twitter Clonex',
@@ -710,7 +710,7 @@ export const projects: ProjectData[] = [
     image: '/projects/maztube.png',
     live: 'https://maztube.vercel.app/',
     github: 'https://github.com/mazkev/Maztube',
-    category: 'Front End',
+    category: 'Full Stack',
   },
   {
     title: 'MazChat: Real-time Messaging',

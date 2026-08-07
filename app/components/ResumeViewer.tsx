@@ -115,7 +115,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
     ? projects.filter(p => p.category === 'Front End')
     : activeRole === 'backend'
     ? projects.filter(p => p.category === 'Back End')
-    : projects.filter(p => p.category === 'Full Stack' || p.category === 'Back End').slice(0, 10);
+    : projects.filter(p => p.category === 'Full Stack');
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end print:absolute print:inset-auto print:w-full print:h-auto print:block">
