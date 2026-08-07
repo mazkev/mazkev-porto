@@ -1,31 +1,34 @@
-# Premium Developer Portfolio 🚀
+# Kevin Eka Pratama — Fullstack Engineer Portfolio 🚀
 
-A high-performance, aesthetically stunning portfolio website built with **Next.js 15**, **Tailwind CSS**, and **Framer Motion**. Designed for developers who want to showcase their work with a professional, modern, and interactive interface.
+A high-performance, responsive portfolio web application built with **Next.js 16 App Router**, **React 19**, **Tailwind CSS v4**, **Framer Motion**, and **Vercel Analytics & Speed Insights**.
 
-![Portfolio Preview](https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop)
+[![Live Portfolio](https://img.shields.io/badge/Live_Demo-mazkev.vercel.app-059669?style=for-the-badge&logo=vercel)](https://mazkev.vercel.app)
+[![GitHub](https://img.shields.io/badge/GitHub-mazkev-181717?style=for-the-badge&logo=github)](https://github.com/mazkev)
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-Chat_Me-25D366?style=for-the-badge&logo=whatsapp)](https://wa.me/6281326612344?text=Halo%20Kevin,%20saya%20tertarik%20dengan%20portofolio%20Anda)
+
+---
 
 ## ✨ Features
 
-- **Modern UI/UX**: Clean, dark-mode-first design with premium aesthetics.
-- **Glassmorphism**: Beautiful frosted-glass components and cards.
-- **Micro-animations**: Smooth transitions and hover effects using Framer Motion.
-- **Responsive Design**: Fully optimized for mobile, tablet, and desktop.
-- **Performance Optimized**: Built on Next.js 15 for lightning-fast load times.
-- **Interactive Sections**:
-  - Dynamic Hero with tech stack integration.
-  - Logo Marquee for social proof/skills.
-  - Project Showcase with case study links.
-  - Video Dashboard for product demonstrations.
-  - Functional-ready Contact Form with validation.
+- **40 Curated Projects**: Clean 1-to-1 exact mapping to GitHub repositories across AI tools, Mobile apps, 3D configurators, and Backend microservices.
+- **Interactive Project Filtering**: Instant category tabs (*All*, *Front End*, *Back End*, *Full Stack*) with fast pagination.
+- **3 ATS-Friendly Resume Profiles**: Interactive CV viewer with specialized profiles for **Fullstack**, **Front End**, and **Back End** roles (supports EN/ID and `window.print()` ATS high-contrast PDF export).
+- **Hero Tech Stack Showcase**: Ultra-fast, lightweight 60 FPS technology overview featuring Next.js 16, React 19, Java Spring Boot, Golang, Express, PostgreSQL, and Docker.
+- **WhatsApp Fast-Chat**: Direct 1-click WhatsApp messaging connection for recruiters and freelance clients.
+- **Mobile View Performance Tuning**: Hardware-accelerated GPU blur scaling, responsive Next.js images, and touch interaction overrides.
+- **Vercel Analytics & Speed Insights**: Real-time traffic monitoring and performance tracking.
+
+---
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Next.js 15 (App Router)](https://nextjs.org/)
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Fonts**: Outfit & Inter (Google Fonts)
-- **Deployment**: Optimized for [Vercel](https://vercel.com/)
+- **Framework**: [Next.js 16 (App Router)](https://nextjs.org/)
+- **UI & Animation**: [React 19](https://react.dev/), [Tailwind CSS v4](https://tailwindcss.com/), [Framer Motion](https://www.framer.com/motion/)
+- **Icons & Typography**: [Lucide React](https://lucide.dev/), Plus Jakarta Sans & JetBrains Mono
+- **Analytics**: [@vercel/analytics](https://vercel.com/analytics), [@vercel/speed-insights](https://vercel.com/speed-insights)
+- **Deployment**: [Vercel Edge Network](https://vercel.com/)
+
+---
 
 ## 🚀 Getting Started
 
@@ -38,8 +41,8 @@ A high-performance, aesthetically stunning portfolio website built with **Next.j
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/portfolio.git
-   cd portfolio
+   git clone https://github.com/mazkev/mazkev-porto.git
+   cd landing-page
    ```
 
 2. **Install dependencies**:
@@ -57,60 +60,11 @@ A high-performance, aesthetically stunning portfolio website built with **Next.j
    npm run build
    ```
 
-## 📂 Project Structure
-
-```text
-├── app/
-│   ├── components/       # Reusable UI components
-│   ├── lib/              # Utility functions
-│   ├── globals.css       # Global styles and Tailwind imports
-│   ├── layout.tsx        # Root layout and metadata
-│   └── page.tsx          # Main entry point
-├── public/               # Static assets (images, icons, etc.)
-└── next.config.ts        # Next.js configuration
-```
-
-## 📝 Configuration
-
-### Environment Variables
-
-Create a `.env.local` file in the root directory and add any necessary environment variables (e.g., for form handling services like Formspree).
-
-```bash
-# Example
-NEXT_PUBLIC_FORM_ID=your_form_id
-```
-
-### Profile Customization
-
-Update the following files to match your profile:
-- `app/layout.tsx`: Change the metadata (title, description).
-- `app/components/ContactForm.tsx`: Update your email and contact details.
-- `app/components/Hero.tsx`: Customize your headline and tech stack.
-
-### 🖼️ Assets
-
-The portfolio is configured to use local images for projects and the profile section. Place your assets in the following directories:
-
-- **Projects**: `public/projects/`
-  - `semarketplace.jpg`
-  - `indofooty.jpg`
-  - `netflix.jpg`
-- **Profile**: `public/profile/`
-  - `me.jpg`
-
-Ensure the filenames match those referenced in `app/components/Projects.tsx` and `app/components/About.tsx`.
-
-
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to open an issue or submit a pull request.
-
 ---
 
-Built with ❤️ by [Kevin Pratama](https://github.com/kevinpratama)
+## 📬 Contact & Hire
+
+- **Email**: [kevinekapratama@gmail.com](mailto:kevinekapratama@gmail.com)
+- **WhatsApp**: [+62 813-2661-2344](https://wa.me/6281326612344)
+- **Portfolio**: [mazkev.vercel.app](https://mazkev.vercel.app)
+- **GitHub**: [github.com/mazkev](https://github.com/mazkev)

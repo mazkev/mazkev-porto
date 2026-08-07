@@ -103,6 +103,14 @@ export default function Hero() {
             >
               Surat Lamaran
             </button>
+            <a 
+              href="https://wa.me/6281326612344?text=Halo%20Kevin,%20saya%20tertarik%20dengan%20portofolio%20Anda" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto justify-center bg-green-500 hover:bg-green-600 text-white px-7 py-4 rounded-2xl font-black uppercase tracking-widest text-[10px] transition-all flex items-center gap-2 shadow-md shadow-green-500/20"
+            >
+              Chat WhatsApp
+            </a>
           </div>
         </motion.div>
 
