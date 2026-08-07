@@ -26,6 +26,7 @@ const nextConfig: NextConfig = {
     ];
   },
   images: {
+    qualities: [75, 80],
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
