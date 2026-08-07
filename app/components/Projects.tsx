@@ -44,17 +44,19 @@ export default function Projects() {
   };
 
   const handleTiltMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
     const card = e.currentTarget;
     const inner = card.querySelector('.tilt-inner') as HTMLElement;
     if (inner) {
       const rect = card.getBoundingClientRect();
-      const rx = ((e.clientY - rect.top) / rect.height - 0.5) * 20;
-      const ry = ((e.clientX - rect.left) / rect.width - 0.5) * -20;
-      inner.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.05, 1.05, 1.05)`;
+      const rx = ((e.clientY - rect.top) / rect.height - 0.5) * 16;
+      const ry = ((e.clientX - rect.left) / rect.width - 0.5) * -16;
+      inner.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.03, 1.03, 1.03)`;
     }
   };
 
   const handleTiltLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
     const card = e.currentTarget;
     const inner = card.querySelector('.tilt-inner') as HTMLElement;
     if (inner) {
@@ -82,10 +84,10 @@ export default function Projects() {
     <section id="projects" className="min-h-screen flex items-center justify-center py-20 px-6 print:hidden">
       <div className="container-max w-full">
         <motion.div 
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.5 }}
           className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
           <div>
@@ -119,27 +121,30 @@ export default function Projects() {
           </div>
         </motion.div>
         
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-12">
           {currentProjects.map((project, idx) => (
             <motion.div 
               key={`${project.title}-${currentPage}-${activeCategory}`}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: idx * 0.1 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
               className="tilt-card cursor-pointer"
               onMouseMove={handleTiltMove}
               onMouseLeave={handleTiltLeave}
               onClick={() => handleOpenDrawer(project)}
             >
               <div className="tilt-inner group">
-                <div className="relative aspect-[16/10] rounded-[40px] overflow-hidden glass mb-8 shadow-2xl">
+                <div className="relative aspect-[16/10] rounded-[32px] md:rounded-[40px] overflow-hidden glass mb-6 md:mb-8 shadow-xl">
                   <Image 
                     src={project.image} 
                     alt={project.title} 
                     width={800}
                     height={500}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    quality={80}
+                    loading="lazy"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
                   />
                   {/* Category Pill Tag Overlay */}
                   <div className="absolute top-4 right-4 z-10">
