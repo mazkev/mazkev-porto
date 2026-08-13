@@ -398,12 +398,8 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                       <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[11px]">
                         • {project.title}
                       </div>
-                      <div className="flex flex-wrap gap-1">
-                        {project.tech.map((tItem, i) => (
-                          <span key={i} className="text-[9px] print:text-[8px] font-mono font-bold uppercase text-slate-900 bg-slate-100 border border-slate-300 px-1.5 py-0.5 rounded pill">
-                            {tItem}
-                          </span>
-                        ))}
+                      <div className="text-[10px] print:text-[8.5px] font-mono text-slate-700 font-bold uppercase">
+                        {project.tech.join(' • ')}
                       </div>
                     </div>
                     <p className="text-[11px] print:text-[9.5px] text-slate-700 font-medium pl-3 leading-snug">
@@ -420,34 +416,28 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 <Code size={16} className="text-slate-900 print:w-3 print:h-3" /> {t.skillsTitle}
               </h2>
               
-              <div className="grid md:grid-cols-3 gap-3 print:gap-2 text-xs print:text-[10px]">
+              <div className="grid md:grid-cols-3 gap-4 print:gap-2 text-xs print:text-[10.5px]">
                 <div className={activeRole === 'frontend' ? 'font-black' : ''}>
-                  <h4 className="font-bold text-slate-900 mb-1.5 print:mb-1 uppercase tracking-wide flex items-center gap-1">
-                    Frontend {activeRole === 'frontend' && <span className="text-[9px] bg-emerald-100 text-emerald-800 px-1.5 rounded">PRIMARY</span>}
+                  <h4 className="font-bold text-slate-900 mb-1 print:mb-0.5 uppercase tracking-wide flex items-center gap-1">
+                    Frontend {activeRole === 'frontend' && <span className="text-[9px] font-mono text-emerald-700 font-extrabold">(PRIMARY)</span>}
                   </h4>
-                  <div className="flex flex-wrap gap-1 print:gap-1">
-                    {['Next.js', 'React.js', 'Vue 3', 'Angular', 'TypeScript', 'Tailwind CSS', 'Framer Motion'].map((s) => (
-                      <span key={s} className="px-2 py-0.5 bg-slate-100 rounded border border-slate-300 text-slate-900 font-bold pill">{s}</span>
-                    ))}
-                  </div>
+                  <p className="text-slate-800 leading-relaxed font-medium">
+                    Next.js, React.js, Vue 3, Angular, TypeScript, Tailwind CSS, Framer Motion
+                  </p>
                 </div>
                 <div className={activeRole === 'backend' ? 'font-black' : ''}>
-                  <h4 className="font-bold text-slate-900 mb-1.5 print:mb-1 uppercase tracking-wide flex items-center gap-1">
-                    Backend {activeRole === 'backend' && <span className="text-[9px] bg-sky-100 text-sky-800 px-1.5 rounded">PRIMARY</span>}
+                  <h4 className="font-bold text-slate-900 mb-1 print:mb-0.5 uppercase tracking-wide flex items-center gap-1">
+                    Backend {activeRole === 'backend' && <span className="text-[9px] font-mono text-sky-700 font-extrabold">(PRIMARY)</span>}
                   </h4>
-                  <div className="flex flex-wrap gap-1 print:gap-1">
-                    {['Java Spring Boot', 'Golang', 'Express.js', 'Node.js', 'PostgreSQL', 'Prisma ORM', 'MongoDB', 'FastAPI'].map((s) => (
-                      <span key={s} className="px-2 py-0.5 bg-slate-100 rounded border border-slate-300 text-slate-900 font-bold pill">{s}</span>
-                    ))}
-                  </div>
+                  <p className="text-slate-800 leading-relaxed font-medium">
+                    Java Spring Boot, Golang, Express.js, Node.js, PostgreSQL, Prisma ORM, MongoDB, FastAPI
+                  </p>
                 </div>
                 <div>
-                  <h4 className="font-bold text-slate-900 mb-1.5 print:mb-1 uppercase tracking-wide">DevOps & Tools</h4>
-                  <div className="flex flex-wrap gap-1 print:gap-1">
-                    {['Docker', 'AWS', 'Vercel', 'Git & GitHub', 'Firebase', 'Postman'].map((s) => (
-                      <span key={s} className="px-2 py-0.5 bg-slate-100 rounded border border-slate-300 text-slate-900 font-bold pill">{s}</span>
-                    ))}
-                  </div>
+                  <h4 className="font-bold text-slate-900 mb-1 print:mb-0.5 uppercase tracking-wide">DevOps & Tools</h4>
+                  <p className="text-slate-800 leading-relaxed font-medium">
+                    Docker, AWS, Vercel Edge, Git & GitHub, Firebase, Postman
+                  </p>
                 </div>
               </div>
             </div>
