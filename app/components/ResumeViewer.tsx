@@ -391,19 +391,24 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                   {roleProjects.length} Projects Selected
                 </span>
               </h2>
-              <div className="space-y-2 print:space-y-1 text-xs print:text-[10.5px]">
-                {roleProjects.slice(0, 6).map((project, idx) => (
-                  <div key={idx} className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 border-b border-slate-200 pb-1.5 print:pb-1 last:border-none print:break-inside-avoid">
-                    <div className="font-bold text-slate-900">
-                      • {project.title}
+              <div className="space-y-2.5 print:space-y-1.5 text-xs print:text-[10.5px]">
+                {roleProjects.slice(0, 5).map((project, idx) => (
+                  <div key={idx} className="space-y-0.5 border-b border-slate-200 pb-2 print:pb-1.5 last:border-none print:break-inside-avoid">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                      <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[11px]">
+                        • {project.title}
+                      </div>
+                      <div className="flex flex-wrap gap-1">
+                        {project.tech.map((tItem, i) => (
+                          <span key={i} className="text-[9px] print:text-[8px] font-mono font-bold uppercase text-slate-900 bg-slate-100 border border-slate-300 px-1.5 py-0.5 rounded pill">
+                            {tItem}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                    <div className="flex flex-wrap gap-1">
-                      {project.tech.map((tItem, i) => (
-                        <span key={i} className="text-[9px] print:text-[8px] font-mono font-bold uppercase text-slate-900 bg-slate-100 border border-slate-300 px-1.5 py-0.5 rounded pill">
-                          {tItem}
-                        </span>
-                      ))}
-                    </div>
+                    <p className="text-[11px] print:text-[9.5px] text-slate-700 font-medium pl-3 leading-snug">
+                      {project.description}
+                    </p>
                   </div>
                 ))}
               </div>
