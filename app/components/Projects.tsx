@@ -6,6 +6,7 @@ import { projects, type ProjectData, type ProjectCategory } from '../lib/data/pr
 import ProjectDrawer from './ProjectDrawer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/app/lib/utils';
+import { Search, X, Layers, Code } from 'lucide-react';
 
 const CATEGORIES: ('All' | ProjectCategory)[] = ['All', 'Front End', 'Back End', 'Full Stack'];
 
@@ -14,6 +15,7 @@ export default function Projects() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [activeCategory, setActiveCategory] = useState<'All' | ProjectCategory>('All');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 4;
@@ -35,6 +37,16 @@ export default function Projects() {
 
   const handleCategoryChange = (cat: 'All' | ProjectCategory) => {
     setActiveCategory(cat);
+    setCurrentPage(1);
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+    setCurrentPage(1);
+  };
+
+  const handleClearSearch = () => {
+    setSearchQuery('');
     setCurrentPage(1);
   };
 
@@ -66,9 +78,15 @@ export default function Projects() {
 
   if (!mounted) return null;
 
-  const filteredProjects = activeCategory === 'All' 
-    ? projects 
-    : projects.filter(p => p.category === activeCategory);
+  const filteredProjects = projects.filter(p => {
+    const matchesCategory = activeCategory === 'All' || p.category === activeCategory;
+    const q = searchQuery.toLowerCase().trim();
+    const matchesSearch = !q || 
+      p.title.toLowerCase().includes(q) || 
+      p.description.toLowerCase().includes(q) || 
+      p.tech.some(t => t.toLowerCase().includes(q));
+    return matchesCategory && matchesSearch;
+  });
 
   const indexOfLastProject = currentPage * projectsPerPage;
   const indexOfFirstProject = indexOfLastProject - projectsPerPage;
@@ -88,41 +106,73 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5 }}
-          className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6"
+          className="mb-10 flex flex-col gap-6"
         >
-          <div>
-            <h2 className="text-5xl font-black uppercase tracking-tighter font-geist">
-              Work<span className="text-primary">.</span>
-            </h2>
-            <p className="text-slate-400 font-mono text-xs mt-2 uppercase tracking-widest">
-              Selected Projects & Case Studies
-            </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+              <h2 className="text-5xl font-black uppercase tracking-tighter font-geist">
+                Work<span className="text-primary">.</span>
+              </h2>
+              <p className="text-slate-400 font-mono text-xs mt-2 uppercase tracking-widest flex items-center gap-2">
+                Selected Projects & Case Studies • <span className="text-primary font-bold">{projects.length} Total Repositories</span>
+              </p>
+            </div>
+
+            {/* Category Filter Tabs */}
+            <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+              {CATEGORIES.map((cat) => {
+                const isActive = activeCategory === cat;
+                return (
+                  <button
+                    key={cat}
+                    onClick={() => handleCategoryChange(cat)}
+                    className={cn(
+                      "px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer",
+                      isActive
+                        ? "bg-primary text-black shadow-md"
+                        : "text-slate-500 hover:text-slate-900 dark:hover:text-white"
+                    )}
+                  >
+                    {cat}
+                  </button>
+                );
+              })}
+            </div>
           </div>
 
-          {/* Category Filter Tabs */}
-          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl glass border border-slate-200 dark:border-slate-800">
-            {CATEGORIES.map((cat) => {
-              const isActive = activeCategory === cat;
-              return (
+          {/* Real-time Search Bar Input */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-2 rounded-2xl glass border border-slate-200 dark:border-slate-800">
+            <div className="relative w-full sm:max-w-md flex items-center">
+              <Search size={16} className="absolute left-4 text-slate-400 pointer-events-none" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={handleSearchChange}
+                placeholder="Search projects (e.g. Java, Golang, React Native, Spring Boot, AI)..."
+                className="w-full pl-11 pr-10 py-2.5 bg-slate-100/60 dark:bg-slate-900/60 rounded-xl text-xs font-semibold text-slate-800 dark:text-slate-200 placeholder-slate-400 outline-none border border-transparent focus:border-primary/50 transition-all font-mono"
+              />
+              {searchQuery && (
                 <button
-                  key={cat}
-                  onClick={() => handleCategoryChange(cat)}
-                  className={cn(
-                    "px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer",
-                    isActive
-                      ? "bg-primary text-black shadow-md"
-                      : "text-slate-500 hover:text-slate-900 dark:hover:text-white"
-                  )}
+                  onClick={handleClearSearch}
+                  className="absolute right-3 p-1 text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-lg transition-colors cursor-pointer"
+                  aria-label="Clear search"
                 >
-                  {cat}
+                  <X size={14} />
                 </button>
-              );
-            })}
+              )}
+            </div>
+
+            {/* Results Count Badge */}
+            <div className="text-[11px] font-mono font-bold uppercase text-slate-500 dark:text-slate-400 px-3 py-1 flex items-center gap-1.5 self-end sm:self-center">
+              <Layers size={13} className="text-primary" />
+              Showing <span className="text-slate-900 dark:text-white font-extrabold">{filteredProjects.length}</span> matching projects
+            </div>
           </div>
         </motion.div>
         
-        <div className="grid md:grid-cols-2 gap-10 md:gap-12">
-          {currentProjects.map((project, idx) => (
+        {currentProjects.length > 0 ? (
+          <div className="grid md:grid-cols-2 gap-10 md:gap-12">
+            {currentProjects.map((project, idx) => (
             <motion.div 
               key={`${project.title}-${currentPage}-${activeCategory}`}
               initial={{ opacity: 0, y: 20 }}
@@ -168,6 +218,23 @@ export default function Projects() {
             </motion.div>
           ))}
         </div>
+        ) : (
+          <div className="py-16 text-center rounded-3xl glass border border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center gap-3">
+            <Search size={36} className="text-slate-400 opacity-50" />
+            <h3 className="text-xl font-bold font-geist text-slate-800 dark:text-slate-200">
+              No projects found
+            </h3>
+            <p className="text-xs font-mono text-slate-500 max-w-sm">
+              We couldn&apos;t find any repository matching &quot;{searchQuery}&quot; under {activeCategory} category.
+            </p>
+            <button
+              onClick={handleClearSearch}
+              className="mt-2 px-5 py-2.5 bg-primary text-black font-extrabold text-xs uppercase tracking-wider rounded-xl hover:opacity-90 transition-all cursor-pointer shadow-md"
+            >
+              Reset Search Filter
+            </button>
+          </div>
+        )}
 
         {totalPages > 1 && (
           <div className="mt-20 flex flex-wrap justify-center items-center gap-2">
