@@ -20,7 +20,7 @@ export default function Projects() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const [currentPage, setCurrentPage] = useState(1);
-  const projectsPerPage = 4;
+  const projectsPerPage = 6;
 
   useEffect(() => {
     setMounted(true);
@@ -173,37 +173,37 @@ export default function Projects() {
         </motion.div>
         
         {currentProjects.length > 0 ? (
-          <div className="grid md:grid-cols-2 gap-8 md:gap-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {currentProjects.map((project, idx) => (
             <motion.div 
               key={`${project.title}-${currentPage}-${activeCategory}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.5, delay: idx * 0.08 }}
+              transition={{ duration: 0.5, delay: idx * 0.05 }}
               className="tilt-card cursor-pointer h-full"
               onMouseMove={handleTiltMove}
               onMouseLeave={handleTiltLeave}
               onClick={() => handleOpenDrawer(project)}
             >
-              <div className="tilt-inner group glass p-5 md:p-6 rounded-[28px] border border-slate-200/80 dark:border-slate-800/80 hover:border-primary/50 transition-all flex flex-col justify-between h-full shadow-lg">
+              <div className="tilt-inner group glass p-4 md:p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 hover:border-primary/50 transition-all flex flex-col justify-between h-full shadow-md">
                 <div>
-                  {/* Medium Aspect Ratio Image Container */}
-                  <div className="relative aspect-[16/9] rounded-2xl overflow-hidden glass mb-5 shadow-md">
+                  {/* Compact Small Image Container */}
+                  <div className="relative h-36 sm:h-40 rounded-xl overflow-hidden glass mb-3.5 shadow-sm">
                     <Image 
                       src={project.image} 
                       alt={project.title} 
-                      width={800}
-                      height={450}
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      width={600}
+                      height={350}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
                       quality={75}
                       loading="lazy"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
                     />
                     {/* Category Pill Tag Overlay */}
-                    <div className="absolute top-3 right-3 z-10">
+                    <div className="absolute top-2.5 right-2.5 z-10">
                       <span className={cn(
-                        "px-2.5 py-1 rounded-full text-[9px] font-mono font-extrabold uppercase tracking-wider backdrop-blur-md border shadow-md",
+                        "px-2 py-0.5 rounded-full text-[8.5px] font-mono font-extrabold uppercase tracking-wider backdrop-blur-md border shadow-sm",
                         project.category === 'Front End' && "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
                         project.category === 'Back End' && "bg-sky-500/20 text-sky-300 border-sky-500/30",
                         project.category === 'Full Stack' && "bg-purple-500/20 text-purple-300 border-purple-500/30"
@@ -214,22 +214,22 @@ export default function Projects() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl md:text-2xl font-black mb-2 group-hover:text-primary transition-colors font-geist">
+                  <h3 className="text-base md:text-lg font-black mb-1.5 group-hover:text-primary transition-colors font-geist line-clamp-1">
                     {project.title}
                   </h3>
 
                   {/* Description Preview */}
-                  <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed mb-4 line-clamp-2">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 font-medium leading-relaxed mb-3 line-clamp-2">
                     {project.description}
                   </p>
                 </div>
 
                 {/* Tech Stack & Details Action Footer */}
-                <div className="pt-3 border-t border-slate-200/60 dark:border-slate-800/60 flex items-center justify-between gap-2">
-                  <span className="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-widest truncate">
-                    {project.tech.slice(0, 4).join(' • ')}
+                <div className="pt-2.5 border-t border-slate-200/60 dark:border-slate-800/60 flex items-center justify-between gap-2">
+                  <span className="font-mono text-[9px] text-slate-400 font-bold uppercase tracking-wider truncate">
+                    {project.tech.slice(0, 3).join(' • ')}
                   </span>
-                  <span className="text-[10px] font-mono font-extrabold text-primary uppercase group-hover:translate-x-0.5 transition-transform flex-shrink-0">
+                  <span className="text-[9px] font-mono font-extrabold text-primary uppercase group-hover:translate-x-0.5 transition-transform flex-shrink-0">
                     Details &rarr;
                   </span>
                 </div>
