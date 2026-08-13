@@ -392,7 +392,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 </span>
               </h2>
               <div className="space-y-2.5 print:space-y-1.5 text-xs print:text-[10.5px]">
-                {roleProjects.slice(0, 10).map((project, idx) => (
+                {roleProjects.slice(0, 7).map((project, idx) => (
                   <div key={idx} className="space-y-0.5 border-b border-slate-200 pb-2 print:pb-1.5 last:border-none print:break-inside-avoid">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                       <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[11px]">
