@@ -173,7 +173,7 @@ export default function Projects() {
         </motion.div>
         
         {currentProjects.length > 0 ? (
-          <div className="grid md:grid-cols-2 gap-10 md:gap-12">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-10">
             {currentProjects.map((project, idx) => (
             <motion.div 
               key={`${project.title}-${currentPage}-${activeCategory}`}
@@ -181,41 +181,58 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="tilt-card cursor-pointer"
+              className="tilt-card cursor-pointer h-full"
               onMouseMove={handleTiltMove}
               onMouseLeave={handleTiltLeave}
               onClick={() => handleOpenDrawer(project)}
             >
-              <div className="tilt-inner group">
-                <div className="relative aspect-[16/10] rounded-[32px] md:rounded-[40px] overflow-hidden glass mb-6 md:mb-8 shadow-xl">
-                  <Image 
-                    src={project.image} 
-                    alt={project.title} 
-                    width={800}
-                    height={500}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    quality={75}
-                    loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
-                  />
-                  {/* Category Pill Tag Overlay */}
-                  <div className="absolute top-4 right-4 z-10">
-                    <span className={cn(
-                      "px-3 py-1.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider backdrop-blur-md border shadow-lg",
-                      project.category === 'Front End' && "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
-                      project.category === 'Back End' && "bg-sky-500/20 text-sky-300 border-sky-500/30",
-                      project.category === 'Full Stack' && "bg-purple-500/20 text-purple-300 border-purple-500/30"
-                    )}>
-                      {project.category}
-                    </span>
+              <div className="tilt-inner group glass p-5 md:p-6 rounded-[28px] border border-slate-200/80 dark:border-slate-800/80 hover:border-primary/50 transition-all flex flex-col justify-between h-full shadow-lg">
+                <div>
+                  {/* Medium Aspect Ratio Image Container */}
+                  <div className="relative aspect-[16/9] rounded-2xl overflow-hidden glass mb-5 shadow-md">
+                    <Image 
+                      src={project.image} 
+                      alt={project.title} 
+                      width={800}
+                      height={450}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      quality={75}
+                      loading="lazy"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
+                    />
+                    {/* Category Pill Tag Overlay */}
+                    <div className="absolute top-3 right-3 z-10">
+                      <span className={cn(
+                        "px-2.5 py-1 rounded-full text-[9px] font-mono font-extrabold uppercase tracking-wider backdrop-blur-md border shadow-md",
+                        project.category === 'Front End' && "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
+                        project.category === 'Back End' && "bg-sky-500/20 text-sky-300 border-sky-500/30",
+                        project.category === 'Full Stack' && "bg-purple-500/20 text-purple-300 border-purple-500/30"
+                      )}>
+                        {project.category}
+                      </span>
+                    </div>
                   </div>
+
+                  {/* Title */}
+                  <h3 className="text-xl md:text-2xl font-black mb-2 group-hover:text-primary transition-colors font-geist">
+                    {project.title}
+                  </h3>
+
+                  {/* Description Preview */}
+                  <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed mb-4 line-clamp-2">
+                    {project.description}
+                  </p>
                 </div>
-                <h3 className="text-3xl font-black mb-2 group-hover:text-primary transition-colors font-geist flex items-center justify-between">
-                  <span>{project.title}</span>
-                </h3>
-                <p className="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-widest">
-                  {project.tech.slice(0, 4).join(' • ')}
-                </p>
+
+                {/* Tech Stack & Details Action Footer */}
+                <div className="pt-3 border-t border-slate-200/60 dark:border-slate-800/60 flex items-center justify-between gap-2">
+                  <span className="font-mono text-[10px] text-slate-400 font-bold uppercase tracking-widest truncate">
+                    {project.tech.slice(0, 4).join(' • ')}
+                  </span>
+                  <span className="text-[10px] font-mono font-extrabold text-primary uppercase group-hover:translate-x-0.5 transition-transform flex-shrink-0">
+                    Details &rarr;
+                  </span>
+                </div>
               </div>
             </motion.div>
           ))}
