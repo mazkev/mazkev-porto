@@ -411,34 +411,18 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
             </div>
 
             {/* Core Tech stack */}
-            <div className="space-y-2.5 print:space-y-1.5">
+            <div className="space-y-1.5 print:space-y-1">
               <h2 className="text-sm print:text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-1 flex items-center gap-2">
                 <Code size={16} className="text-slate-900 print:w-3 print:h-3" /> {t.skillsTitle}
               </h2>
               
-              <div className="grid md:grid-cols-3 gap-4 print:gap-2 text-xs print:text-[10.5px]">
-                <div className={activeRole === 'frontend' ? 'font-black' : ''}>
-                  <h4 className="font-bold text-slate-900 mb-1 print:mb-0.5 uppercase tracking-wide flex items-center gap-1">
-                    Frontend {activeRole === 'frontend' && <span className="text-[9px] font-mono text-emerald-700 font-extrabold">(PRIMARY)</span>}
-                  </h4>
-                  <p className="text-slate-800 leading-relaxed font-medium">
-                    Next.js, React.js, Vue 3, Angular, TypeScript, Tailwind CSS, Framer Motion
-                  </p>
-                </div>
-                <div className={activeRole === 'backend' ? 'font-black' : ''}>
-                  <h4 className="font-bold text-slate-900 mb-1 print:mb-0.5 uppercase tracking-wide flex items-center gap-1">
-                    Backend {activeRole === 'backend' && <span className="text-[9px] font-mono text-sky-700 font-extrabold">(PRIMARY)</span>}
-                  </h4>
-                  <p className="text-slate-800 leading-relaxed font-medium">
-                    Java Spring Boot, Golang, Express.js, Node.js, PostgreSQL, Prisma ORM, MongoDB, FastAPI
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 mb-1 print:mb-0.5 uppercase tracking-wide">DevOps & Tools</h4>
-                  <p className="text-slate-800 leading-relaxed font-medium">
-                    Docker, AWS, Vercel Edge, Git & GitHub, Firebase, Postman
-                  </p>
-                </div>
+              <div className="space-y-1 text-xs print:text-[10px] text-slate-800 leading-relaxed font-medium">
+                <p>
+                  <strong>Engineering & Frameworks:</strong> Next.js, React.js, Java Spring Boot, Golang, Express.js, Node.js, Vue 3, Angular, Python (FastAPI), TypeScript, Tailwind CSS
+                </p>
+                <p>
+                  <strong>Databases & Cloud Tools:</strong> PostgreSQL, MongoDB, Redis, Prisma ORM, Docker, AWS, Vercel Edge, Firebase, Git & GitHub, Postman
+                </p>
               </div>
             </div>
 
