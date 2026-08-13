@@ -2,9 +2,11 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import { projects, type ProjectData, type ProjectCategory } from '../lib/data/projects';
-import ProjectDrawer from './ProjectDrawer';
 import { motion, AnimatePresence } from 'framer-motion';
+
+const ProjectDrawer = dynamic(() => import('./ProjectDrawer'), { ssr: false });
 import { cn } from '@/app/lib/utils';
 import { Search, X, Layers, Code } from 'lucide-react';
 

@@ -3,9 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, Cpu, Layers, Server, Database, Cloud, Code, Sparkles, Brain, Wrench, Terminal, Zap } from 'lucide-react';
-import ResumeViewer from './ResumeViewer';
-import CoverLetterViewer from './CoverLetterViewer';
+import dynamic from 'next/dynamic';
 import { cn } from '@/app/lib/utils';
+
+const ResumeViewer = dynamic(() => import('./ResumeViewer'), { ssr: false });
+const CoverLetterViewer = dynamic(() => import('./CoverLetterViewer'), { ssr: false });
 
 interface SkillItem {
   name: string;
