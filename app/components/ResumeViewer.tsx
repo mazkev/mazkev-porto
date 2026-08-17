@@ -112,7 +112,12 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
 
   // Filter projects dynamically based on selected role profile
   const roleProjects = activeRole === 'frontend'
-    ? projects.filter(p => p.category === 'Front End')
+    ? projects.filter(p => 
+        p.category === 'Front End' && 
+        (p.tech.some(t => t.toLowerCase().includes('react') || t.toLowerCase().includes('next')) || 
+         p.title.toLowerCase().includes('clone') || 
+         p.description.toLowerCase().includes('clone'))
+      )
     : activeRole === 'backend'
     ? projects.filter(p => p.category === 'Back End')
     : projects.filter(p => 
