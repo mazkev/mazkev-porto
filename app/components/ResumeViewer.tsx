@@ -114,9 +114,8 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
   const roleProjects = activeRole === 'frontend'
     ? projects.filter(p => 
         p.category === 'Front End' && 
-        (p.tech.some(t => t.toLowerCase().includes('react') || t.toLowerCase().includes('next')) || 
-         p.title.toLowerCase().includes('clone') || 
-         p.description.toLowerCase().includes('clone'))
+        !p.title.toLowerCase().includes('ai') && 
+        !p.tech.some(t => t.toLowerCase().includes('ai'))
       )
     : activeRole === 'backend'
     ? projects.filter(p => p.category === 'Back End')
