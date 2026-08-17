@@ -488,6 +488,42 @@ export const useCanvasStore = create<CanvasStore>((set) => ({
 
 export const projects: ProjectData[] = [
   {
+    title: 'BayE E-Commerce Marketplace',
+    description: 'An eBay-inspired fullstack e-commerce marketplace built with Next.js App Router, TypeScript, dynamic product filtering, bidding simulation, and responsive Tailwind CSS.',
+    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'React'],
+    image: '/projects/semarketplace.png',
+    live: 'https://github.com/mazkev/BayE-marketplace',
+    github: 'https://github.com/mazkev/BayE-marketplace',
+    category: 'Full Stack',
+  },
+  {
+    title: 'HRMS Enterprise Management (Laravel 11)',
+    description: 'A comprehensive Human Resource Management System built with Laravel 11, featuring employee attendance tracking, payroll calculation, department management, and automated leave requests.',
+    tech: ['Laravel 11', 'PHP', 'Blade', 'MySQL'],
+    image: '/projects/marketinvent.png',
+    live: 'https://github.com/mazkev/HRMS-app-laravel',
+    github: 'https://github.com/mazkev/HRMS-app-laravel',
+    category: 'Back End',
+  },
+  {
+    title: 'Go & React Marketplace Backend',
+    description: 'High-performance microservice e-commerce marketplace backend written in Golang with GORM ORM, PostgreSQL connection pooling, JWT authentication, and React frontend integration.',
+    tech: ['Golang', 'React', 'PostgreSQL', 'GORM', 'JWT'],
+    image: '/projects/mazcloud.png',
+    live: 'https://github.com/mazkev/go-marketplace-backend',
+    github: 'https://github.com/mazkev/go-marketplace-backend',
+    category: 'Back End',
+  },
+  {
+    title: 'Go Enterprise Banking Core Engine',
+    description: 'An enterprise banking core engine built with Go, featuring ACID-compliant transaction transfers, account ledger balance verification, optimistic locking, and RESTful API endpoints.',
+    tech: ['Golang', 'PostgreSQL', 'Docker', 'REST API'],
+    image: '/projects/gofinance.png',
+    live: 'https://github.com/mazkev/go-bank',
+    github: 'https://github.com/mazkev/go-bank',
+    category: 'Back End',
+  },
+  {
     title: 'MazCloud Dashboard',
     description: 'A premium cloud storage and file management dashboard. Features interactive capacity charts, secure folder management, and a sleek file browser interface.',
     tech: ['React', 'Tailwind CSS', 'Redux'],
