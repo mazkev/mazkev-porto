@@ -488,6 +488,24 @@ export const useCanvasStore = create<CanvasStore>((set) => ({
 
 export const projects: ProjectData[] = [
   {
+    title: 'Bun & Hono E-Commerce Backend (Drizzle ORM)',
+    description: 'Modern high-throughput e-commerce backend built with Bun runtime, Hono web framework, Drizzle ORM, Zod schema validation, JWT auth, and RBAC order management.',
+    tech: ['Bun', 'Hono', 'TypeScript', 'Drizzle ORM', 'Zod', 'JWT'],
+    image: '/projects/mazcloud.png',
+    live: 'https://github.com/mazkev/bun-hono',
+    github: 'https://github.com/mazkev/bun-hono',
+    category: 'Back End',
+  },
+  {
+    title: 'AliExpress Choice Enterprise E-Commerce (Java 17 & Spring Boot 3)',
+    description: 'AliExpress (Maz Express Choice) inspired enterprise e-commerce platform built with Java 17, Spring Boot 3.3+, Vue 3 Composition API, Tailwind CSS, Pinia, and RESTful inventory services.',
+    tech: ['Java 17', 'Spring Boot 3', 'Vue.js 3', 'Tailwind CSS', 'Pinia'],
+    image: '/projects/marketinvent.png',
+    live: 'https://github.com/mazkev/java-ecommerce',
+    github: 'https://github.com/mazkev/java-ecommerce',
+    category: 'Full Stack',
+  },
+  {
     title: 'BayE E-Commerce Marketplace',
     description: 'An eBay-inspired fullstack e-commerce marketplace built with Next.js App Router, TypeScript, dynamic product filtering, bidding simulation, and responsive Tailwind CSS.',
     tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'React'],
