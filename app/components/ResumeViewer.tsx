@@ -110,20 +110,43 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
 
   if (!isOpen) return null;
 
-  // Filter projects dynamically based on selected role profile
-  const roleProjects = activeRole === 'frontend'
-    ? projects.filter(p => 
-        p.category === 'Front End' && 
-        !p.title.toLowerCase().includes('ai') && 
-        !p.tech.some(t => t.toLowerCase().includes('ai'))
-      )
-    : activeRole === 'backend'
-    ? projects.filter(p => p.category === 'Back End')
-    : projects.filter(p => 
-        p.category === 'Full Stack' && 
-        !p.title.toLowerCase().includes('ai') && 
-        !p.tech.some(t => t.toLowerCase().includes('ai'))
-      );
+  // Curated & Ranked Top 6 Projects per CV Role Profile
+  const frontendTop6Titles = [
+    'Enterprise Operations Dashboard',
+    'MazCloud File Storage Dashboard',
+    'React Shopping Cart Application',
+    'Canvass Graphic Design Studio',
+    'Trello Kanban Workspace',
+    'Spotify Web Player Clone',
+  ];
+
+  const fullstackTop6Titles = [
+    'Go Marketplace (Fullstack Go & React)',
+    'BayE Marketplace (Fullstack Next.js)',
+    'Semarketplace Pro (React & Express)',
+    'AliExpress Choice E-Commerce (Java Spring Boot)',
+    'HRMS Enterprise Management (Laravel 11)',
+    'Bun & Hono E-Commerce Backend (Drizzle ORM)',
+  ];
+
+  const backendTop6Titles = [
+    'Go Marketplace Backend (GORM & REST API)',
+    'Go Clean Architecture REST API',
+    'Go Banking Core Engine',
+    'Bun & Hono E-Commerce Backend (Drizzle ORM)',
+    'HRMS Enterprise Management (Laravel 11)',
+    'AliExpress Choice E-Commerce (Java Spring Boot)',
+  ];
+
+  const roleProjects = (
+    activeRole === 'frontend'
+      ? frontendTop6Titles
+      : activeRole === 'backend'
+      ? backendTop6Titles
+      : fullstackTop6Titles
+  )
+    .map(title => projects.find(p => p.title === title))
+    .filter(Boolean) as typeof projects;
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end print:absolute print:inset-auto print:w-full print:h-auto print:block">
@@ -400,7 +423,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 </span>
               </h2>
               <div className="space-y-2.5 print:space-y-1.5 text-xs print:text-[10.5px]">
-                {roleProjects.slice(0, 7).map((project, idx) => (
+                {roleProjects.slice(0, 6).map((project, idx) => (
                   <div key={idx} className="space-y-0.5 border-b border-slate-200 pb-2 print:pb-1.5 last:border-none print:break-inside-avoid">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                       <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[11px]">
