@@ -102,11 +102,11 @@ export default function About() {
               <h3 className="text-5xl font-black tracking-tighter uppercase font-geist">
                 How I got <span className="text-primary">here.</span>
               </h3>
-              <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed">
-                I&apos;m a Fullstack Engineer with 3+ years of experience building high-fidelity consumer applications and robust enterprise systems. My expertise spans across modern frontend frameworks like Next.js, Vue 3, and Angular, paired with scalable backend solutions using Java Spring Boot, Golang, Express.js, Node.js, MongoDB, PostgreSQL, and FastAPI.
+              <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed">
+                I bring <strong>3 years of professional experience in Application Support at PT PLN Icon+</strong>, handling production system operations, complex SQL database queries, and tracing application bugs. This operational experience gives me a solid grasp of how real-world software behaves under production workloads.
               </p>
-              <p className="text-slate-500 dark:text-slate-400 text-lg leading-relaxed">
-                I am a detail-oriented and innovative individual with a strong foundation in computer science and a passion for building high-quality, scalable, and efficient software solutions. I have experience working with various technologies and frameworks and enjoy solving complex problems. My goal is to continuously improve my skills and contribute to meaningful projects that make a positive impact.
+              <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed">
+                I am actively transitioning into <strong>Software Development / Fullstack Engineering</strong>, focusing on <strong>React & TypeScript</strong> for modern web interfaces, and deepening <strong>Go (Golang)</strong> for clean, reliable backend microservices with Clean Architecture and PostgreSQL.
               </p>
             </div>
           </div>

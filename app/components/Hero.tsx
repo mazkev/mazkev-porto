@@ -73,18 +73,35 @@ export default function Hero() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            Available for freelance projects
+            Available for Software Engineering Roles
           </div>
-          <span className="text-primary font-mono text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block">
-            Kevin Eka Pratama — Fullstack Engineer
+          <span className="text-primary font-mono text-xs font-bold uppercase tracking-[0.3em] mb-3 block">
+            Kevin Eka Pratama — Fullstack Developer
           </span>
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-black tracking-tighter leading-[1.1] mb-8 font-geist">
-            Creating seamless<br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-600 dark:from-emerald-400 dark:to-blue-400">digital experiences.</span>
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black tracking-tighter leading-[1.1] mb-6 font-geist text-slate-900 dark:text-white">
+            Building reliable web apps with{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-600 dark:from-emerald-400 dark:to-blue-400">
+              React, TypeScript & Go.
+            </span>
           </h1>
-          <p className="text-base sm:text-lg text-slate-500 dark:text-slate-400 max-w-md mb-10 leading-relaxed font-medium">
-            Hi, I&apos;m Kevin. I&apos;m a Fullstack Engineer specializing in React, Next.js, Java Spring Boot, Golang, Express.js, and PostgreSQL. I focus on writing clean code and shipping fast, reliable products.
+          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-lg mb-6 leading-relaxed font-medium">
+            Fullstack Developer with <strong>3 years of professional experience in Application Support</strong>, transitioning into Software Development. Focused on modern React frontends and clean, scalable Go backend services.
           </p>
+
+          <div className="flex flex-wrap items-center gap-2 mb-8 text-xs font-mono">
+            <span className="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-bold border border-slate-200 dark:border-slate-800">
+              React & Next.js
+            </span>
+            <span className="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-bold border border-slate-200 dark:border-slate-800">
+              TypeScript
+            </span>
+            <span className="px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-bold border border-slate-200 dark:border-slate-800">
+              Go (Golang)
+            </span>
+            <span className="px-3 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20">
+              3 Yrs Application Support
+            </span>
+          </div>
           
           <div className="flex flex-col sm:flex-row flex-wrap gap-3">
             <a 
