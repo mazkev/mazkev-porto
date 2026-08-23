@@ -20,32 +20,35 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mazkev.vercel.app"),
-  title: "Kevin Eka Pratama | Fullstack Engineer",
-  description: "Fullstack Engineer specializing in React, Next.js, Java Spring Boot, Golang, Express, and PostgreSQL. I build fast, scalable, and reliable web applications.",
-  keywords: ["Fullstack Engineer", "Next.js", "React", "TypeScript", "Tailwind CSS", "Java Spring Boot", "Golang", "Express", "Portfolio", "Web Development"],
+  title: "Kevin Eka Pratama | Fullstack Developer (React • TypeScript • Go)",
+  description: "Fullstack Developer with 3 years of professional experience in Application Support, transitioning into Software Development. Specializing in React, TypeScript, and Go (Golang) backend microservices.",
+  keywords: [
+    "Kevin Eka Pratama",
+    "Fullstack Developer",
+    "Go Developer",
+    "Golang",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Clean Architecture",
+    "Application Support",
+    "PostgreSQL",
+    "Java Spring Boot"
+  ],
   authors: [{ name: "Kevin Eka Pratama" }],
   creator: "Kevin Eka Pratama",
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "id_ID",
     url: "https://mazkev.vercel.app",
     siteName: "Kevin Eka Pratama Portfolio",
-    title: "Kevin Eka Pratama | Fullstack Engineer",
-    description: "Building fast, reliable fullstack web apps.",
-    images: [
-      {
-        url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop",
-        width: 1200,
-        height: 630,
-        alt: "Kevin Pratama Portfolio",
-      },
-    ],
+    title: "Kevin Eka Pratama — Fullstack Developer (React • TypeScript • Go)",
+    description: "3 years Application Support experience transitioning into Software Development. Building reliable web applications & Clean Architecture Go microservices.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kevin Eka Pratama | Fullstack Engineer",
-    description: "Building fast, reliable fullstack web apps.",
-    images: ["https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop"],
+    title: "Kevin Eka Pratama — Fullstack Developer (React • TypeScript • Go)",
+    description: "3 years Application Support experience transitioning into Software Development. Building reliable web applications & Clean Architecture Go microservices.",
   },
   robots: {
     index: true,
