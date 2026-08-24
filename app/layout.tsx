@@ -69,6 +69,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
+      <head>
+        <link rel="preconnect" href="https://cdn.simpleicons.org" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
+      </head>
       <body className={`${jakarta.variable} ${jetbrains.variable} antialiased transition-colors duration-300 overflow-x-hidden w-full`}>
         <ThemeProvider
           attribute="class"

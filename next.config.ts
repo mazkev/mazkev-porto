@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'framer-motion', '@vercel/analytics', '@vercel/speed-insights'],
+  },
   async headers() {
     return [
       {
@@ -23,10 +26,29 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        source: '/projects/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/profile/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
     ];
   },
   images: {
-    qualities: [75, 80],
+    minimumCacheTTL: 2592000,
+    qualities: [70, 75, 80],
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',

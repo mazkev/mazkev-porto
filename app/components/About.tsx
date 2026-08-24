@@ -89,8 +89,10 @@ export default function About() {
                 <Image 
                   src="/profile/kev.png" 
                   alt="Kevin Eka Pratama"
-                  width={800}
-                  height={800}
+                  width={500}
+                  height={500}
+                  sizes="(max-width: 768px) 100vw, 500px"
+                  quality={80}
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
               </div>
