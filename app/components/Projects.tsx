@@ -12,11 +12,22 @@ import { Search, X, Layers, Code } from 'lucide-react';
 
 const CATEGORIES: ('All' | ProjectCategory)[] = ['All', 'Front End', 'Back End', 'Full Stack'];
 
+const QUICK_TAGS = [
+  { label: 'All Tech', tag: '' },
+  { label: 'Go (Golang)', tag: 'Go' },
+  { label: 'Next.js / React', tag: 'React' },
+  { label: 'Java Spring Boot', tag: 'Spring Boot' },
+  { label: 'PostgreSQL / SQL', tag: 'PostgreSQL' },
+  { label: 'TypeScript', tag: 'TypeScript' },
+  { label: 'Laravel', tag: 'Laravel' },
+];
+
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [activeCategory, setActiveCategory] = useState<'All' | ProjectCategory>('All');
+  const [selectedTag, setSelectedTag] = useState<string>('');
   const [searchQuery, setSearchQuery] = useState('');
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -42,6 +53,11 @@ export default function Projects() {
     setCurrentPage(1);
   };
 
+  const handleQuickTagClick = (tag: string) => {
+    setSelectedTag(selectedTag === tag ? '' : tag);
+    setCurrentPage(1);
+  };
+
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
     setCurrentPage(1);
@@ -49,6 +65,7 @@ export default function Projects() {
 
   const handleClearSearch = () => {
     setSearchQuery('');
+    setSelectedTag('');
     setCurrentPage(1);
   };
 
@@ -82,12 +99,15 @@ export default function Projects() {
 
   const filteredProjects = projects.filter(p => {
     const matchesCategory = activeCategory === 'All' || p.category === activeCategory;
+    const matchesTag = !selectedTag || 
+      p.tech.some(t => t.toLowerCase().includes(selectedTag.toLowerCase())) ||
+      p.title.toLowerCase().includes(selectedTag.toLowerCase());
     const q = searchQuery.toLowerCase().trim();
     const matchesSearch = !q || 
       p.title.toLowerCase().includes(q) || 
       p.description.toLowerCase().includes(q) || 
       p.tech.some(t => t.toLowerCase().includes(q));
-    return matchesCategory && matchesSearch;
+    return matchesCategory && matchesTag && matchesSearch;
   });
 
   const indexOfLastProject = currentPage * projectsPerPage;
@@ -108,7 +128,7 @@ export default function Projects() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5 }}
-          className="mb-10 flex flex-col gap-6"
+          className="mb-10 flex flex-col gap-5"
         >
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div>
@@ -150,7 +170,7 @@ export default function Projects() {
                 type="text"
                 value={searchQuery}
                 onChange={handleSearchChange}
-                placeholder="Search projects (e.g. Java, Golang, React Native, Spring Boot, AI)..."
+                placeholder="Search projects (e.g. Java, Golang, React Native, Spring Boot)..."
                 className="w-full pl-11 pr-10 py-2.5 bg-slate-100/60 dark:bg-slate-900/60 rounded-xl text-xs font-semibold text-slate-800 dark:text-slate-200 placeholder-slate-400 outline-none border border-transparent focus:border-primary/50 transition-all font-mono"
               />
               {searchQuery && (
@@ -169,6 +189,30 @@ export default function Projects() {
               <Layers size={13} className="text-primary" />
               Showing <span className="text-slate-900 dark:text-white font-extrabold">{filteredProjects.length}</span> matching projects
             </div>
+          </div>
+
+          {/* Quick Tech-Tag Filter Chips */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 max-w-full">
+            <span className="text-[10px] font-mono font-bold uppercase text-slate-400 mr-1 flex-shrink-0">
+              Quick Filter:
+            </span>
+            {QUICK_TAGS.map((item) => {
+              const isSelected = selectedTag === item.tag;
+              return (
+                <button
+                  key={item.label}
+                  onClick={() => handleQuickTagClick(item.tag)}
+                  className={cn(
+                    "px-3 py-1 rounded-lg text-[11px] font-mono font-semibold transition-all whitespace-nowrap cursor-pointer flex-shrink-0",
+                    isSelected
+                      ? "bg-primary text-black font-extrabold shadow-sm"
+                      : "bg-slate-100 dark:bg-slate-900/80 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white border border-slate-200/80 dark:border-slate-800"
+                  )}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
           </div>
         </motion.div>
         
