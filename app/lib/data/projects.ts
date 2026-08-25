@@ -14,12 +14,114 @@ export interface CaseStudyDetails {
   challenge: string;
   solution: string;
   contributions: string[];
-  codeSnippet: string;
-  codeLang: string;
+  architectureFlow?: string;
+  codeSnippet?: string;
+  codeLang?: string;
 }
 
 export const caseStudyMap: Record<string, CaseStudyDetails> = {
+  'Go Marketplace (Fullstack Go & React)': {
+    architectureFlow: 'Client Request ➔ JWT Auth & Validation ➔ Handler Layer ➔ Usecase (Business Logic) ➔ Repository Layer ➔ PostgreSQL (Connection Pool)',
+    challenge: 'Synchronizing real-time checkout state between React frontend and Go microservices while ensuring ACID transaction safety for product stock.',
+    solution: 'Implemented clean RESTful API contracts with Go structs and GORM ORM transactions. Handled cart state optimistically in React and verified stock availability in PostgreSQL with row-level locks.',
+    contributions: [
+      'Engineered Go REST API endpoints with JWT middleware authentication.',
+      'Designed relational PostgreSQL schema with connection pooling.',
+      'Built responsive React frontend with TypeScript and dynamic catalog filters.',
+    ],
+  },
+  'Go Marketplace Backend (GORM & REST API)': {
+    architectureFlow: 'HTTP Request ➔ Router Engine ➔ JWT Middleware ➔ Order Service ➔ GORM Tx Repository ➔ PostgreSQL Pool',
+    challenge: 'Preventing double-spending and inventory race conditions during concurrent high-volume order checkout requests.',
+    solution: 'Enforced atomic database transactions (tx.Begin) with optimistic concurrency control and indexed product foreign keys in PostgreSQL.',
+    contributions: [
+      'Created modular CRUD handlers for auth, product catalogues, and checkout transactions.',
+      'Structured environment configuration and PostgreSQL connection health checks.',
+      'Implemented structured JSON logging and standardized HTTP error response models.',
+    ],
+  },
+  'Go Clean Architecture REST API': {
+    architectureFlow: 'HTTP Request ➔ Middleware ➔ Delivery/Handler ➔ Domain Interface ➔ Usecase Layer ➔ Repository Layer ➔ PostgreSQL',
+    challenge: 'Maintaining decoupled codebase where domain business rules are completely independent of third-party frameworks and database drivers.',
+    solution: 'Implemented Clean Architecture with 4 distinct layers: Domain (entities & interfaces), Usecase (application logic), Repository (database access), and Delivery (HTTP routing & JSON serialization).',
+    contributions: [
+      'Defined clean Go interfaces for loose coupling and mockable testing.',
+      'Structured database migrations and Docker containerized PostgreSQL environment.',
+      'Implemented input validation and standard error code mappings.',
+    ],
+  },
+  'BayE Marketplace (Fullstack Next.js)': {
+    architectureFlow: 'Next.js App Router ➔ Server Component Fetch ➔ Client Dynamic Filter ➔ Cart / Bidding State ➔ Tailwind CSS UI',
+    challenge: 'Rendering large dynamic auction product lists with interactive live price updates without causing layout shifts or hydration errors.',
+    solution: 'Utilized Next.js App Router server components for initial catalog hydration and client state hooks for bidding simulation and filter queries.',
+    contributions: [
+      'Built eBay-inspired responsive product card grid with badge indicators.',
+      'Created dynamic price bidding simulation and modular checkout sheet.',
+      'Optimized image loading with Next.js Image component and responsive breakpoints.',
+    ],
+  },
+  'Go Banking Core Engine': {
+    architectureFlow: 'Transfer Request ➔ Account Verification ➔ ACID Transaction Lock ➔ Ledger Balance Update ➔ Audit Logging',
+    challenge: 'Executing financial balance transfers between user accounts with strict zero-loss consistency and race condition prevention.',
+    solution: 'Designed ACID database transactions with row-level locking (SELECT ... FOR UPDATE) in PostgreSQL to guarantee serialized balance updates.',
+    contributions: [
+      'Engineered transfer transaction handlers with ledger balance verification.',
+      'Implemented Dockerized PostgreSQL testing suite with seed migrations.',
+      'Structured REST API endpoints with robust error boundary returns.',
+    ],
+  },
+  'Enterprise Operations Dashboard': {
+    architectureFlow: 'Metrics Stream ➔ Next.js 16 Client ➔ Recharts Visualization ➔ Tabular Log Filter ➔ Dark/Light System',
+    challenge: 'Visualizing dense system telemetry and server metric streams in real-time without degrading browser frame rates.',
+    solution: 'Implemented memoized chart components with Recharts, responsive CSS Grid virtualization, and local state filtering for server logs.',
+    contributions: [
+      'Designed enterprise-grade dashboard layout with interactive metric cards.',
+      'Built tabular system event log viewer with search and severity level filters.',
+      'Configured responsive theme system with dark mode priority.',
+    ],
+  },
+  'MazCloud File Storage Dashboard': {
+    architectureFlow: 'File Action ➔ Redux State Store ➔ Storage Capacity Engine ➔ Visual File Explorer ➔ Tailwind UI',
+    challenge: 'Managing nested folder navigation and dynamic storage capacity calculations on the client side.',
+    solution: 'Structured normalized Redux state slices for file system trees with instant UI feedback for folder creation and deletion.',
+    contributions: [
+      'Created interactive storage usage donut charts and capacity meters.',
+      'Engineered file directory breadcrumbs and multi-select file grid.',
+      'Built drag-and-drop file upload interface mockup.',
+    ],
+  },
+  'Bun & Hono E-Commerce Backend (Drizzle ORM)': {
+    architectureFlow: 'HTTP Request ➔ Hono Router ➔ Zod Validation ➔ JWT & RBAC Middleware ➔ Drizzle ORM ➔ SQLite / PostgreSQL',
+    challenge: 'Maximizing REST API throughput while maintaining strict runtime schema validation and type-safe database queries.',
+    solution: 'Leveraged Bun runtime with Hono web framework, Drizzle ORM type-safe queries, and Zod middleware validation.',
+    contributions: [
+      'Implemented JWT authentication with Role-Based Access Control (RBAC).',
+      'Built order return and customer complaint issue tracking workflows.',
+      'Configured Drizzle ORM schemas with relations and migration scripts.',
+    ],
+  },
+  'AliExpress Choice E-Commerce (Java Spring Boot)': {
+    architectureFlow: 'Vue 3 (Pinia) ➔ RESTful API ➔ Spring Security (JWT) ➔ Controller ➔ Service Layer ➔ Spring Data JPA ➔ PostgreSQL',
+    challenge: 'Structuring an enterprise multi-category marketplace with secure JWT auth and reactive frontend state synchronization.',
+    solution: 'Paired Java 17 Spring Boot 3 REST services with Vue 3 Composition API and Pinia state management.',
+    contributions: [
+      'Engineered Spring Security JWT filter chain and user role management.',
+      'Designed PostgreSQL entity relationships with JPA Hibernate.',
+      'Built AliExpress-inspired reactive frontend catalog with Tailwind CSS.',
+    ],
+  },
+  'HRMS Enterprise Management (Laravel 11)': {
+    architectureFlow: 'Employee Request ➔ Laravel Route ➔ Middleware ➔ Controller ➔ Eloquent ORM ➔ MySQL Database',
+    challenge: 'Handling complex corporate payroll calculations, attendance tracking, and hierarchical department leave approvals.',
+    solution: 'Built modular MVC architecture in Laravel 11 with Eloquent model relations, automated leave policy checks, and Blade UI.',
+    contributions: [
+      'Created attendance logging and automated salary deduction rules.',
+      'Designed database schemas with foreign key constraints in MySQL.',
+      'Implemented department manager approval workflows and report generators.',
+    ],
+  },
   'Semarketplace Pro': {
+    architectureFlow: 'React Client ➔ Redux Toolkit State ➔ Express.js REST API ➔ MongoDB Mongoose ➔ Order Processing',
     challenge: 'Minimizing cart abandonment rates, ensuring zero inventory race conditions, and loading massive catalogues with sub-100ms response times.',
     solution: 'Engineered an optimistic checkout dispatch flow in Redux Toolkit with background polling. Integrated pre-fetching and client-side memory caching to reduce redundant network transfers by 45%.',
     contributions: [

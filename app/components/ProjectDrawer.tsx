@@ -111,6 +111,21 @@ export default function Component({ name }) {
             </p>
           </div>
 
+          {/* Architecture Flow / System Pipeline */}
+          {study.architectureFlow && (
+            <div className="space-y-3 p-5 sm:p-6 rounded-3xl bg-slate-900 text-slate-100 border border-slate-800 shadow-xl font-mono">
+              <div className="flex items-center justify-between text-xs text-primary font-bold uppercase tracking-wider">
+                <span className="flex items-center gap-2">
+                  <Terminal size={15} /> System Architecture Flow
+                </span>
+                <span className="text-[10px] text-slate-400 font-normal">Layered Pipeline</span>
+              </div>
+              <div className="p-3.5 rounded-2xl bg-black/60 border border-slate-800/80 text-xs text-emerald-400 font-bold leading-relaxed overflow-x-auto whitespace-pre-wrap sm:whitespace-normal">
+                {study.architectureFlow}
+              </div>
+            </div>
+          )}
+
           {/* Technical Challenge */}
           <div className="space-y-3 p-6 rounded-3xl bg-slate-50 dark:bg-slate-950/40 border border-slate-100 dark:border-slate-800/60">
             <h2 className="text-sm font-bold font-outfit uppercase tracking-wider text-slate-800 dark:text-slate-200 flex items-center gap-2">
