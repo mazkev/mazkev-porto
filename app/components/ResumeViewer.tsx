@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { X, Printer, Download, Mail, Phone, MapPin, Code, Award, Briefcase, GraduationCap, LayoutGrid, Globe, Github, Layers, Server, Cpu } from 'lucide-react';
+import { X, Printer, Download, Mail, Phone, MapPin, Code, Award, Briefcase, GraduationCap, LayoutGrid, Globe, Github, Layers, Server, Cpu, FileText } from 'lucide-react';
 import Image from 'next/image';
 import { projects } from '../lib/data/projects';
 
@@ -12,6 +12,7 @@ interface ResumeViewerProps {
 }
 
 export type ResumeRole = 'fullstack' | 'frontend' | 'backend';
+export type CVMode = 'bilingual' | 'en' | 'id';
 
 const roleContent = {
   fullstack: {
@@ -28,196 +29,299 @@ const roleContent = {
   },
   frontend: {
     en: {
-      title: 'Front End Developer & UI Specialist',
+      title: 'Frontend Developer & Web Application Engineer',
       executiveSummaryTitle: 'Professional Summary',
-      executiveSummary: 'Front End Developer specializing in React, Next.js 16, TypeScript, and Tailwind CSS. Experienced in developing responsive, accessible user interfaces, component-driven UI architectures, and client-side state management (Redux, Zustand) for dynamic e-commerce and dashboard applications.',
+      executiveSummary: 'Frontend Developer specializing in building high-performance, accessible, and responsive user interfaces with React, Next.js 16, TypeScript, and modern CSS architectures. Experienced in Redux Toolkit state management, optimistic UI updates, and RESTful/GraphQL API integration. Leverages 3 years of production Application Support experience to ensure resilient client-side error handling and zero-downtime deployments.',
     },
     id: {
-      title: 'Front End Developer & UI Specialist',
+      title: 'Frontend Developer & Web Application Engineer',
       executiveSummaryTitle: 'Ringkasan Profesional',
-      executiveSummary: 'Front End Developer dengan spesialisasi pada React, Next.js 16, TypeScript, dan Tailwind CSS. Berpengalaman membangun antarmuka web responsif, arsitektur UI berbasis komponen, dan manajemen state (Redux, Zustand) untuk aplikasi e-commerce dan dashboard operasional.',
+      executiveSummary: 'Frontend Developer dengan spesialisasi pengembangan antarmuka web performa tinggi, aksesibel, dan responsif menggunakan React, Next.js 16, TypeScript, serta CSS modern. Berpengalaman dalam manajemen state Redux Toolkit, optimistic UI updates, dan integrasi RESTful API. Memanfaatkan 3 tahun pengalaman Application Support produksi untuk memastikan error handling sisi klien yang andal dan deployment zero-downtime.',
     }
   },
   backend: {
     en: {
-      title: 'Back End Developer & Go Specialist',
+      title: 'Backend Developer (Go / Golang & Microservices)',
       executiveSummaryTitle: 'Professional Summary',
-      executiveSummary: 'Back End Developer building reliable RESTful APIs and backend services using Go (Golang) and Java Spring Boot. Practicing Clean Architecture principles, relational database design (PostgreSQL, MySQL), SQL query troubleshooting, JWT authentication, and Docker containerization.',
+      executiveSummary: 'Backend Developer focusing on high-throughput microservices and RESTful APIs using Go (Golang), Java Spring Boot, and PostgreSQL. Dedicated to Clean Architecture principles, domain-driven design, and robust database transaction management (ACID). Grounded by 3 years of professional Application Support at PT PLN Icon+, bringing deep expertise in SQL query performance tuning, index optimization, and production incident root-cause analysis.',
     },
     id: {
-      title: 'Back End Developer & Go Specialist',
+      title: 'Backend Developer (Go / Golang & Microservices)',
       executiveSummaryTitle: 'Ringkasan Profesional',
-      executiveSummary: 'Back End Developer yang berfokus membangun RESTful API dan layanan backend menggunakan Go (Golang) dan Java Spring Boot. Mengimplementasikan Clean Architecture, pemodelan database relasional (PostgreSQL, MySQL), optimasi query SQL, autentikasi JWT, dan kontainerisasi Docker.',
+      executiveSummary: 'Backend Developer yang berfokus pada arsitektur microservices dan REST API performa tinggi menggunakan Go (Golang), Java Spring Boot, dan PostgreSQL. Menerapkan prinsip Clean Architecture, domain-driven design, serta manajemen transaksi database ACID. Diperkuat oleh 3 tahun pengalaman profesional Application Support di PT PLN Icon+, membawa keahlian mendalam dalam tuning performa query SQL, optimasi indeks, dan analisa akar masalah produksi.',
     }
   }
 };
 
 const commonText = {
   en: {
-    experienceTitle: 'Professional Experience',
-    job1Title: 'Technical Support Specialist',
-    job1Date: '2023 - Present',
-    job1Bullet1: 'Handle user issue triage, operational incident resolution, and system service availability for enterprise applications.',
-    job1Bullet2: 'Write, analyze, and optimize SQL queries for database troubleshooting, reporting, and data extraction.',
-    job1Bullet3: 'Perform application debugging and error log tracing to isolate and resolve software bugs across production environments.',
-    job2Title: 'Software Development & Projects',
-    job2Company: 'Personal & Client Engagements',
-    job2Date: '2023 - Present',
-    job2Bullet1: 'Built fullstack e-commerce marketplaces and web applications using Go (Golang), React, Next.js, and Java Spring Boot.',
-    job2Bullet2: 'Implemented Go RESTful microservices with Clean Architecture layers (domain, usecase, repository), GORM, and PostgreSQL.',
-    job2Bullet3: 'Designed responsive user interfaces and state management pipelines with React, TypeScript, Redux Toolkit, and Tailwind CSS.',
-    projectsTitle: 'Key Projects',
-    skillsTitle: 'Skill Highlights',
-    educationTitle: 'Education Background',
-    degree: 'Bachelor of Information Technology (S.Kom)',
-    university: 'Universitas Amikom Yogyakarta',
-    printBtn: 'Print Resume (ATS)',
     downloadBtn: 'Download PDF',
+    printBtn: 'Print / Save PDF',
+    experienceTitle: 'Professional Experience',
+    projectsTitle: 'Featured Repositories',
+    skillsTitle: 'Technical Competencies',
+    educationTitle: 'Education',
+    job1Title: 'Application Support Specialist',
+    job1Date: '2022 - Present',
+    job1Bullet1: 'Maintained and monitored enterprise application ecosystems, ensuring 99.8% service uptime and resolving critical database/API incidents in production.',
+    job1Bullet2: 'Diagnosed complex SQL queries, database deadlocks, and connection pool bottlenecks across enterprise relational databases (PostgreSQL, Oracle, MySQL).',
+    job1Bullet3: 'Authored system troubleshooting guides and collaborated with cross-functional software engineering teams to resolve underlying bugs and edge cases.',
+    job2Title: 'Fullstack & Backend Engineering (Independent)',
+    job2Company: 'Open Source & Personal Systems',
+    job2Date: '2022 - Present',
+    job2Bullet1: 'Architected and built over 20+ production-grade repositories in Go, Java Spring Boot, and Next.js, practicing Clean Architecture, TDD, and Docker containerization.',
+    job2Bullet2: 'Designed relational schemas, implemented JWT/RBAC security pipelines, and orchestrated concurrency-safe financial transaction workflows.',
+    job2Bullet3: 'Delivered end-to-end fullstack applications with responsive React/TypeScript interfaces, state management (Redux/Zustand), and automated CI/CD.',
+    degree: 'Bachelor of Computer Science / Information Technology',
+    university: 'Universitas Gunadarma • GPA: 3.48 / 4.00',
   },
   id: {
-    experienceTitle: 'Pengalaman Kerja',
-    job1Title: 'Technical Support Specialist',
-    job1Date: '2023 - Sekarang',
-    job1Bullet1: 'Menangani eskalasi kendala pengguna, penyelesaian insiden operasional, dan pemantauan sistem enterprise.',
-    job1Bullet2: 'Membuat, menganalisis, dan mengoptimalkan query SQL untuk investigasi database dan ekstraksi data.',
-    job1Bullet3: 'Melakukan debugging aplikasi dan pelacakan log error untuk menemukan serta mengisolasi bug pada sistem produksi.',
-    job2Title: 'Software Development & Proyek',
-    job2Company: 'Pengembangan Personal & Klien',
-    job2Date: '2023 - Sekarang',
-    job2Bullet1: 'Membangun aplikasi marketplace dan web fullstack menggunakan Go (Golang), React, Next.js, dan Java Spring Boot.',
-    job2Bullet2: 'Mengembangkan RESTful API Go dengan Clean Architecture (domain, usecase, repository), GORM, dan database PostgreSQL.',
-    job2Bullet3: 'Merancang antarmuka pengguna responsif dan manajemen state dengan React, TypeScript, Redux Toolkit, dan Tailwind CSS.',
-    projectsTitle: 'Proyek Utama',
-    skillsTitle: 'Keahlian Utama',
-    educationTitle: 'Riwayat Pendidikan',
-    degree: 'Sarjana Teknologi Informasi (S.Kom)',
-    university: 'Universitas Amikom Yogyakarta',
-    printBtn: 'Cetak CV (ATS)',
     downloadBtn: 'Unduh PDF',
+    printBtn: 'Cetak / Simpan PDF',
+    experienceTitle: 'Pengalaman Profesional',
+    projectsTitle: 'Proyek Repositori Pilihan',
+    skillsTitle: 'Kompetensi Teknis',
+    educationTitle: 'Pendidikan',
+    job1Title: 'Spesialis Application Support',
+    job1Date: '2022 - Sekarang',
+    job1Bullet1: 'Memelihara dan memonitor ekosistem aplikasi korporat, menjaga uptime layanan 99.8% serta menangani insiden kritis database dan API pada server produksi.',
+    job1Bullet2: 'Menganalisis query SQL kompleks, mengatasi bottleneck connection pool dan deadlock pada database relasional (PostgreSQL, Oracle, MySQL).',
+    job1Bullet3: 'Menyusun dokumentasi investigasi sistem dan berkolaborasi erat dengan tim software engineering untuk perbaikan bug dan penanganan edge case.',
+    job2Title: 'Pengembangan Fullstack & Backend (Mandiri)',
+    job2Company: 'Open Source & Proyek Mandiri',
+    job2Date: '2022 - Sekarang',
+    job2Bullet1: 'Merancang dan membangun lebih dari 20+ repositori berbasis Go, Java Spring Boot, dan Next.js dengan penerapan Clean Architecture, TDD, dan Docker.',
+    job2Bullet2: 'Mendesain skema database relasional, mengimplementasikan pipeline keamanan JWT/RBAC, serta menangani transaksi keuangan aman berbasis ACID.',
+    job2Bullet3: 'Mengembangkan aplikasi fullstack end-to-end dengan antarmuka responsif React/TypeScript, manajemen state (Redux/Zustand), dan deployment CI/CD.',
+    degree: 'Sarjana Ilmu Komputer / Teknologi Informasi',
+    university: 'Universitas Gunadarma • IPK: 3.48 / 4.00',
   }
 };
 
-export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
-  const [lang, setLang] = useState<'en' | 'id'>('en');
-  const [activeRole, setActiveRole] = useState<ResumeRole>('fullstack');
+interface CVContentProps {
+  lang: 'en' | 'id';
+  activeRole: ResumeRole;
+  roleProjects: typeof projects;
+  pageNumber?: number;
+  totalPages?: number;
+}
 
+function CVContent({ lang, activeRole, roleProjects, pageNumber, totalPages }: CVContentProps) {
   const currentRoleContent = roleContent[activeRole][lang];
   const t = commonText[lang];
 
-  const handlePrint = () => {
-    window.print();
-  };
+  return (
+    <div className="max-w-4xl mx-auto space-y-6 print:space-y-2.5 font-sans">
+      <div className="border-b-2 border-slate-900 pb-4 print:pb-2.5 flex flex-row items-center justify-between gap-5 print:gap-3">
+        <div className="w-20 h-20 md:w-24 md:h-24 print:w-16 print:h-16 flex-shrink-0 rounded-xl overflow-hidden border-2 border-slate-900 shadow-md bg-white print:border-none print:shadow-none">
+          <Image
+            src="/profile/kev.png"
+            alt="Kevin Eka Pratama"
+            width={96}
+            height={96}
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        <div className="flex-grow text-right space-y-1 print:space-y-0.5">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl print:text-2xl font-extrabold text-slate-900 leading-none uppercase tracking-tight">
+            Kevin Eka Pratama
+          </h1>
+          <p className="text-xs md:text-sm print:text-[10px] font-bold text-slate-800 uppercase tracking-widest pt-1 print:pt-0">
+            {currentRoleContent.title}
+          </p>
+          <div className="pt-2 print:pt-1 flex flex-wrap items-end sm:items-center justify-end gap-y-1 gap-x-4 print:gap-x-3 text-xs print:text-[10px] text-slate-800 font-semibold">
+            <a href="mailto:kevinekapratama@gmail.com" className="flex items-center gap-1.5 hover:underline">
+              <span>kevinekapratama@gmail.com</span>
+              <Mail size={12} className="text-slate-900" />
+            </a>
+            <a href="tel:+6281326612344" className="flex items-center gap-1.5 hover:underline">
+              <span>+62 (813) 2661-2344</span>
+              <Phone size={12} className="text-slate-900" />
+            </a>
+            <a href="https://mazkev.vercel.app" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:underline">
+              <span>mazkev.vercel.app</span>
+              <Globe size={12} className="text-slate-900" />
+            </a>
+            <a href="https://github.com/mazkev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:underline">
+              <span>github.com/mazkev</span>
+              <Github size={12} className="text-slate-900" />
+            </a>
+            <div className="flex items-center gap-1.5">
+              <span>Jakarta, Indonesia</span>
+              <MapPin size={12} className="text-slate-900" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-1.5 print:space-y-0.5">
+        <h2 className="text-sm print:text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-1 flex items-center justify-between">
+          <span className="flex items-center gap-2">
+            <Award size={16} className="text-slate-900 print:w-3 print:h-3" /> {currentRoleContent.executiveSummaryTitle}
+          </span>
+          {pageNumber && (
+            <span className="text-[10px] font-mono text-slate-600 font-bold uppercase">
+              {lang === 'en' ? 'Page 1: English (ATS)' : 'Halaman 2: Bahasa Indonesia (ATS)'}
+            </span>
+          )}
+        </h2>
+        <p className="text-slate-800 leading-relaxed text-xs md:text-sm print:text-[10.5px] print:leading-normal font-medium">
+          {currentRoleContent.executiveSummary}
+        </p>
+      </div>
+
+      <div className="space-y-3.5 print:space-y-2">
+        <h2 className="text-sm print:text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-1 flex items-center gap-2">
+          <Briefcase size={16} className="text-slate-900 print:w-3 print:h-3" /> {t.experienceTitle}
+        </h2>
+
+        <div className="space-y-3 print:space-y-1.5">
+          <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
+            <div className="flex justify-between items-start flex-wrap gap-2 print:gap-1">
+              <div>
+                <h3 className="font-extrabold text-slate-900 text-sm md:text-base print:text-[11.5px]">
+                  {t.job1Title}
+                </h3>
+                <p className="text-xs print:text-[9.5px] font-bold text-slate-700">
+                  PT PLN Icon+
+                </p>
+              </div>
+              <span className="text-xs print:text-[9.5px] font-mono font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded border border-slate-400 pill">
+                {t.job1Date}
+              </span>
+            </div>
+            <ul className="list-disc pl-4 text-slate-800 text-xs print:text-[10px] leading-relaxed print:leading-normal space-y-0.5 font-medium">
+              <li>{t.job1Bullet1}</li>
+              <li>{t.job1Bullet2}</li>
+              <li>{t.job1Bullet3}</li>
+            </ul>
+          </div>
+
+          <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
+            <div className="flex justify-between items-start flex-wrap gap-2 print:gap-1">
+              <div>
+                <h3 className="font-extrabold text-slate-900 text-sm md:text-base print:text-[11.5px]">
+                  {t.job2Title}
+                </h3>
+                <p className="text-xs print:text-[9.5px] font-bold text-slate-700">
+                  {t.job2Company}
+                </p>
+              </div>
+              <span className="text-xs print:text-[9.5px] font-mono font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded border border-slate-400 pill">
+                {t.job2Date}
+              </span>
+            </div>
+            <ul className="list-disc pl-4 text-slate-800 text-xs print:text-[10px] leading-relaxed print:leading-normal space-y-0.5 font-medium">
+              <li>{t.job2Bullet1}</li>
+              <li>{t.job2Bullet2}</li>
+              <li>{t.job2Bullet3}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div className="space-y-1.5 print:space-y-1">
+        <h2 className="text-sm print:text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-1 flex items-center justify-between">
+          <span className="flex items-center gap-2">
+            <LayoutGrid size={16} className="text-slate-900 print:w-3 print:h-3" /> {t.projectsTitle} ({activeRole.toUpperCase()})
+          </span>
+        </h2>
+        <div className="space-y-2 print:space-y-1 text-xs print:text-[10px]">
+          {roleProjects.slice(0, 6).map((project, idx) => (
+            <div key={idx} className="space-y-0.5 border-b border-slate-200 pb-1.5 print:pb-1 last:border-none print:break-inside-avoid">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10.5px]">
+                  • {project.title}
+                </div>
+                <div className="text-[10px] print:text-[8px] font-mono text-slate-700 font-bold uppercase">
+                  {project.tech.join(' • ')}
+                </div>
+              </div>
+              <p className="text-[11px] print:text-[9px] text-slate-700 font-medium pl-3 leading-snug">
+                {project.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="space-y-1 print:space-y-0.5">
+        <h2 className="text-sm print:text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-1 flex items-center gap-2">
+          <Code size={16} className="text-slate-900 print:w-3 print:h-3" /> {t.skillsTitle}
+        </h2>
+        
+        <div className="space-y-0.5 text-xs print:text-[9.5px] text-slate-800 leading-relaxed font-medium">
+          <p>
+            <strong>Engineering & Frameworks:</strong> Next.js, React.js, Java Spring Boot, Golang, Express.js, Node.js, Vue 3, Angular, Python (FastAPI), TypeScript, Tailwind CSS
+          </p>
+          <p>
+            <strong>Databases & Cloud Tools:</strong> PostgreSQL, MongoDB, Redis, Prisma ORM, Docker, AWS, Vercel Edge, Firebase, Git & GitHub, Postman
+          </p>
+        </div>
+      </div>
+
+      <div className="space-y-1.5 print:space-y-0.5">
+        <h2 className="text-sm print:text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-1 flex items-center gap-2">
+          <GraduationCap size={16} className="text-slate-900 print:w-3 print:h-3" /> {t.educationTitle}
+        </h2>
+        <div className="flex justify-between items-start flex-wrap gap-2 print:gap-1 text-xs md:text-sm print:text-[10.5px]">
+          <div>
+            <h3 className="font-extrabold text-slate-900">
+              {t.degree}
+            </h3>
+            <p className="text-xs print:text-[9.5px] font-bold text-slate-700">
+              {t.university}
+            </p>
+          </div>
+          <span className="text-xs print:text-[9.5px] font-mono font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded border border-slate-400 pill">
+            2017 - 2022
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
+  const [cvMode, setCvMode] = useState<CVMode>('bilingual');
+  const [activeRole, setActiveRole] = useState<ResumeRole>('fullstack');
+
+  const handlePrint = () => window.print();
 
   if (!isOpen) return null;
 
-  // Curated & Ranked Top 6 Projects per CV Role Profile
-  const frontendTop6Titles = [
-    'Enterprise Operations Dashboard',
-    'MazCloud File Storage Dashboard',
-    'React Shopping Cart Application',
-    'Canvass Graphic Design Studio',
-    'Trello Kanban Workspace',
-    'Spotify Web Player Clone',
-  ];
+  const frontendTop6Titles = ['Enterprise Operations Dashboard', 'MazCloud File Storage Dashboard', 'React Shopping Cart Application', 'Canvass Graphic Design Studio', 'Trello Kanban Workspace', 'Spotify Web Player Clone'];
+  const fullstackTop6Titles = ['Go Marketplace (Fullstack Go & React)', 'BayE Marketplace (Fullstack Next.js)', 'Semarketplace Pro (React & Express)', 'AliExpress Choice E-Commerce (Java Spring Boot)', 'HRMS Enterprise Management (Laravel 11)', 'Bun & Hono E-Commerce Backend (Drizzle ORM)'];
+  const backendTop6Titles = ['Go Marketplace Backend (GORM & REST API)', 'Go Clean Architecture REST API', 'Go Banking Core Engine', 'Bun & Hono E-Commerce Backend (Drizzle ORM)', 'HRMS Enterprise Management (Laravel 11)', 'AliExpress Choice E-Commerce (Java Spring Boot)'];
 
-  const fullstackTop6Titles = [
-    'Go Marketplace (Fullstack Go & React)',
-    'BayE Marketplace (Fullstack Next.js)',
-    'Semarketplace Pro (React & Express)',
-    'AliExpress Choice E-Commerce (Java Spring Boot)',
-    'HRMS Enterprise Management (Laravel 11)',
-    'Bun & Hono E-Commerce Backend (Drizzle ORM)',
-  ];
-
-  const backendTop6Titles = [
-    'Go Marketplace Backend (GORM & REST API)',
-    'Go Clean Architecture REST API',
-    'Go Banking Core Engine',
-    'Bun & Hono E-Commerce Backend (Drizzle ORM)',
-    'HRMS Enterprise Management (Laravel 11)',
-    'AliExpress Choice E-Commerce (Java Spring Boot)',
-  ];
-
-  const roleProjects = (
-    activeRole === 'frontend'
-      ? frontendTop6Titles
-      : activeRole === 'backend'
-      ? backendTop6Titles
-      : fullstackTop6Titles
-  )
+  const roleProjects = (activeRole === 'frontend' ? frontendTop6Titles : activeRole === 'backend' ? backendTop6Titles : fullstackTop6Titles)
     .map(title => projects.find(p => p.title === title))
     .filter(Boolean) as typeof projects;
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end print:absolute print:inset-auto print:w-full print:h-auto print:block">
-      {/* Print-specific style override - Ultra ATS High Contrast Black & White */}
       <style jsx global>{`
-        @page {
-          size: A4;
-          margin: 15mm;
-        }
+        @page { size: A4; margin: 12mm 15mm; }
         @media print {
-          .no-print {
-            display: none !important;
-          }
-          html, body {
-            height: auto !important;
-            overflow: visible !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            background: white !important;
-            color: black !important;
-          }
-          body * {
-            visibility: hidden;
-          }
-          #print-area, #print-area * {
-            visibility: visible;
-          }
-          #print-area {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            padding: 0 !important;
-            margin: 0 !important;
-            background: white !important;
-            color: black !important;
-            box-shadow: none !important;
-            border: none !important;
-          }
-          #print-area * {
-            color: black !important;
-            border-color: #000000 !important;
-          }
-          #print-area .pill {
-            border: 1px solid #000000 !important;
-            background: transparent !important;
-            color: black !important;
-          }
+          .no-print { display: none !important; }
+          html, body { height: auto !important; overflow: visible !important; margin: 0 !important; background: white !important; }
+          body * { visibility: hidden; }
+          #print-area, #print-area * { visibility: visible; }
+          #print-area { position: absolute; left: 0; top: 0; width: 100%; background: white; color: black; }
+          .page-break { display: block !important; page-break-before: always !important; break-before: page !important; height: 0 !important; margin: 0 !important; }
+          #print-area * { color: black !important; border-color: #000000 !important; }
         }
       `}</style>
 
-      {/* Backdrop */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        onClick={onClose}
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm no-print"
-      />
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} className="absolute inset-0 bg-black/60 backdrop-blur-sm no-print" />
 
-      {/* Drawer Panel */}
       <motion.div
-        initial={{ x: '100%' }}
-        animate={{ x: 0 }}
-        exit={{ x: '100%' }}
-        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+        initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }} transition={{ type: 'spring', damping: 25, stiffness: 200 }}
         className="relative w-full max-w-5xl h-full print:h-auto bg-white text-slate-900 border-l border-slate-300 shadow-2xl flex flex-col z-10 font-sans"
       >
-        {/* Actions Bar (Top) */}
         <div className="px-6 py-4 bg-slate-100 dark:bg-slate-900 border-b border-slate-300 dark:border-slate-800 flex items-center justify-between no-print flex-shrink-0 flex-wrap gap-3">
-          <div className="flex items-center gap-3 flex-wrap">
+          <div className="flex items-center gap-2.5 flex-wrap">
             {/* ROLE SELECTOR TABS */}
             <div className="flex items-center bg-slate-200 dark:bg-slate-800 p-1 rounded-xl border border-slate-300 dark:border-slate-700">
               <button
@@ -252,25 +356,38 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               </button>
             </div>
 
-            {/* TOGGLE BAHASA / TRANSLATE CV */}
+            {/* TOGGLE CV FORMAT: 2 HALAMAN (BILINGUAL) vs SINGLE PAGE */}
             <div className="flex items-center bg-slate-200 dark:bg-slate-800 p-1 rounded-xl border border-slate-300 dark:border-slate-700">
               <button
-                onClick={() => setLang('en')}
-                className={`px-3 py-1 text-xs font-bold rounded-lg transition-all flex items-center gap-1 cursor-pointer ${
-                  lang === 'en'
-                    ? 'bg-black text-white dark:bg-white dark:text-black shadow'
+                onClick={() => setCvMode('bilingual')}
+                className={`px-3 py-1 text-xs font-bold rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
+                  cvMode === 'bilingual'
+                    ? 'bg-slate-900 text-white dark:bg-white dark:text-black shadow'
                     : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
                 }`}
+                title="Gabung 2 Halaman (Halaman 1 English, Halaman 2 Bahasa Indonesia)"
+              >
+                <FileText size={13} /> 2 Hal (EN + ID)
+              </button>
+              <button
+                onClick={() => setCvMode('en')}
+                className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all flex items-center gap-1 cursor-pointer ${
+                  cvMode === 'en'
+                    ? 'bg-slate-900 text-white dark:bg-white dark:text-black shadow'
+                    : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
+                }`}
+                title="Hanya 1 Halaman English"
               >
                 🇬🇧 EN
               </button>
               <button
-                onClick={() => setLang('id')}
-                className={`px-3 py-1 text-xs font-bold rounded-lg transition-all flex items-center gap-1 cursor-pointer ${
-                  lang === 'id'
-                    ? 'bg-black text-white dark:bg-white dark:text-black shadow'
+                onClick={() => setCvMode('id')}
+                className={`px-2.5 py-1 text-xs font-bold rounded-lg transition-all flex items-center gap-1 cursor-pointer ${
+                  cvMode === 'id'
+                    ? 'bg-slate-900 text-white dark:bg-white dark:text-black shadow'
                     : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
                 }`}
+                title="Hanya 1 Halaman Bahasa Indonesia"
               >
                 🇮🇩 ID
               </button>
@@ -280,7 +397,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               onClick={handlePrint}
               className="px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-black hover:bg-black text-xs font-bold rounded-xl flex items-center gap-2 transition-all cursor-pointer shadow-md"
             >
-              <Printer size={14} /> {t.printBtn}
+              <Printer size={14} /> {cvMode === 'bilingual' ? 'Cetak CV (2 Halaman ATS)' : 'Cetak CV (1 Halaman ATS)'}
             </button>
             <a
               href="/resume.pdf"
@@ -288,7 +405,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               download="resume.pdf"
               className="px-4 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-900 dark:text-white text-xs font-bold rounded-xl flex items-center gap-2 transition-all cursor-pointer border border-slate-400 dark:border-slate-700"
             >
-              <Download size={14} /> {t.downloadBtn}
+              <Download size={14} /> PDF
             </a>
           </div>
 
@@ -301,182 +418,34 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
           </button>
         </div>
 
-        {/* Resume Scrollable Content - ATS Format (High Contrast Black & White) */}
-        <div className="flex-grow overflow-y-auto p-6 md:p-10 bg-white text-slate-900 print:p-0 print:overflow-visible" id="print-area">
-          <div className="max-w-4xl mx-auto space-y-7 print:space-y-3 font-sans">
-            {/* Header info */}
-            <div className="border-b-2 border-slate-900 pb-5 print:pb-3 flex flex-row items-center justify-between gap-6 print:gap-4">
-              {/* Profile Photo - Full Color */}
-              <div className="w-20 h-20 md:w-24 md:h-24 print:w-16 print:h-16 flex-shrink-0 rounded-xl overflow-hidden border-2 border-slate-900 shadow-md bg-white print:border-none print:shadow-none">
-                <Image
-                  src="/profile/kev.png"
-                  alt="Kevin Eka Pratama"
-                  width={96}
-                  height={96}
-                  className="w-full h-full object-cover"
-                />
+        <div className="flex-grow overflow-y-auto p-6 md:p-10 bg-white text-slate-900 print:p-0" id="print-area">
+          {cvMode === 'bilingual' ? (
+            <>
+              {/* PAGE 1: ENGLISH VERSION */}
+              <div className="relative">
+                <CVContent lang="en" activeRole={activeRole} roleProjects={roleProjects} pageNumber={1} totalPages={2} />
               </div>
 
-              <div className="flex-grow text-right space-y-1 print:space-y-0.5">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl print:text-2xl font-extrabold text-slate-900 leading-none uppercase tracking-tight">
-                  Kevin Eka Pratama
-                </h1>
-                <p className="text-xs md:text-sm print:text-[10px] font-bold text-slate-800 uppercase tracking-widest pt-1 print:pt-0">
-                  {currentRoleContent.title}
-                </p>
-                <div className="pt-2 print:pt-1 flex flex-wrap items-end sm:items-center justify-end gap-y-1 gap-x-4 print:gap-x-3 text-xs print:text-[10px] text-slate-800 font-semibold">
-                  <a href="mailto:kevinekapratama@gmail.com" className="flex items-center gap-1.5 hover:underline">
-                    <span>kevinekapratama@gmail.com</span>
-                    <Mail size={12} className="text-slate-900" />
-                  </a>
-                  <a href="tel:+6281326612344" className="flex items-center gap-1.5 hover:underline">
-                    <span>+62 (813) 2661-2344</span>
-                    <Phone size={12} className="text-slate-900" />
-                  </a>
-                  <a href="https://mazkev.vercel.app" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:underline">
-                    <span>mazkev.vercel.app</span>
-                    <Globe size={12} className="text-slate-900" />
-                  </a>
-                  <a href="https://github.com/mazkev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:underline">
-                    <span>github.com/mazkev</span>
-                    <Github size={12} className="text-slate-900" />
-                  </a>
-                  <div className="flex items-center gap-1.5">
-                    <span>Jakarta, Indonesia</span>
-                    <MapPin size={12} className="text-slate-900" />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Profile summary */}
-            <div className="space-y-2 print:space-y-1">
-              <h2 className="text-sm print:text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-1 flex items-center gap-2">
-                <Award size={16} className="text-slate-900 print:w-3 print:h-3" /> {currentRoleContent.executiveSummaryTitle}
-              </h2>
-              <p className="text-slate-800 leading-relaxed text-xs md:text-sm print:text-[11px] print:leading-normal font-medium">
-                {currentRoleContent.executiveSummary}
-              </p>
-            </div>
-
-            {/* Work experience */}
-            <div className="space-y-5 print:space-y-3">
-              <h2 className="text-sm print:text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-1 flex items-center gap-2">
-                <Briefcase size={16} className="text-slate-900 print:w-3 print:h-3" /> {t.experienceTitle}
-              </h2>
-
-              <div className="space-y-5 print:space-y-2.5">
-                {/* Job 1 */}
-                <div className="space-y-1.5 print:space-y-0.5 print:break-inside-avoid">
-                  <div className="flex justify-between items-start flex-wrap gap-2 print:gap-1">
-                    <div>
-                      <h3 className="font-extrabold text-slate-900 text-sm md:text-base print:text-[12px]">
-                        {t.job1Title}
-                      </h3>
-                      <p className="text-xs print:text-[10px] font-bold text-slate-700">
-                        PT PLN Icon+
-                      </p>
-                    </div>
-                    <span className="text-xs print:text-[10px] font-mono font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded border border-slate-400 pill">
-                      {t.job1Date}
-                    </span>
-                  </div>
-                  <ul className="list-disc pl-4 text-slate-800 text-xs print:text-[10.5px] leading-relaxed print:leading-normal space-y-1 print:space-y-0.5 font-medium">
-                    <li>{t.job1Bullet1}</li>
-                    <li>{t.job1Bullet2}</li>
-                    <li>{t.job1Bullet3}</li>
-                  </ul>
-                </div>
-
-                {/* Job 2 */}
-                <div className="space-y-1.5 print:space-y-0.5 print:break-inside-avoid">
-                  <div className="flex justify-between items-start flex-wrap gap-2 print:gap-1">
-                    <div>
-                      <h3 className="font-extrabold text-slate-900 text-sm md:text-base print:text-[12px]">
-                        {t.job2Title}
-                      </h3>
-                      <p className="text-xs print:text-[10px] font-bold text-slate-700">
-                        {t.job2Company}
-                      </p>
-                    </div>
-                    <span className="text-xs print:text-[10px] font-mono font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded border border-slate-400 pill">
-                      {t.job2Date}
-                    </span>
-                  </div>
-                  <ul className="list-disc pl-4 text-slate-800 text-xs print:text-[10.5px] leading-relaxed print:leading-normal space-y-1 print:space-y-0.5 font-medium">
-                    <li>{t.job2Bullet1}</li>
-                    <li>{t.job2Bullet2}</li>
-                    <li>{t.job2Bullet3}</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Key Projects Filtered By Active Role */}
-            <div className="space-y-2 print:space-y-1">
-              <h2 className="text-sm print:text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-1 flex items-center justify-between">
-                <span className="flex items-center gap-2">
-                  <LayoutGrid size={16} className="text-slate-900 print:w-3 print:h-3" /> {t.projectsTitle} ({activeRole.toUpperCase()})
+              {/* Visual Screen Divider */}
+              <div className="no-print my-10 py-4 border-y-2 border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-between text-xs font-mono text-slate-500">
+                <span className="font-bold uppercase tracking-wider flex items-center gap-2 text-slate-900 dark:text-white">
+                  <FileText size={15} className="text-emerald-600 dark:text-emerald-400" /> Halaman 2: Versi Bahasa Indonesia (ATS Standard)
                 </span>
-                <span className="text-[10px] font-mono font-normal uppercase text-slate-600 no-print">
-                  {roleProjects.length} Projects Selected
-                </span>
-              </h2>
-              <div className="space-y-2.5 print:space-y-1.5 text-xs print:text-[10.5px]">
-                {roleProjects.slice(0, 6).map((project, idx) => (
-                  <div key={idx} className="space-y-0.5 border-b border-slate-200 pb-2 print:pb-1.5 last:border-none print:break-inside-avoid">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                      <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[11px]">
-                        • {project.title}
-                      </div>
-                      <div className="text-[10px] print:text-[8.5px] font-mono text-slate-700 font-bold uppercase">
-                        {project.tech.join(' • ')}
-                      </div>
-                    </div>
-                    <p className="text-[11px] print:text-[9.5px] text-slate-700 font-medium pl-3 leading-snug">
-                      {project.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Core Tech stack */}
-            <div className="space-y-1.5 print:space-y-1">
-              <h2 className="text-sm print:text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-1 flex items-center gap-2">
-                <Code size={16} className="text-slate-900 print:w-3 print:h-3" /> {t.skillsTitle}
-              </h2>
-              
-              <div className="space-y-1 text-xs print:text-[10px] text-slate-800 leading-relaxed font-medium">
-                <p>
-                  <strong>Engineering & Frameworks:</strong> Next.js, React.js, Java Spring Boot, Golang, Express.js, Node.js, Vue 3, Angular, Python (FastAPI), TypeScript, Tailwind CSS
-                </p>
-                <p>
-                  <strong>Databases & Cloud Tools:</strong> PostgreSQL, MongoDB, Redis, Prisma ORM, Docker, AWS, Vercel Edge, Firebase, Git & GitHub, Postman
-                </p>
-              </div>
-            </div>
-
-            {/* Education */}
-            <div className="space-y-2 print:space-y-1">
-              <h2 className="text-sm print:text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-1 flex items-center gap-2">
-                <GraduationCap size={16} className="text-slate-900 print:w-3 print:h-3" /> {t.educationTitle}
-              </h2>
-              <div className="flex justify-between items-start flex-wrap gap-2 print:gap-1 text-xs md:text-sm print:text-[11px]">
-                <div>
-                  <h3 className="font-extrabold text-slate-900">
-                    {t.degree}
-                  </h3>
-                  <p className="text-xs print:text-[10px] font-bold text-slate-700">
-                    {t.university}
-                  </p>
-                </div>
-                <span className="text-xs print:text-[10px] font-mono font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded border border-slate-400 pill">
-                  2017 - 2022
+                <span className="bg-slate-200 dark:bg-slate-800 px-2.5 py-1 rounded-md text-[10px] font-bold text-slate-700 dark:text-slate-300">
+                  Page 2 of 2
                 </span>
               </div>
-            </div>
-          </div>
+
+              <div className="page-break" />
+
+              {/* PAGE 2: INDONESIAN VERSION */}
+              <div className="relative">
+                <CVContent lang="id" activeRole={activeRole} roleProjects={roleProjects} pageNumber={2} totalPages={2} />
+              </div>
+            </>
+          ) : (
+            <CVContent lang={cvMode} activeRole={activeRole} roleProjects={roleProjects} pageNumber={1} totalPages={1} />
+          )}
         </div>
       </motion.div>
     </div>
