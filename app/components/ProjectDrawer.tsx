@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { X, ExternalLink, Github, Layers, Terminal, Sparkles, AlertCircle } from 'lucide-react';
+import { X, ExternalLink, Github, Layers, Terminal, Sparkles, AlertCircle, Database, ShieldCheck, Cpu } from 'lucide-react';
 import Image from 'next/image';
 
 import { caseStudyMap, type ProjectData } from '../lib/data/projects';
@@ -122,6 +122,55 @@ export default function Component({ name }) {
               </div>
               <div className="p-3.5 rounded-2xl bg-black/60 border border-slate-800/80 text-xs text-emerald-400 font-bold leading-relaxed overflow-x-auto whitespace-pre-wrap sm:whitespace-normal">
                 {study.architectureFlow}
+              </div>
+            </div>
+          )}
+
+          {/* Quick Technical Specs Grid */}
+          {study.specs && (
+            <div className="space-y-3">
+              <div className="flex items-center justify-between text-xs font-bold font-mono uppercase tracking-wider text-slate-500">
+                <span className="flex items-center gap-1.5 text-slate-900 dark:text-white">
+                  <Cpu size={14} className="text-primary" /> Engineering Specifications
+                </span>
+                <span className="text-[10px] text-slate-400">Key Parameters</span>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-950/40 border border-slate-200/80 dark:border-slate-800/80 space-y-1">
+                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">
+                    <Layers size={13} className="text-primary" /> Architecture
+                  </div>
+                  <div className="text-xs font-bold font-geist text-slate-900 dark:text-white">
+                    {study.specs.architecture}
+                  </div>
+                </div>
+
+                <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-950/40 border border-slate-200/80 dark:border-slate-800/80 space-y-1">
+                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">
+                    <Database size={13} className="text-sky-400" /> Database & Storage
+                  </div>
+                  <div className="text-xs font-bold font-geist text-slate-900 dark:text-white">
+                    {study.specs.database}
+                  </div>
+                </div>
+
+                <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-950/40 border border-slate-200/80 dark:border-slate-800/80 space-y-1">
+                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">
+                    <ShieldCheck size={13} className="text-emerald-400" /> Security & Auth
+                  </div>
+                  <div className="text-xs font-bold font-geist text-slate-900 dark:text-white">
+                    {study.specs.auth}
+                  </div>
+                </div>
+
+                <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-950/40 border border-slate-200/80 dark:border-slate-800/80 space-y-1">
+                  <div className="flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400">
+                    <Cpu size={13} className="text-amber-400" /> Quality & Testing
+                  </div>
+                  <div className="text-xs font-bold font-geist text-slate-900 dark:text-white">
+                    {study.specs.devopsOrTesting || 'Containerized & Production Ready'}
+                  </div>
+                </div>
               </div>
             </div>
           )}

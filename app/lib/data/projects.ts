@@ -10,11 +10,19 @@ export interface ProjectData {
   category: ProjectCategory;
 }
 
+export interface ProjectSpecs {
+  architecture: string;
+  database: string;
+  auth: string;
+  devopsOrTesting?: string;
+}
+
 export interface CaseStudyDetails {
   challenge: string;
   solution: string;
   contributions: string[];
   architectureFlow?: string;
+  specs?: ProjectSpecs;
   codeSnippet?: string;
   codeLang?: string;
 }
@@ -22,6 +30,12 @@ export interface CaseStudyDetails {
 export const caseStudyMap: Record<string, CaseStudyDetails> = {
   'Go Marketplace (Fullstack Go & React)': {
     architectureFlow: 'Client Request ➔ JWT Auth & Validation ➔ Handler Layer ➔ Usecase (Business Logic) ➔ Repository Layer ➔ PostgreSQL (Connection Pool)',
+    specs: {
+      architecture: 'Fullstack Layered REST API (Go + React)',
+      database: 'PostgreSQL 15 (GORM ORM + Connection Pooling)',
+      auth: 'JWT Bearer Authentication & Bcrypt Hashing',
+      devopsOrTesting: 'Docker Containerization & Postman Collections',
+    },
     challenge: 'Synchronizing real-time checkout state between React frontend and Go microservices while ensuring ACID transaction safety for product stock.',
     solution: 'Implemented clean RESTful API contracts with Go structs and GORM ORM transactions. Handled cart state optimistically in React and verified stock availability in PostgreSQL with row-level locks.',
     contributions: [
@@ -32,6 +46,12 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
   },
   'Go Marketplace Backend (GORM & REST API)': {
     architectureFlow: 'HTTP Request ➔ Router Engine ➔ JWT Middleware ➔ Order Service ➔ GORM Tx Repository ➔ PostgreSQL Pool',
+    specs: {
+      architecture: 'Modular Handler & Service Pattern (Fiber Router)',
+      database: 'PostgreSQL (Atomic Transactions & Row-Level Locking)',
+      auth: 'JWT Middleware & Role-Based Access Control (RBAC)',
+      devopsOrTesting: 'Docker Compose & PostgreSQL Healthchecks',
+    },
     challenge: 'Preventing double-spending and inventory race conditions during concurrent high-volume order checkout requests.',
     solution: 'Enforced atomic database transactions (tx.Begin) with optimistic concurrency control and indexed product foreign keys in PostgreSQL.',
     contributions: [
@@ -42,6 +62,12 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
   },
   'Go Clean Architecture REST API': {
     architectureFlow: 'HTTP Request ➔ Middleware ➔ Delivery/Handler ➔ Domain Interface ➔ Usecase Layer ➔ Repository Layer ➔ PostgreSQL',
+    specs: {
+      architecture: 'Uncle Bob Clean Architecture (4 Decoupled Layers)',
+      database: 'PostgreSQL (Repository Interface Abstraction)',
+      auth: 'JWT Claims Validation & Middleware Pipeline',
+      devopsOrTesting: 'Mock Testing & Automated Migrations',
+    },
     challenge: 'Maintaining decoupled codebase where domain business rules are completely independent of third-party frameworks and database drivers.',
     solution: 'Implemented Clean Architecture with 4 distinct layers: Domain (entities & interfaces), Usecase (application logic), Repository (database access), and Delivery (HTTP routing & JSON serialization).',
     contributions: [
@@ -52,6 +78,12 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
   },
   'BayE Marketplace (Fullstack Next.js)': {
     architectureFlow: 'Next.js App Router ➔ Server Component Fetch ➔ Client Dynamic Filter ➔ Cart / Bidding State ➔ Tailwind CSS UI',
+    specs: {
+      architecture: 'Next.js 14 App Router (RSC + Client Slices)',
+      database: 'PostgreSQL (Prisma ORM & Connection Pooling)',
+      auth: 'NextAuth.js Session & OAuth Handling',
+      devopsOrTesting: 'Vercel Edge & Tailwind Responsive Breakpoints',
+    },
     challenge: 'Rendering large dynamic auction product lists with interactive live price updates without causing layout shifts or hydration errors.',
     solution: 'Utilized Next.js App Router server components for initial catalog hydration and client state hooks for bidding simulation and filter queries.',
     contributions: [
@@ -62,6 +94,12 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
   },
   'Go Banking Core Engine': {
     architectureFlow: 'Transfer Request ➔ Account Verification ➔ ACID Transaction Lock ➔ Ledger Balance Update ➔ Audit Logging',
+    specs: {
+      architecture: 'Event-Driven Financial Transaction Engine',
+      database: 'PostgreSQL (SELECT FOR UPDATE Row-Level Locking)',
+      auth: 'Account Verification & Audit Logging Pipeline',
+      devopsOrTesting: 'Dockerized PostgreSQL Concurrency Testing',
+    },
     challenge: 'Executing financial balance transfers between user accounts with strict zero-loss consistency and race condition prevention.',
     solution: 'Designed ACID database transactions with row-level locking (SELECT ... FOR UPDATE) in PostgreSQL to guarantee serialized balance updates.',
     contributions: [
@@ -72,6 +110,12 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
   },
   'Enterprise Operations Dashboard': {
     architectureFlow: 'Metrics Stream ➔ Next.js 16 Client ➔ Recharts Visualization ➔ Tabular Log Filter ➔ Dark/Light System',
+    specs: {
+      architecture: 'Component-Driven Telemetry Dashboard',
+      database: 'Virtual Server Log Stream & Tabular State',
+      auth: 'Role-Based Operator View Access',
+      devopsOrTesting: 'TypeScript Strict Mode & Recharts Virtualization',
+    },
     challenge: 'Visualizing dense system telemetry and server metric streams in real-time without degrading browser frame rates.',
     solution: 'Implemented memoized chart components with Recharts, responsive CSS Grid virtualization, and local state filtering for server logs.',
     contributions: [
@@ -82,6 +126,12 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
   },
   'MazCloud File Storage Dashboard': {
     architectureFlow: 'File Action ➔ Redux State Store ➔ Storage Capacity Engine ➔ Visual File Explorer ➔ Tailwind UI',
+    specs: {
+      architecture: 'Normalized Redux Tree Hierarchy',
+      database: 'Browser File API & Local Storage Persistence',
+      auth: 'User Session Workspace Context',
+      devopsOrTesting: 'Tailwind CSS Grid & Breadcrumb Routing',
+    },
     challenge: 'Managing nested folder navigation and dynamic storage capacity calculations on the client side.',
     solution: 'Structured normalized Redux state slices for file system trees with instant UI feedback for folder creation and deletion.',
     contributions: [
@@ -92,6 +142,12 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
   },
   'Bun & Hono E-Commerce Backend (Drizzle ORM)': {
     architectureFlow: 'HTTP Request ➔ Hono Router ➔ Zod Validation ➔ JWT & RBAC Middleware ➔ Drizzle ORM ➔ SQLite / PostgreSQL',
+    specs: {
+      architecture: 'Hono Web Framework on Bun High-Throughput Runtime',
+      database: 'SQLite / PostgreSQL (Drizzle ORM Type-Safe Queries)',
+      auth: 'JWT & Role-Based Access Control (RBAC)',
+      devopsOrTesting: 'Zod Runtime Schema Validation',
+    },
     challenge: 'Maximizing REST API throughput while maintaining strict runtime schema validation and type-safe database queries.',
     solution: 'Leveraged Bun runtime with Hono web framework, Drizzle ORM type-safe queries, and Zod middleware validation.',
     contributions: [
@@ -102,6 +158,12 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
   },
   'AliExpress Choice E-Commerce (Java Spring Boot)': {
     architectureFlow: 'Vue 3 (Pinia) ➔ RESTful API ➔ Spring Security (JWT) ➔ Controller ➔ Service Layer ➔ Spring Data JPA ➔ PostgreSQL',
+    specs: {
+      architecture: 'Enterprise MVC (Java 17 Spring Boot 3 + Vue 3)',
+      database: 'PostgreSQL (Spring Data JPA / Hibernate ORM)',
+      auth: 'Spring Security 6 + JWT Filter Chain',
+      devopsOrTesting: 'Maven Multi-Module Build & Docker',
+    },
     challenge: 'Structuring an enterprise multi-category marketplace with secure JWT auth and reactive frontend state synchronization.',
     solution: 'Paired Java 17 Spring Boot 3 REST services with Vue 3 Composition API and Pinia state management.',
     contributions: [
@@ -112,6 +174,12 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
   },
   'HRMS Enterprise Management (Laravel 11)': {
     architectureFlow: 'Employee Request ➔ Laravel Route ➔ Middleware ➔ Controller ➔ Eloquent ORM ➔ MySQL Database',
+    specs: {
+      architecture: 'Modular Model-View-Controller (Laravel 11)',
+      database: 'MySQL 8 (Eloquent ORM & Foreign Constraints)',
+      auth: 'Laravel Session Security & Multi-Role Guards',
+      devopsOrTesting: 'PHPUnit Automated Tests & Blade Engine',
+    },
     challenge: 'Handling complex corporate payroll calculations, attendance tracking, and hierarchical department leave approvals.',
     solution: 'Built modular MVC architecture in Laravel 11 with Eloquent model relations, automated leave policy checks, and Blade UI.',
     contributions: [
@@ -122,6 +190,12 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
   },
   'Semarketplace Pro': {
     architectureFlow: 'React Client ➔ Redux Toolkit State ➔ Express.js REST API ➔ MongoDB Mongoose ➔ Order Processing',
+    specs: {
+      architecture: 'MERN Stack (React + Express REST API)',
+      database: 'MongoDB (Mongoose ODM & Schemas)',
+      auth: 'JWT Auth & HTTP-Only Secure Cookies',
+      devopsOrTesting: 'Redux Toolkit Optimistic State Updates',
+    },
     challenge: 'Minimizing cart abandonment rates, ensuring zero inventory race conditions, and loading massive catalogues with sub-100ms response times.',
     solution: 'Engineered an optimistic checkout dispatch flow in Redux Toolkit with background polling. Integrated pre-fetching and client-side memory caching to reduce redundant network transfers by 45%.',
     contributions: [
