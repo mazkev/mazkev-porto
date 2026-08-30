@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Cloud, Code, GraduationCap, Brain, User, Sparkles } from 'lucide-react';
+import { Cloud, Code, GraduationCap, Brain, User, Sparkles, Database, Layers, ShieldCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/app/lib/utils';
 import Image from 'next/image';
@@ -110,6 +110,45 @@ export default function About() {
               <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed">
                 I am actively transitioning into <strong>Software Development / Fullstack Engineering</strong>, focusing on <strong>React & TypeScript</strong> for modern web interfaces, and deepening <strong>Go (Golang)</strong> for clean, reliable backend microservices with Clean Architecture and PostgreSQL.
               </p>
+
+              {/* 3 Engineering Principles */}
+              <div className="grid sm:grid-cols-3 gap-3 pt-3">
+                <div className="p-4 rounded-2xl bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+                  <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500">
+                    <Database size={16} />
+                  </div>
+                  <h4 className="text-xs font-bold font-geist uppercase tracking-wider text-slate-900 dark:text-white">
+                    Production & SQL Discipline
+                  </h4>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
+                    3 years of real-world query optimization, index tuning, and diagnosing database deadlocks under production workloads.
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+                  <div className="w-8 h-8 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
+                    <Layers size={16} />
+                  </div>
+                  <h4 className="text-xs font-bold font-geist uppercase tracking-wider text-slate-900 dark:text-white">
+                    Clean Architecture
+                  </h4>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
+                    Strict separation between Domain, Usecase, and Repository layers in Go microservices for testability and maintainability.
+                  </p>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 shadow-sm space-y-2">
+                  <div className="w-8 h-8 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+                    <ShieldCheck size={16} />
+                  </div>
+                  <h4 className="text-xs font-bold font-geist uppercase tracking-wider text-slate-900 dark:text-white">
+                    End-to-End Type Safety
+                  </h4>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
+                    Strict TypeScript across React & Next.js, paired with runtime schema validation (Zod & Go structs) to prevent runtime failures.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>

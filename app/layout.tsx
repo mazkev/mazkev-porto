@@ -76,6 +76,32 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://cdn.simpleicons.org" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Kevin Eka Pratama",
+              url: "https://mazkev.vercel.app",
+              jobTitle: "Fullstack Developer",
+              sameAs: [
+                "https://github.com/mazkev",
+                "https://mazkev.vercel.app"
+              ],
+              knowsAbout: [
+                "React",
+                "Next.js",
+                "TypeScript",
+                "Go (Golang)",
+                "Java Spring Boot",
+                "Clean Architecture",
+                "PostgreSQL",
+                "Application Support"
+              ]
+            })
+          }}
+        />
       </head>
       <body className={`${jakarta.variable} ${jetbrains.variable} antialiased transition-colors duration-300 overflow-x-hidden w-full`}>
         <ThemeProvider
