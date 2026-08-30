@@ -6,6 +6,7 @@ import MobileNav from "./components/MobileNav";
 
 const About = dynamic(() => import("./components/About"));
 const Projects = dynamic(() => import("./components/Projects"));
+const GithubActivity = dynamic(() => import("./components/GithubActivity"));
 const ContactForm = dynamic(() => import("./components/ContactForm"));
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
         <LogoMarquee />
         <About />
         <Projects />
+        <GithubActivity />
         <ContactForm />
       </main>
 
