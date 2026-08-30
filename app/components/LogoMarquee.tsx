@@ -58,7 +58,7 @@ export default function LogoMarquee() {
                 alt={logo.name}
                 width={40}
                 height={40}
-                priority={index < 8}
+                loading="lazy"
                 unoptimized
                 className="h-8 w-8 md:h-10 md:w-10 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
               />
