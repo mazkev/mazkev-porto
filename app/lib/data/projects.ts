@@ -23,6 +23,7 @@ export interface CaseStudyDetails {
   contributions: string[];
   architectureFlow?: string;
   specs?: ProjectSpecs;
+  features?: string[];
   codeSnippet?: string;
   codeLang?: string;
 }
@@ -36,6 +37,13 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
       auth: 'JWT Bearer Authentication & Bcrypt Hashing',
       devopsOrTesting: 'Docker Containerization & Postman Collections',
     },
+    features: [
+      'User Authentication with JWT Bearer tokens & password hashing (Bcrypt)',
+      'Transactional product checkout with atomic PostgreSQL stock decrement',
+      'Catalog browsing with multi-category filters and dynamic pagination',
+      'Optimistic cart state management in React + TypeScript',
+      'Database health checks and structured JSON error responses',
+    ],
     challenge: 'Synchronizing real-time checkout state between React frontend and Go microservices while ensuring ACID transaction safety for product stock.',
     solution: 'Implemented clean RESTful API contracts with Go structs and GORM ORM transactions. Handled cart state optimistically in React and verified stock availability in PostgreSQL with row-level locks.',
     contributions: [
@@ -52,6 +60,13 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
       auth: 'JWT Middleware & Role-Based Access Control (RBAC)',
       devopsOrTesting: 'Docker Compose & PostgreSQL Healthchecks',
     },
+    features: [
+      'Fiber router RESTful API endpoints for auth, product catalog, and orders',
+      'Atomic transaction processing (tx.Begin) preventing double-spending & race conditions',
+      'Row-level locking for high-concurrency stock reservation in PostgreSQL',
+      'Role-Based Access Control (RBAC) middleware for admin vs customer routes',
+      'Docker Compose environment with automated database seeding & health checks',
+    ],
     challenge: 'Preventing double-spending and inventory race conditions during concurrent high-volume order checkout requests.',
     solution: 'Enforced atomic database transactions (tx.Begin) with optimistic concurrency control and indexed product foreign keys in PostgreSQL.',
     contributions: [
@@ -68,6 +83,13 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
       auth: 'JWT Claims Validation & Middleware Pipeline',
       devopsOrTesting: 'Mock Testing & Automated Migrations',
     },
+    features: [
+      'Strict 4-layer separation (Domain, Usecase, Repository, Delivery)',
+      'Interface-driven design enabling mockable unit testing without real database',
+      'Standardized HTTP response envelopes and domain-level error mapping',
+      'PostgreSQL schema migration scripts and environment-based configurations',
+      'Production-ready Docker containerization with multi-stage builds',
+    ],
     challenge: 'Maintaining decoupled codebase where domain business rules are completely independent of third-party frameworks and database drivers.',
     solution: 'Implemented Clean Architecture with 4 distinct layers: Domain (entities & interfaces), Usecase (application logic), Repository (database access), and Delivery (HTTP routing & JSON serialization).',
     contributions: [
@@ -84,6 +106,13 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
       auth: 'NextAuth.js Session & OAuth Handling',
       devopsOrTesting: 'Vercel Edge & Tailwind Responsive Breakpoints',
     },
+    features: [
+      'Next.js 14 App Router with Server-Side Hydration (RSC)',
+      'Dynamic live bidding simulation with instant price feedback',
+      'Interactive auction product cards with countdown timers',
+      'Responsive shopping cart sheet with local storage persistence',
+      'Tailwind CSS fluid layout optimized across mobile, tablet, and desktop',
+    ],
     challenge: 'Rendering large dynamic auction product lists with interactive live price updates without causing layout shifts or hydration errors.',
     solution: 'Utilized Next.js App Router server components for initial catalog hydration and client state hooks for bidding simulation and filter queries.',
     contributions: [
@@ -100,6 +129,13 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
       auth: 'Account Verification & Audit Logging Pipeline',
       devopsOrTesting: 'Dockerized PostgreSQL Concurrency Testing',
     },
+    features: [
+      'ACID-compliant account-to-account balance transfer engine',
+      'PostgreSQL row-level locking (SELECT ... FOR UPDATE) preventing balance overdraw',
+      'Immutable financial audit ledger recording credit and debit entries',
+      'Comprehensive error boundaries returning serialized banking error codes',
+      'Dockerized concurrency test runner simulating parallel deposit/withdraw calls',
+    ],
     challenge: 'Executing financial balance transfers between user accounts with strict zero-loss consistency and race condition prevention.',
     solution: 'Designed ACID database transactions with row-level locking (SELECT ... FOR UPDATE) in PostgreSQL to guarantee serialized balance updates.',
     contributions: [
@@ -116,6 +152,13 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
       auth: 'Role-Based Operator View Access',
       devopsOrTesting: 'TypeScript Strict Mode & Recharts Virtualization',
     },
+    features: [
+      'Real-time server telemetry and system metric cards (CPU, Memory, Uptime)',
+      'Interactive charts powered by Recharts with memoized renders',
+      'Tabular system event log viewer with search and severity filters (Info, Warn, Error)',
+      'Adaptive dark/light theme system with zero flash of unstyled content',
+      'Responsive desktop and mobile drawer navigation',
+    ],
     challenge: 'Visualizing dense system telemetry and server metric streams in real-time without degrading browser frame rates.',
     solution: 'Implemented memoized chart components with Recharts, responsive CSS Grid virtualization, and local state filtering for server logs.',
     contributions: [
@@ -132,6 +175,13 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
       auth: 'User Session Workspace Context',
       devopsOrTesting: 'Tailwind CSS Grid & Breadcrumb Routing',
     },
+    features: [
+      'Nested folder navigation with interactive directory breadcrumbs',
+      'Visual storage capacity donuts and progress meters per file category',
+      'Multi-select file grid with rename, download, and delete actions',
+      'Normalized Redux Toolkit state slices for instant local updates',
+      'Modern glassmorphism UI styled with Tailwind CSS',
+    ],
     challenge: 'Managing nested folder navigation and dynamic storage capacity calculations on the client side.',
     solution: 'Structured normalized Redux state slices for file system trees with instant UI feedback for folder creation and deletion.',
     contributions: [
@@ -148,6 +198,13 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
       auth: 'JWT & Role-Based Access Control (RBAC)',
       devopsOrTesting: 'Zod Runtime Schema Validation',
     },
+    features: [
+      'High-throughput REST API powered by Bun runtime and Hono web framework',
+      'Type-safe SQL queries with Drizzle ORM and automatic migration generation',
+      'Strict runtime request body validation with Zod schemas',
+      'JWT authentication with Role-Based Access Control (RBAC)',
+      'Complete order return and customer complaint issue tracking workflows',
+    ],
     challenge: 'Maximizing REST API throughput while maintaining strict runtime schema validation and type-safe database queries.',
     solution: 'Leveraged Bun runtime with Hono web framework, Drizzle ORM type-safe queries, and Zod middleware validation.',
     contributions: [
@@ -164,6 +221,13 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
       auth: 'Spring Security 6 + JWT Filter Chain',
       devopsOrTesting: 'Maven Multi-Module Build & Docker',
     },
+    features: [
+      'Java 17 Spring Boot 3 enterprise REST API backend',
+      'Spring Security 6 with stateless JWT authentication filter chain',
+      'Relational schema modeling with Spring Data JPA and Hibernate ORM',
+      'Vue 3 Composition API frontend with Pinia global state store',
+      'AliExpress-inspired multi-category product catalog with discount tags',
+    ],
     challenge: 'Structuring an enterprise multi-category marketplace with secure JWT auth and reactive frontend state synchronization.',
     solution: 'Paired Java 17 Spring Boot 3 REST services with Vue 3 Composition API and Pinia state management.',
     contributions: [
@@ -180,6 +244,13 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
       auth: 'Laravel Session Security & Multi-Role Guards',
       devopsOrTesting: 'PHPUnit Automated Tests & Blade Engine',
     },
+    features: [
+      'Employee directory and hierarchical department management',
+      'Automated attendance tracking and monthly salary payroll calculator',
+      'Multi-tier leave approval workflow for managers and HR admins',
+      'MySQL database schema with foreign key constraints and Eloquent ORM',
+      'Corporate reporting engine exporting payroll and attendance summaries',
+    ],
     challenge: 'Handling complex corporate payroll calculations, attendance tracking, and hierarchical department leave approvals.',
     solution: 'Built modular MVC architecture in Laravel 11 with Eloquent model relations, automated leave policy checks, and Blade UI.',
     contributions: [
@@ -196,6 +267,13 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
       auth: 'JWT Auth & HTTP-Only Secure Cookies',
       devopsOrTesting: 'Redux Toolkit Optimistic State Updates',
     },
+    features: [
+      'Optimistic checkout dispatch flow in Redux Toolkit with background polling',
+      'Express.js RESTful endpoints with MongoDB Mongoose schemas',
+      'Client-side memory caching cutting redundant network transfers by 45%',
+      'Interactive cart drawer matching modern e-commerce UX patterns',
+      'Automated cart purging and order receipt dispatch upon success',
+    ],
     challenge: 'Minimizing cart abandonment rates, ensuring zero inventory race conditions, and loading massive catalogues with sub-100ms response times.',
     solution: 'Engineered an optimistic checkout dispatch flow in Redux Toolkit with background polling. Integrated pre-fetching and client-side memory caching to reduce redundant network transfers by 45%.',
     contributions: [

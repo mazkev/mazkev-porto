@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { X, ExternalLink, Github, Layers, Terminal, Sparkles, AlertCircle, Database, ShieldCheck, Cpu } from 'lucide-react';
+import { X, ExternalLink, Github, Layers, Terminal, Sparkles, AlertCircle, Database, ShieldCheck, Cpu, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
 
 import { caseStudyMap, type ProjectData } from '../lib/data/projects';
@@ -171,6 +171,28 @@ export default function Component({ name }) {
                     {study.specs.devopsOrTesting || 'Containerized & Production Ready'}
                   </div>
                 </div>
+              </div>
+            </div>
+          )}
+
+          {/* Key Features & Capabilities Checklist */}
+          {study.features && study.features.length > 0 && (
+            <div className="space-y-3 p-5 sm:p-6 rounded-3xl bg-slate-50 dark:bg-slate-950/40 border border-slate-200/80 dark:border-slate-800/80">
+              <div className="flex items-center justify-between text-xs font-bold font-mono uppercase tracking-wider text-slate-500 mb-1">
+                <span className="flex items-center gap-2 text-slate-900 dark:text-white">
+                  <CheckCircle2 size={15} className="text-emerald-500" /> Key Features & Capabilities
+                </span>
+                <span className="text-[10px] text-emerald-500 font-bold bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
+                  {study.features.length} Features
+                </span>
+              </div>
+              <div className="grid grid-cols-1 gap-2 pt-1">
+                {study.features.map((feature, i) => (
+                  <div key={i} className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+                    <span className="text-emerald-500 flex-shrink-0 font-bold">✓</span>
+                    <span>{feature}</span>
+                  </div>
+                ))}
               </div>
             </div>
           )}
