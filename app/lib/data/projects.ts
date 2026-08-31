@@ -51,6 +51,35 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
       'Designed relational PostgreSQL schema with connection pooling.',
       'Built responsive React frontend with TypeScript and dynamic catalog filters.',
     ],
+    codeLang: 'go',
+    codeSnippet: `// CheckoutHandler executes atomic checkout with stock reservation
+func (h *OrderHandler) Checkout(c *fiber.Ctx) error {
+	var req CheckoutRequest
+	if err := c.BodyParser(&req); err != nil {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{"error": "Invalid request"})
+	}
+
+	tx := h.db.Begin()
+	defer func() {
+		if r := recover(); r != nil { tx.Rollback() }
+	}()
+
+	for _, item := range req.Items {
+		res := tx.Model(&Product{}).
+			Where("id = ? AND stock >= ?", item.ProductID, item.Quantity).
+			Update("stock", gorm.Expr("stock - ?", item.Quantity))
+
+		if res.RowsAffected == 0 {
+			tx.Rollback()
+			return c.Status(fiber.StatusConflict).JSON(fiber.Map{"error": "Insufficient stock"})
+		}
+	}
+
+	if err := tx.Commit().Error; err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{"error": "Transaction failed"})
+	}
+	return c.Status(fiber.StatusCreated).JSON(fiber.Map{"message": "Order created successfully"})
+}`,
   },
   'Go Marketplace Backend (GORM & REST API)': {
     architectureFlow: 'HTTP Request ➔ Router Engine ➔ JWT Middleware ➔ Order Service ➔ GORM Tx Repository ➔ PostgreSQL Pool',
@@ -74,6 +103,23 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
       'Structured environment configuration and PostgreSQL connection health checks.',
       'Implemented structured JSON logging and standardized HTTP error response models.',
     ],
+    codeLang: 'go',
+    codeSnippet: `// GORM database transaction handling concurrent order insertion
+func (r *OrderRepository) CreateOrderTx(ctx context.Context, order *models.Order) error {
+	return r.db.WithContext(ctx).Transaction(func(tx *gorm.DB) error {
+		if err := tx.Create(order).Error; err != nil {
+			return err
+		}
+		for _, item := range order.Items {
+			if err := tx.Model(&models.Product{}).
+				Where("id = ?", item.ProductID).
+				Update("stock", gorm.Expr("stock - ?", item.Quantity)).Error; err != nil {
+				return err
+			}
+		}
+		return nil
+	})
+}`,
   },
   'Go Clean Architecture REST API': {
     architectureFlow: 'HTTP Request ➔ Middleware ➔ Delivery/Handler ➔ Domain Interface ➔ Usecase Layer ➔ Repository Layer ➔ PostgreSQL',
@@ -97,6 +143,29 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
       'Structured database migrations and Docker containerized PostgreSQL environment.',
       'Implemented input validation and standard error code mappings.',
     ],
+    codeLang: 'go',
+    codeSnippet: `// Domain usecase layer decoupled from frameworks & database drivers
+type ArticleUsecase interface {
+	GetByID(ctx context.Context, id int64) (*domain.Article, error)
+	Store(ctx context.Context, a *domain.Article) error
+}
+
+type articleUsecase struct {
+	articleRepo domain.ArticleRepository
+	timeout     time.Duration
+}
+
+func (u *articleUsecase) Store(ctx context.Context, a *domain.Article) error {
+	ctx, cancel := context.WithTimeout(ctx, u.timeout)
+	defer cancel()
+
+	existing, _ := u.articleRepo.GetByTitle(ctx, a.Title)
+	if existing != nil {
+		return domain.ErrConflict
+	}
+	a.CreatedAt = time.Now()
+	return u.articleRepo.Store(ctx, a)
+}`,
   },
   'BayE Marketplace (Fullstack Next.js)': {
     architectureFlow: 'Next.js App Router ➔ Server Component Fetch ➔ Client Dynamic Filter ➔ Cart / Bidding State ➔ Tailwind CSS UI',
@@ -120,6 +189,25 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
       'Created dynamic price bidding simulation and modular checkout sheet.',
       'Optimized image loading with Next.js Image component and responsive breakpoints.',
     ],
+    codeLang: 'tsx',
+    codeSnippet: `// Server Component hydration with dynamic revalidation
+export default async function ProductDetailPage({ params }: { params: { id: string } }) {
+  const product = await getProductById(params.id);
+  if (!product) notFound();
+
+  return (
+    <main className="container mx-auto px-4 py-8">
+      <div className="grid md:grid-cols-2 gap-8 items-start">
+        <ProductGallery images={product.images} />
+        <BiddingConsole 
+          productId={product.id} 
+          currentPrice={product.currentBid}
+          endsAt={product.endsAt} 
+        />
+      </div>
+    </main>
+  );
+}`,
   },
   'Go Banking Core Engine': {
     architectureFlow: 'Transfer Request ➔ Account Verification ➔ ACID Transaction Lock ➔ Ledger Balance Update ➔ Audit Logging',
@@ -143,6 +231,21 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
       'Implemented Dockerized PostgreSQL testing suite with seed migrations.',
       'Structured REST API endpoints with robust error boundary returns.',
     ],
+    codeLang: 'go',
+    codeSnippet: `// TransferTx executes money transfer with serialized account locking
+func (store *SQLStore) TransferTx(ctx context.Context, arg TransferTxParams) (TransferTxResult, error) {
+	var result TransferTxResult
+	err := store.execTx(ctx, func(q *Queries) error {
+		// Strict ID ordering prevents database deadlocks under high concurrency
+		if arg.FromAccountID < arg.ToAccountID {
+			result.FromAccount, result.ToAccount, _ = addMoney(ctx, q, arg.FromAccountID, -arg.Amount, arg.ToAccountID, arg.Amount)
+		} else {
+			result.ToAccount, result.FromAccount, _ = addMoney(ctx, q, arg.ToAccountID, arg.Amount, arg.FromAccountID, -arg.Amount)
+		}
+		return nil
+	})
+	return result, err
+}`,
   },
   'Enterprise Operations Dashboard': {
     architectureFlow: 'Metrics Stream ➔ Next.js 16 Client ➔ Recharts Visualization ➔ Tabular Log Filter ➔ Dark/Light System',

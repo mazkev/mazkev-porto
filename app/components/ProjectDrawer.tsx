@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { X, ExternalLink, Github, Layers, Terminal, Sparkles, AlertCircle, Database, ShieldCheck, Cpu, CheckCircle2 } from 'lucide-react';
+import { X, ExternalLink, Github, Layers, Terminal, Sparkles, AlertCircle, Database, ShieldCheck, Cpu, CheckCircle2, Copy, Check, Code2 } from 'lucide-react';
 import Image from 'next/image';
 
 import { caseStudyMap, type ProjectData } from '../lib/data/projects';
@@ -14,7 +14,15 @@ interface ProjectDrawerProps {
 }
 
 export default function ProjectDrawer({ isOpen, onClose, project }: ProjectDrawerProps) {
+  const [isCopied, setIsCopied] = useState(false);
+
   if (!isOpen || !project) return null;
+
+  const handleCopyCode = (code: string) => {
+    navigator.clipboard.writeText(code);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
 
   const study = caseStudyMap[project.title] || {
     challenge: 'Designing a maintainable frontend component architecture and optimizing page speed.',
@@ -228,6 +236,53 @@ export default function Component({ name }) {
               ))}
             </ul>
           </div>
+
+          {/* Core Implementation Snippet */}
+          {study.codeSnippet && (
+            <div className="space-y-3">
+              <div className="flex items-center justify-between text-xs font-mono font-bold uppercase tracking-wider text-slate-500">
+                <span className="flex items-center gap-2 text-slate-900 dark:text-white">
+                  <Code2 size={15} className="text-primary" /> Core Implementation Snippet
+                </span>
+                <button
+                  onClick={() => handleCopyCode(study.codeSnippet!)}
+                  className="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-[10px] font-mono font-bold text-slate-700 dark:text-slate-300 transition-all cursor-pointer border border-slate-200 dark:border-slate-700"
+                >
+                  {isCopied ? (
+                    <>
+                      <Check size={12} className="text-emerald-500" /> Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Copy size={12} /> Copy Code
+                    </>
+                  )}
+                </button>
+              </div>
+
+              <div className="rounded-3xl bg-slate-950 border border-slate-800 overflow-hidden shadow-2xl">
+                {/* Editor Window Top Bar */}
+                <div className="flex items-center justify-between px-5 py-3 border-b border-slate-800/80 bg-slate-900/90">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+                    <span className="ml-2 font-mono text-[11px] text-slate-400 font-bold">
+                      {project.title.toLowerCase().replace(/[^a-z0-9]/g, '-')}.{study.codeLang || 'go'}
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-mono font-extrabold uppercase tracking-wider text-emerald-400 px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
+                    {study.codeLang || 'go'}
+                  </span>
+                </div>
+
+                {/* Code Snippet Pre Block */}
+                <pre className="p-5 font-mono text-xs text-slate-200 overflow-x-auto leading-relaxed max-h-96 whitespace-pre">
+                  <code>{study.codeSnippet}</code>
+                </pre>
+              </div>
+            </div>
+          )}
         </div>
       </motion.div>
     </div>
