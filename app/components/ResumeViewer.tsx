@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { X, Printer, Download, Mail, Phone, MapPin, Code, Award, Briefcase, GraduationCap, LayoutGrid, Globe, Github, Layers, Server, Cpu, FileText } from 'lucide-react';
+import { X, Printer, Download, Mail, Phone, MapPin, Code, Award, Briefcase, GraduationCap, LayoutGrid, Globe, Github, Layers, Server, Cpu, FileText, User } from 'lucide-react';
 import Image from 'next/image';
 import { projects } from '../lib/data/projects';
 
@@ -98,6 +98,69 @@ const commonText = {
   }
 };
 
+const projectTranslations: Record<string, { id: string; en: string }> = {
+  'Go Marketplace (Fullstack Go & React)': {
+    en: 'Fullstack e-commerce marketplace built with Go and React. Features REST API, JWT auth, product catalog management, and transactional PostgreSQL integration.',
+    id: 'Marketplace e-commerce fullstack dengan Go dan React. Dilengkapi REST API, autentikasi JWT, manajemen katalog produk, dan integrasi database PostgreSQL transaksional.'
+  },
+  'Go Marketplace Backend (GORM & REST API)': {
+    en: 'High-performance REST API backend for e-commerce with Go, GORM ORM, and PostgreSQL. Handles atomic checkout transactions and connection pooling.',
+    id: 'Layanan backend REST API untuk marketplace e-commerce dengan Go, GORM ORM, dan PostgreSQL. Mengelola transaksi checkout dan connection pooling.'
+  },
+  'Go Clean Architecture REST API': {
+    en: 'Modular Go REST API built with Clean Architecture principles, decoupling domain entities, usecase logic, and database repositories for unit testing.',
+    id: 'REST API modular di Go yang menerapkan prinsip Clean Architecture, memisahkan entitas domain, logika usecase, dan repository database untuk kemudahan unit testing.'
+  },
+  'BayE Marketplace (Fullstack Next.js)': {
+    en: 'Modern e-commerce and auction platform inspired by eBay. Features server-rendered product hydration, dynamic bidding simulation, and responsive cart.',
+    id: 'Platform lelang dan belanja modern terinspirasi eBay. Menampilkan hidrasi katalog produk server-rendered, simulasi lelang harga langsung, dan keranjang responsif.'
+  },
+  'Go Banking Core Engine': {
+    en: 'Core financial banking API in Go handling user balance transfers with strict ACID compliance, row-level locking (SELECT FOR UPDATE), and audit logging.',
+    id: 'Layanan transaksi perbankan di Go yang menangani transfer saldo akun dengan kepatuhan ACID, row-level locking (SELECT FOR UPDATE), dan pencatatan audit trail.'
+  },
+  'Bun & Hono E-Commerce Backend (Drizzle ORM)': {
+    en: 'Modern ultra-fast TypeScript backend built on Bun runtime with Hono, Drizzle ORM type-safe SQL queries, Zod schema validation, and RBAC auth.',
+    id: 'Backend TypeScript di atas runtime Bun dengan framework Hono, query database type-safe Drizzle ORM, validasi skema Zod, dan kontrol akses RBAC.'
+  },
+  'Semarketplace Pro (React & Express)': {
+    en: 'Fullstack e-commerce application built with React, Redux Toolkit, and Express.js with optimistic cart updates and inventory synchronization.',
+    id: 'Aplikasi e-commerce fullstack dengan React, Redux Toolkit, dan Express.js yang dilengkapi pembaruan keranjang belanja dan sinkronisasi stok.'
+  },
+  'AliExpress Choice E-Commerce (Java Spring Boot)': {
+    en: 'Enterprise fullstack e-commerce platform built with Java 17, Spring Boot 3, and Vue 3 with Spring Security JWT auth and PostgreSQL.',
+    id: 'Platform e-commerce enterprise dengan Java 17, Spring Boot 3, dan Vue 3 yang dilengkapi keamanan Spring Security JWT dan database PostgreSQL.'
+  },
+  'HRMS Enterprise Management (Laravel 11)': {
+    en: 'Human Resource Management System with attendance tracking, payroll calculation, department management, and automated leave request workflows.',
+    id: 'Sistem manajemen SDM (HRMS) dengan absensi, cuti karyawan, struktur departemen, dan penghitungan slip gaji otomatis berbasis Laravel 11.'
+  },
+  'Enterprise Operations Dashboard': {
+    en: 'System operations monitoring interface built with Next.js 16, TypeScript, and Recharts with real-time server activity metrics and tabular log viewer.',
+    id: 'Antarmuka pemantauan operasional sistem dengan Next.js 16, TypeScript, dan Recharts yang dilengkapi metrik aktivitas server dan filter log insiden.'
+  },
+  'MazCloud File Storage Dashboard': {
+    en: 'Cloud storage management dashboard built with React, Redux, and Tailwind CSS with interactive storage capacity charts and folder navigation.',
+    id: 'Dashboard manajemen penyimpanan file berbasis React, Redux, dan Tailwind CSS dengan grafik kapasitas penyimpanan dan navigasi struktur folder.'
+  },
+  'React Shopping Cart Application': {
+    en: 'Interactive e-commerce shopping cart built with React and TypeScript with dynamic item quantity adjustments and price calculations.',
+    id: 'Aplikasi keranjang belanja e-commerce interaktif dengan React dan TypeScript yang dilengkapi penghitungan harga dan filter kategori dinamis.'
+  },
+  'Canvass Graphic Design Studio': {
+    en: 'Browser-based graphic design tool with interactive canvas manipulation, multi-layer rendering, and asset export in React and TypeScript.',
+    id: 'Aplikasi studio desain grafis berbasis web dengan manipulasi kanvas interaktif, manajemen multi-layer, dan ekspor aset dengan React & TypeScript.'
+  },
+  'Trello Kanban Workspace': {
+    en: 'Collaborative task management dashboard with drag-and-drop Kanban boards, column customization, and local state persistence.',
+    id: 'Dashboard manajemen tugas kolaboratif dengan papan Kanban drag-and-drop, kustomisasi kolom, dan penyimpanan status lokal.'
+  },
+  'Spotify Web Player Clone': {
+    en: 'Modern music streaming web player interface with playlist navigation, audio playback simulation, and responsive dark glassmorphism UI.',
+    id: 'Antarmuka pemutar musik web streaming dengan navigasi playlist, simulasi pemutaran audio, dan desain dark glassmorphism responsif.'
+  }
+};
+
 interface CVContentProps {
   lang: 'en' | 'id';
   activeRole: ResumeRole;
@@ -120,58 +183,58 @@ function CVContent({ lang, activeRole, roleProjects, pageNumber, totalPages }: C
             width={96}
             height={96}
             className="w-full h-full object-cover"
+            priority
           />
         </div>
 
-        <div className="flex-grow text-right space-y-1 print:space-y-0.5">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl print:text-2xl font-extrabold text-slate-900 leading-none uppercase tracking-tight">
+        <div className="flex-grow space-y-1 print:space-y-0.5">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl print:text-xl font-extrabold text-slate-900 uppercase tracking-tight">
             Kevin Eka Pratama
           </h1>
-          <p className="text-xs md:text-sm print:text-[10px] font-bold text-slate-800 uppercase tracking-widest pt-1 print:pt-0">
+          <p className="text-xs sm:text-sm md:text-base print:text-[11px] font-bold text-slate-800 uppercase tracking-wider">
             {currentRoleContent.title}
           </p>
-          <div className="pt-2 print:pt-1 flex flex-wrap items-end sm:items-center justify-end gap-y-1 gap-x-4 print:gap-x-3 text-xs print:text-[10px] text-slate-800 font-semibold">
-            <a href="mailto:kevinekapratama@gmail.com" className="flex items-center gap-1.5 hover:underline">
-              <span>kevinekapratama@gmail.com</span>
-              <Mail size={12} className="text-slate-900" />
-            </a>
-            <a href="tel:+6281326612344" className="flex items-center gap-1.5 hover:underline">
-              <span>+62 (813) 2661-2344</span>
-              <Phone size={12} className="text-slate-900" />
-            </a>
-            <a href="https://mazkev.vercel.app" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:underline">
-              <span>mazkev.vercel.app</span>
-              <Globe size={12} className="text-slate-900" />
-            </a>
-            <a href="https://github.com/mazkev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:underline">
-              <span>github.com/mazkev</span>
-              <Github size={12} className="text-slate-900" />
-            </a>
-            <div className="flex items-center gap-1.5">
-              <span>Jakarta, Indonesia</span>
-              <MapPin size={12} className="text-slate-900" />
-            </div>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs print:text-[9px] text-slate-700 pt-1 print:pt-0 font-medium">
+            <span className="flex items-center gap-1 font-mono">
+              <Mail size={12} className="text-slate-900 print:w-2.5 print:h-2.5" /> kevinekapratama@gmail.com
+            </span>
+            <span className="hidden sm:inline print:inline">•</span>
+            <span className="flex items-center gap-1 font-mono">
+              <Phone size={12} className="text-slate-900 print:w-2.5 print:h-2.5" /> +62 (813) 2661-2344
+            </span>
+            <span className="hidden sm:inline print:inline">•</span>
+            <span className="flex items-center gap-1 font-mono">
+              <Globe size={12} className="text-slate-900 print:w-2.5 print:h-2.5" /> mazkev.vercel.app
+            </span>
+            <span className="hidden sm:inline print:inline">•</span>
+            <span className="flex items-center gap-1 font-mono">
+              <Github size={12} className="text-slate-900 print:w-2.5 print:h-2.5" /> github.com/mazkev
+            </span>
+            <span className="hidden sm:inline print:inline">•</span>
+            <span className="flex items-center gap-1 font-mono">
+              <MapPin size={12} className="text-slate-900 print:w-2.5 print:h-2.5" /> Jakarta, ID
+            </span>
           </div>
         </div>
       </div>
 
       <div className="space-y-1.5 print:space-y-0.5">
-        <h2 className="text-sm print:text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-1 flex items-center justify-between">
-          <span className="flex items-center gap-2">
-            <Award size={16} className="text-slate-900 print:w-3 print:h-3" /> {currentRoleContent.executiveSummaryTitle}
-          </span>
-          {pageNumber && (
-            <span className="text-[10px] font-mono text-slate-600 font-bold uppercase">
-              {lang === 'en' ? 'Page 1: English (ATS)' : 'Halaman 2: Bahasa Indonesia (ATS)'}
+        <div className="flex items-center justify-between border-b border-slate-800 pb-1">
+          <h2 className="text-sm print:text-xs font-bold uppercase tracking-wider text-slate-900 flex items-center gap-2">
+            <User size={16} className="text-slate-900 print:w-3 print:h-3" /> {currentRoleContent.executiveSummaryTitle}
+          </h2>
+          {pageNumber && totalPages && (
+            <span className="text-[10px] print:text-[8px] font-mono font-bold text-slate-500 uppercase">
+              {lang === 'en' ? 'Page 1: English (ATS)' : 'Halaman 2: Bahasa Indonesia'}
             </span>
           )}
-        </h2>
-        <p className="text-slate-800 leading-relaxed text-xs md:text-sm print:text-[10.5px] print:leading-normal font-medium">
+        </div>
+        <p className="text-slate-800 text-xs sm:text-sm print:text-[10px] leading-relaxed print:leading-normal font-medium text-justify">
           {currentRoleContent.executiveSummary}
         </p>
       </div>
 
-      <div className="space-y-3.5 print:space-y-2">
+      <div className="space-y-2 print:space-y-1">
         <h2 className="text-sm print:text-xs font-bold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-1 flex items-center gap-2">
           <Briefcase size={16} className="text-slate-900 print:w-3 print:h-3" /> {t.experienceTitle}
         </h2>
@@ -228,21 +291,24 @@ function CVContent({ lang, activeRole, roleProjects, pageNumber, totalPages }: C
           </span>
         </h2>
         <div className="space-y-2 print:space-y-1 text-xs print:text-[10px]">
-          {roleProjects.slice(0, 6).map((project, idx) => (
-            <div key={idx} className="space-y-0.5 border-b border-slate-200 pb-1.5 print:pb-1 last:border-none print:break-inside-avoid">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10.5px]">
-                  • {project.title}
+          {roleProjects.slice(0, 6).map((project, idx) => {
+            const projectDesc = projectTranslations[project.title]?.[lang] || project.description;
+            return (
+              <div key={idx} className="space-y-0.5 border-b border-slate-200 pb-1.5 print:pb-1 last:border-none print:break-inside-avoid">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+                  <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10.5px]">
+                    • {project.title}
+                  </div>
+                  <div className="text-[10px] print:text-[8px] font-mono text-slate-700 font-bold uppercase">
+                    {project.tech.join(' • ')}
+                  </div>
                 </div>
-                <div className="text-[10px] print:text-[8px] font-mono text-slate-700 font-bold uppercase">
-                  {project.tech.join(' • ')}
-                </div>
+                <p className="text-[11px] print:text-[9px] text-slate-700 font-medium pl-3 leading-snug">
+                  {projectDesc}
+                </p>
               </div>
-              <p className="text-[11px] print:text-[9px] text-slate-700 font-medium pl-3 leading-snug">
-                {project.description}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -253,10 +319,10 @@ function CVContent({ lang, activeRole, roleProjects, pageNumber, totalPages }: C
         
         <div className="space-y-0.5 text-xs print:text-[9.5px] text-slate-800 leading-relaxed font-medium">
           <p>
-            <strong>Engineering & Frameworks:</strong> Next.js, React.js, Java Spring Boot, Golang, Express.js, Node.js, Vue 3, Angular, Python (FastAPI), TypeScript, Tailwind CSS
+            <strong>{lang === 'id' ? 'Framework & Bahasa:' : 'Engineering & Frameworks:'}</strong> Next.js, React.js, Go (Golang), Java Spring Boot, Express.js, Node.js, Vue 3, Angular, Python (FastAPI), TypeScript, Tailwind CSS
           </p>
           <p>
-            <strong>Databases & Cloud Tools:</strong> PostgreSQL, MongoDB, Redis, Prisma ORM, Docker, AWS, Vercel Edge, Firebase, Git & GitHub, Postman
+            <strong>{lang === 'id' ? 'Database & Alat Cloud:' : 'Databases & Cloud Tools:'}</strong> PostgreSQL, MySQL, MongoDB, Redis, Docker, GORM, Prisma ORM, AWS, Vercel Edge, Git & GitHub, Postman
           </p>
         </div>
       </div>
