@@ -17,21 +17,21 @@ export type CVMode = 'bilingual' | 'en' | 'id';
 const roleContent = {
   fullstack: {
     en: {
-      title: 'Fullstack Developer',
+      title: 'Backend Developer (Go / Golang)',
       executiveSummaryTitle: 'Professional Summary',
-      executiveSummary: 'Fullstack Developer with 3 years of professional experience in Application Support at PT PLN Icon+. Experienced in developing fullstack web applications using React, Next.js, and TypeScript on the frontend, combined with Go (Golang) and PostgreSQL on the backend. Brings practical operational background in database troubleshooting, SQL query analysis, and API integration.',
+      executiveSummary: 'Backend Developer focused on Go (Golang) with 3+ years of professional Application Support experience at PT PLN Icon+. Experienced in building backend REST APIs and web applications using Go and PostgreSQL, paired with React/TypeScript on the frontend. Practical understanding of database troubleshooting, SQL query analysis, and reliable database transactions (Clean Architecture, GORM).',
     },
     id: {
-      title: 'Fullstack Developer',
+      title: 'Backend Developer (Go / Golang)',
       executiveSummaryTitle: 'Ringkasan Profesional',
-      executiveSummary: 'Fullstack Developer dengan 3 tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+. Berpengalaman mengembangkan aplikasi web menggunakan React, Next.js, dan TypeScript pada frontend, dipadukan dengan Go (Golang) dan PostgreSQL pada backend. Memiliki pemahaman praktis dalam troubleshooting database, analisis query SQL, dan integrasi REST API.',
+      executiveSummary: 'Backend Developer yang berfokus pada Go (Golang) dengan 3+ tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+. Berpengalaman membangun REST API backend dan aplikasi web menggunakan Go dan PostgreSQL, dipadukan dengan React/TypeScript pada frontend. Memiliki pemahaman praktis dalam troubleshooting database, analisis query SQL, dan penanganan transaksi database (Clean Architecture, GORM).',
     }
   },
   frontend: {
     en: {
       title: 'Frontend Developer',
       executiveSummaryTitle: 'Professional Summary',
-      executiveSummary: 'Frontend Developer focused on building clean, responsive, and user-friendly web applications using React, Next.js, TypeScript, and Tailwind CSS. Experienced in state management, REST API integration, and component-driven UI development. Supported by 3 years of production Application Support experience in resolving user-facing issues and operational workflows.',
+      executiveSummary: 'Frontend Developer focused on building clean, responsive, and user-friendly web applications using React, Next.js, TypeScript, and Tailwind CSS. Experienced in state management, REST API integration, and component-driven UI development. Supported by 3 years of Application Support experience in resolving user-facing issues and operational workflows.',
     },
     id: {
       title: 'Frontend Developer',
@@ -43,12 +43,12 @@ const roleContent = {
     en: {
       title: 'Backend Developer (Go / Golang & REST API)',
       executiveSummaryTitle: 'Professional Summary',
-      executiveSummary: 'Backend Developer working with Go (Golang), PostgreSQL, and RESTful API services. Experienced in designing relational database schemas, handling database transactions, and structuring modular code following Clean Architecture principles. Backed by 3 years of Application Support experience at PT PLN Icon+, with solid foundation in SQL query troubleshooting and system monitoring.',
+      executiveSummary: 'Backend Developer working with Go (Golang), PostgreSQL, and RESTful API services. Experienced in designing relational database schemas, handling database transactions, and structuring modular code following Clean Architecture principles. Backed by 3+ years of Application Support experience at PT PLN Icon+, with solid foundation in SQL query troubleshooting and system monitoring.',
     },
     id: {
       title: 'Backend Developer (Go / Golang & REST API)',
       executiveSummaryTitle: 'Ringkasan Profesional',
-      executiveSummary: 'Backend Developer yang berfokus pada pengembangan layanan REST API menggunakan Go (Golang) dan PostgreSQL. Berpengalaman dalam merancang skema database relasional, menangani transaksi database, dan menyusun struktur kode modular berprinsip Clean Architecture. Diperkuat oleh 3 tahun pengalaman Application Support di PT PLN Icon+ dengan fondasi dalam troubleshooting query SQL dan pemantauan sistem.',
+      executiveSummary: 'Backend Developer yang berfokus pada pengembangan layanan REST API menggunakan Go (Golang) dan PostgreSQL. Berpengalaman dalam merancang skema database relasional, menangani transaksi database, dan menyusun struktur kode modular berprinsip Clean Architecture. Diperkuat oleh 3+ tahun pengalaman Application Support di PT PLN Icon+ dengan fondasi dalam troubleshooting query SQL dan pemantauan sistem.',
     }
   }
 };
@@ -63,15 +63,15 @@ const commonText = {
     educationTitle: 'Education',
     job1Title: 'Application Support',
     job1Date: '2022 - Present',
-    job1Bullet1: 'Monitored production application workflows and handled operational incidents to ensure smooth daily services.',
+    job1Bullet1: 'Monitored application workflows and handled operational incidents to ensure smooth daily services.',
     job1Bullet2: 'Investigated database queries, identified data bottlenecks, and assisted in troubleshooting relational databases (PostgreSQL, Oracle, MySQL).',
     job1Bullet3: 'Documented system troubleshooting procedures and collaborated with engineering teams to report bugs and verify fixes.',
     job2Title: 'Software Development (Independent Projects)',
     job2Company: 'Hands-on Practice & Open Source',
     job2Date: '2024 - Present',
-    job2Bullet1: 'Built 20+ fullstack and backend web applications using Go (Golang), React, Next.js, and Java Spring Boot to study modern software architecture.',
-    job2Bullet2: 'Designed relational database schemas, implemented JWT authentication, and practiced safe database transaction handling in PostgreSQL.',
-    job2Bullet3: 'Developed responsive frontend interfaces with React/TypeScript and containerized local development environments using Docker.',
+    job2Bullet1: 'Built 20+ fullstack and backend personal web applications using Go (Golang), React, Next.js, and Java Spring Boot to study software architecture.',
+    job2Bullet2: 'Designed relational database schemas, implemented JWT authentication, and practiced database transaction handling in PostgreSQL.',
+    job2Bullet3: 'Developed responsive web interfaces with React/TypeScript and containerized local development environments using Docker.',
     degree: 'Bachelor of Computer Science / Information Technology',
     university: 'Universitas AMIKOM • GPA: 3.42 / 4.00',
   },
@@ -90,9 +90,9 @@ const commonText = {
     job2Title: 'Pengembangan Perangkat Lunak (Proyek Mandiri)',
     job2Company: 'Eksplorasi Praktis & Open Source',
     job2Date: '2024 - Sekarang',
-    job2Bullet1: 'Membangun 20+ aplikasi web fullstack dan backend menggunakan Go (Golang), React, Next.js, dan Java Spring Boot untuk memperdalam arsitektur perangkat lunak.',
+    job2Bullet1: 'Membangun 20+ aplikasi web personal dan backend menggunakan Go (Golang), React, Next.js, dan Java Spring Boot untuk memperdalam arsitektur perangkat lunak.',
     job2Bullet2: 'Merancang skema database relasional, menerapkan autentikasi JWT, dan mengimplementasikan penanganan transaksi database di PostgreSQL.',
-    job2Bullet3: 'Mengembangkan antarmuka frontend responsif dengan React/TypeScript dan menyiapkan lingkungan pengembangan menggunakan Docker.',
+    job2Bullet3: 'Mengembangkan antarmuka web responsif dengan React/TypeScript dan menyiapkan lingkungan pengembangan lokal menggunakan Docker.',
     degree: 'Sarjana Ilmu Komputer / Teknologi Informasi',
     university: 'Universitas AMIKOM • IPK: 3.42 / 4.00',
   }
@@ -104,8 +104,8 @@ const projectTranslations: Record<string, { id: string; en: string }> = {
     id: 'Marketplace e-commerce fullstack dengan Go dan React. Dilengkapi REST API, autentikasi JWT, manajemen katalog produk, dan integrasi database PostgreSQL transaksional.'
   },
   'Go Marketplace Backend (GORM & REST API)': {
-    en: 'Modular REST API backend for e-commerce with Go, GORM ORM, and PostgreSQL. Handles atomic checkout transactions and connection pooling.',
-    id: 'Layanan backend REST API untuk marketplace e-commerce dengan Go, GORM ORM, dan PostgreSQL. Mengelola transaksi checkout dan connection pooling.'
+    en: 'E-commerce REST API backend built with Go, GORM, and PostgreSQL. Implements atomic checkout transactions and database connection pooling.',
+    id: 'Backend REST API e-commerce yang dibangun dengan Go, GORM, dan PostgreSQL. Mengimplementasikan transaksi checkout atomik dan database connection pooling.'
   },
   'Go Clean Architecture REST API': {
     en: 'Modular Go REST API built with Clean Architecture principles, decoupling domain entities, usecase logic, and database repositories for unit testing.',
@@ -116,20 +116,20 @@ const projectTranslations: Record<string, { id: string; en: string }> = {
     id: 'Platform lelang dan belanja modern terinspirasi eBay. Menampilkan hidrasi katalog produk server-rendered, simulasi lelang harga langsung, dan keranjang responsif.'
   },
   'Go Banking Core Engine': {
-    en: 'Core financial banking API in Go handling user balance transfers with strict ACID compliance, row-level locking (SELECT FOR UPDATE), and audit logging.',
-    id: 'Layanan transaksi perbankan di Go yang menangani transfer saldo akun dengan kepatuhan ACID, row-level locking (SELECT FOR UPDATE), dan pencatatan audit trail.'
+    en: 'Go-based financial transaction API implementing balance transfers using PostgreSQL transactions, row-level locking (SELECT FOR UPDATE), and audit logging.',
+    id: 'API transaksi keuangan berbasis Go yang mengimplementasikan transfer saldo menggunakan transaksi PostgreSQL, row-level locking (SELECT FOR UPDATE), dan pencatatan audit log.'
   },
   'Bun & Hono E-Commerce Backend (Drizzle ORM)': {
-    en: 'Modern TypeScript backend built on Bun runtime with Hono, Drizzle ORM type-safe SQL queries, Zod schema validation, and RBAC auth.',
-    id: 'Backend TypeScript di atas runtime Bun dengan framework Hono, query database type-safe Drizzle ORM, validasi skema Zod, dan kontrol akses RBAC.'
+    en: 'Modern TypeScript backend built with Bun, Hono, Drizzle ORM, and Zod, featuring JWT authentication and RBAC.',
+    id: 'Backend TypeScript modern yang dibangun dengan Bun, Hono, Drizzle ORM, dan Zod, dilengkapi autentikasi JWT dan kontrol akses RBAC.'
   },
   'Semarketplace Pro (React & Express)': {
     en: 'Fullstack e-commerce application built with React, Redux Toolkit, and Express.js with optimistic cart updates and inventory synchronization.',
     id: 'Aplikasi e-commerce fullstack dengan React, Redux Toolkit, dan Express.js yang dilengkapi pembaruan keranjang belanja dan sinkronisasi stok.'
   },
   'AliExpress Choice E-Commerce (Java Spring Boot)': {
-    en: 'Fullstack e-commerce platform built with Java 17, Spring Boot 3, and Vue 3 with Spring Security JWT auth and PostgreSQL.',
-    id: 'Platform e-commerce fullstack dengan Java 17, Spring Boot 3, dan Vue 3 yang dilengkapi keamanan Spring Security JWT dan database PostgreSQL.'
+    en: 'Fullstack e-commerce application built with Java 17, Spring Boot 3, and Vue 3, featuring Spring Security JWT authentication and PostgreSQL.',
+    id: 'Aplikasi e-commerce fullstack yang dibangun dengan Java 17, Spring Boot 3, dan Vue 3, dilengkapi autentikasi Spring Security JWT dan database PostgreSQL.'
   },
   'HRMS Management System (Laravel 11)': {
     en: 'Human Resource Management System with attendance tracking, payroll calculation, department management, and automated leave request workflows.',

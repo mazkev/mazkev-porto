@@ -219,7 +219,7 @@ const html = `<!DOCTYPE html>
     <img src="${imgSrc}" class="photo" alt="Kevin Eka Pratama">
     <div class="header-text">
       <div class="name">Kevin Eka Pratama</div>
-      <div class="title">Fullstack Developer</div>
+      <div class="title">Backend Developer (Go / Golang)</div>
       <div class="contact-info">
         <span>kevinekapratama@gmail.com</span>
         <span>•</span>
@@ -240,7 +240,7 @@ const html = `<!DOCTYPE html>
       <span class="badge">Page 1: English (ATS Standard)</span>
     </div>
     <p class="summary-text">
-      Fullstack Developer with 3 years of professional experience in Application Support at PT PLN Icon+. Experienced in developing fullstack web applications using React, Next.js, and TypeScript on the frontend, combined with Go (Golang) and PostgreSQL on the backend. Brings practical operational background in database troubleshooting, SQL query analysis, and API integration.
+      Backend Developer focused on Go (Golang) with 3+ years of professional Application Support experience at PT PLN Icon+. Experienced in building backend REST APIs and web applications using Go and PostgreSQL, paired with React/TypeScript on the frontend. Practical understanding of database troubleshooting, SQL query analysis, and reliable database transactions (Clean Architecture, GORM).
     </p>
   </div>
 
@@ -257,7 +257,7 @@ const html = `<!DOCTYPE html>
         <span class="job-date">2022 - Present</span>
       </div>
       <ul class="bullets">
-        <li>Monitored production application workflows and handled operational incidents to ensure smooth daily services.</li>
+        <li>Monitored application workflows and handled operational incidents to ensure smooth daily services.</li>
         <li>Investigated database queries, identified data bottlenecks, and assisted in troubleshooting relational databases (PostgreSQL, Oracle, MySQL).</li>
         <li>Documented system troubleshooting procedures and collaborated with engineering teams to report bugs and verify fixes.</li>
       </ul>
@@ -271,9 +271,9 @@ const html = `<!DOCTYPE html>
         <span class="job-date">2024 - Present</span>
       </div>
       <ul class="bullets">
-        <li>Built 20+ fullstack and backend web applications using Go (Golang), React, Next.js, and Java Spring Boot to study modern software architecture.</li>
-        <li>Designed relational database schemas, implemented JWT authentication, and practiced safe database transaction handling in PostgreSQL.</li>
-        <li>Developed responsive frontend interfaces with React/TypeScript and containerized local development environments using Docker.</li>
+        <li>Built 20+ fullstack and backend personal web applications using Go (Golang), React, Next.js, and Java Spring Boot to study software architecture.</li>
+        <li>Designed relational database schemas, implemented JWT authentication, and practiced database transaction handling in PostgreSQL.</li>
+        <li>Developed responsive web interfaces with React/TypeScript and containerized local development environments using Docker.</li>
       </ul>
     </div>
   </div>
@@ -304,7 +304,7 @@ const html = `<!DOCTYPE html>
         <span class="project-title">• <a href="https://github.com/mazkev/java-ecommerce" style="color: #0f172a; text-decoration: none;">AliExpress Choice (Java Spring Boot & Vue)</a></span>
         <span class="project-tech">Java 17 • Spring Boot 3 • Vue 3 • PostgreSQL</span>
       </div>
-      <div class="project-desc">Fullstack e-commerce platform built with Java 17, Spring Boot 3, and Vue 3. Implements Spring Security JWT, inventory stock management, and Pinia state store. [Repo: github.com/mazkev/java-ecommerce]</div>
+      <div class="project-desc">Fullstack e-commerce application built with Java 17, Spring Boot 3, and Vue 3, featuring Spring Security JWT authentication and PostgreSQL. [Repo: github.com/mazkev/java-ecommerce]</div>
     </div>
 
     <div class="project-item">
@@ -337,8 +337,8 @@ const html = `<!DOCTYPE html>
       <span>Technical Competencies</span>
     </div>
     <div class="skills-block">
-      <div><strong>Engineering & Frameworks:</strong> Next.js, React.js, Go (Golang), Java Spring Boot, Express.js, Node.js, Vue 3, Angular, Python (FastAPI), TypeScript, Tailwind CSS</div>
-      <div><strong>Databases & Cloud Tools:</strong> PostgreSQL, MySQL, MongoDB, Redis, Docker, GORM, Prisma ORM, AWS, Vercel Edge, Git & GitHub, Postman</div>
+      <div><strong>Backend & Languages:</strong> Go (Golang), PostgreSQL, REST API, Clean Architecture, GORM, Java 17, Spring Boot 3, Node.js, Express.js, PHP, Laravel 11, TypeScript, SQL</div>
+      <div><strong>Tools, Frontend & Cloud:</strong> Docker, Git & GitHub, JWT, Postman, Redis, Next.js, React, Vue 3, Tailwind CSS, Vercel Edge</div>
     </div>
   </div>
 
@@ -364,7 +364,7 @@ const html = `<!DOCTYPE html>
     <img src="${imgSrc}" class="photo" alt="Kevin Eka Pratama">
     <div class="header-text">
       <div class="name">Kevin Eka Pratama</div>
-      <div class="title">Fullstack Developer</div>
+      <div class="title">Backend Developer (Go / Golang)</div>
       <div class="contact-info">
         <span>kevinekapratama@gmail.com</span>
         <span>•</span>
@@ -385,7 +385,7 @@ const html = `<!DOCTYPE html>
       <span class="badge">Halaman 2: Bahasa Indonesia (Standar ATS)</span>
     </div>
     <p class="summary-text">
-      Fullstack Developer dengan 3 tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+. Berpengalaman mengembangkan aplikasi web menggunakan React, Next.js, dan TypeScript pada frontend, dipadukan dengan Go (Golang) dan PostgreSQL pada backend. Memiliki pemahaman praktis dalam troubleshooting database, analisis query SQL, dan integrasi REST API.
+      Backend Developer yang berfokus pada Go (Golang) dengan 3+ tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+. Berpengalaman membangun REST API backend dan aplikasi web menggunakan Go dan PostgreSQL, dipadukan dengan React/TypeScript pada frontend. Memiliki pemahaman praktis dalam troubleshooting database, analisis query SQL, dan penanganan transaksi database (Clean Architecture, GORM).
     </p>
   </div>
 
@@ -416,9 +416,9 @@ const html = `<!DOCTYPE html>
         <span class="job-date">2024 - Sekarang</span>
       </div>
       <ul class="bullets">
-        <li>Membangun 20+ aplikasi web fullstack dan backend menggunakan Go (Golang), React, Next.js, dan Java Spring Boot untuk memperdalam arsitektur perangkat lunak.</li>
+        <li>Membangun 20+ aplikasi web personal dan backend menggunakan Go (Golang), React, Next.js, dan Java Spring Boot untuk memperdalam arsitektur perangkat lunak.</li>
         <li>Merancang skema database relasional, menerapkan autentikasi JWT, dan mengimplementasikan penanganan transaksi database di PostgreSQL.</li>
-        <li>Mengembangkan antarmuka frontend responsif dengan React/TypeScript dan menyiapkan lingkungan pengembangan menggunakan Docker.</li>
+        <li>Mengembangkan antarmuka web responsif dengan React/TypeScript dan menyiapkan lingkungan pengembangan lokal menggunakan Docker.</li>
       </ul>
     </div>
   </div>
@@ -449,7 +449,7 @@ const html = `<!DOCTYPE html>
         <span class="project-title">• <a href="https://github.com/mazkev/java-ecommerce" style="color: #0f172a; text-decoration: none;">AliExpress Choice (Java Spring Boot & Vue)</a></span>
         <span class="project-tech">Java 17 • Spring Boot 3 • Vue 3 • PostgreSQL</span>
       </div>
-      <div class="project-desc">Platform e-commerce fullstack dengan Java 17, Spring Boot 3, dan Vue 3 yang dilengkapi keamanan Spring Security JWT dan database PostgreSQL. [Repo: github.com/mazkev/java-ecommerce]</div>
+      <div class="project-desc">Aplikasi e-commerce fullstack yang dibangun dengan Java 17, Spring Boot 3, dan Vue 3, dilengkapi autentikasi Spring Security JWT dan database PostgreSQL. [Repo: github.com/mazkev/java-ecommerce]</div>
     </div>
 
     <div class="project-item">
@@ -482,8 +482,8 @@ const html = `<!DOCTYPE html>
       <span>Kompetensi Teknis</span>
     </div>
     <div class="skills-block">
-      <div><strong>Bahasa & Framework:</strong> Next.js, React.js, Go (Golang), Java Spring Boot, Express.js, Node.js, Vue 3, Angular, Python (FastAPI), TypeScript, Tailwind CSS</div>
-      <div><strong>Database & Cloud:</strong> PostgreSQL, MySQL, MongoDB, Redis, Docker, GORM, Prisma ORM, AWS, Vercel Edge, Git & GitHub, Postman</div>
+      <div><strong>Backend & Bahasa:</strong> Go (Golang), PostgreSQL, REST API, Clean Architecture, GORM, Java 17, Spring Boot 3, Node.js, Express.js, PHP, Laravel 11, TypeScript, SQL</div>
+      <div><strong>Tools, Frontend & Cloud:</strong> Docker, Git & GitHub, JWT, Postman, Redis, Next.js, React, Vue 3, Tailwind CSS, Vercel Edge</div>
     </div>
   </div>
 
