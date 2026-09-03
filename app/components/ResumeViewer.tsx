@@ -359,6 +359,99 @@ function CVContent({ lang, activeRole, roleProjects, pageNumber, totalPages }: C
   );
 }
 
+function PortfolioPage({ roleProjects, totalPages }: { roleProjects: typeof projects; totalPages?: number }) {
+  return (
+    <div className="max-w-4xl mx-auto space-y-4 print:space-y-2.5 font-sans">
+      <div className="border-b-2 border-slate-900 pb-3 print:pb-2 flex flex-row items-center justify-between gap-4">
+        <div>
+          <div className="flex items-center gap-2">
+            <h1 className="text-xl sm:text-2xl print:text-base font-extrabold text-slate-900 uppercase tracking-tight">
+              Kevin Eka Pratama
+            </h1>
+            <span className="text-[10px] print:text-[8px] font-mono font-bold px-2 py-0.5 rounded bg-slate-900 text-white uppercase">
+              Portfolio Showcase
+            </span>
+          </div>
+          <p className="text-xs print:text-[9.5px] font-bold text-slate-700 uppercase tracking-wider pt-0.5">
+            Lampiran Portofolio Proyek & Studi Kasus Rekayasa Perangkat Lunak
+          </p>
+        </div>
+
+        <div className="text-right text-xs print:text-[8.5px] font-mono font-medium text-slate-700 space-y-0.5">
+          <div className="flex items-center justify-end gap-1 font-bold">
+            <Globe size={11} className="text-slate-900" /> mazkev.vercel.app
+          </div>
+          <div className="flex items-center justify-end gap-1">
+            <Github size={11} className="text-slate-900" /> github.com/mazkev
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 print:gap-1.5">
+        {roleProjects.slice(0, 6).map((proj, idx) => (
+          <div
+            key={idx}
+            className="p-3 print:p-2 rounded-xl border border-slate-300 bg-slate-50/70 print:bg-white flex flex-col justify-between space-y-1.5 print:space-y-1 print:break-inside-avoid shadow-sm print:shadow-none"
+          >
+            <div>
+              <div className="flex justify-between items-start gap-2">
+                <h3 className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px] leading-tight">
+                  {idx + 1}. {proj.title}
+                </h3>
+                <span className="text-[9px] print:text-[7.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase flex-shrink-0">
+                  {proj.category}
+                </span>
+              </div>
+
+              <div className="text-[9.5px] print:text-[8px] font-mono font-bold text-slate-600 pt-0.5">
+                {proj.tech.join(' • ')}
+              </div>
+
+              <p className="text-[11px] print:text-[8.5px] text-slate-700 font-medium leading-relaxed pt-1">
+                {proj.description}
+              </p>
+            </div>
+
+            <div className="pt-1.5 border-t border-slate-200 flex items-center justify-between text-[10px] print:text-[8px] font-mono font-bold gap-2">
+              {proj.live ? (
+                <a
+                  href={proj.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sky-700 hover:underline flex items-center gap-1 truncate"
+                >
+                  <Globe size={11} /> {proj.live.replace('https://', '').replace(/\/$/, '')}
+                </a>
+              ) : <span />}
+              {proj.github && (
+                <a
+                  href={proj.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-800 hover:underline flex items-center gap-1 flex-shrink-0"
+                >
+                  <Github size={11} /> {proj.github.replace('https://github.com/', 'gh/')}
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="p-2.5 print:p-1.5 rounded-lg border border-slate-300 bg-slate-100 text-[11px] print:text-[8.5px] text-slate-800 font-medium flex items-center justify-between">
+        <span>
+          <strong>Catatan:</strong> Seluruh source code proyek dapat diverifikasi langsung pada profil GitHub resmi <strong>github.com/mazkev</strong>.
+        </span>
+        {totalPages && (
+          <span className="text-[9px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
+            Halaman 3: Lampiran Portofolio
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
   const [cvMode, setCvMode] = useState<CVMode>('bilingual');
   const [activeRole, setActiveRole] = useState<ResumeRole>('fullstack');
@@ -378,7 +471,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
   return (
     <div className="fixed inset-0 z-50 flex justify-end print:absolute print:inset-auto print:w-full print:h-auto print:block">
       <style jsx global>{`
-        @page { size: A4; margin: 12mm 15mm; }
+        @page { size: A4; margin: 10mm 12mm; }
         @media print {
           .no-print { display: none !important; }
           html, body { height: auto !important; overflow: visible !important; margin: 0 !important; background: white !important; }
@@ -432,7 +525,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               </button>
             </div>
 
-            {/* TOGGLE CV FORMAT: 2 HALAMAN (BILINGUAL) vs SINGLE PAGE */}
+            {/* TOGGLE CV FORMAT: 3 HALAMAN (BILINGUAL + PORTOFOLIO) vs SINGLE PAGE */}
             <div className="flex items-center bg-slate-200 dark:bg-slate-800 p-1 rounded-xl border border-slate-300 dark:border-slate-700">
               <button
                 onClick={() => setCvMode('bilingual')}
@@ -441,9 +534,9 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     ? 'bg-slate-900 text-white dark:bg-white dark:text-black shadow'
                     : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
                 }`}
-                title="Gabung 2 Halaman (Halaman 1 English, Halaman 2 Bahasa Indonesia)"
+                title="Lengkap: Halaman 1 English, Halaman 2 Bahasa Indonesia, Halaman 3 Lampiran Portofolio"
               >
-                <FileText size={13} /> 2 Hal (EN + ID)
+                <FileText size={13} /> Lengkap (EN + ID + Porto)
               </button>
               <button
                 onClick={() => setCvMode('en')}
@@ -473,7 +566,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               onClick={handlePrint}
               className="px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-black hover:bg-black text-xs font-bold rounded-xl flex items-center gap-2 transition-all cursor-pointer shadow-md"
             >
-              <Printer size={14} /> {cvMode === 'bilingual' ? 'Cetak CV (2 Halaman ATS)' : 'Cetak CV (1 Halaman ATS)'}
+              <Printer size={14} /> Cetak Dokumen
             </button>
             <a
               href="/resume.pdf"
@@ -481,7 +574,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               download="resume.pdf"
               className="px-4 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-900 dark:text-white text-xs font-bold rounded-xl flex items-center gap-2 transition-all cursor-pointer border border-slate-400 dark:border-slate-700"
             >
-              <Download size={14} /> PDF
+              <Download size={14} /> Unduh PDF
             </a>
           </div>
 
@@ -499,16 +592,16 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
             <>
               {/* PAGE 1: ENGLISH VERSION */}
               <div className="relative">
-                <CVContent lang="en" activeRole={activeRole} roleProjects={roleProjects} pageNumber={1} totalPages={2} />
+                <CVContent lang="en" activeRole={activeRole} roleProjects={roleProjects} pageNumber={1} totalPages={3} />
               </div>
 
-              {/* Visual Screen Divider */}
+              {/* Visual Screen Divider 1 -> 2 */}
               <div className="no-print my-10 py-4 border-y-2 border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-between text-xs font-mono text-slate-500">
                 <span className="font-bold uppercase tracking-wider flex items-center gap-2 text-slate-900 dark:text-white">
-                  <FileText size={15} className="text-emerald-600 dark:text-emerald-400" /> Halaman 2: Versi Bahasa Indonesia (ATS Standard)
+                  <FileText size={15} className="text-emerald-600 dark:text-emerald-400" /> Halaman 2: Versi Bahasa Indonesia (Standar ATS)
                 </span>
                 <span className="bg-slate-200 dark:bg-slate-800 px-2.5 py-1 rounded-md text-[10px] font-bold text-slate-700 dark:text-slate-300">
-                  Page 2 of 2
+                  Page 2 of 3
                 </span>
               </div>
 
@@ -516,11 +609,40 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
 
               {/* PAGE 2: INDONESIAN VERSION */}
               <div className="relative">
-                <CVContent lang="id" activeRole={activeRole} roleProjects={roleProjects} pageNumber={2} totalPages={2} />
+                <CVContent lang="id" activeRole={activeRole} roleProjects={roleProjects} pageNumber={2} totalPages={3} />
+              </div>
+
+              {/* Visual Screen Divider 2 -> 3 */}
+              <div className="no-print my-10 py-4 border-y-2 border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-between text-xs font-mono text-slate-500">
+                <span className="font-bold uppercase tracking-wider flex items-center gap-2 text-slate-900 dark:text-white">
+                  <LayoutGrid size={15} className="text-sky-600 dark:text-sky-400" /> Halaman 3: Lampiran Portofolio & Showcase Proyek Terpilih
+                </span>
+                <span className="bg-slate-200 dark:bg-slate-800 px-2.5 py-1 rounded-md text-[10px] font-bold text-slate-700 dark:text-slate-300">
+                  Page 3 of 3
+                </span>
+              </div>
+
+              <div className="page-break" />
+
+              {/* PAGE 3: PORTFOLIO SHOWCASE PAGE */}
+              <div className="relative">
+                <PortfolioPage roleProjects={roleProjects} totalPages={3} />
               </div>
             </>
           ) : (
-            <CVContent lang={cvMode} activeRole={activeRole} roleProjects={roleProjects} pageNumber={1} totalPages={1} />
+            <>
+              <CVContent lang={cvMode} activeRole={activeRole} roleProjects={roleProjects} pageNumber={1} totalPages={2} />
+              <div className="page-break" />
+              <div className="no-print my-8 py-3 border-y border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-between text-xs font-mono text-slate-500">
+                <span className="font-bold uppercase tracking-wider flex items-center gap-2 text-slate-900 dark:text-white">
+                  <LayoutGrid size={15} className="text-sky-600 dark:text-sky-400" /> Halaman 2: Lampiran Portofolio Proyek
+                </span>
+                <span className="bg-slate-200 dark:bg-slate-800 px-2.5 py-1 rounded-md text-[10px] font-bold text-slate-700 dark:text-slate-300">
+                  Page 2 of 2
+                </span>
+              </div>
+              <PortfolioPage roleProjects={roleProjects} totalPages={2} />
+            </>
           )}
         </div>
       </motion.div>
