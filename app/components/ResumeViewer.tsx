@@ -391,25 +391,37 @@ function PortfolioPage({ roleProjects, totalPages }: { roleProjects: typeof proj
         {roleProjects.slice(0, 6).map((proj, idx) => (
           <div
             key={idx}
-            className="p-3 print:p-2 rounded-xl border border-slate-300 bg-slate-50/70 print:bg-white flex flex-col justify-between space-y-1.5 print:space-y-1 print:break-inside-avoid shadow-sm print:shadow-none"
+            className="p-3 print:p-2 rounded-xl border border-slate-300 bg-slate-50/70 print:bg-white flex flex-col justify-between space-y-2 print:space-y-1 print:break-inside-avoid shadow-sm print:shadow-none"
           >
-            <div>
-              <div className="flex justify-between items-start gap-2">
-                <h3 className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px] leading-tight">
-                  {idx + 1}. {proj.title}
-                </h3>
-                <span className="text-[9px] print:text-[7.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase flex-shrink-0">
-                  {proj.category}
-                </span>
+            <div className="flex gap-3 items-start">
+              <div className="w-20 h-14 sm:w-24 sm:h-16 print:w-16 print:h-12 flex-shrink-0 rounded-lg overflow-hidden border border-slate-300 relative bg-slate-200 shadow-inner">
+                <Image
+                  src={proj.image}
+                  alt={proj.title}
+                  width={100}
+                  height={65}
+                  className="w-full h-full object-cover"
+                />
               </div>
 
-              <div className="text-[9.5px] print:text-[8px] font-mono font-bold text-slate-600 pt-0.5">
-                {proj.tech.join(' • ')}
-              </div>
+              <div className="flex-grow min-w-0 space-y-0.5">
+                <div className="flex justify-between items-start gap-1">
+                  <h3 className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px] leading-tight truncate">
+                    {idx + 1}. {proj.title}
+                  </h3>
+                  <span className="text-[8.5px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase flex-shrink-0">
+                    {proj.category}
+                  </span>
+                </div>
 
-              <p className="text-[11px] print:text-[8.5px] text-slate-700 font-medium leading-relaxed pt-1">
-                {proj.description}
-              </p>
+                <div className="text-[9px] print:text-[7.5px] font-mono font-bold text-slate-600 truncate">
+                  {proj.tech.join(' • ')}
+                </div>
+
+                <p className="text-[10.5px] print:text-[8px] text-slate-700 font-medium leading-snug">
+                  {proj.description}
+                </p>
+              </div>
             </div>
 
             <div className="pt-1.5 border-t border-slate-200 flex items-center justify-between text-[10px] print:text-[8px] font-mono font-bold gap-2">

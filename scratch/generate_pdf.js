@@ -6,6 +6,28 @@ const profilePicPath = path.resolve('public/profile/kev.png');
 const profilePicBase64 = fs.readFileSync(profilePicPath).toString('base64');
 const imgSrc = `data:image/png;base64,${profilePicBase64}`;
 
+function getBase64Image(filePath) {
+  try {
+    const fullPath = path.resolve('public' + filePath);
+    if (fs.existsSync(fullPath)) {
+      const ext = path.extname(fullPath).replace('.', '');
+      const mime = ext === 'jpg' || ext === 'jpeg' ? 'image/jpeg' : 'image/png';
+      const b64 = fs.readFileSync(fullPath).toString('base64');
+      return `data:${mime};base64,${b64}`;
+    }
+  } catch (e) {
+    console.error('Error reading image:', filePath, e);
+  }
+  return '';
+}
+
+const imgGomarket = getBase64Image('/projects/gomarketplace.png');
+const imgBaye = getBase64Image('/projects/baye.png');
+const imgJava = getBase64Image('/projects/marketinvent.png');
+const imgHrms = getBase64Image('/projects/hrms.png');
+const imgSwagger = getBase64Image('/projects/swagger-go.png');
+const imgNexus = getBase64Image('/projects/nexus.png');
+
 const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -494,71 +516,95 @@ const html = `<!DOCTYPE html>
     </div>
   </div>
 
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px;">
-    <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px; background: #f8fafc;">
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2px;">
-        <strong style="font-size: 8pt; color: #0f172a;">1. Go Marketplace (Go & React)</strong>
-        <span style="font-size: 6.5pt; background: #e2e8f0; font-family: monospace; font-weight: bold; padding: 1px 4px; border-radius: 3px;">FULL STACK</span>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 7px; margin-bottom: 8px;">
+    <!-- CARD 1 -->
+    <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 7px; background: #f8fafc; display: flex; gap: 7px;">
+      <img src="${imgGomarket}" style="width: 65px; height: 50px; border-radius: 4px; object-fit: cover; border: 1px solid #cbd5e1; flex-shrink: 0;" alt="Go Marketplace">
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <strong style="font-size: 7.5pt; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">1. Go Marketplace</strong>
+          <span style="font-size: 6pt; background: #e2e8f0; font-family: monospace; font-weight: bold; padding: 1px 3px; border-radius: 2px;">FULL STACK</span>
+        </div>
+        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #475569; margin: 1px 0;">GO • REACT • POSTGRES • JWT</div>
+        <div style="font-size: 6.8pt; color: #334155; line-height: 1.25;">REST API di Go, autentikasi JWT aman, katalog produk, dan transaksi checkout database atomik.</div>
+        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #0369a1; margin-top: 3px;">Repo: gh/go-marketplace</div>
       </div>
-      <div style="font-size: 6.8pt; font-family: monospace; font-weight: bold; color: #475569; margin-bottom: 4px;">GO • REACT • GORM • POSTGRESQL • JWT</div>
-      <div style="font-size: 7.2pt; color: #334155; line-height: 1.35; margin-bottom: 6px;">Platform e-commerce fullstack dengan REST API di Go, autentikasi token JWT aman, manajemen katalog produk, dan transaksi checkout database atomik.</div>
-      <div style="font-size: 6.8pt; font-family: monospace; font-weight: bold; color: #0369a1; border-top: 1px solid #e2e8f0; pt: 4px;">Repo: github.com/mazkev/go-marketplace</div>
     </div>
 
-    <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px; background: #f8fafc;">
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2px;">
-        <strong style="font-size: 8pt; color: #0f172a;">2. BayE Marketplace (Next.js 14)</strong>
-        <span style="font-size: 6.5pt; background: #e2e8f0; font-family: monospace; font-weight: bold; padding: 1px 4px; border-radius: 3px;">FULL STACK</span>
+    <!-- CARD 2 -->
+    <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 7px; background: #f8fafc; display: flex; gap: 7px;">
+      <img src="${imgBaye}" style="width: 65px; height: 50px; border-radius: 4px; object-fit: cover; border: 1px solid #cbd5e1; flex-shrink: 0;" alt="BayE Marketplace">
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <strong style="font-size: 7.5pt; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">2. BayE Marketplace</strong>
+          <span style="font-size: 6pt; background: #e2e8f0; font-family: monospace; font-weight: bold; padding: 1px 3px; border-radius: 2px;">FULL STACK</span>
+        </div>
+        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #475569; margin: 1px 0;">NEXT.JS 14 • REACT • TS • TAILWIND</div>
+        <div style="font-size: 6.8pt; color: #334155; line-height: 1.25;">Platform lelang & belanja modern. Server-rendered hydration, live bidding, dan UI responsif.</div>
+        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #0369a1; margin-top: 3px;">Demo: baye-marketplace.vercel.app</div>
       </div>
-      <div style="font-size: 6.8pt; font-family: monospace; font-weight: bold; color: #475569; margin-bottom: 4px;">NEXT.JS 14 • REACT • TYPESCRIPT • TAILWIND</div>
-      <div style="font-size: 7.2pt; color: #334155; line-height: 1.35; margin-bottom: 6px;">Platform lelang & belanja modern terinspirasi eBay. Server-rendered product hydration, simulasi live bidding, dan optimasi Core Web Vitals responsif.</div>
-      <div style="font-size: 6.8pt; font-family: monospace; font-weight: bold; color: #0369a1; border-top: 1px solid #e2e8f0; pt: 4px;">Demo: baye-marketplace.vercel.app</div>
     </div>
 
-    <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px; background: #f8fafc;">
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2px;">
-        <strong style="font-size: 8pt; color: #0f172a;">3. AliExpress Choice (Java Spring)</strong>
-        <span style="font-size: 6.5pt; background: #e2e8f0; font-family: monospace; font-weight: bold; padding: 1px 4px; border-radius: 3px;">FULL STACK</span>
+    <!-- CARD 3 -->
+    <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 7px; background: #f8fafc; display: flex; gap: 7px;">
+      <img src="${imgJava}" style="width: 65px; height: 50px; border-radius: 4px; object-fit: cover; border: 1px solid #cbd5e1; flex-shrink: 0;" alt="AliExpress Java">
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <strong style="font-size: 7.5pt; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">3. AliExpress Choice</strong>
+          <span style="font-size: 6pt; background: #e2e8f0; font-family: monospace; font-weight: bold; padding: 1px 3px; border-radius: 2px;">FULL STACK</span>
+        </div>
+        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #475569; margin: 1px 0;">JAVA 17 • SPRING BOOT 3 • VUE 3</div>
+        <div style="font-size: 6.8pt; color: #334155; line-height: 1.25;">E-commerce enterprise Java Spring Boot 3. Dilengkapi Spring Security JWT dan stok inventori.</div>
+        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #0369a1; margin-top: 3px;">Repo: gh/java-ecommerce</div>
       </div>
-      <div style="font-size: 6.8pt; font-family: monospace; font-weight: bold; color: #475569; margin-bottom: 4px;">JAVA 17 • SPRING BOOT 3 • VUE 3 • POSTGRES</div>
-      <div style="font-size: 7.2pt; color: #334155; line-height: 1.35; margin-bottom: 6px;">Aplikasi e-commerce enterprise dengan Java 17 dan Spring Boot 3. Dilengkapi Spring Security JWT, inventori stok barang, dan Pinia state management.</div>
-      <div style="font-size: 6.8pt; font-family: monospace; font-weight: bold; color: #0369a1; border-top: 1px solid #e2e8f0; pt: 4px;">Repo: github.com/mazkev/java-ecommerce</div>
     </div>
 
-    <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px; background: #f8fafc;">
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2px;">
-        <strong style="font-size: 8pt; color: #0f172a;">4. HRMS Enterprise (Laravel 11)</strong>
-        <span style="font-size: 6.5pt; background: #e2e8f0; font-family: monospace; font-weight: bold; padding: 1px 4px; border-radius: 3px;">FULL STACK</span>
+    <!-- CARD 4 -->
+    <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 7px; background: #f8fafc; display: flex; gap: 7px;">
+      <img src="${imgHrms}" style="width: 65px; height: 50px; border-radius: 4px; object-fit: cover; border: 1px solid #cbd5e1; flex-shrink: 0;" alt="HRMS Laravel">
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <strong style="font-size: 7.5pt; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">4. HRMS Enterprise</strong>
+          <span style="font-size: 6pt; background: #e2e8f0; font-family: monospace; font-weight: bold; padding: 1px 3px; border-radius: 2px;">FULL STACK</span>
+        </div>
+        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #475569; margin: 1px 0;">LARAVEL 11 • PHP • MYSQL • ORM</div>
+        <div style="font-size: 6.8pt; color: #334155; line-height: 1.25;">Sistem SDM dengan absensi, kalkulasi slip gaji otomatis, departemen, dan alur cuti karyawan.</div>
+        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #0369a1; margin-top: 3px;">Repo: gh/hrms-laravel</div>
       </div>
-      <div style="font-size: 6.8pt; font-family: monospace; font-weight: bold; color: #475569; margin-bottom: 4px;">LARAVEL 11 • PHP • MYSQL • ELOQUENT ORM</div>
-      <div style="font-size: 7.2pt; color: #334155; line-height: 1.35; margin-bottom: 6px;">Sistem manajemen SDM korporat dengan absensi pegawai, kalkulasi slip gaji otomatis, manajemen struktur departemen, dan alur pengajuan cuti.</div>
-      <div style="font-size: 6.8pt; font-family: monospace; font-weight: bold; color: #0369a1; border-top: 1px solid #e2e8f0; pt: 4px;">Repo: github.com/mazkev/hrms-laravel</div>
     </div>
 
-    <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px; background: #f8fafc;">
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2px;">
-        <strong style="font-size: 8pt; color: #0f172a;">5. Go Clean Architecture REST API</strong>
-        <span style="font-size: 6.5pt; background: #e2e8f0; font-family: monospace; font-weight: bold; padding: 1px 4px; border-radius: 3px;">BACK END</span>
+    <!-- CARD 5 -->
+    <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 7px; background: #f8fafc; display: flex; gap: 7px;">
+      <img src="${imgSwagger}" style="width: 65px; height: 50px; border-radius: 4px; object-fit: cover; border: 1px solid #cbd5e1; flex-shrink: 0;" alt="Go Clean Architecture">
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <strong style="font-size: 7.5pt; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">5. Go Clean Architecture</strong>
+          <span style="font-size: 6pt; background: #e2e8f0; font-family: monospace; font-weight: bold; padding: 1px 3px; border-radius: 2px;">BACK END</span>
+        </div>
+        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #475569; margin: 1px 0;">GO • CLEAN ARCH • DOCKER • SQL</div>
+        <div style="font-size: 6.8pt; color: #334155; line-height: 1.25;">REST API modular di Go memisahkan Domain, Usecase, dan Repository dengan Swagger OpenAPI.</div>
+        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #0369a1; margin-top: 3px;">Repo: gh/go-clean-architecture</div>
       </div>
-      <div style="font-size: 6.8pt; font-family: monospace; font-weight: bold; color: #475569; margin-bottom: 4px;">GO • CLEAN ARCHITECTURE • DOCKER • SQL</div>
-      <div style="font-size: 7.2pt; color: #334155; line-height: 1.35; margin-bottom: 6px;">REST API modular di Go memisahkan Domain Entity, Business Usecase, dan Database Repository. Dilengkapi Swagger OpenAPI dan kontainerisasi Docker.</div>
-      <div style="font-size: 6.8pt; font-family: monospace; font-weight: bold; color: #0369a1; border-top: 1px solid #e2e8f0; pt: 4px;">Repo: github.com/mazkev/go-clean-architecture</div>
     </div>
 
-    <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px; background: #f8fafc;">
-      <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2px;">
-        <strong style="font-size: 8pt; color: #0f172a;">6. Enterprise Operations Dashboard</strong>
-        <span style="font-size: 6.5pt; background: #e2e8f0; font-family: monospace; font-weight: bold; padding: 1px 4px; border-radius: 3px;">FRONT END</span>
+    <!-- CARD 6 -->
+    <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 7px; background: #f8fafc; display: flex; gap: 7px;">
+      <img src="${imgNexus}" style="width: 65px; height: 50px; border-radius: 4px; object-fit: cover; border: 1px solid #cbd5e1; flex-shrink: 0;" alt="Operations Dashboard">
+      <div style="flex: 1; min-width: 0;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+          <strong style="font-size: 7.5pt; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">6. Operations Dashboard</strong>
+          <span style="font-size: 6pt; background: #e2e8f0; font-family: monospace; font-weight: bold; padding: 1px 3px; border-radius: 2px;">FRONT END</span>
+        </div>
+        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #475569; margin: 1px 0;">NEXT.JS 16 • TS • RECHARTS • TAILWIND</div>
+        <div style="font-size: 6.8pt; color: #334155; line-height: 1.25;">Dashboard monitoring operasional sistem. Metrik server real-time, viewer log, dan tabel responsif.</div>
+        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #0369a1; margin-top: 3px;">Demo: nexus-project-mu.vercel.app</div>
       </div>
-      <div style="font-size: 6.8pt; font-family: monospace; font-weight: bold; color: #475569; margin-bottom: 4px;">NEXT.JS 16 • TYPESCRIPT • RECHARTS • TAILWIND</div>
-      <div style="font-size: 7.2pt; color: #334155; line-height: 1.35; margin-bottom: 6px;">Dashboard monitoring operasional sistem terinspirasi workflow PLN Icon+. Visualisasi metrik server real-time, viewer log insiden, dan tabel responsif.</div>
-      <div style="font-size: 6.8pt; font-family: monospace; font-weight: bold; color: #0369a1; border-top: 1px solid #e2e8f0; pt: 4px;">Demo: nexus-project-mu.vercel.app</div>
     </div>
   </div>
 
-  <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px; background: #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
-    <span style="font-size: 7.5pt; color: #1e293b;"><strong>Catatan:</strong> Seluruh source code proyek dapat diverifikasi langsung pada profil GitHub resmi <strong>github.com/mazkev</strong>.</span>
-    <span style="font-size: 6.8pt; font-family: monospace; font-weight: bold; color: #64748b;">Halaman 3: Lampiran Portofolio</span>
+  <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 6px 8px; background: #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-size: 7.2pt; color: #1e293b;"><strong>Catatan:</strong> Seluruh source code proyek dapat diverifikasi langsung pada profil GitHub resmi <strong>github.com/mazkev</strong>.</span>
+    <span style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #64748b;">Halaman 3: Lampiran Portofolio</span>
   </div>
 </div>
 
