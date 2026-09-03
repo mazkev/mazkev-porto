@@ -296,8 +296,18 @@ function CVContent({ lang, activeRole, roleProjects, pageNumber, totalPages }: C
             return (
               <div key={idx} className="space-y-0.5 border-b border-slate-200 pb-1.5 print:pb-1 last:border-none print:break-inside-avoid">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                  <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10.5px]">
-                    • {project.title}
+                  <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10.5px] flex items-center gap-2 flex-wrap">
+                    <span>• {project.title}</span>
+                    {project.live && (
+                      <a href={project.live} target="_blank" rel="noopener noreferrer" className="no-print text-[9px] font-mono font-bold text-sky-600 hover:text-sky-800 hover:underline inline-flex items-center gap-0.5">
+                        <Globe size={10} /> Live Demo
+                      </a>
+                    )}
+                    {project.github && (
+                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="no-print text-[9px] font-mono font-bold text-slate-600 hover:text-black dark:hover:text-white hover:underline inline-flex items-center gap-0.5">
+                        <Github size={10} /> Source Code
+                      </a>
+                    )}
                   </div>
                   <div className="text-[10px] print:text-[8px] font-mono text-slate-700 font-bold uppercase">
                     {project.tech.join(' • ')}

@@ -263,50 +263,50 @@ const html = `<!DOCTYPE html>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• Go Marketplace (Fullstack Go & React)</span>
+        <span class="project-title">• <a href="https://github.com/mazkev/go-marketplace" style="color: #0f172a; text-decoration: none;">Go Marketplace (Fullstack Go & React)</a></span>
         <span class="project-tech">Go • React • GORM • PostgreSQL • JWT</span>
       </div>
-      <div class="project-desc">Fullstack e-commerce marketplace built with Go and React. Features REST API, JWT auth, product catalog management, and transactional PostgreSQL integration.</div>
+      <div class="project-desc">Fullstack e-commerce marketplace built with Go and React. Features REST API, JWT auth, product catalog management, and transactional PostgreSQL integration. [Repo: github.com/mazkev/go-marketplace]</div>
     </div>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• BayE Marketplace (Fullstack Next.js)</span>
+        <span class="project-title">• <a href="https://baye-marketplace.vercel.app" style="color: #0f172a; text-decoration: none;">BayE Marketplace (Fullstack Next.js)</a></span>
         <span class="project-tech">Next.js 14 • React • TypeScript • Tailwind</span>
       </div>
-      <div class="project-desc">Modern e-commerce and auction platform inspired by eBay. Features server-rendered product hydration, dynamic bidding simulation, and responsive cart.</div>
+      <div class="project-desc">Modern e-commerce and auction platform inspired by eBay. Features server-rendered product hydration, dynamic bidding simulation, and responsive cart. [Live: baye-marketplace.vercel.app]</div>
     </div>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• AliExpress Choice (Java Spring Boot & Vue)</span>
+        <span class="project-title">• <a href="https://github.com/mazkev/java-ecommerce" style="color: #0f172a; text-decoration: none;">AliExpress Choice (Java Spring Boot & Vue)</a></span>
         <span class="project-tech">Java 17 • Spring Boot 3 • Vue 3 • PostgreSQL</span>
       </div>
-      <div class="project-desc">Enterprise fullstack e-commerce platform built with Java 17, Spring Boot 3, and Vue 3. Implements Spring Security JWT, inventory stock management, and Pinia state store.</div>
+      <div class="project-desc">Enterprise fullstack e-commerce platform built with Java 17, Spring Boot 3, and Vue 3. Implements Spring Security JWT, inventory stock management, and Pinia state store. [Repo: github.com/mazkev/java-ecommerce]</div>
     </div>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• HRMS Enterprise Management (Laravel 11)</span>
+        <span class="project-title">• <a href="https://github.com/mazkev/hrms-laravel" style="color: #0f172a; text-decoration: none;">HRMS Enterprise Management (Laravel 11)</a></span>
         <span class="project-tech">Laravel 11 • PHP • MySQL • Eloquent ORM</span>
       </div>
-      <div class="project-desc">Human Resource Management System with attendance tracking, automated payroll calculation, department management, and employee leave request workflows.</div>
+      <div class="project-desc">Human Resource Management System with attendance tracking, automated payroll calculation, department management, and employee leave request workflows. [Repo: github.com/mazkev/hrms-laravel]</div>
     </div>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• Go Clean Architecture REST API</span>
+        <span class="project-title">• <a href="https://github.com/mazkev/go-clean-architecture" style="color: #0f172a; text-decoration: none;">Go Clean Architecture REST API</a></span>
         <span class="project-tech">Go • Clean Architecture • Docker • PostgreSQL</span>
       </div>
-      <div class="project-desc">Modular Go REST API built with Clean Architecture principles, decoupling domain entities, usecase logic, and database repositories for unit testing.</div>
+      <div class="project-desc">Modular Go REST API built with Clean Architecture principles, decoupling domain entities, usecase logic, and database repositories for unit testing. [Repo: github.com/mazkev/go-clean-architecture]</div>
     </div>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• Enterprise Operations Dashboard</span>
+        <span class="project-title">• <a href="https://nexus-project-mu.vercel.app/" style="color: #0f172a; text-decoration: none;">Enterprise Operations Dashboard</a></span>
         <span class="project-tech">Next.js 16 • TypeScript • Recharts • Tailwind</span>
       </div>
-      <div class="project-desc">System operations monitoring interface with real-time server activity metrics, tabular log viewer, role-based filters, and responsive data grid layouts.</div>
+      <div class="project-desc">System operations monitoring interface with real-time server activity metrics, tabular log viewer, role-based filters, and responsive data grid layouts. [Live: nexus-project-mu.vercel.app]</div>
     </div>
   </div>
 
@@ -408,50 +408,50 @@ const html = `<!DOCTYPE html>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• Go Marketplace (Fullstack Go & React)</span>
+        <span class="project-title">• <a href="https://github.com/mazkev/go-marketplace" style="color: #0f172a; text-decoration: none;">Go Marketplace (Fullstack Go & React)</a></span>
         <span class="project-tech">Go • React • GORM • PostgreSQL • JWT</span>
       </div>
-      <div class="project-desc">Marketplace e-commerce fullstack dengan Go dan React. Dilengkapi REST API, autentikasi JWT, manajemen katalog produk, dan integrasi database PostgreSQL transaksional.</div>
+      <div class="project-desc">Marketplace e-commerce fullstack dengan Go dan React. Dilengkapi REST API, autentikasi JWT, manajemen katalog produk, dan integrasi database PostgreSQL transaksional. [Repo: github.com/mazkev/go-marketplace]</div>
     </div>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• BayE Marketplace (Fullstack Next.js)</span>
+        <span class="project-title">• <a href="https://baye-marketplace.vercel.app" style="color: #0f172a; text-decoration: none;">BayE Marketplace (Fullstack Next.js)</a></span>
         <span class="project-tech">Next.js 14 • React • TypeScript • Tailwind</span>
       </div>
-      <div class="project-desc">Platform lelang dan belanja modern terinspirasi eBay. Menampilkan hidrasi katalog produk server-rendered, simulasi lelang harga langsung, dan keranjang responsif.</div>
+      <div class="project-desc">Platform lelang dan belanja modern terinspirasi eBay. Menampilkan hidrasi katalog produk server-rendered, simulasi lelang harga langsung, dan keranjang responsif. [Demo: baye-marketplace.vercel.app]</div>
     </div>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• AliExpress Choice (Java Spring Boot & Vue)</span>
+        <span class="project-title">• <a href="https://github.com/mazkev/java-ecommerce" style="color: #0f172a; text-decoration: none;">AliExpress Choice (Java Spring Boot & Vue)</a></span>
         <span class="project-tech">Java 17 • Spring Boot 3 • Vue 3 • PostgreSQL</span>
       </div>
-      <div class="project-desc">Platform e-commerce enterprise dengan Java 17, Spring Boot 3, dan Vue 3 yang dilengkapi keamanan Spring Security JWT dan database PostgreSQL.</div>
+      <div class="project-desc">Platform e-commerce enterprise dengan Java 17, Spring Boot 3, dan Vue 3 yang dilengkapi keamanan Spring Security JWT dan database PostgreSQL. [Repo: github.com/mazkev/java-ecommerce]</div>
     </div>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• HRMS Enterprise Management (Laravel 11)</span>
+        <span class="project-title">• <a href="https://github.com/mazkev/hrms-laravel" style="color: #0f172a; text-decoration: none;">HRMS Enterprise Management (Laravel 11)</a></span>
         <span class="project-tech">Laravel 11 • PHP • MySQL • Eloquent ORM</span>
       </div>
-      <div class="project-desc">Sistem manajemen SDM (HRMS) dengan absensi, cuti karyawan, struktur departemen, dan penghitungan slip gaji otomatis berbasis Laravel 11.</div>
+      <div class="project-desc">Sistem manajemen SDM (HRMS) dengan absensi, cuti karyawan, struktur departemen, dan penghitungan slip gaji otomatis berbasis Laravel 11. [Repo: github.com/mazkev/hrms-laravel]</div>
     </div>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• Go Clean Architecture REST API</span>
+        <span class="project-title">• <a href="https://github.com/mazkev/go-clean-architecture" style="color: #0f172a; text-decoration: none;">Go Clean Architecture REST API</a></span>
         <span class="project-tech">Go • Clean Architecture • Docker • PostgreSQL</span>
       </div>
-      <div class="project-desc">REST API modular di Go yang menerapkan prinsip Clean Architecture, memisahkan entitas domain, logika usecase, dan repository database untuk kemudahan unit testing.</div>
+      <div class="project-desc">REST API modular di Go yang menerapkan prinsip Clean Architecture, memisahkan entitas domain, logika usecase, dan repository database untuk kemudahan unit testing. [Repo: github.com/mazkev/go-clean-architecture]</div>
     </div>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• Enterprise Operations Dashboard</span>
+        <span class="project-title">• <a href="https://nexus-project-mu.vercel.app/" style="color: #0f172a; text-decoration: none;">Enterprise Operations Dashboard</a></span>
         <span class="project-tech">Next.js 16 • TypeScript • Recharts • Tailwind</span>
       </div>
-      <div class="project-desc">Antarmuka pemantauan operasional sistem dengan Next.js 16, TypeScript, dan Recharts yang dilengkapi metrik aktivitas server dan filter log insiden.</div>
+      <div class="project-desc">Antarmuka pemantauan operasional sistem dengan Next.js 16, TypeScript, dan Recharts yang dilengkapi metrik aktivitas server dan filter log insiden. [Demo: nexus-project-mu.vercel.app]</div>
     </div>
   </div>
 
