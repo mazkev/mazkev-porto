@@ -105,10 +105,10 @@ export default function About() {
                 How I got <span className="text-primary">here.</span>
               </h3>
               <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed">
-                I bring <strong>3 years of professional experience in Application Support at PT PLN Icon+</strong>, handling production system operations, complex SQL database queries, and tracing application bugs. This operational experience gives me a solid grasp of how real-world software behaves under production workloads.
+                I bring <strong>3 years of professional experience in Application Support at PT PLN Icon+</strong>, monitoring enterprise system health, analyzing SQL queries, and troubleshooting application issues. This hands-on operational background gives me a practical understanding of how real-world software operates in production.
               </p>
               <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed">
-                I am actively transitioning into <strong>Software Development / Fullstack Engineering</strong>, focusing on <strong>React & TypeScript</strong> for modern web interfaces, and deepening <strong>Go (Golang)</strong> for clean, reliable backend microservices with Clean Architecture and PostgreSQL.
+                I am actively developing software as a <strong>Fullstack Developer</strong>, utilizing <strong>React & TypeScript</strong> for interactive web interfaces, and building backend services with <strong>Go (Golang)</strong> and PostgreSQL using modular, maintainable structures.
               </p>
 
               {/* 3 Engineering Principles */}
@@ -118,10 +118,10 @@ export default function About() {
                     <Database size={16} />
                   </div>
                   <h4 className="text-xs font-bold font-geist uppercase tracking-wider text-slate-900 dark:text-white">
-                    Production & SQL Discipline
+                    Operational & SQL Discipline
                   </h4>
                   <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
-                    3 years of real-world query optimization, index tuning, and diagnosing database deadlocks under production workloads.
+                    Practical experience in analyzing SQL queries, resolving data bottlenecks, and investigating production issues.
                   </p>
                 </div>
 
@@ -130,10 +130,10 @@ export default function About() {
                     <Layers size={16} />
                   </div>
                   <h4 className="text-xs font-bold font-geist uppercase tracking-wider text-slate-900 dark:text-white">
-                    Clean Architecture
+                    Modular Code Structure
                   </h4>
                   <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
-                    Strict separation between Domain, Usecase, and Repository layers in Go microservices for testability and maintainability.
+                    Structuring Go backend services with clear separation between business logic, database access, and HTTP handlers.
                   </p>
                 </div>
 
@@ -142,10 +142,10 @@ export default function About() {
                     <ShieldCheck size={16} />
                   </div>
                   <h4 className="text-xs font-bold font-geist uppercase tracking-wider text-slate-900 dark:text-white">
-                    End-to-End Type Safety
+                    Type Safety & Reliability
                   </h4>
                   <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
-                    Strict TypeScript across React & Next.js, paired with runtime schema validation (Zod & Go structs) to prevent runtime failures.
+                    Leveraging TypeScript on frontend and structured schema validation on backend for predictable data flow.
                   </p>
                 </div>
               </div>
