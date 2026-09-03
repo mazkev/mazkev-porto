@@ -11,7 +11,7 @@ interface CoverLetterViewerProps {
 
 export default function CoverLetterViewer({ isOpen, onClose }: CoverLetterViewerProps) {
   const [lang, setLang] = useState<'id' | 'en'>('id');
-  const [companyName, setCompanyName] = useState('PT Innovation Tech Enterprise');
+  const [companyName, setCompanyName] = useState('PT Innovation Technology');
   const [jobPosition, setJobPosition] = useState('Fullstack Engineer');
 
   const handlePrint = () => {
@@ -245,7 +245,7 @@ export default function CoverLetterViewer({ isOpen, onClose }: CoverLetterViewer
                 </p>
 
                 <p>
-                  In my current role at PT PLN Icon+ as <em>Application Support</em>, I monitor enterprise application workflows, analyze SQL queries, and perform root-cause debugging across production systems. In addition, I have built fullstack web applications and REST API services utilizing <strong>React, Next.js, Go (Golang), Java Spring Boot, Express.js, PostgreSQL, and MongoDB</strong>.
+                  In my current role at PT PLN Icon+ as <em>Application Support</em>, I monitor production application workflows, analyze SQL queries, and perform root-cause debugging across production systems. In addition, I have built fullstack web applications and REST API services utilizing <strong>React, Next.js, Go (Golang), Java Spring Boot, Express.js, PostgreSQL, and MongoDB</strong>.
                 </p>
 
                 <div className="pl-4 border-l-2 border-slate-900 space-y-1 my-3 font-medium">

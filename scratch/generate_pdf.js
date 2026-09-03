@@ -257,7 +257,7 @@ const html = `<!DOCTYPE html>
         <span class="job-date">2022 - Present</span>
       </div>
       <ul class="bullets">
-        <li>Monitored enterprise application workflows and handled operational incidents to ensure smooth daily production services.</li>
+        <li>Monitored production application workflows and handled operational incidents to ensure smooth daily services.</li>
         <li>Investigated database queries, identified data bottlenecks, and assisted in troubleshooting relational databases (PostgreSQL, Oracle, MySQL).</li>
         <li>Documented system troubleshooting procedures and collaborated with engineering teams to report bugs and verify fixes.</li>
       </ul>
@@ -304,12 +304,12 @@ const html = `<!DOCTYPE html>
         <span class="project-title">• <a href="https://github.com/mazkev/java-ecommerce" style="color: #0f172a; text-decoration: none;">AliExpress Choice (Java Spring Boot & Vue)</a></span>
         <span class="project-tech">Java 17 • Spring Boot 3 • Vue 3 • PostgreSQL</span>
       </div>
-      <div class="project-desc">Enterprise fullstack e-commerce platform built with Java 17, Spring Boot 3, and Vue 3. Implements Spring Security JWT, inventory stock management, and Pinia state store. [Repo: github.com/mazkev/java-ecommerce]</div>
+      <div class="project-desc">Fullstack e-commerce platform built with Java 17, Spring Boot 3, and Vue 3. Implements Spring Security JWT, inventory stock management, and Pinia state store. [Repo: github.com/mazkev/java-ecommerce]</div>
     </div>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• <a href="https://github.com/mazkev/hrms-laravel" style="color: #0f172a; text-decoration: none;">HRMS Enterprise Management (Laravel 11)</a></span>
+        <span class="project-title">• <a href="https://github.com/mazkev/hrms-laravel" style="color: #0f172a; text-decoration: none;">HRMS Management System (Laravel 11)</a></span>
         <span class="project-tech">Laravel 11 • PHP • MySQL • Eloquent ORM</span>
       </div>
       <div class="project-desc">Human Resource Management System with attendance tracking, automated payroll calculation, department management, and employee leave request workflows. [Repo: github.com/mazkev/hrms-laravel]</div>
@@ -325,7 +325,7 @@ const html = `<!DOCTYPE html>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• <a href="https://nexus-project-mu.vercel.app/" style="color: #0f172a; text-decoration: none;">Enterprise Operations Dashboard</a></span>
+        <span class="project-title">• <a href="https://nexus-project-mu.vercel.app/" style="color: #0f172a; text-decoration: none;">System Operations Dashboard</a></span>
         <span class="project-tech">Next.js 16 • TypeScript • Recharts • Tailwind</span>
       </div>
       <div class="project-desc">System operations monitoring interface with real-time server activity metrics, tabular log viewer, role-based filters, and responsive data grid layouts. [Live: nexus-project-mu.vercel.app]</div>
@@ -402,7 +402,7 @@ const html = `<!DOCTYPE html>
         <span class="job-date">2022 - Sekarang</span>
       </div>
       <ul class="bullets">
-        <li>Memantau alur kerja aplikasi korporat dan menangani insiden operasional untuk memastikan kelancaran layanan sistem produksi harian.</li>
+        <li>Memantau alur kerja aplikasi operasional dan menangani insiden sistem untuk memastikan kelancaran layanan harian.</li>
         <li>Menganalisis query database, mengidentifikasi kendala data, dan membantu investigasi pada database relasional (PostgreSQL, Oracle, MySQL).</li>
         <li>Menyusun dokumentasi penanganan kendala sistem dan berkoordinasi dengan tim developer untuk pelaporan bug dan verifikasi perbaikan.</li>
       </ul>
@@ -449,12 +449,12 @@ const html = `<!DOCTYPE html>
         <span class="project-title">• <a href="https://github.com/mazkev/java-ecommerce" style="color: #0f172a; text-decoration: none;">AliExpress Choice (Java Spring Boot & Vue)</a></span>
         <span class="project-tech">Java 17 • Spring Boot 3 • Vue 3 • PostgreSQL</span>
       </div>
-      <div class="project-desc">Platform e-commerce enterprise dengan Java 17, Spring Boot 3, dan Vue 3 yang dilengkapi keamanan Spring Security JWT dan database PostgreSQL. [Repo: github.com/mazkev/java-ecommerce]</div>
+      <div class="project-desc">Platform e-commerce fullstack dengan Java 17, Spring Boot 3, dan Vue 3 yang dilengkapi keamanan Spring Security JWT dan database PostgreSQL. [Repo: github.com/mazkev/java-ecommerce]</div>
     </div>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• <a href="https://github.com/mazkev/hrms-laravel" style="color: #0f172a; text-decoration: none;">HRMS Enterprise Management (Laravel 11)</a></span>
+        <span class="project-title">• <a href="https://github.com/mazkev/hrms-laravel" style="color: #0f172a; text-decoration: none;">HRMS Management System (Laravel 11)</a></span>
         <span class="project-tech">Laravel 11 • PHP • MySQL • Eloquent ORM</span>
       </div>
       <div class="project-desc">Sistem manajemen SDM (HRMS) dengan absensi, cuti karyawan, struktur departemen, dan penghitungan slip gaji otomatis berbasis Laravel 11. [Repo: github.com/mazkev/hrms-laravel]</div>
@@ -470,7 +470,7 @@ const html = `<!DOCTYPE html>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• <a href="https://nexus-project-mu.vercel.app/" style="color: #0f172a; text-decoration: none;">Enterprise Operations Dashboard</a></span>
+        <span class="project-title">• <a href="https://nexus-project-mu.vercel.app/" style="color: #0f172a; text-decoration: none;">System Operations Dashboard</a></span>
         <span class="project-tech">Next.js 16 • TypeScript • Recharts • Tailwind</span>
       </div>
       <div class="project-desc">Antarmuka pemantauan operasional sistem dengan Next.js 16, TypeScript, dan Recharts yang dilengkapi metrik aktivitas server dan filter log insiden. [Demo: nexus-project-mu.vercel.app]</div>
@@ -554,7 +554,7 @@ const html = `<!DOCTYPE html>
           <span style="font-size: 6pt; background: #e2e8f0; font-family: monospace; font-weight: bold; padding: 1px 3px; border-radius: 2px;">FULL STACK</span>
         </div>
         <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #475569; margin: 1px 0;">JAVA 17 • SPRING BOOT 3 • VUE 3</div>
-        <div style="font-size: 6.8pt; color: #334155; line-height: 1.25;">E-commerce enterprise Java Spring Boot 3. Dilengkapi Spring Security JWT dan stok inventori.</div>
+        <div style="font-size: 6.8pt; color: #334155; line-height: 1.25;">E-commerce fullstack Java Spring Boot 3. Dilengkapi Spring Security JWT dan stok inventori.</div>
         <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #0369a1; margin-top: 3px;">Repo: gh/java-ecommerce</div>
       </div>
     </div>
@@ -564,7 +564,7 @@ const html = `<!DOCTYPE html>
       <img src="${imgHrms}" style="width: 65px; height: 50px; border-radius: 4px; object-fit: cover; border: 1px solid #cbd5e1; flex-shrink: 0;" alt="HRMS Laravel">
       <div style="flex: 1; min-width: 0;">
         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-          <strong style="font-size: 7.5pt; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">4. HRMS Enterprise</strong>
+          <strong style="font-size: 7.5pt; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">4. HRMS Management</strong>
           <span style="font-size: 6pt; background: #e2e8f0; font-family: monospace; font-weight: bold; padding: 1px 3px; border-radius: 2px;">FULL STACK</span>
         </div>
         <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #475569; margin: 1px 0;">LARAVEL 11 • PHP • MYSQL • ORM</div>

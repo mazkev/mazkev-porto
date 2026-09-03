@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Cloud, Code, GraduationCap, Brain, User, Sparkles, Database, Layers, ShieldCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/app/lib/utils';
@@ -40,7 +40,7 @@ const timelineData = [
     date: '2022 — PRESENT',
     role: 'Application Support',
     company: 'PT PLN Icon+',
-    description: 'Monitoring enterprise application workflows, analyzing SQL database queries, and assisting in system bug investigations.',
+    description: 'Monitoring production application workflows, analyzing SQL database queries, and assisting in system bug investigations.',
     icon: Cloud,
   },
   {
@@ -67,9 +67,10 @@ export default function About() {
     setMounted(true);
   }, []);
 
-  const filteredSkills = activeTab === 'all' 
-    ? skills 
-    : skills.filter(skill => skill.category === activeTab);
+  const filteredSkills = useMemo(() => {
+    if (activeTab === 'all') return skills;
+    return skills.filter(skill => skill.category === activeTab);
+  }, [activeTab]);
 
   if (!mounted) return null;
 
@@ -105,7 +106,7 @@ export default function About() {
                 How I got <span className="text-primary">here.</span>
               </h3>
               <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed">
-                I bring <strong>3 years of professional experience in Application Support at PT PLN Icon+</strong>, monitoring enterprise system health, analyzing SQL queries, and troubleshooting application issues. This hands-on operational background gives me a practical understanding of how real-world software operates in production.
+                I bring <strong>3 years of professional experience in Application Support at PT PLN Icon+</strong>, monitoring production system health, analyzing SQL queries, and troubleshooting application issues. This hands-on operational background gives me a practical understanding of how real-world software operates in production.
               </p>
               <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed">
                 I am actively developing software as a <strong>Fullstack Developer</strong>, utilizing <strong>React & TypeScript</strong> for interactive web interfaces, and building backend services with <strong>Go (Golang)</strong> and PostgreSQL using modular, maintainable structures.

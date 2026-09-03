@@ -1,6 +1,6 @@
 # Kevin Eka Pratama — Fullstack Engineer Portfolio 🚀
 
-A high-performance, responsive portfolio web application built with **Next.js 16 App Router**, **React 19**, **Tailwind CSS v4**, **Framer Motion**, and **Vercel Analytics & Speed Insights**.
+A modern, responsive portfolio web application built with **Next.js 16 App Router**, **React 19**, **Tailwind CSS v4**, **Framer Motion**, and **Vercel Analytics & Speed Insights**.
 
 [![Live Portfolio](https://img.shields.io/badge/Live_Demo-mazkev.vercel.app-059669?style=for-the-badge&logo=vercel)](https://mazkev.vercel.app)
 [![GitHub](https://img.shields.io/badge/GitHub-mazkev-181717?style=for-the-badge&logo=github)](https://github.com/mazkev)
@@ -13,7 +13,7 @@ A high-performance, responsive portfolio web application built with **Next.js 16
 - **40 Curated Projects**: Clean 1-to-1 exact mapping to GitHub repositories across AI tools, Mobile apps, 3D configurators, and Backend microservices.
 - **Interactive Project Filtering**: Instant category tabs (*All*, *Front End*, *Back End*, *Full Stack*) with fast pagination.
 - **3 ATS-Friendly Resume Profiles**: Interactive CV viewer with specialized profiles for **Fullstack**, **Front End**, and **Back End** roles (supports EN/ID and `window.print()` ATS high-contrast PDF export).
-- **Hero Tech Stack Showcase**: Ultra-fast, lightweight 60 FPS technology overview featuring Next.js 16, React 19, Java Spring Boot, Golang, Express, PostgreSQL, and Docker.
+- **Hero Tech Stack Showcase**: Responsive, lightweight 60 FPS technology overview featuring Next.js 16, React 19, Java Spring Boot, Golang, Express, PostgreSQL, and Docker.
 - **WhatsApp Fast-Chat**: Direct 1-click WhatsApp messaging connection for recruiters and freelance clients.
 - **Mobile View Performance Tuning**: Hardware-accelerated GPU blur scaling, responsive Next.js images, and touch interaction overrides.
 - **Vercel Analytics & Speed Insights**: Real-time traffic monitoring and performance tracking.

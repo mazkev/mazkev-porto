@@ -40,7 +40,7 @@ interface GitHubEvent {
 
 interface CuratedRepo {
   name: string;
-  category: 'all' | 'go' | 'fullstack' | 'frontend' | 'mobile' | 'enterprise';
+  category: 'all' | 'go' | 'fullstack' | 'frontend' | 'mobile' | 'backend';
   categoryLabel: string;
   language: string;
   langColor: string;
@@ -56,59 +56,49 @@ const CURATED_REPOS: CuratedRepo[] = [
     categoryLabel: 'Go Backend',
     language: 'Go',
     langColor: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20',
-    desc: 'High-performance REST API backend with Fiber, GORM, connection pooling, and atomic transactional checkout.',
+    desc: 'Modular REST API backend with Fiber, GORM, connection pooling, and atomic transactional checkout.',
     tech: ['Go', 'Fiber', 'GORM', 'PostgreSQL', 'Docker'],
     githubUrl: 'https://github.com/mazkev/go-marketplace-backend'
   },
   {
     name: 'go-clean-arch',
     category: 'go',
-    categoryLabel: 'Go Backend',
+    categoryLabel: 'Go Clean Arch',
     language: 'Go',
     langColor: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20',
-    desc: 'Modular Go REST API built with Clean Architecture (Domain, Usecase, Repository, Delivery) for clean testing.',
-    tech: ['Go', 'Clean Architecture', 'PostgreSQL', 'Docker'],
-    githubUrl: 'https://github.com/mazkev/go-clean-arch'
+    desc: 'Clean Architecture REST API in Go with domain decoupling, repository patterns, and Swagger OpenAPI docs.',
+    tech: ['Go', 'Clean Architecture', 'Swagger', 'PostgreSQL'],
+    githubUrl: 'https://github.com/mazkev/go-clean-architecture'
   },
   {
     name: 'go-bank',
     category: 'go',
-    categoryLabel: 'Go Backend',
+    categoryLabel: 'Go Banking Core',
     language: 'Go',
     langColor: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20',
-    desc: 'Core banking balance transfer service handling concurrent transactions with SELECT FOR UPDATE row locking.',
-    tech: ['Go', 'ACID Transactions', 'PostgreSQL', 'Docker'],
+    desc: 'ACID-compliant banking transfer engine with row-level locks, ledger history, and database migrations.',
+    tech: ['Go', 'PostgreSQL', 'Docker', 'ACID Engine'],
     githubUrl: 'https://github.com/mazkev/go-bank'
+  },
+  {
+    name: 'baye-marketplace',
+    category: 'fullstack',
+    categoryLabel: 'Fullstack Next.js',
+    language: 'TypeScript',
+    langColor: 'text-amber-400 bg-amber-500/10 border-amber-500/20',
+    desc: 'Fullstack auction marketplace with server-rendered product hydration, live bidding, and cart management.',
+    tech: ['Next.js 14', 'React', 'TypeScript', 'Tailwind CSS'],
+    githubUrl: 'https://github.com/mazkev/baye-marketplace'
   },
   {
     name: 'go-marketplace',
     category: 'fullstack',
-    categoryLabel: 'Fullstack',
-    language: 'Go + React',
-    langColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
-    desc: 'Fullstack e-commerce application integrating a React + TypeScript frontend with a modular Go REST API backend.',
-    tech: ['Go', 'React', 'TypeScript', 'PostgreSQL', 'JWT'],
+    categoryLabel: 'Fullstack Go',
+    language: 'Go & React',
+    langColor: 'text-amber-400 bg-amber-500/10 border-amber-500/20',
+    desc: 'Fullstack e-commerce marketplace pairing a Go REST API with a responsive React frontend.',
+    tech: ['Go', 'React', 'GORM', 'PostgreSQL', 'JWT'],
     githubUrl: 'https://github.com/mazkev/go-marketplace'
-  },
-  {
-    name: 'nexus-project',
-    category: 'fullstack',
-    categoryLabel: 'Fullstack',
-    language: 'TypeScript',
-    langColor: 'text-blue-400 bg-blue-500/10 border-blue-500/20',
-    desc: 'All-in-one productivity platform featuring CRM, Kanban Board, Console, and interactive Canvas built with React.',
-    tech: ['React', 'TypeScript', 'Tailwind CSS', 'State Management'],
-    githubUrl: 'https://github.com/mazkev/nexus-project'
-  },
-  {
-    name: 'BayE-marketplace',
-    category: 'fullstack',
-    categoryLabel: 'Fullstack',
-    language: 'Next.js',
-    langColor: 'text-purple-400 bg-purple-500/10 border-purple-500/20',
-    desc: 'Modern auction marketplace inspired by eBay built with Next.js App Router, live bidding simulation, and cart.',
-    tech: ['Next.js 14', 'React', 'TypeScript', 'Tailwind'],
-    githubUrl: 'https://github.com/mazkev/BayE-marketplace'
   },
   {
     name: 'bun-hono',
@@ -116,7 +106,7 @@ const CURATED_REPOS: CuratedRepo[] = [
     categoryLabel: 'Fullstack',
     language: 'TypeScript',
     langColor: 'text-amber-400 bg-amber-500/10 border-amber-500/20',
-    desc: 'Modern ultra-fast TypeScript backend built on Bun runtime with Hono framework, Drizzle ORM, and Zod validation.',
+    desc: 'Modern TypeScript backend built on Bun runtime with Hono framework, Drizzle ORM, and Zod validation.',
     tech: ['Bun', 'Hono', 'Drizzle ORM', 'Zod', 'JWT'],
     githubUrl: 'https://github.com/mazkev/bun-hono'
   },
@@ -136,24 +126,24 @@ const CURATED_REPOS: CuratedRepo[] = [
     categoryLabel: 'Mobile App',
     language: 'React Native',
     langColor: 'text-sky-400 bg-sky-500/10 border-sky-500/20',
-    desc: 'Enterprise employee attendance and operations mobile tracking app built with React Native Expo.',
+    desc: 'Employee attendance and operations mobile tracking app built with React Native Expo.',
     tech: ['React Native', 'Expo', 'Mobile UI', 'REST API'],
     githubUrl: 'https://github.com/mazkev/plusico-react-native-expo'
   },
   {
     name: 'belajar-java-springboot',
-    category: 'enterprise',
-    categoryLabel: 'Enterprise Java',
+    category: 'backend',
+    categoryLabel: 'Java Spring Boot',
     language: 'Java',
     langColor: 'text-red-400 bg-red-500/10 border-red-500/20',
-    desc: 'Enterprise MVC backend with Java 17, Spring Boot 3, Spring Security JWT filter chain, and JPA Hibernate.',
+    desc: 'Modular MVC backend with Java 17, Spring Boot 3, Spring Security JWT filter chain, and JPA Hibernate.',
     tech: ['Java 17', 'Spring Boot 3', 'JPA Hibernate', 'PostgreSQL'],
     githubUrl: 'https://github.com/mazkev/belajar-java-springboot'
   },
   {
     name: 'HRMS-app-laravel',
-    category: 'enterprise',
-    categoryLabel: 'Enterprise PHP',
+    category: 'backend',
+    categoryLabel: 'PHP Laravel',
     language: 'PHP',
     langColor: 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20',
     desc: 'Human Resource Management System with attendance tracking, leave approval workflows, and payroll calculations.',
@@ -205,7 +195,7 @@ const FALLBACK_EVENTS: GitHubEvent[] = [
     type: 'PushEvent',
     repo: { name: 'mazkev/belajar-java-springboot', url: 'https://github.com/mazkev/belajar-java-springboot' },
     payload: {
-      commits: [{ message: 'feat: enterprise e-commerce platform with Java 17, Spring Boot 3, and Vue 3', sha: 'f89c31d' }]
+      commits: [{ message: 'feat: fullstack e-commerce platform with Java 17, Spring Boot 3, and Vue 3', sha: 'f89c31d' }]
     },
     created_at: new Date(Date.now() - 1000 * 60 * 60 * 24 * 3).toISOString(),
   },
@@ -236,7 +226,7 @@ export default function GithubActivity() {
   const [loading, setLoading] = useState(true);
   const [publicReposCount, setPublicReposCount] = useState<number>(90);
   const [activeTab, setActiveTab] = useState<'activity' | 'repos' | 'analytics'>('activity');
-  const [repoFilter, setRepoFilter] = useState<'all' | 'go' | 'fullstack' | 'mobile' | 'enterprise'>('all');
+  const [repoFilter, setRepoFilter] = useState<'all' | 'go' | 'fullstack' | 'mobile' | 'backend'>('all');
 
   useEffect(() => {
     async function fetchGitHubData() {
@@ -560,7 +550,7 @@ export default function GithubActivity() {
               <span className="text-xs font-mono font-bold uppercase text-slate-400 mr-2 flex-shrink-0">
                 Filter Stack:
               </span>
-              {(['all', 'go', 'fullstack', 'mobile', 'enterprise'] as const).map((filter) => (
+              {(['all', 'go', 'fullstack', 'mobile', 'backend'] as const).map((filter) => (
                 <button
                   key={filter}
                   onClick={() => setRepoFilter(filter)}
@@ -575,7 +565,7 @@ export default function GithubActivity() {
                   {filter === 'go' && 'Go Backend'}
                   {filter === 'fullstack' && 'Fullstack Web'}
                   {filter === 'mobile' && 'React Native'}
-                  {filter === 'enterprise' && 'Java & PHP'}
+                  {filter === 'backend' && 'Java & PHP'}
                 </button>
               ))}
             </div>

@@ -63,7 +63,7 @@ const commonText = {
     educationTitle: 'Education',
     job1Title: 'Application Support',
     job1Date: '2022 - Present',
-    job1Bullet1: 'Monitored enterprise application workflows and handled operational incidents to ensure smooth daily production services.',
+    job1Bullet1: 'Monitored production application workflows and handled operational incidents to ensure smooth daily services.',
     job1Bullet2: 'Investigated database queries, identified data bottlenecks, and assisted in troubleshooting relational databases (PostgreSQL, Oracle, MySQL).',
     job1Bullet3: 'Documented system troubleshooting procedures and collaborated with engineering teams to report bugs and verify fixes.',
     job2Title: 'Software Development (Independent Projects)',
@@ -84,7 +84,7 @@ const commonText = {
     educationTitle: 'Pendidikan',
     job1Title: 'Application Support',
     job1Date: '2022 - Sekarang',
-    job1Bullet1: 'Memantau alur kerja aplikasi korporat dan menangani insiden operasional untuk memastikan kelancaran layanan sistem produksi harian.',
+    job1Bullet1: 'Memantau alur kerja aplikasi operasional dan menangani insiden sistem untuk memastikan kelancaran layanan harian.',
     job1Bullet2: 'Menganalisis query database, mengidentifikasi kendala data, dan membantu investigasi pada database relasional (PostgreSQL, Oracle, MySQL).',
     job1Bullet3: 'Menyusun dokumentasi penanganan kendala sistem dan berkoordinasi dengan tim developer untuk pelaporan bug dan verifikasi perbaikan.',
     job2Title: 'Pengembangan Perangkat Lunak (Proyek Mandiri)',
@@ -104,7 +104,7 @@ const projectTranslations: Record<string, { id: string; en: string }> = {
     id: 'Marketplace e-commerce fullstack dengan Go dan React. Dilengkapi REST API, autentikasi JWT, manajemen katalog produk, dan integrasi database PostgreSQL transaksional.'
   },
   'Go Marketplace Backend (GORM & REST API)': {
-    en: 'High-performance REST API backend for e-commerce with Go, GORM ORM, and PostgreSQL. Handles atomic checkout transactions and connection pooling.',
+    en: 'Modular REST API backend for e-commerce with Go, GORM ORM, and PostgreSQL. Handles atomic checkout transactions and connection pooling.',
     id: 'Layanan backend REST API untuk marketplace e-commerce dengan Go, GORM ORM, dan PostgreSQL. Mengelola transaksi checkout dan connection pooling.'
   },
   'Go Clean Architecture REST API': {
@@ -120,7 +120,7 @@ const projectTranslations: Record<string, { id: string; en: string }> = {
     id: 'Layanan transaksi perbankan di Go yang menangani transfer saldo akun dengan kepatuhan ACID, row-level locking (SELECT FOR UPDATE), dan pencatatan audit trail.'
   },
   'Bun & Hono E-Commerce Backend (Drizzle ORM)': {
-    en: 'Modern ultra-fast TypeScript backend built on Bun runtime with Hono, Drizzle ORM type-safe SQL queries, Zod schema validation, and RBAC auth.',
+    en: 'Modern TypeScript backend built on Bun runtime with Hono, Drizzle ORM type-safe SQL queries, Zod schema validation, and RBAC auth.',
     id: 'Backend TypeScript di atas runtime Bun dengan framework Hono, query database type-safe Drizzle ORM, validasi skema Zod, dan kontrol akses RBAC.'
   },
   'Semarketplace Pro (React & Express)': {
@@ -128,14 +128,14 @@ const projectTranslations: Record<string, { id: string; en: string }> = {
     id: 'Aplikasi e-commerce fullstack dengan React, Redux Toolkit, dan Express.js yang dilengkapi pembaruan keranjang belanja dan sinkronisasi stok.'
   },
   'AliExpress Choice E-Commerce (Java Spring Boot)': {
-    en: 'Enterprise fullstack e-commerce platform built with Java 17, Spring Boot 3, and Vue 3 with Spring Security JWT auth and PostgreSQL.',
-    id: 'Platform e-commerce enterprise dengan Java 17, Spring Boot 3, dan Vue 3 yang dilengkapi keamanan Spring Security JWT dan database PostgreSQL.'
+    en: 'Fullstack e-commerce platform built with Java 17, Spring Boot 3, and Vue 3 with Spring Security JWT auth and PostgreSQL.',
+    id: 'Platform e-commerce fullstack dengan Java 17, Spring Boot 3, dan Vue 3 yang dilengkapi keamanan Spring Security JWT dan database PostgreSQL.'
   },
-  'HRMS Enterprise Management (Laravel 11)': {
+  'HRMS Management System (Laravel 11)': {
     en: 'Human Resource Management System with attendance tracking, payroll calculation, department management, and automated leave request workflows.',
     id: 'Sistem manajemen SDM (HRMS) dengan absensi, cuti karyawan, struktur departemen, dan penghitungan slip gaji otomatis berbasis Laravel 11.'
   },
-  'Enterprise Operations Dashboard': {
+  'System Operations Dashboard': {
     en: 'System operations monitoring interface built with Next.js 16, TypeScript, and Recharts with real-time server activity metrics and tabular log viewer.',
     id: 'Antarmuka pemantauan operasional sistem dengan Next.js 16, TypeScript, dan Recharts yang dilengkapi metrik aktivitas server dan filter log insiden.'
   },
@@ -472,9 +472,9 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
 
   if (!isOpen) return null;
 
-  const frontendTop6Titles = ['BayE Marketplace (Fullstack Next.js)', 'Enterprise Operations Dashboard', 'MazCloud File Storage Dashboard', 'React Shopping Cart Application', 'Canvass Graphic Design Studio', 'Spotify Web Player Clone'];
-  const fullstackTop6Titles = ['Go Marketplace (Fullstack Go & React)', 'BayE Marketplace (Fullstack Next.js)', 'AliExpress Choice E-Commerce (Java Spring Boot)', 'HRMS Enterprise Management (Laravel 11)', 'Go Clean Architecture REST API', 'Enterprise Operations Dashboard'];
-  const backendTop6Titles = ['Go Clean Architecture REST API', 'Go Banking Core Engine', 'AliExpress Choice E-Commerce (Java Spring Boot)', 'HRMS Enterprise Management (Laravel 11)', 'Go Marketplace Backend (GORM & REST API)', 'Bun & Hono E-Commerce Backend (Drizzle ORM)'];
+  const frontendTop6Titles = ['BayE Marketplace (Fullstack Next.js)', 'System Operations Dashboard', 'MazCloud File Storage Dashboard', 'React Shopping Cart Application', 'Canvass Graphic Design Studio', 'Spotify Web Player Clone'];
+  const fullstackTop6Titles = ['Go Marketplace (Fullstack Go & React)', 'BayE Marketplace (Fullstack Next.js)', 'AliExpress Choice E-Commerce (Java Spring Boot)', 'HRMS Management System (Laravel 11)', 'Go Clean Architecture REST API', 'System Operations Dashboard'];
+  const backendTop6Titles = ['Go Clean Architecture REST API', 'Go Banking Core Engine', 'AliExpress Choice E-Commerce (Java Spring Boot)', 'HRMS Management System (Laravel 11)', 'Go Marketplace Backend (GORM & REST API)', 'Bun & Hono E-Commerce Backend (Drizzle ORM)'];
 
   const roleProjects = (activeRole === 'frontend' ? frontendTop6Titles : activeRole === 'backend' ? backendTop6Titles : fullstackTop6Titles)
     .map(title => projects.find(p => p.title === title))

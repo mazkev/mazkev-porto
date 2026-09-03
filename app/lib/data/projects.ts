@@ -247,7 +247,7 @@ func (store *SQLStore) TransferTx(ctx context.Context, arg TransferTxParams) (Tr
 	return result, err
 }`,
   },
-  'Enterprise Operations Dashboard': {
+  'System Operations Dashboard': {
     architectureFlow: 'Metrics Stream ➔ Next.js 16 Client ➔ Recharts Visualization ➔ Tabular Log Filter ➔ Dark/Light System',
     specs: {
       architecture: 'Component-Driven Telemetry Dashboard',
@@ -265,7 +265,7 @@ func (store *SQLStore) TransferTx(ctx context.Context, arg TransferTxParams) (Tr
     challenge: 'Visualizing dense system telemetry and server metric streams in real-time without degrading browser frame rates.',
     solution: 'Implemented memoized chart components with Recharts, responsive CSS Grid virtualization, and local state filtering for server logs.',
     contributions: [
-      'Designed enterprise-grade dashboard layout with interactive metric cards.',
+      'Designed clean dashboard layout with interactive metric cards.',
       'Built tabular system event log viewer with search and severity level filters.',
       'Configured responsive theme system with dark mode priority.',
     ],
@@ -302,13 +302,13 @@ func (store *SQLStore) TransferTx(ctx context.Context, arg TransferTxParams) (Tr
       devopsOrTesting: 'Zod Runtime Schema Validation',
     },
     features: [
-      'High-throughput REST API powered by Bun runtime and Hono web framework',
+      'Modular REST API powered by Bun runtime and Hono web framework',
       'Type-safe SQL queries with Drizzle ORM and automatic migration generation',
       'Strict runtime request body validation with Zod schemas',
       'JWT authentication with Role-Based Access Control (RBAC)',
       'Complete order return and customer complaint issue tracking workflows',
     ],
-    challenge: 'Maximizing REST API throughput while maintaining strict runtime schema validation and type-safe database queries.',
+    challenge: 'Developing clean REST API services while maintaining strict runtime schema validation and type-safe database queries.',
     solution: 'Leveraged Bun runtime with Hono web framework, Drizzle ORM type-safe queries, and Zod middleware validation.',
     contributions: [
       'Implemented JWT authentication with Role-Based Access Control (RBAC).',
@@ -319,19 +319,19 @@ func (store *SQLStore) TransferTx(ctx context.Context, arg TransferTxParams) (Tr
   'AliExpress Choice E-Commerce (Java Spring Boot)': {
     architectureFlow: 'Vue 3 (Pinia) ➔ RESTful API ➔ Spring Security (JWT) ➔ Controller ➔ Service Layer ➔ Spring Data JPA ➔ PostgreSQL',
     specs: {
-      architecture: 'Enterprise MVC (Java 17 Spring Boot 3 + Vue 3)',
+      architecture: 'MVC Architecture (Java 17 Spring Boot 3 + Vue 3)',
       database: 'PostgreSQL (Spring Data JPA / Hibernate ORM)',
       auth: 'Spring Security 6 + JWT Filter Chain',
       devopsOrTesting: 'Maven Multi-Module Build & Docker',
     },
     features: [
-      'Java 17 Spring Boot 3 enterprise REST API backend',
+      'Java 17 Spring Boot 3 modular REST API backend',
       'Spring Security 6 with stateless JWT authentication filter chain',
       'Relational schema modeling with Spring Data JPA and Hibernate ORM',
       'Vue 3 Composition API frontend with Pinia global state store',
       'AliExpress-inspired multi-category product catalog with discount tags',
     ],
-    challenge: 'Structuring an enterprise multi-category marketplace with secure JWT auth and reactive frontend state synchronization.',
+    challenge: 'Structuring a modular multi-category marketplace with secure JWT auth and reactive frontend state synchronization.',
     solution: 'Paired Java 17 Spring Boot 3 REST services with Vue 3 Composition API and Pinia state management.',
     contributions: [
       'Engineered Spring Security JWT filter chain and user role management.',
@@ -339,7 +339,7 @@ func (store *SQLStore) TransferTx(ctx context.Context, arg TransferTxParams) (Tr
       'Built AliExpress-inspired reactive frontend catalog with Tailwind CSS.',
     ],
   },
-  'HRMS Enterprise Management (Laravel 11)': {
+  'HRMS Management System (Laravel 11)': {
     architectureFlow: 'Employee Request ➔ Laravel Route ➔ Middleware ➔ Controller ➔ Eloquent ORM ➔ MySQL Database',
     specs: {
       architecture: 'Modular Model-View-Controller (Laravel 11)',
@@ -614,7 +614,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
       'Configured Vite asset-chunking pipelines to optimize initial bundle sizes by 30%.',
       'Wired Tailwind container queries to ensure fluid responsive card scaling.',
     ],
-    codeSnippet: `// Vue 3 computed filter pipeline for high-performance sorting
+    codeSnippet: `// Vue 3 computed filter pipeline for reactive sorting
 const filteredProducts = computed(() => {
   if (!searchQuery.value) return products.value;
   const term = searchQuery.value.toLowerCase();
@@ -899,7 +899,7 @@ export const projects: ProjectData[] = [
     category: 'Front End',
   },
   {
-    title: 'Enterprise Operations Dashboard',
+    title: 'System Operations Dashboard',
     description: 'System operations monitoring interface built with Next.js 16, TypeScript, and Recharts. Features real-time server activity metrics, tabular log viewer, role filters, and responsive data grid layouts.',
     tech: ['Next.js', 'TypeScript', 'Recharts', 'Tailwind CSS'],
     image: '/projects/nexus.png',
@@ -909,7 +909,7 @@ export const projects: ProjectData[] = [
   },
   {
     title: 'AliExpress Choice E-Commerce (Java Spring Boot)',
-    description: 'Enterprise fullstack e-commerce platform built with Java 17, Spring Boot 3.3+, and Vue 3 (Composition API). Features Spring Security JWT auth, inventory stock management, Pinia state store, and RESTful catalog endpoints.',
+    description: 'Fullstack e-commerce platform built with Java 17, Spring Boot 3.3+, and Vue 3 (Composition API). Features Spring Security JWT auth, inventory stock management, Pinia state store, and RESTful catalog endpoints.',
     tech: ['Java 17', 'Spring Boot 3', 'Vue.js 3', 'PostgreSQL', 'Pinia'],
     image: '/projects/marketinvent.png',
     live: 'https://github.com/mazkev/java-ecommerce',
@@ -917,7 +917,7 @@ export const projects: ProjectData[] = [
     category: 'Full Stack',
   },
   {
-    title: 'HRMS Enterprise Management (Laravel 11)',
+    title: 'HRMS Management System (Laravel 11)',
     description: 'Human Resource Management System built with Laravel 11, PHP, and MySQL. Features employee attendance records, payroll calculation, department management, and automated leave request workflows.',
     tech: ['Laravel 11', 'PHP', 'Blade', 'MySQL', 'Tailwind CSS'],
     image: '/projects/marketinvent.png',
@@ -927,7 +927,7 @@ export const projects: ProjectData[] = [
   },
   {
     title: 'Bun & Hono E-Commerce Backend (Drizzle ORM)',
-    description: 'High-throughput e-commerce backend built with Bun runtime, Hono framework, and Drizzle ORM. Features Zod schema validation, JWT authentication, RBAC authorization, and SQLite/PostgreSQL storage.',
+    description: 'Modular e-commerce backend built with Bun runtime, Hono framework, and Drizzle ORM. Features Zod schema validation, JWT authentication, RBAC authorization, and SQLite/PostgreSQL storage.',
     tech: ['Bun', 'Hono', 'TypeScript', 'Drizzle ORM', 'Zod', 'JWT'],
     image: '/projects/swagger-go.png',
     live: 'https://github.com/mazkev/bun-hono',
@@ -936,7 +936,7 @@ export const projects: ProjectData[] = [
   },
   {
     title: 'Go Banking Core Engine',
-    description: 'Enterprise banking transaction engine built with Go and PostgreSQL. Implements ACID-compliant balance transfers, account ledger verification, optimistic concurrency handling, and RESTful API endpoints.',
+    description: 'Core banking transaction engine built with Go and PostgreSQL. Implements ACID-compliant balance transfers, account ledger verification, optimistic concurrency handling, and RESTful API endpoints.',
     tech: ['Go', 'PostgreSQL', 'Docker', 'REST API'],
     image: '/projects/swagger-banking.png',
     live: 'https://github.com/mazkev/go-bank',
@@ -1017,7 +1017,7 @@ export const projects: ProjectData[] = [
   },
   {
     title: 'MarketX Angular E-Commerce',
-    description: 'Enterprise marketplace frontend built with Angular and TypeScript. Features reactive form validation, RxJS state management streams, and theme customization.',
+    description: 'Modular marketplace frontend built with Angular and TypeScript. Features reactive form validation, RxJS state management streams, and theme customization.',
     tech: ['Angular', 'TypeScript', 'RxJS'],
     image: '/projects/marketx.png',
     live: 'https://market-x-angular.vercel.app/',
