@@ -37,24 +37,24 @@ const skills: SkillItem[] = [
 
 const timelineData = [
   {
-    date: '2023 — PRESENT',
-    role: 'Technical Support Specialist',
+    date: '2022 — PRESENT',
+    role: 'Application Support',
     company: 'PT PLN Icon+',
-    description: 'Listen to user complaints, build complex SQL database queries, and perform application debugging to trace software bugs.',
+    description: 'Monitoring enterprise application workflows, analyzing SQL database queries, and assisting in system bug investigations.',
     icon: Cloud,
   },
   {
-    date: '2023 — 2026',
-    role: 'Freelance Fullstack Developer',
-    company: 'Personal',
-    description: 'Designed and built customized and scalable fullstack applications for clients using modern web technologies.',
+    date: '2022 — PRESENT',
+    role: 'Software Development',
+    company: 'Independent & Open Source',
+    description: 'Building fullstack web applications and backend REST APIs using Go, React, Next.js, and PostgreSQL.',
     icon: Code,
   },
   {
     date: '2017 — 2022',
-    role: 'Students of Informatics Studies ',
-    company: 'Universitas Amikom Yogyakarta',
-    description: 'Focus on fundamental computer science concepts, software engineering methodologies, and building scalable web applications.',
+    role: 'Bachelor of Computer Science / IT',
+    company: 'Universitas Gunadarma',
+    description: 'Studied algorithms, relational databases, software engineering, and web development fundamentals. GPA: 3.48 / 4.00.',
     icon: GraduationCap,
   },
 ];

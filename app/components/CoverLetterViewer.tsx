@@ -160,7 +160,7 @@ export default function CoverLetterViewer({ isOpen, onClose }: CoverLetterViewer
                   Kevin Eka Pratama
                 </h1>
                 <p className="text-xs font-bold text-slate-700 uppercase tracking-widest pt-0.5">
-                  Fullstack Developer & Technical Support Specialist
+                  Fullstack Developer
                 </p>
               </div>
               <div className="text-left sm:text-right text-xs text-slate-800 space-y-0.5 font-medium">
@@ -208,16 +208,16 @@ export default function CoverLetterViewer({ isOpen, onClose }: CoverLetterViewer
                 </p>
 
                 <p>
-                  Saya merupakan lulusan Sarjana Teknologi Informasi dari Universitas Amikom Yogyakarta dengan pengalaman kerja lebih dari 3 tahun di bidang pengembangan perangkat lunak dan operasional sistem. Saat ini saya bertugas di PT PLN Icon+ sebagai <em>Technical Support Specialist</em>, di mana saya terbiasa menangani keluhan pengguna, mengeksekusi query SQL kompleks untuk analisis database, serta melakukan debugging untuk melacak bug pada aplikasi enterprise.
+                  Saya merupakan lulusan Sarjana Ilmu Komputer / Teknologi Informasi dari Universitas Gunadarma dengan pengalaman kerja lebih dari 3 tahun di bidang pengembangan perangkat lunak dan operasional sistem. Saat ini saya bertugas di PT PLN Icon+ sebagai <em>Application Support</em>, di mana saya terbiasa menangani alur operasional aplikasi, menganalisis query SQL untuk investigasi database, serta berkoordinasi dengan tim developer untuk pelaporan dan verifikasi bug.
                 </p>
 
                 <p>
-                  Selain itu, sebagai <em>Freelance Fullstack Developer</em>, saya berpengalaman merancang dan membangun aplikasi web scalable menggunakan teknologi modern seperti <strong>React.js, Next.js, Java Spring Boot, Golang, Express.js, Node.js, serta PostgreSQL dan MongoDB</strong>.
+                  Selain itu, sebagai pengembang web fullstack, saya berpengalaman membangun aplikasi web menggunakan teknologi modern seperti <strong>React.js, Next.js, Golang, Java Spring Boot, Express.js, Node.js, serta PostgreSQL dan MongoDB</strong>.
                 </p>
 
                 <div className="pl-4 border-l-2 border-slate-900 space-y-1 my-3 font-medium">
-                  <p>• <strong>Pengembangan Fullstack Tangguh</strong>: Mampu membangun aplikasi web dari frontend interaktif hingga backend API yang cepat dan aman.</p>
-                  <p>• <strong>Troubleshooting & Query SQL</strong>: Terbiasa melakukan analisis bug aplikasi dan optimasi database dalam lingkungan produksi.</p>
+                  <p>• <strong>Pengembangan Fullstack</strong>: Mampu membangun aplikasi web dari antarmuka frontend interaktif hingga layanan REST API backend yang rapi dan terstruktur.</p>
+                  <p>• <strong>Troubleshooting & Query SQL</strong>: Terbiasa melakukan analisis bug aplikasi dan investigasi database dalam lingkungan operasional produksi.</p>
                   <p>• <strong>Portofolio & Kode Terverifikasi</strong>: Seluruh proyek dan hasil kodingan saya dapat diakses langsung melalui portofolio digital saya di <strong>https://mazkev.vercel.app</strong> dan GitHub <strong>https://github.com/mazkev</strong>.</p>
                 </div>
 
@@ -241,21 +241,21 @@ export default function CoverLetterViewer({ isOpen, onClose }: CoverLetterViewer
                 </p>
 
                 <p>
-                  I am writing to express my strong interest in the <strong>{jobPosition}</strong> role at <strong>{companyName}</strong>. With over 3 years of hands-on experience in fullstack software engineering and technical support, coupled with a Bachelor&apos;s Degree in Information Technology from Amikom University Yogyakarta, I am eager to contribute to your engineering team.
+                  I am writing to express my strong interest in the <strong>{jobPosition}</strong> role at <strong>{companyName}</strong>. With over 3 years of hands-on experience in software development and Application Support, coupled with a Bachelor&apos;s Degree in Computer Science / Information Technology from Universitas Gunadarma, I am eager to contribute to your engineering team.
                 </p>
 
                 <p>
-                  In my current role at PT PLN Icon+, I address user requests, build complex SQL database queries, and perform root-cause application debugging across enterprise systems. Simultaneously, as a <em>Freelance Fullstack Developer</em>, I have engineered custom web applications and API architectures utilizing <strong>React, Next.js, Java Spring Boot, Golang, Express.js, Node.js, PostgreSQL, and MongoDB</strong>.
+                  In my current role at PT PLN Icon+ as <em>Application Support</em>, I monitor enterprise application workflows, analyze SQL queries, and perform root-cause debugging across production systems. In addition, I have built fullstack web applications and REST API services utilizing <strong>React, Next.js, Go (Golang), Java Spring Boot, Express.js, PostgreSQL, and MongoDB</strong>.
                 </p>
 
                 <div className="pl-4 border-l-2 border-slate-900 space-y-1 my-3 font-medium">
-                  <p>• <strong>Fullstack Mastery</strong>: Proven track record in shipping high-fidelity UI/UX and scalable backend pipelines.</p>
-                  <p>• <strong>System Operations & SQL Debugging</strong>: Proficient in data extraction, SQL query optimization, and resolving production software bugs.</p>
+                  <p>• <strong>Fullstack Development</strong>: Experience building responsive frontend user interfaces and structured backend REST APIs.</p>
+                  <p>• <strong>Operational Support & SQL Analysis</strong>: Practical background in analyzing SQL queries and investigating production software issues.</p>
                   <p>• <strong>Verified Portfolio & Repositories</strong>: Live interactive demonstrations of my work and source code are available at <strong>https://mazkev.vercel.app</strong> and <strong>https://github.com/mazkev</strong>.</p>
                 </div>
 
                 <p>
-                  I admire <strong>{companyName}</strong>&apos;s work and would welcome the opportunity to discuss how my technical skills and problem-solving mindset align with your engineering goals.
+                  I admire <strong>{companyName}</strong>&apos;s work and would welcome the opportunity to discuss how my technical skills and practical mindset align with your engineering goals.
                 </p>
 
                 <p>

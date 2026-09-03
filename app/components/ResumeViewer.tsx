@@ -17,24 +17,24 @@ export type CVMode = 'bilingual' | 'en' | 'id';
 const roleContent = {
   fullstack: {
     en: {
-      title: 'Fullstack Developer & Application Support Specialist',
+      title: 'Fullstack Developer',
       executiveSummaryTitle: 'Professional Summary',
       executiveSummary: 'Fullstack Developer with 3 years of professional experience in Application Support at PT PLN Icon+. Experienced in developing fullstack web applications using React, Next.js, and TypeScript on the frontend, combined with Go (Golang) and PostgreSQL on the backend. Brings practical operational background in database troubleshooting, SQL query analysis, and API integration.',
     },
     id: {
-      title: 'Fullstack Developer & Application Support Specialist',
+      title: 'Fullstack Developer',
       executiveSummaryTitle: 'Ringkasan Profesional',
       executiveSummary: 'Fullstack Developer dengan 3 tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+. Berpengalaman mengembangkan aplikasi web menggunakan React, Next.js, dan TypeScript pada frontend, dipadukan dengan Go (Golang) dan PostgreSQL pada backend. Memiliki pemahaman praktis dalam troubleshooting database, analisis query SQL, dan integrasi REST API.',
     }
   },
   frontend: {
     en: {
-      title: 'Frontend Developer & Web Application Engineer',
+      title: 'Frontend Developer',
       executiveSummaryTitle: 'Professional Summary',
       executiveSummary: 'Frontend Developer focused on building clean, responsive, and user-friendly web applications using React, Next.js, TypeScript, and Tailwind CSS. Experienced in state management, REST API integration, and component-driven UI development. Supported by 3 years of production Application Support experience in resolving user-facing issues and operational workflows.',
     },
     id: {
-      title: 'Frontend Developer & Web Application Engineer',
+      title: 'Frontend Developer',
       executiveSummaryTitle: 'Ringkasan Profesional',
       executiveSummary: 'Frontend Developer yang berfokus membangun aplikasi web responsif dan ramah pengguna menggunakan React, Next.js, TypeScript, dan Tailwind CSS. Berpengalaman dalam manajemen state, integrasi REST API, dan pengembangan komponen UI. Didukung 3 tahun pengalaman Application Support dalam menangani alur kerja sistem operasional.',
     }
@@ -61,7 +61,7 @@ const commonText = {
     projectsTitle: 'Featured Repositories',
     skillsTitle: 'Technical Competencies',
     educationTitle: 'Education',
-    job1Title: 'Application Support Specialist',
+    job1Title: 'Application Support',
     job1Date: '2022 - Present',
     job1Bullet1: 'Monitored enterprise application workflows and handled operational incidents to ensure smooth daily production services.',
     job1Bullet2: 'Investigated database queries, identified data bottlenecks, and assisted in troubleshooting relational databases (PostgreSQL, Oracle, MySQL).',
@@ -82,7 +82,7 @@ const commonText = {
     projectsTitle: 'Proyek Repositori Pilihan',
     skillsTitle: 'Kompetensi Teknis',
     educationTitle: 'Pendidikan',
-    job1Title: 'Spesialis Application Support',
+    job1Title: 'Application Support',
     job1Date: '2022 - Sekarang',
     job1Bullet1: 'Memantau alur kerja aplikasi korporat dan menangani insiden operasional untuk memastikan kelancaran layanan sistem produksi harian.',
     job1Bullet2: 'Menganalisis query database, mengidentifikasi kendala data, dan membantu investigasi pada database relasional (PostgreSQL, Oracle, MySQL).',

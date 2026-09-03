@@ -197,7 +197,7 @@ const html = `<!DOCTYPE html>
     <img src="${imgSrc}" class="photo" alt="Kevin Eka Pratama">
     <div class="header-text">
       <div class="name">Kevin Eka Pratama</div>
-      <div class="title">Fullstack Developer & Application Support Specialist</div>
+      <div class="title">Fullstack Developer</div>
       <div class="contact-info">
         <span>kevinekapratama@gmail.com</span>
         <span>•</span>
@@ -230,7 +230,7 @@ const html = `<!DOCTYPE html>
     <div class="job">
       <div class="job-header">
         <div>
-          <span class="job-title">Application Support Specialist</span> — <span class="job-company">PT PLN Icon+</span>
+          <span class="job-title">Application Support</span> — <span class="job-company">PT PLN Icon+</span>
         </div>
         <span class="job-date">2022 - Present</span>
       </div>
@@ -342,7 +342,7 @@ const html = `<!DOCTYPE html>
     <img src="${imgSrc}" class="photo" alt="Kevin Eka Pratama">
     <div class="header-text">
       <div class="name">Kevin Eka Pratama</div>
-      <div class="title">Fullstack Developer & Application Support Specialist</div>
+      <div class="title">Fullstack Developer</div>
       <div class="contact-info">
         <span>kevinekapratama@gmail.com</span>
         <span>•</span>
@@ -375,7 +375,7 @@ const html = `<!DOCTYPE html>
     <div class="job">
       <div class="job-header">
         <div>
-          <span class="job-title">Spesialis Application Support</span> — <span class="job-company">PT PLN Icon+</span>
+          <span class="job-title">Application Support</span> — <span class="job-company">PT PLN Icon+</span>
         </div>
         <span class="job-date">2022 - Sekarang</span>
       </div>
