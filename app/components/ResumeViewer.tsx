@@ -357,9 +357,9 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
 
   if (!isOpen) return null;
 
-  const frontendTop6Titles = ['Enterprise Operations Dashboard', 'MazCloud File Storage Dashboard', 'React Shopping Cart Application', 'Canvass Graphic Design Studio', 'Trello Kanban Workspace', 'Spotify Web Player Clone'];
-  const fullstackTop6Titles = ['Go Marketplace (Fullstack Go & React)', 'BayE Marketplace (Fullstack Next.js)', 'Semarketplace Pro (React & Express)', 'AliExpress Choice E-Commerce (Java Spring Boot)', 'HRMS Enterprise Management (Laravel 11)', 'Bun & Hono E-Commerce Backend (Drizzle ORM)'];
-  const backendTop6Titles = ['Go Marketplace Backend (GORM & REST API)', 'Go Clean Architecture REST API', 'Go Banking Core Engine', 'Bun & Hono E-Commerce Backend (Drizzle ORM)', 'HRMS Enterprise Management (Laravel 11)', 'AliExpress Choice E-Commerce (Java Spring Boot)'];
+  const frontendTop6Titles = ['BayE Marketplace (Fullstack Next.js)', 'Enterprise Operations Dashboard', 'MazCloud File Storage Dashboard', 'React Shopping Cart Application', 'Canvass Graphic Design Studio', 'Spotify Web Player Clone'];
+  const fullstackTop6Titles = ['Go Marketplace (Fullstack Go & React)', 'BayE Marketplace (Fullstack Next.js)', 'AliExpress Choice E-Commerce (Java Spring Boot)', 'HRMS Enterprise Management (Laravel 11)', 'Go Clean Architecture REST API', 'Enterprise Operations Dashboard'];
+  const backendTop6Titles = ['Go Clean Architecture REST API', 'Go Banking Core Engine', 'AliExpress Choice E-Commerce (Java Spring Boot)', 'HRMS Enterprise Management (Laravel 11)', 'Go Marketplace Backend (GORM & REST API)', 'Bun & Hono E-Commerce Backend (Drizzle ORM)'];
 
   const roleProjects = (activeRole === 'frontend' ? frontendTop6Titles : activeRole === 'backend' ? backendTop6Titles : fullstackTop6Titles)
     .map(title => projects.find(p => p.title === title))

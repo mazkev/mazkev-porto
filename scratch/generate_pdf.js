@@ -258,7 +258,7 @@ const html = `<!DOCTYPE html>
 
   <div class="section">
     <div class="section-title">
-      <span>Featured Repositories (Fullstack & Backend Go)</span>
+      <span>Featured Repositories (Multi-Stack Portfolio)</span>
     </div>
 
     <div class="project-item">
@@ -271,10 +271,26 @@ const html = `<!DOCTYPE html>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• Go Marketplace Backend (GORM & REST API)</span>
-        <span class="project-tech">Go • Fiber • PostgreSQL • GORM • Docker</span>
+        <span class="project-title">• BayE Marketplace (Fullstack Next.js)</span>
+        <span class="project-tech">Next.js 14 • React • TypeScript • Tailwind</span>
       </div>
-      <div class="project-desc">High-performance REST API backend for e-commerce with Go, GORM ORM, and PostgreSQL. Handles atomic checkout transactions and connection pooling.</div>
+      <div class="project-desc">Modern e-commerce and auction platform inspired by eBay. Features server-rendered product hydration, dynamic bidding simulation, and responsive cart.</div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-head">
+        <span class="project-title">• AliExpress Choice (Java Spring Boot & Vue)</span>
+        <span class="project-tech">Java 17 • Spring Boot 3 • Vue 3 • PostgreSQL</span>
+      </div>
+      <div class="project-desc">Enterprise fullstack e-commerce platform built with Java 17, Spring Boot 3, and Vue 3. Implements Spring Security JWT, inventory stock management, and Pinia state store.</div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-head">
+        <span class="project-title">• HRMS Enterprise Management (Laravel 11)</span>
+        <span class="project-tech">Laravel 11 • PHP • MySQL • Eloquent ORM</span>
+      </div>
+      <div class="project-desc">Human Resource Management System with attendance tracking, automated payroll calculation, department management, and employee leave request workflows.</div>
     </div>
 
     <div class="project-item">
@@ -287,26 +303,10 @@ const html = `<!DOCTYPE html>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• BayE Marketplace (Fullstack Next.js)</span>
-        <span class="project-tech">Next.js 14 • React • TypeScript • Tailwind</span>
+        <span class="project-title">• Enterprise Operations Dashboard</span>
+        <span class="project-tech">Next.js 16 • TypeScript • Recharts • Tailwind</span>
       </div>
-      <div class="project-desc">Modern e-commerce and auction platform inspired by eBay. Features server-rendered product hydration, dynamic bidding simulation, and responsive cart.</div>
-    </div>
-
-    <div class="project-item">
-      <div class="project-head">
-        <span class="project-title">• Go Banking Core Engine</span>
-        <span class="project-tech">Go • ACID Transactions • PostgreSQL • Docker</span>
-      </div>
-      <div class="project-desc">Core financial banking API in Go handling user balance transfers with strict ACID compliance, row-level locking (SELECT FOR UPDATE), and audit logging.</div>
-    </div>
-
-    <div class="project-item">
-      <div class="project-head">
-        <span class="project-title">• Bun & Hono E-Commerce Backend</span>
-        <span class="project-tech">Bun • Hono • Drizzle ORM • Zod • JWT</span>
-      </div>
-      <div class="project-desc">Modern ultra-fast TypeScript backend built on Bun runtime with Hono, Drizzle ORM type-safe SQL queries, Zod schema validation, and RBAC auth.</div>
+      <div class="project-desc">System operations monitoring interface with real-time server activity metrics, tabular log viewer, role-based filters, and responsive data grid layouts.</div>
     </div>
   </div>
 
@@ -403,7 +403,7 @@ const html = `<!DOCTYPE html>
 
   <div class="section">
     <div class="section-title">
-      <span>Proyek Repositori Pilihan (Fullstack & Backend Go)</span>
+      <span>Proyek Repositori Pilihan (Portofolio Multi-Stack)</span>
     </div>
 
     <div class="project-item">
@@ -416,10 +416,26 @@ const html = `<!DOCTYPE html>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• Go Marketplace Backend (GORM & REST API)</span>
-        <span class="project-tech">Go • Fiber • PostgreSQL • GORM • Docker</span>
+        <span class="project-title">• BayE Marketplace (Fullstack Next.js)</span>
+        <span class="project-tech">Next.js 14 • React • TypeScript • Tailwind</span>
       </div>
-      <div class="project-desc">Layanan backend REST API performa tinggi untuk marketplace e-commerce dengan Go, GORM ORM, dan PostgreSQL. Mengelola transaksi checkout atomik dan connection pooling.</div>
+      <div class="project-desc">Platform lelang dan belanja modern terinspirasi eBay. Menampilkan hidrasi katalog produk server-rendered, simulasi lelang harga langsung, dan keranjang responsif.</div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-head">
+        <span class="project-title">• AliExpress Choice (Java Spring Boot & Vue)</span>
+        <span class="project-tech">Java 17 • Spring Boot 3 • Vue 3 • PostgreSQL</span>
+      </div>
+      <div class="project-desc">Platform e-commerce enterprise dengan Java 17, Spring Boot 3, dan Vue 3 yang dilengkapi keamanan Spring Security JWT dan database PostgreSQL.</div>
+    </div>
+
+    <div class="project-item">
+      <div class="project-head">
+        <span class="project-title">• HRMS Enterprise Management (Laravel 11)</span>
+        <span class="project-tech">Laravel 11 • PHP • MySQL • Eloquent ORM</span>
+      </div>
+      <div class="project-desc">Sistem manajemen SDM (HRMS) dengan absensi, cuti karyawan, struktur departemen, dan penghitungan slip gaji otomatis berbasis Laravel 11.</div>
     </div>
 
     <div class="project-item">
@@ -432,26 +448,10 @@ const html = `<!DOCTYPE html>
 
     <div class="project-item">
       <div class="project-head">
-        <span class="project-title">• BayE Marketplace (Fullstack Next.js)</span>
-        <span class="project-tech">Next.js 14 • React • TypeScript • Tailwind</span>
+        <span class="project-title">• Enterprise Operations Dashboard</span>
+        <span class="project-tech">Next.js 16 • TypeScript • Recharts • Tailwind</span>
       </div>
-      <div class="project-desc">Platform lelang dan belanja modern terinspirasi oleh eBay. Menampilkan hidrasi katalog produk server-rendered, simulasi lelang harga langsung, dan keranjang responsif.</div>
-    </div>
-
-    <div class="project-item">
-      <div class="project-head">
-        <span class="project-title">• Go Banking Core Engine</span>
-        <span class="project-tech">Go • ACID Transactions • PostgreSQL • Docker</span>
-      </div>
-      <div class="project-desc">Layanan transaksi perbankan di Go yang menangani transfer saldo akun dengan kepatuhan ACID ketat, row-level locking (SELECT FOR UPDATE), dan pencatatan audit trail.</div>
-    </div>
-
-    <div class="project-item">
-      <div class="project-head">
-        <span class="project-title">• Bun & Hono E-Commerce Backend</span>
-        <span class="project-tech">Bun • Hono • Drizzle ORM • Zod • JWT</span>
-      </div>
-      <div class="project-desc">Backend TypeScript modern dan ultra-cepat di atas runtime Bun dengan framework Hono, query database type-safe Drizzle ORM, validasi skema Zod, dan kontrol akses RBAC.</div>
+      <div class="project-desc">Antarmuka pemantauan operasional sistem dengan Next.js 16, TypeScript, dan Recharts yang dilengkapi metrik aktivitas server dan filter log insiden.</div>
     </div>
   </div>
 
