@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, Cpu, Layers, Server, Database, Cloud, Code, Sparkles, Brain, Wrench, Terminal, Zap } from 'lucide-react';
 import dynamic from 'next/dynamic';
@@ -54,9 +54,11 @@ export default function Hero() {
     };
   }, []);
 
-  const filteredSkills = activeTab === 'all' 
-    ? skills 
-    : skills.filter(skill => skill.category === activeTab);
+  const filteredSkills = useMemo(() => {
+    return activeTab === 'all' 
+      ? skills 
+      : skills.filter(skill => skill.category === activeTab);
+  }, [activeTab]);
 
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center pt-20 print:min-h-0 print:p-0 print:block">

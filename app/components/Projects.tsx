@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useTransition } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { projects, type ProjectData, type ProjectCategory } from '../lib/data/projects';
@@ -29,6 +29,7 @@ export default function Projects() {
   const [activeCategory, setActiveCategory] = useState<'All' | ProjectCategory>('All');
   const [selectedTag, setSelectedTag] = useState<string>('');
   const [searchQuery, setSearchQuery] = useState('');
+  const [, startTransition] = useTransition();
 
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 6;
@@ -49,24 +50,33 @@ export default function Projects() {
   }, []);
 
   const handleCategoryChange = (cat: 'All' | ProjectCategory) => {
-    setActiveCategory(cat);
-    setCurrentPage(1);
+    startTransition(() => {
+      setActiveCategory(cat);
+      setCurrentPage(1);
+    });
   };
 
   const handleQuickTagClick = (tag: string) => {
-    setSelectedTag(selectedTag === tag ? '' : tag);
-    setCurrentPage(1);
+    startTransition(() => {
+      setSelectedTag(selectedTag === tag ? '' : tag);
+      setCurrentPage(1);
+    });
   };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-    setCurrentPage(1);
+    const val = e.target.value;
+    startTransition(() => {
+      setSearchQuery(val);
+      setCurrentPage(1);
+    });
   };
 
   const handleClearSearch = () => {
-    setSearchQuery('');
-    setSelectedTag('');
-    setCurrentPage(1);
+    startTransition(() => {
+      setSearchQuery('');
+      setSelectedTag('');
+      setCurrentPage(1);
+    });
   };
 
   const handleOpenDrawer = (project: ProjectData) => {
@@ -95,25 +105,30 @@ export default function Projects() {
     }
   };
 
-  if (!mounted) return null;
+  const filteredProjects = useMemo(() => {
+    return projects.filter(p => {
+      const matchesCategory = activeCategory === 'All' || p.category === activeCategory;
+      const matchesTag = !selectedTag || 
+        p.tech.some(t => t.toLowerCase().includes(selectedTag.toLowerCase())) ||
+        p.title.toLowerCase().includes(selectedTag.toLowerCase());
+      const q = searchQuery.toLowerCase().trim();
+      const matchesSearch = !q || 
+        p.title.toLowerCase().includes(q) || 
+        p.description.toLowerCase().includes(q) || 
+        p.tech.some(t => t.toLowerCase().includes(q));
+      return matchesCategory && matchesTag && matchesSearch;
+    });
+  }, [activeCategory, selectedTag, searchQuery]);
 
-  const filteredProjects = projects.filter(p => {
-    const matchesCategory = activeCategory === 'All' || p.category === activeCategory;
-    const matchesTag = !selectedTag || 
-      p.tech.some(t => t.toLowerCase().includes(selectedTag.toLowerCase())) ||
-      p.title.toLowerCase().includes(selectedTag.toLowerCase());
-    const q = searchQuery.toLowerCase().trim();
-    const matchesSearch = !q || 
-      p.title.toLowerCase().includes(q) || 
-      p.description.toLowerCase().includes(q) || 
-      p.tech.some(t => t.toLowerCase().includes(q));
-    return matchesCategory && matchesTag && matchesSearch;
-  });
+  const totalPages = useMemo(() => {
+    return Math.ceil(filteredProjects.length / projectsPerPage);
+  }, [filteredProjects.length, projectsPerPage]);
 
-  const indexOfLastProject = currentPage * projectsPerPage;
-  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
-  const currentProjects = filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
-  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+  const currentProjects = useMemo(() => {
+    const indexOfLastProject = currentPage * projectsPerPage;
+    const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+    return filteredProjects.slice(indexOfFirstProject, indexOfLastProject);
+  }, [filteredProjects, currentPage, projectsPerPage]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
