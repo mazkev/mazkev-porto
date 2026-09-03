@@ -73,7 +73,7 @@ const commonText = {
     job2Bullet2: 'Designed relational database schemas, implemented JWT authentication, and practiced safe database transaction handling in PostgreSQL.',
     job2Bullet3: 'Developed responsive frontend interfaces with React/TypeScript and containerized local development environments using Docker.',
     degree: 'Bachelor of Computer Science / Information Technology',
-    university: 'Universitas Gunadarma • GPA: 3.48 / 4.00',
+    university: 'Universitas AMIKOM • GPA: 3.42 / 4.00',
   },
   id: {
     downloadBtn: 'Unduh PDF',
@@ -94,7 +94,7 @@ const commonText = {
     job2Bullet2: 'Merancang skema database relasional, menerapkan autentikasi JWT, dan mengimplementasikan penanganan transaksi database di PostgreSQL.',
     job2Bullet3: 'Mengembangkan antarmuka frontend responsif dengan React/TypeScript dan menyiapkan lingkungan pengembangan menggunakan Docker.',
     degree: 'Sarjana Ilmu Komputer / Teknologi Informasi',
-    university: 'Universitas Gunadarma • IPK: 3.48 / 4.00',
+    university: 'Universitas AMIKOM • IPK: 3.42 / 4.00',
   }
 };
 

@@ -53,8 +53,8 @@ const timelineData = [
   {
     date: '2017 — 2022',
     role: 'Bachelor of Computer Science / IT',
-    company: 'Universitas Gunadarma',
-    description: 'Studied algorithms, relational databases, software engineering, and web development fundamentals. GPA: 3.48 / 4.00.',
+    company: 'Universitas AMIKOM',
+    description: 'Studied algorithms, relational databases, software engineering, and web development fundamentals. GPA: 3.42 / 4.00.',
     icon: GraduationCap,
   },
 ];

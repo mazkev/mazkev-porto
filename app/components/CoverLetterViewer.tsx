@@ -208,7 +208,7 @@ export default function CoverLetterViewer({ isOpen, onClose }: CoverLetterViewer
                 </p>
 
                 <p>
-                  Saya merupakan lulusan Sarjana Ilmu Komputer / Teknologi Informasi dari Universitas Gunadarma dengan pengalaman kerja lebih dari 3 tahun di bidang pengembangan perangkat lunak dan operasional sistem. Saat ini saya bertugas di PT PLN Icon+ sebagai <em>Application Support</em>, di mana saya terbiasa menangani alur operasional aplikasi, menganalisis query SQL untuk investigasi database, serta berkoordinasi dengan tim developer untuk pelaporan dan verifikasi bug.
+                  Saya merupakan lulusan Sarjana Ilmu Komputer / Teknologi Informasi dari Universitas AMIKOM dengan pengalaman kerja lebih dari 3 tahun di bidang pengembangan perangkat lunak dan operasional sistem. Saat ini saya bertugas di PT PLN Icon+ sebagai <em>Application Support</em>, di mana saya terbiasa menangani alur operasional aplikasi, menganalisis query SQL untuk investigasi database, serta berkoordinasi dengan tim developer untuk pelaporan dan verifikasi bug.
                 </p>
 
                 <p>
@@ -241,7 +241,7 @@ export default function CoverLetterViewer({ isOpen, onClose }: CoverLetterViewer
                 </p>
 
                 <p>
-                  I am writing to express my strong interest in the <strong>{jobPosition}</strong> role at <strong>{companyName}</strong>. With over 3 years of hands-on experience in software development and Application Support, coupled with a Bachelor&apos;s Degree in Computer Science / Information Technology from Universitas Gunadarma, I am eager to contribute to your engineering team.
+                  I am writing to express my strong interest in the <strong>{jobPosition}</strong> role at <strong>{companyName}</strong>. With over 3 years of hands-on experience in software development and Application Support, coupled with a Bachelor&apos;s Degree in Computer Science / Information Technology from Universitas AMIKOM, I am eager to contribute to your engineering team.
                 </p>
 
                 <p>
