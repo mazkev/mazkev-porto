@@ -212,7 +212,7 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
   'Go Banking Core Engine': {
     architectureFlow: 'Transfer Request ➔ Account Verification ➔ ACID Transaction Lock ➔ Ledger Balance Update ➔ Audit Logging',
     specs: {
-      architecture: 'Event-Driven Financial Transaction Engine',
+      architecture: 'Transactional Banking REST Engine (PostgreSQL Tx)',
       database: 'PostgreSQL (SELECT FOR UPDATE Row-Level Locking)',
       auth: 'Account Verification & Audit Logging Pipeline',
       devopsOrTesting: 'Dockerized PostgreSQL Concurrency Testing',
@@ -296,7 +296,7 @@ func (store *SQLStore) TransferTx(ctx context.Context, arg TransferTxParams) (Tr
   'Bun & Hono E-Commerce Backend (Drizzle ORM)': {
     architectureFlow: 'HTTP Request ➔ Hono Router ➔ Zod Validation ➔ JWT & RBAC Middleware ➔ Drizzle ORM ➔ SQLite / PostgreSQL',
     specs: {
-      architecture: 'Hono Web Framework on Bun High-Throughput Runtime',
+      architecture: 'Hono Web Framework on Bun Runtime',
       database: 'SQLite / PostgreSQL (Drizzle ORM Type-Safe Queries)',
       auth: 'JWT & Role-Based Access Control (RBAC)',
       devopsOrTesting: 'Zod Runtime Schema Validation',

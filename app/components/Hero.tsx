@@ -85,7 +85,7 @@ export default function Hero() {
             </span>
           </h1>
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-lg mb-6 leading-relaxed font-medium">
-            Fullstack Developer with <strong>3 years of professional experience in Application Support</strong>, transitioning into Software Development. Focused on modern React frontends and clean, scalable Go backend services.
+            Fullstack Developer with <strong>3 years of professional experience in Application Support</strong>, transitioning into Software Development. Focused on modern React frontends and clean, modular Go backend services.
           </p>
 
           <div className="flex flex-wrap items-center gap-2 mb-8 text-xs font-mono">
