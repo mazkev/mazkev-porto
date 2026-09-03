@@ -26,7 +26,7 @@ const skills: SkillItem[] = [
   { name: 'Angular', category: 'frontend', tag: 'Framework', icon: Cpu, color: 'text-red-400 bg-red-500/10 border-red-500/20' },
   
   { name: 'Spring Boot', category: 'backend', tag: 'Java MVC', icon: Server, color: 'text-emerald-500 bg-emerald-500/10 border-emerald-500/20' },
-  { name: 'Golang', category: 'backend', tag: 'Go Microservice', icon: Server, color: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20' },
+  { name: 'Golang', category: 'backend', tag: 'Go Backend', icon: Server, color: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20' },
   { name: 'Express.js', category: 'backend', tag: 'Node Runtime', icon: Server, color: 'text-green-400 bg-green-500/10 border-green-500/20' },
   { name: 'PostgreSQL', category: 'backend', tag: 'SQL DB', icon: Database, color: 'text-blue-500 bg-blue-500/10 border-blue-500/20' },
   { name: 'MongoDB', category: 'backend', tag: 'NoSQL DB', icon: Database, color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' },

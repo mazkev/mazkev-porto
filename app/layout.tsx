@@ -21,7 +21,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://mazkev.vercel.app"),
   title: "Kevin Eka Pratama | Fullstack Developer (React • TypeScript • Go)",
-  description: "Fullstack Developer with 3 years of professional experience in Application Support, transitioning into Software Development. Specializing in React, TypeScript, and Go (Golang) backend microservices.",
+  description: "Fullstack Developer with 3 years of professional experience in Application Support at PT PLN Icon+, transitioning into Software Development. Specializing in React, TypeScript, and Go (Golang) REST API backend services.",
   keywords: [
     "Kevin Eka Pratama",
     "Fullstack Developer",
@@ -43,12 +43,12 @@ export const metadata: Metadata = {
     url: "https://mazkev.vercel.app",
     siteName: "Kevin Eka Pratama Portfolio",
     title: "Kevin Eka Pratama — Fullstack Developer (React • TypeScript • Go)",
-    description: "3 years Application Support experience transitioning into Software Development. Building reliable web applications & Clean Architecture Go microservices.",
+    description: "3 years Application Support experience transitioning into Software Development. Building reliable web applications & Go REST API backend services.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Kevin Eka Pratama — Fullstack Developer (React • TypeScript • Go)",
-    description: "3 years Application Support experience transitioning into Software Development. Building reliable web applications & Clean Architecture Go microservices.",
+    description: "3 years Application Support experience transitioning into Software Development. Building reliable web applications & Go REST API backend services.",
   },
   robots: {
     index: true,

@@ -41,12 +41,12 @@ const roleContent = {
   },
   backend: {
     en: {
-      title: 'Backend Developer (Go / Golang & Microservices)',
+      title: 'Backend Developer (Go / Golang & REST API)',
       executiveSummaryTitle: 'Professional Summary',
       executiveSummary: 'Backend Developer working with Go (Golang), PostgreSQL, and RESTful API services. Experienced in designing relational database schemas, handling database transactions, and structuring modular code following Clean Architecture principles. Backed by 3 years of Application Support experience at PT PLN Icon+, with solid foundation in SQL query troubleshooting and system monitoring.',
     },
     id: {
-      title: 'Backend Developer (Go / Golang & Microservices)',
+      title: 'Backend Developer (Go / Golang & REST API)',
       executiveSummaryTitle: 'Ringkasan Profesional',
       executiveSummary: 'Backend Developer yang berfokus pada pengembangan layanan REST API menggunakan Go (Golang) dan PostgreSQL. Berpengalaman dalam merancang skema database relasional, menangani transaksi database, dan menyusun struktur kode modular berprinsip Clean Architecture. Diperkuat oleh 3 tahun pengalaman Application Support di PT PLN Icon+ dengan fondasi dalam troubleshooting query SQL dan pemantauan sistem.',
     }

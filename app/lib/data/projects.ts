@@ -44,7 +44,7 @@ export const caseStudyMap: Record<string, CaseStudyDetails> = {
       'Optimistic cart state management in React + TypeScript',
       'Database health checks and structured JSON error responses',
     ],
-    challenge: 'Synchronizing real-time checkout state between React frontend and Go microservices while ensuring ACID transaction safety for product stock.',
+    challenge: 'Synchronizing real-time checkout state between React frontend and Go REST backend while ensuring ACID transaction safety for product stock.',
     solution: 'Implemented clean RESTful API contracts with Go structs and GORM ORM transactions. Handled cart state optimistically in React and verified stock availability in PostgreSQL with row-level locks.',
     contributions: [
       'Engineered Go REST API endpoints with JWT middleware authentication.',
@@ -855,7 +855,7 @@ export const projects: ProjectData[] = [
   },
   {
     title: 'Go Marketplace Backend (GORM & REST API)',
-    description: 'Backend e-commerce microservice built with Go and GORM. Implements user authentication, product CRUD endpoints, transactional order checkout, and PostgreSQL connection pooling.',
+    description: 'Backend e-commerce REST API built with Go and GORM. Implements user authentication, product CRUD endpoints, transactional order checkout, and PostgreSQL connection pooling.',
     tech: ['Go', 'GORM', 'PostgreSQL', 'JWT', 'REST API'],
     image: '/projects/mazcloud.png',
     live: 'https://github.com/mazkev/go-marketplace-backend',
