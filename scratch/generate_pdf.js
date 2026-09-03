@@ -240,7 +240,7 @@ const html = `<!DOCTYPE html>
       <span class="badge">Page 1: English (ATS Standard)</span>
     </div>
     <p class="summary-text">
-      Backend Developer focused on Go (Golang) with 3+ years of professional Application Support experience at PT PLN Icon+. Experienced in building backend REST APIs and web applications using Go and PostgreSQL, paired with React/TypeScript on the frontend. Practical understanding of database troubleshooting, SQL query analysis, and reliable database transactions (Clean Architecture, GORM).
+      Backend Developer focused on Go (Golang) with 2+ years of professional Application Support experience at PT PLN Icon+. Experienced in building backend REST APIs and web applications using Go and PostgreSQL, paired with React/TypeScript on the frontend. Practical understanding of database troubleshooting, SQL query analysis, and reliable database transactions (Clean Architecture, GORM).
     </p>
   </div>
 
@@ -254,7 +254,7 @@ const html = `<!DOCTYPE html>
         <div>
           <span class="job-title">Application Support</span> — <span class="job-company">PT PLN Icon+</span>
         </div>
-        <span class="job-date">2022 - Present</span>
+        <span class="job-date">2023 - Present</span>
       </div>
       <ul class="bullets">
         <li>Monitored application workflows and handled operational incidents to ensure smooth daily services.</li>
@@ -385,7 +385,7 @@ const html = `<!DOCTYPE html>
       <span class="badge">Halaman 2: Bahasa Indonesia (Standar ATS)</span>
     </div>
     <p class="summary-text">
-      Backend Developer yang berfokus pada Go (Golang) dengan 3+ tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+. Berpengalaman membangun REST API backend dan aplikasi web menggunakan Go dan PostgreSQL, dipadukan dengan React/TypeScript pada frontend. Memiliki pemahaman praktis dalam troubleshooting database, analisis query SQL, dan penanganan transaksi database (Clean Architecture, GORM).
+      Backend Developer yang berfokus pada Go (Golang) dengan 2+ tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+. Berpengalaman membangun REST API backend dan aplikasi web menggunakan Go dan PostgreSQL, dipadukan dengan React/TypeScript pada frontend. Memiliki pemahaman praktis dalam troubleshooting database, analisis query SQL, dan penanganan transaksi database (Clean Architecture, GORM).
     </p>
   </div>
 
@@ -399,7 +399,7 @@ const html = `<!DOCTYPE html>
         <div>
           <span class="job-title">Application Support</span> — <span class="job-company">PT PLN Icon+</span>
         </div>
-        <span class="job-date">2022 - Sekarang</span>
+        <span class="job-date">2023 - Sekarang</span>
       </div>
       <ul class="bullets">
         <li>Memantau alur kerja aplikasi operasional dan menangani insiden sistem untuk memastikan kelancaran layanan harian.</li>

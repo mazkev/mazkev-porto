@@ -20,10 +20,11 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mazkev.vercel.app"),
-  title: "Kevin Eka Pratama | Fullstack Developer (React • TypeScript • Go)",
-  description: "Fullstack Developer with 3 years of professional experience in Application Support at PT PLN Icon+, transitioning into Software Development. Specializing in React, TypeScript, and Go (Golang) REST API backend services.",
+  title: "Kevin Eka Pratama | Backend & Fullstack Developer (Go • React • TypeScript)",
+  description: "Backend & Fullstack Developer with 2+ years of professional experience in Application Support at PT PLN Icon+, transitioning into Software Development. Specializing in Go (Golang) REST API backend services, PostgreSQL, React, and TypeScript.",
   keywords: [
     "Kevin Eka Pratama",
+    "Backend Developer",
     "Fullstack Developer",
     "Go Developer",
     "Golang",
@@ -42,13 +43,13 @@ export const metadata: Metadata = {
     locale: "id_ID",
     url: "https://mazkev.vercel.app",
     siteName: "Kevin Eka Pratama Portfolio",
-    title: "Kevin Eka Pratama — Fullstack Developer (React • TypeScript • Go)",
-    description: "3 years Application Support experience transitioning into Software Development. Building reliable web applications & Go REST API backend services.",
+    title: "Kevin Eka Pratama — Backend & Fullstack Developer (Go • React • TypeScript)",
+    description: "2+ years Application Support experience at PT PLN Icon+ transitioning into Software Development. Building reliable Go REST API backend services and web applications.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kevin Eka Pratama — Fullstack Developer (React • TypeScript • Go)",
-    description: "3 years Application Support experience transitioning into Software Development. Building reliable web applications & Go REST API backend services.",
+    title: "Kevin Eka Pratama — Backend & Fullstack Developer (Go • React • TypeScript)",
+    description: "2+ years Application Support experience at PT PLN Icon+ transitioning into Software Development. Building reliable Go REST API backend services and web applications.",
   },
   robots: {
     index: true,

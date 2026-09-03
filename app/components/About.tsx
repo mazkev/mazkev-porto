@@ -37,7 +37,7 @@ const skills: SkillItem[] = [
 
 const timelineData = [
   {
-    date: '2022 — PRESENT',
+    date: '2023 — PRESENT',
     role: 'Application Support',
     company: 'PT PLN Icon+',
     description: 'Monitoring production application workflows, analyzing SQL database queries, and assisting in system bug investigations.',
@@ -106,7 +106,7 @@ export default function About() {
                 How I got <span className="text-primary">here.</span>
               </h3>
               <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed">
-                I bring <strong>3 years of professional experience in Application Support at PT PLN Icon+</strong>, monitoring production system health, analyzing SQL queries, and troubleshooting application issues. This hands-on operational background gives me a practical understanding of how real-world software operates in production.
+                I bring <strong>2+ years of professional experience in Application Support at PT PLN Icon+</strong>, monitoring production system health, analyzing SQL queries, and troubleshooting application issues. This hands-on operational background gives me a practical understanding of how real-world software operates in production.
               </p>
               <p className="text-slate-600 dark:text-slate-300 text-base md:text-lg leading-relaxed">
                 I am actively developing software as a <strong>Fullstack Developer</strong>, utilizing <strong>React & TypeScript</strong> for interactive web interfaces, and building backend services with <strong>Go (Golang)</strong> and PostgreSQL using modular, maintainable structures.

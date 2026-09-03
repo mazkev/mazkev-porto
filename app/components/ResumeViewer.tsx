@@ -19,36 +19,36 @@ const roleContent = {
     en: {
       title: 'Backend Developer (Go / Golang)',
       executiveSummaryTitle: 'Professional Summary',
-      executiveSummary: 'Backend Developer focused on Go (Golang) with 3+ years of professional Application Support experience at PT PLN Icon+. Experienced in building backend REST APIs and web applications using Go and PostgreSQL, paired with React/TypeScript on the frontend. Practical understanding of database troubleshooting, SQL query analysis, and reliable database transactions (Clean Architecture, GORM).',
+      executiveSummary: 'Backend Developer focused on Go (Golang) with 2+ years of professional Application Support experience at PT PLN Icon+. Experienced in building backend REST APIs and web applications using Go and PostgreSQL, paired with React/TypeScript on the frontend. Practical understanding of database troubleshooting, SQL query analysis, and reliable database transactions (Clean Architecture, GORM).',
     },
     id: {
       title: 'Backend Developer (Go / Golang)',
       executiveSummaryTitle: 'Ringkasan Profesional',
-      executiveSummary: 'Backend Developer yang berfokus pada Go (Golang) dengan 3+ tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+. Berpengalaman membangun REST API backend dan aplikasi web menggunakan Go dan PostgreSQL, dipadukan dengan React/TypeScript pada frontend. Memiliki pemahaman praktis dalam troubleshooting database, analisis query SQL, dan penanganan transaksi database (Clean Architecture, GORM).',
+      executiveSummary: 'Backend Developer yang berfokus pada Go (Golang) dengan 2+ tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+. Berpengalaman membangun REST API backend dan aplikasi web menggunakan Go dan PostgreSQL, dipadukan dengan React/TypeScript pada frontend. Memiliki pemahaman praktis dalam troubleshooting database, analisis query SQL, dan penanganan transaksi database (Clean Architecture, GORM).',
     }
   },
   frontend: {
     en: {
       title: 'Frontend Developer',
       executiveSummaryTitle: 'Professional Summary',
-      executiveSummary: 'Frontend Developer focused on building clean, responsive, and user-friendly web applications using React, Next.js, TypeScript, and Tailwind CSS. Experienced in state management, REST API integration, and component-driven UI development. Supported by 3 years of Application Support experience in resolving user-facing issues and operational workflows.',
+      executiveSummary: 'Frontend Developer focused on building clean, responsive, and user-friendly web applications using React, Next.js, TypeScript, and Tailwind CSS. Experienced in state management, REST API integration, and component-driven UI development. Supported by 2+ years of Application Support experience in resolving user-facing issues and operational workflows.',
     },
     id: {
       title: 'Frontend Developer',
       executiveSummaryTitle: 'Ringkasan Profesional',
-      executiveSummary: 'Frontend Developer yang berfokus membangun aplikasi web responsif dan ramah pengguna menggunakan React, Next.js, TypeScript, dan Tailwind CSS. Berpengalaman dalam manajemen state, integrasi REST API, dan pengembangan komponen UI. Didukung 3 tahun pengalaman Application Support dalam menangani alur kerja sistem operasional.',
+      executiveSummary: 'Frontend Developer yang berfokus membangun aplikasi web responsif dan ramah pengguna menggunakan React, Next.js, TypeScript, dan Tailwind CSS. Berpengalaman dalam manajemen state, integrasi REST API, dan pengembangan komponen UI. Didukung 2+ tahun pengalaman Application Support dalam menangani alur kerja sistem operasional.',
     }
   },
   backend: {
     en: {
       title: 'Backend Developer (Go / Golang & REST API)',
       executiveSummaryTitle: 'Professional Summary',
-      executiveSummary: 'Backend Developer working with Go (Golang), PostgreSQL, and RESTful API services. Experienced in designing relational database schemas, handling database transactions, and structuring modular code following Clean Architecture principles. Backed by 3+ years of Application Support experience at PT PLN Icon+, with solid foundation in SQL query troubleshooting and system monitoring.',
+      executiveSummary: 'Backend Developer working with Go (Golang), PostgreSQL, and RESTful API services. Experienced in designing relational database schemas, handling database transactions, and structuring modular code following Clean Architecture principles. Backed by 2+ years of Application Support experience at PT PLN Icon+, with solid foundation in SQL query troubleshooting and system monitoring.',
     },
     id: {
       title: 'Backend Developer (Go / Golang & REST API)',
       executiveSummaryTitle: 'Ringkasan Profesional',
-      executiveSummary: 'Backend Developer yang berfokus pada pengembangan layanan REST API menggunakan Go (Golang) dan PostgreSQL. Berpengalaman dalam merancang skema database relasional, menangani transaksi database, dan menyusun struktur kode modular berprinsip Clean Architecture. Diperkuat oleh 3+ tahun pengalaman Application Support di PT PLN Icon+ dengan fondasi dalam troubleshooting query SQL dan pemantauan sistem.',
+      executiveSummary: 'Backend Developer yang berfokus pada pengembangan layanan REST API menggunakan Go (Golang) dan PostgreSQL. Berpengalaman dalam merancang skema database relasional, menangani transaksi database, dan menyusun struktur kode modular berprinsip Clean Architecture. Diperkuat oleh 2+ tahun pengalaman Application Support di PT PLN Icon+ dengan fondasi dalam troubleshooting query SQL dan pemantauan sistem.',
     }
   }
 };
@@ -62,7 +62,7 @@ const commonText = {
     skillsTitle: 'Technical Competencies',
     educationTitle: 'Education',
     job1Title: 'Application Support',
-    job1Date: '2022 - Present',
+    job1Date: '2023 - Present',
     job1Bullet1: 'Monitored application workflows and handled operational incidents to ensure smooth daily services.',
     job1Bullet2: 'Investigated database queries, identified data bottlenecks, and assisted in troubleshooting relational databases (PostgreSQL, Oracle, MySQL).',
     job1Bullet3: 'Documented system troubleshooting procedures and collaborated with engineering teams to report bugs and verify fixes.',
@@ -83,7 +83,7 @@ const commonText = {
     skillsTitle: 'Kompetensi Teknis',
     educationTitle: 'Pendidikan',
     job1Title: 'Application Support',
-    job1Date: '2022 - Sekarang',
+    job1Date: '2023 - Sekarang',
     job1Bullet1: 'Memantau alur kerja aplikasi operasional dan menangani insiden sistem untuk memastikan kelancaran layanan harian.',
     job1Bullet2: 'Menganalisis query database, mengidentifikasi kendala data, dan membantu investigasi pada database relasional (PostgreSQL, Oracle, MySQL).',
     job1Bullet3: 'Menyusun dokumentasi penanganan kendala sistem dan berkoordinasi dengan tim developer untuk pelaporan bug dan verifikasi perbaikan.',

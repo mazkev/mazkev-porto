@@ -61,7 +61,7 @@ export default async function Image() {
             React • TypeScript • Go (Golang)
           </div>
           <div style={{ fontSize: '22px', color: '#cbd5e1', maxWidth: '900px', lineHeight: 1.4 }}>
-            3 years of professional experience in Application Support, transitioning into Software Development. Building reliable web applications and clean backend APIs.
+            2+ years of professional experience in Application Support at PT PLN Icon+, transitioning into Software Development. Building reliable web applications and clean backend APIs.
           </div>
         </div>
 
@@ -77,7 +77,7 @@ export default async function Image() {
             PostgreSQL & REST APIs
           </div>
           <div style={{ padding: '10px 20px', borderRadius: '12px', backgroundColor: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(16, 185, 129, 0.4)', fontSize: '16px', fontWeight: '700', color: '#6ee7b7' }}>
-            3 Yrs App Support
+            2+ Yrs App Support
           </div>
         </div>
       </div>

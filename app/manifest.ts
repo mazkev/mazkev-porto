@@ -2,9 +2,9 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Kevin Eka Pratama | Fullstack Developer',
+    name: 'Kevin Eka Pratama | Backend & Fullstack Developer',
     short_name: 'Kevin Pratama',
-    description: 'Fullstack Developer with 3 years of Application Support experience. Specializing in React, TypeScript, and Go (Golang).',
+    description: 'Backend & Fullstack Developer with 2+ years of Application Support experience at PT PLN Icon+. Specializing in Go (Golang), React, and TypeScript.',
     start_url: '/',
     display: 'standalone',
     background_color: '#020617',
