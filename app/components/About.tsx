@@ -44,7 +44,7 @@ const timelineData = [
     icon: Cloud,
   },
   {
-    date: '2022 — PRESENT',
+    date: '2024 — PRESENT',
     role: 'Software Development',
     company: 'Independent & Open Source',
     description: 'Building fullstack web applications and backend REST APIs using Go, React, Next.js, and PostgreSQL.',
