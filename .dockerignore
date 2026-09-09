@@ -1,0 +1,12 @@
+Dockerfile
+.dockerignore
+node_modules
+npm-debug.log
+.next
+.git
+.gitignore
+scratch
+code.html
+landing-page.md
+*.tsbuildinfo
+.env*.local

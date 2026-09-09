@@ -1,39 +1,9 @@
 'use client';
 
-import React, { useState, useEffect, useMemo } from 'react';
-import { Cloud, Code, GraduationCap, Brain, User, Sparkles, Database, Layers, ShieldCheck } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { cn } from '@/app/lib/utils';
+import React from 'react';
+import { Cloud, Code, GraduationCap, User, Database, Layers, ShieldCheck } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-
-interface SkillItem {
-  name: string;
-  icon: string;
-  category: 'frontend' | 'backend' | 'devops';
-}
-
-const skills: SkillItem[] = [
-  { name: 'Next.js', icon: 'https://cdn.simpleicons.org/nextdotjs', category: 'frontend' },
-  { name: 'React', icon: 'https://cdn.simpleicons.org/react', category: 'frontend' },
-  { name: 'TypeScript', icon: 'https://cdn.simpleicons.org/typescript', category: 'frontend' },
-  { name: 'Tailwind CSS', icon: 'https://cdn.simpleicons.org/tailwindcss', category: 'frontend' },
-  { name: 'Vue', icon: 'https://cdn.simpleicons.org/vuedotjs', category: 'frontend' },
-  { name: 'Angular', icon: 'https://cdn.simpleicons.org/angular', category: 'frontend' },
-  { name: 'Laravel', icon: 'https://cdn.simpleicons.org/laravel', category: 'backend' },
-  { name: 'Java Spring Boot', icon: 'https://cdn.simpleicons.org/springboot', category: 'backend' },
-  { name: 'Golang', icon: 'https://cdn.simpleicons.org/go', category: 'backend' },
-  { name: 'Express.js', icon: 'https://cdn.simpleicons.org/express', category: 'backend' },
-  { name: 'MongoDB', icon: 'https://cdn.simpleicons.org/mongodb', category: 'backend' },
-  { name: 'PHP', icon: 'https://cdn.simpleicons.org/php', category: 'backend' },
-  { name: 'Python', icon: 'https://cdn.simpleicons.org/python', category: 'backend' },
-  { name: 'PostgreSQL', icon: 'https://cdn.simpleicons.org/postgresql', category: 'backend' },
-  { name: 'MySQL', icon: 'https://cdn.simpleicons.org/mysql', category: 'backend' },
-  { name: 'Docker', icon: 'https://cdn.simpleicons.org/docker', category: 'devops' },
-  { name: 'AWS', icon: '/aws.svg', category: 'devops' },
-  { name: 'Git', icon: 'https://cdn.simpleicons.org/git', category: 'devops' },
-  { name: 'Vercel', icon: 'https://cdn.simpleicons.org/vercel', category: 'devops' },
-  { name: 'Firebase', icon: 'https://cdn.simpleicons.org/firebase', category: 'devops' },
-];
 
 const timelineData = [
   {
@@ -60,19 +30,6 @@ const timelineData = [
 ];
 
 export default function About() {
-  const [mounted, setMounted] = useState(false);
-  const [activeTab, setActiveTab] = useState<'all' | 'frontend' | 'backend' | 'devops'>('all');
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const filteredSkills = useMemo(() => {
-    if (activeTab === 'all') return skills;
-    return skills.filter(skill => skill.category === activeTab);
-  }, [activeTab]);
-
-  if (!mounted) return null;
 
   return (
     <>

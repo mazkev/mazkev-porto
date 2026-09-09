@@ -101,7 +101,7 @@ export default function Hero() {
               Go (Golang)
             </span>
             <span className="px-3 py-1 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-bold border border-emerald-500/20">
-              3 Yrs Application Support
+              2+ Yrs Application Support
             </span>
           </div>
           

@@ -404,7 +404,7 @@ export default function GithubActivity() {
               <CheckCircle2 size={18} className="text-amber-400" />
             </div>
             <div className="text-xl sm:text-2xl font-black font-geist text-slate-900 dark:text-white">
-              3 Yrs Support
+              2+ Yrs Support
             </div>
             <p className="text-[10px] font-mono text-slate-400 mt-1">
               Production DB & issue triage
