@@ -17,14 +17,14 @@ export type CVMode = 'bilingual' | 'en' | 'id';
 const roleContent = {
   fullstack: {
     en: {
-      title: 'Backend Developer (Go / Golang)',
+      title: 'Fullstack Developer',
       executiveSummaryTitle: 'Professional Summary',
-      executiveSummary: 'Backend Developer focused on Go (Golang) with 2+ years of professional Application Support experience at PT PLN Icon+. Experienced in building backend REST APIs and web applications using Go and PostgreSQL, paired with React/TypeScript on the frontend. Practical understanding of database troubleshooting, SQL query analysis, and reliable database transactions (Clean Architecture, GORM).',
+      executiveSummary: 'Fullstack Developer with 2+ years of professional experience in Application Support at PT PLN Icon+. Experienced in building end-to-end web applications combining Go (Golang) and PostgreSQL on the backend with React, Next.js, and TypeScript on the frontend. Practical understanding of database troubleshooting, SQL query analysis, and reliable database transactions (Clean Architecture, GORM).',
     },
     id: {
-      title: 'Backend Developer (Go / Golang)',
+      title: 'Fullstack Developer',
       executiveSummaryTitle: 'Ringkasan Profesional',
-      executiveSummary: 'Backend Developer yang berfokus pada Go (Golang) dengan 2+ tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+. Berpengalaman membangun REST API backend dan aplikasi web menggunakan Go dan PostgreSQL, dipadukan dengan React/TypeScript pada frontend. Memiliki pemahaman praktis dalam troubleshooting database, analisis query SQL, dan penanganan transaksi database (Clean Architecture, GORM).',
+      executiveSummary: 'Fullstack Developer dengan 2+ tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+. Berpengalaman membangun aplikasi web end-to-end yang memadukan backend Go (Golang) dan PostgreSQL dengan antarmuka React, Next.js, dan TypeScript. Memiliki pemahaman praktis dalam troubleshooting database, analisis query SQL, dan penanganan transaksi database (Clean Architecture, GORM).',
     }
   },
   frontend: {
