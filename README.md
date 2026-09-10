@@ -65,6 +65,6 @@ A modern, responsive portfolio web application built with **Next.js 16 App Route
 ## 📬 Contact & Hire
 
 - **Email**: [kevinekapratama@gmail.com](mailto:kevinekapratama@gmail.com)
-- **WhatsApp**: [+62 813-2661-2344](https://wa.me/6281326612344)
+- **WhatsApp**: [+](https://wa.me/6)
 - **Portfolio**: [mazkev.vercel.app](https://mazkev.vercel.app)
 - **GitHub**: [github.com/mazkev](https://github.com/mazkev)
