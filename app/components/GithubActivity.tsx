@@ -96,8 +96,8 @@ const CURATED_REPOS: CuratedRepo[] = [
     categoryLabel: 'Go Banking Core',
     language: 'Go',
     langColor: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20',
-    desc: 'ACID-compliant banking transfer engine with row-level locks, ledger history, and database migrations.',
-    tech: ['Go', 'PostgreSQL', 'Docker', 'ACID Engine'],
+    desc: 'Banking transfer engine with ledger history, account balance verification, and database migrations.',
+    tech: ['Go', 'PostgreSQL', 'Docker', 'REST API'],
     githubUrl: 'https://github.com/mazkev/go-bank'
   },
   {
@@ -733,9 +733,9 @@ export default function GithubActivity() {
                   </div>
 
                   <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800 space-y-1">
-                    <strong className="text-slate-900 dark:text-white font-bold block">2. ACID Database Integrity</strong>
+                    <strong className="text-slate-900 dark:text-white font-bold block">2. Relational Database Integrity</strong>
                     <p className="text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed">
-                      PostgreSQL relational schemas with explicit foreign keys, connection pooling, and atomic transaction handling.
+                      PostgreSQL relational schemas with explicit foreign keys, connection pooling, and optimized query structures.
                     </p>
                   </div>
 

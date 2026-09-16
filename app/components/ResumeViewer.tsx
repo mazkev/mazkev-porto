@@ -19,12 +19,12 @@ const roleContent = {
     en: {
       title: 'Fullstack Developer',
       executiveSummaryTitle: 'Professional Summary',
-      executiveSummary: 'Fullstack Developer with 2+ years of professional experience in Application Support at PT PLN Icon+. Experienced in building end-to-end web applications combining Go (Golang) and PostgreSQL on the backend with React, Next.js, and TypeScript on the frontend. Practical understanding of database troubleshooting, SQL query analysis, and reliable database transactions (Clean Architecture, GORM).',
+      executiveSummary: 'Fullstack Developer with 2+ years of professional experience in Application Support at PT PLN Icon+. Experienced in building end-to-end web applications combining Go (Golang) and PostgreSQL on the backend with React, Next.js, and TypeScript on the frontend. Practical understanding of database troubleshooting, SQL query analysis, and modular software design (Clean Architecture, GORM).',
     },
     id: {
       title: 'Fullstack Developer',
       executiveSummaryTitle: 'Ringkasan Profesional',
-      executiveSummary: 'Fullstack Developer dengan 2+ tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+. Berpengalaman membangun aplikasi web end-to-end yang memadukan backend Go (Golang) dan PostgreSQL dengan antarmuka React, Next.js, dan TypeScript. Memiliki pemahaman praktis dalam troubleshooting database, analisis query SQL, dan penanganan transaksi database (Clean Architecture, GORM).',
+      executiveSummary: 'Fullstack Developer dengan 2+ tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+. Berpengalaman membangun aplikasi web end-to-end yang memadukan backend Go (Golang) dan PostgreSQL dengan antarmuka React, Next.js, dan TypeScript. Memiliki pemahaman praktis dalam troubleshooting database, analisis query SQL, dan perancangan perangkat lunak modular (Clean Architecture, GORM).',
     }
   },
   frontend: {
@@ -43,12 +43,12 @@ const roleContent = {
     en: {
       title: 'Backend Developer (Go / Golang & REST API)',
       executiveSummaryTitle: 'Professional Summary',
-      executiveSummary: 'Backend Developer working with Go (Golang), PostgreSQL, and RESTful API services. Experienced in designing relational database schemas, handling database transactions, and structuring modular code following Clean Architecture principles. Backed by 2+ years of Application Support experience at PT PLN Icon+, with solid foundation in SQL query troubleshooting and system monitoring.',
+      executiveSummary: 'Backend Developer working with Go (Golang), PostgreSQL, and RESTful API services. Experienced in designing relational database schemas, query optimization, and structuring modular code following Clean Architecture principles. Backed by 2+ years of Application Support experience at PT PLN Icon+, with solid foundation in SQL query troubleshooting and system monitoring.',
     },
     id: {
       title: 'Backend Developer (Go / Golang & REST API)',
       executiveSummaryTitle: 'Ringkasan Profesional',
-      executiveSummary: 'Backend Developer yang berfokus pada pengembangan layanan REST API menggunakan Go (Golang) dan PostgreSQL. Berpengalaman dalam merancang skema database relasional, menangani transaksi database, dan menyusun struktur kode modular berprinsip Clean Architecture. Diperkuat oleh 2+ tahun pengalaman Application Support di PT PLN Icon+ dengan fondasi dalam troubleshooting query SQL dan pemantauan sistem.',
+      executiveSummary: 'Backend Developer yang berfokus pada pengembangan layanan REST API menggunakan Go (Golang) dan PostgreSQL. Berpengalaman dalam merancang skema database relasional, optimasi query, dan menyusun struktur kode modular berprinsip Clean Architecture. Diperkuat oleh 2+ tahun pengalaman Application Support di PT PLN Icon+ dengan fondasi dalam troubleshooting query SQL dan pemantauan sistem.',
     }
   }
 };
@@ -120,8 +120,8 @@ const projectTranslations: Record<string, { id: string; en: string }> = {
     id: 'Platform lelang dan belanja modern terinspirasi eBay. Menampilkan hidrasi katalog produk server-rendered, simulasi lelang harga langsung, dan keranjang responsif.'
   },
   'Go Banking Core Engine': {
-    en: 'Go-based financial transaction API implementing balance transfers using PostgreSQL transactions, row-level locking (SELECT FOR UPDATE), and audit logging.',
-    id: 'API transaksi keuangan berbasis Go yang mengimplementasikan transfer saldo menggunakan transaksi PostgreSQL, row-level locking (SELECT FOR UPDATE), dan pencatatan audit log.'
+    en: 'Go-based financial transaction API implementing balance transfers, ledger verification, and structured audit logging in PostgreSQL.',
+    id: 'API transaksi keuangan berbasis Go dan PostgreSQL yang mengimplementasikan transfer saldo, verifikasi buku kas akun, dan pencatatan audit log.'
   },
   'Bun & Hono E-Commerce Backend (Drizzle ORM)': {
     en: 'Modern TypeScript backend built with Bun, Hono, Drizzle ORM, and Zod, featuring JWT authentication and RBAC.',
