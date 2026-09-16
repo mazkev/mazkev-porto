@@ -58,6 +58,9 @@ import {
   PracticeTopic
 } from '../lib/data/interviewData';
 import {
+  codingChallenges
+} from '../lib/data/codingChallengeData';
+import {
   initialPracticeStats,
   initialSkillProgress,
   initialRecentActivity,
@@ -70,8 +73,9 @@ import {
   ActivityItem
 } from '../lib/data/dashboardData';
 import PracticeFeature from './components/PracticeFeature';
+import CodingChallengeFeature from './components/CodingChallengeFeature';
 
-type MainTab = 'dashboard' | 'practice' | 'pitch' | 'syllabus' | 'cheatsheet';
+type MainTab = 'dashboard' | 'practice' | 'coding' | 'pitch' | 'syllabus' | 'cheatsheet';
 type PitchLength = 'comprehensive' | 'concise';
 type LangMode = 'id' | 'en';
 
@@ -307,6 +311,52 @@ export default function InterviewPracticePage() {
     }
   };
 
+  // Callback when user solves a Coding Challenge
+  const handleCodingChallengeCompleted = (newActivity: ActivityItem, challengeTitle: string) => {
+    const updatedActivities = [newActivity, ...recentActivities.slice(0, 19)];
+    const newChallengesCompleted = practiceStats.codingChallengesCompleted + 1;
+    const totalAnswered = practiceStats.questionsAnswered + 1;
+    const totalSessions = practiceStats.totalSessions + 1;
+    const newAvg = practiceStats.totalSessions === 0
+      ? 100
+      : Math.round(((practiceStats.averageScore * practiceStats.totalSessions) + 100) / totalSessions * 10) / 10;
+
+    const updatedStats: PracticeStats = {
+      totalSessions,
+      questionsAnswered: totalAnswered,
+      codingChallengesCompleted: newChallengesCompleted,
+      averageScore: newAvg
+    };
+
+    // Update Golang skill progress
+    const updatedSkills = skillProgress.map((s) => {
+      if (s.skill === 'Golang') {
+        const count = s.totalAnswered + 1;
+        const currentTotal = s.score * s.totalAnswered;
+        const calcScore = Math.round((currentTotal + 100) / count);
+        return {
+          ...s,
+          score: calcScore,
+          totalAnswered: count,
+          level: calcScore >= 85 ? 'Advanced' : calcScore >= 70 ? 'Intermediate' : 'Needs Practice'
+        };
+      }
+      return s;
+    });
+
+    setPracticeStats(updatedStats);
+    setRecentActivities(updatedActivities);
+    setSkillProgress(updatedSkills);
+
+    try {
+      localStorage.setItem(STORAGE_KEYS.STATS, JSON.stringify(updatedStats));
+      localStorage.setItem(STORAGE_KEYS.ACTIVITIES, JSON.stringify(updatedActivities));
+      localStorage.setItem(STORAGE_KEYS.SKILLS, JSON.stringify(updatedSkills));
+    } catch (e) {
+      console.error('Error writing to localStorage', e);
+    }
+  };
+
   // Demo / Reset controls
   const handleLoadDemoData = () => {
     setPracticeStats(demoPracticeStats);
@@ -382,7 +432,19 @@ export default function InterviewPracticePage() {
               }`}
             >
               <Play size={14} className={activeTab === 'practice' ? 'text-emerald-600' : 'text-slate-500'} />
-              <span>Sesi Latihan (Practice)</span>
+              <span>Latihan Soal</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('coding')}
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+                activeTab === 'coding'
+                  ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <Code2 size={14} className={activeTab === 'coding' ? 'text-emerald-600' : 'text-slate-500'} />
+              <span>Coding Challenge ({codingChallenges.length})</span>
             </button>
 
             <button
@@ -453,6 +515,7 @@ export default function InterviewPracticePage() {
         {[
           { id: 'dashboard', label: 'Dashboard' },
           { id: 'practice', label: 'Latihan' },
+          { id: 'coding', label: 'Coding' },
           { id: 'pitch', label: 'Perkenalan' },
           { id: 'syllabus', label: 'Bank Soal' },
           { id: 'cheatsheet', label: 'Cheat Sheet' }
@@ -491,7 +554,7 @@ export default function InterviewPracticePage() {
                   Dashboard Kemajuan Latihan
                 </h1>
                 <p className="text-slate-600 text-xs sm:text-sm max-w-2xl leading-relaxed">
-                  Statistik ini diperbarui secara otomatis saat Anda melatih soal di menu Sesi Latihan atau membaca naskah perkenalan diri.
+                  Statistik ini diperbarui secara otomatis saat Anda melatih soal di menu Latihan Soal, menyelesaikan tantangan Coding Challenge, atau membaca naskah perkenalan diri.
                 </p>
               </div>
 
@@ -503,6 +566,14 @@ export default function InterviewPracticePage() {
                 >
                   <Play size={15} />
                   <span>Mulai Sesi Latihan Baru</span>
+                </button>
+
+                <button
+                  onClick={() => setActiveTab('coding')}
+                  className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs sm:text-sm transition-all shadow-sm flex items-center gap-2 cursor-pointer"
+                >
+                  <Code2 size={15} className="text-emerald-400" />
+                  <span>Coding Arena</span>
                 </button>
 
                 {practiceStats.totalSessions === 0 ? (
@@ -562,9 +633,12 @@ export default function InterviewPracticePage() {
               </div>
 
               {/* Stat 3: Coding Challenges Completed */}
-              <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-sm space-y-2">
+              <div
+                onClick={() => setActiveTab('coding')}
+                className="bg-white p-5 rounded-2xl border border-slate-200/90 hover:border-emerald-300 transition-all shadow-sm space-y-2 cursor-pointer group"
+              >
                 <div className="flex items-center justify-between text-slate-500">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider">Coding Challenge</span>
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider group-hover:text-emerald-700 transition-colors">Coding Challenge</span>
                   <div className="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center font-bold">
                     <Code2 size={16} />
                   </div>
@@ -572,8 +646,9 @@ export default function InterviewPracticePage() {
                 <div className="text-2xl sm:text-3xl font-black text-slate-900 font-mono">
                   {practiceStats.codingChallengesCompleted}
                 </div>
-                <p className="text-[11px] text-slate-500">
-                  Arsitektur Go & ACID
+                <p className="text-[11px] text-slate-500 flex items-center justify-between">
+                  <span>Arsitektur Go & Concurrency</span>
+                  <ChevronRight size={13} className="text-slate-400 group-hover:text-emerald-600" />
                 </p>
               </div>
 
@@ -731,7 +806,7 @@ export default function InterviewPracticePage() {
                   <div className="space-y-1">
                     <p className="text-sm font-bold text-slate-800">Belum ada riwayat sesi latihan</p>
                     <p className="text-xs text-slate-500 max-w-md mx-auto">
-                      Saat Anda menyelesaikan sesi latihan atau menjawab pertanyaan di menu Sesi Latihan, aktivitas Anda akan otomatis tercatat di sini.
+                      Saat Anda menyelesaikan sesi latihan atau menjawab tantangan Coding Challenge, aktivitas Anda akan otomatis tercatat di sini.
                     </p>
                   </div>
                   <button
@@ -812,7 +887,7 @@ export default function InterviewPracticePage() {
         )}
 
         {/* ========================================================= */}
-        {/* TAB 1: PRACTICE FEATURE (Setup, Session, Result, Sync) */}
+        {/* TAB 1: PRACTICE FEATURE */}
         {/* ========================================================= */}
         {activeTab === 'practice' && (
           <PracticeFeature
@@ -823,7 +898,18 @@ export default function InterviewPracticePage() {
         )}
 
         {/* ========================================================= */}
-        {/* TAB 2: SELF-INTRODUCTION ELEVATOR PITCH & AUDIO PLAYER */}
+        {/* TAB 2: CODING CHALLENGE FEATURE */}
+        {/* ========================================================= */}
+        {activeTab === 'coding' && (
+          <CodingChallengeFeature
+            lang={lang}
+            onChallengeCompleted={handleCodingChallengeCompleted}
+            onNavigateToDashboard={() => setActiveTab('dashboard')}
+          />
+        )}
+
+        {/* ========================================================= */}
+        {/* TAB 3: SELF-INTRODUCTION ELEVATOR PITCH & AUDIO PLAYER */}
         {/* ========================================================= */}
         {activeTab === 'pitch' && (
           <div className="space-y-6">
@@ -976,7 +1062,7 @@ export default function InterviewPracticePage() {
         )}
 
         {/* ========================================================= */}
-        {/* TAB 3: QUESTION BANK SYLLABUS */}
+        {/* TAB 4: QUESTION BANK SYLLABUS */}
         {/* ========================================================= */}
         {activeTab === 'syllabus' && (
           <div className="space-y-6">
@@ -1063,7 +1149,7 @@ export default function InterviewPracticePage() {
         )}
 
         {/* ========================================================= */}
-        {/* TAB 4: CHEAT SHEET */}
+        {/* TAB 5: CHEAT SHEET */}
         {/* ========================================================= */}
         {activeTab === 'cheatsheet' && (
           <div className="max-w-4xl mx-auto space-y-6">
