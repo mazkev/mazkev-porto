@@ -47,7 +47,8 @@ import {
   LayoutDashboard,
   PlusCircle,
   RefreshCw,
-  FolderOpen
+  FolderOpen,
+  History
 } from 'lucide-react';
 import {
   interviewQuestions,
@@ -74,8 +75,9 @@ import {
 } from '../lib/data/dashboardData';
 import PracticeFeature from './components/PracticeFeature';
 import CodingChallengeFeature from './components/CodingChallengeFeature';
+import HistoryFeature from './components/HistoryFeature';
 
-type MainTab = 'dashboard' | 'practice' | 'coding' | 'pitch' | 'syllabus' | 'cheatsheet';
+type MainTab = 'dashboard' | 'practice' | 'coding' | 'history' | 'pitch' | 'syllabus' | 'cheatsheet';
 type PitchLength = 'comprehensive' | 'concise';
 type LangMode = 'id' | 'en';
 
@@ -410,10 +412,10 @@ export default function InterviewPracticePage() {
           </div>
 
           {/* Desktop Navigation Tabs */}
-          <div className="hidden md:flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-bold">
+          <div className="hidden lg:flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-bold">
             <button
               onClick={() => setActiveTab('dashboard')}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
                 activeTab === 'dashboard'
                   ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
                   : 'text-slate-600 hover:text-slate-900'
@@ -425,7 +427,7 @@ export default function InterviewPracticePage() {
 
             <button
               onClick={() => setActiveTab('practice')}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
                 activeTab === 'practice'
                   ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
                   : 'text-slate-600 hover:text-slate-900'
@@ -437,31 +439,43 @@ export default function InterviewPracticePage() {
 
             <button
               onClick={() => setActiveTab('coding')}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
                 activeTab === 'coding'
                   ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <Code2 size={14} className={activeTab === 'coding' ? 'text-emerald-600' : 'text-slate-500'} />
-              <span>Coding Challenge ({codingChallenges.length})</span>
+              <span>Coding Arena ({codingChallenges.length})</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('history')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+                activeTab === 'history'
+                  ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <History size={14} className={activeTab === 'history' ? 'text-emerald-600' : 'text-slate-500'} />
+              <span>Riwayat (History)</span>
             </button>
 
             <button
               onClick={() => setActiveTab('pitch')}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
                 activeTab === 'pitch'
                   ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <User size={14} className={activeTab === 'pitch' ? 'text-emerald-600' : 'text-slate-500'} />
-              <span>Perkenalan Diri (Audio)</span>
+              <span>Perkenalan (Audio)</span>
             </button>
 
             <button
               onClick={() => setActiveTab('syllabus')}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
                 activeTab === 'syllabus'
                   ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
                   : 'text-slate-600 hover:text-slate-900'
@@ -473,7 +487,7 @@ export default function InterviewPracticePage() {
 
             <button
               onClick={() => setActiveTab('cheatsheet')}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
                 activeTab === 'cheatsheet'
                   ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
                   : 'text-slate-600 hover:text-slate-900'
@@ -511,11 +525,12 @@ export default function InterviewPracticePage() {
       {/* ========================================================= */}
       {/* 2. MOBILE TAB SELECTOR */}
       {/* ========================================================= */}
-      <div className="md:hidden bg-white border-b border-slate-200 px-4 py-2 flex items-center justify-between gap-1 overflow-x-auto text-xs font-bold">
+      <div className="lg:hidden bg-white border-b border-slate-200 px-4 py-2 flex items-center justify-between gap-1 overflow-x-auto text-xs font-bold">
         {[
           { id: 'dashboard', label: 'Dashboard' },
           { id: 'practice', label: 'Latihan' },
           { id: 'coding', label: 'Coding' },
+          { id: 'history', label: 'Riwayat' },
           { id: 'pitch', label: 'Perkenalan' },
           { id: 'syllabus', label: 'Bank Soal' },
           { id: 'cheatsheet', label: 'Cheat Sheet' }
@@ -554,7 +569,7 @@ export default function InterviewPracticePage() {
                   Dashboard Kemajuan Latihan
                 </h1>
                 <p className="text-slate-600 text-xs sm:text-sm max-w-2xl leading-relaxed">
-                  Statistik ini diperbarui secara otomatis saat Anda melatih soal di menu Latihan Soal, menyelesaikan tantangan Coding Challenge, atau membaca naskah perkenalan diri.
+                  Statistik ini diperbarui secara otomatis saat Anda melatih soal di menu Latihan Soal, menyelesaikan tantangan Coding Challenge, atau meninjau Riwayat Latihan.
                 </p>
               </div>
 
@@ -793,9 +808,13 @@ export default function InterviewPracticePage() {
                     Aktivitas & Riwayat Latihan Terbaru
                   </h2>
                 </div>
-                <span className="text-xs font-mono text-slate-500">
-                  {recentActivities.length} Sesi Tercatat
-                </span>
+                <button
+                  onClick={() => setActiveTab('history')}
+                  className="text-xs font-bold text-emerald-700 hover:text-emerald-600 flex items-center gap-1 cursor-pointer"
+                >
+                  <span>Lihat Semua Riwayat ({recentActivities.length})</span>
+                  <ChevronRight size={13} />
+                </button>
               </div>
 
               {recentActivities.length === 0 ? (
@@ -832,7 +851,11 @@ export default function InterviewPracticePage() {
                     </thead>
                     <tbody className="divide-y divide-slate-100 font-sans">
                       {recentActivities.map((act) => (
-                        <tr key={act.id} className="hover:bg-slate-50/80 transition-colors">
+                        <tr
+                          key={act.id}
+                          onClick={() => setActiveTab('history')}
+                          className="hover:bg-slate-50/80 transition-colors cursor-pointer"
+                        >
                           <td className="py-3 font-bold text-slate-900 max-w-xs truncate">
                             {act.title}
                           </td>
@@ -909,7 +932,19 @@ export default function InterviewPracticePage() {
         )}
 
         {/* ========================================================= */}
-        {/* TAB 3: SELF-INTRODUCTION ELEVATOR PITCH & AUDIO PLAYER */}
+        {/* TAB 3: HISTORY FEATURE (Full Activity & Detailed Results) */}
+        {/* ========================================================= */}
+        {activeTab === 'history' && (
+          <HistoryFeature
+            lang={lang}
+            onNavigateToPractice={() => setActiveTab('practice')}
+            onNavigateToCoding={() => setActiveTab('coding')}
+            onNavigateToDashboard={() => setActiveTab('dashboard')}
+          />
+        )}
+
+        {/* ========================================================= */}
+        {/* TAB 4: SELF-INTRODUCTION ELEVATOR PITCH & AUDIO PLAYER */}
         {/* ========================================================= */}
         {activeTab === 'pitch' && (
           <div className="space-y-6">
@@ -1062,7 +1097,7 @@ export default function InterviewPracticePage() {
         )}
 
         {/* ========================================================= */}
-        {/* TAB 4: QUESTION BANK SYLLABUS */}
+        {/* TAB 5: QUESTION BANK SYLLABUS */}
         {/* ========================================================= */}
         {activeTab === 'syllabus' && (
           <div className="space-y-6">
@@ -1149,7 +1184,7 @@ export default function InterviewPracticePage() {
         )}
 
         {/* ========================================================= */}
-        {/* TAB 5: CHEAT SHEET */}
+        {/* TAB 6: CHEAT SHEET */}
         {/* ========================================================= */}
         {activeTab === 'cheatsheet' && (
           <div className="max-w-4xl mx-auto space-y-6">
