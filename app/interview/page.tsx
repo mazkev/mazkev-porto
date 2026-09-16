@@ -36,7 +36,15 @@ import {
   Copy,
   Check,
   FileText,
-  Flame
+  Flame,
+  TrendingUp,
+  Target,
+  AlertTriangle,
+  Compass,
+  CheckCircle,
+  Calendar,
+  Layers3,
+  LayoutDashboard
 } from 'lucide-react';
 import {
   interviewQuestions,
@@ -44,8 +52,16 @@ import {
   InterviewQuestion,
   InterviewCategory
 } from '../lib/data/interviewData';
+import {
+  practiceStatsData,
+  skillProgressData,
+  recentActivityData,
+  getRecommendedPractice,
+  ActivityItem,
+  SkillProgress
+} from '../lib/data/dashboardData';
 
-type MainTab = 'pitch' | 'studio' | 'syllabus' | 'cheatsheet';
+type MainTab = 'dashboard' | 'pitch' | 'studio' | 'syllabus' | 'cheatsheet';
 type PitchLength = 'comprehensive' | 'concise';
 type LangMode = 'id' | 'en';
 
@@ -131,7 +147,7 @@ This blend of authentic production support resilience and backend development me
 };
 
 export default function InterviewPracticePage() {
-  const [activeTab, setActiveTab] = useState<MainTab>('pitch');
+  const [activeTab, setActiveTab] = useState<MainTab>('dashboard');
   const [pitchLength, setPitchLength] = useState<PitchLength>('comprehensive');
   const [lang, setLang] = useState<LangMode>('id');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -169,6 +185,7 @@ export default function InterviewPracticePage() {
     filteredQuestions[currentIndex] || interviewQuestions[0];
 
   const currentPitch = selfIntroductionData[lang][pitchLength];
+  const recommendedPractice = useMemo(() => getRecommendedPractice(), []);
 
   // Speech Recognition (Web Speech API)
   useEffect(() => {
@@ -321,6 +338,18 @@ export default function InterviewPracticePage() {
           {/* Navigation Tabs */}
           <div className="hidden md:flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-bold">
             <button
+              onClick={() => setActiveTab('dashboard')}
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+                activeTab === 'dashboard'
+                  ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <LayoutDashboard size={14} className={activeTab === 'dashboard' ? 'text-emerald-600' : 'text-slate-500'} />
+              <span>Dashboard Latihan</span>
+            </button>
+
+            <button
               onClick={() => setActiveTab('pitch')}
               className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
                 activeTab === 'pitch'
@@ -398,6 +427,7 @@ export default function InterviewPracticePage() {
       {/* ========================================================= */}
       <div className="md:hidden bg-white border-b border-slate-200 px-4 py-2 flex items-center justify-between gap-1 overflow-x-auto text-xs font-bold">
         {[
+          { id: 'dashboard', label: 'Dashboard' },
           { id: 'pitch', label: 'Perkenalan' },
           { id: 'studio', label: 'Tanya Jawab' },
           { id: 'syllabus', label: 'Bank Soal' },
@@ -408,7 +438,7 @@ export default function InterviewPracticePage() {
             onClick={() => setActiveTab(t.id as MainTab)}
             className={`px-3 py-1.5 rounded-lg whitespace-nowrap transition-all ${
               activeTab === t.id
-                ? 'bg-emerald-600 text-white'
+                ? 'bg-emerald-600 text-white font-extrabold'
                 : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
             }`}
           >
@@ -421,6 +451,299 @@ export default function InterviewPracticePage() {
       {/* 3. MAIN WORKSPACE */}
       {/* ========================================================= */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        {/* ========================================================= */}
+        {/* TAB 0: DASHBOARD PAGE */}
+        {/* ========================================================= */}
+        {activeTab === 'dashboard' && (
+          <div className="space-y-6">
+            {/* Top Welcome & Summary Header */}
+            <div className="bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="space-y-1.5">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-mono font-bold">
+                  <Sparkles size={13} />
+                  <span>Interview Readiness Track • Backend Go & System Support</span>
+                </div>
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                  Dashboard Kemajuan Latihan
+                </h1>
+                <p className="text-slate-600 text-xs sm:text-sm max-w-2xl leading-relaxed">
+                  Pantau statistik latihan, kesiapan topik teknis (Golang, SQL, REST API, Redis, System Design), dan histori simulasi wawancara Anda.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <button
+                  onClick={() => setActiveTab('studio')}
+                  className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs sm:text-sm transition-all shadow-sm flex items-center gap-2 cursor-pointer"
+                >
+                  <Play size={15} />
+                  <span>Mulai Latihan Baru</span>
+                </button>
+              </div>
+            </div>
+
+            {/* 1. PRACTICE STATISTICS (4 CARDS) */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              {/* Stat 1: Total Sessions */}
+              <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-sm space-y-2">
+                <div className="flex items-center justify-between text-slate-500">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider">Total Sesi</span>
+                  <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
+                    <Clock size={16} />
+                  </div>
+                </div>
+                <div className="text-2xl sm:text-3xl font-black text-slate-900 font-mono">
+                  {practiceStatsData.totalSessions}
+                </div>
+                <p className="text-[11px] text-slate-500 flex items-center gap-1">
+                  <TrendingUp size={12} className="text-emerald-600" />
+                  <span>+4 sesi minggu ini</span>
+                </p>
+              </div>
+
+              {/* Stat 2: Questions Answered */}
+              <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-sm space-y-2">
+                <div className="flex items-center justify-between text-slate-500">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider">Soal Dijawab</span>
+                  <div className="w-8 h-8 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center font-bold">
+                    <CheckCircle2 size={16} />
+                  </div>
+                </div>
+                <div className="text-2xl sm:text-3xl font-black text-slate-900 font-mono">
+                  {practiceStatsData.questionsAnswered}
+                </div>
+                <p className="text-[11px] text-slate-500">
+                  Dari 20+ skenario interview
+                </p>
+              </div>
+
+              {/* Stat 3: Coding Challenges Completed */}
+              <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-sm space-y-2">
+                <div className="flex items-center justify-between text-slate-500">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider">Coding Challenge</span>
+                  <div className="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center font-bold">
+                    <Code2 size={16} />
+                  </div>
+                </div>
+                <div className="text-2xl sm:text-3xl font-black text-slate-900 font-mono">
+                  {practiceStatsData.codingChallengesCompleted}
+                </div>
+                <p className="text-[11px] text-slate-500">
+                  Go transactions & Clean Arch
+                </p>
+              </div>
+
+              {/* Stat 4: Average Score */}
+              <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-sm space-y-2">
+                <div className="flex items-center justify-between text-slate-500">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider">Rata-Rata Skor</span>
+                  <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold">
+                    <Award size={16} />
+                  </div>
+                </div>
+                <div className="text-2xl sm:text-3xl font-black text-slate-900 font-mono text-emerald-700">
+                  {practiceStatsData.averageScore}%
+                </div>
+                <p className="text-[11px] text-slate-500">
+                  Kategori <strong>Strong Hire</strong>
+                </p>
+              </div>
+            </div>
+
+            {/* 2. MAIN GRID: SKILL PROGRESS & RECOMMENDED PRACTICE */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              {/* Left: Skill Progress List (7 cols) */}
+              <div className="lg:col-span-7 bg-white rounded-2xl border border-slate-200/90 p-6 shadow-sm space-y-5">
+                <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                  <div className="flex items-center gap-2">
+                    <BarChart3 size={16} className="text-emerald-600" />
+                    <h2 className="font-extrabold text-sm sm:text-base text-slate-900">
+                      Kemajuan & Penguasaan Topik Teknis (Skill Progress)
+                    </h2>
+                  </div>
+                  <span className="text-xs font-mono text-slate-400">6 Bidang Evaluasi</span>
+                </div>
+
+                <div className="space-y-4">
+                  {skillProgressData.map((item, idx) => (
+                    <div key={idx} className="space-y-1.5 p-3 rounded-xl bg-slate-50/70 border border-slate-100">
+                      <div className="flex items-center justify-between text-xs sm:text-sm">
+                        <div className="flex items-center gap-2">
+                          <span className="font-bold text-slate-900">{item.skill}</span>
+                          <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded ${
+                            item.score >= 85
+                              ? 'bg-emerald-100 text-emerald-800'
+                              : item.score >= 75
+                              ? 'bg-sky-100 text-sky-800'
+                              : 'bg-amber-100 text-amber-800'
+                          }`}>
+                            {item.level}
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-3 font-mono text-xs">
+                          <span className="text-slate-500">{item.totalAnswered} Soal</span>
+                          <span className="font-black text-slate-900">{item.score}%</span>
+                        </div>
+                      </div>
+
+                      {/* Progress Bar */}
+                      <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                        <div
+                          className={`h-full transition-all duration-500 rounded-full ${item.color}`}
+                          style={{ width: `${item.score}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right: Recommended Practice & Weakest Area (5 cols) */}
+              <div className="lg:col-span-5 space-y-5">
+                {/* Weakest Area Alert Card */}
+                <div className="bg-amber-50/80 rounded-2xl border border-amber-200 p-6 shadow-sm space-y-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="flex items-center gap-2 text-amber-900 font-extrabold text-sm">
+                      <AlertTriangle size={17} className="text-amber-600 flex-shrink-0" />
+                      <span>Rekomendasi Latihan (Area Paling Perlu Ditingkatkan)</span>
+                    </div>
+                    <span className="px-2 py-0.5 rounded bg-amber-200/70 text-amber-900 text-[10px] font-mono font-black">
+                      {recommendedPractice.score}%
+                    </span>
+                  </div>
+
+                  <div className="space-y-1.5 text-xs text-amber-950">
+                    <p className="font-bold text-sm text-slate-900">
+                      Fokus Topik: {recommendedPractice.skill}
+                    </p>
+                    <p className="leading-relaxed text-slate-700">
+                      {recommendedPractice.reason[lang]}
+                    </p>
+                  </div>
+
+                  <div className="p-3 bg-white rounded-xl border border-amber-200 text-xs text-slate-800 space-y-1">
+                    <strong className="text-amber-800 font-mono">Saran Langkah Perbaikan:</strong>
+                    <p className="leading-relaxed">{recommendedPractice.suggestedAction[lang]}</p>
+                  </div>
+
+                  <div className="space-y-2 pt-1">
+                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-600">
+                      Soal Rekomendasi Terkait:
+                    </span>
+                    <div className="space-y-1.5">
+                      {recommendedPractice.recommendedQuestions.map((q, qIdx) => (
+                        <div
+                          key={qIdx}
+                          onClick={() => {
+                            const targetIdx = interviewQuestions.findIndex((item) => item.id === q.id);
+                            if (targetIdx !== -1) setCurrentIndex(targetIdx);
+                            setActiveTab('studio');
+                          }}
+                          className="p-2.5 rounded-lg bg-white border border-slate-200 hover:border-emerald-400 transition-all flex items-center justify-between text-xs cursor-pointer group"
+                        >
+                          <span className="text-slate-800 font-medium group-hover:text-emerald-700 truncate pr-2">
+                            {q.title[lang]}
+                          </span>
+                          <ChevronRight size={13} className="text-slate-400 group-hover:text-emerald-600 flex-shrink-0" />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      setSelectedCategory('backend-go');
+                      setActiveTab('studio');
+                    }}
+                    className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
+                  >
+                    <span>Latih Topik {recommendedPractice.skill} Sekarang</span>
+                    <ArrowLeft size={13} className="rotate-180" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* 3. RECENT ACTIVITY TABLE */}
+            <div className="bg-white rounded-2xl border border-slate-200/90 p-6 shadow-sm space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div className="flex items-center gap-2">
+                  <Calendar size={16} className="text-emerald-600" />
+                  <h2 className="font-extrabold text-sm sm:text-base text-slate-900">
+                    Aktivitas & Riwayat Simulasi Terbaru
+                  </h2>
+                </div>
+                <span className="text-xs font-mono text-slate-500">6 Sesi Terakhir</span>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-left text-xs sm:text-sm">
+                  <thead>
+                    <tr className="border-b border-slate-200 text-[11px] font-mono text-slate-500 uppercase">
+                      <th className="pb-3 font-bold">Judul Sesi / Soal</th>
+                      <th className="pb-3 font-bold">Tipe Sesi</th>
+                      <th className="pb-3 font-bold">Topik</th>
+                      <th className="pb-3 font-bold">Tanggal</th>
+                      <th className="pb-3 font-bold">Durasi</th>
+                      <th className="pb-3 font-bold text-right">Skor / Hasil</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 font-sans">
+                    {recentActivityData.map((act) => (
+                      <tr key={act.id} className="hover:bg-slate-50/80 transition-colors">
+                        <td className="py-3 font-bold text-slate-900 max-w-xs truncate">
+                          {act.title}
+                        </td>
+                        <td className="py-3">
+                          <span className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold ${
+                            act.type === 'Mock Interview'
+                              ? 'bg-purple-50 text-purple-700 border border-purple-200'
+                              : act.type === 'Coding Challenge'
+                              ? 'bg-sky-50 text-sky-700 border border-sky-200'
+                              : 'bg-slate-100 text-slate-700 border border-slate-200'
+                          }`}>
+                            {act.type}
+                          </span>
+                        </td>
+                        <td className="py-3 text-slate-600 text-xs">
+                          {act.topic}
+                        </td>
+                        <td className="py-3 text-slate-500 text-xs font-mono">
+                          {act.date}
+                        </td>
+                        <td className="py-3 text-slate-500 text-xs font-mono">
+                          {act.durationMinutes} mnt
+                        </td>
+                        <td className="py-3 text-right">
+                          <div className="inline-flex items-center gap-1.5 font-mono font-black">
+                            <span className={`text-xs ${
+                              act.score >= 85
+                                ? 'text-emerald-700'
+                                : act.score >= 75
+                                ? 'text-sky-700'
+                                : 'text-amber-700'
+                            }`}>
+                              {act.score}%
+                            </span>
+                            <span className={`w-2 h-2 rounded-full ${
+                              act.score >= 85
+                                ? 'bg-emerald-500'
+                                : act.score >= 75
+                                ? 'bg-sky-500'
+                                : 'bg-amber-500'
+                            }`} />
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* ========================================================= */}
         {/* TAB 1: SELF-INTRODUCTION ELEVATOR PITCH & AUDIO PLAYER */}
         {/* ========================================================= */}
