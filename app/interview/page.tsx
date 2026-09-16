@@ -34,7 +34,9 @@ import {
   BookOpen,
   Sliders,
   Copy,
-  Check
+  Check,
+  FileText,
+  Flame
 } from 'lucide-react';
 import {
   interviewQuestions,
@@ -44,47 +46,93 @@ import {
 } from '../lib/data/interviewData';
 
 type MainTab = 'pitch' | 'studio' | 'syllabus' | 'cheatsheet';
+type PitchLength = 'comprehensive' | 'concise';
 type LangMode = 'id' | 'en';
 
-const selfIntroductionText = {
+const selfIntroductionData = {
   id: {
-    title: 'Naskah Perkenalan Diri (Elevator Pitch 60 Detik)',
-    subtitle: 'Naskah pembuka wawancara yang dirancang khusus untuk posisi Backend Developer & Software Engineer.',
-    script: `Halo, perkenalkan nama saya Kevin Eka Pratama. Saya adalah lulusan Sarjana Ilmu Komputer dari Universitas AMIKOM dengan IPK 3.42, dan memiliki pengalaman profesional lebih dari 2 tahun di bidang Application Support pada PT PLN Icon+.
+    comprehensive: {
+      title: 'Naskah Perkenalan Diri (Versi Lengkap & Mendalam — 2 s.d. 3 Menit)',
+      subtitle: 'Struktur narasi komprehensif yang menjabarkan latar belakang akademik, pengalaman operasional nyata di PLN Icon+, motivasi transisi ke backend engineering, hingga detail proyek arsitektur Go.',
+      duration: 'Durasi Bicara: ~2.5 Menit (360 Kata)',
+      script: `Halo, selamat pagi/siang. Perkenalkan nama saya Kevin Eka Pratama. Saya adalah lulusan Sarjana Ilmu Komputer dari Universitas AMIKOM dengan IPK 3.42, dan memiliki pengalaman profesional lebih dari 2 tahun di bidang Application Support pada PT PLN Icon+.
 
-Selama bekerja di PLN Icon+, saya bertanggung jawab dalam memantau kelancaran sistem operasional, menganalisis query database relasional yang lambat, dan menangani troubleshooting insiden produksi harian.
+Selama bekerja di PLN Icon+, tanggung jawab utama saya berfokus pada menjaga keandalan dan stabilitas sistem operasional harian. Dalam keseharian, saya terbiasa melakukan pemantauan sistem, menganalisis log error server, mendiagnosis query database relasional (PostgreSQL, Oracle, MySQL) yang mengalami bottleneck menggunakan EXPLAIN ANALYZE, serta berkoordinasi secara terstruktur dengan tim developer untuk pelaporan bug dan verifikasi hotfix demi menjaga batas SLA operasional.
 
-Di samping pengalaman operasional tersebut, saya aktif memperdalam rekayasa perangkat lunak backend dengan membangun lebih dari 20 aplikasi mandiri. Fokus utama saya adalah pengembangan REST API menggunakan Go (Golang) berprinsip Clean Architecture, manajemen database transaksional PostgreSQL (ACID), serta integrasi antarmuka modern dengan React dan TypeScript.
+Pengalaman bertahun-tahun menangani insiden di lingkungan produksi tersebut memberi saya pemahaman nyata mengenai apa saja celah yang sering memicu kegagalan sistem. Dari situ, saya memiliki motivasi kuat untuk tidak hanya memperbaiki masalah di hilir, tetapi membangun solusi perangkat lunak yang tangguh sejak awal di tahap rekayasa arsitektur kode.
 
-Kombinasi pengalaman operasional produksi dan kebiasaan membangun backend ini membuat saya memiliki pola pikir defensif: saya tidak hanya fokus membuat fitur bekerja, tetapi juga memastikan query efisien, error tertangani dengan aman, dan arsitektur kode mudah dipelihara.`,
-    bulletPoints: [
-      'Pendidikan: Sarjana Ilmu Komputer, Universitas AMIKOM (IPK 3.42 / 4.00)',
-      'Pengalaman Kerja: 2+ Tahun Application Support di PT PLN Icon+',
-      'Keahlian Utama: Go (Golang), Clean Architecture, PostgreSQL ACID, REST API, React',
-      'Value Added: Pola pikir produksi nyata (troubleshooting query, sistem monitoring, SLA insiden)'
-    ]
+Untuk itu, saya secara konsisten memperdalam software engineering dengan membangun lebih dari 20 aplikasi mandiri. Fokus spesialisasi saya adalah pengembangan backend RESTful API menggunakan bahasa Go (Golang) berprinsip Clean Architecture, di mana logika bisnis (usecase) dipisahkan secara tegas dari layer database dan routing framework. Saya juga memiliki pemahaman praktis dalam penanganan transaksi database ACID dan row-level locking (SELECT FOR UPDATE) pada sistem perbankan untuk mencegah race condition, serta mengintegrasikan antarmuka modern menggunakan React, Next.js, dan TypeScript.
+
+Kombinasi antara pengalaman operasional produksi di PLN Icon+ dan kebiasaan membangun backend ini membentuk pola pikir saya: saya terbiasa menulis kode yang defensif, mengoptimalkan query database relasional, dan menyusun arsitektur modular yang mudah diuji dan dipelihara. Saya sangat bersemangat untuk dapat berkontribusi langsung sebagai Backend Developer yang proaktif dan handal di tim Anda.`,
+      bulletPoints: [
+        'Pendidikan: Sarjana Ilmu Komputer, Universitas AMIKOM (IPK 3.42 / 4.00)',
+        'Pengalaman Kerja: 2+ Tahun Application Support di PT PLN Icon+ (System monitoring, SLA incident, SQL troubleshooting)',
+        'Keahlian Utama: Go (Golang), Clean Architecture 4-layer, PostgreSQL ACID Transactions, REST API, React/TypeScript',
+        'Studi Kasus Proyek: Go Banking Core Engine (ACID row locks), Go Clean Arch REST API, Tokopedia Marketplace Fullstack',
+        'Value Added: Production-first mindset (mencegah bug sejak desain database & arsitektur kode)'
+      ]
+    },
+    concise: {
+      title: 'Naskah Perkenalan Diri (Versi Ringkas / Elevator Pitch — 60 Detik)',
+      subtitle: 'Format opening singkat, padat, dan berdampak tinggi untuk sesi HR screening awal.',
+      duration: 'Durasi Bicara: ~60 Detik (150 Kata)',
+      script: `Halo, perkenalkan nama saya Kevin Eka Pratama. Saya adalah lulusan Ilmu Komputer Universitas AMIKOM dengan IPK 3.42 dan memiliki 2+ tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+.
+
+Di PLN Icon+, saya terbiasa memantau sistem operasional, melakukan investigasi query database PostgreSQL/Oracle yang lambat, dan menangani insiden produksi. Di samping itu, saya aktif membangun 20+ aplikasi mandiri dengan fokus utama pada Backend Go (Golang), Clean Architecture, transaksi database ACID PostgreSQL, dan React/TypeScript.
+
+Kombinasi pengalaman operasional produksi nyata dan keahlian rekayasa backend ini membuat saya memiliki pola pikir defensif: saya tidak hanya fokus membuat fitur bekerja, tetapi memastikan query efisien, error tertangani dengan aman, dan sistem mudah di-scale. Saya siap berkontribusi sebagai Backend Developer di tim Anda.`,
+      bulletPoints: [
+        'Pendidikan: Universitas AMIKOM (IPK 3.42 / 4.00)',
+        'Pengalaman: 2+ Tahun Application Support di PT PLN Icon+',
+        'Spesialisasi: Backend Go (Golang), PostgreSQL, Clean Architecture, React',
+        'Keunggulan: Terbiasa dengan troubleshooting produksi dan kode defensif'
+      ]
+    }
   },
   en: {
-    title: 'Self-Introduction Script (60-Second Elevator Pitch)',
-    subtitle: 'Tailored opening statement for Backend Developer & Software Engineer interviews.',
-    script: `Hello, my name is Kevin Eka Pratama. I hold a Bachelor's degree in Computer Science from Universitas AMIKOM with a 3.42 GPA, and I bring over 2 years of professional experience in Application Support at PT PLN Icon+.
+    comprehensive: {
+      title: 'Self-Introduction Script (Comprehensive Deep-Dive — 2 to 3 Minutes)',
+      subtitle: 'Detailed narrative covering academic background, real-world PLN Icon+ operational support, engineering transition, and Go architecture projects.',
+      duration: 'Speaking Duration: ~2.5 Minutes (350 Words)',
+      script: `Hello, good morning/afternoon. My name is Kevin Eka Pratama. I hold a Bachelor's degree in Computer Science from Universitas AMIKOM with a 3.42 GPA, and I bring over 2 years of professional experience in Application Support at PT PLN Icon+.
 
-At PLN Icon+, I was responsible for monitoring operational application workflows, diagnosing slow relational database queries, and executing rapid incident troubleshooting to ensure strict SLA compliance.
+At PLN Icon+, my primary responsibility was maintaining the high availability and operational stability of core daily systems. On a day-to-day basis, I actively monitored application logs, diagnosed slow relational database queries (PostgreSQL, Oracle, MySQL) using EXPLAIN ANALYZE to resolve performance bottlenecks, and coordinated directly with software engineering teams to report bugs and verify hotfixes within strict SLA timelines.
 
-In parallel with my production support background, I have actively advanced my software engineering capabilities by building over 20 personal applications. My primary specialization is in developing modular RESTful backend services using Go (Golang) adhering to Clean Architecture principles, ACID-compliant database transaction management in PostgreSQL, and fullstack integration with React and TypeScript.
+Handling production incidents over the years gave me firsthand insight into common operational failure points. This experience ignited my passion to transition from resolving downstream production symptoms to engineering resilient, scalable backend architectures from the ground up.
 
-This distinct combination of real-world production support resilience and hands-on backend development enables me to engineer robust, well-tested, and maintainable software solutions from day one.`,
-    bulletPoints: [
-      'Education: Bachelor of Computer Science, Universitas AMIKOM (GPA: 3.42 / 4.00)',
-      'Work Experience: 2+ Years Application Support at PT PLN Icon+',
-      'Core Competencies: Go (Golang), Clean Architecture, PostgreSQL Transactions, REST APIs, React',
-      'Key Differentiator: Production-first mindset (SQL optimization, monitoring, defensive error handling)'
-    ]
+To achieve this, I have continuously developed my software engineering capabilities by building more than 20 personal applications. My core specialization is in developing RESTful API backend services using Go (Golang) adhering to Clean Architecture principles—strictly decoupling domain entities and usecase business logic from database drivers and web frameworks. I also have hands-on experience implementing ACID-compliant database transactions and row-level locking (SELECT FOR UPDATE) to prevent concurrency race conditions in banking and e-commerce checkout flows, complemented by modern frontend integration in React and TypeScript.
+
+This unique blend of real-world production support discipline and active backend engineering defines my approach: I write defensive code, prioritize efficient SQL queries, and design modular systems that are easy to test and maintain. I am very excited to bring this production-first mindset to your engineering team as a dedicated Backend Developer.`,
+      bulletPoints: [
+        'Education: Bachelor of Computer Science, Universitas AMIKOM (GPA: 3.42 / 4.00)',
+        'Experience: 2+ Years Application Support at PT PLN Icon+ (System monitoring, SLA triage, SQL query tuning)',
+        'Core Stack: Go (Golang), Clean Architecture, PostgreSQL ACID Transactions, REST APIs, React/TypeScript',
+        'Featured Projects: Go Banking Core Engine (Row-level locks), Go Clean Arch REST API, Tokopedia Fullstack',
+        'Value Proposition: Production-first mindset bridging system reliability with robust backend engineering'
+      ]
+    },
+    concise: {
+      title: 'Self-Introduction Script (Concise Elevator Pitch — 60 Seconds)',
+      subtitle: 'Sharp, impactful opening pitch designed for HR screening and quick interview rounds.',
+      duration: 'Speaking Duration: ~60 Seconds (150 Words)',
+      script: `Hello, my name is Kevin Eka Pratama. I hold a Bachelor's degree in Computer Science from Universitas AMIKOM with a 3.42 GPA and bring 2+ years of professional experience in Application Support at PT PLN Icon+.
+
+At PLN Icon+, I specialized in operational system monitoring, investigating slow relational database queries in PostgreSQL/Oracle, and managing incident triage. In parallel, I have built 20+ personal software projects with a strong focus on Go (Golang) backend services, Clean Architecture, PostgreSQL ACID transactions, and React/TypeScript.
+
+This blend of authentic production support resilience and backend development means I write defensive, well-structured code with optimized database queries. I am ready to contribute immediately as a proactive Backend Developer on your team.`,
+      bulletPoints: [
+        'Education: Universitas AMIKOM (GPA: 3.42 / 4.00)',
+        'Experience: 2+ Years Application Support at PT PLN Icon+',
+        'Specialization: Go (Golang) Backend, PostgreSQL, Clean Architecture, React',
+        'Differentiator: Production-tested SQL troubleshooting and defensive coding'
+      ]
+    }
   }
 };
 
 export default function InterviewPracticePage() {
   const [activeTab, setActiveTab] = useState<MainTab>('pitch');
+  const [pitchLength, setPitchLength] = useState<PitchLength>('comprehensive');
   const [lang, setLang] = useState<LangMode>('id');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -119,6 +167,8 @@ export default function InterviewPracticePage() {
 
   const currentQuestion: InterviewQuestion =
     filteredQuestions[currentIndex] || interviewQuestions[0];
+
+  const currentPitch = selfIntroductionData[lang][pitchLength];
 
   // Speech Recognition (Web Speech API)
   useEffect(() => {
@@ -164,7 +214,7 @@ export default function InterviewPracticePage() {
         window.speechSynthesis.cancel();
       }
     };
-  }, [activeTab, currentIndex, lang]);
+  }, [activeTab, currentIndex, lang, pitchLength]);
 
   // Play Speech Function
   const handlePlayVoice = (text: string) => {
@@ -214,7 +264,7 @@ export default function InterviewPracticePage() {
   };
 
   const handleCopyPitch = () => {
-    navigator.clipboard.writeText(selfIntroductionText[lang].script);
+    navigator.clipboard.writeText(currentPitch.script);
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
   };
@@ -377,25 +427,63 @@ export default function InterviewPracticePage() {
         {activeTab === 'pitch' && (
           <div className="space-y-6">
             {/* Header Banner */}
-            <div className="bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-sm">
-              <div className="max-w-3xl space-y-2">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-mono font-bold">
-                  <User size={13} />
-                  <span>Persiapan Wawancara #1: Ceritakan Tentang Diri Anda</span>
+            <div className="bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-sm space-y-4">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="space-y-1.5">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-mono font-bold">
+                    <User size={13} />
+                    <span>Naskah Wawancara #1: Ceritakan Tentang Diri Anda</span>
+                  </div>
+                  <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                    {currentPitch.title}
+                  </h1>
+                  <p className="text-slate-600 text-xs sm:text-sm max-w-2xl leading-relaxed">
+                    {currentPitch.subtitle}
+                  </p>
                 </div>
-                <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                  {selfIntroductionText[lang].title}
-                </h1>
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  {selfIntroductionText[lang].subtitle}
-                </p>
+
+                {/* Pitch Length Toggle Button Group */}
+                <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 self-start md:self-auto text-xs font-bold">
+                  <button
+                    onClick={() => {
+                      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+                        window.speechSynthesis.cancel();
+                      }
+                      setIsAudioPlaying(false);
+                      setPitchLength('comprehensive');
+                    }}
+                    className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+                      pitchLength === 'comprehensive'
+                        ? 'bg-white text-emerald-800 shadow-sm border border-slate-200 font-extrabold'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    Versi Lengkap (2–3 Menit)
+                  </button>
+                  <button
+                    onClick={() => {
+                      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+                        window.speechSynthesis.cancel();
+                      }
+                      setIsAudioPlaying(false);
+                      setPitchLength('concise');
+                    }}
+                    className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+                      pitchLength === 'concise'
+                        ? 'bg-white text-emerald-800 shadow-sm border border-slate-200 font-extrabold'
+                        : 'text-slate-600 hover:text-slate-900'
+                    }`}
+                  >
+                    Versi Ringkas (60 Detik)
+                  </button>
+                </div>
               </div>
 
               {/* Audio Controls Bar */}
-              <div className="mt-6 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+              <div className="pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
                   <button
-                    onClick={() => handlePlayVoice(selfIntroductionText[lang].script)}
+                    onClick={() => handlePlayVoice(currentPitch.script)}
                     className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all shadow-sm cursor-pointer ${
                       isAudioPlaying
                         ? 'bg-emerald-700 text-white animate-pulse'
@@ -411,7 +499,7 @@ export default function InterviewPracticePage() {
                     className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition-colors cursor-pointer"
                   >
                     {isCopied ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
-                    <span>{isCopied ? 'Tersalin!' : 'Salin Teks'}</span>
+                    <span>{isCopied ? 'Tersalin!' : 'Salin Teks Naskah'}</span>
                   </button>
                 </div>
 
@@ -442,15 +530,15 @@ export default function InterviewPracticePage() {
                 <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                   <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
                     <BookOpen size={14} className="text-emerald-600" />
-                    <span>Naskah Bacaan Lengkap:</span>
+                    <span>Naskah Narasi Lengkap:</span>
                   </span>
-                  <span className="text-xs font-mono text-slate-400">
-                    Durasi Baca: ~60 Detik
+                  <span className="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">
+                    {currentPitch.duration}
                   </span>
                 </div>
 
-                <div className="text-sm sm:text-base text-slate-800 leading-relaxed space-y-4 whitespace-pre-line font-serif sm:font-sans">
-                  {selfIntroductionText[lang].script}
+                <div className="text-sm sm:text-[15px] text-slate-800 leading-relaxed space-y-4 whitespace-pre-line font-sans">
+                  {currentPitch.script}
                 </div>
               </div>
 
@@ -463,7 +551,7 @@ export default function InterviewPracticePage() {
                   </div>
 
                   <ul className="space-y-3 text-xs sm:text-sm text-slate-700">
-                    {selfIntroductionText[lang].bulletPoints.map((item, idx) => (
+                    {currentPitch.bulletPoints.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-2.5">
                         <CheckCircle2 size={16} className="text-emerald-600 flex-shrink-0 mt-0.5" />
                         <span className="leading-snug">{item}</span>
@@ -478,7 +566,7 @@ export default function InterviewPracticePage() {
                     <span>Tips Eksekusi Wawancara:</span>
                   </div>
                   <p className="text-xs text-emerald-900 leading-relaxed">
-                    Ucapkan naskah perkenalan diri dengan tempo santai, percaya diri, dan tersenyum. Tekankan kata kunci <strong>2+ tahun di PT PLN Icon+</strong> dan <strong>Go Clean Architecture</strong> karena poin inilah yang membedakan Anda dengan fresh graduate lain.
+                    Ucapkan naskah perkenalan diri dengan tempo santai, percaya diri, dan artikulasi jelas. Tekankan kata kunci <strong>2+ tahun di PT PLN Icon+</strong> dan <strong>Go Clean Architecture</strong> karena poin inilah yang membedakan Anda dengan fresh graduate lain.
                   </p>
                 </div>
               </div>

@@ -40,11 +40,11 @@ export const interviewQuestions: InterviewQuestion[] = [
       en: 'How do you implement Clean Architecture in a Go project, and what are its main advantages over a conventional monolithic structure?'
     },
     keyConcepts: [
-      'Domain Layer',
-      'Usecase (Business Logic)',
-      'Repository (Database Access)',
-      'Delivery/Handler Layer',
-      'Dependency Inversion & Mocking'
+      'Domain Layer (Entities & Interfaces)',
+      'Usecase Layer (Business Logic)',
+      'Repository Layer (Database Implementation)',
+      'Delivery/Handler (HTTP Router & Serializer)',
+      'Dependency Inversion & Mock Testing'
     ],
     starAnswer: {
       id: {
@@ -175,6 +175,46 @@ return tx.Commit().Error`
     interviewerInsight: {
       id: 'Pewawancara ingin memastikan Anda tidak asal membuat `go func()` liar tanpa memikirkan lifecycle, context timeout, dan channel buffer.',
       en: 'Interviewers look for mature lifecycle management rather than careless `go func()` invocations without context limits.'
+    }
+  },
+  {
+    id: 'go-jwt-auth-middleware',
+    category: 'backend-go',
+    categoryLabel: { id: 'Go & Backend', en: 'Go & Backend' },
+    difficulty: 'Intermediate',
+    context: 'Proyek Tokopedia Backend & Bun-Hono API',
+    question: {
+      id: 'Bagaimana Anda merancang sistem autentikasi JWT dan otorisasi berbasis peran (Role-Based Access Control / RBAC) di backend Go?',
+      en: 'How do you design JWT authentication and Role-Based Access Control (RBAC) middleware in a Go backend service?'
+    },
+    keyConcepts: [
+      'JWT Signing & Claims Parsing (golang-jwt)',
+      'Bcrypt Password Hashing',
+      'HTTP Middleware Handler',
+      'Context Request Value Propagation',
+      'Token Expiration & Refresh Strategy'
+    ],
+    starAnswer: {
+      id: {
+        situation: 'Aplikasi e-commerce memerlukan pemisahan hak akses antara akun Customer (membeli, checkout) dan Admin (mengelola produk, melihat analitik).',
+        task: 'Membangun middleware autentikasi dan RBAC yang aman, stateless, dan dapat digunakan di semua route endpoint.',
+        action: 'Saat login, password diverifikasi dengan `bcrypt.CompareHashAndPassword`. Jika valid, server meng-generate JWT token dengan claims ID dan Role. Saya membuat middleware Go yang mengekstrak header `Authorization: Bearer <token>`, memvalidasi signature dengan secret key, lalu memasukkan claims ke `c.Request.Context()` / `c.Locals()` untuk dicek oleh middleware RBAC berikutnya.',
+        result: 'Hak akses endpoint terlindungi secara ketat, route admin tidak bisa diakses user biasa, dan sistem tetap stateless tanpa query session berulang.'
+      },
+      en: {
+        situation: 'An e-commerce API requires strict role segregation between Customer routes (checkout, cart) and Admin routes (inventory update, analytics).',
+        task: 'Implement secure, stateless JWT authentication and RBAC authorization middleware reusable across route groups.',
+        action: 'Verified passwords with bcrypt and signed JWT tokens with claims (UserID, Role). Engineered a custom Go middleware that validates Bearer tokens, decrypts claims, and injects user identity into the request context before forwarding to role-guard middlewares.',
+        result: 'Protected API endpoints with sub-millisecond overhead and completely eliminated unauthorized route access.'
+      }
+    },
+    modelAnswer: {
+      id: 'Saya mengimplementasikan JWT dengan: 1) Hashing password menggunakan Bcrypt saat registrasi, 2) Men-generate token dengan expiration time dan custom claims (user_id, role), 3) Membuat middleware JWT yang memeriksa header Authorization Bearer, 4) Menyimpan claims ke dalam Context request, 5) Membuat middleware RBAC (misal: `RequireRole("admin")`) yang menolak request dengan status 403 Forbidden jika role tidak sesuai.',
+      en: 'I structure JWT by hashing passwords with Bcrypt, generating signed tokens with user ID and role claims, and routing requests through a JWT middleware that extracts and validates the token. The validated claims are injected into the request context, allowing subsequent RBAC guards (like `RequireRole("admin")`) to block unauthorized access with 403 Forbidden.'
+    },
+    interviewerInsight: {
+      id: 'Pewawancara menilai pemahaman Anda seputar keamanan token, pencegahan penyimpanan password plaintext, dan pemanfaatan middleware pipeline.',
+      en: 'Evaluates your security fundamentals, stateless authorization mechanics, and middleware pipeline design in Go.'
     }
   },
 
