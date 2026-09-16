@@ -73,7 +73,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-3">
           <button
             onClick={toggleTheme}
             onMouseMove={handleMagneticMove}
@@ -88,11 +88,19 @@ export default function Navbar() {
             )}
           </button>
 
+          <Link
+            href="/interview"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 hover:border-emerald-500/60 transition-all shadow-sm cursor-pointer"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+            <span>Interview Prep</span>
+          </Link>
+
           <button
             onMouseMove={handleMagneticMove}
             onMouseLeave={handleMagneticLeave}
             onClick={() => window.dispatchEvent(new CustomEvent('open-resume'))}
-            className="m-btn border-2 border-primary/20 hover:border-primary text-primary px-7 py-2.5 rounded-full text-xs font-black uppercase transition-all cursor-pointer"
+            className="m-btn border-2 border-primary/20 hover:border-primary text-primary px-6 py-2 rounded-full text-xs font-black uppercase transition-all cursor-pointer"
           >
             Resume
           </button>
@@ -135,6 +143,14 @@ export default function Navbar() {
                   {link.name}
                 </Link>
               ))}
+              <Link
+                href="/interview"
+                onClick={() => setIsOpen(false)}
+                className="text-sm font-bold uppercase tracking-widest py-2 border-b border-slate-100 dark:border-slate-800 text-emerald-400 hover:text-emerald-300 flex items-center justify-between"
+              >
+                <span>Interview Prep Simulator</span>
+                <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono">NEW</span>
+              </Link>
               <button
                 onClick={() => {
                   setIsOpen(false);
