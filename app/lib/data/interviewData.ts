@@ -1,5 +1,15 @@
-export type InterviewCategory = 'backend-go' | 'app-support' | 'fullstack-react' | 'behavioral-hr';
-export type InterviewDifficulty = 'Fundamental' | 'Intermediate' | 'Advanced';
+export type PracticeRole = 'Backend Golang' | 'Backend Java' | 'Fullstack' | 'Frontend';
+export type PracticeDifficulty = 'Junior' | 'Middle' | 'Senior';
+export type PracticeTopic =
+  | 'Golang'
+  | 'SQL'
+  | 'REST API'
+  | 'Database'
+  | 'Docker'
+  | 'Redis'
+  | 'Kafka'
+  | 'gRPC'
+  | 'System Design';
 
 export interface StarStructure {
   situation: string;
@@ -10,15 +20,16 @@ export interface StarStructure {
 
 export interface InterviewQuestion {
   id: string;
-  category: InterviewCategory;
+  role: PracticeRole;
+  difficulty: PracticeDifficulty;
+  topic: PracticeTopic;
   categoryLabel: { id: string; en: string };
-  difficulty: InterviewDifficulty;
   context: string;
   question: { id: string; en: string };
   keyConcepts: string[];
+  explanation: { id: string; en: string };
+  suggestedAnswer: { id: string; en: string };
   starAnswer?: { id: StarStructure; en: StarStructure };
-  modelAnswer: { id: string; en: string };
-  interviewerInsight: { id: string; en: string };
   codeSnippet?: {
     lang: string;
     code: string;
@@ -27,126 +38,66 @@ export interface InterviewQuestion {
 
 export const interviewQuestions: InterviewQuestion[] = [
   // ==========================================
-  // 1. BACKEND & GO (GOLANG)
+  // 1. GOLANG TOPICS
   // ==========================================
   {
     id: 'go-clean-architecture',
-    category: 'backend-go',
+    role: 'Backend Golang',
+    difficulty: 'Middle',
+    topic: 'Golang',
     categoryLabel: { id: 'Go & Backend', en: 'Go & Backend' },
-    difficulty: 'Intermediate',
     context: 'Proyek Go Clean Architecture REST API',
     question: {
       id: 'Bagaimana Anda menerapkan Clean Architecture pada proyek Go dan apa manfaat utamanya dibandingkan struktur monolith biasa?',
       en: 'How do you implement Clean Architecture in a Go project, and what are its main advantages over a conventional monolithic structure?'
     },
     keyConcepts: [
-      'Domain Layer (Entities & Interfaces)',
-      'Usecase Layer (Business Logic)',
-      'Repository Layer (Database Implementation)',
-      'Delivery/Handler (HTTP Router & Serializer)',
+      'Domain Layer',
+      'Usecase Layer',
+      'Repository Layer',
+      'Delivery/Handler',
       'Dependency Inversion & Mock Testing'
     ],
+    explanation: {
+      id: 'Clean Architecture memisahkan domain business logic dari framework routing dan database driver melalui interface kontrak sehingga kode mudah di-unit test secara independen.',
+      en: 'Clean Architecture isolates domain business logic from routing frameworks and database drivers via interface contracts, making code easily mockable in unit tests.'
+    },
+    suggestedAnswer: {
+      id: 'Saya membagi proyek ke 4 layer: 1) Domain (Entity & Interface kontrak), 2) Usecase (Aturan bisnis utama), 3) Repository (Akses database PostgreSQL/GORM), dan 4) Delivery (HTTP Handler Fiber/Gin). Keuntungannya adalah Dependency Inversion di mana pergantian database atau router tidak merusak core domain.',
+      en: 'I structure the codebase into 4 layers: Domain, Usecase, Repository, and Delivery. The primary benefit is Dependency Inversion—core domain logic remains untouched when database drivers or HTTP routers change.'
+    },
     starAnswer: {
       id: {
-        situation: 'Saat membangun REST API dengan Go, saya membutuhkan struktur yang modular, mudah diuji (unit test), dan tidak terikat ketat pada database maupun framework routing tertentu.',
-        task: 'Merancang arsitektur 4-layer (Domain, Usecase, Repository, Delivery) dengan Dependency Inversion Principle.',
-        action: 'Saya mendefinisikan interface entity di layer Domain. Layer Usecase memegang business rules tanpa tahu apakah database menggunakan PostgreSQL atau SQLite. Layer Repository mengimplementasikan interface DB, dan Delivery (Fiber/Gin) hanya bertugas mem-parsing HTTP request dan memanggil usecase.',
-        result: 'Struktur kode menjadi sangat decoupled, mudah dibuatkan mock test tanpa database fisik, dan penggantian komponen eksternal tidak merusak domain inti.'
+        situation: 'Saat membangun REST API dengan Go, saya membutuhkan struktur modular yang mudah diuji tanpa ketergantungan database fisik.',
+        task: 'Merancang arsitektur 4-layer dengan Dependency Inversion Principle.',
+        action: 'Mendefinisikan interface entity di Domain layer, memusatkan logic di Usecase, dan mengisolasi DB query di Repository layer.',
+        result: 'Struktur kode menjadi decoupled, mudah dibuatkan mock unit test, dan siap di-scale.'
       },
       en: {
-        situation: 'When building Go REST APIs, I needed a modular architecture that supports mockable unit testing and decouples domain logic from frameworks and database drivers.',
-        task: 'Designed a 4-layer Clean Architecture (Domain, Usecase, Repository, Delivery) using Dependency Inversion.',
-        action: 'Defined core interfaces in the Domain layer. The Usecase layer executes business rules independently of the database driver. The Repository layer implements database operations via interfaces, and the Delivery layer (Fiber/Gin) handles HTTP serialization and error routing.',
-        result: 'Achieved high testability, clean boundary isolation, and zero coupling between core business rules and third-party libraries.'
+        situation: 'When building Go APIs, I needed a decoupled structure supporting mockable tests without active databases.',
+        task: 'Design a 4-layer Clean Architecture with Dependency Inversion.',
+        action: 'Defined domain interfaces, isolated business rules in usecases, and restricted DB drivers to repositories.',
+        result: 'Achieved complete separation of concerns and fast unit testing.'
       }
-    },
-    modelAnswer: {
-      id: 'Saya menerapkan Clean Architecture dengan membagi aplikasi ke 4 layer: 1) Domain (Entity & Interface kontrak), 2) Usecase (Logika bisnis utama), 3) Repository (Akses database relasional PostgreSQL), dan 4) Delivery (HTTP Handler / Router). Keuntungan utamanya adalah Dependency Inversion: layer dalam tidak bergantung pada layer luar, sehingga saat database atau framework HTTP diganti, business logic tetap utuh dan sangat mudah diuji menggunakan mock testing.',
-      en: 'I structure Clean Architecture into 4 decoupled layers: Domain, Usecase, Repository, and Delivery. Its greatest benefit is Dependency Inversion—the inner business logic has zero direct dependencies on external databases or HTTP routers, making unit testing with mocks fast and reliable.'
-    },
-    interviewerInsight: {
-      id: 'Pewawancara ingin melihat pemahaman Anda tentang Dependency Inversion, pemisahan tanggung jawab (SoC), dan bagaimana Anda menjaga kode tetap mudah di-maintain.',
-      en: 'The interviewer wants to assess your understanding of Dependency Inversion, Separation of Concerns, and maintainable software architecture.'
     },
     codeSnippet: {
       lang: 'go',
-      code: `// Domain Interface Contract
-type ArticleRepository interface {
+      code: `type ArticleRepository interface {
     GetByID(ctx context.Context, id int64) (*domain.Article, error)
     Store(ctx context.Context, a *domain.Article) error
-}
-
-type ArticleUsecase interface {
-    GetByID(ctx context.Context, id int64) (*domain.Article, error)
 }`
     }
   },
   {
-    id: 'go-database-transactions',
-    category: 'backend-go',
-    categoryLabel: { id: 'Go & Backend', en: 'Go & Backend' },
-    difficulty: 'Advanced',
-    context: 'Proyek Go Banking Core & Tokopedia Marketplace Checkout',
-    question: {
-      id: 'Bagaimana Anda menangani transaksi database yang aman (ACID) dan mencegah race condition saat pengurangan stok atau transfer saldo di Go?',
-      en: 'How do you handle ACID-compliant database transactions and prevent race conditions during stock decrements or balance transfers in Go?'
-    },
-    keyConcepts: [
-      'ACID Transactions (tx.Begin, tx.Commit, tx.Rollback)',
-      'Row-Level Locking (SELECT FOR UPDATE)',
-      'Optimistic vs Pessimistic Locking',
-      'Database Connection Pooling'
-    ],
-    starAnswer: {
-      id: {
-        situation: 'Pada proyek e-commerce dan banking core engine, checkout massal atau transfer saldo rentan terhadap masalah race condition dan saldo negatif jika dua request diproses bersamaan.',
-        task: 'Memastikan transaksi checkout dan transfer dana berjalan secara atomik dan konsisten tanpa resiko double-spending.',
-        action: 'Saya mengimplementasikan database transaction menggunakan GORM/pgx dengan blok `tx.Begin()`, `defer rollback on panic/error`, dan eksekusi row-level lock (`SELECT ... FOR UPDATE`) pada record akun/produk yang sedang diubah sebelum melakukan update saldo.',
-        result: 'Sistem berhasil mempertahankan konsistensi data (ACID), mencegah saldo negatif, dan mencatat audit log mutasi dengan aman.'
-      },
-      en: {
-        situation: 'In e-commerce checkout and banking transfer engines, simultaneous requests can trigger race conditions and negative inventory or balance issues.',
-        task: 'Ensure all financial transfers and stock reductions are strictly atomic and consistent without double-spending risks.',
-        action: 'Enforced explicit database transactions using GORM/pgx with `tx.Begin()`, deferred rollbacks on error, and row-level locking (`SELECT FOR UPDATE`) on target records before performing arithmetic updates.',
-        result: 'Guaranteed complete ACID compliance, eliminated race conditions under concurrent requests, and ensured accurate transaction audit logs.'
-      }
-    },
-    modelAnswer: {
-      id: 'Untuk menjamin ACID, saya membungkus seluruh query dalam satu database transaction (tx). Saya menerapkan pessimistic row-level locking (`SELECT ... FOR UPDATE`) pada baris produk/rekening target untuk mengunci record selama transaksi berlangsung. Jika terjadi kegagalan atau stok tidak mencukupi, fungsi otomatis memanggil `tx.Rollback()` dan mengembalikan HTTP error yang sesuai.',
-      en: 'To enforce ACID guarantees, I wrap the operations inside a database transaction (`tx.Begin`). I apply pessimistic row-level locking (`SELECT ... FOR UPDATE`) on target account/inventory rows during execution. If any condition fails, a deferred rollback executes immediately, preventing partial updates.'
-    },
-    interviewerInsight: {
-      id: 'Poin kritis yang dinilai adalah pemahaman penanganan error, rollback yang aman jika terjadi panic, dan pemilihan locking strategy untuk concurrency.',
-      en: 'The interviewer evaluates your understanding of error handling, safe rollback mechanisms, and concurrency locking strategies.'
-    },
-    codeSnippet: {
-      lang: 'go',
-      code: `// Atomic transaction with rollback and stock check
-tx := db.Begin()
-defer func() {
-    if r := recover(); r != nil { tx.Rollback() }
-}()
-
-res := tx.Model(&Product{}).
-    Where("id = ? AND stock >= ?", productID, qty).
-    Update("stock", gorm.Expr("stock - ?", qty))
-
-if res.RowsAffected == 0 {
-    tx.Rollback()
-    return errors.New("insufficient stock or concurrent modification")
-}
-return tx.Commit().Error`
-    }
-  },
-  {
-    id: 'go-goroutines-concurrency',
-    category: 'backend-go',
-    categoryLabel: { id: 'Go & Backend', en: 'Go & Backend' },
-    difficulty: 'Intermediate',
+    id: 'go-concurrency-goroutines',
+    role: 'Backend Golang',
+    difficulty: 'Middle',
+    topic: 'Golang',
+    categoryLabel: { id: 'Go Concurrency', en: 'Go Concurrency' },
     context: 'Go Concurrency & Async Processing',
     question: {
       id: 'Kapan sebaiknya menggunakan Goroutine dan bagaimana cara mencegah memory leak atau race condition saat bekerja dengan Concurrency di Go?',
-      en: 'When should you use Goroutines, and how do you prevent memory leaks or race conditions when handling concurrency in Go?'
+      en: 'When should you use Goroutines, and how do you prevent memory leaks or race conditions in Go concurrency?'
     },
     keyConcepts: [
       'Goroutines & Channels',
@@ -154,273 +105,648 @@ return tx.Commit().Error`
       'Context Cancellation (context.WithTimeout)',
       'Worker Pool Pattern'
     ],
-    starAnswer: {
-      id: {
-        situation: 'Dalam backend service, ada tugas-tugas non-blocking seperti pengiriman email notifikasi, audit logging, atau fetching data paralel dari beberapa API pihak ketiga.',
-        task: 'Mengeksekusi proses paralel dengan cepat tanpa memblokir response HTTP utama dan tanpa menghabiskan resource server.',
-        action: 'Saya menggunakan Goroutine dipadukan dengan `sync.WaitGroup` untuk sinkronisasi, `sync.Mutex` atau channel untuk komunikasi data antar-thread, serta `context.WithTimeout` untuk membatasi durasi eksekusi goroutine agar tidak menggantung selamanya.',
-        result: 'Response time HTTP berkurang drastis dan server tetap stabil tanpa goroutine leak.'
-      },
-      en: {
-        situation: 'In backend systems, non-blocking tasks like sending confirmation emails, audit logs, or concurrent third-party requests should not delay the primary HTTP response.',
-        task: 'Execute background tasks concurrently while maintaining safe resource limits and predictable lifecycle control.',
-        action: 'Leveraged Goroutines with `sync.WaitGroup`, buffered channels, and `context.WithTimeout` to guarantee clean termination and prevent leaked background routines.',
-        result: 'Dramatically reduced HTTP endpoint response latencies while maintaining zero goroutine leaks and safe memory usage.'
-      }
+    explanation: {
+      id: 'Goroutine sangat ringan namun membutuhkan kontrol lifecycle yang ketat menggunakan context timeout dan channels agar tidak menggantung tanpa batas (leak).',
+      en: 'Goroutines are lightweight but require lifecycle management via context timeouts and channels to prevent uncontrolled execution and leaks.'
     },
-    modelAnswer: {
-      id: 'Goroutine sangat ideal untuk I/O-bound tasks atau background jobs paralel. Untuk mencegah memory leak, jangan pernah memulai goroutine tanpa mekanisme penghentian yang jelas—selalu sertakan `context.Context` dengan timeout atau channel `done`. Untuk mencegah race condition, gunakan channel untuk passing data ("share memory by communicating") atau gunakan `sync.RWMutex` saat mengakses shared state.',
-      en: 'Goroutines are best for parallel I/O and background workers. To avoid leaks, never launch a goroutine without a clear termination signal (using `context.WithTimeout` or a `done` channel). For data safety, adhere to Go’s philosophy: "Do not communicate by sharing memory; instead, share memory by communicating" via channels or `sync.RWMutex`.'
-    },
-    interviewerInsight: {
-      id: 'Pewawancara ingin memastikan Anda tidak asal membuat `go func()` liar tanpa memikirkan lifecycle, context timeout, dan channel buffer.',
-      en: 'Interviewers look for mature lifecycle management rather than careless `go func()` invocations without context limits.'
+    suggestedAnswer: {
+      id: 'Goroutine digunakan untuk I/O-bound atau background tasks paralel. Untuk mencegah memory leak, selalu gunakan context.WithTimeout atau channel sinyal done. Untuk mencegah race condition, gunakan komunikasi data via channel atau sync.RWMutex saat mengakses shared state.',
+      en: 'Use goroutines for concurrent I/O or background workers. Prevent leaks using context.WithTimeout, and eliminate race conditions using channels or sync.RWMutex over shared state.'
     }
   },
   {
-    id: 'go-jwt-auth-middleware',
-    category: 'backend-go',
-    categoryLabel: { id: 'Go & Backend', en: 'Go & Backend' },
-    difficulty: 'Intermediate',
-    context: 'Proyek Tokopedia Backend & Bun-Hono API',
+    id: 'go-pointers-memory',
+    role: 'Backend Golang',
+    difficulty: 'Junior',
+    topic: 'Golang',
+    categoryLabel: { id: 'Go Fundamentals', en: 'Go Fundamentals' },
+    context: 'Memory Allocation & Pointers di Go',
     question: {
-      id: 'Bagaimana Anda merancang sistem autentikasi JWT dan otorisasi berbasis peran (Role-Based Access Control / RBAC) di backend Go?',
-      en: 'How do you design JWT authentication and Role-Based Access Control (RBAC) middleware in a Go backend service?'
+      id: 'Kapan kita harus menggunakan Pointer vs Value Receiver pada struct method di Go, dan bagaimana dampaknya pada Garbage Collector?',
+      en: 'When should you use Pointer vs Value Receivers on struct methods in Go, and what is the impact on the Garbage Collector?'
     },
     keyConcepts: [
-      'JWT Signing & Claims Parsing (golang-jwt)',
-      'Bcrypt Password Hashing',
-      'HTTP Middleware Handler',
-      'Context Request Value Propagation',
-      'Token Expiration & Refresh Strategy'
+      'Pointer Receivers (*T)',
+      'Value Receivers (T)',
+      'Mutasi State Struct',
+      'Escape Analysis & Heap vs Stack Allocation'
     ],
-    starAnswer: {
-      id: {
-        situation: 'Aplikasi e-commerce memerlukan pemisahan hak akses antara akun Customer (membeli, checkout) dan Admin (mengelola produk, melihat analitik).',
-        task: 'Membangun middleware autentikasi dan RBAC yang aman, stateless, dan dapat digunakan di semua route endpoint.',
-        action: 'Saat login, password diverifikasi dengan `bcrypt.CompareHashAndPassword`. Jika valid, server meng-generate JWT token dengan claims ID dan Role. Saya membuat middleware Go yang mengekstrak header `Authorization: Bearer <token>`, memvalidasi signature dengan secret key, lalu memasukkan claims ke `c.Request.Context()` / `c.Locals()` untuk dicek oleh middleware RBAC berikutnya.',
-        result: 'Hak akses endpoint terlindungi secara ketat, route admin tidak bisa diakses user biasa, dan sistem tetap stateless tanpa query session berulang.'
-      },
-      en: {
-        situation: 'An e-commerce API requires strict role segregation between Customer routes (checkout, cart) and Admin routes (inventory update, analytics).',
-        task: 'Implement secure, stateless JWT authentication and RBAC authorization middleware reusable across route groups.',
-        action: 'Verified passwords with bcrypt and signed JWT tokens with claims (UserID, Role). Engineered a custom Go middleware that validates Bearer tokens, decrypts claims, and injects user identity into the request context before forwarding to role-guard middlewares.',
-        result: 'Protected API endpoints with sub-millisecond overhead and completely eliminated unauthorized route access.'
-      }
+    explanation: {
+      id: 'Pointer receiver digunakan saat method perlu memodifikasi field struct atau struct berukuran besar untuk menghindari duplikasi memori, sedangkan value receiver cocok untuk struct kecil yang immutable.',
+      en: 'Use pointer receivers when mutating struct state or avoiding copies of large structs. Value receivers are preferred for small, immutable data structures.'
     },
-    modelAnswer: {
-      id: 'Saya mengimplementasikan JWT dengan: 1) Hashing password menggunakan Bcrypt saat registrasi, 2) Men-generate token dengan expiration time dan custom claims (user_id, role), 3) Membuat middleware JWT yang memeriksa header Authorization Bearer, 4) Menyimpan claims ke dalam Context request, 5) Membuat middleware RBAC (misal: `RequireRole("admin")`) yang menolak request dengan status 403 Forbidden jika role tidak sesuai.',
-      en: 'I structure JWT by hashing passwords with Bcrypt, generating signed tokens with user ID and role claims, and routing requests through a JWT middleware that extracts and validates the token. The validated claims are injected into the request context, allowing subsequent RBAC guards (like `RequireRole("admin")`) to block unauthorized access with 403 Forbidden.'
+    suggestedAnswer: {
+      id: 'Gunakan Pointer Receiver (*T) jika method perlu memutasi isi struct atau struct memiliki banyak data untuk mencegah copy memori berlebih. Gunakan Value Receiver jika struct kecil dan immutable. Variabel pointer sering mengalami escape analysis dan dialokasikan ke Heap, yang menambah beban Garbage Collector.',
+      en: 'Use pointer receivers if you need to mutate the struct or if the struct is large to avoid copying overhead. Value receivers are ideal for small, immutable types. Note that pointers may escape to the heap, incurring GC overhead.'
+    }
+  },
+  {
+    id: 'go-interfaces-generics',
+    role: 'Backend Golang',
+    difficulty: 'Senior',
+    topic: 'Golang',
+    categoryLabel: { id: 'Go Advanced', en: 'Go Advanced' },
+    context: 'Type System & Generic Repository',
+    question: {
+      id: 'Bagaimana pendekatan Anda memanfaatkan Go Generics (any / constraints) untuk membangun Generic Base Repository tanpa mengorbankan type safety?',
+      en: 'How do you leverage Go Generics (any / constraints) to construct a Generic Base Repository without sacrificing type safety?'
     },
-    interviewerInsight: {
-      id: 'Pewawancara menilai pemahaman Anda seputar keamanan token, pencegahan penyimpanan password plaintext, dan pemanfaatan middleware pipeline.',
-      en: 'Evaluates your security fundamentals, stateless authorization mechanics, and middleware pipeline design in Go.'
+    keyConcepts: [
+      'Type Parameters [T any]',
+      'Interface Contracts',
+      'Generic CRUD Operations',
+      'Compile-time Type Safety'
+    ],
+    explanation: {
+      id: 'Generics di Go memungkinkan pembuatan template CRUD repository untuk banyak entity tanpa perlu interface{} casting saat runtime.',
+      en: 'Go generics enable reusable CRUD repository implementations across multiple entities without runtime interface{} reflection overhead.'
+    },
+    suggestedAnswer: {
+      id: 'Saya mendefinisikan generic struct type BaseRepository[T any] struct { db *gorm.DB }. Method seperti FindByID(ctx, id) mengembalikan (*T, error) secara strongly typed saat compile time, mengurangi repetisi boilerplate query CRUD untuk puluhan domain entity.',
+      en: 'I define BaseRepository[T any] struct with typed methods like FindByID(ctx, id) returning (*T, error). This eliminates boilerplate code across entities while preserving compile-time type safety.'
     }
   },
 
   // ==========================================
-  // 2. APPLICATION SUPPORT & DATABASE (PLN ICON+)
+  // 2. SQL & DATABASE TOPICS
   // ==========================================
   {
-    id: 'app-support-slow-queries',
-    category: 'app-support',
-    categoryLabel: { id: 'App Support & Database', en: 'App Support & Database' },
-    difficulty: 'Intermediate',
+    id: 'sql-acid-transactions',
+    role: 'Backend Golang',
+    difficulty: 'Senior',
+    topic: 'SQL',
+    categoryLabel: { id: 'Database & SQL', en: 'Database & SQL' },
+    context: 'Proyek Go Banking Core & Tokopedia Marketplace Checkout',
+    question: {
+      id: 'Bagaimana Anda menangani transaksi database yang aman (ACID) dan mencegah race condition saat pengurangan stok atau transfer saldo?',
+      en: 'How do you handle ACID-compliant database transactions and prevent race conditions during stock decrements or balance transfers?'
+    },
+    keyConcepts: [
+      'ACID Transactions (tx.Begin, Commit, Rollback)',
+      'Row-Level Locking (SELECT ... FOR UPDATE)',
+      'Pessimistic vs Optimistic Locking',
+      'Connection Pooling'
+    ],
+    explanation: {
+      id: 'Transaksi ACID menjamin bahwa semua query berhasil secara utuh (Atomicity) atau di-rollback jika salah satu gagal, dengan row-level lock untuk mengisolasi mutasi saldo.',
+      en: 'ACID transactions ensure complete atomic execution or rollback upon error, utilizing row-level locks to serialize balance or inventory modifications.'
+    },
+    suggestedAnswer: {
+      id: 'Saya membungkus seluruh query mutasi dalam database transaction (tx.Begin). Saya menerapkan row-level lock (SELECT FOR UPDATE) pada baris target untuk mencegah transaksi konkuren lain membaca saldo basi. Jika terjadi error atau stok tidak mencukupi, otomatis dipanggil tx.Rollback().',
+      en: 'I wrap mutations in a database transaction (tx.Begin) with row-level locking (SELECT FOR UPDATE) on target rows. If any condition fails, an immediate rollback triggers, preventing partial updates.'
+    },
+    codeSnippet: {
+      lang: 'go',
+      code: `tx := db.Begin()
+defer func() { if r := recover(); r != nil { tx.Rollback() } }()
+
+res := tx.Model(&Product{}).
+    Where("id = ? AND stock >= ?", productID, qty).
+    Update("stock", gorm.Expr("stock - ?", qty))
+
+if res.RowsAffected == 0 {
+    tx.Rollback()
+    return errors.New("insufficient stock")
+}
+return tx.Commit().Error`
+    }
+  },
+  {
+    id: 'db-slow-query-explain',
+    role: 'Backend Golang',
+    difficulty: 'Middle',
+    topic: 'Database',
+    categoryLabel: { id: 'Database Optimization', en: 'Database Optimization' },
     context: '2+ Tahun Pengalaman Application Support di PT PLN Icon+',
     question: {
       id: 'Bagaimana langkah terstruktur Anda ketika menerima laporan bahwa aplikasi operasional mengalami perlambatan akibat kendala query database?',
-      en: 'What is your structured troubleshooting procedure when receiving reports of operational application slowdowns caused by database query bottlenecks?'
+      en: 'What is your structured troubleshooting procedure when investigating operational application slowdowns caused by database queries?'
     },
     keyConcepts: [
-      'Query Execution Plan (EXPLAIN ANALYZE)',
-      'Table Indexing (B-Tree, Composite Indexes)',
-      'Database Connection Pool Saturation',
-      'Slow Query Logs & Incident Documentation'
+      'EXPLAIN ANALYZE',
+      'B-Tree & Composite Indexing',
+      'Sequential Scan vs Index Scan',
+      'Database Connection Pool Saturation'
     ],
-    starAnswer: {
-      id: {
-        situation: 'Di PT PLN Icon+, sistem operasional terkadang mengalami lonjakan waktu respon (latency) pada jam sibuk saat pengguna mengeksekusi laporan atau transaksi harian.',
-        task: 'Mendiagnosis akar masalah perlambatan, memulihkan performa layanan, dan memberikan rekomendasi teknis kepada tim engineering.',
-        action: 'Pertama, saya memeriksa log aplikasi dan slow query log di PostgreSQL/Oracle. Kedua, saya menjalankan `EXPLAIN ANALYZE` pada query terkait untuk mendeteksi Full Table Scan vs Index Scan. Ketiga, saya mengecek status connection pool dan lock contention. Terakhir, saya membuat indexing rekomendasi dan berkoordinasi dengan developer.',
-        result: 'Waktu eksekusi query berkurang signifikan dan alur operasional kembali berjalan dalam batas SLA resmi.'
-      },
-      en: {
-        situation: 'At PT PLN Icon+, operational systems experienced peak-hour latency spikes during heavy daily transaction reporting.',
-        task: 'Diagnose the root cause of the slowdown, restore SLA performance, and document actionable fixes for the development team.',
-        action: 'Inspected application error logs and slow query logs. Executed `EXPLAIN ANALYZE` to identify sequential scans versus index scans. Verified database connection pool saturation and table lock states, then formulated indexing and query restructuring recommendations.',
-        result: 'Drastically reduced query execution time, resolved latency bottlenecks, and restored normal operational SLA.'
-      }
+    explanation: {
+      id: 'Troubleshooting database dilakukan dengan mengekstrak slow query log, menganalisis cost execution plan via EXPLAIN ANALYZE, dan menambahkan indexing pada kolom filter WHERE/JOIN.',
+      en: 'Database troubleshooting involves inspecting slow query logs, profiling execution plans with EXPLAIN ANALYZE, and indexing high-cardinality filter columns.'
     },
-    modelAnswer: {
-      id: 'Langkah saya: 1) Identifikasi query spesifik dari slow log atau metrik APM, 2) Jalankan `EXPLAIN ANALYZE` untuk melihat apakah ada Seq Scan pada tabel berukuran jutaan baris, 3) Cek apakah kolom filter (WHERE, JOIN, ORDER BY) memiliki Index B-Tree atau composite index yang sesuai, 4) Periksa apakah connection pool habis (exhausted), 5) Dokumentasikan hasil investigasi dan solusi ke tiket pelaporan engineering.',
-      en: 'My approach: 1) Identify the problematic query via slow query logs or APM metrics, 2) Run `EXPLAIN ANALYZE` to pinpoint sequential scans or costly nested loops, 3) Verify if WHERE, JOIN, and ORDER BY clauses have matching B-Tree or composite indexes, 4) Check for connection pool exhaustion, and 5) Document findings and collaborate with developers on the patch.'
-    },
-    interviewerInsight: {
-      id: 'Menunjukkan pengalaman nyata dalam troubleshooting data di lingkungan enterprise dan pemahaman mendalam tentang relasional database.',
-      en: 'Demonstrates authentic enterprise troubleshooting experience and practical relational database query optimization knowledge.'
+    suggestedAnswer: {
+      id: 'Langkah saya: 1) Tangkap query bermasalah dari slow query log, 2) Jalankan EXPLAIN ANALYZE untuk mendeteksi Full Table Scan, 3) Buat Index B-Tree atau Composite Index pada kolom WHERE dan JOIN, 4) Cek status database connection pool agar koneksi tidak exhaust.',
+      en: 'My approach: 1) Locate slow queries via logs, 2) Run EXPLAIN ANALYZE to identify sequential scans, 3) Add B-Tree or composite indexes on WHERE/JOIN clauses, 4) Validate connection pool thresholds.'
     }
   },
   {
-    id: 'app-support-incident-handling',
-    category: 'app-support',
-    categoryLabel: { id: 'App Support & Database', en: 'App Support & Database' },
-    difficulty: 'Intermediate',
-    context: 'Incident Response & SLA Management di PT PLN Icon+',
+    id: 'sql-indexing-composite',
+    role: 'Backend Golang',
+    difficulty: 'Junior',
+    topic: 'SQL',
+    categoryLabel: { id: 'SQL Indexing', en: 'SQL Indexing' },
+    context: 'E-commerce Order Search Query',
     question: {
-      id: 'Bagaimana Anda menangani insiden sistem kritis di mana aplikasi operasional down atau mengalami anomali data di jam kerja?',
-      en: 'How do you handle a critical production incident where an operational system goes down or exhibits data anomalies during business hours?'
+      id: 'Bagaimana aturan Leftmost Prefix pada Composite Index di PostgreSQL atau MySQL dan kapan index tersebut tidak terpakai?',
+      en: 'How does the Leftmost Prefix rule work for composite indexes in PostgreSQL/MySQL, and when is the index bypassed?'
     },
     keyConcepts: [
-      'Incident Triage & Severity Classification',
-      'System Health Checks & Log Isolation',
-      'SLA Timelines & Stakeholder Communication',
-      'Post-Mortem & Preventative Documentation'
+      'Composite Index (col1, col2, col3)',
+      'Leftmost Prefix Rule',
+      'Wildcard Prefix Queries (%keyword)',
+      'Index Skip Scan vs Full Scan'
     ],
-    starAnswer: {
-      id: {
-        situation: 'Terjadi anomali pada sistem di mana pengguna tidak dapat melakukan pemrosesan data operasional harian.',
-        task: 'Melakukan mitigasi darurat dalam target waktu SLA, menstabilkan layanan, dan mencari root cause.',
-        action: 'Saya mengisolasi log error terkini di server, memverifikasi status koneksi service ke database, mengeksekusi data validation check, dan segera berkoordinasi secara terstruktur dengan tim developer untuk menerapkan hotfix darurat.',
-        result: 'Layanan operasional berhasil dipulihkan dalam batas waktu SLA dan prosedur preventif didokumentasikan untuk mencegah insiden berulang.'
-      },
-      en: {
-        situation: 'An operational incident occurred where end-users were blocked from executing daily transactions.',
-        task: 'Execute immediate triage within SLA targets, restore service stability, and determine the exact root cause.',
-        action: 'Isolated recent error stack traces, verified microservice-to-database connection states, executed data integrity checks, and collaborated closely with engineering teams to deploy hotfixes.',
-        result: 'Restored service well within SLA limits and established preventative operational documentation to prevent recurrence.'
-      }
+    explanation: {
+      id: 'Composite index pada (A, B, C) hanya dapat digunakan jika klausa WHERE menyertakan kolom paling kiri (A). Jika query hanya memfilter kolom B atau C, index tidak dapat dioptimalkan secara optimal.',
+      en: 'A composite index on (A, B, C) is only utilized if the WHERE clause filters by the leftmost column (A). Filtering only B or C ignores the composite index.'
     },
-    modelAnswer: {
-      id: 'Prioritas utama adalah mitigasi cepat untuk meminimalkan dampak operasional: cek healthcheck service, isolasi log error terbaru, dan verifikasi status database. Setelah sistem pulih, saya melakukan investigasi mendalam terhadap root cause, mencatat timeline insiden, dan menyusun laporan post-mortem agar celah yang sama tidak terulang.',
-      en: 'The top priority is rapid mitigation to minimize operational downtime: check service health status, isolate error logs, and verify database integrity. Once stable, conduct root cause analysis, log the incident timeline, and formulate post-mortem documentation.'
-    },
-    interviewerInsight: {
-      id: 'Pewawancara ingin melihat ketenangan Anda di bawah tekanan dan metode sistematis dalam menangani masalah produksi.',
-      en: 'The interviewer wants to see your composure under pressure and structured problem-solving methodology in production environments.'
+    suggestedAnswer: {
+      id: 'Pada composite index (user_id, status, created_at), database hanya menggunakan index jika query memfilter user_id terlebih dahulu. Jika query langsung WHERE status = 1 tanpa user_id, index tidak terpakai (Full Scan). Urutan kolom index harus disesuaikan dengan kolom filter yang paling sering dan memiliki kardinalitas tinggi.',
+      en: 'On a composite index (user_id, status, created_at), queries must include user_id to trigger the index. Placing high-cardinality and most frequent filter columns on the left is crucial for query planner efficiency.'
     }
   },
 
   // ==========================================
-  // 3. FULLSTACK & FRONTEND (REACT / NEXT.JS)
+  // 3. REST API TOPICS
   // ==========================================
   {
-    id: 'fullstack-optimistic-ui',
-    category: 'fullstack-react',
-    categoryLabel: { id: 'Fullstack & React', en: 'Fullstack & React' },
-    difficulty: 'Intermediate',
-    context: 'Proyek Tokopedia Marketplace & BayE Next.js',
+    id: 'api-jwt-rbac-middleware',
+    role: 'Backend Golang',
+    difficulty: 'Middle',
+    topic: 'REST API',
+    categoryLabel: { id: 'API Security & Auth', en: 'API Security & Auth' },
+    context: 'Autentikasi & Otorisasi API',
     question: {
-      id: 'Bagaimana Anda merancang komunikasi antara Frontend React dan Backend Go agar pengalaman belanja terasa instan namun data tetap sinkron?',
-      en: 'How do you design communication between a React frontend and Go backend to deliver instantaneous shopping experiences while maintaining data synchronization?'
+      id: 'Bagaimana Anda merancang sistem autentikasi JWT dan otorisasi berbasis peran (RBAC) pada layanan RESTful API?',
+      en: 'How do you design JWT authentication and Role-Based Access Control (RBAC) middleware in a RESTful API service?'
     },
     keyConcepts: [
-      'Optimistic UI Updates',
-      'REST API JSON Envelopes',
-      'State Rollback on API Error',
-      'React useTransition & useMemo'
+      'JWT Claims & Signature Verification',
+      'Bcrypt Hashing',
+      'Stateless Request Context Injection',
+      'Role-Guard Middleware Pipeline'
     ],
-    starAnswer: {
-      id: {
-        situation: 'Pada antarmuka belanja e-commerce, pengguna menginginkan respon instan saat menambah item ke keranjang atau mengubah kuantitas tanpa menunggu round-trip network backend.',
-        task: 'Membangun interaksi antarmuka yang cepat di React namun tetap memastikan backend Go memvalidasi ketersediaan stok.',
-        action: 'Saya menerapkan pola Optimistic UI Update di React: state lokal keranjang langsung diupdate secara instan. Di latar belakang, request dikirim ke REST API Go. Jika backend mengembalikan error (misal: stok habis), React otomatis me-rollback state keranjang dan menampilkan toast notifikasi kesalahan.',
-        result: 'Pengalaman pengguna terasa sangat responsif (60 FPS) tanpa ada data ghost item yang tidak valid di database.'
-      },
-      en: {
-        situation: 'In e-commerce interfaces, users expect zero-latency responses when adding items to the cart or updating quantities without waiting for network round-trips.',
-        task: 'Create an instantaneous UI in React while ensuring the Go backend strictly validates inventory limits.',
-        action: 'Implemented Optimistic UI state updates in React to reflect changes immediately, while dispatching asynchronous REST requests to the Go backend. If the backend returned a stock conflict error, the client state automatically rolled back with an informative toast alert.',
-        result: 'Delivered an ultra-responsive user experience while maintaining 100% data integrity with backend PostgreSQL inventory.'
-      }
+    explanation: {
+      id: 'JWT memvalidasi identitas user secara stateless tanpa session database, di mana klaim role diperiksa oleh middleware sebelum request mencapai handler bisnis.',
+      en: 'JWT provides stateless authentication where role claims are extracted and validated by guard middlewares before requests reach business handlers.'
     },
-    modelAnswer: {
-      id: 'Saya menggunakan pola Optimistic UI di React untuk mengubah state keranjang di layar seketika, lalu mengirimkan payload ke REST API Go. Jika response backend sukses (200 OK), data dikonfirmasi. Jika terjadi error (409 Conflict / stok habis), state frontend langsung di-rollback ke kondisi sebelumnya dengan pesan peringatan yang ramah.',
-      en: 'I utilize Optimistic UI patterns in React to instantly mutate the cart state on screen while dispatching the payload to the Go REST API. If the server responds with 200 OK, the state is committed; if it fails with 409 Conflict, the UI smoothly rolls back to the prior state with a clear feedback message.'
+    suggestedAnswer: {
+      id: 'Password di-hash dengan Bcrypt saat registrasi. Saat login, server menerbitkan JWT dengan claims user_id dan role. Middleware mengekstrak token dari header Authorization Bearer, memvalidasi signature, lalu menyuntikkan user context ke request untuk diverifikasi oleh guard role berikutnya (misal: RequireRole("admin")).',
+      en: 'Passwords are encrypted with Bcrypt. Upon login, the server issues signed JWT tokens containing user ID and role claims. Middleware intercepts the Authorization header, validates signatures, and injects context for RBAC route guards.'
+    }
+  },
+  {
+    id: 'api-idempotency-rest',
+    role: 'Backend Golang',
+    difficulty: 'Senior',
+    topic: 'REST API',
+    categoryLabel: { id: 'API Reliability', en: 'API Reliability' },
+    context: 'Payment & Order REST API Integration',
+    question: {
+      id: 'Apa itu Idempotency pada REST API dan bagaimana cara mengimplementasikannya pada endpoint checkout atau pembayaran?',
+      en: 'What is API Idempotency and how do you implement it on payment or checkout endpoints to prevent duplicate charges?'
     },
-    interviewerInsight: {
-      id: 'Menilai kemampuan Anda dalam memadukan keahlian frontend React dengan pemahaman reliabilitas backend.',
-      en: 'Evaluates your ability to balance frontend user delight with backend data validation and rollback mechanisms.'
+    keyConcepts: [
+      'Idempotency Key (UUID header)',
+      'Distributed Lock / Redis Cache',
+      'Safe Retry Mechanisms',
+      'HTTP 409 Conflict vs 200 OK Cached Response'
+    ],
+    explanation: {
+      id: 'Idempotency memastikan bahwa request identik yang dikirim berkali-kali (akibat network retry) hanya menghasilkan efek mutasi satu kali saja pada sistem database.',
+      en: 'Idempotency ensures that identical requests submitted multiple times (e.g. network timeouts) execute side-effects exactly once.'
+    },
+    suggestedAnswer: {
+      id: 'Klien menyertakan Idempotency-Key (UUID) di header request. Backend memeriksa key tersebut di Redis dengan atomic SETNX. Jika key sudah ada, server langsung mengembalikan response transaksi sebelumnya tanpa memotong saldo ulang.',
+      en: 'Clients include an Idempotency-Key header. The backend checks the key in Redis using SETNX. If already processed, the cached response returns without re-executing checkout logic.'
+    }
+  },
+  {
+    id: 'api-rate-limiting-circuit',
+    role: 'Backend Golang',
+    difficulty: 'Senior',
+    topic: 'REST API',
+    categoryLabel: { id: 'API Architecture', en: 'API Architecture' },
+    context: 'High-Traffic API Gateway Protection',
+    question: {
+      id: 'Bagaimana Anda menerapkan Rate Limiting (Token Bucket) dan Circuit Breaker pada backend API untuk mencegah server crash akibat lonjakan traffic atau downstream failure?',
+      en: 'How do you implement Rate Limiting (Token Bucket) and Circuit Breaker in backend APIs to prevent cascades and overload?'
+    },
+    keyConcepts: [
+      'Token Bucket / Leaky Bucket Algorithm',
+      'Redis Distributed Rate Limiter',
+      'Circuit Breaker States (Closed, Open, Half-Open)',
+      'HTTP 429 Too Many Requests & 503 Service Unavailable'
+    ],
+    explanation: {
+      id: 'Rate limiting membatasi frekuensi request per client IP/user ID menggunakan algoritma Token Bucket, sedangkan Circuit Breaker memutuskan koneksi ke service yang down secara cepat untuk mencegah starvation.',
+      en: 'Rate limiting throttles requests per client via Token Bucket algorithms, while Circuit Breakers fail-fast upon downstream failures to avoid thread starvation.'
+    },
+    suggestedAnswer: {
+      id: 'Saya menggunakan Redis dengan algoritma Token Bucket pada layer middleware untuk mengembalikan HTTP 429 jika kuota per menit habis. Untuk panggilan ke third-party payment gateway, saya memasang library Circuit Breaker (seperti sony/gobreaker): jika 5 error beruntun terjadi, circuit menjadi Open dan langsung mengembalikan fallback error tanpa membebani server.',
+      en: 'I implement a Redis Token Bucket middleware returning HTTP 429 upon quota breach. For external dependency calls, I wrap clients in a Circuit Breaker (Closed -> Open -> Half-Open) to fail immediately during outages.'
     }
   },
 
   // ==========================================
-  // 4. BEHAVIORAL & HR (METODE STAR)
+  // 4. DOCKER & INFRASTRUCTURE TOPICS
   // ==========================================
   {
-    id: 'behavioral-tell-me-about-yourself',
-    category: 'behavioral-hr',
-    categoryLabel: { id: 'Behavioral & HR', en: 'Behavioral & HR' },
-    difficulty: 'Fundamental',
-    context: 'Perkenalan Diri & Positioning Karir',
+    id: 'docker-multi-stage-builds',
+    role: 'Backend Golang',
+    difficulty: 'Junior',
+    topic: 'Docker',
+    categoryLabel: { id: 'Containerization', en: 'Containerization' },
+    context: 'Production Deployment Dockerization',
     question: {
-      id: 'Ceritakan tentang diri Anda dan apa yang membedakan Anda dengan kandidat backend lainnya?',
-      en: 'Tell me about yourself and what sets you apart from other backend developer candidates?'
+      id: 'Mengapa Multi-stage Build penting saat membuat Dockerfile untuk aplikasi Go atau Node.js dan bagaimana cara kerjanya?',
+      en: 'Why are Multi-stage builds essential when containerizing Go or Node.js applications, and how do they work?'
     },
     keyConcepts: [
-      '2+ Tahun Application Support di PT PLN Icon+',
-      'Lulusan Ilmu Komputer Universitas AMIKOM (IPK 3.42)',
-      'Hands-on Go, PostgreSQL, Clean Architecture',
-      'Jembatan antara Operasional Produksi & Software Engineering'
+      'Multi-Stage Dockerfile',
+      'Builder Stage vs Runtime Stage',
+      'Minimal Base Images (Alpine/Scratch)',
+      'Smaller Image Size & Reduced Attack Surface'
     ],
-    starAnswer: {
-      id: {
-        situation: 'Saya adalah lulusan Ilmu Komputer dari Universitas AMIKOM (IPK 3.42) dengan 2+ tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+.',
-        task: 'Membawa pengalaman operasional sistem nyata ke dalam pengembangan perangkat lunak backend.',
-        action: 'Selama di PLN Icon+, saya terbiasa melakukan troubleshooting database relasional, investigasi query lambat, dan memantau stabilitas sistem. Di samping itu, saya aktif membangun 20+ proyek mandiri menggunakan Go (Golang), Clean Architecture, PostgreSQL, dan React.',
-        result: 'Kombinasi ini membuat saya tidak hanya bisa menulis kode fitur, tetapi juga sangat peduli pada efisiensi query database, error handling yang aman, dan kemudahan pemeliharaan sistem di lingkungan produksi.'
-      },
-      en: {
-        situation: 'I am a Computer Science graduate from Universitas AMIKOM (GPA 3.42) with 2+ years of professional experience in Application Support at PT PLN Icon+.',
-        task: 'Bridging practical operational insights into high-quality backend software engineering.',
-        action: 'At PLN Icon+, I actively diagnosed relational database bottlenecks, resolved system operational incidents, and collaborated with engineering teams. Simultaneously, I developed 20+ applications utilizing Go (Golang), Clean Architecture, PostgreSQL, and React.',
-        result: 'This distinct background means I write code with a deep production mindset—prioritizing efficient SQL queries, defensive error handling, and robust maintainability.'
-      }
+    explanation: {
+      id: 'Multi-stage build memisahkan tahap kompilasi kode (yang membutuhkan compiler berat) dari tahap runtime akhir, menghasilkan container image yang sangat kecil (hanya beberapa MB).',
+      en: 'Multi-stage builds decouple build dependencies from the final minimal runtime image, shrinking image sizes from hundreds of MBs down to lightweight binaries.'
     },
-    modelAnswer: {
-      id: 'Saya adalah Software Developer berfokus pada Backend Go dengan fondasi 2+ tahun pengalaman profesional Application Support di PT PLN Icon+. Keunggulan utama saya adalah pola pikir produksi: berkat pengalaman bertahun-tahun menangani insiden operasional dan troubleshooting database, saya terbiasa menulis kode yang defensif, mengoptimalkan query database, dan menerapkan Clean Architecture agar sistem mudah di-maintain dan di-scale.',
-      en: 'I am a Software Developer focused on Go backend development with 2+ years of professional Application Support experience at PT PLN Icon+. My key differentiator is a production-first mindset: having spent years troubleshooting operational database issues and production logs, I write defensive, well-structured Clean Architecture code with optimized SQL queries.'
+    suggestedAnswer: {
+      id: 'Stage pertama (Builder) menggunakan image lengkap (golang:alpine) untuk compile binary. Stage kedua (Final) menggunakan image minimal (scratch / alpine) dan hanya menyalin binary yang sudah ter-compile. Hasilnya ukuran image turun drastis dari 800MB menjadi <20MB serta lebih aman dari celah vulnerabilities.',
+      en: 'The Builder stage uses full SDK images to compile the binary, while the final stage copies only the compiled executable into a minimal scratch/alpine image, reducing image sizes from ~800MB to <20MB.'
     },
-    interviewerInsight: {
-      id: 'HR & Engineering Lead ingin melihat kejelasan narasi karir, kejujuran pengalaman, dan bagaimana background Anda memberi nilai tambah nyata bagi tim.',
-      en: 'HR and Engineering Leads look for authentic storytelling, coherent career trajectory, and unique value-adds derived from real support experience.'
+    codeSnippet: {
+      lang: 'dockerfile',
+      code: `FROM golang:1.22-alpine AS builder
+WORKDIR /app
+COPY . .
+RUN CGO_ENABLED=0 go build -o main .
+
+FROM alpine:latest
+WORKDIR /root/
+COPY --from=builder /app/main .
+CMD ["./main"]`
     }
   },
   {
-    id: 'behavioral-why-transition',
-    category: 'behavioral-hr',
-    categoryLabel: { id: 'Behavioral & HR', en: 'Behavioral & HR' },
-    difficulty: 'Fundamental',
-    context: 'Transisi Karir: Application Support ke Backend Developer',
+    id: 'docker-compose-microservices',
+    role: 'Backend Golang',
+    difficulty: 'Middle',
+    topic: 'Docker',
+    categoryLabel: { id: 'Docker Orchestration', en: 'Docker Orchestration' },
+    context: 'Local Microservice Environment Setup',
     question: {
-      id: 'Mengapa Anda memutuskan untuk berpindah dari peran Application Support ke Software Engineering / Backend Developer?',
-      en: 'Why did you decide to transition from an Application Support role into Software Engineering / Backend Development?'
+      id: 'Bagaimana Anda mengonfigurasi Docker Compose untuk menjalankan service Go API, PostgreSQL, Redis, dan Kafka dengan volume persistence dan custom bridge network?',
+      en: 'How do you configure Docker Compose to run a Go API, PostgreSQL, Redis, and Kafka with persistent volumes and isolated bridge networking?'
     },
     keyConcepts: [
-      'Proactive Problem Prevention vs Reactive Fixes',
-      'Passion for Software Architecture & Go',
-      'Strong Foundation in Database & System Monitoring'
+      'Docker Compose Networks (Bridge)',
+      'Named Volumes Persistence',
+      'Environment Variables & Secrets',
+      'depends_on & Healthchecks'
     ],
-    starAnswer: {
-      id: {
-        situation: 'Selama 2+ tahun di Application Support, saya sering menemukan kendala sistem yang sebenarnya bisa dicegah sejak tahap arsitektur kode dan desain database.',
-        task: 'Mengalihkan fokus dari sekadar memperbaiki kendala di hilir menjadi membangun solusi yang kokoh di hulu (tahap pengembangan).',
-        action: 'Saya memperdalam rekayasa perangkat lunak backend secara intensif, mempelajari bahasa Go, Clean Architecture, relational database schema design, dan membangun berbagai proyek fullstack & API e-commerce mandiri.',
-        result: 'Saya siap berkontribusi langsung sebagai Backend Developer yang proaktif dalam membangun sistem tangguh sejak hari pertama.'
-      },
-      en: {
-        situation: 'During 2+ years in Application Support, I frequently analyzed production bottlenecks that could have been prevented during architecture and database schema design.',
-        task: 'Transition from resolving downstream production symptoms to engineering resilient upstream solutions.',
-        action: 'Deepened my backend engineering skills in Go, Clean Architecture, relational schema modeling, and built practical fullstack and REST API systems.',
-        result: 'Positioned to contribute as a proactive Backend Developer who builds scalable, resilient systems from the ground up.'
-      }
+    explanation: {
+      id: 'Docker Compose menghubungkan berbagai container dalam satu isolated bridge network sehingga container bisa saling memanggil melalui service name DNS lokal.',
+      en: 'Docker Compose orchestrates multi-container environments on private bridge networks, resolving dependencies via internal DNS service discovery.'
     },
-    modelAnswer: {
-      id: 'Di Application Support, peran saya lebih berfokus pada mitigasi masalah yang sudah terjadi di produksi. Dari situ saya menyadari bahwa ketertarikan terbesar saya adalah mendesain dan membangun sistem yang handal sejak awal. Pengalaman support memberi saya pemahaman tajam tentang apa yang sering rusak di produksi, dan saya ingin memanfaatkan wawasan tersebut untuk menulis kode backend yang lebih berkualitas dan tahan banting.',
-      en: 'In Application Support, the focus is resolving problems after they occur in production. That experience made me realize my true passion is designing and building resilient systems from day one. My support background gives me firsthand insight into common production failure points, which I now channel into writing robust, scalable backend services.'
+    suggestedAnswer: {
+      id: 'Saya mendefinisikan services di docker-compose.yml, menetapkan custom network backend-net, me-mount named volume postgres_data untuk persistensi database, dan mengatur healthcheck postgres_isready agar Go API menunggu database siap sebelum booting.',
+      en: 'I declare services on a dedicated backend bridge network, bind named volumes for PostgreSQL data persistence, and configure depends_on with health checks to ensure relational DBs are ready before API boot.'
+    }
+  },
+
+  // ==========================================
+  // 5. REDIS & CACHING TOPICS
+  // ==========================================
+  {
+    id: 'redis-cache-aside-pattern',
+    role: 'Backend Golang',
+    difficulty: 'Middle',
+    topic: 'Redis',
+    categoryLabel: { id: 'Distributed Caching', en: 'Distributed Caching' },
+    context: 'E-Commerce Product Catalog High Concurrency',
+    question: {
+      id: 'Bagaimana cara kerja pola Cache-Aside (Lazy Loading) menggunakan Redis dan bagaimana Anda menangani Cache Invalidation saat data di database berubah?',
+      en: 'How does the Cache-Aside pattern work with Redis, and how do you handle cache invalidation when database records are updated?'
     },
-    interviewerInsight: {
-      id: 'Pewawancara ingin melihat motivasi intrinsik dan memastikan transisi karir Anda didasari komitmen belajar yang kuat serta pembuktian proyek nyata.',
-      en: 'Interviewers seek strong intrinsic motivation and tangible proof of continuous learning through portfolio projects.'
+    keyConcepts: [
+      'Cache-Aside (Lazy Loading)',
+      'TTL (Time-To-Live) Expiry',
+      'Cache Invalidation on Mutation',
+      'Cache Stampede / Thundering Herd Prevention'
+    ],
+    explanation: {
+      id: 'Cache-Aside memeriksa Redis terlebih dahulu. Jika miss, query diambil dari PostgreSQL lalu disimpan ke Redis dengan TTL. Saat ada update data, key Redis dihapus.',
+      en: 'Cache-Aside queries Redis first; upon cache misses, it fetches from PostgreSQL and populates Redis with a TTL. Database updates invalidate or purge the cached key.'
+    },
+    suggestedAnswer: {
+      id: 'Saat membaca data, aplikasi mengecek Redis terlebih dahulu (Cache Hit). Jika tidak ada (Cache Miss), ambil dari PostgreSQL, simpan ke Redis dengan TTL (misal 10 menit), lalu kirim ke klien. Saat data di-update di database, hapus key terkait di Redis agar request berikutnya mengambil data terbaru.',
+      en: 'Read flows query Redis first. On cache misses, query PostgreSQL, populate Redis with a TTL, and return. When updates occur, explicitly delete the Redis key to force fresh hydration.'
+    }
+  },
+  {
+    id: 'redis-distributed-lock',
+    role: 'Backend Golang',
+    difficulty: 'Senior',
+    topic: 'Redis',
+    categoryLabel: { id: 'Distributed Systems', en: 'Distributed Systems' },
+    context: 'Flash Sale Flash Deals Concurrency',
+    question: {
+      id: 'Bagaimana cara mengimplementasikan Distributed Lock di Redis (SET resource_name my_random_value NX PX 30000) dan apa potensi resiko yang harus diwaspadai?',
+      en: 'How do you implement Distributed Locking in Redis with atomic SET NX PX and what key failure modes must be handled?'
+    },
+    keyConcepts: [
+      'SET NX PX (Atomic Acquire)',
+      'Random UUID Owner Value',
+      'Lua Script for Safe Release (DEL if owner matches)',
+      'Lock Expiration vs Long Running Job'
+    ],
+    explanation: {
+      id: 'Distributed lock mencegah beberapa instance backend mengeksekusi critical section yang sama, dengan pelepasan kunci menggunakan Lua script agar tidak menghapus lock milik worker lain.',
+      en: 'Distributed locking coordinates multi-instance microservices on critical sections, requiring atomic release via Lua scripts to prevent deleting locks held by subsequent holders.'
+    },
+    suggestedAnswer: {
+      id: 'Kunci di-acquire dengan SET lock_key unique_uuid NX PX 5000. Untuk melepas kunci, wajib gunakan Lua script yang memverifikasi bahwa unique_uuid sama dengan pemegang kunci sebelum menjalankan DEL, guna mencegah terhapusnya kunci milik worker lain yang baru dibuat jika proses pertama melebihi TTL.',
+      en: 'Acquire via SET lock_key uuid NX PX 5000. Release exclusively via Lua script comparing the stored UUID before DEL to ensure you only unlock your own token.'
+    }
+  },
+
+  // ==========================================
+  // 6. KAFKA & MESSAGE BROKERS TOPICS
+  // ==========================================
+  {
+    id: 'kafka-event-driven-architecture',
+    role: 'Backend Golang',
+    difficulty: 'Senior',
+    topic: 'Kafka',
+    categoryLabel: { id: 'Event-Driven Systems', en: 'Event-Driven Systems' },
+    context: 'Order Processing & Notification Asynchronous Pipelines',
+    question: {
+      id: 'Bagaimana Anda merancang alur pesan asinkron menggunakan Apache Kafka dan apa strategi untuk memastikan pesan diproses tepat satu kali (At-least-once vs Exactly-once)?',
+      en: 'How do you design asynchronous messaging with Apache Kafka and ensure messages are processed reliably without duplicates?'
+    },
+    keyConcepts: [
+      'Topics, Partitions & Consumer Groups',
+      'At-Least-Once Delivery & Idempotent Consumers',
+      'Kafka Producer Acks (acks=all)',
+      'Dead Letter Queue (DLQ)'
+    ],
+    explanation: {
+      id: 'Kafka memisahkan service secara asinkron menggunakan event streaming, di mana consumer memproses event secara idempotent untuk menangani re-delivery pesan duplikat.',
+      en: 'Kafka decouples microservices through high-throughput event streaming, requiring consumers to implement idempotency guards against at-least-once duplicate messages.'
+    },
+    suggestedAnswer: {
+      id: 'Producer mem-publish event (misal: OrderCreated) ke Kafka topic dengan acks=all. Consumer di notification service dan inventory service membaca pesan secara independen via Consumer Group. Di sisi consumer, saya mencatat EventID di database/Redis untuk mencegah pemrosesan ganda jika terjadi re-balancing.',
+      en: 'Producers publish events (e.g. OrderCreated) with acks=all. Consumers process messages independently in consumer groups and record processed event IDs in storage to guarantee idempotency.'
+    }
+  },
+  {
+    id: 'kafka-consumer-lag-dlq',
+    role: 'Backend Golang',
+    difficulty: 'Middle',
+    topic: 'Kafka',
+    categoryLabel: { id: 'Message Queues', en: 'Message Queues' },
+    context: 'High-Volume Payment Notifications',
+    question: {
+      id: 'Apa penyebab Consumer Lag pada Kafka dan bagaimana penanganan Dead Letter Queue (DLQ) untuk pesan yang berulang kali gagal diproses (poison pill)?',
+      en: 'What causes Kafka Consumer Lag, and how do you design a Dead Letter Queue (DLQ) for poison pill messages?'
+    },
+    keyConcepts: [
+      'Consumer Lag & Processing Latency',
+      'Partition Rebalancing',
+      'Dead Letter Queue (DLQ Topic)',
+      'Exponential Backoff Retries'
+    ],
+    explanation: {
+      id: 'Consumer lag terjadi saat laju produksi pesan lebih cepat daripada kecepatan komputasi consumer. DLQ mengisolasi pesan error fatal agar tidak memblokir antrean pesan lainnya.',
+      en: 'Consumer lag emerges when production rates exceed consumer processing throughput. DLQs isolate unprocessable messages, unblocking the main partition pipeline.'
+    },
+    suggestedAnswer: {
+      id: 'Jika consumer gagal memproses pesan setelah 3x retry dengan backoff, pesan diteruskan ke topic DLQ (dead-letter-topic) dan offset di-commit agar partisi tidak terblokir. Tim support/engineer dapat menginvestigasi data poison pill di DLQ secara terpisah tanpa mengganggu antrean live.',
+      en: 'After configured retries with backoff, poison messages route to a dedicated DLQ topic, allowing offset commits and uninterrupted processing of remaining partitions.'
+    }
+  },
+
+  // ==========================================
+  // 7. GRPC & RPC PROTOCOLS
+  // ==========================================
+  {
+    id: 'grpc-protobuf-vs-rest',
+    role: 'Backend Golang',
+    difficulty: 'Middle',
+    topic: 'gRPC',
+    categoryLabel: { id: 'High-Performance RPC', en: 'High-Performance RPC' },
+    context: 'Internal Microservices Communication',
+    question: {
+      id: 'Apa perbedaan utama antara gRPC (Protocol Buffers) dan REST API (JSON) dan kapan sebaiknya menggunakan gRPC?',
+      en: 'What are the primary differences between gRPC (Protocol Buffers) and REST API (JSON), and when should you choose gRPC?'
+    },
+    keyConcepts: [
+      'Protocol Buffers (Binary Serialization)',
+      'HTTP/2 Multiplexing & Bidirectional Streaming',
+      'Strict Contract-First Schema (.proto)',
+      'Lower Latency & CPU Overhead'
+    ],
+    explanation: {
+      id: 'gRPC menggunakan binary protocol buffers di atas HTTP/2 yang jauh lebih cepat dan hemat bandwidth dibanding teks JSON, ideal untuk komunikasi antar-layanan internal (inter-service).',
+      en: 'gRPC uses binary Protocol Buffers over HTTP/2, offering lower network latency, streaming support, and strict schema contracts ideal for internal inter-service communication.'
+    },
+    suggestedAnswer: {
+      id: 'gRPC menggunakan format biner Protocol Buffers dan HTTP/2 multiplexing, menjadikannya 5-10x lebih cepat dan hemat payload dibanding REST JSON over HTTP/1.1. gRPC sangat ideal untuk komunikasi internal antar-microservice dengan throughput tinggi, sedangkan REST tetap lebih baik untuk public API yang diakses browser.',
+      en: 'gRPC serializes binary Protobuf over HTTP/2, delivering significantly lower latency and payload sizes than REST JSON. It is optimal for internal microservice communication, while REST remains standard for public client APIs.'
+    }
+  },
+  {
+    id: 'grpc-interceptors-auth',
+    role: 'Backend Golang',
+    difficulty: 'Senior',
+    topic: 'gRPC',
+    categoryLabel: { id: 'gRPC Middleware', en: 'gRPC Middleware' },
+    context: 'Internal Auth & Tracing via Metadata',
+    question: {
+      id: 'Bagaimana Anda menerapkan Unary dan Stream Interceptors pada gRPC Go untuk keperluan request logging, distributed tracing (OpenTelemetry), dan autentikasi token?',
+      en: 'How do you implement gRPC Unary and Stream Interceptors in Go for request logging, OpenTelemetry tracing, and metadata authentication?'
+    },
+    keyConcepts: [
+      'UnaryServerInterceptor & StreamServerInterceptor',
+      'gRPC Metadata Context (metadata.MD)',
+      'Status Codes (codes.Unauthenticated)',
+      'OpenTelemetry Context Propagation'
+    ],
+    explanation: {
+      id: 'Interceptor di gRPC bertindak seperti middleware di REST HTTP, mengekstrak metadata headers untuk memvalidasi auth token atau menyuntikkan trace context.',
+      en: 'gRPC interceptors provide middleware capabilities, parsing metadata headers for authentication, OpenTelemetry span extraction, and structured logging.'
+    },
+    suggestedAnswer: {
+      id: 'Saya membuat UnaryServerInterceptor yang membaca metadata dari ctx. Jika authorization token tidak ada atau invalid, kembalikan status.Errorf(codes.Unauthenticated). Untuk tracing, interceptor mengekstrak traceparent ID dan menyuntikkannya ke context span OpenTelemetry.',
+      en: 'I construct a UnaryServerInterceptor extracting incoming metadata from context, returning codes.Unauthenticated if claims fail. For distributed tracing, it injects trace IDs into OpenTelemetry spans.'
+    }
+  },
+
+  // ==========================================
+  // 8. SYSTEM DESIGN TOPICS
+  // ==========================================
+  {
+    id: 'sys-design-database-scaling',
+    role: 'Backend Golang',
+    difficulty: 'Senior',
+    topic: 'System Design',
+    categoryLabel: { id: 'System Architecture', en: 'System Architecture' },
+    context: 'High-Traffic Scaling & Read/Write Splitting',
+    question: {
+      id: 'Bagaimana strategi Anda dalam menskalakan database relasional ketika beban baca (Read) dan tulis (Write) melonjak tinggi?',
+      en: 'How do you scale a relational database architecture under high concurrent Read and Write traffic?'
+    },
+    keyConcepts: [
+      'Read/Write Splitting (Primary-Replica)',
+      'Database Sharding & Partitioning',
+      'Connection Pooling (PgBouncer)',
+      'Distributed Caching (Redis)'
+    ],
+    explanation: {
+      id: 'Skalabilitas database dicapai dengan memisahkan transaksi tulis ke Primary Database dan mengalirkan query baca ke Read Replicas, dipadukan dengan caching Redis di depannya.',
+      en: 'Database scaling involves routing write transactions to a primary node and balancing read queries across replicas, buffered by an upstream Redis cache.'
+    },
+    suggestedAnswer: {
+      id: 'Strategi bertahap: 1) Pasang Redis caching di depan untuk mengurangi 80% beban read query, 2) Terapkan Read/Write Splitting (Master untuk INSERT/UPDATE, Read Replicas untuk SELECT), 3) Gunakan connection pooler seperti PgBouncer, 4) Terapkan table partitioning atau database sharding berdasarkan UserID jika data mencapai puluhan juta baris.',
+      en: 'Layered strategy: 1) Cache high-read queries in Redis, 2) Implement Primary-Replica splitting (Write on Primary, Read on Replicas), 3) Deploy PgBouncer connection pooling, 4) Apply horizontal sharding by UserID for extreme volume.'
+    }
+  },
+  {
+    id: 'sys-design-url-shortener',
+    role: 'Fullstack',
+    difficulty: 'Middle',
+    topic: 'System Design',
+    categoryLabel: { id: 'System Design Interview', en: 'System Design Interview' },
+    context: 'High Scale URL Shortener (Bitly-like system)',
+    question: {
+      id: 'Bagaimana Anda merancang arsitektur URL Shortener (seperti Bitly) yang mampu menangani 100 juta URL dengan latency pengalihan < 20ms?',
+      en: 'How would you architect a high-scale URL Shortener (e.g. Bitly) handling 100M URLs with redirection latency < 20ms?'
+    },
+    keyConcepts: [
+      'Base62 Encoding vs MD5/SHA256 Hash',
+      'Distributed ID Generator (Snowflake)',
+      'Redis Cache for High Read Redirections',
+      'HTTP 301 Permanent vs 302 Temporary Redirect'
+    ],
+    explanation: {
+      id: 'URL shortener menggunakan distributed ID generator untuk menghasilkan angka integer unik 64-bit yang kemudian di-encode ke Base62, dengan cache Redis untuk melayani redirect dalam hitungan milidetik.',
+      en: 'URL shorteners generate unique numeric IDs encoded to Base62 strings, utilizing in-memory Redis caches to deliver sub-20ms HTTP 302 redirects.'
+    },
+    suggestedAnswer: {
+      id: '1) ID Generation: Gunakan distributed ID generator (Snowflake) lalu convert integer ke Base62 (7 karakter = 3.5 triliun kombinasi). 2) Storage: Simpan mapping di PostgreSQL dengan index unik pada short_code. 3) Caching: Simpan top 20% link terpopuler di Redis. 4) Routing: Gunakan HTTP 302 Found jika butuh analytics klik real-time, atau 301 untuk caching browser penuh.',
+      en: '1) Generate unique IDs with Snowflake, encoded to Base62. 2) Store in PostgreSQL indexed by short_code. 3) Cache active keys in Redis for lightning redirects. 4) Serve HTTP 302 for click analytics tracking.'
+    }
+  },
+
+  // ==========================================
+  // 9. BACKEND JAVA (SPRING BOOT)
+  // ==========================================
+  {
+    id: 'java-spring-security-jwt',
+    role: 'Backend Java',
+    difficulty: 'Middle',
+    topic: 'REST API',
+    categoryLabel: { id: 'Java Spring Boot', en: 'Java Spring Boot' },
+    context: 'AliExpress Clone (Java 17 & Spring Boot 3)',
+    question: {
+      id: 'Bagaimana cara kerja Spring Security Filter Chain dalam memproses autentikasi JWT pada aplikasi Spring Boot 3?',
+      en: 'How does the Spring Security Filter Chain process JWT authentication in a Spring Boot 3 application?'
+    },
+    keyConcepts: [
+      'SecurityFilterChain Bean',
+      'OncePerRequestFilter',
+      'UsernamePasswordAuthenticationToken',
+      'SecurityContextHolder'
+    ],
+    explanation: {
+      id: 'Spring Security memproses request melalui OncePerRequestFilter kustom yang memvalidasi header JWT dan menaruh token autentikasi ke SecurityContextHolder.',
+      en: 'Spring Security intercepts requests through a custom OncePerRequestFilter that parses JWT claims and registers authentication in the SecurityContextHolder.'
+    },
+    suggestedAnswer: {
+      id: 'Saya membuat custom filter yang mewarisi OncePerRequestFilter. Filter ini mengekstrak Bearer token dari header, memverifikasi tanda tangan JWT, mengekstrak user details, dan menyimpannya ke SecurityContextHolder.getContext().setAuthentication(). Dengan demikian, endpoint terlindungi secara deklaratif menggunakan anotasi @PreAuthorize.',
+      en: 'I implement a custom OncePerRequestFilter that extracts Bearer tokens, validates JWT claims, and registers authenticated principals into SecurityContextHolder for declarative @PreAuthorize authorization.'
+    }
+  },
+  {
+    id: 'java-hibernate-n-plus-1',
+    role: 'Backend Java',
+    difficulty: 'Senior',
+    topic: 'Database',
+    categoryLabel: { id: 'Hibernate & JPA', en: 'Hibernate & JPA' },
+    context: 'Enterprise JPA Performance Optimization',
+    question: {
+      id: 'Apa itu masalah N+1 Query pada Hibernate/Spring Data JPA dan bagaimana teknik terbaik untuk memperbaikinya (JOIN FETCH vs @EntityGraph)?',
+      en: 'What is the N+1 Query problem in Spring Data JPA and what are the best strategies to resolve it (JOIN FETCH vs @EntityGraph)?'
+    },
+    keyConcepts: [
+      'N+1 Query Problem',
+      'JOIN FETCH in JPQL',
+      '@EntityGraph Annotation',
+      'FetchType.LAZY vs EAGER'
+    ],
+    explanation: {
+      id: 'Masalah N+1 terjadi ketika query 1 record parent memicu N query tambahan untuk mengambil data relasi child. Solusinya adalah JOIN FETCH atau @EntityGraph untuk mengambilnya dalam satu SQL query.',
+      en: 'The N+1 problem occurs when fetching 1 parent collection triggers N separate child select queries. Mitigate via JPQL JOIN FETCH or @EntityGraph eager join fetching.'
+    },
+    suggestedAnswer: {
+      id: 'Selalu set relasi ke FetchType.LAZY secara default. Untuk query yang membutuhkan data relasi, gunakan JOIN FETCH di query JPQL kustom atau pasang anotasi @EntityGraph(attributePaths = {"orders"}) pada repository method agar Hibernate melakukan single SQL JOIN query.',
+      en: 'Default all associations to FetchType.LAZY. When relational data is needed, use JPQL JOIN FETCH or @EntityGraph(attributePaths = {"relations"}) to enforce single SQL join execution.'
+    }
+  },
+
+  // ==========================================
+  // 10. FRONTEND & FULLSTACK TOPICS
+  // ==========================================
+  {
+    id: 'frontend-react-optimistic-ui',
+    role: 'Frontend',
+    difficulty: 'Middle',
+    topic: 'REST API',
+    categoryLabel: { id: 'Frontend State', en: 'Frontend State' },
+    context: 'React & Next.js Shopping Cart',
+    question: {
+      id: 'Bagaimana Anda menerapkan Optimistic UI Update pada keranjang belanja React dan menangani error rollback saat API gagal?',
+      en: 'How do you implement Optimistic UI updates on a React shopping cart and handle state rollback upon API errors?'
+    },
+    keyConcepts: [
+      'Optimistic State Update',
+      'Rollback on Error Catch',
+      'Toast Feedback Notification',
+      'React useTransition'
+    ],
+    explanation: {
+      id: 'Optimistic UI langsung memperbarui tampilan antarmuka sebelum request network selesai, dan segera mengembalikan state ke kondisi awal jika backend merespons error.',
+      en: 'Optimistic UI updates local state immediately before network resolution, restoring the previous snapshot if the backend rejects the request.'
+    },
+    suggestedAnswer: {
+      id: 'State keranjang lokal langsung diubah seketika saat tombol ditekan sambil menyimpan snapshot state sebelumnya. Jika request REST API mengembalikan error (misal: 409 Conflict / stok habis), aplikasi me-restore snapshot sebelumnya dan menampilkan notifikasi kesalahan.',
+      en: 'Mutate local cart state instantly while retaining a prior snapshot. If the API returns an error (e.g. 409 stock exhausted), revert state to the snapshot and display a toast alert.'
+    }
+  },
+  {
+    id: 'fullstack-nextjs-rsc-client',
+    role: 'Fullstack',
+    difficulty: 'Senior',
+    topic: 'REST API',
+    categoryLabel: { id: 'Next.js App Router', en: 'Next.js App Router' },
+    context: 'SSR & Client Interactivity in Next.js 14+',
+    question: {
+      id: 'Kapan harus menggunakan React Server Components (RSC) vs Client Components ("use client") di Next.js App Router dan bagaimana cara melempar data antar-keduanya secara efisien?',
+      en: 'When should you use React Server Components (RSC) vs Client Components ("use client") in Next.js App Router, and how do you pass data efficiently?'
+    },
+    keyConcepts: [
+      'React Server Components (RSC)',
+      'Client Components ("use client")',
+      'Zero Bundle Size & Direct DB Fetch',
+      'Interactivity (useState/useEffect/onClick)'
+    ],
+    explanation: {
+      id: 'RSC dieksekusi di server untuk fetch data cepat tanpa menambah bundle JS browser, sedangkan Client Components dipakai untuk elemen interaktif seperti event click dan state form.',
+      en: 'RSC executes on the server for zero client bundle overhead and secure direct fetching, while Client Components handle user event listeners and interactive state.'
+    },
+    suggestedAnswer: {
+      id: 'Gunakan Server Component secara default untuk layout, halaman data fetching, dan SEO (zero bundle size). Tandai dengan "use client" hanya pada sub-komponen interaktif (seperti modal, form input, audio player). Data dioper dari Server Component ke Client Component melalui serializable Props.',
+      en: 'Default to Server Components for SSR layouts and data fetching. Restrict "use client" to leaf components requiring interactive state or browser APIs, passing data down via serializable props.'
     }
   }
 ];

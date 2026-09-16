@@ -53,7 +53,9 @@ import {
   interviewQuestions,
   technicalCheatSheet,
   InterviewQuestion,
-  InterviewCategory
+  PracticeRole,
+  PracticeDifficulty,
+  PracticeTopic
 } from '../lib/data/interviewData';
 import {
   initialPracticeStats,
@@ -67,8 +69,9 @@ import {
   SkillProgress,
   ActivityItem
 } from '../lib/data/dashboardData';
+import PracticeFeature from './components/PracticeFeature';
 
-type MainTab = 'dashboard' | 'pitch' | 'studio' | 'syllabus' | 'cheatsheet';
+type MainTab = 'dashboard' | 'practice' | 'pitch' | 'syllabus' | 'cheatsheet';
 type PitchLength = 'comprehensive' | 'concise';
 type LangMode = 'id' | 'en';
 
@@ -163,32 +166,18 @@ export default function InterviewPracticePage() {
   const [activeTab, setActiveTab] = useState<MainTab>('dashboard');
   const [pitchLength, setPitchLength] = useState<PitchLength>('comprehensive');
   const [lang, setLang] = useState<LangMode>('id');
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [selectedTopicFilter, setSelectedTopicFilter] = useState<string>('all');
 
   // Dynamic Dashboard States (Loaded from localStorage)
   const [practiceStats, setPracticeStats] = useState<PracticeStats>(initialPracticeStats);
   const [skillProgress, setSkillProgress] = useState<SkillProgress[]>(initialSkillProgress);
   const [recentActivities, setRecentActivities] = useState<ActivityItem[]>(initialRecentActivity);
-  const [isSavedNotification, setIsSavedNotification] = useState<boolean>(false);
 
   // Audio Speech States
   const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
   const [speechRate, setSpeechRate] = useState<number>(1.0);
   const [isCopied, setIsCopied] = useState<boolean>(false);
-
-  // Candidate Response / Mic States
-  const [userTranscript, setUserTranscript] = useState<string>('');
-  const [isRecording, setIsRecording] = useState<boolean>(false);
-  const [showFeedback, setShowFeedback] = useState<boolean>(false);
-  const [showHint, setShowHint] = useState<boolean>(false);
-
-  // Practice Timer
-  const [elapsedSeconds, setElapsedSeconds] = useState<number>(0);
-  const [isTimerActive, setIsTimerActive] = useState<boolean>(false);
-
-  const recognitionRef = useRef<any>(null);
 
   // Load Persisted Stats from LocalStorage on mount
   useEffect(() => {
@@ -205,69 +194,29 @@ export default function InterviewPracticePage() {
     }
   }, []);
 
-  // Filtered Questions
+  // Filtered Questions for Question Bank Syllabus
   const filteredQuestions = useMemo(() => {
     return interviewQuestions.filter((q) => {
-      const matchCat = selectedCategory === 'all' || q.category === selectedCategory;
-      const qText = `${q.question[lang]} ${q.context} ${q.keyConcepts.join(' ')}`.toLowerCase();
+      const matchTopic = selectedTopicFilter === 'all' || q.topic === selectedTopicFilter;
+      const qText = `${q.question[lang]} ${q.context} ${q.keyConcepts.join(' ')} ${q.role} ${q.topic}`.toLowerCase();
       const matchSearch = searchQuery === '' || qText.includes(searchQuery.toLowerCase());
-      return matchCat && matchSearch;
+      return matchTopic && matchSearch;
     });
-  }, [selectedCategory, searchQuery, lang]);
-
-  const currentQuestion: InterviewQuestion =
-    filteredQuestions[currentIndex] || interviewQuestions[0];
+  }, [selectedTopicFilter, searchQuery, lang]);
 
   const currentPitch = selfIntroductionData[lang][pitchLength];
   const recommendedPractice = useMemo(() => getDynamicRecommendation(skillProgress), [skillProgress]);
 
-  // Speech Recognition (Web Speech API)
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const SpeechRecognition =
-        (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-      if (SpeechRecognition) {
-        const recognition = new SpeechRecognition();
-        recognition.continuous = true;
-        recognition.interimResults = true;
-        recognition.lang = lang === 'id' ? 'id-ID' : 'en-US';
-
-        recognition.onresult = (event: any) => {
-          let resultStr = '';
-          for (let i = 0; i < event.results.length; i++) {
-            resultStr += event.results[i][0].transcript + ' ';
-          }
-          setUserTranscript(resultStr.trim());
-        };
-
-        recognition.onerror = () => setIsRecording(false);
-        recognition.onend = () => setIsRecording(false);
-        recognitionRef.current = recognition;
-      }
-    }
-  }, [lang]);
-
-  // Timer Effect
-  useEffect(() => {
-    let interval: NodeJS.Timeout | null = null;
-    if (isTimerActive) {
-      interval = setInterval(() => setElapsedSeconds((prev) => prev + 1), 1000);
-    }
-    return () => {
-      if (interval) clearInterval(interval);
-    };
-  }, [isTimerActive]);
-
-  // Cancel speech on unmount / change
+  // Cancel speech on unmount / tab change
   useEffect(() => {
     return () => {
       if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
         window.speechSynthesis.cancel();
       }
     };
-  }, [activeTab, currentIndex, lang, pitchLength]);
+  }, [activeTab, lang, pitchLength]);
 
-  // Play Speech Function
+  // Audio Handler
   const handlePlayVoice = (text: string) => {
     if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
       alert('Browser Anda tidak mendukung Web Speech API.');
@@ -292,102 +241,49 @@ export default function InterviewPracticePage() {
     window.speechSynthesis.speak(utterance);
   };
 
-  const handleToggleRecord = () => {
-    if (!recognitionRef.current) {
-      alert(
-        lang === 'id'
-          ? 'Browser tidak mendukung input mikrofon langsung. Silakan ketik narasi jawaban Anda pada kolom teks.'
-          : 'Microphone speech recognition is not supported in this browser. Please type your response.'
-      );
-      return;
-    }
-
-    if (isRecording) {
-      recognitionRef.current.stop();
-      setIsRecording(false);
-      setIsTimerActive(false);
-    } else {
-      setUserTranscript('');
-      recognitionRef.current.start();
-      setIsRecording(true);
-      setIsTimerActive(true);
-    }
-  };
-
   const handleCopyPitch = () => {
     navigator.clipboard.writeText(currentPitch.script);
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
   };
 
-  const formatTimer = (totalSecs: number) => {
-    const mins = Math.floor(totalSecs / 60);
-    const secs = totalSecs % 60;
-    return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-  };
-
-  // Keyword Matching
-  const keywordAnalysis = useMemo(() => {
-    const lowerTranscript = userTranscript.toLowerCase();
-    const matched = currentQuestion.keyConcepts.filter((kw) =>
-      lowerTranscript.includes(kw.toLowerCase())
-    );
-    const score = Math.round((matched.length / currentQuestion.keyConcepts.length) * 100);
-    return {
-      matched,
-      score: userTranscript.length > 15 ? Math.max(score, 75) : 0,
-      wordCount: userTranscript.trim() ? userTranscript.trim().split(/\s+/).length : 0
-    };
-  }, [userTranscript, currentQuestion]);
-
-  // Save Real Practice Session to Dashboard & LocalStorage
-  const handleSavePracticeResult = () => {
-    const newScore = keywordAnalysis.score > 0 ? keywordAnalysis.score : 85;
-    const duration = Math.max(1, Math.ceil(elapsedSeconds / 60));
-    const now = new Date();
-    const formattedDate = `${now.getDate()} ${now.toLocaleString('id-ID', { month: 'short' })} ${now.getFullYear()}`;
-
-    const newActivity: ActivityItem = {
-      id: `act-${Date.now()}`,
-      title: currentQuestion.question[lang],
-      type: 'Practice Session',
-      topic: currentQuestion.categoryLabel[lang],
-      date: formattedDate,
-      score: newScore,
-      status: newScore >= 85 ? 'Excellent' : newScore >= 70 ? 'Completed' : 'Needs Review',
-      durationMinutes: duration
-    };
-
-    const updatedActivities = [newActivity, ...recentActivities.slice(0, 9)];
+  // Synchronize Practice Result to Dashboard and LocalStorage
+  const handleSavePracticeResult = (
+    newActivity: ActivityItem,
+    score: number,
+    topicName: string,
+    questionCount: number,
+    durationMinutes: number
+  ) => {
+    const updatedActivities = [newActivity, ...recentActivities.slice(0, 19)];
 
     // Update Stats
-    const totalAnswered = practiceStats.questionsAnswered + 1;
     const totalSessions = practiceStats.totalSessions + 1;
+    const totalAnswered = practiceStats.questionsAnswered + questionCount;
     const newAvg = practiceStats.totalSessions === 0
-      ? newScore
-      : Math.round(((practiceStats.averageScore * practiceStats.totalSessions) + newScore) / totalSessions * 10) / 10;
+      ? score
+      : Math.round(((practiceStats.averageScore * practiceStats.totalSessions) + score) / totalSessions * 10) / 10;
 
     const updatedStats: PracticeStats = {
       totalSessions,
       questionsAnswered: totalAnswered,
-      codingChallengesCompleted: currentQuestion.codeSnippet ? practiceStats.codingChallengesCompleted + 1 : practiceStats.codingChallengesCompleted,
+      codingChallengesCompleted: practiceStats.codingChallengesCompleted + (topicName.toLowerCase().includes('golang') ? 1 : 0),
       averageScore: newAvg
     };
 
-    // Update specific skill
-    const targetSkillName = currentQuestion.category === 'backend-go'
-      ? 'Golang'
-      : currentQuestion.category === 'app-support'
-      ? 'SQL & PostgreSQL'
-      : currentQuestion.category === 'fullstack-react'
-      ? 'REST API'
-      : 'System Design';
+    // Update skill score mapping
+    const targetSkill = skillProgress.find((s) =>
+      topicName.toLowerCase().includes(s.skill.toLowerCase()) ||
+      s.skill.toLowerCase().includes(topicName.toLowerCase())
+    );
+
+    const targetSkillName = targetSkill ? targetSkill.skill : 'Golang';
 
     const updatedSkills = skillProgress.map((s) => {
       if (s.skill === targetSkillName) {
-        const count = s.totalAnswered + 1;
+        const count = s.totalAnswered + questionCount;
         const currentTotal = s.score * s.totalAnswered;
-        const calcScore = Math.round((currentTotal + newScore) / count);
+        const calcScore = Math.round((currentTotal + score * questionCount) / count);
         return {
           ...s,
           score: calcScore,
@@ -407,11 +303,8 @@ export default function InterviewPracticePage() {
       localStorage.setItem(STORAGE_KEYS.ACTIVITIES, JSON.stringify(updatedActivities));
       localStorage.setItem(STORAGE_KEYS.SKILLS, JSON.stringify(updatedSkills));
     } catch (e) {
-      console.error('Error saving data to localStorage', e);
+      console.error('Error writing to localStorage', e);
     }
-
-    setIsSavedNotification(true);
-    setTimeout(() => setIsSavedNotification(false), 3000);
   };
 
   // Demo / Reset controls
@@ -440,7 +333,7 @@ export default function InterviewPracticePage() {
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans selection:bg-emerald-100 selection:text-emerald-900 pb-20">
       {/* ========================================================= */}
-      {/* 1. TOP HEADER (Clean White & High Contrast) */}
+      {/* 1. TOP HEADER */}
       {/* ========================================================= */}
       <header className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
@@ -466,7 +359,7 @@ export default function InterviewPracticePage() {
             </div>
           </div>
 
-          {/* Navigation Tabs */}
+          {/* Desktop Navigation Tabs */}
           <div className="hidden md:flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-bold">
             <button
               onClick={() => setActiveTab('dashboard')}
@@ -481,6 +374,18 @@ export default function InterviewPracticePage() {
             </button>
 
             <button
+              onClick={() => setActiveTab('practice')}
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+                activeTab === 'practice'
+                  ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <Play size={14} className={activeTab === 'practice' ? 'text-emerald-600' : 'text-slate-500'} />
+              <span>Sesi Latihan (Practice)</span>
+            </button>
+
+            <button
               onClick={() => setActiveTab('pitch')}
               className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
                 activeTab === 'pitch'
@@ -490,18 +395,6 @@ export default function InterviewPracticePage() {
             >
               <User size={14} className={activeTab === 'pitch' ? 'text-emerald-600' : 'text-slate-500'} />
               <span>Perkenalan Diri (Audio)</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('studio')}
-              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
-                activeTab === 'studio'
-                  ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <Terminal size={14} className={activeTab === 'studio' ? 'text-emerald-600' : 'text-slate-500'} />
-              <span>Tanya Jawab Teknis</span>
             </button>
 
             <button
@@ -559,8 +452,8 @@ export default function InterviewPracticePage() {
       <div className="md:hidden bg-white border-b border-slate-200 px-4 py-2 flex items-center justify-between gap-1 overflow-x-auto text-xs font-bold">
         {[
           { id: 'dashboard', label: 'Dashboard' },
+          { id: 'practice', label: 'Latihan' },
           { id: 'pitch', label: 'Perkenalan' },
-          { id: 'studio', label: 'Tanya Jawab' },
           { id: 'syllabus', label: 'Bank Soal' },
           { id: 'cheatsheet', label: 'Cheat Sheet' }
         ].map((t) => (
@@ -583,7 +476,7 @@ export default function InterviewPracticePage() {
       {/* ========================================================= */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
         {/* ========================================================= */}
-        {/* TAB 0: DASHBOARD PAGE (Real-Time & Zero-Base) */}
+        {/* TAB 0: DASHBOARD PAGE */}
         {/* ========================================================= */}
         {activeTab === 'dashboard' && (
           <div className="space-y-6">
@@ -592,24 +485,24 @@ export default function InterviewPracticePage() {
               <div className="space-y-1.5">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-mono font-bold">
                   <Sparkles size={13} />
-                  <span>Interview Readiness Track • Backend Go & System Support</span>
+                  <span>Interview Readiness Track • Backend Go & System Architecture</span>
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
                   Dashboard Kemajuan Latihan
                 </h1>
                 <p className="text-slate-600 text-xs sm:text-sm max-w-2xl leading-relaxed">
-                  Statistik ini diperbarui secara otomatis saat Anda melatih soal di Studio atau membaca naskah perkenalan diri.
+                  Statistik ini diperbarui secara otomatis saat Anda melatih soal di menu Sesi Latihan atau membaca naskah perkenalan diri.
                 </p>
               </div>
 
               {/* Action & Demo Data Toggle */}
               <div className="flex flex-wrap items-center gap-2.5">
                 <button
-                  onClick={() => setActiveTab('studio')}
+                  onClick={() => setActiveTab('practice')}
                   className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs sm:text-sm transition-all shadow-sm flex items-center gap-2 cursor-pointer"
                 >
                   <Play size={15} />
-                  <span>Mulai Sesi Latihan</span>
+                  <span>Mulai Sesi Latihan Baru</span>
                 </button>
 
                 {practiceStats.totalSessions === 0 ? (
@@ -793,11 +686,7 @@ export default function InterviewPracticePage() {
                       {recommendedPractice.recommendedQuestions.map((q, qIdx) => (
                         <div
                           key={qIdx}
-                          onClick={() => {
-                            const targetIdx = interviewQuestions.findIndex((item) => item.id === q.id);
-                            if (targetIdx !== -1) setCurrentIndex(targetIdx);
-                            setActiveTab('studio');
-                          }}
+                          onClick={() => setActiveTab('practice')}
                           className="p-2.5 rounded-lg bg-white border border-slate-200 hover:border-emerald-400 transition-all flex items-center justify-between text-xs cursor-pointer group"
                         >
                           <span className="text-slate-800 font-medium group-hover:text-emerald-700 truncate pr-2">
@@ -810,7 +699,7 @@ export default function InterviewPracticePage() {
                   </div>
 
                   <button
-                    onClick={() => setActiveTab('studio')}
+                    onClick={() => setActiveTab('practice')}
                     className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
                   >
                     <span>Mulai Latihan Sekarang</span>
@@ -842,11 +731,11 @@ export default function InterviewPracticePage() {
                   <div className="space-y-1">
                     <p className="text-sm font-bold text-slate-800">Belum ada riwayat sesi latihan</p>
                     <p className="text-xs text-slate-500 max-w-md mx-auto">
-                      Saat Anda menjawab soal di Studio atau membaca naskah perkenalan, sesi Anda akan otomatis tercatat di tabel ini.
+                      Saat Anda menyelesaikan sesi latihan atau menjawab pertanyaan di menu Sesi Latihan, aktivitas Anda akan otomatis tercatat di sini.
                     </p>
                   </div>
                   <button
-                    onClick={() => setActiveTab('studio')}
+                    onClick={() => setActiveTab('practice')}
                     className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-sm transition-all cursor-pointer"
                   >
                     <Play size={13} />
@@ -878,7 +767,7 @@ export default function InterviewPracticePage() {
                                 ? 'bg-purple-50 text-purple-700 border border-purple-200'
                                 : act.type === 'Coding Challenge'
                                 ? 'bg-sky-50 text-sky-700 border border-sky-200'
-                                : 'bg-slate-100 text-slate-700 border border-slate-200'
+                                : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
                             }`}>
                               {act.type}
                             </span>
@@ -923,7 +812,18 @@ export default function InterviewPracticePage() {
         )}
 
         {/* ========================================================= */}
-        {/* TAB 1: SELF-INTRODUCTION ELEVATOR PITCH & AUDIO PLAYER */}
+        {/* TAB 1: PRACTICE FEATURE (Setup, Session, Result, Sync) */}
+        {/* ========================================================= */}
+        {activeTab === 'practice' && (
+          <PracticeFeature
+            lang={lang}
+            onSaveResult={handleSavePracticeResult}
+            onNavigateToDashboard={() => setActiveTab('dashboard')}
+          />
+        )}
+
+        {/* ========================================================= */}
+        {/* TAB 2: SELF-INTRODUCTION ELEVATOR PITCH & AUDIO PLAYER */}
         {/* ========================================================= */}
         {activeTab === 'pitch' && (
           <div className="space-y-6">
@@ -1076,284 +976,6 @@ export default function InterviewPracticePage() {
         )}
 
         {/* ========================================================= */}
-        {/* TAB 2: TECHNICAL Q&A STUDIO */}
-        {/* ========================================================= */}
-        {activeTab === 'studio' && (
-          <div className="space-y-6">
-            {/* Category Track Filter */}
-            <div className="bg-white p-3 rounded-2xl border border-slate-200/90 shadow-sm flex flex-wrap items-center justify-between gap-3">
-              <div className="flex items-center gap-1.5 overflow-x-auto">
-                {[
-                  { id: 'all', label: 'Semua Kategori' },
-                  { id: 'backend-go', label: 'Go & Backend' },
-                  { id: 'app-support', label: 'App Support (PLN)' },
-                  { id: 'fullstack-react', label: 'Fullstack & React' },
-                  { id: 'behavioral-hr', label: 'Behavioral & HR' }
-                ].map((c) => (
-                  <button
-                    key={c.id}
-                    onClick={() => {
-                      setSelectedCategory(c.id);
-                      setCurrentIndex(0);
-                      setShowFeedback(false);
-                    }}
-                    className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                      selectedCategory === c.id
-                        ? 'bg-slate-900 text-white shadow-sm'
-                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                    }`}
-                  >
-                    {c.label}
-                  </button>
-                ))}
-              </div>
-
-              <div className="text-xs font-mono font-bold text-slate-500">
-                Soal <strong className="text-slate-900">{currentIndex + 1}</strong> dari{' '}
-                <strong className="text-slate-900">{filteredQuestions.length}</strong>
-              </div>
-            </div>
-
-            {/* Dual Pane Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-              {/* Left Column: Question Prompt & Candidate Input (7 cols) */}
-              <div className="lg:col-span-7 space-y-5">
-                {/* Question Box */}
-                <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
-                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                    <div className="flex items-center gap-2">
-                      <span className="px-2.5 py-1 rounded-md text-[11px] font-mono font-bold bg-slate-100 text-slate-800 border border-slate-200">
-                        {currentQuestion.categoryLabel[lang]}
-                      </span>
-                      <span className="text-xs text-slate-500 font-mono">
-                        Konteks: {currentQuestion.context}
-                      </span>
-                    </div>
-
-                    <button
-                      onClick={() => handlePlayVoice(currentQuestion.question[lang])}
-                      className="flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-bold bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 transition-colors cursor-pointer"
-                    >
-                      <Volume2 size={14} />
-                      <span>Dengarkan Soal</span>
-                    </button>
-                  </div>
-
-                  <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 leading-relaxed">
-                    &ldquo;{currentQuestion.question[lang]}&rdquo;
-                  </h2>
-                </div>
-
-                {/* Candidate Answering Box */}
-                <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
-                      <Mic size={14} className={isRecording ? 'text-rose-600 animate-pulse' : 'text-emerald-600'} />
-                      <span>Jawaban Latihan Anda:</span>
-                    </span>
-
-                    <div className="flex items-center gap-3 text-xs font-mono text-slate-500">
-                      <span>Waktu: {formatTimer(elapsedSeconds)}</span>
-                      <span>•</span>
-                      <span>{keywordAnalysis.wordCount} Kata</span>
-                    </div>
-                  </div>
-
-                  <textarea
-                    value={userTranscript}
-                    onChange={(e) => setUserTranscript(e.target.value)}
-                    placeholder={
-                      lang === 'id'
-                        ? 'Tekan tombol "Mulai Bicara (Mic)" untuk menjawab langsung dengan suara, atau ketik jawaban Anda di sini...'
-                        : 'Click "Start Voice (Mic)" to answer with your microphone, or type your response here...'
-                    }
-                    rows={5}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 focus:bg-white transition-all leading-relaxed resize-none"
-                  />
-
-                  {/* Actions */}
-                  <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={handleToggleRecord}
-                        className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                          isRecording
-                            ? 'bg-rose-600 text-white animate-pulse'
-                            : 'bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold shadow-sm'
-                        }`}
-                      >
-                        {isRecording ? <MicOff size={15} /> : <Mic size={15} />}
-                        <span>{isRecording ? 'Stop Rekaman' : 'Mulai Bicara (Mic)'}</span>
-                      </button>
-
-                      <button
-                        onClick={handleSavePracticeResult}
-                        className="px-3.5 py-2 rounded-xl text-xs font-bold bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 transition-colors flex items-center gap-1.5 cursor-pointer"
-                        title="Simpan hasil latihan soal ini ke Dashboard"
-                      >
-                        <Check size={14} />
-                        <span>Simpan Hasil Sesi</span>
-                      </button>
-
-                      <button
-                        onClick={() => setShowHint(!showHint)}
-                        className="px-3 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition-colors cursor-pointer"
-                      >
-                        {showHint ? 'Tutup Kisi-Kisi' : 'Kisi-Kisi'}
-                      </button>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => {
-                          setCurrentIndex((prev) => (prev + 1) % filteredQuestions.length);
-                          setUserTranscript('');
-                          setElapsedSeconds(0);
-                        }}
-                        className="flex items-center gap-1 px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 hover:bg-slate-800 text-white transition-colors cursor-pointer"
-                      >
-                        <span>Soal Berikutnya</span>
-                        <ChevronRight size={14} />
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Saved Notification Toast */}
-                  <AnimatePresence>
-                    {isSavedNotification && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 5 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 5 }}
-                        className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 font-bold flex items-center gap-2"
-                      >
-                        <CheckCircle2 size={16} className="text-emerald-600" />
-                        <span>Hasil latihan Anda telah berhasil disimpan dan terupdate di Dashboard!</span>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
-                  {/* Hint Concepts Box */}
-                  <AnimatePresence>
-                    {showHint && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2"
-                      >
-                        <div className="flex items-center gap-1.5 text-slate-700 font-mono font-bold">
-                          <HelpCircle size={13} className="text-emerald-600" /> Kata Kunci Konsep yang Dinilai:
-                        </div>
-                        <div className="flex flex-wrap gap-1.5">
-                          {currentQuestion.keyConcepts.map((k, i) => (
-                            <span
-                              key={i}
-                              className="px-2.5 py-0.5 rounded-md bg-white border border-slate-200 text-slate-700 text-xs font-mono"
-                            >
-                              {k}
-                            </span>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </div>
-
-              {/* Right Column: Recommended STAR Model Answer (5 cols) */}
-              <div className="lg:col-span-5 space-y-5">
-                {/* Keywords Match Meter */}
-                <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
-                  <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-600">
-                      Checklist Konsep Jawaban:
-                    </span>
-                    <span className="text-xs font-mono font-bold text-emerald-700">
-                      {keywordAnalysis.score}% Match
-                    </span>
-                  </div>
-
-                  <div className="flex flex-wrap gap-1.5">
-                    {currentQuestion.keyConcepts.map((kw, i) => {
-                      const isFound = userTranscript.toLowerCase().includes(kw.toLowerCase());
-                      return (
-                        <span
-                          key={i}
-                          className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono border transition-all ${
-                            isFound
-                              ? 'bg-emerald-50 border-emerald-300 text-emerald-800 font-bold'
-                              : 'bg-slate-50 border-slate-200 text-slate-500'
-                          }`}
-                        >
-                          <CheckCircle2 size={12} className={isFound ? 'text-emerald-600' : 'text-slate-400'} />
-                          <span>{kw}</span>
-                        </span>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* STAR Benchmark Answer Card */}
-                <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
-                  <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
-                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
-                      <Award size={14} className="text-emerald-600" />
-                      <span>Rekomendasi Jawaban Metode STAR:</span>
-                    </span>
-
-                    <button
-                      onClick={() => handlePlayVoice(currentQuestion.modelAnswer[lang])}
-                      className="text-xs font-bold text-emerald-700 hover:text-emerald-600 flex items-center gap-1 cursor-pointer"
-                    >
-                      <Volume2 size={13} />
-                      <span>Dengarkan</span>
-                    </button>
-                  </div>
-
-                  {currentQuestion.starAnswer ? (
-                    <div className="space-y-2 text-xs">
-                      <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
-                        <strong className="text-sky-700 font-mono">[S] Situation:</strong>
-                        <p className="text-slate-700 leading-relaxed">{currentQuestion.starAnswer[lang].situation}</p>
-                      </div>
-                      <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
-                        <strong className="text-amber-700 font-mono">[T] Task:</strong>
-                        <p className="text-slate-700 leading-relaxed">{currentQuestion.starAnswer[lang].task}</p>
-                      </div>
-                      <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
-                        <strong className="text-emerald-700 font-mono">[A] Action:</strong>
-                        <p className="text-slate-700 leading-relaxed">{currentQuestion.starAnswer[lang].action}</p>
-                      </div>
-                      <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
-                        <strong className="text-purple-700 font-mono">[R] Result:</strong>
-                        <p className="text-slate-700 leading-relaxed">{currentQuestion.starAnswer[lang].result}</p>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 italic leading-relaxed">
-                      &ldquo;{currentQuestion.modelAnswer[lang]}&rdquo;
-                    </div>
-                  )}
-
-                  {/* Code Snippet */}
-                  {currentQuestion.codeSnippet && (
-                    <div className="space-y-1.5 pt-2 border-t border-slate-100">
-                      <span className="text-[11px] font-mono text-slate-600 uppercase flex items-center gap-1">
-                        <Code2 size={12} className="text-emerald-600" /> Contoh Snippet Kode:
-                      </span>
-                      <pre className="p-3 rounded-xl bg-slate-900 text-emerald-300 text-[11px] font-mono overflow-x-auto">
-                        <code>{currentQuestion.codeSnippet.code}</code>
-                      </pre>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* ========================================================= */}
         {/* TAB 3: QUESTION BANK SYLLABUS */}
         {/* ========================================================= */}
         {activeTab === 'syllabus' && (
@@ -1362,32 +984,52 @@ export default function InterviewPracticePage() {
               <div>
                 <h2 className="text-lg font-extrabold text-slate-900">Bank Pertanyaan & Kisi-Kisi Lengkap</h2>
                 <p className="text-xs text-slate-500">
-                  Daftar seluruh topik wawancara teknis backend Go, pengalaman operasional PLN, dan behavioral.
+                  Daftar seluruh topik wawancara teknis backend Golang, Java, database SQL, Docker, Redis, Kafka, gRPC, dan System Design.
                 </p>
               </div>
 
-              <div className="relative w-full md:w-72">
-                <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-                <input
-                  type="text"
-                  placeholder="Cari topik pertanyaan..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:border-emerald-500"
-                />
+              <div className="flex flex-wrap items-center gap-2.5 w-full md:w-auto">
+                {/* Topic Selector */}
+                <select
+                  value={selectedTopicFilter}
+                  onChange={(e) => setSelectedTopicFilter(e.target.value)}
+                  className="px-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:border-emerald-500"
+                >
+                  <option value="all">Semua Topik</option>
+                  <option value="Golang">Golang</option>
+                  <option value="SQL">SQL</option>
+                  <option value="REST API">REST API</option>
+                  <option value="Database">Database</option>
+                  <option value="Docker">Docker</option>
+                  <option value="Redis">Redis</option>
+                  <option value="Kafka">Kafka</option>
+                  <option value="gRPC">gRPC</option>
+                  <option value="System Design">System Design</option>
+                </select>
+
+                <div className="relative w-full md:w-64">
+                  <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+                  <input
+                    type="text"
+                    placeholder="Cari topik pertanyaan..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full pl-9 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:border-emerald-500"
+                  />
+                </div>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {filteredQuestions.map((q, idx) => (
                 <div
-                  key={q.id}
+                  key={q.id + idx}
                   className="bg-white p-5 rounded-2xl border border-slate-200 hover:border-slate-300 shadow-sm transition-all flex flex-col justify-between space-y-4"
                 >
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-[11px] font-mono">
                       <span className="px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 font-bold border border-emerald-200">
-                        {q.categoryLabel[lang]}
+                        {q.topic} • {q.role}
                       </span>
                       <span className="text-slate-400">{q.difficulty}</span>
                     </div>
@@ -1397,7 +1039,7 @@ export default function InterviewPracticePage() {
                     </h3>
 
                     <p className="text-xs text-slate-600 line-clamp-2">
-                      {q.modelAnswer[lang]}
+                      {q.suggestedAnswer[lang]}
                     </p>
                   </div>
 
@@ -1407,11 +1049,7 @@ export default function InterviewPracticePage() {
                     </span>
 
                     <button
-                      onClick={() => {
-                        const targetIdx = interviewQuestions.findIndex((item) => item.id === q.id);
-                        if (targetIdx !== -1) setCurrentIndex(targetIdx);
-                        setActiveTab('studio');
-                      }}
+                      onClick={() => setActiveTab('practice')}
                       className="text-xs font-bold text-emerald-700 hover:text-emerald-600 flex items-center gap-1 cursor-pointer"
                     >
                       <span>Latih Soal Ini</span>
