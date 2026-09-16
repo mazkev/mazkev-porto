@@ -5,77 +5,32 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeft,
-  Mic,
-  MicOff,
   Volume2,
-  VolumeX,
-  Play,
   Pause,
-  RotateCcw,
   CheckCircle2,
   Search,
   ChevronRight,
-  ChevronDown,
-  Layers,
-  Server,
-  Database,
   UserCheck,
-  Code2,
-  Terminal,
-  HelpCircle,
-  Clock,
-  ShieldCheck,
-  Award,
-  Zap,
-  BarChart3,
-  ListFilter,
+  Play,
   User,
+  ListFilter,
   Sparkles,
   BookOpen,
-  Sliders,
   Copy,
   Check,
-  FileText,
-  Flame,
-  TrendingUp,
-  Target,
-  AlertTriangle,
-  Compass,
-  CheckCircle,
-  Calendar,
-  Layers3,
-  LayoutDashboard,
-  PlusCircle,
-  RefreshCw,
-  FolderOpen,
-  History
+  ShieldCheck,
+  Zap
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import {
   interviewQuestions,
-  technicalCheatSheet,
   InterviewQuestion,
   PracticeRole,
   PracticeDifficulty,
   PracticeTopic
 } from '../lib/data/interviewData';
-import {
-  codingChallenges
-} from '../lib/data/codingChallengeData';
-import {
-  initialPracticeStats,
-  initialSkillProgress,
-  initialRecentActivity,
-  demoPracticeStats,
-  demoSkillProgress,
-  demoRecentActivity,
-  getDynamicRecommendation,
-  PracticeStats,
-  SkillProgress,
-  ActivityItem
-} from '../lib/data/dashboardData';
 
-// Dynamic Feature Loading with Skeletons for optimal initial bundle performance
+// Dynamic Feature Loading with Skeletons
 function FeatureLoadingSkeleton({ title }: { title: string }) {
   return (
     <div className="bg-white rounded-3xl border border-slate-200 p-12 text-center space-y-4 shadow-sm animate-pulse">
@@ -90,27 +45,21 @@ function FeatureLoadingSkeleton({ title }: { title: string }) {
   );
 }
 
-const PracticeFeature = dynamic(() => import('./components/PracticeFeature'), {
-  loading: () => <FeatureLoadingSkeleton title="Memuat Sesi Latihan..." />
-});
-const CodingChallengeFeature = dynamic(() => import('./components/CodingChallengeFeature'), {
-  loading: () => <FeatureLoadingSkeleton title="Memuat Coding Arena..." />
-});
-const HistoryFeature = dynamic(() => import('./components/HistoryFeature'), {
-  loading: () => <FeatureLoadingSkeleton title="Memuat Riwayat Latihan..." />
-});
 const MockInterviewFeature = dynamic(() => import('./components/MockInterviewFeature'), {
   loading: () => <FeatureLoadingSkeleton title="Memuat Mock Interview..." />
 });
+const PracticeFeature = dynamic(() => import('./components/PracticeFeature'), {
+  loading: () => <FeatureLoadingSkeleton title="Memuat Sesi Latihan..." />
+});
 
-type MainTab = 'dashboard' | 'practice' | 'mock' | 'coding' | 'history' | 'pitch' | 'syllabus' | 'cheatsheet';
+type MainTab = 'mock' | 'practice' | 'pitch' | 'syllabus';
 type PitchLength = 'comprehensive' | 'concise';
 type LangMode = 'id' | 'en';
 
 const selfIntroductionData = {
   id: {
     comprehensive: {
-      title: 'Naskah Perkenalan Diri (Versi Lengkap & Mendalam — 2 s.d. 3 Menit)',
+      title: 'Naskah Perkenalan Diri (Versi Lengkap — 2 s.d. 3 Menit)',
       subtitle: 'Struktur narasi komprehensif yang menjabarkan latar belakang akademik, pengalaman operasional nyata di PLN Icon+, motivasi transisi ke backend engineering, hingga detail proyek arsitektur Go.',
       duration: 'Durasi Bicara: ~2.5 Menit (360 Kata)',
       script: `Halo, selamat pagi/siang. Perkenalkan nama saya Kevin Eka Pratama. Saya adalah lulusan Sarjana Ilmu Komputer dari Universitas AMIKOM dengan IPK 3.42, dan memiliki pengalaman profesional lebih dari 2 tahun di bidang Application Support pada PT PLN Icon+.
@@ -188,43 +137,17 @@ This blend of authentic production support resilience and backend development me
   }
 };
 
-const STORAGE_KEYS = {
-  STATS: 'mazkev_interview_stats',
-  SKILLS: 'mazkev_interview_skills',
-  ACTIVITIES: 'mazkev_interview_activities'
-};
-
 export default function InterviewPracticePage() {
-  const [activeTab, setActiveTab] = useState<MainTab>('dashboard');
+  const [activeTab, setActiveTab] = useState<MainTab>('mock');
   const [pitchLength, setPitchLength] = useState<PitchLength>('comprehensive');
   const [lang, setLang] = useState<LangMode>('id');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedTopicFilter, setSelectedTopicFilter] = useState<string>('all');
 
-  // Dynamic Dashboard States (Loaded from localStorage)
-  const [practiceStats, setPracticeStats] = useState<PracticeStats>(initialPracticeStats);
-  const [skillProgress, setSkillProgress] = useState<SkillProgress[]>(initialSkillProgress);
-  const [recentActivities, setRecentActivities] = useState<ActivityItem[]>(initialRecentActivity);
-
   // Audio Speech States
   const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
   const [speechRate, setSpeechRate] = useState<number>(1.0);
   const [isCopied, setIsCopied] = useState<boolean>(false);
-
-  // Load Persisted Stats from LocalStorage on mount
-  useEffect(() => {
-    try {
-      const savedStats = localStorage.getItem(STORAGE_KEYS.STATS);
-      const savedSkills = localStorage.getItem(STORAGE_KEYS.SKILLS);
-      const savedActs = localStorage.getItem(STORAGE_KEYS.ACTIVITIES);
-
-      if (savedStats) setPracticeStats(JSON.parse(savedStats));
-      if (savedSkills) setSkillProgress(JSON.parse(savedSkills));
-      if (savedActs) setRecentActivities(JSON.parse(savedActs));
-    } catch (e) {
-      console.error('Error reading localStorage data', e);
-    }
-  }, []);
 
   // Filtered Questions for Question Bank Syllabus
   const filteredQuestions = useMemo(() => {
@@ -237,7 +160,6 @@ export default function InterviewPracticePage() {
   }, [selectedTopicFilter, searchQuery, lang]);
 
   const currentPitch = selfIntroductionData[lang][pitchLength];
-  const recommendedPractice = useMemo(() => getDynamicRecommendation(skillProgress), [skillProgress]);
 
   // Cancel speech on unmount / tab change
   useEffect(() => {
@@ -279,192 +201,13 @@ export default function InterviewPracticePage() {
     setTimeout(() => setIsCopied(false), 2000);
   };
 
-  // Synchronize Practice Result to Dashboard and LocalStorage
-  const handleSavePracticeResult = (
-    newActivity: ActivityItem,
-    score: number,
-    topicName: string,
-    questionCount: number,
-    durationMinutes: number
-  ) => {
-    const updatedActivities = [newActivity, ...recentActivities.slice(0, 19)];
-
-    // Update Stats
-    const totalSessions = practiceStats.totalSessions + 1;
-    const totalAnswered = practiceStats.questionsAnswered + questionCount;
-    const newAvg = practiceStats.totalSessions === 0
-      ? score
-      : Math.round(((practiceStats.averageScore * practiceStats.totalSessions) + score) / totalSessions * 10) / 10;
-
-    const updatedStats: PracticeStats = {
-      totalSessions,
-      questionsAnswered: totalAnswered,
-      codingChallengesCompleted: practiceStats.codingChallengesCompleted + (topicName.toLowerCase().includes('golang') ? 1 : 0),
-      averageScore: newAvg
-    };
-
-    // Update skill score mapping
-    const targetSkill = skillProgress.find((s) =>
-      topicName.toLowerCase().includes(s.skill.toLowerCase()) ||
-      s.skill.toLowerCase().includes(topicName.toLowerCase())
-    );
-
-    const targetSkillName = targetSkill ? targetSkill.skill : 'Golang';
-
-    const updatedSkills = skillProgress.map((s) => {
-      if (s.skill === targetSkillName) {
-        const count = s.totalAnswered + questionCount;
-        const currentTotal = s.score * s.totalAnswered;
-        const calcScore = Math.round((currentTotal + score * questionCount) / count);
-        return {
-          ...s,
-          score: calcScore,
-          totalAnswered: count,
-          level: calcScore >= 85 ? 'Advanced' : calcScore >= 70 ? 'Intermediate' : 'Needs Practice'
-        };
-      }
-      return s;
-    });
-
-    setPracticeStats(updatedStats);
-    setRecentActivities(updatedActivities);
-    setSkillProgress(updatedSkills);
-
-    try {
-      localStorage.setItem(STORAGE_KEYS.STATS, JSON.stringify(updatedStats));
-      localStorage.setItem(STORAGE_KEYS.ACTIVITIES, JSON.stringify(updatedActivities));
-      localStorage.setItem(STORAGE_KEYS.SKILLS, JSON.stringify(updatedSkills));
-    } catch (e) {
-      console.error('Error writing to localStorage', e);
-    }
-  };
-
-  // Callback when user solves a Mock Interview
-  const handleSaveMockResult = (
-    newActivity: ActivityItem,
-    score: number,
-    roleLabel: string,
-    durationMinutes: number
-  ) => {
-    const updatedActivities = [newActivity, ...recentActivities.slice(0, 19)];
-    const totalSessions = practiceStats.totalSessions + 1;
-    const totalAnswered = practiceStats.questionsAnswered + 5;
-    const newAvg = practiceStats.totalSessions === 0
-      ? score
-      : Math.round(((practiceStats.averageScore * practiceStats.totalSessions) + score) / totalSessions * 10) / 10;
-
-    const updatedStats: PracticeStats = {
-      totalSessions,
-      questionsAnswered: totalAnswered,
-      codingChallengesCompleted: practiceStats.codingChallengesCompleted,
-      averageScore: newAvg
-    };
-
-    // Update Golang and System Design skills
-    const updatedSkills = skillProgress.map((s) => {
-      if (s.skill === 'Golang' || s.skill === 'System Design') {
-        const count = s.totalAnswered + 2;
-        const currentTotal = s.score * s.totalAnswered;
-        const calcScore = Math.round((currentTotal + score * 2) / count);
-        return {
-          ...s,
-          score: calcScore,
-          totalAnswered: count,
-          level: calcScore >= 85 ? 'Advanced' : calcScore >= 70 ? 'Intermediate' : 'Needs Practice'
-        };
-      }
-      return s;
-    });
-
-    setPracticeStats(updatedStats);
-    setRecentActivities(updatedActivities);
-    setSkillProgress(updatedSkills);
-
-    try {
-      localStorage.setItem(STORAGE_KEYS.STATS, JSON.stringify(updatedStats));
-      localStorage.setItem(STORAGE_KEYS.ACTIVITIES, JSON.stringify(updatedActivities));
-      localStorage.setItem(STORAGE_KEYS.SKILLS, JSON.stringify(updatedSkills));
-    } catch (e) {
-      console.error('Error writing to localStorage', e);
-    }
-  };
-
-  // Callback when user solves a Coding Challenge
-  const handleCodingChallengeCompleted = (newActivity: ActivityItem, challengeTitle: string) => {
-    const updatedActivities = [newActivity, ...recentActivities.slice(0, 19)];
-    const newChallengesCompleted = practiceStats.codingChallengesCompleted + 1;
-    const totalAnswered = practiceStats.questionsAnswered + 1;
-    const totalSessions = practiceStats.totalSessions + 1;
-    const newAvg = practiceStats.totalSessions === 0
-      ? 100
-      : Math.round(((practiceStats.averageScore * practiceStats.totalSessions) + 100) / totalSessions * 10) / 10;
-
-    const updatedStats: PracticeStats = {
-      totalSessions,
-      questionsAnswered: totalAnswered,
-      codingChallengesCompleted: newChallengesCompleted,
-      averageScore: newAvg
-    };
-
-    // Update Golang skill progress
-    const updatedSkills = skillProgress.map((s) => {
-      if (s.skill === 'Golang') {
-        const count = s.totalAnswered + 1;
-        const currentTotal = s.score * s.totalAnswered;
-        const calcScore = Math.round((currentTotal + 100) / count);
-        return {
-          ...s,
-          score: calcScore,
-          totalAnswered: count,
-          level: calcScore >= 85 ? 'Advanced' : calcScore >= 70 ? 'Intermediate' : 'Needs Practice'
-        };
-      }
-      return s;
-    });
-
-    setPracticeStats(updatedStats);
-    setRecentActivities(updatedActivities);
-    setSkillProgress(updatedSkills);
-
-    try {
-      localStorage.setItem(STORAGE_KEYS.STATS, JSON.stringify(updatedStats));
-      localStorage.setItem(STORAGE_KEYS.ACTIVITIES, JSON.stringify(updatedActivities));
-      localStorage.setItem(STORAGE_KEYS.SKILLS, JSON.stringify(updatedSkills));
-    } catch (e) {
-      console.error('Error writing to localStorage', e);
-    }
-  };
-
-  // Demo / Reset controls
-  const handleLoadDemoData = () => {
-    setPracticeStats(demoPracticeStats);
-    setSkillProgress(demoSkillProgress);
-    setRecentActivities(demoRecentActivity);
-    try {
-      localStorage.setItem(STORAGE_KEYS.STATS, JSON.stringify(demoPracticeStats));
-      localStorage.setItem(STORAGE_KEYS.ACTIVITIES, JSON.stringify(demoRecentActivity));
-      localStorage.setItem(STORAGE_KEYS.SKILLS, JSON.stringify(demoSkillProgress));
-    } catch (e) {}
-  };
-
-  const handleResetData = () => {
-    setPracticeStats(initialPracticeStats);
-    setSkillProgress(initialSkillProgress);
-    setRecentActivities(initialRecentActivity);
-    try {
-      localStorage.removeItem(STORAGE_KEYS.STATS);
-      localStorage.removeItem(STORAGE_KEYS.ACTIVITIES);
-      localStorage.removeItem(STORAGE_KEYS.SKILLS);
-    } catch (e) {}
-  };
-
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans selection:bg-emerald-100 selection:text-emerald-900 pb-20">
       {/* ========================================================= */}
       {/* 1. TOP HEADER */}
       {/* ========================================================= */}
       <header className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           {/* Brand & Return */}
           <div className="flex items-center gap-3">
             <Link
@@ -482,28 +225,28 @@ export default function InterviewPracticePage() {
                 Pusat Latihan Interview
               </span>
               <span className="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-mono font-bold">
-                CV Verified
+                Backend Go
               </span>
             </div>
           </div>
 
-          {/* Desktop Navigation Tabs */}
-          <div className="hidden lg:flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-bold">
+          {/* Desktop Navigation Tabs (Streamlined: 4 Core Tabs) */}
+          <div className="hidden md:flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-bold">
             <button
-              onClick={() => setActiveTab('dashboard')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-                activeTab === 'dashboard'
+              onClick={() => setActiveTab('mock')}
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+                activeTab === 'mock'
                   ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              <LayoutDashboard size={14} className={activeTab === 'dashboard' ? 'text-emerald-600' : 'text-slate-500'} />
-              <span>Dashboard</span>
+              <UserCheck size={14} className={activeTab === 'mock' ? 'text-emerald-600' : 'text-slate-500'} />
+              <span>Simulasi Wawancara</span>
             </button>
 
             <button
               onClick={() => setActiveTab('practice')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
                 activeTab === 'practice'
                   ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
                   : 'text-slate-600 hover:text-slate-900'
@@ -514,56 +257,20 @@ export default function InterviewPracticePage() {
             </button>
 
             <button
-              onClick={() => setActiveTab('mock')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-                activeTab === 'mock'
-                  ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <UserCheck size={14} className={activeTab === 'mock' ? 'text-emerald-600' : 'text-slate-500'} />
-              <span>Mock Interview</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('coding')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-                activeTab === 'coding'
-                  ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <Code2 size={14} className={activeTab === 'coding' ? 'text-emerald-600' : 'text-slate-500'} />
-              <span>Coding Arena ({codingChallenges.length})</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('history')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-                activeTab === 'history'
-                  ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <History size={14} className={activeTab === 'history' ? 'text-emerald-600' : 'text-slate-500'} />
-              <span>Riwayat (History)</span>
-            </button>
-
-            <button
               onClick={() => setActiveTab('pitch')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
                 activeTab === 'pitch'
                   ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <User size={14} className={activeTab === 'pitch' ? 'text-emerald-600' : 'text-slate-500'} />
-              <span>Perkenalan (Audio)</span>
+              <span>Perkenalan Diri (Audio)</span>
             </button>
 
             <button
               onClick={() => setActiveTab('syllabus')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
                 activeTab === 'syllabus'
                   ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
                   : 'text-slate-600 hover:text-slate-900'
@@ -571,18 +278,6 @@ export default function InterviewPracticePage() {
             >
               <ListFilter size={14} className={activeTab === 'syllabus' ? 'text-emerald-600' : 'text-slate-500'} />
               <span>Bank Soal ({interviewQuestions.length})</span>
-            </button>
-
-            <button
-              onClick={() => setActiveTab('cheatsheet')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
-                activeTab === 'cheatsheet'
-                  ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
-                  : 'text-slate-600 hover:text-slate-900'
-              }`}
-            >
-              <Zap size={14} className={activeTab === 'cheatsheet' ? 'text-emerald-600' : 'text-slate-500'} />
-              <span>Cheat Sheet</span>
             </button>
           </div>
 
@@ -613,23 +308,19 @@ export default function InterviewPracticePage() {
       {/* ========================================================= */}
       {/* 2. MOBILE TAB SELECTOR */}
       {/* ========================================================= */}
-      <div className="lg:hidden bg-white border-b border-slate-200 px-4 py-2 flex items-center justify-between gap-1 overflow-x-auto text-xs font-bold">
+      <div className="md:hidden bg-white border-b border-slate-200 px-4 py-2 flex items-center justify-between gap-1 overflow-x-auto text-xs font-bold">
         {[
-          { id: 'dashboard', label: 'Dashboard' },
-          { id: 'practice', label: 'Latihan' },
-          { id: 'mock', label: 'Mock' },
-          { id: 'coding', label: 'Coding' },
-          { id: 'history', label: 'Riwayat' },
-          { id: 'pitch', label: 'Perkenalan' },
-          { id: 'syllabus', label: 'Bank Soal' },
-          { id: 'cheatsheet', label: 'Cheat Sheet' }
+          { id: 'mock', label: 'Simulasi Wawancara' },
+          { id: 'practice', label: 'Latihan Soal' },
+          { id: 'pitch', label: 'Perkenalan Diri' },
+          { id: 'syllabus', label: 'Bank Soal' }
         ].map((t) => (
           <button
             key={t.id}
             onClick={() => setActiveTab(t.id as MainTab)}
             className={`px-3 py-1.5 rounded-lg whitespace-nowrap transition-all ${
               activeTab === t.id
-                ? 'bg-emerald-600 text-white font-extrabold'
+                ? 'bg-emerald-600 text-white font-extrabold shadow-sm'
                 : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
             }`}
           >
@@ -639,413 +330,28 @@ export default function InterviewPracticePage() {
       </div>
 
       {/* ========================================================= */}
-      {/* 3. MAIN WORKSPACE */}
+      {/* 3. MAIN CONTENT CONTAINER */}
       {/* ========================================================= */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-        {/* ========================================================= */}
-        {/* TAB 0: DASHBOARD PAGE */}
-        {/* ========================================================= */}
-        {activeTab === 'dashboard' && (
-          <div className="space-y-6">
-            {/* Top Welcome & Summary Header */}
-            <div className="bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
-              <div className="space-y-1.5">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-mono font-bold">
-                  <Sparkles size={13} />
-                  <span>Interview Readiness Track • Backend Go & System Architecture</span>
-                </div>
-                <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                  Dashboard Kemajuan Latihan
-                </h1>
-                <p className="text-slate-600 text-xs sm:text-sm max-w-2xl leading-relaxed">
-                  Statistik ini diperbarui secara otomatis saat Anda melatih soal di menu Latihan Soal, menyelesaikan Mock Interview, atau meninjau Riwayat Latihan.
-                </p>
-              </div>
-
-              {/* Action & Demo Data Toggle */}
-              <div className="flex flex-wrap items-center gap-2.5">
-                <button
-                  onClick={() => setActiveTab('mock')}
-                  className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs sm:text-sm transition-all shadow-sm flex items-center gap-2 cursor-pointer"
-                >
-                  <UserCheck size={15} />
-                  <span>Mulai Mock Interview</span>
-                </button>
-
-                <button
-                  onClick={() => setActiveTab('coding')}
-                  className="px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-xs sm:text-sm transition-all shadow-sm flex items-center gap-2 cursor-pointer"
-                >
-                  <Code2 size={15} className="text-emerald-400" />
-                  <span>Coding Arena</span>
-                </button>
-
-                {practiceStats.totalSessions === 0 ? (
-                  <button
-                    onClick={handleLoadDemoData}
-                    className="px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs border border-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer"
-                    title="Muat contoh data simulasi untuk melihat pratinjau statistik penuh"
-                  >
-                    <FolderOpen size={14} />
-                    <span>Lihat Contoh Data</span>
-                  </button>
-                ) : (
-                  <button
-                    onClick={handleResetData}
-                    className="px-3 py-2.5 rounded-xl bg-slate-100 hover:bg-rose-50 hover:text-rose-700 text-slate-600 font-bold text-xs border border-slate-200 transition-colors flex items-center gap-1 cursor-pointer"
-                    title="Reset semua riwayat latihan kembali ke 0"
-                  >
-                    <RotateCcw size={13} />
-                    <span>Reset Data (0)</span>
-                  </button>
-                )}
-              </div>
-            </div>
-
-            {/* 1. PRACTICE STATISTICS (4 CARDS) */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {/* Stat 1: Total Sessions */}
-              <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-sm space-y-2">
-                <div className="flex items-center justify-between text-slate-500">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider">Total Sesi</span>
-                  <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold">
-                    <Clock size={16} />
-                  </div>
-                </div>
-                <div className="text-2xl sm:text-3xl font-black text-slate-900 font-mono">
-                  {practiceStats.totalSessions}
-                </div>
-                <p className="text-[11px] text-slate-500">
-                  {practiceStats.totalSessions === 0 ? 'Belum ada sesi latihan' : `${practiceStats.totalSessions} sesi selesai`}
-                </p>
-              </div>
-
-              {/* Stat 2: Questions Answered */}
-              <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-sm space-y-2">
-                <div className="flex items-center justify-between text-slate-500">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider">Soal Terlatih</span>
-                  <div className="w-8 h-8 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center font-bold">
-                    <CheckCircle2 size={16} />
-                  </div>
-                </div>
-                <div className="text-2xl sm:text-3xl font-black text-slate-900 font-mono">
-                  {practiceStats.questionsAnswered}
-                </div>
-                <p className="text-[11px] text-slate-500">
-                  Dari total {interviewQuestions.length} bank soal
-                </p>
-              </div>
-
-              {/* Stat 3: Coding Challenges Completed */}
-              <div
-                onClick={() => setActiveTab('coding')}
-                className="bg-white p-5 rounded-2xl border border-slate-200/90 hover:border-emerald-300 transition-all shadow-sm space-y-2 cursor-pointer group"
-              >
-                <div className="flex items-center justify-between text-slate-500">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider group-hover:text-emerald-700 transition-colors">Coding Challenge</span>
-                  <div className="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center font-bold">
-                    <Code2 size={16} />
-                  </div>
-                </div>
-                <div className="text-2xl sm:text-3xl font-black text-slate-900 font-mono">
-                  {practiceStats.codingChallengesCompleted}
-                </div>
-                <p className="text-[11px] text-slate-500 flex items-center justify-between">
-                  <span>Arsitektur Go & Concurrency</span>
-                  <ChevronRight size={13} className="text-slate-400 group-hover:text-emerald-600" />
-                </p>
-              </div>
-
-              {/* Stat 4: Average Score */}
-              <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-sm space-y-2">
-                <div className="flex items-center justify-between text-slate-500">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider">Rata-Rata Skor</span>
-                  <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center font-bold">
-                    <Award size={16} />
-                  </div>
-                </div>
-                <div className="text-2xl sm:text-3xl font-black font-mono text-emerald-700">
-                  {practiceStats.averageScore > 0 ? `${practiceStats.averageScore}%` : '0%'}
-                </div>
-                <p className="text-[11px] text-slate-500">
-                  {practiceStats.averageScore >= 85
-                    ? 'Kategori: Strong Hire'
-                    : practiceStats.averageScore >= 70
-                    ? 'Kategori: Competent'
-                    : 'Belum ada evaluasi'}
-                </p>
-              </div>
-            </div>
-
-            {/* 2. MAIN GRID: SKILL PROGRESS & RECOMMENDED PRACTICE */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-              {/* Left: Skill Progress List (7 cols) */}
-              <div className="lg:col-span-7 bg-white rounded-2xl border border-slate-200/90 p-6 shadow-sm space-y-5">
-                <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                  <div className="flex items-center gap-2">
-                    <BarChart3 size={16} className="text-emerald-600" />
-                    <h2 className="font-extrabold text-sm sm:text-base text-slate-900">
-                      Penguasaan Topik Teknis (Skill Progress)
-                    </h2>
-                  </div>
-                  <span className="text-xs font-mono text-slate-400">6 Bidang Evaluasi</span>
-                </div>
-
-                <div className="space-y-4">
-                  {skillProgress.map((item, idx) => (
-                    <div key={idx} className="space-y-1.5 p-3 rounded-xl bg-slate-50/70 border border-slate-100">
-                      <div className="flex items-center justify-between text-xs sm:text-sm">
-                        <div className="flex items-center gap-2">
-                          <span className="font-bold text-slate-900">{item.skill}</span>
-                          <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded ${
-                            item.score >= 85
-                              ? 'bg-emerald-100 text-emerald-800'
-                              : item.score >= 70
-                              ? 'bg-sky-100 text-sky-800'
-                              : item.score > 0
-                              ? 'bg-amber-100 text-amber-800'
-                              : 'bg-slate-200 text-slate-600'
-                          }`}>
-                            {item.level}
-                          </span>
-                        </div>
-
-                        <div className="flex items-center gap-3 font-mono text-xs">
-                          <span className="text-slate-500">{item.totalAnswered} Soal</span>
-                          <span className="font-black text-slate-900">{item.score}%</span>
-                        </div>
-                      </div>
-
-                      {/* Progress Bar */}
-                      <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
-                        <div
-                          className={`h-full transition-all duration-500 rounded-full ${item.color}`}
-                          style={{ width: `${Math.max(item.score, item.totalAnswered > 0 ? 10 : 0)}%` }}
-                        />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right: Recommended Practice Card (5 cols) */}
-              <div className="lg:col-span-5 space-y-5">
-                <div className="bg-amber-50/80 rounded-2xl border border-amber-200 p-6 shadow-sm space-y-4">
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex items-center gap-2 text-amber-900 font-extrabold text-sm">
-                      <AlertTriangle size={17} className="text-amber-600 flex-shrink-0" />
-                      <span>Rekomendasi Langkah Latihan</span>
-                    </div>
-                    {recommendedPractice.score > 0 && (
-                      <span className="px-2 py-0.5 rounded bg-amber-200/70 text-amber-900 text-[10px] font-mono font-black">
-                        {recommendedPractice.score}%
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="space-y-1.5 text-xs text-amber-950">
-                    <p className="font-bold text-sm text-slate-900">
-                      Fokus Topik: {recommendedPractice.skill}
-                    </p>
-                    <p className="leading-relaxed text-slate-700">
-                      {recommendedPractice.reason[lang]}
-                    </p>
-                  </div>
-
-                  <div className="p-3 bg-white rounded-xl border border-amber-200 text-xs text-slate-800 space-y-1">
-                    <strong className="text-amber-800 font-mono">Saran Tindakan:</strong>
-                    <p className="leading-relaxed">{recommendedPractice.suggestedAction[lang]}</p>
-                  </div>
-
-                  <div className="space-y-2 pt-1">
-                    <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-600">
-                      Soal Latihan yang Disarankan:
-                    </span>
-                    <div className="space-y-1.5">
-                      {recommendedPractice.recommendedQuestions.map((q, qIdx) => (
-                        <div
-                          key={qIdx}
-                          onClick={() => setActiveTab('mock')}
-                          className="p-2.5 rounded-lg bg-white border border-slate-200 hover:border-emerald-400 transition-all flex items-center justify-between text-xs cursor-pointer group"
-                        >
-                          <span className="text-slate-800 font-medium group-hover:text-emerald-700 truncate pr-2">
-                            {q.title[lang]}
-                          </span>
-                          <ChevronRight size={13} className="text-slate-400 group-hover:text-emerald-600 flex-shrink-0" />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={() => setActiveTab('mock')}
-                    className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
-                  >
-                    <span>Mulai Simulasi Wawancara</span>
-                    <ArrowLeft size={13} className="rotate-180" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* 3. RECENT ACTIVITY TABLE */}
-            <div className="bg-white rounded-2xl border border-slate-200/90 p-6 shadow-sm space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                <div className="flex items-center gap-2">
-                  <Calendar size={16} className="text-emerald-600" />
-                  <h2 className="font-extrabold text-sm sm:text-base text-slate-900">
-                    Aktivitas & Riwayat Latihan Terbaru
-                  </h2>
-                </div>
-                <button
-                  onClick={() => setActiveTab('history')}
-                  className="text-xs font-bold text-emerald-700 hover:text-emerald-600 flex items-center gap-1 cursor-pointer"
-                >
-                  <span>Lihat Semua Riwayat ({recentActivities.length})</span>
-                  <ChevronRight size={13} />
-                </button>
-              </div>
-
-              {recentActivities.length === 0 ? (
-                <div className="py-12 text-center space-y-3">
-                  <div className="w-12 h-12 rounded-full bg-slate-100 text-slate-400 mx-auto flex items-center justify-center">
-                    <Clock size={20} />
-                  </div>
-                  <div className="space-y-1">
-                    <p className="text-sm font-bold text-slate-800">Belum ada riwayat sesi latihan</p>
-                    <p className="text-xs text-slate-500 max-w-md mx-auto">
-                      Saat Anda menyelesaikan sesi latihan, simulasi Mock Interview, atau menjawab tantangan Coding Challenge, aktivitas Anda akan otomatis tercatat di sini.
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => setActiveTab('mock')}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-sm transition-all cursor-pointer"
-                  >
-                    <UserCheck size={14} />
-                    <span>Mulai Mock Interview Pertama</span>
-                  </button>
-                </div>
-              ) : (
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs sm:text-sm">
-                    <thead>
-                      <tr className="border-b border-slate-200 text-[11px] font-mono text-slate-500 uppercase">
-                        <th className="pb-3 font-bold">Judul Sesi / Soal</th>
-                        <th className="pb-3 font-bold">Tipe Sesi</th>
-                        <th className="pb-3 font-bold">Topik</th>
-                        <th className="pb-3 font-bold">Tanggal</th>
-                        <th className="pb-3 font-bold">Durasi</th>
-                        <th className="pb-3 font-bold text-right">Skor / Hasil</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100 font-sans">
-                      {recentActivities.map((act) => (
-                        <tr
-                          key={act.id}
-                          onClick={() => setActiveTab('history')}
-                          className="hover:bg-slate-50/80 transition-colors cursor-pointer"
-                        >
-                          <td className="py-3 font-bold text-slate-900 max-w-xs truncate">
-                            {act.title}
-                          </td>
-                          <td className="py-3">
-                            <span className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold ${
-                              act.type === 'Mock Interview'
-                                ? 'bg-purple-50 text-purple-700 border border-purple-200'
-                                : act.type === 'Coding Challenge'
-                                ? 'bg-sky-50 text-sky-700 border border-sky-200'
-                                : 'bg-emerald-50 text-emerald-800 border border-emerald-200'
-                            }`}>
-                              {act.type}
-                            </span>
-                          </td>
-                          <td className="py-3 text-slate-600 text-xs">
-                            {act.topic}
-                          </td>
-                          <td className="py-3 text-slate-500 text-xs font-mono">
-                            {act.date}
-                          </td>
-                          <td className="py-3 text-slate-500 text-xs font-mono">
-                            {act.durationMinutes} mnt
-                          </td>
-                          <td className="py-3 text-right">
-                            <div className="inline-flex items-center gap-1.5 font-mono font-black">
-                              <span className={`text-xs ${
-                                act.score >= 85
-                                ? 'text-emerald-700'
-                                : act.score >= 70
-                                ? 'text-sky-700'
-                                : 'text-amber-700'
-                              }`}>
-                                {act.score}%
-                              </span>
-                              <span className={`w-2 h-2 rounded-full ${
-                                act.score >= 85
-                                ? 'bg-emerald-500'
-                                : act.score >= 70
-                                ? 'bg-sky-500'
-                                : 'bg-amber-500'
-                              }`} />
-                            </div>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
-
-        {/* ========================================================= */}
-        {/* TAB 1: PRACTICE FEATURE */}
-        {/* ========================================================= */}
-        {activeTab === 'practice' && (
-          <PracticeFeature
-            lang={lang}
-            onSaveResult={handleSavePracticeResult}
-            onNavigateToDashboard={() => setActiveTab('dashboard')}
-          />
-        )}
-
-        {/* ========================================================= */}
-        {/* TAB 2: MOCK INTERVIEW FEATURE */}
-        {/* ========================================================= */}
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        {/* TAB 1: MOCK INTERVIEW (DEFAULT) */}
         {activeTab === 'mock' && (
           <MockInterviewFeature
             lang={lang}
-            onSaveMockResult={handleSaveMockResult}
-            onNavigateToDashboard={() => setActiveTab('dashboard')}
+            onSaveMockResult={() => {}}
+            onNavigateToDashboard={() => setActiveTab('practice')}
           />
         )}
 
-        {/* ========================================================= */}
-        {/* TAB 3: CODING CHALLENGE FEATURE */}
-        {/* ========================================================= */}
-        {activeTab === 'coding' && (
-          <CodingChallengeFeature
+        {/* TAB 2: PRACTICE QUESTIONS */}
+        {activeTab === 'practice' && (
+          <PracticeFeature
             lang={lang}
-            onChallengeCompleted={handleCodingChallengeCompleted}
-            onNavigateToDashboard={() => setActiveTab('dashboard')}
+            onSaveResult={() => {}}
+            onNavigateToDashboard={() => setActiveTab('mock')}
           />
         )}
 
-        {/* ========================================================= */}
-        {/* TAB 4: HISTORY FEATURE */}
-        {/* ========================================================= */}
-        {activeTab === 'history' && (
-          <HistoryFeature
-            lang={lang}
-            onNavigateToPractice={() => setActiveTab('practice')}
-            onNavigateToCoding={() => setActiveTab('coding')}
-            onNavigateToDashboard={() => setActiveTab('dashboard')}
-          />
-        )}
-
-        {/* ========================================================= */}
-        {/* TAB 5: SELF-INTRODUCTION ELEVATOR PITCH & AUDIO PLAYER */}
-        {/* ========================================================= */}
+        {/* TAB 3: SELF-INTRODUCTION & AUDIO */}
         {activeTab === 'pitch' && (
           <div className="space-y-6">
             {/* Header Banner */}
@@ -1188,7 +494,7 @@ export default function InterviewPracticePage() {
                     <span>Tips Eksekusi Wawancara:</span>
                   </div>
                   <p className="text-xs text-emerald-900 leading-relaxed">
-                    Ucapkan naskah perkenalan diri dengan tempo santai, percaya diri, dan artikulasi jelas. Tekankan kata kunci <strong>2+ tahun di PT PLN Icon+</strong> dan <strong>Go Clean Architecture</strong> karena poin inilah yang membedakan Anda dengan fresh graduate lain.
+                    Ucapkan naskah perkenalan diri dengan tempo santai, percaya diri, dan artikulasi jelas. Tekankan kata kunci <strong>2+ tahun di PT PLN Icon+</strong> dan <strong>Go Clean Architecture</strong> karena poin inilah yang membedakan Anda dengan kandidat lain.
                   </p>
                 </div>
               </div>
@@ -1196,9 +502,7 @@ export default function InterviewPracticePage() {
           </div>
         )}
 
-        {/* ========================================================= */}
-        {/* TAB 6: QUESTION BANK SYLLABUS */}
-        {/* ========================================================= */}
+        {/* TAB 4: QUESTION BANK SYLLABUS */}
         {activeTab === 'syllabus' && (
           <div className="space-y-6">
             <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
@@ -1277,42 +581,6 @@ export default function InterviewPracticePage() {
                       <ChevronRight size={13} />
                     </button>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* ========================================================= */}
-        {/* TAB 7: CHEAT SHEET */}
-        {/* ========================================================= */}
-        {activeTab === 'cheatsheet' && (
-          <div className="max-w-4xl mx-auto space-y-6">
-            <div className="text-center space-y-1">
-              <h2 className="text-xl font-extrabold text-slate-900">Technical Architecture Cheat Sheet</h2>
-              <p className="text-xs text-slate-500">
-                Formula ringkas arsitektur Go, transaksi database ACID, troubleshooting PLN Icon+, dan metode STAR.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {technicalCheatSheet.map((sheet, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3"
-                >
-                  <div className="flex items-center gap-2 text-slate-900 font-bold text-sm border-b border-slate-100 pb-2.5">
-                    <CheckCircle2 size={16} className="text-emerald-600 flex-shrink-0" />
-                    <span>{sheet.topic}</span>
-                  </div>
-                  <ul className="space-y-2 text-xs text-slate-700 leading-relaxed">
-                    {sheet.points.map((pt, pIdx) => (
-                      <li key={pIdx} className="flex items-start gap-2">
-                        <span className="text-emerald-600 font-mono font-bold">•</span>
-                        <span>{pt}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               ))}
             </div>
