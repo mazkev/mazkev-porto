@@ -44,7 +44,10 @@ import {
   CheckCircle,
   Calendar,
   Layers3,
-  LayoutDashboard
+  LayoutDashboard,
+  PlusCircle,
+  RefreshCw,
+  FolderOpen
 } from 'lucide-react';
 import {
   interviewQuestions,
@@ -53,12 +56,16 @@ import {
   InterviewCategory
 } from '../lib/data/interviewData';
 import {
-  practiceStatsData,
-  skillProgressData,
-  recentActivityData,
-  getRecommendedPractice,
-  ActivityItem,
-  SkillProgress
+  initialPracticeStats,
+  initialSkillProgress,
+  initialRecentActivity,
+  demoPracticeStats,
+  demoSkillProgress,
+  demoRecentActivity,
+  getDynamicRecommendation,
+  PracticeStats,
+  SkillProgress,
+  ActivityItem
 } from '../lib/data/dashboardData';
 
 type MainTab = 'dashboard' | 'pitch' | 'studio' | 'syllabus' | 'cheatsheet';
@@ -146,6 +153,12 @@ This blend of authentic production support resilience and backend development me
   }
 };
 
+const STORAGE_KEYS = {
+  STATS: 'mazkev_interview_stats',
+  SKILLS: 'mazkev_interview_skills',
+  ACTIVITIES: 'mazkev_interview_activities'
+};
+
 export default function InterviewPracticePage() {
   const [activeTab, setActiveTab] = useState<MainTab>('dashboard');
   const [pitchLength, setPitchLength] = useState<PitchLength>('comprehensive');
@@ -153,6 +166,12 @@ export default function InterviewPracticePage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  // Dynamic Dashboard States (Loaded from localStorage)
+  const [practiceStats, setPracticeStats] = useState<PracticeStats>(initialPracticeStats);
+  const [skillProgress, setSkillProgress] = useState<SkillProgress[]>(initialSkillProgress);
+  const [recentActivities, setRecentActivities] = useState<ActivityItem[]>(initialRecentActivity);
+  const [isSavedNotification, setIsSavedNotification] = useState<boolean>(false);
 
   // Audio Speech States
   const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
@@ -171,6 +190,21 @@ export default function InterviewPracticePage() {
 
   const recognitionRef = useRef<any>(null);
 
+  // Load Persisted Stats from LocalStorage on mount
+  useEffect(() => {
+    try {
+      const savedStats = localStorage.getItem(STORAGE_KEYS.STATS);
+      const savedSkills = localStorage.getItem(STORAGE_KEYS.SKILLS);
+      const savedActs = localStorage.getItem(STORAGE_KEYS.ACTIVITIES);
+
+      if (savedStats) setPracticeStats(JSON.parse(savedStats));
+      if (savedSkills) setSkillProgress(JSON.parse(savedSkills));
+      if (savedActs) setRecentActivities(JSON.parse(savedActs));
+    } catch (e) {
+      console.error('Error reading localStorage data', e);
+    }
+  }, []);
+
   // Filtered Questions
   const filteredQuestions = useMemo(() => {
     return interviewQuestions.filter((q) => {
@@ -185,7 +219,7 @@ export default function InterviewPracticePage() {
     filteredQuestions[currentIndex] || interviewQuestions[0];
 
   const currentPitch = selfIntroductionData[lang][pitchLength];
-  const recommendedPractice = useMemo(() => getRecommendedPractice(), []);
+  const recommendedPractice = useMemo(() => getDynamicRecommendation(skillProgress), [skillProgress]);
 
   // Speech Recognition (Web Speech API)
   useEffect(() => {
@@ -306,6 +340,103 @@ export default function InterviewPracticePage() {
     };
   }, [userTranscript, currentQuestion]);
 
+  // Save Real Practice Session to Dashboard & LocalStorage
+  const handleSavePracticeResult = () => {
+    const newScore = keywordAnalysis.score > 0 ? keywordAnalysis.score : 85;
+    const duration = Math.max(1, Math.ceil(elapsedSeconds / 60));
+    const now = new Date();
+    const formattedDate = `${now.getDate()} ${now.toLocaleString('id-ID', { month: 'short' })} ${now.getFullYear()}`;
+
+    const newActivity: ActivityItem = {
+      id: `act-${Date.now()}`,
+      title: currentQuestion.question[lang],
+      type: 'Practice Session',
+      topic: currentQuestion.categoryLabel[lang],
+      date: formattedDate,
+      score: newScore,
+      status: newScore >= 85 ? 'Excellent' : newScore >= 70 ? 'Completed' : 'Needs Review',
+      durationMinutes: duration
+    };
+
+    const updatedActivities = [newActivity, ...recentActivities.slice(0, 9)];
+
+    // Update Stats
+    const totalAnswered = practiceStats.questionsAnswered + 1;
+    const totalSessions = practiceStats.totalSessions + 1;
+    const newAvg = practiceStats.totalSessions === 0
+      ? newScore
+      : Math.round(((practiceStats.averageScore * practiceStats.totalSessions) + newScore) / totalSessions * 10) / 10;
+
+    const updatedStats: PracticeStats = {
+      totalSessions,
+      questionsAnswered: totalAnswered,
+      codingChallengesCompleted: currentQuestion.codeSnippet ? practiceStats.codingChallengesCompleted + 1 : practiceStats.codingChallengesCompleted,
+      averageScore: newAvg
+    };
+
+    // Update specific skill
+    const targetSkillName = currentQuestion.category === 'backend-go'
+      ? 'Golang'
+      : currentQuestion.category === 'app-support'
+      ? 'SQL & PostgreSQL'
+      : currentQuestion.category === 'fullstack-react'
+      ? 'REST API'
+      : 'System Design';
+
+    const updatedSkills = skillProgress.map((s) => {
+      if (s.skill === targetSkillName) {
+        const count = s.totalAnswered + 1;
+        const currentTotal = s.score * s.totalAnswered;
+        const calcScore = Math.round((currentTotal + newScore) / count);
+        return {
+          ...s,
+          score: calcScore,
+          totalAnswered: count,
+          level: calcScore >= 85 ? 'Advanced' : calcScore >= 70 ? 'Intermediate' : 'Needs Practice'
+        };
+      }
+      return s;
+    });
+
+    setPracticeStats(updatedStats);
+    setRecentActivities(updatedActivities);
+    setSkillProgress(updatedSkills);
+
+    try {
+      localStorage.setItem(STORAGE_KEYS.STATS, JSON.stringify(updatedStats));
+      localStorage.setItem(STORAGE_KEYS.ACTIVITIES, JSON.stringify(updatedActivities));
+      localStorage.setItem(STORAGE_KEYS.SKILLS, JSON.stringify(updatedSkills));
+    } catch (e) {
+      console.error('Error saving data to localStorage', e);
+    }
+
+    setIsSavedNotification(true);
+    setTimeout(() => setIsSavedNotification(false), 3000);
+  };
+
+  // Demo / Reset controls
+  const handleLoadDemoData = () => {
+    setPracticeStats(demoPracticeStats);
+    setSkillProgress(demoSkillProgress);
+    setRecentActivities(demoRecentActivity);
+    try {
+      localStorage.setItem(STORAGE_KEYS.STATS, JSON.stringify(demoPracticeStats));
+      localStorage.setItem(STORAGE_KEYS.ACTIVITIES, JSON.stringify(demoRecentActivity));
+      localStorage.setItem(STORAGE_KEYS.SKILLS, JSON.stringify(demoSkillProgress));
+    } catch (e) {}
+  };
+
+  const handleResetData = () => {
+    setPracticeStats(initialPracticeStats);
+    setSkillProgress(initialSkillProgress);
+    setRecentActivities(initialRecentActivity);
+    try {
+      localStorage.removeItem(STORAGE_KEYS.STATS);
+      localStorage.removeItem(STORAGE_KEYS.ACTIVITIES);
+      localStorage.removeItem(STORAGE_KEYS.SKILLS);
+    } catch (e) {}
+  };
+
   return (
     <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans selection:bg-emerald-100 selection:text-emerald-900 pb-20">
       {/* ========================================================= */}
@@ -346,7 +477,7 @@ export default function InterviewPracticePage() {
               }`}
             >
               <LayoutDashboard size={14} className={activeTab === 'dashboard' ? 'text-emerald-600' : 'text-slate-500'} />
-              <span>Dashboard Latihan</span>
+              <span>Dashboard</span>
             </button>
 
             <button
@@ -452,7 +583,7 @@ export default function InterviewPracticePage() {
       {/* ========================================================= */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
         {/* ========================================================= */}
-        {/* TAB 0: DASHBOARD PAGE */}
+        {/* TAB 0: DASHBOARD PAGE (Real-Time & Zero-Base) */}
         {/* ========================================================= */}
         {activeTab === 'dashboard' && (
           <div className="space-y-6">
@@ -467,18 +598,39 @@ export default function InterviewPracticePage() {
                   Dashboard Kemajuan Latihan
                 </h1>
                 <p className="text-slate-600 text-xs sm:text-sm max-w-2xl leading-relaxed">
-                  Pantau statistik latihan, kesiapan topik teknis (Golang, SQL, REST API, Redis, System Design), dan histori simulasi wawancara Anda.
+                  Statistik ini diperbarui secara otomatis saat Anda melatih soal di Studio atau membaca naskah perkenalan diri.
                 </p>
               </div>
 
-              <div className="flex items-center gap-3">
+              {/* Action & Demo Data Toggle */}
+              <div className="flex flex-wrap items-center gap-2.5">
                 <button
                   onClick={() => setActiveTab('studio')}
                   className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs sm:text-sm transition-all shadow-sm flex items-center gap-2 cursor-pointer"
                 >
                   <Play size={15} />
-                  <span>Mulai Latihan Baru</span>
+                  <span>Mulai Sesi Latihan</span>
                 </button>
+
+                {practiceStats.totalSessions === 0 ? (
+                  <button
+                    onClick={handleLoadDemoData}
+                    className="px-3.5 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs border border-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer"
+                    title="Muat contoh data simulasi untuk melihat pratinjau statistik penuh"
+                  >
+                    <FolderOpen size={14} />
+                    <span>Lihat Contoh Data</span>
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleResetData}
+                    className="px-3 py-2.5 rounded-xl bg-slate-100 hover:bg-rose-50 hover:text-rose-700 text-slate-600 font-bold text-xs border border-slate-200 transition-colors flex items-center gap-1 cursor-pointer"
+                    title="Reset semua riwayat latihan kembali ke 0"
+                  >
+                    <RotateCcw size={13} />
+                    <span>Reset Data (0)</span>
+                  </button>
+                )}
               </div>
             </div>
 
@@ -493,27 +645,26 @@ export default function InterviewPracticePage() {
                   </div>
                 </div>
                 <div className="text-2xl sm:text-3xl font-black text-slate-900 font-mono">
-                  {practiceStatsData.totalSessions}
+                  {practiceStats.totalSessions}
                 </div>
-                <p className="text-[11px] text-slate-500 flex items-center gap-1">
-                  <TrendingUp size={12} className="text-emerald-600" />
-                  <span>+4 sesi minggu ini</span>
+                <p className="text-[11px] text-slate-500">
+                  {practiceStats.totalSessions === 0 ? 'Belum ada sesi latihan' : `${practiceStats.totalSessions} sesi selesai`}
                 </p>
               </div>
 
               {/* Stat 2: Questions Answered */}
               <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-sm space-y-2">
                 <div className="flex items-center justify-between text-slate-500">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider">Soal Dijawab</span>
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider">Soal Terlatih</span>
                   <div className="w-8 h-8 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center font-bold">
                     <CheckCircle2 size={16} />
                   </div>
                 </div>
                 <div className="text-2xl sm:text-3xl font-black text-slate-900 font-mono">
-                  {practiceStatsData.questionsAnswered}
+                  {practiceStats.questionsAnswered}
                 </div>
                 <p className="text-[11px] text-slate-500">
-                  Dari 20+ skenario interview
+                  Dari total {interviewQuestions.length} bank soal
                 </p>
               </div>
 
@@ -526,10 +677,10 @@ export default function InterviewPracticePage() {
                   </div>
                 </div>
                 <div className="text-2xl sm:text-3xl font-black text-slate-900 font-mono">
-                  {practiceStatsData.codingChallengesCompleted}
+                  {practiceStats.codingChallengesCompleted}
                 </div>
                 <p className="text-[11px] text-slate-500">
-                  Go transactions & Clean Arch
+                  Arsitektur Go & ACID
                 </p>
               </div>
 
@@ -541,11 +692,15 @@ export default function InterviewPracticePage() {
                     <Award size={16} />
                   </div>
                 </div>
-                <div className="text-2xl sm:text-3xl font-black text-slate-900 font-mono text-emerald-700">
-                  {practiceStatsData.averageScore}%
+                <div className="text-2xl sm:text-3xl font-black font-mono text-emerald-700">
+                  {practiceStats.averageScore > 0 ? `${practiceStats.averageScore}%` : '0%'}
                 </div>
                 <p className="text-[11px] text-slate-500">
-                  Kategori <strong>Strong Hire</strong>
+                  {practiceStats.averageScore >= 85
+                    ? 'Kategori: Strong Hire'
+                    : practiceStats.averageScore >= 70
+                    ? 'Kategori: Competent'
+                    : 'Belum ada evaluasi'}
                 </p>
               </div>
             </div>
@@ -558,14 +713,14 @@ export default function InterviewPracticePage() {
                   <div className="flex items-center gap-2">
                     <BarChart3 size={16} className="text-emerald-600" />
                     <h2 className="font-extrabold text-sm sm:text-base text-slate-900">
-                      Kemajuan & Penguasaan Topik Teknis (Skill Progress)
+                      Penguasaan Topik Teknis (Skill Progress)
                     </h2>
                   </div>
                   <span className="text-xs font-mono text-slate-400">6 Bidang Evaluasi</span>
                 </div>
 
                 <div className="space-y-4">
-                  {skillProgressData.map((item, idx) => (
+                  {skillProgress.map((item, idx) => (
                     <div key={idx} className="space-y-1.5 p-3 rounded-xl bg-slate-50/70 border border-slate-100">
                       <div className="flex items-center justify-between text-xs sm:text-sm">
                         <div className="flex items-center gap-2">
@@ -573,9 +728,11 @@ export default function InterviewPracticePage() {
                           <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded ${
                             item.score >= 85
                               ? 'bg-emerald-100 text-emerald-800'
-                              : item.score >= 75
+                              : item.score >= 70
                               ? 'bg-sky-100 text-sky-800'
-                              : 'bg-amber-100 text-amber-800'
+                              : item.score > 0
+                              ? 'bg-amber-100 text-amber-800'
+                              : 'bg-slate-200 text-slate-600'
                           }`}>
                             {item.level}
                           </span>
@@ -591,7 +748,7 @@ export default function InterviewPracticePage() {
                       <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
                         <div
                           className={`h-full transition-all duration-500 rounded-full ${item.color}`}
-                          style={{ width: `${item.score}%` }}
+                          style={{ width: `${Math.max(item.score, item.totalAnswered > 0 ? 10 : 0)}%` }}
                         />
                       </div>
                     </div>
@@ -599,18 +756,19 @@ export default function InterviewPracticePage() {
                 </div>
               </div>
 
-              {/* Right: Recommended Practice & Weakest Area (5 cols) */}
+              {/* Right: Recommended Practice Card (5 cols) */}
               <div className="lg:col-span-5 space-y-5">
-                {/* Weakest Area Alert Card */}
                 <div className="bg-amber-50/80 rounded-2xl border border-amber-200 p-6 shadow-sm space-y-4">
                   <div className="flex items-start justify-between gap-3">
                     <div className="flex items-center gap-2 text-amber-900 font-extrabold text-sm">
                       <AlertTriangle size={17} className="text-amber-600 flex-shrink-0" />
-                      <span>Rekomendasi Latihan (Area Paling Perlu Ditingkatkan)</span>
+                      <span>Rekomendasi Langkah Latihan</span>
                     </div>
-                    <span className="px-2 py-0.5 rounded bg-amber-200/70 text-amber-900 text-[10px] font-mono font-black">
-                      {recommendedPractice.score}%
-                    </span>
+                    {recommendedPractice.score > 0 && (
+                      <span className="px-2 py-0.5 rounded bg-amber-200/70 text-amber-900 text-[10px] font-mono font-black">
+                        {recommendedPractice.score}%
+                      </span>
+                    )}
                   </div>
 
                   <div className="space-y-1.5 text-xs text-amber-950">
@@ -623,13 +781,13 @@ export default function InterviewPracticePage() {
                   </div>
 
                   <div className="p-3 bg-white rounded-xl border border-amber-200 text-xs text-slate-800 space-y-1">
-                    <strong className="text-amber-800 font-mono">Saran Langkah Perbaikan:</strong>
+                    <strong className="text-amber-800 font-mono">Saran Tindakan:</strong>
                     <p className="leading-relaxed">{recommendedPractice.suggestedAction[lang]}</p>
                   </div>
 
                   <div className="space-y-2 pt-1">
                     <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-600">
-                      Soal Rekomendasi Terkait:
+                      Soal Latihan yang Disarankan:
                     </span>
                     <div className="space-y-1.5">
                       {recommendedPractice.recommendedQuestions.map((q, qIdx) => (
@@ -652,13 +810,10 @@ export default function InterviewPracticePage() {
                   </div>
 
                   <button
-                    onClick={() => {
-                      setSelectedCategory('backend-go');
-                      setActiveTab('studio');
-                    }}
+                    onClick={() => setActiveTab('studio')}
                     className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
                   >
-                    <span>Latih Topik {recommendedPractice.skill} Sekarang</span>
+                    <span>Mulai Latihan Sekarang</span>
                     <ArrowLeft size={13} className="rotate-180" />
                   </button>
                 </div>
@@ -671,75 +826,98 @@ export default function InterviewPracticePage() {
                 <div className="flex items-center gap-2">
                   <Calendar size={16} className="text-emerald-600" />
                   <h2 className="font-extrabold text-sm sm:text-base text-slate-900">
-                    Aktivitas & Riwayat Simulasi Terbaru
+                    Aktivitas & Riwayat Latihan Terbaru
                   </h2>
                 </div>
-                <span className="text-xs font-mono text-slate-500">6 Sesi Terakhir</span>
+                <span className="text-xs font-mono text-slate-500">
+                  {recentActivities.length} Sesi Tercatat
+                </span>
               </div>
 
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs sm:text-sm">
-                  <thead>
-                    <tr className="border-b border-slate-200 text-[11px] font-mono text-slate-500 uppercase">
-                      <th className="pb-3 font-bold">Judul Sesi / Soal</th>
-                      <th className="pb-3 font-bold">Tipe Sesi</th>
-                      <th className="pb-3 font-bold">Topik</th>
-                      <th className="pb-3 font-bold">Tanggal</th>
-                      <th className="pb-3 font-bold">Durasi</th>
-                      <th className="pb-3 font-bold text-right">Skor / Hasil</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-slate-100 font-sans">
-                    {recentActivityData.map((act) => (
-                      <tr key={act.id} className="hover:bg-slate-50/80 transition-colors">
-                        <td className="py-3 font-bold text-slate-900 max-w-xs truncate">
-                          {act.title}
-                        </td>
-                        <td className="py-3">
-                          <span className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold ${
-                            act.type === 'Mock Interview'
-                              ? 'bg-purple-50 text-purple-700 border border-purple-200'
-                              : act.type === 'Coding Challenge'
-                              ? 'bg-sky-50 text-sky-700 border border-sky-200'
-                              : 'bg-slate-100 text-slate-700 border border-slate-200'
-                          }`}>
-                            {act.type}
-                          </span>
-                        </td>
-                        <td className="py-3 text-slate-600 text-xs">
-                          {act.topic}
-                        </td>
-                        <td className="py-3 text-slate-500 text-xs font-mono">
-                          {act.date}
-                        </td>
-                        <td className="py-3 text-slate-500 text-xs font-mono">
-                          {act.durationMinutes} mnt
-                        </td>
-                        <td className="py-3 text-right">
-                          <div className="inline-flex items-center gap-1.5 font-mono font-black">
-                            <span className={`text-xs ${
-                              act.score >= 85
+              {recentActivities.length === 0 ? (
+                <div className="py-12 text-center space-y-3">
+                  <div className="w-12 h-12 rounded-full bg-slate-100 text-slate-400 mx-auto flex items-center justify-center">
+                    <Clock size={20} />
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-sm font-bold text-slate-800">Belum ada riwayat sesi latihan</p>
+                    <p className="text-xs text-slate-500 max-w-md mx-auto">
+                      Saat Anda menjawab soal di Studio atau membaca naskah perkenalan, sesi Anda akan otomatis tercatat di tabel ini.
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setActiveTab('studio')}
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-sm transition-all cursor-pointer"
+                  >
+                    <Play size={13} />
+                    <span>Mulai Sesi Pertama</span>
+                  </button>
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs sm:text-sm">
+                    <thead>
+                      <tr className="border-b border-slate-200 text-[11px] font-mono text-slate-500 uppercase">
+                        <th className="pb-3 font-bold">Judul Sesi / Soal</th>
+                        <th className="pb-3 font-bold">Tipe Sesi</th>
+                        <th className="pb-3 font-bold">Topik</th>
+                        <th className="pb-3 font-bold">Tanggal</th>
+                        <th className="pb-3 font-bold">Durasi</th>
+                        <th className="pb-3 font-bold text-right">Skor / Hasil</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 font-sans">
+                      {recentActivities.map((act) => (
+                        <tr key={act.id} className="hover:bg-slate-50/80 transition-colors">
+                          <td className="py-3 font-bold text-slate-900 max-w-xs truncate">
+                            {act.title}
+                          </td>
+                          <td className="py-3">
+                            <span className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold ${
+                              act.type === 'Mock Interview'
+                                ? 'bg-purple-50 text-purple-700 border border-purple-200'
+                                : act.type === 'Coding Challenge'
+                                ? 'bg-sky-50 text-sky-700 border border-sky-200'
+                                : 'bg-slate-100 text-slate-700 border border-slate-200'
+                            }`}>
+                              {act.type}
+                            </span>
+                          </td>
+                          <td className="py-3 text-slate-600 text-xs">
+                            {act.topic}
+                          </td>
+                          <td className="py-3 text-slate-500 text-xs font-mono">
+                            {act.date}
+                          </td>
+                          <td className="py-3 text-slate-500 text-xs font-mono">
+                            {act.durationMinutes} mnt
+                          </td>
+                          <td className="py-3 text-right">
+                            <div className="inline-flex items-center gap-1.5 font-mono font-black">
+                              <span className={`text-xs ${
+                                act.score >= 85
                                 ? 'text-emerald-700'
-                                : act.score >= 75
+                                : act.score >= 70
                                 ? 'text-sky-700'
                                 : 'text-amber-700'
-                            }`}>
-                              {act.score}%
-                            </span>
-                            <span className={`w-2 h-2 rounded-full ${
-                              act.score >= 85
+                              }`}>
+                                {act.score}%
+                              </span>
+                              <span className={`w-2 h-2 rounded-full ${
+                                act.score >= 85
                                 ? 'bg-emerald-500'
-                                : act.score >= 75
+                                : act.score >= 70
                                 ? 'bg-sky-500'
                                 : 'bg-amber-500'
-                            }`} />
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                              }`} />
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -1009,10 +1187,19 @@ export default function InterviewPracticePage() {
                       </button>
 
                       <button
+                        onClick={handleSavePracticeResult}
+                        className="px-3.5 py-2 rounded-xl text-xs font-bold bg-sky-50 text-sky-700 hover:bg-sky-100 border border-sky-200 transition-colors flex items-center gap-1.5 cursor-pointer"
+                        title="Simpan hasil latihan soal ini ke Dashboard"
+                      >
+                        <Check size={14} />
+                        <span>Simpan Hasil Sesi</span>
+                      </button>
+
+                      <button
                         onClick={() => setShowHint(!showHint)}
                         className="px-3 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition-colors cursor-pointer"
                       >
-                        {showHint ? 'Tutup Kisi-Kisi' : 'Kisi-Kisi Konsep'}
+                        {showHint ? 'Tutup Kisi-Kisi' : 'Kisi-Kisi'}
                       </button>
                     </div>
 
@@ -1030,6 +1217,21 @@ export default function InterviewPracticePage() {
                       </button>
                     </div>
                   </div>
+
+                  {/* Saved Notification Toast */}
+                  <AnimatePresence>
+                    {isSavedNotification && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 5 }}
+                        className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 font-bold flex items-center gap-2"
+                      >
+                        <CheckCircle2 size={16} className="text-emerald-600" />
+                        <span>Hasil latihan Anda telah berhasil disimpan dan terupdate di Dashboard!</span>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
 
                   {/* Hint Concepts Box */}
                   <AnimatePresence>

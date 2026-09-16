@@ -3,10 +3,6 @@ export interface PracticeStats {
   questionsAnswered: number;
   codingChallengesCompleted: number;
   averageScore: number;
-  weeklyTarget: {
-    current: number;
-    goal: number;
-  };
 }
 
 export interface SkillProgress {
@@ -15,7 +11,6 @@ export interface SkillProgress {
   score: number;
   level: string;
   totalAnswered: number;
-  trend: 'up' | 'stable' | 'down';
   color: string;
 }
 
@@ -48,25 +43,82 @@ export interface RecommendationTopic {
   }>;
 }
 
-export const practiceStatsData: PracticeStats = {
+// Initial Real-time zero state
+export const initialPracticeStats: PracticeStats = {
+  totalSessions: 0,
+  questionsAnswered: 0,
+  codingChallengesCompleted: 0,
+  averageScore: 0
+};
+
+export const initialSkillProgress: SkillProgress[] = [
+  {
+    skill: 'Golang',
+    category: 'core-backend',
+    score: 0,
+    level: 'Belum Dilatih',
+    totalAnswered: 0,
+    color: 'bg-cyan-500'
+  },
+  {
+    skill: 'SQL & PostgreSQL',
+    category: 'database',
+    score: 0,
+    level: 'Belum Dilatih',
+    totalAnswered: 0,
+    color: 'bg-blue-600'
+  },
+  {
+    skill: 'REST API',
+    category: 'core-backend',
+    score: 0,
+    level: 'Belum Dilatih',
+    totalAnswered: 0,
+    color: 'bg-emerald-500'
+  },
+  {
+    skill: 'Docker',
+    category: 'infrastructure',
+    score: 0,
+    level: 'Belum Dilatih',
+    totalAnswered: 0,
+    color: 'bg-sky-500'
+  },
+  {
+    skill: 'Redis',
+    category: 'database',
+    score: 0,
+    level: 'Belum Dilatih',
+    totalAnswered: 0,
+    color: 'bg-red-500'
+  },
+  {
+    skill: 'System Design',
+    category: 'architecture',
+    score: 0,
+    level: 'Belum Dilatih',
+    totalAnswered: 0,
+    color: 'bg-amber-500'
+  }
+];
+
+export const initialRecentActivity: ActivityItem[] = [];
+
+// Sample Demo Data (If user wants to preview)
+export const demoPracticeStats: PracticeStats = {
   totalSessions: 24,
   questionsAnswered: 142,
   codingChallengesCompleted: 18,
-  averageScore: 88.5,
-  weeklyTarget: {
-    current: 4,
-    goal: 5
-  }
+  averageScore: 88.5
 };
 
-export const skillProgressData: SkillProgress[] = [
+export const demoSkillProgress: SkillProgress[] = [
   {
     skill: 'Golang',
     category: 'core-backend',
     score: 92,
     level: 'Advanced',
     totalAnswered: 46,
-    trend: 'up',
     color: 'bg-cyan-500'
   },
   {
@@ -75,7 +127,6 @@ export const skillProgressData: SkillProgress[] = [
     score: 89,
     level: 'Advanced',
     totalAnswered: 38,
-    trend: 'up',
     color: 'bg-blue-600'
   },
   {
@@ -84,7 +135,6 @@ export const skillProgressData: SkillProgress[] = [
     score: 94,
     level: 'Proficient',
     totalAnswered: 32,
-    trend: 'up',
     color: 'bg-emerald-500'
   },
   {
@@ -93,7 +143,6 @@ export const skillProgressData: SkillProgress[] = [
     score: 82,
     level: 'Intermediate',
     totalAnswered: 14,
-    trend: 'stable',
     color: 'bg-sky-500'
   },
   {
@@ -102,7 +151,6 @@ export const skillProgressData: SkillProgress[] = [
     score: 76,
     level: 'Intermediate',
     totalAnswered: 12,
-    trend: 'down',
     color: 'bg-red-500'
   },
   {
@@ -111,12 +159,11 @@ export const skillProgressData: SkillProgress[] = [
     score: 71,
     level: 'Needs Practice',
     totalAnswered: 9,
-    trend: 'down',
     color: 'bg-amber-500'
   }
 ];
 
-export const recentActivityData: ActivityItem[] = [
+export const demoRecentActivity: ActivityItem[] = [
   {
     id: 'act-1',
     title: 'Go Clean Architecture & Dependency Inversion',
@@ -179,44 +226,79 @@ export const recentActivityData: ActivityItem[] = [
   }
 ];
 
-export const getRecommendedPractice = (): RecommendationTopic => {
-  // Identify the weakest topic dynamically based on lowest score
-  const sortedSkills = [...skillProgressData].sort((a, b) => a.score - b.score);
-  const weakest = sortedSkills[0]; // 'System Design' (71) or 'Redis' (76)
+export const getDynamicRecommendation = (skills: SkillProgress[]): RecommendationTopic => {
+  const isAllZero = skills.every((s) => s.totalAnswered === 0);
+
+  if (isAllZero) {
+    return {
+      skill: 'Naskah Perkenalan Diri & Go Clean Architecture',
+      score: 0,
+      reason: {
+        id: 'Anda belum memulai sesi latihan. Memulai dari Naskah Perkenalan Diri atau Skenario Go Clean Architecture adalah langkah awal terbaik untuk membangun rasa percaya diri.',
+        en: 'You have not started any practice sessions yet. Beginning with your Self-Introduction Script or Go Clean Architecture is the best first step.'
+      },
+      suggestedAction: {
+        id: 'Buka tab "Perkenalan Diri (Audio)" untuk melatih elevator pitch Anda, atau pilih topik "Go & Backend" di Studio.',
+        en: 'Open the "Self-Introduction (Audio)" tab to practice your elevator pitch, or select "Go & Backend" in the Studio.'
+      },
+      recommendedQuestions: [
+        {
+          id: 'go-clean-architecture',
+          title: {
+            id: 'Clean Architecture Decoupling & Mock Testing di Go',
+            en: 'Clean Architecture Decoupling & Mock Testing in Go'
+          },
+          difficulty: 'Intermediate'
+        },
+        {
+          id: 'go-database-transactions',
+          title: {
+            id: 'Penanganan Transaksi ACID & Row-Level Locking (SELECT FOR UPDATE)',
+            en: 'ACID Transactions & Row-Level Locking (SELECT FOR UPDATE)'
+          },
+          difficulty: 'Advanced'
+        },
+        {
+          id: 'app-support-slow-queries',
+          title: {
+            id: 'Troubleshooting Query Database Lambat (PLN Icon+ Style)',
+            en: 'Slow Query Database Troubleshooting (PLN Icon+ Style)'
+          },
+          difficulty: 'Intermediate'
+        }
+      ]
+    };
+  }
+
+  // If there are answers, find the one with lowest score or lowest answered
+  const sorted = [...skills].sort((a, b) => a.score - b.score);
+  const weakest = sorted[0];
 
   return {
     skill: weakest.skill,
     score: weakest.score,
     reason: {
-      id: `Skor pada topik ${weakest.skill} saat ini berada di ${weakest.score}%, merupakan skor terendah dibanding topik lainnya. Latihan tambahan disarankan sebelum sesi interview teknis tingkat lanjut.`,
-      en: `Your score in ${weakest.skill} is currently at ${weakest.score}%, which is your lowest area. Additional review is recommended before advanced technical interviews.`
+      id: `Skor pada topik ${weakest.skill} saat ini berada di ${weakest.score}%, merupakan area yang paling perlu ditingkatkan berdasarkan riwayat latihan Anda.`,
+      en: `Your score in ${weakest.skill} is currently at ${weakest.score}%, which is your lowest area based on your practice history.`
     },
     suggestedAction: {
-      id: 'Fokus pada pola replikasi database (Read/Write Replica), teknik Caching Cache-Aside di Redis, dan pemisahan service.',
-      en: 'Focus on database replication patterns (Read/Write Replicas), Cache-Aside strategies in Redis, and modular service separation.'
+      id: `Luangkan waktu untuk melatih minimal 2–3 soal seputar ${weakest.skill} di Studio.`,
+      en: `Spend time practicing at least 2–3 questions regarding ${weakest.skill} in the Studio.`
     },
     recommendedQuestions: [
       {
         id: 'go-database-transactions',
         title: {
-          id: 'Penanganan Transaksi ACID & Row-Level Locking (SELECT FOR UPDATE)',
-          en: 'ACID Transactions & Row-Level Locking (SELECT FOR UPDATE)'
+          id: 'Penanganan Transaksi ACID & Row-Level Locking',
+          en: 'ACID Transactions & Row-Level Locking'
         },
         difficulty: 'Advanced'
       },
       {
         id: 'app-support-slow-queries',
         title: {
-          id: 'Troubleshooting Query Database Lambat (EXPLAIN ANALYZE & Indexing)',
-          en: 'Slow Query Database Troubleshooting (EXPLAIN ANALYZE & Indexing)'
-        },
-        difficulty: 'Intermediate'
-      },
-      {
-        id: 'go-clean-architecture',
-        title: {
-          id: 'Clean Architecture Decoupling & Mock Testing',
-          en: 'Clean Architecture Decoupling & Mock Testing'
+          id: 'Troubleshooting Query Database Lambat (EXPLAIN ANALYZE)',
+          en: 'Slow Query Database Troubleshooting (EXPLAIN ANALYZE)'
         },
         difficulty: 'Intermediate'
       }
