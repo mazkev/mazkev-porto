@@ -1,16 +1,16 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Pusat Latihan Interview & Coding Challenge | Kevin Eka Pratama',
+  title: 'Pusat Latihan Interview & Simulasi Wawancara | Kevin Eka Pratama',
   description:
-    'Platform interaktif simulasi wawancara kerja, latihan soal teknis Backend Go & Java, sistem perbankan ACID, troubleshooting SQL PLN Icon+, dan arena tantangan coding algoritma.',
+    'Platform interaktif simulasi wawancara kerja, latihan soal teknis Backend Go & Java, troubleshooting database SQL PLN Icon+, dan arsitektur RESTful API.',
   keywords: [
     'Interview Practice',
     'Mock Interview Backend',
     'Golang Interview',
-    'Coding Challenge Go',
     'Clean Architecture Go',
-    'ACID Transactions PostgreSQL',
+    'SQL Optimization PostgreSQL',
+    'RESTful API Go',
     'Kevin Eka Pratama',
     'PLN Icon+ Application Support'
   ],

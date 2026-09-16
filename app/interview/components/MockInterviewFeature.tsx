@@ -290,7 +290,7 @@ export default function MockInterviewFeature({
     const strengths = [
       'Artikulasi konsep Clean Architecture & Dependency Inversion sangat terstruktur.',
       'Pengalaman operasional nyata di PLN Icon+ memberikan nilai tambah kuat dalam aspek troubleshooting query.',
-      'Mampu mengaitkan mitigasi race condition dengan transaksi database ACID.'
+      'Mampu menjelaskan strategi optimasi query database relasional dan pembuatan indeks.'
     ];
 
     const areasToImprove = [

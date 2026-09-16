@@ -370,7 +370,7 @@ export default function PracticeFeature({
                   >
                     <div className="font-extrabold text-xs sm:text-sm text-slate-900">{role}</div>
                     <div className="text-[11px] text-slate-500 mt-1">
-                      {role === 'Backend Golang' && 'Clean Arch, Goroutines, ACID'}
+                      {role === 'Backend Golang' && 'Clean Arch, Goroutines, REST API'}
                       {role === 'Backend Java' && 'Spring Boot, JPA, Security'}
                       {role === 'Fullstack' && 'Go/Java + React/Next.js'}
                       {role === 'Frontend' && 'React, Next.js, Optimistic UI'}
@@ -444,7 +444,7 @@ export default function PracticeFeature({
                     <div className="font-bold text-xs text-slate-900">{topic}</div>
                     <div className="text-[10px] text-slate-400 font-mono truncate">
                       {topic === 'Golang' && 'Arch, Concurrency'}
-                      {topic === 'SQL' && 'ACID, Indexing'}
+                      {topic === 'SQL' && 'Tuning, Indexing'}
                       {topic === 'REST API' && 'JWT, Idempotency'}
                       {topic === 'Database' && 'EXPLAIN, Replicas'}
                       {topic === 'Docker' && 'Multi-stage, Compose'}

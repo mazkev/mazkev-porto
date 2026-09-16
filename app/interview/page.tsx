@@ -68,14 +68,14 @@ Selama bekerja di PLN Icon+, tanggung jawab utama saya berfokus pada menjaga kea
 
 Pengalaman bertahun-tahun menangani insiden di lingkungan produksi tersebut memberi saya pemahaman nyata mengenai apa saja celah yang sering memicu kegagalan sistem. Dari situ, saya memiliki motivasi kuat untuk tidak hanya memperbaiki masalah di hilir, tetapi membangun solusi perangkat lunak yang tangguh sejak awal di tahap rekayasa arsitektur kode.
 
-Untuk itu, saya secara konsisten memperdalam software engineering dengan membangun lebih dari 20 aplikasi mandiri. Fokus spesialisasi saya adalah pengembangan backend RESTful API menggunakan bahasa Go (Golang) berprinsip Clean Architecture, di mana logika bisnis (usecase) dipisahkan secara tegas dari layer database dan routing framework. Saya juga memiliki pemahaman praktis dalam penanganan transaksi database ACID dan row-level locking (SELECT FOR UPDATE) pada sistem perbankan untuk mencegah race condition, serta mengintegrasikan antarmuka modern menggunakan React, Next.js, dan TypeScript.
+Untuk itu, saya secara konsisten memperdalam software engineering dengan membangun lebih dari 20 aplikasi mandiri. Fokus spesialisasi saya adalah pengembangan backend RESTful API menggunakan bahasa Go (Golang) berprinsip Clean Architecture, di mana logika bisnis (usecase) dipisahkan secara tegas dari layer database dan routing framework. Saya juga memiliki pemahaman praktis dalam pengelolaan query database relasional, indexing, serta mengintegrasikan antarmuka modern menggunakan React, Next.js, dan TypeScript.
 
 Kombinasi antara pengalaman operasional produksi di PLN Icon+ dan kebiasaan membangun backend ini membentuk pola pikir saya: saya terbiasa menulis kode yang defensif, mengoptimalkan query database relasional, dan menyusun arsitektur modular yang mudah diuji dan dipelihara. Saya sangat bersemangat untuk dapat berkontribusi langsung sebagai Backend Developer yang proaktif dan handal di tim Anda.`,
       bulletPoints: [
         'Pendidikan: Sarjana Ilmu Komputer, Universitas AMIKOM (IPK 3.42 / 4.00)',
         'Pengalaman Kerja: 2+ Tahun Application Support di PT PLN Icon+ (System monitoring, SLA incident, SQL troubleshooting)',
-        'Keahlian Utama: Go (Golang), Clean Architecture 4-layer, PostgreSQL ACID Transactions, REST API, React/TypeScript',
-        'Studi Kasus Proyek: Go Banking Core Engine (ACID row locks), Go Clean Arch REST API, Tokopedia Marketplace Fullstack',
+        'Keahlian Utama: Go (Golang), Clean Architecture 4-layer, PostgreSQL / MySQL Query Tuning, REST API, React/TypeScript',
+        'Studi Kasus Proyek: Go Clean Architecture REST API, Tokopedia Marketplace Fullstack, Microservices',
         'Value Added: Production-first mindset (mencegah bug sejak desain database & arsitektur kode)'
       ]
     },
@@ -85,7 +85,7 @@ Kombinasi antara pengalaman operasional produksi di PLN Icon+ dan kebiasaan memb
       duration: 'Durasi Bicara: ~60 Detik (150 Kata)',
       script: `Halo, perkenalkan nama saya Kevin Eka Pratama. Saya adalah lulusan Ilmu Komputer Universitas AMIKOM dengan IPK 3.42 dan memiliki 2+ tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+.
 
-Di PLN Icon+, saya terbiasa memantau sistem operasional, melakukan investigasi query database PostgreSQL/Oracle yang lambat, dan menangani insiden produksi. Di samping itu, saya aktif membangun 20+ aplikasi mandiri dengan fokus utama pada Backend Go (Golang), Clean Architecture, transaksi database ACID PostgreSQL, dan React/TypeScript.
+Di PLN Icon+, saya terbiasa memantau sistem operasional, melakukan investigasi query database PostgreSQL/Oracle yang lambat, dan menangani insiden produksi. Di samping itu, saya aktif membangun 20+ aplikasi mandiri dengan fokus utama pada Backend Go (Golang), Clean Architecture, optimasi database PostgreSQL/MySQL, dan React/TypeScript.
 
 Kombinasi pengalaman operasional produksi nyata dan keahlian rekayasa backend ini membuat saya memiliki pola pikir defensif: saya tidak hanya fokus membuat fitur bekerja, tetapi memastikan query efisien, error tertangani dengan aman, dan sistem mudah di-scale. Saya siap berkontribusi sebagai Backend Developer di tim Anda.`,
       bulletPoints: [
@@ -107,14 +107,14 @@ At PLN Icon+, my primary responsibility was maintaining the high availability an
 
 Handling production incidents over the years gave me firsthand insight into common operational failure points. This experience ignited my passion to transition from resolving downstream production symptoms to engineering resilient, scalable backend architectures from the ground up.
 
-To achieve this, I have continuously developed my software engineering capabilities by building more than 20 personal applications. My core specialization is in developing RESTful API backend services using Go (Golang) adhering to Clean Architecture principles—strictly decoupling domain entities and usecase business logic from database drivers and web frameworks. I also have hands-on experience implementing ACID-compliant database transactions and row-level locking (SELECT FOR UPDATE) to prevent concurrency race conditions in banking and e-commerce checkout flows, complemented by modern frontend integration in React and TypeScript.
+To achieve this, I have continuously developed my software engineering capabilities by building more than 20 personal applications. My core specialization is in developing RESTful API backend services using Go (Golang) adhering to Clean Architecture principles—strictly decoupling domain entities and usecase business logic from database drivers and web frameworks. I also have hands-on experience optimizing relational database queries, schema indexing, and modern frontend integration in React and TypeScript.
 
 This unique blend of real-world production support discipline and active backend engineering defines my approach: I write defensive code, prioritize efficient SQL queries, and design modular systems that are easy to test and maintain. I am very excited to bring this production-first mindset to your engineering team as a dedicated Backend Developer.`,
       bulletPoints: [
         'Education: Bachelor of Computer Science, Universitas AMIKOM (GPA: 3.42 / 4.00)',
         'Experience: 2+ Years Application Support at PT PLN Icon+ (System monitoring, SLA triage, SQL query tuning)',
-        'Core Stack: Go (Golang), Clean Architecture, PostgreSQL ACID Transactions, REST APIs, React/TypeScript',
-        'Featured Projects: Go Banking Core Engine (Row-level locks), Go Clean Arch REST API, Tokopedia Fullstack',
+        'Core Stack: Go (Golang), Clean Architecture, PostgreSQL/MySQL Database Tuning, REST APIs, React/TypeScript',
+        'Featured Projects: Go Clean Architecture REST API, Tokopedia Fullstack, Microservices',
         'Value Proposition: Production-first mindset bridging system reliability with robust backend engineering'
       ]
     },
@@ -124,7 +124,7 @@ This unique blend of real-world production support discipline and active backend
       duration: 'Speaking Duration: ~60 Seconds (150 Words)',
       script: `Hello, my name is Kevin Eka Pratama. I hold a Bachelor's degree in Computer Science from Universitas AMIKOM with a 3.42 GPA and bring 2+ years of professional experience in Application Support at PT PLN Icon+.
 
-At PLN Icon+, I specialized in operational system monitoring, investigating slow relational database queries in PostgreSQL/Oracle, and managing incident triage. In parallel, I have built 20+ personal software projects with a strong focus on Go (Golang) backend services, Clean Architecture, PostgreSQL ACID transactions, and React/TypeScript.
+At PLN Icon+, I specialized in operational system monitoring, investigating slow relational database queries in PostgreSQL/Oracle, and managing incident triage. In parallel, I have built 20+ personal software projects with a strong focus on Go (Golang) backend services, Clean Architecture, PostgreSQL/MySQL database tuning, and React/TypeScript.
 
 This blend of authentic production support resilience and backend development means I write defensive, well-structured code with optimized database queries. I am ready to contribute immediately as a proactive Backend Developer on your team.`,
       bulletPoints: [

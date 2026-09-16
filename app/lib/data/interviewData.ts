@@ -171,44 +171,40 @@ export const interviewQuestions: InterviewQuestion[] = [
   // 2. SQL & DATABASE TOPICS
   // ==========================================
   {
-    id: 'sql-acid-transactions',
+    id: 'sql-indexing-optimization',
     role: 'Backend Golang',
-    difficulty: 'Senior',
+    difficulty: 'Middle',
     topic: 'SQL',
     categoryLabel: { id: 'Database & SQL', en: 'Database & SQL' },
-    context: 'Proyek Go Banking Core & Tokopedia Marketplace Checkout',
+    context: 'Optimasi Database PostgreSQL / MySQL di Lingkungan Produksi',
     question: {
-      id: 'Bagaimana Anda menangani transaksi database yang aman (ACID) dan mencegah race condition saat pengurangan stok atau transfer saldo?',
-      en: 'How do you handle ACID-compliant database transactions and prevent race conditions during stock decrements or balance transfers?'
+      id: 'Bagaimana cara Anda menentukan kolom yang tepat untuk dibuatkan Index pada database PostgreSQL/MySQL agar pencarian data menjadi lebih efisien?',
+      en: 'How do you determine the appropriate columns to create database indexes on in PostgreSQL/MySQL for efficient data querying?'
     },
     keyConcepts: [
-      'ACID Transactions (tx.Begin, Commit, Rollback)',
-      'Row-Level Locking (SELECT ... FOR UPDATE)',
-      'Pessimistic vs Optimistic Locking',
-      'Connection Pooling'
+      'B-Tree Indexing pada kolom WHERE dan JOIN',
+      'Composite Index (Urutan Kolom Berdasarkan Kardinalitas)',
+      'Menghindari Over-Indexing (Dampak terhadap Latency INSERT/UPDATE)',
+      'EXPLAIN ANALYZE untuk Validasi Index Scan'
     ],
     explanation: {
-      id: 'Transaksi ACID menjamin bahwa semua query berhasil secara utuh (Atomicity) atau di-rollback jika salah satu gagal, dengan row-level lock untuk mengisolasi mutasi saldo.',
-      en: 'ACID transactions ensure complete atomic execution or rollback upon error, utilizing row-level locks to serialize balance or inventory modifications.'
+      id: 'Index bekerja seperti daftar isi buku. Menambahkan index pada kolom yang sering dicari (WHERE) atau digabungkan (JOIN) mengubah operasi Full Table Scan (O(N)) menjadi Index Scan (O(log N)).',
+      en: 'Indexes function like a book catalog. Creating indexes on frequently filtered or joined columns converts sequential table scans into fast B-tree index searches.'
     },
     suggestedAnswer: {
-      id: 'Saya membungkus seluruh query mutasi dalam database transaction (tx.Begin). Saya menerapkan row-level lock (SELECT FOR UPDATE) pada baris target untuk mencegah transaksi konkuren lain membaca saldo basi. Jika terjadi error atau stok tidak mencukupi, otomatis dipanggil tx.Rollback().',
-      en: 'I wrap mutations in a database transaction (tx.Begin) with row-level locking (SELECT FOR UPDATE) on target rows. If any condition fails, an immediate rollback triggers, preventing partial updates.'
+      id: 'Saya menganalisis query yang sering dipanggil dan memilih kolom yang memiliki kardinalitas tinggi pada klausa WHERE dan JOIN. Saya memvalidasi efektivitasnya menggunakan EXPLAIN ANALYZE untuk memastikan database beralih dari Seq Scan ke Index Scan, serta menghindari pembuatan index berlebih agar performa INSERT/UPDATE tetap optimal.',
+      en: 'I identify high-frequency queries and index high-cardinality columns used in WHERE and JOIN clauses. I verify with EXPLAIN ANALYZE to ensure Index Scan is utilized, while keeping index count lean to avoid write overhead.'
     },
     codeSnippet: {
-      lang: 'go',
-      code: `tx := db.Begin()
-defer func() { if r := recover(); r != nil { tx.Rollback() } }()
+      lang: 'sql',
+      code: `-- 1. Buat index pada kolom yang sering di-filter
+CREATE INDEX idx_orders_user_status ON orders(user_id, status);
 
-res := tx.Model(&Product{}).
-    Where("id = ? AND stock >= ?", productID, qty).
-    Update("stock", gorm.Expr("stock - ?", qty))
-
-if res.RowsAffected == 0 {
-    tx.Rollback()
-    return errors.New("insufficient stock")
-}
-return tx.Commit().Error`
+-- 2. Validasi rencana eksekusi query
+EXPLAIN ANALYZE 
+SELECT id, total_amount, created_at 
+FROM orders 
+WHERE user_id = 'usr_102' AND status = 'COMPLETED';`
     }
   },
   {
@@ -762,13 +758,13 @@ export const technicalCheatSheet = [
     ]
   },
   {
-    topic: 'Database ACID & Concurrency',
+    topic: 'Database Indexing & Query Tuning',
     points: [
-      'Atomicity: Semua query berhasil atau semua dibatalkan (tx.Rollback()).',
-      'Consistency: Data selalu valid sesuai constraint skema database.',
-      'Isolation: Transaksi konkuren tidak saling merusak (SELECT FOR UPDATE).',
-      'Durability: Transaksi yang di-commit tersimpan permanen di storage.',
-      'Row-Level Locking: Mencegah race condition saldo negatif atau overselling stok.'
+      'B-Tree Index: Mempercepat filter klausa WHERE dan penggabungan tabel JOIN.',
+      'Composite Index: Mengurutkan kolom index berdasarkan frekuensi dan selektivitas (kardinalitas).',
+      'EXPLAIN ANALYZE: Alat diagnosis utama untuk menemukan bottleneck dan full table scan.',
+      'Menghindari N+1 Query: Menggunakan eager loading (Preload/JOIN) daripada query per loop.',
+      'Menghindari Over-Indexing: Batasi index hanya pada kolom krusial agar operasi INSERT/UPDATE tetap cepat.'
     ]
   },
   {

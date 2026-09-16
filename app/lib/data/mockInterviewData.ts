@@ -77,8 +77,8 @@ export const interviewerPersonas: Record<MockInterviewType, InterviewerPersona> 
     companyContext: 'Fintech & High-Scale Microservices',
     avatarColor: 'from-emerald-500 to-teal-700',
     greeting: {
-      id: 'Halo Kevin, saya akan mengevaluasi pemahaman teknis Anda terkait arsitektur Go, transaksi database ACID, concurrency, dan clean code.',
-      en: 'Hello Kevin, I will evaluate your technical depth in Go architecture, ACID transactions, concurrency, and clean code.'
+      id: 'Halo Kevin, saya akan mengevaluasi pemahaman teknis Anda terkait arsitektur Go, optimasi query database, caching, dan clean code.',
+      en: 'Hello Kevin, I will evaluate your technical depth in Go architecture, database query optimization, caching, and clean code.'
     }
   },
   'Behavioral & HR': {
@@ -135,7 +135,7 @@ export const mockQuestionsPool: MockQuestion[] = [
       'Dependency Inversion & Mock Unit Testing'
     ],
     suggestedStarAnswer: {
-      situation: 'Saat membangun API perbankan Go, saya membutuhkan struktur yang modular dan mudah diuji secara terisolasi.',
+      situation: 'Saat membangun REST API Go, saya membutuhkan struktur yang modular dan mudah diuji secara terisolasi.',
       task: 'Menerapkan 4 layer Clean Architecture dengan Dependency Inversion.',
       action: 'Mendefinisikan interface di Domain layer, memusatkan logic di Usecase, dan menginjeksi mock repository pada unit test.',
       result: 'Kode menjadi decoupled, mudah di-test tanpa live database, dan tahan terhadap perubahan framework.'
@@ -144,24 +144,24 @@ export const mockQuestionsPool: MockQuestion[] = [
   {
     id: 'tech-2',
     type: 'Technical Deep-Dive',
-    roles: ['Backend Golang', 'Fullstack'],
-    difficulty: 'Senior',
-    context: 'ACID Transactions & Concurrency Locks',
+    roles: ['Backend Golang', 'Backend Java', 'Fullstack'],
+    difficulty: 'Middle',
+    context: 'Optimasi Query Database & Indexing',
     questionText: {
-      id: 'Bagaimana cara Anda mencegah race condition saldo negatif atau overselling tiket saat terjadi ribuan transaksi serentak di database PostgreSQL?',
-      en: 'How do you prevent negative balance race conditions or ticket overselling during thousands of concurrent transactions in PostgreSQL?'
+      id: 'Berdasarkan pengalaman Anda di PLN Icon+, bagaimana langkah sistematis Anda mendiagnosis dan mengoptimalkan query database yang lambat?',
+      en: 'Based on your experience at PLN Icon+, what is your systematic approach to diagnosing and optimizing slow database queries?'
     },
     keyRubrics: [
-      'ACID Transaction (tx.Begin, Commit, Rollback)',
-      'Row-Level Locking (SELECT ... FOR UPDATE)',
-      'Pessimistic Locking vs Optimistic Locking',
+      'Eksekusi EXPLAIN ANALYZE (Mendeteksi Seq Scan vs Index Scan)',
+      'Pembuatan B-Tree Index pada kolom WHERE dan JOIN',
+      'Menghindari N+1 Query Problem & SELECT * berlebihan',
       'Database Connection Pool Management'
     ],
     suggestedStarAnswer: {
-      situation: 'Pada fitur checkout transaksi pembayaran, beberapa request simultan dapat membaca saldo lama sebelum didebet.',
-      task: 'Mencegah race condition saldo ganda dengan transaksi ACID atomik.',
-      action: 'Membungkus query mutasi dalam tx.Begin() dan mengunci baris rekening dengan SELECT FOR UPDATE.',
-      result: 'Semua mutasi saldo berjalan serial secara aman tanpa celah data inkonsisten.'
+      situation: 'Saat aplikasi mengalami lonjakan latency, terdapat query laporan harian yang membutuhkan waktu lebih dari 10 detik.',
+      task: 'Mendiagnosis bottleneck query dan mempercepat waktu eksekusi tanpa mengubah skema tabel utama.',
+      action: 'Menjalankan EXPLAIN ANALYZE untuk menemukan full table scan, menambahkan composite index pada kolom filter tanggal dan foreign key, serta membatasi SELECT hanya pada kolom yang dibutuhkan.',
+      result: 'Waktu eksekusi query berkurang dari 10 detik menjadi 60ms dan CPU database kembali normal.'
     }
   },
   {
