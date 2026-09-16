@@ -136,8 +136,18 @@ export default function CodingChallengeFeature({
     return submissions.filter((s) => s.challengeId === activeChallenge.id);
   }, [submissions, activeChallenge]);
 
-  // Code Editor Keydown helper for Tab indents
+  // Code Editor Keydown helper for Tab indents and Run shortcuts
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      e.preventDefault();
+      if (e.shiftKey) {
+        executeTests(true); // Full submit
+      } else {
+        executeTests(false); // Quick run
+      }
+      return;
+    }
+
     if (e.key === 'Tab') {
       e.preventDefault();
       const textarea = editorTextareaRef.current;

@@ -50,6 +50,7 @@ import {
   FolderOpen,
   History
 } from 'lucide-react';
+import dynamic from 'next/dynamic';
 import {
   interviewQuestions,
   technicalCheatSheet,
@@ -73,10 +74,34 @@ import {
   SkillProgress,
   ActivityItem
 } from '../lib/data/dashboardData';
-import PracticeFeature from './components/PracticeFeature';
-import CodingChallengeFeature from './components/CodingChallengeFeature';
-import HistoryFeature from './components/HistoryFeature';
-import MockInterviewFeature from './components/MockInterviewFeature';
+
+// Dynamic Feature Loading with Skeletons for optimal initial bundle performance
+function FeatureLoadingSkeleton({ title }: { title: string }) {
+  return (
+    <div className="bg-white rounded-3xl border border-slate-200 p-12 text-center space-y-4 shadow-sm animate-pulse">
+      <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center font-bold">
+        <Sparkles size={22} className="animate-spin" />
+      </div>
+      <div className="space-y-1">
+        <div className="text-base font-extrabold text-slate-800">{title}</div>
+        <p className="text-xs text-slate-400">Menyiapkan workspace interaktif...</p>
+      </div>
+    </div>
+  );
+}
+
+const PracticeFeature = dynamic(() => import('./components/PracticeFeature'), {
+  loading: () => <FeatureLoadingSkeleton title="Memuat Sesi Latihan..." />
+});
+const CodingChallengeFeature = dynamic(() => import('./components/CodingChallengeFeature'), {
+  loading: () => <FeatureLoadingSkeleton title="Memuat Coding Arena..." />
+});
+const HistoryFeature = dynamic(() => import('./components/HistoryFeature'), {
+  loading: () => <FeatureLoadingSkeleton title="Memuat Riwayat Latihan..." />
+});
+const MockInterviewFeature = dynamic(() => import('./components/MockInterviewFeature'), {
+  loading: () => <FeatureLoadingSkeleton title="Memuat Mock Interview..." />
+});
 
 type MainTab = 'dashboard' | 'practice' | 'mock' | 'coding' | 'history' | 'pitch' | 'syllabus' | 'cheatsheet';
 type PitchLength = 'comprehensive' | 'concise';
