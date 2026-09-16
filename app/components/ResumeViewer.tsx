@@ -127,9 +127,9 @@ const projectTranslations: Record<string, { id: string; en: string }> = {
     en: 'Modern TypeScript backend built with Bun, Hono, Drizzle ORM, and Zod, featuring JWT authentication and RBAC.',
     id: 'Backend TypeScript modern yang dibangun dengan Bun, Hono, Drizzle ORM, dan Zod, dilengkapi autentikasi JWT dan kontrol akses RBAC.'
   },
-  'Semarketplace Pro (React & Express)': {
-    en: 'Fullstack e-commerce application built with React, Redux Toolkit, and Express.js with optimistic cart updates and inventory synchronization.',
-    id: 'Aplikasi e-commerce fullstack dengan React, Redux Toolkit, dan Express.js yang dilengkapi pembaruan keranjang belanja dan sinkronisasi stok.'
+  'Semarketplace Pro (React & Go)': {
+    en: 'Fullstack e-commerce application built with React, Redux Toolkit, and Go (Golang) REST API with optimistic cart updates and inventory synchronization.',
+    id: 'Aplikasi e-commerce fullstack dengan React, Redux Toolkit, dan backend Go (Golang) REST API yang dilengkapi pembaruan keranjang belanja dan sinkronisasi stok.'
   },
   'AliExpress Choice E-Commerce (Java Spring Boot)': {
     en: 'Fullstack e-commerce application built with Java 17, Spring Boot 3, and Vue 3, featuring Spring Security JWT authentication and PostgreSQL.',
@@ -460,7 +460,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
     'AliExpress Choice E-Commerce (Java Spring Boot)',
     'Go Clean Architecture REST API',
     'System Operations Dashboard',
-    'Semarketplace Pro (React & Express)',
+    'Semarketplace Pro (React & Go)',
     'HRMS Management System (Laravel 11)'
   ];
   const backendTop8Titles = [

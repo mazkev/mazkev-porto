@@ -406,27 +406,27 @@ func (store *SQLStore) TransferTx(ctx context.Context, arg TransferTxParams) (Tr
       'Implemented department manager approval workflows and report generators.',
     ],
   },
-  'Semarketplace Pro': {
-    architectureFlow: 'React Client ➔ Redux Toolkit State ➔ Express.js REST API ➔ MongoDB Mongoose ➔ Order Processing',
+  'Semarketplace Pro (React & Go)': {
+    architectureFlow: 'React Client ➔ Redux Toolkit State ➔ Go (Golang) REST API ➔ PostgreSQL Database ➔ Order Processing',
     specs: {
-      architecture: 'MERN Stack (React + Express REST API)',
-      database: 'MongoDB (Mongoose ODM & Schemas)',
-      auth: 'JWT Auth & HTTP-Only Secure Cookies',
-      devopsOrTesting: 'Redux Toolkit Optimistic State Updates',
+      architecture: 'Fullstack Layered Architecture (React + Go REST API)',
+      database: 'PostgreSQL 15 (Relational Products & Orders)',
+      auth: 'JWT Auth & Bearer Token Verification Middleware',
+      devopsOrTesting: 'Redux Toolkit Optimistic State Updates & Docker',
     },
     features: [
-      'Optimistic checkout dispatch flow in Redux Toolkit with background polling',
-      'Express.js RESTful endpoints with MongoDB Mongoose schemas',
+      'Optimistic checkout dispatch flow in Redux Toolkit with background synchronization',
+      'Go RESTful API endpoints with structured JSON responses and GORM ORM',
       'Client-side memory caching cutting redundant network transfers by 45%',
       'Interactive cart drawer matching modern e-commerce UX patterns',
       'Automated cart purging and order receipt dispatch upon success',
     ],
     challenge: 'Minimizing cart abandonment rates, ensuring zero inventory race conditions, and loading massive catalogues with sub-100ms response times.',
-    solution: 'Engineered an optimistic checkout dispatch flow in Redux Toolkit with background polling. Integrated pre-fetching and client-side memory caching to reduce redundant network transfers by 45%.',
+    solution: 'Engineered an optimistic checkout dispatch flow in Redux Toolkit paired with a high-performance Go REST API backend. Integrated pre-fetching and client-side memory caching to reduce redundant network transfers by 45%.',
     contributions: [
       'Designed responsive cart drawer matching premium UI design patterns.',
       'Implemented optimistic UI state updates that immediately reflect cart changes in the DOM.',
-      'Configured automated state purging on successful transaction events.',
+      'Engineered the Go backend REST API routes and PostgreSQL database integration.',
     ],
     codeSnippet: `// Redux slice handling optimistic update and cart calculation
 export const cartSlice = createSlice({
@@ -934,9 +934,9 @@ export const projects: ProjectData[] = [
     category: 'Full Stack',
   },
   {
-    title: 'Semarketplace Pro (React & Express)',
-    description: 'Fullstack e-commerce application built with React, Redux Toolkit, and Express.js. Features optimistic cart updates, inventory synchronization, category filtering, and client-side memory caching.',
-    tech: ['React', 'Redux', 'Express.js', 'Node.js', 'MongoDB'],
+    title: 'Semarketplace Pro (React & Go)',
+    description: 'Fullstack e-commerce application built with React, Redux Toolkit, and Go (Golang) REST API. Features optimistic cart updates, inventory synchronization, category filtering, and PostgreSQL storage.',
+    tech: ['React', 'Redux', 'Go (Golang)', 'PostgreSQL', 'REST API'],
     image: '/projects/semarketplace.jpg',
     live: 'https://semarketplace.vercel.app/',
     github: 'https://github.com/mazkev/semarketplace',
