@@ -51,6 +51,26 @@ interface CuratedRepo {
 
 const CURATED_REPOS: CuratedRepo[] = [
   {
+    name: 'tokped-backend',
+    category: 'go',
+    categoryLabel: 'Go Backend',
+    language: 'Go',
+    langColor: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20',
+    desc: 'Modular REST API backend for Tokopedia clone with Go, GORM, PostgreSQL database, and transaction handling.',
+    tech: ['Go', 'Gin', 'GORM', 'PostgreSQL', 'REST API'],
+    githubUrl: 'https://github.com/mazkev/tokped-backend'
+  },
+  {
+    name: 'tokopedia-react',
+    category: 'fullstack',
+    categoryLabel: 'Fullstack Tokopedia',
+    language: 'React & TypeScript',
+    langColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20',
+    desc: 'Tokopedia e-commerce clone frontend with React, catalog filters, dynamic cart, and Go REST API integration.',
+    tech: ['React', 'TypeScript', 'Tailwind CSS', 'Go API'],
+    githubUrl: 'https://github.com/mazkev/tokopedia-react'
+  },
+  {
     name: 'go-marketplace-backend',
     category: 'go',
     categoryLabel: 'Go Backend',

@@ -29,6 +29,50 @@ export interface CaseStudyDetails {
 }
 
 export const caseStudyMap: Record<string, CaseStudyDetails> = {
+  'Tokopedia Marketplace (Fullstack Go & React)': {
+    architectureFlow: 'React/TypeScript UI ➔ REST API HTTP Endpoints ➔ Go (Golang) Gin/Fiber Service ➔ PostgreSQL (Transactional Ledger)',
+    specs: {
+      architecture: 'Fullstack Client-Server Architecture (React + Go REST API)',
+      database: 'PostgreSQL 15 (Relational Products, Users, & Orders)',
+      auth: 'JWT Authentication & Token Validation Middleware',
+      devopsOrTesting: 'Docker Containerization & Postman API Verification',
+    },
+    features: [
+      'Responsive e-commerce UI in React with dynamic product filter chips and instant search',
+      'Go REST API backend with modular route handlers and GORM integration',
+      'Transactional checkout and cart state synchronization',
+      'PostgreSQL relational database schema for users, products, categories, and orders',
+      'Clean error envelopes with HTTP status code mappings',
+    ],
+    challenge: 'Connecting a rich React frontend with an independent Go REST API backend to ensure real-time catalog search and transactional cart ordering.',
+    solution: 'Structured clear REST API contracts with Go structs and JSON serialization. Implemented optimistic cart actions in React paired with atomic transaction verification on the Go backend.',
+    contributions: [
+      'Developed the React frontend with dynamic category tabs, product cards, and cart drawer.',
+      'Engineered the Go backend REST API services with route validation and database connection handling.',
+      'Implemented PostgreSQL database schemas and integrated Docker containerization.',
+    ],
+    codeLang: 'go',
+    codeSnippet: `// Go backend handler & React frontend integration contract
+type CheckoutRequest struct {
+	UserID    uint       \`json:"user_id" binding:"required"\`
+	Items     []CartItem \`json:"items" binding:"required"\`
+	TotalAmt  float64    \`json:"total_amount"\`
+}
+
+func (h *OrderHandler) HandleCheckout(c *gin.Context) {
+	var req CheckoutRequest
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.Map{"error": err.Error()})
+		return
+	}
+	order, err := h.orderService.CreateOrder(c.Request.Context(), req)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.Map{"error": "Transaction failed"})
+		return
+	}
+	c.JSON(http.StatusCreated, gin.Map{"data": order})
+}`,
+  },
   'Go Marketplace (Fullstack Go & React)': {
     architectureFlow: 'Client Request ➔ JWT Auth & Validation ➔ Handler Layer ➔ Usecase (Business Logic) ➔ Repository Layer ➔ PostgreSQL (Connection Pool)',
     specs: {
@@ -844,6 +888,15 @@ export const useCanvasStore = create<CanvasStore>((set) => ({
 };
 
 export const projects: ProjectData[] = [
+  {
+    title: 'Tokopedia Marketplace (Fullstack Go & React)',
+    description: 'Fullstack e-commerce marketplace inspired by Tokopedia. Combines a responsive React/TypeScript frontend (catalog search, category filters, interactive cart) with a modular Go REST API backend and transactional PostgreSQL database.',
+    tech: ['Go', 'React', 'TypeScript', 'PostgreSQL', 'Tailwind CSS'],
+    image: '/projects/tokopedia.png',
+    live: 'https://github.com/mazkev/tokopedia-react',
+    github: 'https://github.com/mazkev/tokopedia-react',
+    category: 'Full Stack',
+  },
   {
     title: 'Go Marketplace (Fullstack Go & React)',
     description: 'Fullstack e-commerce marketplace built with Go and React. Features RESTful APIs, JWT authentication, product catalog management, and PostgreSQL database integration.',

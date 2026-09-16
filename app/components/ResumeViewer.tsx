@@ -99,6 +99,10 @@ const commonText = {
 };
 
 const projectTranslations: Record<string, { id: string; en: string }> = {
+  'Tokopedia Marketplace (Fullstack Go & React)': {
+    en: 'Fullstack Tokopedia clone pairing a React & TypeScript frontend with a Go REST API backend and PostgreSQL database.',
+    id: 'Marketplace e-commerce Tokopedia fullstack yang memadukan frontend React & TypeScript dengan backend REST API Go dan PostgreSQL.'
+  },
   'Go Marketplace (Fullstack Go & React)': {
     en: 'Fullstack e-commerce marketplace built with Go and React. Features REST API, JWT auth, product catalog management, and transactional PostgreSQL integration.',
     id: 'Marketplace e-commerce fullstack dengan Go dan React. Dilengkapi REST API, autentikasi JWT, manajemen katalog produk, dan integrasi database PostgreSQL transaksional.'
@@ -472,8 +476,8 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
 
   if (!isOpen) return null;
 
-  const frontendTop6Titles = ['BayE Marketplace (Fullstack Next.js)', 'System Operations Dashboard', 'MazCloud File Storage Dashboard', 'React Shopping Cart Application', 'Canvass Graphic Design Studio', 'Spotify Web Player Clone'];
-  const fullstackTop6Titles = ['Go Marketplace (Fullstack Go & React)', 'BayE Marketplace (Fullstack Next.js)', 'AliExpress Choice E-Commerce (Java Spring Boot)', 'HRMS Management System (Laravel 11)', 'Go Clean Architecture REST API', 'System Operations Dashboard'];
+  const frontendTop6Titles = ['Tokopedia Marketplace (Fullstack Go & React)', 'BayE Marketplace (Fullstack Next.js)', 'System Operations Dashboard', 'MazCloud File Storage Dashboard', 'React Shopping Cart Application', 'Spotify Web Player Clone'];
+  const fullstackTop6Titles = ['Tokopedia Marketplace (Fullstack Go & React)', 'Go Marketplace (Fullstack Go & React)', 'BayE Marketplace (Fullstack Next.js)', 'AliExpress Choice E-Commerce (Java Spring Boot)', 'Go Clean Architecture REST API', 'System Operations Dashboard'];
   const backendTop6Titles = ['Go Clean Architecture REST API', 'Go Banking Core Engine', 'AliExpress Choice E-Commerce (Java Spring Boot)', 'HRMS Management System (Laravel 11)', 'Go Marketplace Backend (GORM & REST API)', 'Bun & Hono E-Commerce Backend (Drizzle ORM)'];
 
   const roleProjects = (activeRole === 'frontend' ? frontendTop6Titles : activeRole === 'backend' ? backendTop6Titles : fullstackTop6Titles)
