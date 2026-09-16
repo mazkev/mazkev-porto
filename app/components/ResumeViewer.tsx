@@ -300,18 +300,8 @@ function CVContent({ lang, activeRole, roleProjects, pageNumber, totalPages }: C
             return (
               <div key={idx} className="space-y-0.5 border-b border-slate-200 pb-1.5 print:pb-1 last:border-none print:break-inside-avoid">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-                  <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10.5px] flex items-center gap-2 flex-wrap">
-                    <span>• {project.title}</span>
-                    {project.live && (
-                      <a href={project.live} target="_blank" rel="noopener noreferrer" className="no-print text-[9px] font-mono font-bold text-sky-600 hover:text-sky-800 hover:underline inline-flex items-center gap-0.5">
-                        <Globe size={10} /> Live Demo
-                      </a>
-                    )}
-                    {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="no-print text-[9px] font-mono font-bold text-slate-600 hover:text-black dark:hover:text-white hover:underline inline-flex items-center gap-0.5">
-                        <Github size={10} /> Source Code
-                      </a>
-                    )}
+                  <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10.5px]">
+                    • {project.title}
                   </div>
                   <div className="text-[10px] print:text-[8px] font-mono text-slate-700 font-bold uppercase">
                     {project.tech.join(' • ')}
@@ -427,36 +417,13 @@ function PortfolioPage({ roleProjects, totalPages }: { roleProjects: typeof proj
                 </p>
               </div>
             </div>
-
-            <div className="pt-1.5 border-t border-slate-200 flex items-center justify-between text-[10px] print:text-[8px] font-mono font-bold gap-2">
-              {proj.live ? (
-                <a
-                  href={proj.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sky-700 hover:underline flex items-center gap-1 truncate"
-                >
-                  <Globe size={11} /> {proj.live.replace('https://', '').replace(/\/$/, '')}
-                </a>
-              ) : <span />}
-              {proj.github && (
-                <a
-                  href={proj.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-slate-800 hover:underline flex items-center gap-1 flex-shrink-0"
-                >
-                  <Github size={11} /> {proj.github.replace('https://github.com/', 'gh/')}
-                </a>
-              )}
-            </div>
           </div>
         ))}
       </div>
 
       <div className="p-2.5 print:p-1.5 rounded-lg border border-slate-300 bg-slate-100 text-[11px] print:text-[8.5px] text-slate-800 font-medium flex items-center justify-between">
         <span>
-          <strong>Catatan:</strong> Seluruh source code proyek dapat diverifikasi langsung pada profil GitHub resmi <strong>github.com/mazkev</strong>.
+          <strong>Catatan:</strong> Informasi portofolio proyek dan rekam jejak profesional dapat ditinjau melalui <strong>mazkev.vercel.app</strong>.
         </span>
         {totalPages && (
           <span className="text-[9px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
