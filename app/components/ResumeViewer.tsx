@@ -295,7 +295,7 @@ function CVContent({ lang, activeRole, roleProjects, pageNumber, totalPages }: C
           </span>
         </h2>
         <div className="space-y-2 print:space-y-1 text-xs print:text-[10px]">
-          {roleProjects.slice(0, 6).map((project, idx) => {
+          {roleProjects.slice(0, 8).map((project, idx) => {
             const projectDesc = projectTranslations[project.title]?.[lang] || project.description;
             return (
               <div key={idx} className="space-y-0.5 border-b border-slate-200 pb-1.5 print:pb-1 last:border-none print:break-inside-avoid">
@@ -382,7 +382,7 @@ function PortfolioPage({ roleProjects, totalPages }: { roleProjects: typeof proj
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3 print:gap-1.5">
-        {roleProjects.slice(0, 6).map((proj, idx) => (
+        {roleProjects.slice(0, 8).map((proj, idx) => (
           <div
             key={idx}
             className="p-3 print:p-2 rounded-xl border border-slate-300 bg-slate-50/70 print:bg-white flex flex-col justify-between space-y-2 print:space-y-1 print:break-inside-avoid shadow-sm print:shadow-none"
@@ -443,11 +443,38 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
 
   if (!isOpen) return null;
 
-  const frontendTop6Titles = ['Tokopedia Marketplace (Fullstack Go & React)', 'BayE Marketplace (Fullstack Next.js)', 'System Operations Dashboard', 'MazCloud File Storage Dashboard', 'React Shopping Cart Application', 'Spotify Web Player Clone'];
-  const fullstackTop6Titles = ['Tokopedia Marketplace (Fullstack Go & React)', 'Go Marketplace (Fullstack Go & React)', 'BayE Marketplace (Fullstack Next.js)', 'AliExpress Choice E-Commerce (Java Spring Boot)', 'Go Clean Architecture REST API', 'System Operations Dashboard'];
-  const backendTop6Titles = ['Go Clean Architecture REST API', 'Go Banking Core Engine', 'AliExpress Choice E-Commerce (Java Spring Boot)', 'HRMS Management System (Laravel 11)', 'Go Marketplace Backend (GORM & REST API)', 'Bun & Hono E-Commerce Backend (Drizzle ORM)'];
+  const frontendTop8Titles = [
+    'Tokopedia Marketplace (Fullstack Go & React)',
+    'BayE Marketplace (Fullstack Next.js)',
+    'System Operations Dashboard',
+    'MazCloud File Storage Dashboard',
+    'React Shopping Cart Application',
+    'Spotify Web Player Clone',
+    'Trello Kanban Workspace',
+    'Canvass Graphic Design Studio'
+  ];
+  const fullstackTop8Titles = [
+    'Tokopedia Marketplace (Fullstack Go & React)',
+    'Go Marketplace (Fullstack Go & React)',
+    'BayE Marketplace (Fullstack Next.js)',
+    'AliExpress Choice E-Commerce (Java Spring Boot)',
+    'Go Clean Architecture REST API',
+    'System Operations Dashboard',
+    'Semarketplace Pro (React & Express)',
+    'HRMS Management System (Laravel 11)'
+  ];
+  const backendTop8Titles = [
+    'Go Clean Architecture REST API',
+    'Go Banking Core Engine',
+    'AliExpress Choice E-Commerce (Java Spring Boot)',
+    'HRMS Management System (Laravel 11)',
+    'Go Marketplace Backend (GORM & REST API)',
+    'Bun & Hono E-Commerce Backend (Drizzle ORM)',
+    'Go Marketplace (Fullstack Go & React)',
+    'System Operations Dashboard'
+  ];
 
-  const roleProjects = (activeRole === 'frontend' ? frontendTop6Titles : activeRole === 'backend' ? backendTop6Titles : fullstackTop6Titles)
+  const roleProjects = (activeRole === 'frontend' ? frontendTop8Titles : activeRole === 'backend' ? backendTop8Titles : fullstackTop8Titles)
     .map(title => projects.find(p => p.title === title))
     .filter(Boolean) as typeof projects;
 
