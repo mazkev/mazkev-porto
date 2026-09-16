@@ -76,8 +76,9 @@ import {
 import PracticeFeature from './components/PracticeFeature';
 import CodingChallengeFeature from './components/CodingChallengeFeature';
 import HistoryFeature from './components/HistoryFeature';
+import MockInterviewFeature from './components/MockInterviewFeature';
 
-type MainTab = 'dashboard' | 'practice' | 'coding' | 'history' | 'pitch' | 'syllabus' | 'cheatsheet';
+type MainTab = 'dashboard' | 'practice' | 'mock' | 'coding' | 'history' | 'pitch' | 'syllabus' | 'cheatsheet';
 type PitchLength = 'comprehensive' | 'concise';
 type LangMode = 'id' | 'en';
 
@@ -313,6 +314,56 @@ export default function InterviewPracticePage() {
     }
   };
 
+  // Callback when user solves a Mock Interview
+  const handleSaveMockResult = (
+    newActivity: ActivityItem,
+    score: number,
+    roleLabel: string,
+    durationMinutes: number
+  ) => {
+    const updatedActivities = [newActivity, ...recentActivities.slice(0, 19)];
+    const totalSessions = practiceStats.totalSessions + 1;
+    const totalAnswered = practiceStats.questionsAnswered + 5;
+    const newAvg = practiceStats.totalSessions === 0
+      ? score
+      : Math.round(((practiceStats.averageScore * practiceStats.totalSessions) + score) / totalSessions * 10) / 10;
+
+    const updatedStats: PracticeStats = {
+      totalSessions,
+      questionsAnswered: totalAnswered,
+      codingChallengesCompleted: practiceStats.codingChallengesCompleted,
+      averageScore: newAvg
+    };
+
+    // Update Golang and System Design skills
+    const updatedSkills = skillProgress.map((s) => {
+      if (s.skill === 'Golang' || s.skill === 'System Design') {
+        const count = s.totalAnswered + 2;
+        const currentTotal = s.score * s.totalAnswered;
+        const calcScore = Math.round((currentTotal + score * 2) / count);
+        return {
+          ...s,
+          score: calcScore,
+          totalAnswered: count,
+          level: calcScore >= 85 ? 'Advanced' : calcScore >= 70 ? 'Intermediate' : 'Needs Practice'
+        };
+      }
+      return s;
+    });
+
+    setPracticeStats(updatedStats);
+    setRecentActivities(updatedActivities);
+    setSkillProgress(updatedSkills);
+
+    try {
+      localStorage.setItem(STORAGE_KEYS.STATS, JSON.stringify(updatedStats));
+      localStorage.setItem(STORAGE_KEYS.ACTIVITIES, JSON.stringify(updatedActivities));
+      localStorage.setItem(STORAGE_KEYS.SKILLS, JSON.stringify(updatedSkills));
+    } catch (e) {
+      console.error('Error writing to localStorage', e);
+    }
+  };
+
   // Callback when user solves a Coding Challenge
   const handleCodingChallengeCompleted = (newActivity: ActivityItem, challengeTitle: string) => {
     const updatedActivities = [newActivity, ...recentActivities.slice(0, 19)];
@@ -438,6 +489,18 @@ export default function InterviewPracticePage() {
             </button>
 
             <button
+              onClick={() => setActiveTab('mock')}
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+                activeTab === 'mock'
+                  ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <UserCheck size={14} className={activeTab === 'mock' ? 'text-emerald-600' : 'text-slate-500'} />
+              <span>Mock Interview</span>
+            </button>
+
+            <button
               onClick={() => setActiveTab('coding')}
               className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
                 activeTab === 'coding'
@@ -529,6 +592,7 @@ export default function InterviewPracticePage() {
         {[
           { id: 'dashboard', label: 'Dashboard' },
           { id: 'practice', label: 'Latihan' },
+          { id: 'mock', label: 'Mock' },
           { id: 'coding', label: 'Coding' },
           { id: 'history', label: 'Riwayat' },
           { id: 'pitch', label: 'Perkenalan' },
@@ -569,18 +633,18 @@ export default function InterviewPracticePage() {
                   Dashboard Kemajuan Latihan
                 </h1>
                 <p className="text-slate-600 text-xs sm:text-sm max-w-2xl leading-relaxed">
-                  Statistik ini diperbarui secara otomatis saat Anda melatih soal di menu Latihan Soal, menyelesaikan tantangan Coding Challenge, atau meninjau Riwayat Latihan.
+                  Statistik ini diperbarui secara otomatis saat Anda melatih soal di menu Latihan Soal, menyelesaikan Mock Interview, atau meninjau Riwayat Latihan.
                 </p>
               </div>
 
               {/* Action & Demo Data Toggle */}
               <div className="flex flex-wrap items-center gap-2.5">
                 <button
-                  onClick={() => setActiveTab('practice')}
+                  onClick={() => setActiveTab('mock')}
                   className="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs sm:text-sm transition-all shadow-sm flex items-center gap-2 cursor-pointer"
                 >
-                  <Play size={15} />
-                  <span>Mulai Sesi Latihan Baru</span>
+                  <UserCheck size={15} />
+                  <span>Mulai Mock Interview</span>
                 </button>
 
                 <button
@@ -776,7 +840,7 @@ export default function InterviewPracticePage() {
                       {recommendedPractice.recommendedQuestions.map((q, qIdx) => (
                         <div
                           key={qIdx}
-                          onClick={() => setActiveTab('practice')}
+                          onClick={() => setActiveTab('mock')}
                           className="p-2.5 rounded-lg bg-white border border-slate-200 hover:border-emerald-400 transition-all flex items-center justify-between text-xs cursor-pointer group"
                         >
                           <span className="text-slate-800 font-medium group-hover:text-emerald-700 truncate pr-2">
@@ -789,10 +853,10 @@ export default function InterviewPracticePage() {
                   </div>
 
                   <button
-                    onClick={() => setActiveTab('practice')}
+                    onClick={() => setActiveTab('mock')}
                     className="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-sm"
                   >
-                    <span>Mulai Latihan Sekarang</span>
+                    <span>Mulai Simulasi Wawancara</span>
                     <ArrowLeft size={13} className="rotate-180" />
                   </button>
                 </div>
@@ -825,15 +889,15 @@ export default function InterviewPracticePage() {
                   <div className="space-y-1">
                     <p className="text-sm font-bold text-slate-800">Belum ada riwayat sesi latihan</p>
                     <p className="text-xs text-slate-500 max-w-md mx-auto">
-                      Saat Anda menyelesaikan sesi latihan atau menjawab tantangan Coding Challenge, aktivitas Anda akan otomatis tercatat di sini.
+                      Saat Anda menyelesaikan sesi latihan, simulasi Mock Interview, atau menjawab tantangan Coding Challenge, aktivitas Anda akan otomatis tercatat di sini.
                     </p>
                   </div>
                   <button
-                    onClick={() => setActiveTab('practice')}
+                    onClick={() => setActiveTab('mock')}
                     className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-sm transition-all cursor-pointer"
                   >
-                    <Play size={13} />
-                    <span>Mulai Sesi Pertama</span>
+                    <UserCheck size={14} />
+                    <span>Mulai Mock Interview Pertama</span>
                   </button>
                 </div>
               ) : (
@@ -921,7 +985,18 @@ export default function InterviewPracticePage() {
         )}
 
         {/* ========================================================= */}
-        {/* TAB 2: CODING CHALLENGE FEATURE */}
+        {/* TAB 2: MOCK INTERVIEW FEATURE */}
+        {/* ========================================================= */}
+        {activeTab === 'mock' && (
+          <MockInterviewFeature
+            lang={lang}
+            onSaveMockResult={handleSaveMockResult}
+            onNavigateToDashboard={() => setActiveTab('dashboard')}
+          />
+        )}
+
+        {/* ========================================================= */}
+        {/* TAB 3: CODING CHALLENGE FEATURE */}
         {/* ========================================================= */}
         {activeTab === 'coding' && (
           <CodingChallengeFeature
@@ -932,7 +1007,7 @@ export default function InterviewPracticePage() {
         )}
 
         {/* ========================================================= */}
-        {/* TAB 3: HISTORY FEATURE (Full Activity & Detailed Results) */}
+        {/* TAB 4: HISTORY FEATURE */}
         {/* ========================================================= */}
         {activeTab === 'history' && (
           <HistoryFeature
@@ -944,7 +1019,7 @@ export default function InterviewPracticePage() {
         )}
 
         {/* ========================================================= */}
-        {/* TAB 4: SELF-INTRODUCTION ELEVATOR PITCH & AUDIO PLAYER */}
+        {/* TAB 5: SELF-INTRODUCTION ELEVATOR PITCH & AUDIO PLAYER */}
         {/* ========================================================= */}
         {activeTab === 'pitch' && (
           <div className="space-y-6">
@@ -1097,7 +1172,7 @@ export default function InterviewPracticePage() {
         )}
 
         {/* ========================================================= */}
-        {/* TAB 5: QUESTION BANK SYLLABUS */}
+        {/* TAB 6: QUESTION BANK SYLLABUS */}
         {/* ========================================================= */}
         {activeTab === 'syllabus' && (
           <div className="space-y-6">
@@ -1184,7 +1259,7 @@ export default function InterviewPracticePage() {
         )}
 
         {/* ========================================================= */}
-        {/* TAB 6: CHEAT SHEET */}
+        {/* TAB 7: CHEAT SHEET */}
         {/* ========================================================= */}
         {activeTab === 'cheatsheet' && (
           <div className="max-w-4xl mx-auto space-y-6">
