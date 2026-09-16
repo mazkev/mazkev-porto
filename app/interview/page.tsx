@@ -10,10 +10,9 @@ import {
   Volume2,
   VolumeX,
   Play,
+  Pause,
   RotateCcw,
   CheckCircle2,
-  AlertCircle,
-  Sparkles,
   Search,
   ChevronRight,
   ChevronDown,
@@ -22,19 +21,20 @@ import {
   Database,
   UserCheck,
   Code2,
-  FileText,
-  Activity,
-  Send,
+  Terminal,
   HelpCircle,
   Clock,
   ShieldCheck,
-  TrendingUp,
   Award,
   Zap,
-  RefreshCw,
-  Terminal,
   BarChart3,
-  ListFilter
+  ListFilter,
+  User,
+  Sparkles,
+  BookOpen,
+  Sliders,
+  Copy,
+  Check
 } from 'lucide-react';
 import {
   interviewQuestions,
@@ -43,32 +43,71 @@ import {
   InterviewCategory
 } from '../lib/data/interviewData';
 
-type MainView = 'studio' | 'syllabus' | 'cheatsheet';
+type MainTab = 'pitch' | 'studio' | 'syllabus' | 'cheatsheet';
 type LangMode = 'id' | 'en';
 
-export default function InterviewStudioPage() {
-  const [mainView, setMainView] = useState<MainView>('studio');
+const selfIntroductionText = {
+  id: {
+    title: 'Naskah Perkenalan Diri (Elevator Pitch 60 Detik)',
+    subtitle: 'Naskah pembuka wawancara yang dirancang khusus untuk posisi Backend Developer & Software Engineer.',
+    script: `Halo, perkenalkan nama saya Kevin Eka Pratama. Saya adalah lulusan Sarjana Ilmu Komputer dari Universitas AMIKOM dengan IPK 3.42, dan memiliki pengalaman profesional lebih dari 2 tahun di bidang Application Support pada PT PLN Icon+.
+
+Selama bekerja di PLN Icon+, saya bertanggung jawab dalam memantau kelancaran sistem operasional, menganalisis query database relasional yang lambat, dan menangani troubleshooting insiden produksi harian.
+
+Di samping pengalaman operasional tersebut, saya aktif memperdalam rekayasa perangkat lunak backend dengan membangun lebih dari 20 aplikasi mandiri. Fokus utama saya adalah pengembangan REST API menggunakan Go (Golang) berprinsip Clean Architecture, manajemen database transaksional PostgreSQL (ACID), serta integrasi antarmuka modern dengan React dan TypeScript.
+
+Kombinasi pengalaman operasional produksi dan kebiasaan membangun backend ini membuat saya memiliki pola pikir defensif: saya tidak hanya fokus membuat fitur bekerja, tetapi juga memastikan query efisien, error tertangani dengan aman, dan arsitektur kode mudah dipelihara.`,
+    bulletPoints: [
+      'Pendidikan: Sarjana Ilmu Komputer, Universitas AMIKOM (IPK 3.42 / 4.00)',
+      'Pengalaman Kerja: 2+ Tahun Application Support di PT PLN Icon+',
+      'Keahlian Utama: Go (Golang), Clean Architecture, PostgreSQL ACID, REST API, React',
+      'Value Added: Pola pikir produksi nyata (troubleshooting query, sistem monitoring, SLA insiden)'
+    ]
+  },
+  en: {
+    title: 'Self-Introduction Script (60-Second Elevator Pitch)',
+    subtitle: 'Tailored opening statement for Backend Developer & Software Engineer interviews.',
+    script: `Hello, my name is Kevin Eka Pratama. I hold a Bachelor's degree in Computer Science from Universitas AMIKOM with a 3.42 GPA, and I bring over 2 years of professional experience in Application Support at PT PLN Icon+.
+
+At PLN Icon+, I was responsible for monitoring operational application workflows, diagnosing slow relational database queries, and executing rapid incident troubleshooting to ensure strict SLA compliance.
+
+In parallel with my production support background, I have actively advanced my software engineering capabilities by building over 20 personal applications. My primary specialization is in developing modular RESTful backend services using Go (Golang) adhering to Clean Architecture principles, ACID-compliant database transaction management in PostgreSQL, and fullstack integration with React and TypeScript.
+
+This distinct combination of real-world production support resilience and hands-on backend development enables me to engineer robust, well-tested, and maintainable software solutions from day one.`,
+    bulletPoints: [
+      'Education: Bachelor of Computer Science, Universitas AMIKOM (GPA: 3.42 / 4.00)',
+      'Work Experience: 2+ Years Application Support at PT PLN Icon+',
+      'Core Competencies: Go (Golang), Clean Architecture, PostgreSQL Transactions, REST APIs, React',
+      'Key Differentiator: Production-first mindset (SQL optimization, monitoring, defensive error handling)'
+    ]
+  }
+};
+
+export default function InterviewPracticePage() {
+  const [activeTab, setActiveTab] = useState<MainTab>('pitch');
   const [lang, setLang] = useState<LangMode>('id');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [currentIndex, setCurrentIndex] = useState<number>(0);
 
-  // Candidate Response States
+  // Audio Speech States
+  const [isAudioPlaying, setIsAudioPlaying] = useState<boolean>(false);
+  const [speechRate, setSpeechRate] = useState<number>(1.0);
+  const [isCopied, setIsCopied] = useState<boolean>(false);
+
+  // Candidate Response / Mic States
   const [userTranscript, setUserTranscript] = useState<string>('');
   const [isRecording, setIsRecording] = useState<boolean>(false);
-  const [isSpeakingQuestion, setIsSpeakingQuestion] = useState<boolean>(false);
   const [showFeedback, setShowFeedback] = useState<boolean>(false);
   const [showHint, setShowHint] = useState<boolean>(false);
-  const [isAudioMuted, setIsAudioMuted] = useState<boolean>(false);
 
-  // Timer States
+  // Practice Timer
   const [elapsedSeconds, setElapsedSeconds] = useState<number>(0);
   const [isTimerActive, setIsTimerActive] = useState<boolean>(false);
 
-  // Speech Recognition Ref
   const recognitionRef = useRef<any>(null);
 
-  // Filtered Questions list
+  // Filtered Questions
   const filteredQuestions = useMemo(() => {
     return interviewQuestions.filter((q) => {
       const matchCat = selectedCategory === 'all' || q.category === selectedCategory;
@@ -81,7 +120,7 @@ export default function InterviewStudioPage() {
   const currentQuestion: InterviewQuestion =
     filteredQuestions[currentIndex] || interviewQuestions[0];
 
-  // Speech Recognition Setup (Web Speech API)
+  // Speech Recognition (Web Speech API)
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const SpeechRecognition =
@@ -93,21 +132,15 @@ export default function InterviewStudioPage() {
         recognition.lang = lang === 'id' ? 'id-ID' : 'en-US';
 
         recognition.onresult = (event: any) => {
-          let currentResult = '';
+          let resultStr = '';
           for (let i = 0; i < event.results.length; i++) {
-            currentResult += event.results[i][0].transcript + ' ';
+            resultStr += event.results[i][0].transcript + ' ';
           }
-          setUserTranscript(currentResult.trim());
+          setUserTranscript(resultStr.trim());
         };
 
-        recognition.onerror = () => {
-          setIsRecording(false);
-        };
-
-        recognition.onend = () => {
-          setIsRecording(false);
-        };
-
+        recognition.onerror = () => setIsRecording(false);
+        recognition.onend = () => setIsRecording(false);
         recognitionRef.current = recognition;
       }
     }
@@ -117,34 +150,43 @@ export default function InterviewStudioPage() {
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
     if (isTimerActive) {
-      interval = setInterval(() => {
-        setElapsedSeconds((prev) => prev + 1);
-      }, 1000);
+      interval = setInterval(() => setElapsedSeconds((prev) => prev + 1), 1000);
     }
     return () => {
       if (interval) clearInterval(interval);
     };
   }, [isTimerActive]);
 
-  // Read Question aloud using SpeechSynthesis
-  const handleSpeakQuestion = () => {
-    if (typeof window === 'undefined' || !('speechSynthesis' in window) || isAudioMuted) return;
+  // Cancel speech on unmount / change
+  useEffect(() => {
+    return () => {
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, [activeTab, currentIndex, lang]);
 
-    if (isSpeakingQuestion) {
+  // Play Speech Function
+  const handlePlayVoice = (text: string) => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+      alert('Browser Anda tidak mendukung Web Speech API.');
+      return;
+    }
+
+    if (isAudioPlaying) {
       window.speechSynthesis.cancel();
-      setIsSpeakingQuestion(false);
+      setIsAudioPlaying(false);
       return;
     }
 
     window.speechSynthesis.cancel();
-    const textToSpeak = currentQuestion.question[lang];
-    const utterance = new SpeechSynthesisUtterance(textToSpeak);
+    const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = lang === 'id' ? 'id-ID' : 'en-US';
-    utterance.rate = 0.95;
+    utterance.rate = speechRate;
 
-    utterance.onstart = () => setIsSpeakingQuestion(true);
-    utterance.onend = () => setIsSpeakingQuestion(false);
-    utterance.onerror = () => setIsSpeakingQuestion(false);
+    utterance.onstart = () => setIsAudioPlaying(true);
+    utterance.onend = () => setIsAudioPlaying(false);
+    utterance.onerror = () => setIsAudioPlaying(false);
 
     window.speechSynthesis.speak(utterance);
   };
@@ -153,8 +195,8 @@ export default function InterviewStudioPage() {
     if (!recognitionRef.current) {
       alert(
         lang === 'id'
-          ? 'Browser Anda belum mendukung input suara Speech Recognition. Anda dapat mengetik jawaban langsung pada kotak teks.'
-          : 'Speech recognition is not supported in this browser. You can type your answer directly into the response box.'
+          ? 'Browser tidak mendukung input mikrofon langsung. Silakan ketik narasi jawaban Anda pada kolom teks.'
+          : 'Microphone speech recognition is not supported in this browser. Please type your response.'
       );
       return;
     }
@@ -171,38 +213,10 @@ export default function InterviewStudioPage() {
     }
   };
 
-  const handleNextQuestion = () => {
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-    }
-    if (isRecording && recognitionRef.current) {
-      recognitionRef.current.stop();
-      setIsRecording(false);
-    }
-    setIsSpeakingQuestion(false);
-    setShowFeedback(false);
-    setShowHint(false);
-    setUserTranscript('');
-    setElapsedSeconds(0);
-    setIsTimerActive(false);
-    setCurrentIndex((prev) => (prev + 1) % filteredQuestions.length);
-  };
-
-  const handlePrevQuestion = () => {
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      window.speechSynthesis.cancel();
-    }
-    if (isRecording && recognitionRef.current) {
-      recognitionRef.current.stop();
-      setIsRecording(false);
-    }
-    setIsSpeakingQuestion(false);
-    setShowFeedback(false);
-    setShowHint(false);
-    setUserTranscript('');
-    setElapsedSeconds(0);
-    setIsTimerActive(false);
-    setCurrentIndex((prev) => (prev - 1 + filteredQuestions.length) % filteredQuestions.length);
+  const handleCopyPitch = () => {
+    navigator.clipboard.writeText(selfIntroductionText[lang].script);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
   };
 
   const formatTimer = (totalSecs: number) => {
@@ -211,7 +225,7 @@ export default function InterviewStudioPage() {
     return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
   };
 
-  // Calculate Keyword Match Score based on user's answer
+  // Keyword Matching
   const keywordAnalysis = useMemo(() => {
     const lowerTranscript = userTranscript.toLowerCase();
     const matched = currentQuestion.keyConcepts.filter((kw) =>
@@ -220,488 +234,533 @@ export default function InterviewStudioPage() {
     const score = Math.round((matched.length / currentQuestion.keyConcepts.length) * 100);
     return {
       matched,
-      score: userTranscript.length > 15 ? Math.max(score, 70) : 0,
+      score: userTranscript.length > 15 ? Math.max(score, 75) : 0,
       wordCount: userTranscript.trim() ? userTranscript.trim().split(/\s+/).length : 0
     };
   }, [userTranscript, currentQuestion]);
 
   return (
-    <div className="min-h-screen bg-[#090D16] text-slate-100 font-sans selection:bg-emerald-500 selection:text-black flex flex-col">
+    <div className="min-h-screen bg-[#F8FAFC] text-slate-900 font-sans selection:bg-emerald-100 selection:text-emerald-900 pb-20">
       {/* ========================================================= */}
-      {/* 1. TOP SAAS HEADER (wawancara.ai inspired) */}
+      {/* 1. TOP HEADER (Clean White & High Contrast) */}
       {/* ========================================================= */}
-      <header className="h-16 border-b border-slate-800/80 bg-[#0B101B]/95 backdrop-blur-md px-4 sm:px-8 flex items-center justify-between sticky top-0 z-50">
-        {/* Left: Brand & Back */}
-        <div className="flex items-center gap-4">
-          <Link
-            href="/"
-            className="flex items-center gap-2 text-xs font-bold text-slate-400 hover:text-white transition-colors group"
-          >
-            <div className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-slate-700">
-              <ArrowLeft size={14} className="text-slate-300 group-hover:-translate-x-0.5 transition-transform" />
-            </div>
-            <span className="hidden sm:inline">mazkev.vercel.app</span>
-          </Link>
+      <header className="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+          {/* Brand & Return */}
+          <div className="flex items-center gap-3">
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-xs font-bold text-slate-600 hover:text-slate-950 transition-colors p-1.5 rounded-lg hover:bg-slate-100"
+            >
+              <ArrowLeft size={16} className="text-slate-800" />
+              <span className="hidden sm:inline">Kembali ke Portofolio</span>
+            </Link>
 
-          <div className="h-4 w-px bg-slate-800 hidden sm:block" />
+            <div className="h-4 w-px bg-slate-300 hidden sm:block" />
 
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono font-bold">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>INTERVIEW STUDIO</span>
+            <div className="flex items-center gap-2">
+              <span className="font-extrabold text-sm tracking-tight text-slate-900">
+                Pusat Latihan Interview
+              </span>
+              <span className="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-mono font-bold">
+                CV Verified
+              </span>
             </div>
           </div>
-        </div>
 
-        {/* Center: Navigation View Tabs */}
-        <div className="hidden md:flex items-center bg-slate-900/90 border border-slate-800/80 p-1 rounded-xl text-xs font-medium">
-          <button
-            onClick={() => setMainView('studio')}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
-              mainView === 'studio'
-                ? 'bg-slate-800 text-white font-bold shadow-sm'
-                : 'text-slate-400 hover:text-white'
-            }`}
-          >
-            <Activity size={14} className="text-emerald-400" />
-            <span>Simulasi Live</span>
-          </button>
-          <button
-            onClick={() => setMainView('syllabus')}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
-              mainView === 'syllabus'
-                ? 'bg-slate-800 text-white font-bold shadow-sm'
-                : 'text-slate-400 hover:text-white'
-            }`}
-          >
-            <ListFilter size={14} className="text-sky-400" />
-            <span>Bank Pertanyaan ({interviewQuestions.length})</span>
-          </button>
-          <button
-            onClick={() => setMainView('cheatsheet')}
-            className={`flex items-center gap-2 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
-              mainView === 'cheatsheet'
-                ? 'bg-slate-800 text-white font-bold shadow-sm'
-                : 'text-slate-400 hover:text-white'
-            }`}
-          >
-            <Zap size={14} className="text-amber-400" />
-            <span>Cheat Sheet</span>
-          </button>
-        </div>
-
-        {/* Right: Controls & Language Switcher */}
-        <div className="flex items-center gap-2.5">
-          <button
-            onClick={() => setIsAudioMuted(!isAudioMuted)}
-            className="w-8 h-8 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-colors cursor-pointer"
-            title={isAudioMuted ? 'Unmute Audio' : 'Mute Audio'}
-          >
-            {isAudioMuted ? <VolumeX size={15} /> : <Volume2 size={15} />}
-          </button>
-
-          <div className="flex items-center bg-slate-900 border border-slate-800 p-0.5 rounded-lg text-xs font-mono font-bold">
+          {/* Navigation Tabs */}
+          <div className="hidden md:flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-bold">
             <button
-              onClick={() => setLang('id')}
-              className={`px-2 py-1 rounded transition-colors cursor-pointer ${
-                lang === 'id' ? 'bg-slate-800 text-emerald-400 font-extrabold' : 'text-slate-500 hover:text-slate-300'
+              onClick={() => setActiveTab('pitch')}
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+                activeTab === 'pitch'
+                  ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              ID
+              <User size={14} className={activeTab === 'pitch' ? 'text-emerald-600' : 'text-slate-500'} />
+              <span>Perkenalan Diri (Audio)</span>
             </button>
+
             <button
-              onClick={() => setLang('en')}
-              className={`px-2 py-1 rounded transition-colors cursor-pointer ${
-                lang === 'en' ? 'bg-slate-800 text-emerald-400 font-extrabold' : 'text-slate-500 hover:text-slate-300'
+              onClick={() => setActiveTab('studio')}
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+                activeTab === 'studio'
+                  ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
+                  : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              EN
+              <Terminal size={14} className={activeTab === 'studio' ? 'text-emerald-600' : 'text-slate-500'} />
+              <span>Tanya Jawab Teknis</span>
             </button>
+
+            <button
+              onClick={() => setActiveTab('syllabus')}
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+                activeTab === 'syllabus'
+                  ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <ListFilter size={14} className={activeTab === 'syllabus' ? 'text-emerald-600' : 'text-slate-500'} />
+              <span>Bank Soal ({interviewQuestions.length})</span>
+            </button>
+
+            <button
+              onClick={() => setActiveTab('cheatsheet')}
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg transition-all cursor-pointer ${
+                activeTab === 'cheatsheet'
+                  ? 'bg-white text-emerald-700 shadow-sm border border-slate-200/80 font-extrabold'
+                  : 'text-slate-600 hover:text-slate-900'
+              }`}
+            >
+              <Zap size={14} className={activeTab === 'cheatsheet' ? 'text-emerald-600' : 'text-slate-500'} />
+              <span>Cheat Sheet</span>
+            </button>
+          </div>
+
+          {/* Language Switcher */}
+          <div className="flex items-center gap-2">
+            <div className="flex items-center bg-slate-100 border border-slate-200 p-0.5 rounded-lg text-xs font-mono font-bold">
+              <button
+                onClick={() => setLang('id')}
+                className={`px-2.5 py-1 rounded-md transition-all cursor-pointer ${
+                  lang === 'id' ? 'bg-white text-emerald-700 shadow-sm font-extrabold' : 'text-slate-500 hover:text-slate-800'
+                }`}
+              >
+                ID
+              </button>
+              <button
+                onClick={() => setLang('en')}
+                className={`px-2.5 py-1 rounded-md transition-all cursor-pointer ${
+                  lang === 'en' ? 'bg-white text-emerald-700 shadow-sm font-extrabold' : 'text-slate-500 hover:text-slate-800'
+                }`}
+              >
+                EN
+              </button>
+            </div>
           </div>
         </div>
       </header>
 
       {/* ========================================================= */}
-      {/* 2. SUBHEADER / SESSION CONTEXT BAR */}
+      {/* 2. MOBILE TAB SELECTOR */}
       {/* ========================================================= */}
-      <div className="border-b border-slate-800/60 bg-[#0B101B]/50 px-4 sm:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3 text-xs">
-        {/* Category Pill Filters */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
-          {[
-            { id: 'all', label: lang === 'id' ? 'Semua Track' : 'All Tracks' },
-            { id: 'backend-go', label: 'Go & Backend' },
-            { id: 'app-support', label: 'App Support (PLN Icon+)' },
-            { id: 'fullstack-react', label: 'Fullstack & React' },
-            { id: 'behavioral-hr', label: 'Behavioral & HR' }
-          ].map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => {
-                setSelectedCategory(cat.id);
-                setCurrentIndex(0);
-                setShowFeedback(false);
-              }}
-              className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer border ${
-                selectedCategory === cat.id
-                  ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-400 font-bold'
-                  : 'bg-slate-900/50 border-slate-800 text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Question Counter & Timer Meter */}
-        <div className="flex items-center gap-4 text-slate-400 font-mono text-[11px] ml-auto">
-          <div className="flex items-center gap-1.5">
-            <Clock size={13} className={isTimerActive ? 'text-emerald-400 animate-spin' : 'text-slate-500'} />
-            <span className={isTimerActive ? 'text-white font-bold' : ''}>{formatTimer(elapsedSeconds)}</span>
-          </div>
-          <span>•</span>
-          <div>
-            Soal <strong className="text-white">{currentIndex + 1}</strong> dari{' '}
-            <strong className="text-white">{filteredQuestions.length}</strong>
-          </div>
-        </div>
+      <div className="md:hidden bg-white border-b border-slate-200 px-4 py-2 flex items-center justify-between gap-1 overflow-x-auto text-xs font-bold">
+        {[
+          { id: 'pitch', label: 'Perkenalan' },
+          { id: 'studio', label: 'Tanya Jawab' },
+          { id: 'syllabus', label: 'Bank Soal' },
+          { id: 'cheatsheet', label: 'Cheat Sheet' }
+        ].map((t) => (
+          <button
+            key={t.id}
+            onClick={() => setActiveTab(t.id as MainTab)}
+            className={`px-3 py-1.5 rounded-lg whitespace-nowrap transition-all ${
+              activeTab === t.id
+                ? 'bg-emerald-600 text-white'
+                : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+            }`}
+          >
+            {t.label}
+          </button>
+        ))}
       </div>
 
       {/* ========================================================= */}
-      {/* 3. MAIN CONTENT CONTAINER */}
+      {/* 3. MAIN WORKSPACE */}
       {/* ========================================================= */}
-      <div className="flex-grow max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8">
-        {/* VIEW 1: STUDIO (INTERVIEW ROOM) */}
-        {mainView === 'studio' && (
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            {/* ----------------------------------------------------- */}
-            {/* LEFT COLUMN: INTERVIEW STAGE (7 COLS) */}
-            {/* ----------------------------------------------------- */}
-            <div className="lg:col-span-7 space-y-5">
-              {/* RECRUITER AI AVATAR & QUESTION CARD */}
-              <div className="rounded-2xl border border-slate-800 bg-[#0E1424] p-5 sm:p-6 shadow-xl relative overflow-hidden">
-                {/* Top Persona Bar */}
-                <div className="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
-                  <div className="flex items-center gap-3">
-                    <div className="relative">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-sky-600 flex items-center justify-center font-extrabold text-slate-950 text-sm shadow-md">
-                        AI
-                      </div>
-                      <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-500 border-2 border-[#0E1424]" />
-                    </div>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        {/* ========================================================= */}
+        {/* TAB 1: SELF-INTRODUCTION ELEVATOR PITCH & AUDIO PLAYER */}
+        {/* ========================================================= */}
+        {activeTab === 'pitch' && (
+          <div className="space-y-6">
+            {/* Header Banner */}
+            <div className="bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-sm">
+              <div className="max-w-3xl space-y-2">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-mono font-bold">
+                  <User size={13} />
+                  <span>Persiapan Wawancara #1: Ceritakan Tentang Diri Anda</span>
+                </div>
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                  {selfIntroductionText[lang].title}
+                </h1>
+                <p className="text-slate-600 text-sm leading-relaxed">
+                  {selfIntroductionText[lang].subtitle}
+                </p>
+              </div>
 
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <h3 className="font-bold text-sm text-white">
-                          {currentQuestion.category === 'backend-go'
-                            ? 'Lead Backend Architect'
-                            : currentQuestion.category === 'app-support'
-                            ? 'Enterprise Operations Manager'
-                            : currentQuestion.category === 'fullstack-react'
-                            ? 'Senior Fullstack Engineer'
-                            : 'HR Technical Recruiter'}
-                        </h3>
-                        <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-slate-800 text-slate-400 border border-slate-700">
-                          {currentQuestion.difficulty}
-                        </span>
-                      </div>
-                      <p className="text-xs text-slate-400">
-                        Sesi Wawancara • {currentQuestion.context}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Audio Speech Button */}
+              {/* Audio Controls Bar */}
+              <div className="mt-6 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
+                <div className="flex items-center gap-3">
                   <button
-                    onClick={handleSpeakQuestion}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border transition-all cursor-pointer ${
-                      isSpeakingQuestion
-                        ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300 font-bold animate-pulse'
-                        : 'bg-slate-900 border-slate-800 text-slate-300 hover:border-slate-700'
+                    onClick={() => handlePlayVoice(selfIntroductionText[lang].script)}
+                    className={`flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all shadow-sm cursor-pointer ${
+                      isAudioPlaying
+                        ? 'bg-emerald-700 text-white animate-pulse'
+                        : 'bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold'
                     }`}
                   >
-                    <Volume2 size={14} className={isSpeakingQuestion ? 'text-emerald-400 animate-bounce' : ''} />
-                    <span>{isSpeakingQuestion ? 'Memutar Suara...' : 'Dengarkan Soal'}</span>
+                    {isAudioPlaying ? <Pause size={16} /> : <Volume2 size={16} />}
+                    <span>{isAudioPlaying ? 'Jeda Suara Audio' : 'Dengarkan Contoh Pengucapan Suara'}</span>
+                  </button>
+
+                  <button
+                    onClick={handleCopyPitch}
+                    className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition-colors cursor-pointer"
+                  >
+                    {isCopied ? <Check size={14} className="text-emerald-600" /> : <Copy size={14} />}
+                    <span>{isCopied ? 'Tersalin!' : 'Salin Teks'}</span>
                   </button>
                 </div>
 
-                {/* Question Prompt */}
-                <div className="space-y-3">
-                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
-                    <Terminal size={13} /> Pertanyaan Sesi Ini:
-                  </div>
-
-                  <h2 className="text-lg sm:text-xl font-extrabold text-white leading-relaxed">
-                    &ldquo;{currentQuestion.question[lang]}&rdquo;
-                  </h2>
-
-                  {/* Animated Voice Waveform Visualizer (Simulated) */}
-                  <div className="pt-2 flex items-center gap-1 h-5">
-                    {[12, 24, 8, 30, 18, 28, 14, 22, 10, 26, 16, 20, 12, 18, 28, 10, 24, 14].map((h, i) => (
-                      <span
-                        key={i}
-                        className={`w-1 rounded-full transition-all duration-300 ${
-                          isSpeakingQuestion || isRecording
-                            ? 'bg-emerald-400 animate-pulse'
-                            : 'bg-slate-800'
-                        }`}
-                        style={{ height: isSpeakingQuestion || isRecording ? `${h}px` : '4px' }}
-                      />
-                    ))}
-                    <span className="text-[10px] font-mono text-slate-500 ml-2">
-                      {isSpeakingQuestion
-                        ? 'Interviewer sedang berbicara...'
-                        : isRecording
-                        ? 'Mendengarkan suara Anda...'
-                        : 'Mikrofon siap'}
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* CANDIDATE ANSWERING STATION */}
-              <div className="rounded-2xl border border-slate-800 bg-[#0E1424] p-5 sm:p-6 shadow-xl space-y-4">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5">
-                    <Mic size={14} className={isRecording ? 'text-rose-500 animate-ping' : 'text-emerald-400'} />
-                    <span>Jawaban Anda:</span>
-                  </span>
-
-                  <div className="flex items-center gap-3 text-xs font-mono text-slate-400">
-                    <span>{keywordAnalysis.wordCount} Kata</span>
-                    {userTranscript.length > 0 && (
-                      <button
-                        onClick={() => setUserTranscript('')}
-                        className="text-slate-500 hover:text-rose-400 transition-colors cursor-pointer"
-                      >
-                        Bersihkan
-                      </button>
-                    )}
-                  </div>
-                </div>
-
-                {/* Interactive Transcript / Input Area */}
-                <div className="relative">
-                  <textarea
-                    value={userTranscript}
-                    onChange={(e) => setUserTranscript(e.target.value)}
-                    placeholder={
-                      lang === 'id'
-                        ? 'Klik tombol "Rekam Suara (Mic)" untuk menjawab dengan suara, atau ketik langsung narasi jawaban Anda di sini...'
-                        : 'Click "Record Voice (Mic)" to answer verbally, or type your response directly here...'
-                    }
-                    rows={6}
-                    className="w-full bg-[#090D16] border border-slate-800 rounded-xl p-4 text-xs sm:text-sm text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-emerald-500 transition-colors leading-relaxed font-sans resize-none"
-                  />
-                </div>
-
-                {/* Candidate Action Buttons */}
-                <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
-                  {/* Left: Recording & Hint */}
-                  <div className="flex items-center gap-2">
+                {/* Speech Speed Selector */}
+                <div className="flex items-center gap-2 text-xs font-bold text-slate-600">
+                  <span className="font-mono">Kecepatan:</span>
+                  {[0.8, 1.0, 1.2].map((rate) => (
                     <button
-                      onClick={handleToggleRecord}
-                      className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                        isRecording
-                          ? 'bg-rose-500/20 border border-rose-500 text-rose-300 animate-pulse'
-                          : 'bg-emerald-500 text-slate-950 font-black hover:bg-emerald-400 shadow-md shadow-emerald-500/20'
+                      key={rate}
+                      onClick={() => setSpeechRate(rate)}
+                      className={`px-2.5 py-1 rounded-lg border text-xs font-mono transition-all cursor-pointer ${
+                        speechRate === rate
+                          ? 'bg-slate-900 text-white border-slate-900 font-extrabold'
+                          : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
                       }`}
                     >
-                      {isRecording ? <MicOff size={15} /> : <Mic size={15} />}
-                      <span>{isRecording ? 'Hentikan Rekaman' : 'Rekam Suara (Mic)'}</span>
+                      {rate}x
                     </button>
-
-                    <button
-                      onClick={() => setShowHint(!showHint)}
-                      className="px-3 py-2 rounded-xl text-xs font-medium bg-slate-900 border border-slate-800 text-slate-300 hover:border-slate-700 transition-colors cursor-pointer"
-                    >
-                      {showHint ? 'Tutup Hint' : 'Lihat Kisi-Kisi Kata Kunci'}
-                    </button>
-                  </div>
-
-                  {/* Right: Submit & Next */}
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => setShowFeedback(true)}
-                      disabled={userTranscript.length < 5}
-                      className={`flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                        userTranscript.length >= 5
-                          ? 'bg-sky-600 hover:bg-sky-500 text-white shadow-md'
-                          : 'bg-slate-900 border border-slate-800 text-slate-500 cursor-not-allowed'
-                      }`}
-                    >
-                      <Sparkles size={14} />
-                      <span>Analisis Jawaban</span>
-                    </button>
-
-                    <button
-                      onClick={handleNextQuestion}
-                      className="flex items-center gap-1 px-3 py-2 rounded-xl text-xs font-bold bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 transition-colors cursor-pointer"
-                    >
-                      <span>Lewati / Lanjut</span>
-                      <ChevronRight size={14} />
-                    </button>
-                  </div>
+                  ))}
                 </div>
-
-                {/* HINT OVERLAY (IF TOGGLED) */}
-                <AnimatePresence>
-                  {showHint && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 text-xs space-y-2"
-                    >
-                      <div className="flex items-center gap-1.5 text-amber-400 font-mono font-bold">
-                        <HelpCircle size={13} /> Poin Konsep Utama yang Dinilai:
-                      </div>
-                      <div className="flex flex-wrap gap-1.5">
-                        {currentQuestion.keyConcepts.map((k, i) => (
-                          <span
-                            key={i}
-                            className="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300 text-[11px] font-mono"
-                          >
-                            {k}
-                          </span>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </div>
             </div>
 
-            {/* ----------------------------------------------------- */}
-            {/* RIGHT COLUMN: AI FEEDBACK & STAR BENCHMARK (5 COLS) */}
-            {/* ----------------------------------------------------- */}
-            <div className="lg:col-span-5 space-y-5">
-              {/* SCORECARD CARD */}
-              <div className="rounded-2xl border border-slate-800 bg-[#0E1424] p-5 sm:p-6 shadow-xl space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                    <BarChart3 size={14} className="text-emerald-400" />
-                    <span>Evaluasi & Kesesuaian Kriteria:</span>
+            {/* Main Pitch Body & Key Highlights Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              {/* Left: Teleprompter Pitch Text (7 cols) */}
+              <div className="lg:col-span-7 bg-white rounded-2xl border border-slate-200/90 p-6 sm:p-8 shadow-sm space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+                    <BookOpen size={14} className="text-emerald-600" />
+                    <span>Naskah Bacaan Lengkap:</span>
                   </span>
-
-                  <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                    {showFeedback ? 'Analisis Selesai' : 'Siap Dianalisis'}
+                  <span className="text-xs font-mono text-slate-400">
+                    Durasi Baca: ~60 Detik
                   </span>
                 </div>
 
-                {/* Real-time Match Metrics */}
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="p-3 rounded-xl bg-[#090D16] border border-slate-800 text-center space-y-1">
-                    <span className="text-[10px] font-mono text-slate-400 uppercase">Match Kata Kunci</span>
-                    <div className="text-2xl font-black font-mono text-emerald-400">
-                      {keywordAnalysis.score}%
-                    </div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-[#090D16] border border-slate-800 text-center space-y-1">
-                    <span className="text-[10px] font-mono text-slate-400 uppercase">Estimasi Struktur STAR</span>
-                    <div className="text-2xl font-black font-mono text-sky-400">
-                      {userTranscript.length > 50 ? 'Optimal' : 'Draft'}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Keywords Tagging Checklist */}
-                <div className="space-y-1.5">
-                  <span className="text-[11px] font-mono text-slate-400 uppercase font-semibold">
-                    Checklist Konsep ATS yang Terdeteksi:
-                  </span>
-                  <div className="flex flex-wrap gap-1.5">
-                    {currentQuestion.keyConcepts.map((kw, i) => {
-                      const isFound = userTranscript.toLowerCase().includes(kw.toLowerCase());
-                      return (
-                        <span
-                          key={i}
-                          className={`flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-mono border transition-all ${
-                            isFound
-                              ? 'bg-emerald-500/20 border-emerald-500/40 text-emerald-300 font-bold'
-                              : 'bg-slate-900 border-slate-800 text-slate-500'
-                          }`}
-                        >
-                          <CheckCircle2 size={11} className={isFound ? 'text-emerald-400' : 'text-slate-700'} />
-                          <span>{kw}</span>
-                        </span>
-                      );
-                    })}
-                  </div>
+                <div className="text-sm sm:text-base text-slate-800 leading-relaxed space-y-4 whitespace-pre-line font-serif sm:font-sans">
+                  {selfIntroductionText[lang].script}
                 </div>
               </div>
 
-              {/* BENCHMARK STAR STRUCTURE CARD */}
-              <div className="rounded-2xl border border-slate-800 bg-[#0E1424] p-5 sm:p-6 shadow-xl space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-3">
-                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-sky-400 flex items-center gap-1.5">
-                    <Award size={14} />
-                    <span>Rekomendasi Jawaban STAR (CV Benchmark):</span>
-                  </span>
+              {/* Right: Key Bullets & Strategy Points (5 cols) */}
+              <div className="lg:col-span-5 space-y-5">
+                <div className="bg-white rounded-2xl border border-slate-200/90 p-6 shadow-sm space-y-4">
+                  <div className="flex items-center gap-2 text-emerald-800 font-bold text-sm border-b border-slate-100 pb-3">
+                    <ShieldCheck size={18} className="text-emerald-600" />
+                    <span>Poin Wajib yang Ditegaskan dalam CV:</span>
+                  </div>
+
+                  <ul className="space-y-3 text-xs sm:text-sm text-slate-700">
+                    {selfIntroductionText[lang].bulletPoints.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5">
+                        <CheckCircle2 size={16} className="text-emerald-600 flex-shrink-0 mt-0.5" />
+                        <span className="leading-snug">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                {/* STAR Breakdown */}
-                {currentQuestion.starAnswer ? (
-                  <div className="space-y-2.5 text-xs">
-                    <div className="p-3 rounded-xl bg-[#090D16] border border-slate-800/80 space-y-1">
-                      <strong className="text-sky-400 font-mono">[S] Situation:</strong>
-                      <p className="text-slate-300 leading-relaxed">{currentQuestion.starAnswer[lang].situation}</p>
-                    </div>
-                    <div className="p-3 rounded-xl bg-[#090D16] border border-slate-800/80 space-y-1">
-                      <strong className="text-amber-400 font-mono">[T] Task:</strong>
-                      <p className="text-slate-300 leading-relaxed">{currentQuestion.starAnswer[lang].task}</p>
-                    </div>
-                    <div className="p-3 rounded-xl bg-[#090D16] border border-slate-800/80 space-y-1">
-                      <strong className="text-emerald-400 font-mono">[A] Action:</strong>
-                      <p className="text-slate-300 leading-relaxed">{currentQuestion.starAnswer[lang].action}</p>
-                    </div>
-                    <div className="p-3 rounded-xl bg-[#090D16] border border-slate-800/80 space-y-1">
-                      <strong className="text-purple-400 font-mono">[R] Result:</strong>
-                      <p className="text-slate-300 leading-relaxed">{currentQuestion.starAnswer[lang].result}</p>
-                    </div>
+                <div className="bg-emerald-50/80 rounded-2xl border border-emerald-200 p-6 space-y-2.5">
+                  <div className="flex items-center gap-1.5 text-emerald-800 font-bold text-xs uppercase tracking-wider font-mono">
+                    <Zap size={14} className="text-emerald-600" />
+                    <span>Tips Eksekusi Wawancara:</span>
                   </div>
-                ) : (
-                  <div className="p-4 rounded-xl bg-[#090D16] border border-slate-800 text-xs text-slate-300 italic leading-relaxed">
-                    &ldquo;{currentQuestion.modelAnswer[lang]}&rdquo;
-                  </div>
-                )}
-
-                {/* Code Snippet (if applicable) */}
-                {currentQuestion.codeSnippet && (
-                  <div className="space-y-1.5 pt-2">
-                    <span className="text-[11px] font-mono text-slate-400 uppercase flex items-center gap-1">
-                      <Code2 size={12} className="text-emerald-400" /> Contoh Snippet Kode Pendukung:
-                    </span>
-                    <pre className="p-3 rounded-xl bg-[#090D16] border border-slate-800 text-emerald-300 text-[11px] font-mono overflow-x-auto">
-                      <code>{currentQuestion.codeSnippet.code}</code>
-                    </pre>
-                  </div>
-                )}
+                  <p className="text-xs text-emerald-900 leading-relaxed">
+                    Ucapkan naskah perkenalan diri dengan tempo santai, percaya diri, dan tersenyum. Tekankan kata kunci <strong>2+ tahun di PT PLN Icon+</strong> dan <strong>Go Clean Architecture</strong> karena poin inilah yang membedakan Anda dengan fresh graduate lain.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         )}
 
         {/* ========================================================= */}
-        {/* VIEW 2: SYLLABUS / QUESTION BANK TABLE */}
+        {/* TAB 2: TECHNICAL Q&A STUDIO */}
         {/* ========================================================= */}
-        {mainView === 'syllabus' && (
+        {activeTab === 'studio' && (
           <div className="space-y-6">
-            <div className="p-5 rounded-2xl bg-[#0E1424] border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+            {/* Category Track Filter */}
+            <div className="bg-white p-3 rounded-2xl border border-slate-200/90 shadow-sm flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-1.5 overflow-x-auto">
+                {[
+                  { id: 'all', label: 'Semua Kategori' },
+                  { id: 'backend-go', label: 'Go & Backend' },
+                  { id: 'app-support', label: 'App Support (PLN)' },
+                  { id: 'fullstack-react', label: 'Fullstack & React' },
+                  { id: 'behavioral-hr', label: 'Behavioral & HR' }
+                ].map((c) => (
+                  <button
+                    key={c.id}
+                    onClick={() => {
+                      setSelectedCategory(c.id);
+                      setCurrentIndex(0);
+                      setShowFeedback(false);
+                    }}
+                    className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                      selectedCategory === c.id
+                        ? 'bg-slate-900 text-white shadow-sm'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    {c.label}
+                  </button>
+                ))}
+              </div>
+
+              <div className="text-xs font-mono font-bold text-slate-500">
+                Soal <strong className="text-slate-900">{currentIndex + 1}</strong> dari{' '}
+                <strong className="text-slate-900">{filteredQuestions.length}</strong>
+              </div>
+            </div>
+
+            {/* Dual Pane Layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              {/* Left Column: Question Prompt & Candidate Input (7 cols) */}
+              <div className="lg:col-span-7 space-y-5">
+                {/* Question Box */}
+                <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                    <div className="flex items-center gap-2">
+                      <span className="px-2.5 py-1 rounded-md text-[11px] font-mono font-bold bg-slate-100 text-slate-800 border border-slate-200">
+                        {currentQuestion.categoryLabel[lang]}
+                      </span>
+                      <span className="text-xs text-slate-500 font-mono">
+                        Konteks: {currentQuestion.context}
+                      </span>
+                    </div>
+
+                    <button
+                      onClick={() => handlePlayVoice(currentQuestion.question[lang])}
+                      className="flex items-center gap-1 px-3 py-1 rounded-lg text-xs font-bold bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 transition-colors cursor-pointer"
+                    >
+                      <Volume2 size={14} />
+                      <span>Dengarkan Soal</span>
+                    </button>
+                  </div>
+
+                  <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 leading-relaxed">
+                    &ldquo;{currentQuestion.question[lang]}&rdquo;
+                  </h2>
+                </div>
+
+                {/* Candidate Answering Box */}
+                <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+                      <Mic size={14} className={isRecording ? 'text-rose-600 animate-pulse' : 'text-emerald-600'} />
+                      <span>Jawaban Latihan Anda:</span>
+                    </span>
+
+                    <div className="flex items-center gap-3 text-xs font-mono text-slate-500">
+                      <span>Waktu: {formatTimer(elapsedSeconds)}</span>
+                      <span>•</span>
+                      <span>{keywordAnalysis.wordCount} Kata</span>
+                    </div>
+                  </div>
+
+                  <textarea
+                    value={userTranscript}
+                    onChange={(e) => setUserTranscript(e.target.value)}
+                    placeholder={
+                      lang === 'id'
+                        ? 'Tekan tombol "Mulai Bicara (Mic)" untuk menjawab langsung dengan suara, atau ketik jawaban Anda di sini...'
+                        : 'Click "Start Voice (Mic)" to answer with your microphone, or type your response here...'
+                    }
+                    rows={5}
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl p-4 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-emerald-500 focus:bg-white transition-all leading-relaxed resize-none"
+                  />
+
+                  {/* Actions */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={handleToggleRecord}
+                        className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                          isRecording
+                            ? 'bg-rose-600 text-white animate-pulse'
+                            : 'bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold shadow-sm'
+                        }`}
+                      >
+                        {isRecording ? <MicOff size={15} /> : <Mic size={15} />}
+                        <span>{isRecording ? 'Stop Rekaman' : 'Mulai Bicara (Mic)'}</span>
+                      </button>
+
+                      <button
+                        onClick={() => setShowHint(!showHint)}
+                        className="px-3 py-2 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition-colors cursor-pointer"
+                      >
+                        {showHint ? 'Tutup Kisi-Kisi' : 'Kisi-Kisi Konsep'}
+                      </button>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => {
+                          setCurrentIndex((prev) => (prev + 1) % filteredQuestions.length);
+                          setUserTranscript('');
+                          setElapsedSeconds(0);
+                        }}
+                        className="flex items-center gap-1 px-4 py-2 rounded-xl text-xs font-bold bg-slate-900 hover:bg-slate-800 text-white transition-colors cursor-pointer"
+                      >
+                        <span>Soal Berikutnya</span>
+                        <ChevronRight size={14} />
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Hint Concepts Box */}
+                  <AnimatePresence>
+                    {showHint && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-2"
+                      >
+                        <div className="flex items-center gap-1.5 text-slate-700 font-mono font-bold">
+                          <HelpCircle size={13} className="text-emerald-600" /> Kata Kunci Konsep yang Dinilai:
+                        </div>
+                        <div className="flex flex-wrap gap-1.5">
+                          {currentQuestion.keyConcepts.map((k, i) => (
+                            <span
+                              key={i}
+                              className="px-2.5 py-0.5 rounded-md bg-white border border-slate-200 text-slate-700 text-xs font-mono"
+                            >
+                              {k}
+                            </span>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+
+              {/* Right Column: Recommended STAR Model Answer (5 cols) */}
+              <div className="lg:col-span-5 space-y-5">
+                {/* Keywords Match Meter */}
+                <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-600">
+                      Checklist Konsep Jawaban:
+                    </span>
+                    <span className="text-xs font-mono font-bold text-emerald-700">
+                      {keywordAnalysis.score}% Match
+                    </span>
+                  </div>
+
+                  <div className="flex flex-wrap gap-1.5">
+                    {currentQuestion.keyConcepts.map((kw, i) => {
+                      const isFound = userTranscript.toLowerCase().includes(kw.toLowerCase());
+                      return (
+                        <span
+                          key={i}
+                          className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-mono border transition-all ${
+                            isFound
+                              ? 'bg-emerald-50 border-emerald-300 text-emerald-800 font-bold'
+                              : 'bg-slate-50 border-slate-200 text-slate-500'
+                          }`}
+                        >
+                          <CheckCircle2 size={12} className={isFound ? 'text-emerald-600' : 'text-slate-400'} />
+                          <span>{kw}</span>
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* STAR Benchmark Answer Card */}
+                <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm space-y-3">
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
+                      <Award size={14} className="text-emerald-600" />
+                      <span>Rekomendasi Jawaban Metode STAR:</span>
+                    </span>
+
+                    <button
+                      onClick={() => handlePlayVoice(currentQuestion.modelAnswer[lang])}
+                      className="text-xs font-bold text-emerald-700 hover:text-emerald-600 flex items-center gap-1 cursor-pointer"
+                    >
+                      <Volume2 size={13} />
+                      <span>Dengarkan</span>
+                    </button>
+                  </div>
+
+                  {currentQuestion.starAnswer ? (
+                    <div className="space-y-2 text-xs">
+                      <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                        <strong className="text-sky-700 font-mono">[S] Situation:</strong>
+                        <p className="text-slate-700 leading-relaxed">{currentQuestion.starAnswer[lang].situation}</p>
+                      </div>
+                      <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                        <strong className="text-amber-700 font-mono">[T] Task:</strong>
+                        <p className="text-slate-700 leading-relaxed">{currentQuestion.starAnswer[lang].task}</p>
+                      </div>
+                      <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                        <strong className="text-emerald-700 font-mono">[A] Action:</strong>
+                        <p className="text-slate-700 leading-relaxed">{currentQuestion.starAnswer[lang].action}</p>
+                      </div>
+                      <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
+                        <strong className="text-purple-700 font-mono">[R] Result:</strong>
+                        <p className="text-slate-700 leading-relaxed">{currentQuestion.starAnswer[lang].result}</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 italic leading-relaxed">
+                      &ldquo;{currentQuestion.modelAnswer[lang]}&rdquo;
+                    </div>
+                  )}
+
+                  {/* Code Snippet */}
+                  {currentQuestion.codeSnippet && (
+                    <div className="space-y-1.5 pt-2 border-t border-slate-100">
+                      <span className="text-[11px] font-mono text-slate-600 uppercase flex items-center gap-1">
+                        <Code2 size={12} className="text-emerald-600" /> Contoh Snippet Kode:
+                      </span>
+                      <pre className="p-3 rounded-xl bg-slate-900 text-emerald-300 text-[11px] font-mono overflow-x-auto">
+                        <code>{currentQuestion.codeSnippet.code}</code>
+                      </pre>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ========================================================= */}
+        {/* TAB 3: QUESTION BANK SYLLABUS */}
+        {/* ========================================================= */}
+        {activeTab === 'syllabus' && (
+          <div className="space-y-6">
+            <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
               <div>
-                <h2 className="text-lg font-bold text-white">Bank Pertanyaan & Kisi-Kisi Lengkap</h2>
-                <p className="text-xs text-slate-400">
-                  Daftar seluruh pertanyaan wawancara teknis, pengalaman database PLN, dan behavioral.
+                <h2 className="text-lg font-extrabold text-slate-900">Bank Pertanyaan & Kisi-Kisi Lengkap</h2>
+                <p className="text-xs text-slate-500">
+                  Daftar seluruh topik wawancara teknis backend Go, pengalaman operasional PLN, dan behavioral.
                 </p>
               </div>
 
               <div className="relative w-full md:w-72">
-                <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+                <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   type="text"
-                  placeholder={lang === 'id' ? 'Cari pertanyaan...' : 'Search questions...'}
+                  placeholder="Cari topik pertanyaan..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-9 pr-3 py-1.5 bg-[#090D16] border border-slate-800 rounded-xl text-xs text-slate-200 placeholder:text-slate-600 focus:outline-none focus:border-emerald-500"
+                  className="w-full pl-9 pr-3 py-1.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 focus:outline-none focus:border-emerald-500"
                 />
               </div>
             </div>
@@ -710,26 +769,26 @@ export default function InterviewStudioPage() {
               {filteredQuestions.map((q, idx) => (
                 <div
                   key={q.id}
-                  className="p-5 rounded-2xl bg-[#0E1424] border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between space-y-4"
+                  className="bg-white p-5 rounded-2xl border border-slate-200 hover:border-slate-300 shadow-sm transition-all flex flex-col justify-between space-y-4"
                 >
                   <div className="space-y-2">
-                    <div className="flex items-center justify-between text-[10px] font-mono">
-                      <span className="px-2 py-0.5 rounded bg-slate-900 text-emerald-400 font-bold border border-slate-800">
+                    <div className="flex items-center justify-between text-[11px] font-mono">
+                      <span className="px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 font-bold border border-emerald-200">
                         {q.categoryLabel[lang]}
                       </span>
-                      <span className="text-slate-500">{q.difficulty}</span>
+                      <span className="text-slate-400">{q.difficulty}</span>
                     </div>
 
-                    <h3 className="text-sm font-bold text-white leading-snug">
+                    <h3 className="text-sm font-bold text-slate-900 leading-snug">
                       {idx + 1}. {q.question[lang]}
                     </h3>
 
-                    <p className="text-xs text-slate-400 line-clamp-2">
+                    <p className="text-xs text-slate-600 line-clamp-2">
                       {q.modelAnswer[lang]}
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between">
+                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
                     <span className="text-[11px] font-mono text-slate-500 truncate max-w-[200px]">
                       {q.context}
                     </span>
@@ -738,11 +797,11 @@ export default function InterviewStudioPage() {
                       onClick={() => {
                         const targetIdx = interviewQuestions.findIndex((item) => item.id === q.id);
                         if (targetIdx !== -1) setCurrentIndex(targetIdx);
-                        setMainView('studio');
+                        setActiveTab('studio');
                       }}
-                      className="text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1 cursor-pointer"
+                      className="text-xs font-bold text-emerald-700 hover:text-emerald-600 flex items-center gap-1 cursor-pointer"
                     >
-                      <span>Simulasikan Soal Ini</span>
+                      <span>Latih Soal Ini</span>
                       <ChevronRight size={13} />
                     </button>
                   </div>
@@ -753,14 +812,14 @@ export default function InterviewStudioPage() {
         )}
 
         {/* ========================================================= */}
-        {/* VIEW 3: CHEAT SHEET */}
+        {/* TAB 4: CHEAT SHEET */}
         {/* ========================================================= */}
-        {mainView === 'cheatsheet' && (
+        {activeTab === 'cheatsheet' && (
           <div className="max-w-4xl mx-auto space-y-6">
-            <div className="text-center space-y-2 pb-2">
-              <h2 className="text-xl font-extrabold text-white">Technical Architecture Cheat Sheet</h2>
-              <p className="text-xs text-slate-400">
-                Formula ringkas arsitektur Go, transaksi database ACID, troubleshooting PLN Icon+, dan STAR.
+            <div className="text-center space-y-1">
+              <h2 className="text-xl font-extrabold text-slate-900">Technical Architecture Cheat Sheet</h2>
+              <p className="text-xs text-slate-500">
+                Formula ringkas arsitektur Go, transaksi database ACID, troubleshooting PLN Icon+, dan metode STAR.
               </p>
             </div>
 
@@ -768,16 +827,16 @@ export default function InterviewStudioPage() {
               {technicalCheatSheet.map((sheet, idx) => (
                 <div
                   key={idx}
-                  className="p-5 rounded-2xl bg-[#0E1424] border border-slate-800 space-y-3 shadow-md"
+                  className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3"
                 >
-                  <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm border-b border-slate-800 pb-2.5">
-                    <CheckCircle2 size={16} className="text-emerald-400 flex-shrink-0" />
+                  <div className="flex items-center gap-2 text-slate-900 font-bold text-sm border-b border-slate-100 pb-2.5">
+                    <CheckCircle2 size={16} className="text-emerald-600 flex-shrink-0" />
                     <span>{sheet.topic}</span>
                   </div>
-                  <ul className="space-y-2 text-xs text-slate-300 leading-relaxed">
+                  <ul className="space-y-2 text-xs text-slate-700 leading-relaxed">
                     {sheet.points.map((pt, pIdx) => (
                       <li key={pIdx} className="flex items-start gap-2">
-                        <span className="text-emerald-500 font-mono font-bold">•</span>
+                        <span className="text-emerald-600 font-mono font-bold">•</span>
                         <span>{pt}</span>
                       </li>
                     ))}
@@ -787,7 +846,7 @@ export default function InterviewStudioPage() {
             </div>
           </div>
         )}
-      </div>
+      </main>
     </div>
   );
 }
