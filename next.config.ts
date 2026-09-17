@@ -5,8 +5,16 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  productionBrowserSourceMaps: false,
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion', '@vercel/analytics', '@vercel/speed-insights'],
+    optimizePackageImports: [
+      'lucide-react',
+      'framer-motion',
+      'clsx',
+      'tailwind-merge',
+      '@vercel/analytics',
+      '@vercel/speed-insights'
+    ],
   },
   async headers() {
     return [
@@ -24,6 +32,15 @@ const nextConfig: NextConfig = {
           {
             key: 'Referrer-Policy',
             value: 'origin-when-cross-origin',
+          },
+        ],
+      },
+      {
+        source: '/_next/static/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
           },
         ],
       },
