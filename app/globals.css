@@ -46,11 +46,6 @@
   html {
     scroll-behavior: smooth;
   }
-  @media (pointer: fine) {
-    * {
-      cursor: none !important;
-    }
-  }
   body {
     font-family: var(--font-jakarta);
     background-color: var(--bg);
