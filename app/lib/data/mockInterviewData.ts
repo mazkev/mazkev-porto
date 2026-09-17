@@ -189,52 +189,239 @@ export const mockQuestionsPool: MockQuestion[] = [
   },
 
   // ==========================================
-  // 2. BEHAVIORAL & HR QUESTIONS
+  // 2. BEHAVIORAL & HR QUESTIONS (10 TOPIC CONVERSATIONAL SUITE)
   // ==========================================
   {
-    id: 'behav-1',
+    id: 'behav-intro',
     type: 'Behavioral & HR',
     roles: ['Backend Golang', 'Backend Java', 'Fullstack', 'Frontend'],
-    difficulty: 'Middle',
-    context: '2+ Tahun Pengalaman Operasional di PT PLN Icon+',
+    difficulty: 'Junior',
+    context: 'Perkenalan Diri & Latar Belakang Transisi Karir',
     questionText: {
-      id: 'Ceritakan situasi ketika Anda menangani insiden sistem operasional kritis yang hampir melanggar batas SLA di PT PLN Icon+. Apa tindakan yang Anda ambil?',
-      en: 'Describe a situation where you resolved a critical system outage nearing SLA breach at PT PLN Icon+. What actions did you take?'
+      id: 'Bisa ceritakan tentang diri Anda, latar belakang pendidikan, pengalaman kerja di PLN, dan apa yang memotivasi Anda melamar posisi Software Engineer ini?',
+      en: 'Could you introduce yourself, your educational background, your work experience at PLN, and what motivates you to apply for this Software Engineer role?'
     },
     keyRubrics: [
-      'System Monitoring & Log Analysis',
-      'Diagnosis Akar Masalah (Root Cause Analysis)',
-      'Investigasi Database Slow Query / Bottleneck',
-      'Komunikasi Terstruktur & Kepatuhan Batas SLA',
-      'Verifikasi Hotfix Bersama Tim Developer'
+      'Latar Belakang S1 Informatika Amikom Yogyakarta',
+      '3+ Tahun Pengalaman Application Support di PLN (Enterprise App, SQL/DB, Monitoring)',
+      'Pengalaman Hands-on Development (Internal Tools, Project Go, React, PostgreSQL, Docker, Microservices)',
+      'Motivasi Jelas Transisi ke Software Engineer untuk merancang & membangun software',
+      'Penyampaian Alami, Santai & Percaya Diri'
     ],
     suggestedStarAnswer: {
-      situation: 'Saat bertugas di PLN Icon+, aplikasi operasional harian mendadak lambat dan terancam melanggar SLA 99.5%.',
-      task: 'Mengidentifikasi akar penyebab latency dan memulihkan kestabilan sistem secepat mungkin.',
-      action: 'Menganalisis log error server dan menjalankan EXPLAIN ANALYZE pada query lambat di PostgreSQL/Oracle, menemukan full table scan karena missing index, lalu mengoordinasikan hotfix indeks darurat.',
-      result: 'Latency query turun dari 12 detik menjadi 80ms, dan insiden terselesaikan 30 menit sebelum batas SLA terlampaui.'
+      situation: 'Lulusan S1 Informatika Amikom dan 3+ tahun bekerja di PLN menangani stabilitas aplikasi enterprise, SQL database, dan koordinasi dev.',
+      task: 'Menjelaskan transisi karir dari Application Support menuju Software Engineer yang berfokus pada backend engineering.',
+      action: 'Membangun aplikasi internal otomatisasi support serta mengembangkan project mandiri Go REST API, PostgreSQL, Docker, dan microservices.',
+      result: 'Memiliki kombinasi pemahaman troubleshooting produksi nyata dan kemampuan rekayasa backend yang siap memberi kontribusi langsung ke tim.'
     }
   },
   {
-    id: 'behav-2',
+    id: 'behav-challenge',
     type: 'Behavioral & HR',
     roles: ['Backend Golang', 'Backend Java', 'Fullstack', 'Frontend'],
     difficulty: 'Middle',
-    context: 'Kolaborasi Tim & Perbedaan Pendapat Teknis',
+    context: 'Menghadapi Masalah / Insiden Sistem Down di Jam Kerja',
     questionText: {
-      id: 'Pernahkah Anda memiliki perbedaan pendapat teknis dengan developer lain terkait arsitektur atau desain database? Bagaimana Anda menyelesaikannya?',
-      en: 'Have you ever had a technical disagreement regarding database design or architecture with another developer? How did you resolve it?'
+      id: 'Ceritakan situasi ketika salah satu aplikasi yang Anda tangani tiba-tiba mengalami down saat jam kerja dengan lonjakan tiket. Bagaimana langkah Anda mengatasinya?',
+      en: 'Describe a situation where an application you managed went down during business hours with a surge in tickets. How did you resolve it?'
     },
     keyRubrics: [
-      'Komunikasi Terbuka & Berbasis Data (Benchmark/Metrics)',
-      'Fokus pada Kebutuhan Bisnis & Skalabilitas',
-      'Kompromi Profesional & Dokumentasi Keputusan (ADR)'
+      'Pengecekan Status Aplikasi & Server Logs Terstruktur',
+      'Investigasi Query Database Menggunakan SQL',
+      'Komunikasi Proaktif dengan Tim Developer',
+      'Update Berkala & Transparan kepada User',
+      'Penyelesaian Root Cause & Kolaborasi Tim'
     ],
     suggestedStarAnswer: {
-      situation: 'Terdapat perbedaan pendapat apakah transaksi saldo harus menggunakan database trigger atau eksplisit di layer backend Go.',
-      task: 'Menentukan solusi yang paling mudah dipelihara dan tidak mengunci CPU database.',
-      action: 'Membuat proof of concept sederhana dan menyajikan data benchmark bahwa logika di layer Go lebih mudah di-unit test dan di-debug.',
-      result: 'Tim menyetujui pendekatan layer aplikasi dengan row-level locking dan mendokumentasikannya dalam ADR.'
+      situation: 'Aplikasi enterprise down mendadak saat jam kerja dengan lonjakan tiket user secara bersamaan.',
+      task: 'Mendiagnosis akar masalah dan memulihkan aplikasi secepat mungkin dengan koordinasi tim.',
+      action: 'Mengecek status & server logs, menginvestigasi query database via SQL, membagikan temuan ke developer, dan memberikan update rutin ke user.',
+      result: 'Root cause teridentifikasi, aplikasi pulih, dan membuktikan pentingnya komunikasi jelas serta penentuan prioritas saat insiden.'
+    }
+  },
+  {
+    id: 'behav-disagreement',
+    type: 'Behavioral & HR',
+    roles: ['Backend Golang', 'Backend Java', 'Fullstack', 'Frontend'],
+    difficulty: 'Middle',
+    context: 'Perbedaan Pendapat Teknis dengan Teammate (App vs DB)',
+    questionText: {
+      id: 'Pernahkah Anda memiliki perbedaan pendapat dengan rekan kerja atau developer mengenai penyebab masalah sistem? Bagaimana Anda menyelesaikannya secara profesional?',
+      en: 'Have you ever had a disagreement with a teammate or developer about the cause of a system issue? How did you resolve it professionally?'
+    },
+    keyRubrics: [
+      'Mendengarkan & Memahami Sudut Pandang Teammate Terlebih Dahulu',
+      'Menyajikan Bukti Objektif Berdasarkan Data Hasil SQL & Log',
+      'Menghindari Perdebatan Personal (Fokus pada Masalah & Solusi)',
+      'Diskusi Bersama Dua Arah untuk Validasi Menyeluruh'
+    ],
+    suggestedStarAnswer: {
+      situation: 'Terjadi perbedaan pendapat di mana developer menduga isu berasal dari kode aplikasi, sementara investigasi saya menemukan indikasi di database.',
+      task: 'Menemukan akar masalah sebenarnya tanpa berdebat kusir mengenai siapa yang benar.',
+      action: 'Menunjukkan output query SQL dan bukti log secara objektif, lalu duduk bersama berdiskusi memeriksa kedua sisi.',
+      result: 'Menemukan penyebab sebenarnya secara kolaboratif dan menerapkan solusi yang tepat tanpa merusak hubungan tim.'
+    }
+  },
+  {
+    id: 'behav-learning',
+    type: 'Behavioral & HR',
+    roles: ['Backend Golang', 'Backend Java', 'Fullstack', 'Frontend'],
+    difficulty: 'Middle',
+    context: 'Metode Belajar Teknologi Baru (Hands-on Real Projects)',
+    questionText: {
+      id: 'Bagaimana pendekatan Anda ketika harus mempelajari teknologi atau bahasa pemrograman baru? Bisa berikan contoh konkritnya?',
+      en: 'What is your approach when learning a new technology or programming language? Could you provide a concrete example?'
+    },
+    keyRubrics: [
+      'Pahami Konsep & Sintaks Dasar Terlebih Dahulu',
+      'Learning by Doing: Membangun Proyek Nyata (Bukan Sekadar Nonton Tutorial)',
+      'Evolusi Belajar: Go -> REST API -> PostgreSQL -> Docker -> Microservices (gRPC, RabbitMQ, Kafka)',
+      'Deploy ke Linux VPS untuk Memahami Runtime Nyata',
+      'Validasi & Testing Mandiri saat Menggunakan AI Tools'
+    ],
+    suggestedStarAnswer: {
+      situation: 'Ingin memperdalam keahlian backend engineering dengan mempelajari Go dan arsitektur modern.',
+      task: 'Menguasai ekosistem Go mulai dari sintaks dasar hingga implementasi skala produksi.',
+      action: 'Membangun marketplace backend, merancang pipeline microservices (gRPC, Kafka), dan mendeploy langsung ke VPS Linux.',
+      result: 'Memahami teknologi secara mendalam melalui implementasi nyata, penanganan bug mandiri, dan testing komprehensif.'
+    }
+  },
+  {
+    id: 'behav-initiative',
+    type: 'Behavioral & HR',
+    roles: ['Backend Golang', 'Backend Java', 'Fullstack', 'Frontend'],
+    difficulty: 'Middle',
+    context: 'Inisiatif & Entrepreneur Spirit (Otomasi Internal Support Tool)',
+    questionText: {
+      id: 'Ceritakan inisiatif yang pernah Anda ambil di tempat kerja di luar tugas pokok Anda untuk meningkatkan efisiensi tim.',
+      en: 'Tell me about an initiative you took at work beyond your core job duties to improve team efficiency.'
+    },
+    keyRubrics: [
+      'Observasi Masalah & Aktivitas Manual yang Berulang',
+      'Inisiatif Mandiri Merancang & Membangun Internal Tool',
+      'Pengurangan Beban Pekerjaan Manual bagi Tim',
+      'Mindset Proaktif tanpa Menunggu Perintah Atasan'
+    ],
+    suggestedStarAnswer: {
+      situation: 'Melihat beberapa tugas operasional support dilakukan berulang dan memakan waktu tim karena proses manual.',
+      task: 'Meningkatkan efisiensi alur kerja tim meskipun pembuatan tools bukan tugas formal harian.',
+      action: 'Mengidentifikasi bottleneck, merancang alur otomatisasi, dan mengembangkan aplikasi internal mandiri.',
+      result: 'Aplikasi digunakan tim, memangkas beban kerja manual berulang, dan membuktikan inisiatif proaktif penyelesaian masalah.'
+    }
+  },
+  {
+    id: 'behav-pressure',
+    type: 'Behavioral & HR',
+    roles: ['Backend Golang', 'Backend Java', 'Fullstack', 'Frontend'],
+    difficulty: 'Middle',
+    context: 'Bekerja di Bawah Tekanan Tinggi (Working Under Pressure)',
+    questionText: {
+      id: 'Bagaimana cara Anda mengelola tekanan kerja ketika terjadi insiden kritis dan user menuntut perbaikan segera?',
+      en: 'How do you handle pressure when critical incidents occur and users demand immediate resolution?'
+    },
+    keyRubrics: [
+      'Menjaga Ketenangan & Menolak Perubahan Terburu-buru tanpa Analisis',
+      'Investigasi Bertahap (Server Logs -> SQL Database -> Koordinasi)',
+      'Komunikasi Teratur & Transparan kepada Stakeholder/User',
+      'Fokus pada Penentuan Prioritas & Prosedur Troubleshooting yang Benar'
+    ],
+    suggestedStarAnswer: {
+      situation: 'Aplikasi down saat jam sibuk dan banjir tiket user mendesak perbaikan seketika.',
+      task: 'Memulihkan sistem secara terukur tanpa melakukan perubahan serampangan yang berisiko memperparah keadaan.',
+      action: 'Tetap tenang, bekerja bertahap mengecek logs dan query database SQL, berkoordinasi dengan developer, serta memberi update berkala ke user.',
+      result: 'Aplikasi pulih dengan stabil dan aman karena mengikuti metodologi penanganan insiden yang disiplin.'
+    }
+  },
+  {
+    id: 'behav-mistake',
+    type: 'Behavioral & HR',
+    roles: ['Backend Golang', 'Backend Java', 'Fullstack', 'Frontend'],
+    difficulty: 'Middle',
+    context: 'Kesalahan dan Tanggung Jawab (Accountability & Learning)',
+    questionText: {
+      id: 'Pernahkah Anda melakukan kesalahan saat melakukan troubleshooting atau development? Bagaimana respon dan tindakan Anda?',
+      en: 'Have you ever made a mistake during troubleshooting or development? How did you respond and handle it?'
+    },
+    keyRubrics: [
+      'Kejujuran Mengakui Asumsi Awal yang Keliru secara Terbuka',
+      'Menghentikan Pendekatan yang Salah & Berbagi Temuan Baru ke Tim',
+      'Penyelesaian Masalah Berdasarkan Validasi Data Nyata (Log & DB)',
+      'Pembelajaran Agar Kesalahan Serupa Tidak Terulang'
+    ],
+    suggestedStarAnswer: {
+      situation: 'Saat menginvestigasi masalah aplikasi, asumsi awal saya keliru mengira bug pada application logic padahal sumbernya pada database.',
+      task: 'Mengakui kekeliruan secara transparan dan mengarahkan ulang proses investigasi.',
+      action: 'Menyampaikan ke tim apa saja yang sudah dicek, mengakui asumsi yang keliru, dan melanjutkan penyelidikan berbasis data log serta SQL.',
+      result: 'Akar masalah sebenarnya berhasil ditemukan dan dituntaskan; belajar untuk selalu memvalidasi bukti empiris sebelum berasumsi.'
+    }
+  },
+  {
+    id: 'behav-teamwork',
+    type: 'Behavioral & HR',
+    roles: ['Backend Golang', 'Backend Java', 'Fullstack', 'Frontend'],
+    difficulty: 'Middle',
+    context: 'Kolaborasi Tim & Bagaimana Rekan Menggambarkan Anda',
+    questionText: {
+      id: 'Bagaimana rekan kerja atau developer lain menggambarkan cara kerja Anda dalam sebuah tim?',
+      en: 'How would your colleagues or developers describe your work style within a team?'
+    },
+    keyRubrics: [
+      'Dapat Diandalkan (Dependable) & Kooperatif dalam Menyelesaikan Masalah',
+      'Transparan dalam Berbagi Temuan & Follow-up hingga Tuntas',
+      'Self-Awareness: Meningkatkan Proaktivitas Memberi Update Berkala Lebih Dini',
+      'Memastikan Seluruh Anggota Tim Memperoleh Konteks Informasi yang Dibutuhkan'
+    ],
+    suggestedStarAnswer: {
+      situation: 'Rutin berkolaborasi dengan developer dan cross-functional tim untuk investigasi dan eskalasi aplikasi di PLN.',
+      task: 'Menjadi rekan tim yang handal dan memastikan koordinasi teknis berjalan lancar.',
+      action: 'Membagikan data investigasi dengan jelas, mengawal follow up perbaikan, dan terus meningkatkan frekuensi update status.',
+      result: 'Dikenal sebagai teammate yang kooperatif, transparan, dan dapat diandalkan saat menghadapi situasi sulit.'
+    }
+  },
+  {
+    id: 'behav-career',
+    type: 'Behavioral & HR',
+    roles: ['Backend Golang', 'Backend Java', 'Fullstack', 'Frontend'],
+    difficulty: 'Middle',
+    context: 'Rencana 2–3 Tahun ke Depan (Career Aspirations)',
+    questionText: {
+      id: 'Apa target dan pencapaian yang ingin Anda raih dalam 2 hingga 3 tahun ke depan dalam karir software engineering Anda?',
+      en: 'What are your goals and milestones for the next 2 to 3 years in your software engineering career?'
+    },
+    keyRubrics: [
+      'Menjadi Backend Software Engineer yang Kuat & Mandiri di Ekosistem Go',
+      'Memperdalam Arsitektur Backend, Database Tuning, dan Distributed Systems',
+      'Mengambil End-to-End Ownership terhadap Fitur (Development hingga Deployment)',
+      'Knowledge Sharing, Membantu Teammate, dan Berkontribusi Membangun Produk yang Handal'
+    ],
+    suggestedStarAnswer: {
+      situation: 'Beralih ke peran Software Engineer dengan fondasi kuat pada pengalaman operasional produksi.',
+      task: 'Menentukan roadmap pengembangan diri dan kontribusi profesional dalam 2-3 tahun ke depan.',
+      action: 'Memperdalam arsitektur Go & distributed systems, mengambil ownership fitur end-to-end, dan aktif berbagi pengetahuan dengan tim.',
+      result: 'Menjadi engineer mandiri yang berkontribusi nyata pada keandalan produk dan perkembangan tim engineering.'
+    }
+  },
+  {
+    id: 'behav-achievement',
+    type: 'Behavioral & HR',
+    roles: ['Backend Golang', 'Backend Java', 'Fullstack', 'Frontend'],
+    difficulty: 'Middle',
+    context: 'Pencapaian Terbesar / Penutup Interview (Biggest Achievement)',
+    questionText: {
+      id: 'Menurut Anda, apa pencapaian terbesar yang paling membanggakan dalam perjalanan karir Anda sejauh ini?',
+      en: 'In your view, what is your greatest and most meaningful achievement in your career so far?'
+    },
+    keyRubrics: [
+      'Disiplin Bertumbuh & Belajar Mandiri di Sela Bekerja Full-Time Application Support',
+      'Membangun Aplikasi Produksi Mandiri (Go, PostgreSQL, Docker, Microservices, VPS)',
+      'Memiliki Grit, Dedikasi Tinggi, dan Tanggung Jawab atas Pengembangan Karir Sendiri',
+      'Memadukan Pengalaman Keandalan Produksi Nyata dengan Kemampuan Software Engineering'
+    ],
+    suggestedStarAnswer: {
+      situation: 'Bekerja full-time di PLN Application Support sambil memupuk aspirasi kuat di bidang software development.',
+      task: 'Mengembangkan kapabilitas rekayasa software secara mandiri tanpa mengorbankan tanggung jawab harian.',
+      action: 'Konsisten belajar dan membangun berbagai project Go backend, microservices, hingga deploy ke Linux VPS.',
+      result: 'Membuktikan disiplin diri dan determinasi tinggi untuk menggabungkan keandalan produksi dengan software engineering yang solid.'
     }
   },
 
