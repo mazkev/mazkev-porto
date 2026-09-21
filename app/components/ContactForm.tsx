@@ -127,7 +127,7 @@ export default function ContactForm() {
           <div className="space-y-6 mb-12">
             {[
               { icon: Mail, label: 'Email', value: 'kevinekapratama@gmail.com' },
-              { icon: Phone, label: 'Phone', value: '+62 (813) 000-0000' },
+              { icon: Phone, label: 'Phone', value: '+62 (813) 2661-2344' },
               { icon: MapPin, label: 'Location', value: 'Jakarta, INDONESIA' },
             ].map((item) => (
               <div key={item.label} className="flex items-center gap-4 group">
