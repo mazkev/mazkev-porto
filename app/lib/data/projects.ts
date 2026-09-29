@@ -929,7 +929,7 @@ export const projects: ProjectData[] = [
     description: 'Fullstack e-commerce marketplace inspired by eBay, built with Next.js 16 App Router, React 19, Prisma 7, and LibSQL. Includes dynamic product filtering, bidding simulation, responsive UI, and modular checkout flow.',
     tech: ['Next.js 16', 'React 19', 'Prisma 7', 'LibSQL', 'Tailwind CSS'],
     image: '/projects/semarketplace.jpg',
-    live: 'https://baye-marketplace.vercel.app',
+    live: 'https://github.com/mazkev/baye-ecommerce-marketplace',
     github: 'https://github.com/mazkev/baye-ecommerce-marketplace',
     category: 'Full Stack',
   },

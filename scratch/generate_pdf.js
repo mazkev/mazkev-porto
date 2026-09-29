@@ -556,7 +556,7 @@ const html = `<!DOCTYPE html>
         </div>
         <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #475569; margin: 1px 0;">NEXT.JS 16 • REACT 19 • PRISMA 7 • LIBSQL</div>
         <div style="font-size: 6.8pt; color: #334155; line-height: 1.25;">Platform lelang & belanja modern. Server-rendered hydration, live bidding simulation, dan faktur QR.</div>
-        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #0369a1; margin-top: 2px;">URL: baye-marketplace.vercel.app</div>
+        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #0369a1; margin-top: 2px;">Repo: gh/baye-ecommerce-marketplace</div>
       </div>
     </div>
 

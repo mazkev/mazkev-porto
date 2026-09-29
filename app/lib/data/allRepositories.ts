@@ -339,7 +339,6 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     tier: 1,
     sizeKb: 164,
     githubUrl: 'https://github.com/mazkev/baye-ecommerce-marketplace',
-    liveUrl: 'https://baye-marketplace.vercel.app',
     desc: {
       en: 'eBay-inspired fullstack marketplace on Next.js 16 and React 19 with Prisma 7, LibSQL, live bidding simulation, multi-attribute product comparison, and QR invoice generation.',
       id: 'Marketplace lelang dan e-commerce modern dengan Next.js 16, React 19, Prisma 7, LibSQL, simulasi bidding langsung, perbandingan spesifikasi produk, dan invoice QR.'
@@ -372,6 +371,7 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     tier: 1,
     sizeKb: 555,
     githubUrl: 'https://github.com/mazkev/go-react-c2c-marketplace',
+    liveUrl: 'https://semarketplace.vercel.app',
     desc: {
       en: 'Customer-to-customer e-commerce platform pairing a Go Clean Architecture REST API with PostgreSQL and a React 19 UI, featuring escrow safeguards and atomic transactions.',
       id: 'Platform e-commerce C2C yang memadukan REST API Go Clean Architecture dengan PostgreSQL dan frontend React 19, dilengkapi sistem rekening bersama dan transaksi atomik.'
@@ -520,7 +520,7 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     tier: 1,
     sizeKb: 320,
     githubUrl: 'https://github.com/mazkev/learn-go-app',
-    liveUrl: 'https://learn-go-app.vercel.app',
+    liveUrl: 'https://learn-go-app-swart.vercel.app',
     desc: {
       en: 'Interactive programming learning sandbox featuring React 19, Microsoft Monaco Editor, Go Playground compilation API integration, and an 8-module curated curriculum.',
       id: 'Sandbox pembelajaran pemrograman interaktif dengan React 19, Monaco Editor, integrasi kompilasi API Go Playground, dan kurikulum pemrograman 8 modul terstruktur.'
@@ -671,6 +671,7 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     tier: 1,
     sizeKb: 85,
     githubUrl: 'https://github.com/mazkev/react-hubspot-crm-platform',
+    liveUrl: 'https://hub-spot-clone-five.vercel.app',
     desc: {
       en: 'Sales CRM platform featuring TanStack Table data grids, TanStack Query v5 server caching, interactive SVG sales funnel charts, contact dialer, and deal pipeline boards.',
       id: 'Platform CRM penjualan enterprise dengan grid data TanStack Table, TanStack Query v5, visualisasi corong penjualan SVG interaktif, dialer kontak, dan pipeline deal.'
