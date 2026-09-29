@@ -70,6 +70,11 @@ const domains = [
   { key: 'exploration', titleEn: '5. Engineering Exploration & Concept Labs', titleId: '5. Eksplorasi & Lab Rekayasa', color: '#d97706' },
 ];
 
+function cleanUrl(url) {
+  if (!url) return '';
+  return url.replace(/^https?:\/\//, '').replace(/\/$/, '');
+}
+
 function renderRepoList(lang) {
   let html = '';
   for (const dom of domains) {
@@ -93,7 +98,7 @@ function renderRepoList(lang) {
             <span class="project-title">
               <span style="color: #64748b; font-family: monospace; font-size: 7pt;">${i + 1}.</span> 
               <a href="${r.githubUrl}" style="color: #0f172a; text-decoration: none; font-weight: 800;">${r.name}</a>
-              ${r.liveUrl ? `<span style="font-size: 6.5pt; font-family: monospace; color: #059669; font-weight: bold; background: #ecfdf5; padding: 1px 3px; border-radius: 2px; border: 0.5px solid #a7f3d0; margin-left: 3px;">[Live Demo]</span>` : ''}
+              ${r.liveUrl ? `<a href="${r.liveUrl}" style="font-size: 6.8pt; font-family: monospace; color: #059669; font-weight: 600; text-decoration: underline; margin-left: 4px;">${cleanUrl(r.liveUrl)}</a>` : ''}
             </span>
             <span class="project-tech">${r.tech.join(' • ')}</span>
           </div>
@@ -551,7 +556,7 @@ const html = `<!DOCTYPE html>
         </div>
         <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #475569; margin: 1px 0;">NEXT.JS 16 • REACT 19 • PRISMA 7 • LIBSQL</div>
         <div style="font-size: 6.8pt; color: #334155; line-height: 1.25;">Platform lelang & belanja modern. Server-rendered hydration, live bidding simulation, dan faktur QR.</div>
-        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #0369a1; margin-top: 2px;">Demo: baye-marketplace.vercel.app</div>
+        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #0369a1; margin-top: 2px;">URL: baye-marketplace.vercel.app</div>
       </div>
     </div>
 
@@ -621,7 +626,7 @@ const html = `<!DOCTYPE html>
         </div>
         <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #475569; margin: 1px 0;">NEXT.JS 16 • REACT 19 • DND-KIT • KONVA</div>
         <div style="font-size: 6.8pt; color: #334155; line-height: 1.25;">Workstation produktivitas pengembang: papan Kanban dnd-kit, tabel data CRM, dan kanvas Konva.</div>
-        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #0369a1; margin-top: 2px;">Demo: nexus-project-mu.vercel.app</div>
+        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #0369a1; margin-top: 2px;">URL: nexus-project-mu.vercel.app</div>
       </div>
     </div>
 
@@ -635,7 +640,7 @@ const html = `<!DOCTYPE html>
         </div>
         <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #475569; margin: 1px 0;">NEXT.JS 16 • WEB AUDIO API • CANVAS • LYRICS</div>
         <div style="font-size: 6.8pt; color: #334155; line-height: 1.25;">Player musik web dengan visualisator kanvas Web Audio API, ekstraksi warna cover album, dan lirik sinkron.</div>
-        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #0369a1; margin-top: 2px;">Demo: spotify-clonez.vercel.app</div>
+        <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #0369a1; margin-top: 2px;">URL: spotify-clonez.vercel.app</div>
       </div>
     </div>
   </div>

@@ -351,9 +351,10 @@ function CVContent({ lang, activeRole, domainFilter, pageNumber, totalPages }: C
                               href={repo.liveUrl}
                               target="_blank"
                               rel="noreferrer"
-                              className="text-[9px] print:text-[7.5px] font-mono font-bold text-emerald-700 hover:underline bg-emerald-50 px-1 py-0.2 rounded border border-emerald-300"
+                              className="text-[9px] print:text-[7.5px] font-mono font-semibold text-emerald-700 hover:text-emerald-800 hover:underline inline-flex items-center gap-0.5"
                             >
-                              [Live Demo]
+                              <span>{repo.liveUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</span>
+                              <ExternalLink size={9} className="no-print opacity-60" />
                             </a>
                           )}
                         </div>
@@ -448,7 +449,7 @@ function PortfolioGalleryPage({ roleProjects }: { roleProjects: typeof projects 
 
       <div className="p-2.5 print:p-1.5 rounded-lg border border-slate-300 bg-slate-100 text-[11px] print:text-[8.5px] text-slate-800 font-medium flex items-center justify-between print:break-inside-avoid">
         <span>
-          <strong>Catatan:</strong> Seluruh 93 source code repositori dan live demo dapat diakses dan diverifikasi langsung melalui <strong>mazkev.vercel.app</strong> dan <strong>github.com/mazkev</strong>.
+          <strong>Catatan:</strong> Seluruh 93 source code repositori dan tautan URL langsung dapat diakses dan diverifikasi melalui <strong>mazkev.vercel.app</strong> dan <strong>github.com/mazkev</strong>.
         </span>
         <span className="text-[9px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
           Lampiran Visual Showcase
