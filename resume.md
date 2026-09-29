@@ -13,7 +13,7 @@
 
 ## 📌 Executive Summary (Ringkasan Eksekutif)
 
-Software Engineer dengan 2+ tahun pengalaman profesional di bidang **Application Support Sistem Enterprise pada PT PLN Icon+**. Memiliki keahlian teruji dalam menjaga ketersediaan layanan (*uptime >99.5%*), investigasi log produksi, serta optimasi query database relasional tingkat lanjut (**PostgreSQL, Oracle, MySQL**) yang mereduksi latensi query hingga **60%**. 
+Software Engineer dengan 2+ tahun pengalaman profesional di bidang **Application Support Sistem Enterprise pada PT PLN Icon+**. Memiliki keahlian teruji dalam penanganan dan investigasi ratusan tiket operasional dengan tingkat kepatuhan **SLA 100%**, penulisan query SQL terstruktur (**PostgreSQL, Oracle, MySQL**) untuk validasi data transaksi dan pelaporan, analisis log sistem saat insiden, serta pemantauan kestabilan layanan digital 24/7.
 
 Di luar peran korporat, memiliki rekam jejak dedikasi rekayasa mandiri dengan merancang, membangun, dan men-deploy **82 repositori terkurasi** mencakup arsitektur *microservices* terdistribusi (**Go, Java Spring Boot 3.3, Bun/Hono**), platform web modern (**Next.js 16, React 19, TypeScript**), serta aplikasi *mobile cross-platform* (**React Native Expo, Flutter**). Terbiasa dengan prinsip **Clean Architecture (DDD)**, transaksi atomik **ACID**, *caching* Redis, *message broker* RabbitMQ, dan kontainerisasi **Docker**.
 
@@ -42,11 +42,10 @@ Di luar peran korporat, memiliki rekam jejak dedikasi rekayasa mandiri dengan me
 **Periode**: 2023 – Sekarang (2+ Tahun) | **Lokasi**: Indonesia  
 *PT PLN Icon+ adalah anak perusahaan utilitas ketenagalistrikan terkemuka di Indonesia yang mengelola infrastruktur digital dan layanan kelistrikan nasional.*
 
-* **System Availability & 24/7 Monitoring**: Bertanggung jawab mengawal kestabilan dan keandalan sistem digital enterprise nasional 24/7 yang melayani jutaan transaksi data pelanggan, mempertahankan target uptime operasional di atas **99.5%**.
-* **Database Query Tuning & Latency Reduction**: Menganalisis dan men-tuning query SQL kompleks pada cluster database **PostgreSQL, Oracle, dan MySQL**; berhasil **mengurangi execution time query laporan transaksi dari 15 detik menjadi di bawah 1 detik (reduksi >60%)**, mencegah bottleneck data dan lock contention.
-* **Production Incident Resolution & SLA**: Menginvestigasi dan menyelesaikan lebih dari **450+ insiden teknis dan tiket operasional produksi** dengan tingkat kepatuhan SLA mencapai **98%**, meliputi analisis kegagalan transaksi API, payload error JSON, dan integritas data backend.
-* **Production Log Analysis & Root Cause Diagnosis**: Melakukan *root cause analysis* (RCA) mendalam menggunakan structured server logs, mengidentifikasi exception stack trace (HTTP 5xx/4xx), dan mendeteksi anomali pada alur komunikasi microservices.
-* **Core Developer Collaboration & API Release Validation**: Berkolaborasi intensif dengan tim pengembang inti (*core developers*) dan QA dalam mereproduksi bug pada staging, memverifikasi perbaikan API, serta memvalidasi kontrak endpoint REST sebelum deployment hotfix ke lingkungan produksi.
+* **Penyelesaian Tiket & Kepatuhan SLA 100%**: Menginvestigasi dan menyelesaikan ratusan tiket insiden teknis serta permintaan operasional produksi dengan tingkat kepatuhan **SLA mencapai 100%**, memastikan setiap kendala data dan laporan operasional terselesaikan tepat waktu.
+* **Pembuatan Query SQL & Validasi Data**: Merancang dan mengeksekusi query SQL terstruktur pada database **PostgreSQL, Oracle, dan MySQL** untuk keperluan investigasi data transaksi, ekstraksi data pelaporan operasional, dan validasi anomali sistem.
+* **Pemantauan Sistem Enterprise 24/7**: Memantau operasional alur sistem digital enterprise secara berkala untuk mendeteksi transaksi gagal, error integrasi, serta memastikan kelancaran alur data pelanggan nasional.
+* **Investigasi Log & Koordinasi Masalah ke Core Developer**: Memeriksa log error aplikasi saat terjadi kendala produksi, mendokumentasikan temuan teknis secara rinci pada tiket, dan berkoordinasi langsung dengan tim pengembang inti (*core developers*) untuk proses perbaikan bug dan API.
 
 ---
 
