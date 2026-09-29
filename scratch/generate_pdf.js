@@ -93,16 +93,23 @@ function renderRepoList(lang) {
       const desc = r.desc[lang] || r.desc.en;
 
       html += `
-        <div class="project-item" style="page-break-inside: avoid; break-inside: avoid;">
-          <div class="project-head">
-            <span class="project-title">
-              <span style="color: #64748b; font-family: monospace; font-size: 7pt;">${i + 1}.</span> 
-              <a href="${r.githubUrl}" style="color: #0f172a; text-decoration: none; font-weight: 800;">${r.name}</a>
-              ${r.liveUrl ? `<a href="${r.liveUrl}" style="font-size: 6.8pt; font-family: monospace; color: #059669; font-weight: 600; text-decoration: underline; margin-left: 4px;">${cleanUrl(r.liveUrl)}</a>` : ''}
+        <div class="project-item" style="page-break-inside: avoid; break-inside: avoid; margin-bottom: 3.5px; padding-bottom: 2.5px; border-bottom: 0.5px solid #e2e8f0;">
+          <div class="project-head" style="display: flex; align-items: baseline; flex-wrap: wrap; gap: 3px;">
+            <span class="project-title" style="font-size: 7.8pt; color: #0f172a;">
+              <span style="color: #64748b; font-family: monospace; font-size: 6.8pt; font-weight: bold;">${i + 1}.</span> 
+              <strong style="color: #0f172a; font-weight: 800;">${r.title}</strong>
+              <span style="color: #94a3b8; margin: 0 2px;">|</span>
+              <a href="${r.githubUrl}" style="color: #475569; text-decoration: underline; font-family: monospace; font-size: 6.8pt;">gh/${r.name}</a>
+              ${r.liveUrl ? `<span style="color: #cbd5e1; margin: 0 2px;">•</span><a href="${r.liveUrl}" style="font-size: 6.8pt; font-family: monospace; color: #059669; font-weight: 700; text-decoration: underline;">${cleanUrl(r.liveUrl)}</a>` : ''}
             </span>
-            <span class="project-tech">${r.tech.join(' • ')}</span>
           </div>
-          <div class="project-desc">${desc}</div>
+          <div style="font-size: 6.6pt; font-family: monospace; color: #334155; margin: 1px 0 1px 10px;">
+            <strong style="color: #0f172a; text-transform: uppercase;">Technologies:</strong> ${r.tech.join(', ')}
+          </div>
+          <div style="font-size: 7.2pt; color: #334155; line-height: 1.25; margin-left: 10px; display: flex; align-items: flex-start; gap: 3px;">
+            <span style="color: #64748b; line-height: 1.1;">•</span>
+            <span>${desc}</span>
+          </div>
         </div>
       `;
     }
@@ -405,8 +412,8 @@ const html = `<!DOCTYPE html>
   <!-- DIRECTORY TITLE -->
   <div class="section" style="margin-top: 14px;">
     <div class="section-title" style="border-bottom: 2px solid #0f172a;">
-      <span>Verified Technical Repository Directory (All 93 Projects)</span>
-      <span class="badge">93 Verified Production & Open Source Repositories</span>
+      <span>Technical Projects & Engineering Repositories (93 Repositories)</span>
+      <span class="badge">93 Verified Production Repositories</span>
     </div>
 
     ${renderRepoList('en')}
@@ -508,7 +515,7 @@ const html = `<!DOCTYPE html>
   <!-- DIRECTORY TITLE -->
   <div class="section" style="margin-top: 14px;">
     <div class="section-title" style="border-bottom: 2px solid #0f172a;">
-      <span>Direktori Portofolio Teknis Terverifikasi (Seluruh 93 Repositori)</span>
+      <span>Proyek Teknis & Repositori Rekayasa Perangkat Lunak (93 Repositori)</span>
       <span class="badge">93 Repositori Terverifikasi (Backend, Fullstack, Frontend & Mobile)</span>
     </div>
 

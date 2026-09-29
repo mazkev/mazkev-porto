@@ -64,7 +64,7 @@ const commonText = {
     downloadBtn: 'Download PDF',
     printBtn: 'Print Document',
     experienceTitle: 'Professional Experience',
-    projectsTitle: 'Verified Technical Portfolio Directory (All 93 Repositories)',
+    projectsTitle: 'Technical Projects & Engineering Repositories (93 Repositories)',
     skillsTitle: 'Technical Competencies & Core Stack',
     educationTitle: 'Education',
     job1Title: 'Application Support',
@@ -81,13 +81,13 @@ const commonText = {
     job2Bullet3: 'Maintained strict software craftsmanship: Clean Architecture domain-usecase-repository decoupling, automated CI/CD unit testing, and OpenAPI/Swagger documentation.',
     degree: 'Bachelor of Computer Science / Information Technology',
     university: 'Universitas AMIKOM • GPA: 3.42 / 4.00',
-    allReposCount: '93 Verified Production & Open Source Repositories',
+    allReposCount: '93 Verified Production Repositories',
   },
   id: {
     downloadBtn: 'Unduh PDF',
     printBtn: 'Cetak Dokumen',
     experienceTitle: 'Pengalaman Profesional',
-    projectsTitle: 'Direktori Portofolio Teknis Terverifikasi (Seluruh 93 Repositori)',
+    projectsTitle: 'Proyek Teknis & Repositori Rekayasa Perangkat Lunak (93 Repositori)',
     skillsTitle: 'Kompetensi Teknis & Core Stack',
     educationTitle: 'Pendidikan',
     job1Title: 'Application Support',
@@ -330,43 +330,53 @@ function CVContent({ lang, activeRole, domainFilter, pageNumber, totalPages }: C
                   return (
                     <div
                       key={repo.id}
-                      className="space-y-0.5 border-b border-slate-200 pb-1.5 print:pb-1 last:border-none print:break-inside-avoid"
+                      className="space-y-1 border-b border-slate-200 pb-2 print:pb-1.5 last:border-none print:break-inside-avoid"
                     >
-                      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
-                        <div className="flex items-baseline flex-wrap gap-1.5">
-                          <span className="font-mono text-slate-500 font-bold text-[10px] print:text-[8px]">
-                            {idx + 1}.
-                          </span>
-                          <a
-                            href={repo.githubUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px] hover:text-sky-700 hover:underline inline-flex items-center gap-1"
-                          >
-                            {repo.name}
-                            <ExternalLink size={10} className="no-print opacity-60" />
-                          </a>
-                          {repo.liveUrl && (
+                      {/* ATS Level 1: Project Title & Direct Links */}
+                      <div className="flex items-baseline flex-wrap gap-1.5 text-xs print:text-[9.5px]">
+                        <span className="font-mono text-slate-500 font-bold text-[10px] print:text-[8px]">
+                          {idx + 1}.
+                        </span>
+                        <strong className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px] tracking-tight">
+                          {repo.title}
+                        </strong>
+                        <span className="text-slate-300 print:text-slate-400 font-mono text-[10px] print:text-[8px] select-none">|</span>
+                        <a
+                          href={repo.githubUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="font-mono text-slate-600 print:text-slate-700 text-[10px] print:text-[8px] hover:text-sky-700 hover:underline inline-flex items-center gap-0.5"
+                        >
+                          <span>gh/{repo.name}</span>
+                          <ExternalLink size={8} className="no-print opacity-50" />
+                        </a>
+                        {repo.liveUrl && (
+                          <>
+                            <span className="text-slate-300 print:text-slate-400 font-mono text-[9px] print:text-[7.5px] select-none">•</span>
                             <a
                               href={repo.liveUrl}
                               target="_blank"
                               rel="noreferrer"
-                              className="text-[9px] print:text-[7.5px] font-mono font-semibold text-emerald-700 hover:text-emerald-800 hover:underline inline-flex items-center gap-0.5"
+                              className="text-[9.5px] print:text-[7.8px] font-mono font-semibold text-emerald-700 hover:text-emerald-800 hover:underline inline-flex items-center gap-0.5"
                             >
                               <span>{repo.liveUrl.replace(/^https?:\/\//, '').replace(/\/$/, '')}</span>
-                              <ExternalLink size={9} className="no-print opacity-60" />
+                              <ExternalLink size={8} className="no-print opacity-60" />
                             </a>
-                          )}
-                        </div>
-
-                        <div className="text-[9.5px] print:text-[7.5px] font-mono text-slate-700 font-bold uppercase tracking-tight flex-shrink-0">
-                          {repo.tech.join(' • ')}
-                        </div>
+                          </>
+                        )}
                       </div>
 
-                      <p className="text-[11px] print:text-[8.5px] text-slate-700 font-medium pl-4 leading-snug">
-                        {description}
-                      </p>
+                      {/* ATS Level 2: Explicit Skills / Technologies keyword match line */}
+                      <div className="text-[10px] print:text-[8px] font-mono text-slate-700 pl-3 leading-normal">
+                        <span className="text-slate-900 font-bold uppercase tracking-wider text-[9px] print:text-[7.5px]">Technologies:</span>{' '}
+                        <span className="text-slate-700 font-medium">{repo.tech.join(', ')}</span>
+                      </div>
+
+                      {/* ATS Level 3: Action-oriented bullet point item */}
+                      <div className="text-[11px] print:text-[8.5px] text-slate-700 font-medium pl-3 leading-relaxed flex items-start gap-1.5">
+                        <span className="text-slate-400 print:text-slate-600 select-none text-[12px] print:text-[9px] leading-tight">•</span>
+                        <span>{description}</span>
+                      </div>
                     </div>
                   );
                 })}
