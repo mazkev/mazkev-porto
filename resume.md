@@ -49,19 +49,20 @@ Di luar peran korporat, memiliki rekam jejak dedikasi rekayasa mandiri dengan me
 
 ---
 
-### **Independent Software Projects & Web Development** — *Junior Software Developer (Self-Directed / Contract)*
-**Periode**: 2022 – 2023 (1 Tahun) | **Lokasi**: Yogyakarta, Indonesia  
+### **Independent Software Engineering & Open Source Research** — *Self-Directed Software Developer*
+**Periode**: 2023 – Sekarang | **Lokasi**: Yogyakarta, Indonesia  
 
-* Mengembangkan aplikasi web kustom dan solusi otomasi digital berbasis **JavaScript, PHP, dan React** untuk klien lokal pasca kelulusan sarjana.
-* Merancang skema database relasional MySQL, mengintegrasikan REST API pihak ketiga, dan mengimplementasikan antarmuka responsif ramah seluler (*mobile-first design*).
-* Membangun fondasi arsitektur perangkat lunak modern dan transisi intensif ke ekosistem **Go (Golang)**, **TypeScript**, dan **Next.js**.
+* Merancang, membangun, dan mengaudit **82 repositori perangkat lunak terverifikasi** mencakup sistem backend terdistribusi (**Go, Java Spring Boot 3.3, Bun/Hono**), platform web modern (**Next.js 16, React 19**), dan aplikasi mobile cross-platform.
+* Mengimplementasikan prinsip **Clean Architecture**, transaksi atomik **ACID**, caching Redis, message broker RabbitMQ, dan orkestrasi container Docker Compose.
+* Men-deploy dan memelihara **12 aplikasi produksi aktif** di cloud Vercel dengan integrasi database LibSQL dan MongoDB.
 
 ---
 
 ## 🎓 Education (Pendidikan)
 
 **Universitas AMIKOM** — *Bachelor of Computer Science / Sarjana Informatika (S.Kom)*  
-**Periode**: 2017 – 2022 | **IPK (GPA)**: **3.42 / 4.00**  
+**Periode**: 2017 – 2023 | **IPK (GPA)**: **3.42 / 4.00**  
+*(Selesai Ujian Sidang Skripsi: Desember 2022 | Ijazah / Wisuda Resmi: 2023)*  
 *Fokus Studi: Rekayasa Perangkat Lunak, Struktur Data & Algoritma, Basis Data Relasional, Jaringan Komputer.*
 
 ---

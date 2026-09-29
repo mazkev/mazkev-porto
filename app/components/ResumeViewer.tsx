@@ -282,12 +282,12 @@ function CVContent({ lang, activeRole, domainFilter, pageNumber, totalPages }: C
             </p>
           </div>
           <span className="text-xs print:text-[9.5px] font-mono font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded border border-slate-400">
-            2017 - 2022
+            2017 - 2023
           </span>
         </div>
       </div>
 
-      {/* COMPREHENSIVE VERIFIED REPOSITORY DIRECTORY (ALL 93 REPOSITORIES) */}
+      {/* COMPREHENSIVE VERIFIED REPOSITORY DIRECTORY (ALL 82 REPOSITORIES) */}
       <div className="space-y-3 print:space-y-2 pt-2">
         <div className="border-b-2 border-slate-900 pb-1.5 flex flex-wrap items-center justify-between gap-2">
           <h2 className="text-sm md:text-base print:text-xs font-extrabold uppercase tracking-wider text-slate-900 flex items-center gap-2">
