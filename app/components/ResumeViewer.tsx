@@ -81,7 +81,7 @@ const commonText = {
     job2Bullet3: 'Maintained strict software craftsmanship: Clean Architecture domain-usecase-repository decoupling, automated CI/CD unit testing, and OpenAPI/Swagger documentation.',
     degree: 'Bachelor of Computer Science / Information Technology',
     university: 'Universitas AMIKOM • GPA: 3.42 / 4.00',
-    allReposCount: '93 Audited Repositories (63 Tier 1 Flagships, 16 Tier 2 Supporting, 14 Concept Labs)',
+    allReposCount: '93 Verified Production & Open Source Repositories',
   },
   id: {
     downloadBtn: 'Unduh PDF',
@@ -104,7 +104,7 @@ const commonText = {
     job2Bullet3: 'Menerapkan standar rekayasa perangkat lunak: Clean Architecture decoupling (Domain, Usecase, Repository), unit testing otomatis, dan dokumentasi OpenAPI Swagger.',
     degree: 'Sarjana Ilmu Komputer / Teknologi Informasi',
     university: 'Universitas AMIKOM • IPK: 3.42 / 4.00',
-    allReposCount: '93 Repositori Terverifikasi (63 Flagship Tier 1, 16 Supporting Tier 2, 14 Lab Konsep)',
+    allReposCount: '93 Repositori Terverifikasi (Backend, Fullstack, Frontend & Mobile)',
   }
 };
 
@@ -318,15 +318,13 @@ function CVContent({ lang, activeRole, domainFilter, pageNumber, totalPages }: C
                   </span>
                 </div>
                 <span className="text-[9.5px] print:text-[7.5px] font-mono font-bold text-slate-600 uppercase">
-                  {meta.tier1Count > 0 ? `${meta.tier1Count} Flagships (Tier 1)` : 'Labs & Explorations'}
+                  {reposInDomain.length} Repositories
                 </span>
               </div>
 
               {/* REPOSITORIES LIST */}
               <div className="space-y-2 print:space-y-1 text-xs print:text-[9.5px]">
                 {reposInDomain.map((repo, idx) => {
-                  const isTier1 = repo.tier === 1;
-                  const isTier2 = repo.tier === 2;
                   const description = repo.desc[lang];
 
                   return (
@@ -358,17 +356,6 @@ function CVContent({ lang, activeRole, domainFilter, pageNumber, totalPages }: C
                               [Live Demo]
                             </a>
                           )}
-                          <span
-                            className={`text-[8.5px] print:text-[7px] font-mono font-bold px-1.5 py-0.2 rounded uppercase ${
-                              isTier1
-                                ? 'bg-amber-100 text-amber-900 border border-amber-300'
-                                : isTier2
-                                ? 'bg-sky-100 text-sky-900 border border-sky-300'
-                                : 'bg-slate-100 text-slate-700 border border-slate-300'
-                            }`}
-                          >
-                            {isTier1 ? '🌟 Tier 1' : isTier2 ? '⚡ Tier 2' : repo.tier === 3 ? '🧪 Tier 3' : '📦 Tier 4'}
-                          </span>
                         </div>
 
                         <div className="text-[9.5px] print:text-[7.5px] font-mono text-slate-700 font-bold uppercase tracking-tight flex-shrink-0">

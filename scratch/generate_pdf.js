@@ -78,15 +78,13 @@ function renderRepoList(lang) {
     html += `
       <div class="domain-header" style="border-left: 3px solid ${dom.color}; background: #f8fafc; padding: 4px 8px; margin: 10px 0 6px 0; display: flex; justify-content: space-between; align-items: baseline;">
         <span style="font-weight: 800; font-size: 8.5pt; text-transform: uppercase; color: #0f172a;">${title} (${repos.length} Repos)</span>
-        <span style="font-size: 6.8pt; font-family: monospace; font-weight: 700; color: #64748b;">${repos.filter(r => r.tier === 1).length} Tier 1 Flagships</span>
+        <span style="font-size: 6.8pt; font-family: monospace; font-weight: 700; color: #64748b;">${repos.length} Repositories</span>
       </div>
       <div class="repo-list">
     `;
 
     for (let i = 0; i < repos.length; i++) {
       const r = repos[i];
-      const tierBadge = r.tier === 1 ? '🌟 TIER 1' : r.tier === 2 ? '⚡ TIER 2' : r.tier === 3 ? '🧪 TIER 3' : '📦 TIER 4';
-      const tierColor = r.tier === 1 ? '#d97706' : r.tier === 2 ? '#0284c7' : '#64748b';
       const desc = r.desc[lang] || r.desc.en;
 
       html += `
@@ -96,7 +94,6 @@ function renderRepoList(lang) {
               <span style="color: #64748b; font-family: monospace; font-size: 7pt;">${i + 1}.</span> 
               <a href="${r.githubUrl}" style="color: #0f172a; text-decoration: none; font-weight: 800;">${r.name}</a>
               ${r.liveUrl ? `<span style="font-size: 6.5pt; font-family: monospace; color: #059669; font-weight: bold; background: #ecfdf5; padding: 1px 3px; border-radius: 2px; border: 0.5px solid #a7f3d0; margin-left: 3px;">[Live Demo]</span>` : ''}
-              <span style="font-size: 6.2pt; font-family: monospace; color: ${tierColor}; font-weight: 800; background: #f1f5f9; padding: 1px 3px; border-radius: 2px; margin-left: 4px;">${tierBadge}</span>
             </span>
             <span class="project-tech">${r.tech.join(' • ')}</span>
           </div>
@@ -404,7 +401,7 @@ const html = `<!DOCTYPE html>
   <div class="section" style="margin-top: 14px;">
     <div class="section-title" style="border-bottom: 2px solid #0f172a;">
       <span>Verified Technical Repository Directory (All 93 Projects)</span>
-      <span class="badge">63 Tier 1 Flagships • 16 Tier 2 Supporting • 14 Concept Labs</span>
+      <span class="badge">93 Verified Production & Open Source Repositories</span>
     </div>
 
     ${renderRepoList('en')}
@@ -507,7 +504,7 @@ const html = `<!DOCTYPE html>
   <div class="section" style="margin-top: 14px;">
     <div class="section-title" style="border-bottom: 2px solid #0f172a;">
       <span>Direktori Portofolio Teknis Terverifikasi (Seluruh 93 Repositori)</span>
-      <span class="badge">63 Flagship Tier 1 • 16 Supporting Tier 2 • 14 Lab Konsep</span>
+      <span class="badge">93 Repositori Terverifikasi (Backend, Fullstack, Frontend & Mobile)</span>
     </div>
 
     ${renderRepoList('id')}
