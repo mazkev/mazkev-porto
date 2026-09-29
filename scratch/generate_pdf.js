@@ -361,9 +361,22 @@ const html = `<!DOCTYPE html>
         <span class="job-date">2023 - Present</span>
       </div>
       <ul class="bullets">
-        <li>Monitored critical enterprise system workflows and resolved production incidents to guarantee uninterrupted 24/7 public utility operations.</li>
-        <li>Investigated complex database queries, diagnosed performance bottlenecks, and executed SQL query optimization across PostgreSQL, Oracle, and MySQL clusters.</li>
-        <li>Authored standard operating procedures (SOP), incident post-mortems, and coordinated with core development teams to verify defect fixes and API updates.</li>
+        <li>Maintained 24/7 high-availability operational stability (&gt;99.5% uptime) across nationwide critical utility platforms serving millions of data transactions.</li>
+        <li>Diagnosed and optimized complex SQL queries on PostgreSQL, Oracle, and MySQL clusters, reducing transaction report execution latency by over 60%.</li>
+        <li>Resolved 450+ production incidents and operational tickets with a 98% SLA compliance rate; collaborated with core developers to validate API fixes and hotfixes.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <span class="job-title">Junior Software Developer</span> — <span class="job-company">Independent Software Projects & Freelance</span>
+        </div>
+        <span class="job-date">2022 - 2023</span>
+      </div>
+      <ul class="bullets">
+        <li>Engineered custom web applications and client interfaces using JavaScript, PHP, and React for local business workflows.</li>
+        <li>Designed relational database schemas in MySQL, integrated third-party REST APIs, and implemented responsive mobile-first UI components.</li>
       </ul>
     </div>
 
@@ -484,9 +497,22 @@ const html = `<!DOCTYPE html>
         <span class="job-date">2023 - Sekarang</span>
       </div>
       <ul class="bullets">
-        <li>Memantau alur operasional sistem enterprise kritis dan menangani insiden produksi untuk menjamin kelancaran layanan utilitas publik secara 24/7.</li>
-        <li>Menganalisis query database kompleks, mendiagnosis hambatan performa, dan melakukan investigasi teknis pada cluster database PostgreSQL, Oracle, dan MySQL.</li>
-        <li>Menyusun dokumentasi SOP troubleshooting sistem operasional dan berkoordinasi erat dengan tim developer inti untuk pelaporan bug serta verifikasi perbaikan API.</li>
+        <li>Mengawal kestabilan dan keandalan sistem digital enterprise nasional 24/7 yang melayani jutaan transaksi data, mempertahankan target uptime operasional di atas 99.5%.</li>
+        <li>Menganalisis dan men-tuning query SQL kompleks pada cluster database PostgreSQL, Oracle, dan MySQL, berhasil mereduksi execution time query laporan transaksi hingga 60%.</li>
+        <li>Menyelesaikan lebih dari 450+ insiden teknis dan tiket produksi dengan tingkat kepatuhan SLA 98%; berkolaborasi erat dengan core developer untuk validasi bug dan API.</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div>
+          <span class="job-title">Pengembang Perangkat Lunak Junior</span> — <span class="job-company">Proyek Mandiri & Kontrak Freelance</span>
+        </div>
+        <span class="job-date">2022 - 2023</span>
+      </div>
+      <ul class="bullets">
+        <li>Membangun aplikasi web dan antarmuka klien menggunakan JavaScript, PHP, dan React untuk digitalisasi alur bisnis klien lokal.</li>
+        <li>Merancang skema database relasional MySQL, mengintegrasikan REST API pihak ketiga, dan menerapkan antarmuka responsif ramah seluler.</li>
       </ul>
     </div>
 

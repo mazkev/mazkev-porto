@@ -1774,7 +1774,7 @@ export const ALL_REPOSITORIES: RepoItem[] = [
   {
     "id": "flutter-grab-superapp-clone",
     "name": "flutter-grab-superapp-clone",
-    "title": "Grab Superapp Mobile & Web (Flutter & Riverpod)",
+    "title": "Grab-Inspired On-Demand Multi-Service Mobile App (Flutter & Riverpod)",
     "domain": "fullstack",
     "domainLabel": {
       "en": "Fullstack & Mobile Platforms",
@@ -1799,7 +1799,7 @@ export const ALL_REPOSITORIES: RepoItem[] = [
   {
     "id": "treveloka-react-native-expo",
     "name": "treveloka-react-native-expo",
-    "title": "Traveloka Superapp Clone (React Native & AI)",
+    "title": "Traveloka-Inspired Travel Booking & AI Assistant Platform",
     "domain": "fullstack",
     "domainLabel": {
       "en": "Fullstack & Mobile Platforms",
@@ -1874,7 +1874,7 @@ export const ALL_REPOSITORIES: RepoItem[] = [
   {
     "id": "duolingo-clone-react-native",
     "name": "duolingo-clone-react-native",
-    "title": "Gamified Language Learning App (Duolingo Clone)",
+    "title": "Gamified Multilingual Learning Mobile App (Native Audio TTS)",
     "domain": "fullstack",
     "domainLabel": {
       "en": "Fullstack & Mobile Platforms",
@@ -1899,7 +1899,7 @@ export const ALL_REPOSITORIES: RepoItem[] = [
   {
     "id": "tiktok-clone-react-native-expo",
     "name": "tiktok-clone-react-native-expo",
-    "title": "Short-Form Video Social App (TikTok Clone)",
+    "title": "Vertical Video Streaming & Interactive Social Feed App",
     "domain": "fullstack",
     "domainLabel": {
       "en": "Fullstack & Mobile Platforms",
