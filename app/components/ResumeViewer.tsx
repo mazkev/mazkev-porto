@@ -18,7 +18,7 @@ interface ResumeViewerProps {
 
 export type ResumeRole = 'fullstack' | 'frontend' | 'backend';
 export type CVMode = 'bilingual' | 'en' | 'id';
-export type DomainFilter = 'all' | 'backend' | 'fullstack' | 'frontend' | 'mobile' | 'exploration';
+export type DomainFilter = 'all' | 'backend' | 'fullstack' | 'frontend';
 
 const roleContent = {
   fullstack: {
@@ -64,7 +64,7 @@ const commonText = {
     downloadBtn: 'Download PDF',
     printBtn: 'Print Document',
     experienceTitle: 'Professional Experience',
-    projectsTitle: 'Technical Projects & Engineering Repositories (93 Repositories)',
+    projectsTitle: 'Technical Projects & Engineering Repositories (82 Repositories)',
     skillsTitle: 'Technical Competencies & Core Stack',
     educationTitle: 'Education',
     job1Title: 'Application Support',
@@ -121,14 +121,14 @@ function CVContent({ lang, activeRole, domainFilter, pageNumber, totalPages }: C
   const t = commonText[lang];
 
   // Organize domains according to active role preference
-  let domainOrder: ('backend' | 'fullstack' | 'frontend' | 'mobile' | 'exploration')[] = [
-    'fullstack', 'backend', 'frontend', 'mobile', 'exploration'
+  let domainOrder: ('backend' | 'fullstack' | 'frontend')[] = [
+    'fullstack', 'backend', 'frontend'
   ];
 
   if (activeRole === 'backend') {
-    domainOrder = ['backend', 'fullstack', 'frontend', 'mobile', 'exploration'];
+    domainOrder = ['backend', 'fullstack', 'frontend'];
   } else if (activeRole === 'frontend') {
-    domainOrder = ['frontend', 'mobile', 'fullstack', 'backend', 'exploration'];
+    domainOrder = ['frontend', 'fullstack', 'backend'];
   }
 
   return (
@@ -300,22 +300,18 @@ function CVContent({ lang, activeRole, domainFilter, pageNumber, totalPages }: C
         </div>
 
         {/* EXECUTIVE REPOSITORY METRICS BAR */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 print:gap-1 p-2 print:p-1.5 bg-slate-50 print:bg-slate-100/70 rounded-lg border border-slate-300 print:break-inside-avoid">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 print:gap-1 p-2 print:p-1.5 bg-slate-50 print:bg-slate-100/70 rounded-lg border border-slate-300 print:break-inside-avoid">
           <div className="text-center p-1 bg-white print:bg-transparent rounded border border-slate-200 print:border-none">
             <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px]">19 Repos</div>
             <div className="text-[8px] print:text-[6.5px] font-mono font-bold text-slate-500 uppercase">Backend & Cloud</div>
           </div>
           <div className="text-center p-1 bg-white print:bg-transparent rounded border border-slate-200 print:border-none">
-            <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px]">13 Repos</div>
-            <div className="text-[8px] print:text-[6.5px] font-mono font-bold text-slate-500 uppercase">Fullstack Web</div>
+            <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px]">22 Repos</div>
+            <div className="text-[8px] print:text-[6.5px] font-mono font-bold text-slate-500 uppercase">Fullstack & Mobile</div>
           </div>
           <div className="text-center p-1 bg-white print:bg-transparent rounded border border-slate-200 print:border-none">
-            <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px]">36 Repos</div>
+            <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px]">41 Repos</div>
             <div className="text-[8px] print:text-[6.5px] font-mono font-bold text-slate-500 uppercase">Frontend Web</div>
-          </div>
-          <div className="text-center p-1 bg-white print:bg-transparent rounded border border-slate-200 print:border-none">
-            <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px]">9 Repos</div>
-            <div className="text-[8px] print:text-[6.5px] font-mono font-bold text-slate-500 uppercase">Mobile Apps</div>
           </div>
           <div className="col-span-2 sm:col-span-1 text-center p-1 bg-emerald-50 print:bg-transparent rounded border border-emerald-300 print:border-none">
             <div className="font-extrabold text-emerald-800 text-xs md:text-sm print:text-[10px]">12 Live Apps</div>
@@ -619,7 +615,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
                 }`}
               >
-                Semua (93)
+                Semua (82)
               </button>
               <button
                 onClick={() => setDomainFilter('backend')}
@@ -639,7 +635,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
                 }`}
               >
-                Fullstack (13)
+                Fullstack & Mobile (22)
               </button>
               <button
                 onClick={() => setDomainFilter('frontend')}
@@ -649,17 +645,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
                 }`}
               >
-                Frontend (38)
-              </button>
-              <button
-                onClick={() => setDomainFilter('mobile')}
-                className={`px-2 py-1 font-bold rounded-lg transition-all cursor-pointer ${
-                  domainFilter === 'mobile'
-                    ? 'bg-purple-600 text-white shadow'
-                    : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
-                }`}
-              >
-                Mobile (10)
+                Frontend (41)
               </button>
             </div>
 

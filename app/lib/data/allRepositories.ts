@@ -2,7 +2,7 @@ export interface RepoItem {
   id: string;
   name: string;
   title: string;
-  domain: 'backend' | 'fullstack' | 'frontend' | 'mobile' | 'exploration';
+  domain: 'backend' | 'fullstack' | 'frontend';
   domainLabel: { en: string; id: string };
   category: string;
   tech: string[];
@@ -517,8 +517,8 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "title": "BayE E-Commerce & Auction Marketplace",
     "domain": "fullstack",
     "domainLabel": {
-      "en": "Fullstack Web Platforms & Monorepos",
-      "id": "Platform Web Fullstack & Monorepo"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Full Stack / Next.js",
     "tech": [
@@ -543,8 +543,8 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "title": "Fullstack Multi-Vendor Marketplace (Go & React)",
     "domain": "fullstack",
     "domainLabel": {
-      "en": "Fullstack Web Platforms & Monorepos",
-      "id": "Platform Web Fullstack & Monorepo"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Full Stack / Go & React",
     "tech": [
@@ -569,8 +569,8 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "title": "Fullstack C2C Escrow Marketplace (Go & React)",
     "domain": "fullstack",
     "domainLabel": {
-      "en": "Fullstack Web Platforms & Monorepos",
-      "id": "Platform Web Fullstack & Monorepo"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Full Stack / Go & React",
     "tech": [
@@ -597,8 +597,8 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "title": "Enterprise HRMS & Payroll Management Platform",
     "domain": "fullstack",
     "domainLabel": {
-      "en": "Fullstack Web Platforms & Monorepos",
-      "id": "Platform Web Fullstack & Monorepo"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Full Stack / Laravel",
     "tech": [
@@ -623,8 +623,8 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "title": "Enterprise Commerce Platform (Spring Boot & Vue 3)",
     "domain": "fullstack",
     "domainLabel": {
-      "en": "Fullstack Web Platforms & Monorepos",
-      "id": "Platform Web Fullstack & Monorepo"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Full Stack / Spring & Vue",
     "tech": [
@@ -650,8 +650,8 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "title": "Multi-Vendor Marketplace (FastAPI & Angular)",
     "domain": "fullstack",
     "domainLabel": {
-      "en": "Fullstack Web Platforms & Monorepos",
-      "id": "Platform Web Fullstack & Monorepo"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Full Stack / Python & Angular",
     "tech": [
@@ -676,8 +676,8 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "title": "P2P Marketplace Monorepo (Express & React 19)",
     "domain": "fullstack",
     "domainLabel": {
-      "en": "Fullstack Web Platforms & Monorepos",
-      "id": "Platform Web Fullstack & Monorepo"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Full Stack / Monorepo",
     "tech": [
@@ -702,8 +702,8 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "title": "Nexus Developer Workspace Studio",
     "domain": "fullstack",
     "domainLabel": {
-      "en": "Fullstack Web Platforms & Monorepos",
-      "id": "Platform Web Fullstack & Monorepo"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Full Stack / Next.js",
     "tech": [
@@ -728,8 +728,8 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "title": "Spotify Web Player & Audio Canvas Visualizer",
     "domain": "fullstack",
     "domainLabel": {
-      "en": "Fullstack Web Platforms & Monorepos",
-      "id": "Platform Web Fullstack & Monorepo"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Full Stack / Audio Web",
     "tech": [
@@ -755,8 +755,8 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "title": "Football Live Score & Sports Portal (Indofooty)",
     "domain": "fullstack",
     "domainLabel": {
-      "en": "Fullstack Web Platforms & Monorepos",
-      "id": "Platform Web Fullstack & Monorepo"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Full Stack / Media Portal",
     "tech": [
@@ -781,8 +781,8 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "title": "Vue 3 Storefront & Back-Office Platform",
     "domain": "fullstack",
     "domainLabel": {
-      "en": "Fullstack Web Platforms & Monorepos",
-      "id": "Platform Web Fullstack & Monorepo"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Full Stack / Vue 3",
     "tech": [
@@ -807,8 +807,8 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "title": "Interactive Go & Java Code Learning Sandbox",
     "domain": "fullstack",
     "domainLabel": {
-      "en": "Fullstack Web Platforms & Monorepos",
-      "id": "Platform Web Fullstack & Monorepo"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Full Stack / EdTech",
     "tech": [
@@ -833,8 +833,8 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "title": "Developer Portfolio & Interactive Workstation",
     "domain": "fullstack",
     "domainLabel": {
-      "en": "Fullstack Web Platforms & Monorepos",
-      "id": "Platform Web Fullstack & Monorepo"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Full Stack / Portfolio Showcase",
     "tech": [
@@ -1775,10 +1775,10 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "id": "flutter-grab-superapp-clone",
     "name": "flutter-grab-superapp-clone",
     "title": "Grab Superapp Mobile & Web (Flutter & Riverpod)",
-    "domain": "mobile",
+    "domain": "fullstack",
     "domainLabel": {
-      "en": "Mobile Applications (iOS & Android)",
-      "id": "Aplikasi Mobile (iOS & Android)"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Mobile / Flutter",
     "tech": [
@@ -1800,10 +1800,10 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "id": "treveloka-react-native-expo",
     "name": "treveloka-react-native-expo",
     "title": "Traveloka Superapp Clone (React Native & AI)",
-    "domain": "mobile",
+    "domain": "fullstack",
     "domainLabel": {
-      "en": "Mobile Applications (iOS & Android)",
-      "id": "Aplikasi Mobile (iOS & Android)"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Mobile / React Native",
     "tech": [
@@ -1825,10 +1825,10 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "id": "react-native-inventory-tracker",
     "name": "react-native-inventory-tracker",
     "title": "Warehouse Inventory Mobile App (Barcode Scanner)",
-    "domain": "mobile",
+    "domain": "fullstack",
     "domainLabel": {
-      "en": "Mobile Applications (iOS & Android)",
-      "id": "Aplikasi Mobile (iOS & Android)"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Mobile / React Native",
     "tech": [
@@ -1850,10 +1850,10 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "id": "react-native-pos-cashier",
     "name": "react-native-pos-cashier",
     "title": "Mobile POS Cashier Terminal (Expo SDK 56)",
-    "domain": "mobile",
+    "domain": "fullstack",
     "domainLabel": {
-      "en": "Mobile Applications (iOS & Android)",
-      "id": "Aplikasi Mobile (iOS & Android)"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Mobile / React Native",
     "tech": [
@@ -1875,10 +1875,10 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "id": "duolingo-clone-react-native",
     "name": "duolingo-clone-react-native",
     "title": "Gamified Language Learning App (Duolingo Clone)",
-    "domain": "mobile",
+    "domain": "fullstack",
     "domainLabel": {
-      "en": "Mobile Applications (iOS & Android)",
-      "id": "Aplikasi Mobile (iOS & Android)"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Mobile / React Native",
     "tech": [
@@ -1900,10 +1900,10 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "id": "tiktok-clone-react-native-expo",
     "name": "tiktok-clone-react-native-expo",
     "title": "Short-Form Video Social App (TikTok Clone)",
-    "domain": "mobile",
+    "domain": "fullstack",
     "domainLabel": {
-      "en": "Mobile Applications (iOS & Android)",
-      "id": "Aplikasi Mobile (iOS & Android)"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Mobile / React Native",
     "tech": [
@@ -1925,10 +1925,10 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "id": "shopee-clone-react-native-expo",
     "name": "shopee-clone-react-native-expo",
     "title": "Shopee E-Commerce Marketplace Mobile App",
-    "domain": "mobile",
+    "domain": "fullstack",
     "domainLabel": {
-      "en": "Mobile Applications (iOS & Android)",
-      "id": "Aplikasi Mobile (iOS & Android)"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Mobile / React Native",
     "tech": [
@@ -1950,10 +1950,10 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "id": "whatsapp-clone-react-native-expo",
     "name": "whatsapp-clone-react-native-expo",
     "title": "WhatsApp Messenger Mobile App (Expo SDK 56)",
-    "domain": "mobile",
+    "domain": "fullstack",
     "domainLabel": {
-      "en": "Mobile Applications (iOS & Android)",
-      "id": "Aplikasi Mobile (iOS & Android)"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Mobile / React Native",
     "tech": [
@@ -1975,10 +1975,10 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "id": "react-native-employee-attendance",
     "name": "react-native-employee-attendance",
     "title": "Employee Attendance & GPS Location Check-In",
-    "domain": "mobile",
+    "domain": "fullstack",
     "domainLabel": {
-      "en": "Mobile Applications (iOS & Android)",
-      "id": "Aplikasi Mobile (iOS & Android)"
+      "en": "Fullstack & Mobile Platforms",
+      "id": "Platform Fullstack & Mobile"
     },
     "category": "Mobile / React Native",
     "tech": [
@@ -1999,10 +1999,10 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "id": "codequest-app",
     "name": "codequest-app",
     "title": "CodeQuest: Gamified Algorithm Practice Sandbox",
-    "domain": "exploration",
+    "domain": "frontend",
     "domainLabel": {
-      "en": "Engineering Exploration & Labs",
-      "id": "Eksplorasi & Lab Rekayasa"
+      "en": "Frontend Web Applications",
+      "id": "Aplikasi Web Frontend"
     },
     "category": "Exploration / Algorithms",
     "tech": [
@@ -2024,10 +2024,10 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "id": "omnidesk",
     "name": "omnidesk",
     "title": "OmniDesk: Customer Support Queue Console",
-    "domain": "exploration",
+    "domain": "frontend",
     "domainLabel": {
-      "en": "Engineering Exploration & Labs",
-      "id": "Eksplorasi & Lab Rekayasa"
+      "en": "Frontend Web Applications",
+      "id": "Aplikasi Web Frontend"
     },
     "category": "Exploration / Support Queue",
     "tech": [
@@ -2049,10 +2049,10 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "id": "syntax-translator",
     "name": "syntax-translator",
     "title": "Syntax Translator: AI Multi-Language Code Converter",
-    "domain": "exploration",
+    "domain": "frontend",
     "domainLabel": {
-      "en": "Engineering Exploration & Labs",
-      "id": "Eksplorasi & Lab Rekayasa"
+      "en": "Frontend Web Applications",
+      "id": "Aplikasi Web Frontend"
     },
     "category": "Exploration / Code Tool",
     "tech": [
@@ -2073,10 +2073,10 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "id": "vibe-coding-assistant",
     "name": "vibe-coding-assistant",
     "title": "Vibe Coding Assistant & Prompt Playground",
-    "domain": "exploration",
+    "domain": "frontend",
     "domainLabel": {
-      "en": "Engineering Exploration & Labs",
-      "id": "Eksplorasi & Lab Rekayasa"
+      "en": "Frontend Web Applications",
+      "id": "Aplikasi Web Frontend"
     },
     "category": "Exploration / AI Assistant",
     "tech": [
@@ -2097,10 +2097,10 @@ export const ALL_REPOSITORIES: RepoItem[] = [
     "id": "AI-SaaS-Image-Generator",
     "name": "AI-SaaS-Image-Generator",
     "title": "AI SaaS Image Generator Studio Prototype",
-    "domain": "exploration",
+    "domain": "frontend",
     "domainLabel": {
-      "en": "Engineering Exploration & Labs",
-      "id": "Eksplorasi & Lab Rekayasa"
+      "en": "Frontend Web Applications",
+      "id": "Aplikasi Web Frontend"
     },
     "category": "Exploration / AI SaaS",
     "tech": [
@@ -2124,35 +2124,21 @@ export const DOMAIN_META = {
     icon: 'Server',
     label: { en: 'Backend & Cloud Systems', id: 'Sistem Backend & Cloud' },
     count: 19,
-    tier1Count: 15,
+    tier1Count: 14,
     color: 'sky'
   },
   fullstack: {
     icon: 'Layers',
-    label: { en: 'Fullstack Web Platforms & Monorepos', id: 'Platform Web Fullstack & Monorepo' },
-    count: 13,
-    tier1Count: 13,
+    label: { en: 'Fullstack & Mobile Platforms', id: 'Platform Fullstack & Mobile' },
+    count: 22,
+    tier1Count: 22,
     color: 'indigo'
   },
   frontend: {
     icon: 'Cpu',
     label: { en: 'Frontend Web Applications', id: 'Aplikasi Web Frontend' },
-    count: 36,
+    count: 41,
     tier1Count: 26,
     color: 'emerald'
-  },
-  mobile: {
-    icon: 'Smartphone',
-    label: { en: 'Mobile Applications (iOS & Android)', id: 'Aplikasi Mobile (iOS & Android)' },
-    count: 9,
-    tier1Count: 9,
-    color: 'purple'
-  },
-  exploration: {
-    icon: 'FlaskConical',
-    label: { en: 'Engineering Exploration & Labs', id: 'Eksplorasi & Lab Rekayasa' },
-    count: 5,
-    tier1Count: 0,
-    color: 'amber'
   }
 };

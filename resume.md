@@ -1,25 +1,26 @@
 # 📄 Technical Engineering Resume & Portfolio Dossier
 
 > **Candidate**: Kevin Eka Pratama  
-> **Role Target**: Backend Software Engineer | Fullstack Engineer | Frontend & Mobile Engineer  
+> **Role Target**: Backend Software Engineer | Fullstack & Mobile Engineer | Frontend Web Engineer  
 > **Location**: Yogyakarta, Indonesia  
 > **Contact**: kevinxtkj3@gmail.com | +62 821-4170-8797  
 > **Profiles**: [GitHub](https://github.com/mazkev) | [Portfolio](https://mazkev.vercel.app) | [LinkedIn](https://linkedin.com/in/kevin-pratama-a704252b8)  
 > **Audited Repositories**: 82 Production & Open Source Repositories (Curated & Verified)  
+> **Pillars**: Backend (19) • Fullstack & Mobile (22) • Frontend (41)  
 > **Last Updated**: September 2026  
 
 ---
 
 ## 📌 Executive Summaries
 
-### Fullstack Software Engineer
-Fullstack Software Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record of independently designing, building, and deploying 82 curated software repositories across distributed backend systems (Go, Java Spring Boot, Bun/Hono, Express.js), fullstack web platforms (Next.js 16, React 19, Laravel 12, FastAPI), modern frontend clients, and cross-platform mobile apps (React Native, Flutter). Strong foundation in database architecture, relational schema optimization (PostgreSQL, MySQL), NoSQL (MongoDB), ACID transactions, Clean Architecture, and containerized deployment via Docker.
+### 1. Fullstack & Mobile Software Engineer
+Fullstack & Mobile Software Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record of independently designing, building, and deploying 82 curated software repositories across distributed backend systems (Go, Java Spring Boot, Bun/Hono, Express.js), fullstack web platforms (Next.js 16, React 19, Laravel 12, FastAPI), modern frontend clients, and cross-platform mobile apps (React Native Expo SDK 56, Flutter Riverpod 3). Strong foundation in database architecture, relational schema optimization (PostgreSQL, MySQL), NoSQL (MongoDB), ACID transactions, Clean Architecture, and containerized deployment via Docker.
 
-### Backend & Cloud Systems Engineer (Go / Java / Node.js)
-Backend & Cloud Systems Engineer specializing in Go (Golang), Java Spring Boot, Bun/Hono, and Node.js RESTful/gRPC microservices. Architect of 32 backend and fullstack platforms implementing Clean Architecture, ACID transactional ledgers, Redis cache-aside, RabbitMQ message brokers, and database connection pooling (PostgreSQL, MongoDB, MySQL). Backed by 2+ years of Application Support at PT PLN Icon+, with rigorous practical mastery in database query optimization, production log troubleshooting, and high-availability operations.
+### 2. Backend & Cloud Systems Engineer (Go / Java / Node.js)
+Backend & Cloud Systems Engineer specializing in Go (Golang), Java Spring Boot, Bun/Hono, and Node.js RESTful/gRPC microservices. Architect of 19 dedicated backend systems and 22 fullstack/mobile platforms implementing Clean Architecture, ACID transactional ledgers, Redis cache-aside, RabbitMQ message brokers, and database connection pooling (PostgreSQL, MongoDB, MySQL). Backed by 2+ years of Application Support at PT PLN Icon+, with rigorous practical mastery in database query optimization, production log troubleshooting, and high-availability operations.
 
-### Frontend & Mobile Engineer
-Frontend & Mobile Engineer specializing in high-performance, user-centric web and mobile platforms with React 19, Next.js 16, TypeScript, Vue 3, Angular 19, and React Native (Expo SDK 56). Creator of 45 production-grade frontend and mobile applications featuring complex client state management (Zustand, Redux Toolkit, Signals), interactive canvas/3D graphics (React-Konva, Three.js), GIS mapping (Leaflet, OSRM), and real-time WebSockets. Backed by 2+ years of enterprise Application Support experience ensuring system reliability and user operational excellence.
+### 3. Frontend & Mobile Engineer
+Frontend & Mobile Engineer specializing in high-performance, user-centric web and mobile platforms with React 19, Next.js 16, TypeScript, Vue 3, Angular 19, and React Native (Expo SDK 56). Creator of 63 production-grade frontend, fullstack, and mobile applications featuring complex client state management (Zustand, Redux Toolkit, Signals), interactive canvas/3D graphics (React-Konva, Three.js), GIS mapping (Leaflet, OSRM), and real-time WebSockets. Backed by 2+ years of enterprise Application Support experience ensuring system reliability and user operational excellence.
 
 ---
 
@@ -33,8 +34,8 @@ Frontend & Mobile Engineer specializing in high-performance, user-centric web an
 | **Databases & Storage** | PostgreSQL 15/16 (GORM, Prisma 7, Connection Pooling, Row-level Locks), MySQL (Sequelize), MongoDB NoSQL (Mongoose), SQLite (LibSQL adapter) |
 | **Caching & Messaging** | Redis (Cache-Aside, Distributed Rate Limiting, Session Stores), RabbitMQ (AMQP Message Broker, Exchange/Queue Queuing) |
 | **Frontend Frameworks** | React 19, Next.js 16 (App Router, Server Components, SSR/SSG), Vue 3 (Composition API, Pinia), Angular 19 (Signals, RxJS), Vite, Webpack 5 |
-| **Client State & Data Fetching** | Zustand, Redux Toolkit, TanStack Query v5 (React Query), TanStack Table, React Hook Form, Zod Validation |
 | **Mobile Development** | React Native (Expo SDK 56, Expo Router, New Architecture), Flutter (Riverpod 3, Dart), Offline-first storage, Camera/GPS hardware integration |
+| **Client State & Data Fetching** | Zustand, Redux Toolkit, TanStack Query v5 (React Query), TanStack Table, React Hook Form, Zod Validation |
 | **Data Viz & Canvas Graphics** | React-Konva (Infinite 60 FPS Canvas), Three.js / React Three Fiber, Recharts, ApexCharts, Web Audio API |
 | **DevOps, Testing & Tooling** | Docker, Docker Compose, Git & GitHub, Postman, Vitest, Jest, Supertest, Linux Bash, Vercel Edge Runtime |
 
@@ -58,35 +59,19 @@ Frontend & Mobile Engineer specializing in high-performance, user-centric web an
 
 **Universitas AMIKOM** — *Bachelor of Computer Science / Teknik Informatika*  
 **Periode**: 2017 – 2022 | **IPK (GPA)**: 3.42 / 4.00  
-*Fokus Studi: Algoritma & Struktur Data, Rekayasa Perangkat Lunak, Arsitektur Sistem Basis Data, Pemrograman Berorientasi Objek, dan Jaringan Komputer.*
 
 ---
 
-## 📊 Statistik Repositori Portofolio (82 Repositori)
+## 🌐 12 Aplikasi Aktif Terverifikasi (Live Cloud Deployments)
 
-| Domain Rekayasa | Total Repo | 🌟 Tier 1 (Flagship) | ⚡ Tier 2 (Supporting) | 🧪 Tier 3 (Practice) |
-| :--- | :---: | :---: | :---: | :---: |
-| 🛡️ **Backend & Cloud Systems** | 19 | 14 | 5 | 0 |
-| 🌐 **Fullstack Web Platforms & Monorepos** | 13 | 13 | 0 | 0 |
-| ⚛️ **Frontend Web Applications** | 36 | 26 | 10 | 0 |
-| 📱 **Mobile Applications (iOS & Android)** | 9 | 9 | 0 | 0 |
-| 🧪 **Eksplorasi & Lab Konsep** | 5 | 0 | 0 | 5 |
-| **TOTAL** | **82** | **62** | **15** | **5** |
-
----
-
-## 🌐 Verified Live Web Deployments (HTTP 200 OK)
-
-Aplikasi berikut di-deploy secara aktif di Vercel dan dapat diakses serta diverifikasi langsung:
-
-1. **Portfolio Showcase Workstation**: [https://mazkev.vercel.app](https://mazkev.vercel.app)
-2. **SE-Marketplace (C2C Escrow E-Commerce)**: [https://semarketplace.vercel.app](https://semarketplace.vercel.app)
-3. **Tokopedei E-Commerce Storefront**: [https://tokopedia-react.vercel.app](https://tokopedia-react.vercel.app)
-4. **Nexus Developer Workspace Studio**: [https://nexus-project-mu.vercel.app](https://nexus-project-mu.vercel.app)
-5. **Spotify Music Web Player & Audio Visualizer**: [https://spotify-clonez.vercel.app](https://spotify-clonez.vercel.app)
-6. **INDOFOOTY — Football Portal**: [https://indofooty.vercel.app](https://indofooty.vercel.app)
-7. **MazMarket Vue 3 Storefront Platform**: [https://aplikasi-vue.vercel.app](https://aplikasi-vue.vercel.app)
-8. **Learn Go Interactive Code Editor Sandbox**: [https://learn-go-app-swart.vercel.app](https://learn-go-app-swart.vercel.app)
+1. **BayE Marketplace**: [https://baye-ecommerce-marketplace.vercel.app](https://baye-ecommerce-marketplace.vercel.app)
+2. **Nexus Workspace Studio**: [https://nexus-project-mu.vercel.app](https://nexus-project-mu.vercel.app)
+3. **Spotify Music Web Player**: [https://spotify-clonez.vercel.app](https://spotify-clonez.vercel.app)
+4. **Indofooty Live Match Center**: [https://indofooty.vercel.app](https://indofooty.vercel.app)
+5. **AI Component Wireframer**: [https://ai-component-wireframer.vercel.app](https://ai-component-wireframer.vercel.app)
+6. **Umrah Travel Landing**: [https://umrah-travel-landing.vercel.app](https://umrah-travel-landing.vercel.app)
+7. **Cloud Console Simulator**: [https://cloud-console-simulator.vercel.app](https://cloud-console-simulator.vercel.app)
+8. **Snake AI Pathfinding Lab**: [https://snake-ai-pathfinding.vercel.app](https://snake-ai-pathfinding.vercel.app)
 9. **Canvass Visual Graphic Design Studio**: [https://canva-clone-fawn.vercel.app](https://canva-clone-fawn.vercel.app)
 10. **Trello Glassmorphism Kanban Workspace**: [https://trello-azure-five.vercel.app](https://trello-azure-five.vercel.app)
 11. **MarketX Angular 19 E-Commerce Storefront**: [https://market-x-angular.vercel.app](https://market-x-angular.vercel.app)
@@ -94,7 +79,7 @@ Aplikasi berikut di-deploy secara aktif di Vercel dan dapat diakses serta diveri
 
 ---
 
-## 📂 Katalog Terkurasi 82 Repositori Teknis
+## 📂 Katalog Terkurasi 82 Repositori Teknis (3 Pilar Rekayasa)
 
 ### 🛡️ 1. Backend & Cloud Systems (19 Repositori)
 
@@ -174,61 +159,97 @@ Aplikasi berikut di-deploy secara aktif di Vercel dan dapat diakses serta diveri
    * **Technologies**: Express, MongoDB Mongoose, JWT Auth, Redis, node-cron, Docker
    * **Pencapaian**: Boilerplate RESTful CRUD API modular dengan Express, MongoDB Mongoose, autentikasi JWT, lapisan Redis cache, tugas terjadwal, dan Docker container. *(Tier 2)*
 
-### 🌐 2. Fullstack Web Platforms & Monorepos (13 Repositori)
+### 🌐 2. Fullstack & Mobile Platforms (22 Repositori: Web & Cross-Platform Mobile)
 
-1. **BayE E-Commerce & Auction Marketplace** | [GitHub: baye-ecommerce-marketplace](https://github.com/mazkev/baye-ecommerce-marketplace)
+1. **BayE E-Commerce & Auction Marketplace** (🌐 Fullstack Web) | [GitHub: baye-ecommerce-marketplace](https://github.com/mazkev/baye-ecommerce-marketplace)
    * **Technologies**: Next.js 16, React 19, Prisma 7, LibSQL, Product Compare, Invoice QR
    * **Pencapaian**: Marketplace lelang dan e-commerce modern dengan Next.js 16, React 19, Prisma 7, LibSQL, simulasi bidding langsung, perbandingan spesifikasi produk, dan invoice QR. *(Tier 1)*
 
-2. **Fullstack Multi-Vendor Marketplace (Go & React)** | [GitHub: go-clean-marketplace-fullstack](https://github.com/mazkev/go-clean-marketplace-fullstack)
+2. **Fullstack Multi-Vendor Marketplace (Go & React)** (🌐 Fullstack Web) | [GitHub: go-clean-marketplace-fullstack](https://github.com/mazkev/go-clean-marketplace-fullstack)
    * **Technologies**: Go 1.25, Gin, Clean Architecture, MongoDB NoSQL, React 19, Docker Compose
    * **Pencapaian**: Marketplace multi-vendor yang memadukan backend Go 1.25 Gin Clean Architecture, database MongoDB NoSQL, dan antarmuka React 19 dengan Docker Compose. *(Tier 1)*
 
-3. **Fullstack C2C Escrow Marketplace (Go & React)** | [GitHub: go-react-c2c-marketplace](https://github.com/mazkev/go-react-c2c-marketplace) • [Live: semarketplace.vercel.app](https://semarketplace.vercel.app)
+3. **Fullstack C2C Escrow Marketplace (Go & React)** (🌐 Fullstack Web) | [GitHub: go-react-c2c-marketplace](https://github.com/mazkev/go-react-c2c-marketplace) • [Live: semarketplace.vercel.app](https://semarketplace.vercel.app)
    * **Technologies**: Go Clean Arch, Gin, GORM, PostgreSQL, React 19, Atomic Checkout, Escrow
    * **Pencapaian**: Platform e-commerce C2C yang memadukan REST API Go Clean Architecture dengan PostgreSQL dan frontend React 19, dilengkapi sistem rekening bersama dan transaksi atomik. *(Tier 1)*
 
-4. **Enterprise HRMS & Payroll Management Platform** | [GitHub: laravel-hrms-platform](https://github.com/mazkev/laravel-hrms-platform)
+4. **Enterprise HRMS & Payroll Management Platform** (🌐 Fullstack Web) | [GitHub: laravel-hrms-platform](https://github.com/mazkev/laravel-hrms-platform)
    * **Technologies**: PHP 8.3, Laravel 12, Selfie Attendance, Shift Management, THR & Payroll, MySQL
    * **Pencapaian**: Sistem manajemen SDM & penggajian enterprise dengan Laravel 12, absensi selfie GPS, manajemen shift dinamis, kalkulasi otomatis THR & slip gaji, serta penilaian KPI. *(Tier 1)*
 
-5. **Enterprise Commerce Platform (Spring Boot & Vue 3)** | [GitHub: java-spring-commerce-platform](https://github.com/mazkev/java-spring-commerce-platform)
+5. **Enterprise Commerce Platform (Spring Boot & Vue 3)** (🌐 Fullstack Web) | [GitHub: java-spring-commerce-platform](https://github.com/mazkev/java-spring-commerce-platform)
    * **Technologies**: Java 17, Spring Boot 3.3, Vue 3, Pinia, OpenPDF, Apache POI, PostgreSQL
    * **Pencapaian**: Platform e-commerce dan pergudangan inventaris enterprise dengan Java 17, Spring Boot 3.3, Vue 3, Pinia, faktur OpenPDF, laporan Excel Apache POI, dan PostgreSQL. *(Tier 1)*
 
-6. **Multi-Vendor Marketplace (FastAPI & Angular)** | [GitHub: fastapi-angular-marketplace](https://github.com/mazkev/fastapi-angular-marketplace)
+6. **Multi-Vendor Marketplace (FastAPI & Angular)** (🌐 Fullstack Web) | [GitHub: fastapi-angular-marketplace](https://github.com/mazkev/fastapi-angular-marketplace)
    * **Technologies**: Python 3, FastAPI, Angular 19, TypeScript, Recommendation Engine, Vouchers
    * **Pencapaian**: Platform marketplace multi-vendor yang memadukan backend performa tinggi FastAPI (Python 3) dengan frontend Angular (TypeScript), toko merchant, dan algoritma rekomendasi. *(Tier 1)*
 
-7. **P2P Marketplace Monorepo (Express & React 19)** | [GitHub: express-react-marketplace-monorepo](https://github.com/mazkev/express-react-marketplace-monorepo)
+7. **P2P Marketplace Monorepo (Express & React 19)** (🌐 Fullstack Web) | [GitHub: express-react-marketplace-monorepo](https://github.com/mazkev/express-react-marketplace-monorepo)
    * **Technologies**: Express v5, React 19, Sequelize ORM, MySQL, ACID Transactions, RBAC
    * **Pencapaian**: Monorepo marketplace P2P fullstack dengan Express v5 dan React 19, Sequelize ORM, transaksi pesanan database atomik MySQL, dan kontrol akses peran RBAC. *(Tier 1)*
 
-8. **Nexus Developer Workspace Studio** | [GitHub: nextjs-nexus-workspace-studio](https://github.com/mazkev/nextjs-nexus-workspace-studio) • [Live: nexus-project-mu.vercel.app](https://nexus-project-mu.vercel.app)
+8. **Nexus Developer Workspace Studio** (🌐 Fullstack Web) | [GitHub: nextjs-nexus-workspace-studio](https://github.com/mazkev/nextjs-nexus-workspace-studio) • [Live: nexus-project-mu.vercel.app](https://nexus-project-mu.vercel.app)
    * **Technologies**: Next.js 16, React 19, dnd-kit Kanban, TanStack Table CRM, Konva Canvas
    * **Pencapaian**: Workstation produktivitas pengembang lengkap dengan Next.js 16, React 19, papan Kanban dnd-kit, tabel data CRM TanStack, dan editor kanvas grafis Konva 2D. *(Tier 1)*
 
-9. **Spotify Web Player & Audio Canvas Visualizer** | [GitHub: nextjs-spotify-music-player](https://github.com/mazkev/nextjs-spotify-music-player) • [Live: spotify-clonez.vercel.app](https://spotify-clonez.vercel.app)
+9. **Spotify Web Player & Audio Canvas Visualizer** (🌐 Fullstack Web) | [GitHub: nextjs-spotify-music-player](https://github.com/mazkev/nextjs-spotify-music-player) • [Live: spotify-clonez.vercel.app](https://spotify-clonez.vercel.app)
    * **Technologies**: Next.js 16, TypeScript, Web Audio API, Canvas Visualizer, Color Extraction, Lyrics
    * **Pencapaian**: Web player musik terinspirasi Spotify dengan Next.js 16, TypeScript, visualisator audio kanvas Web Audio API, ekstraksi warna cover album dinamis, dan lirik lagu sinkron. *(Tier 1)*
 
-10. **Football Live Score & Sports Portal (Indofooty)** | [GitHub: nextjs-football-sport-portal](https://github.com/mazkev/nextjs-football-sport-portal) • [Live: indofooty.vercel.app](https://indofooty.vercel.app)
+10. **Football Live Score & Sports Portal (Indofooty)** (🌐 Fullstack Web) | [GitHub: nextjs-football-sport-portal](https://github.com/mazkev/nextjs-football-sport-portal) • [Live: indofooty.vercel.app](https://indofooty.vercel.app)
    * **Technologies**: Next.js 16, Tailwind CSS v4, Live Match Center, News Reader, Admin CMS
    * **Pencapaian**: Portal berita dan skor sepak bola langsung dengan Next.js 16 dan Tailwind CSS v4, menampilkan match center real-time, klasemen liga, pembaca berita, dan konsol admin CMS. *(Tier 1)*
 
-11. **Vue 3 Storefront & Back-Office Platform** | [GitHub: vue-ecommerce-storefront-platform](https://github.com/mazkev/vue-ecommerce-storefront-platform) • [Live: aplikasi-vue.vercel.app](https://aplikasi-vue.vercel.app)
+11. **Vue 3 Storefront & Back-Office Platform** (🌐 Fullstack Web) | [GitHub: vue-ecommerce-storefront-platform](https://github.com/mazkev/vue-ecommerce-storefront-platform) • [Live: aplikasi-vue.vercel.app](https://aplikasi-vue.vercel.app)
    * **Technologies**: Vue 3, Pinia, Product Comparison, Luxury Checkout, Order Tracking
    * **Pencapaian**: Storefront dan sistem back-office e-commerce lengkap dengan Vue 3 Composition API dan Pinia, perbandingan produk multi-spesifikasi, alur checkout, dan pelacakan pesanan. *(Tier 1)*
 
-12. **Interactive Go & Java Code Learning Sandbox** | [GitHub: learn-go-app](https://github.com/mazkev/learn-go-app) • [Live: learn-go-app-swart.vercel.app](https://learn-go-app-swart.vercel.app)
+12. **Interactive Go & Java Code Learning Sandbox** (🌐 Fullstack Web) | [GitHub: learn-go-app](https://github.com/mazkev/learn-go-app) • [Live: learn-go-app-swart.vercel.app](https://learn-go-app-swart.vercel.app)
    * **Technologies**: React 19, Monaco Editor, Go Playground API, 8-Module Curriculum, Vercel
    * **Pencapaian**: Sandbox pembelajaran pemrograman interaktif dengan React 19, Monaco Editor, integrasi kompilasi API Go Playground, dan kurikulum pemrograman 8 modul terstruktur. *(Tier 1)*
 
-13. **Developer Portfolio & Interactive Workstation** | [GitHub: mazkev-porto](https://github.com/mazkev/mazkev-porto) • [Live: mazkev.vercel.app](https://mazkev.vercel.app)
+13. **Developer Portfolio & Interactive Workstation** (🌐 Fullstack Web) | [GitHub: mazkev-porto](https://github.com/mazkev/mazkev-porto) • [Live: mazkev.vercel.app](https://mazkev.vercel.app)
    * **Technologies**: Next.js 16, React 19, Tailwind CSS v4, Dynamic Project Showcase, Terminal CLI
    * **Pencapaian**: Website portofolio utama dengan Next.js 16 dan React 19, etalase proyek terverifikasi, generator CV ATS interaktif, simulator terminal CLI, dan tema modern dark mode. *(Tier 1)*
 
-### ⚛️ 3. Frontend Web Applications (36 Repositori)
+14. **Grab Superapp Mobile & Web (Flutter & Riverpod)** (📱 Mobile) | [GitHub: flutter-grab-superapp-clone](https://github.com/mazkev/flutter-grab-superapp-clone)
+   * **Technologies**: Flutter 3, Dart, Riverpod 3, OpenStreetMap Live Tracking, Food & Ride Hailing
+   * **Pencapaian**: Aplikasi superapp mobile cross-platform dengan Flutter dan Riverpod 3, menampilkan pelacakan langsung driver di peta OpenStreetMap, pemesanan GrabFood dan GrabRide. *(Tier 1)*
+
+15. **Traveloka Superapp Clone (React Native & AI)** (📱 Mobile) | [GitHub: treveloka-react-native-expo](https://github.com/mazkev/treveloka-react-native-expo)
+   * **Technologies**: React Native 0.85, Expo SDK 56, Expo Router, Gemini AI Assistant, E-Ticket QR
+   * **Pencapaian**: Aplikasi mobile pemesanan tiket perjalanan dengan React Native 0.85 dan Expo 56, pencarian tiket pesawat & hotel, asisten perjalanan Gemini AI, dan e-tiket QR. *(Tier 1)*
+
+16. **Warehouse Inventory Mobile App (Barcode Scanner)** (📱 Mobile) | [GitHub: react-native-inventory-tracker](https://github.com/mazkev/react-native-inventory-tracker)
+   * **Technologies**: React Native 0.85, Expo SDK 56, Camera Barcode Scanner, Multi-Warehouse, Google Apps Script
+   * **Pencapaian**: Aplikasi pergudangan mobile dengan scanner barcode & QR kamera langsung, mutasi stok multi-gudang, offline cache, dan sinkronisasi Google Apps Script. *(Tier 1)*
+
+17. **Mobile POS Cashier Terminal (Expo SDK 56)** (📱 Mobile) | [GitHub: react-native-pos-cashier](https://github.com/mazkev/react-native-pos-cashier)
+   * **Technologies**: React Native 0.85, Expo SDK 56, Cashier PIN Lock, Shift Drawer Audit, GAS Cloud
+   * **Pencapaian**: Terminal kasir POS mobile dengan proteksi PIN kasir, audit rekonsiliasi uang laci per shift, program poin loyalitas pelanggan, dan pencatatan transaksi cloud. *(Tier 1)*
+
+18. **Gamified Language Learning App (Duolingo Clone)** (📱 Mobile) | [GitHub: duolingo-clone-react-native](https://github.com/mazkev/duolingo-clone-react-native)
+   * **Technologies**: React Native 0.85, Expo SDK 56, Native Audio TTS, Lottie Animations, Zustand Streak
+   * **Pencapaian**: Aplikasi belajar bahasa berbasis gamifikasi dengan React Native dan Expo, audio native text-to-speech, animasi Lottie, pelacak streak harian, dan toko item permata. *(Tier 1)*
+
+19. **Short-Form Video Social App (TikTok Clone)** (📱 Mobile) | [GitHub: tiktok-clone-react-native-expo](https://github.com/mazkev/tiktok-clone-react-native-expo)
+   * **Technologies**: React Native 0.85, Expo SDK 56, Expo Video Player, Camera Recording, Live Comments
+   * **Pencapaian**: Platform video vertikal pendek terinspirasi TikTok dengan putar otomatis video Expo Video, perekaman kamera, animasi double-tap like, dan overlay komentar live. *(Tier 1)*
+
+20. **Shopee E-Commerce Marketplace Mobile App** (📱 Mobile) | [GitHub: shopee-clone-react-native-expo](https://github.com/mazkev/shopee-clone-react-native-expo)
+   * **Technologies**: React Native 0.85, Expo SDK 56, ShopeePay Wallet, Ongkir Shipping Calculator, Resi Tracker
+   * **Pencapaian**: Aplikasi marketplace mobile e-commerce dengan simulator dompet ShopeePay, kalkulator ongkir multi-ekspedisi, promo flash sale, dan pelacak nomor resi paket. *(Tier 1)*
+
+21. **WhatsApp Messenger Mobile App (Expo SDK 56)** (📱 Mobile) | [GitHub: whatsapp-clone-react-native-expo](https://github.com/mazkev/whatsapp-clone-react-native-expo)
+   * **Technologies**: React Native 0.85, Expo SDK 56, Voice Note Recording, Location Pins, Status Stories
+   * **Pencapaian**: Aplikasi pesan mobile dengan React Native dan Expo dilengkapi rekaman pesan suara (VN), berbagi pin lokasi GPS, status cerita, dan polling jajak pendapat di chat. *(Tier 1)*
+
+22. **Employee Attendance & GPS Location Check-In** (📱 Mobile) | [GitHub: react-native-employee-attendance](https://github.com/mazkev/react-native-employee-attendance)
+   * **Technologies**: React Native Expo 56, Selfie Camera Check-In, GPS Geo-Fence, Google Apps Script
+   * **Pencapaian**: Aplikasi absensi karyawan mobile dengan verifikasi kamera selfie depan, validasi geo-fencing radius kantor GPS, pengajuan cuti, dan sinkronisasi cloud spreadsheet. *(Tier 1)*
+
+### ⚛️ 3. Frontend Web Applications (41 Repositori)
 
 1. **React 19 Enterprise Architecture Patterns** | [GitHub: react-enterprise-patterns](https://github.com/mazkev/react-enterprise-patterns)
    * **Technologies**: React 19, TypeScript, Zustand, TanStack Query v5, Zod, React Hook Form
@@ -374,63 +395,23 @@ Aplikasi berikut di-deploy secara aktif di Vercel dan dapat diakses serta diveri
    * **Technologies**: HTML5, Bootstrap 5, Bootstrap Icons, Trending Grid, Responsive Layout
    * **Pencapaian**: Slicing antarmuka web Medium dengan HTML5 dan Bootstrap 5, menampilkan artikel trending bernomor urut, kategori topik artikel, dan tata letak tipografi responsif. *(Tier 2)*
 
-### 📱 4. Mobile Applications (iOS & Android) (9 Repositori)
-
-1. **Grab Superapp Mobile & Web (Flutter & Riverpod)** | [GitHub: flutter-grab-superapp-clone](https://github.com/mazkev/flutter-grab-superapp-clone)
-   * **Technologies**: Flutter 3, Dart, Riverpod 3, OpenStreetMap Live Tracking, Food & Ride Hailing
-   * **Pencapaian**: Aplikasi superapp mobile cross-platform dengan Flutter dan Riverpod 3, menampilkan pelacakan langsung driver di peta OpenStreetMap, pemesanan GrabFood dan GrabRide. *(Tier 1)*
-
-2. **Traveloka Superapp Clone (React Native & AI)** | [GitHub: treveloka-react-native-expo](https://github.com/mazkev/treveloka-react-native-expo)
-   * **Technologies**: React Native 0.85, Expo SDK 56, Expo Router, Gemini AI Assistant, E-Ticket QR
-   * **Pencapaian**: Aplikasi mobile pemesanan tiket perjalanan dengan React Native 0.85 dan Expo 56, pencarian tiket pesawat & hotel, asisten perjalanan Gemini AI, dan e-tiket QR. *(Tier 1)*
-
-3. **Warehouse Inventory Mobile App (Barcode Scanner)** | [GitHub: react-native-inventory-tracker](https://github.com/mazkev/react-native-inventory-tracker)
-   * **Technologies**: React Native 0.85, Expo SDK 56, Camera Barcode Scanner, Multi-Warehouse, Google Apps Script
-   * **Pencapaian**: Aplikasi pergudangan mobile dengan scanner barcode & QR kamera langsung, mutasi stok multi-gudang, offline cache, dan sinkronisasi Google Apps Script. *(Tier 1)*
-
-4. **Mobile POS Cashier Terminal (Expo SDK 56)** | [GitHub: react-native-pos-cashier](https://github.com/mazkev/react-native-pos-cashier)
-   * **Technologies**: React Native 0.85, Expo SDK 56, Cashier PIN Lock, Shift Drawer Audit, GAS Cloud
-   * **Pencapaian**: Terminal kasir POS mobile dengan proteksi PIN kasir, audit rekonsiliasi uang laci per shift, program poin loyalitas pelanggan, dan pencatatan transaksi cloud. *(Tier 1)*
-
-5. **Gamified Language Learning App (Duolingo Clone)** | [GitHub: duolingo-clone-react-native](https://github.com/mazkev/duolingo-clone-react-native)
-   * **Technologies**: React Native 0.85, Expo SDK 56, Native Audio TTS, Lottie Animations, Zustand Streak
-   * **Pencapaian**: Aplikasi belajar bahasa berbasis gamifikasi dengan React Native dan Expo, audio native text-to-speech, animasi Lottie, pelacak streak harian, dan toko item permata. *(Tier 1)*
-
-6. **Short-Form Video Social App (TikTok Clone)** | [GitHub: tiktok-clone-react-native-expo](https://github.com/mazkev/tiktok-clone-react-native-expo)
-   * **Technologies**: React Native 0.85, Expo SDK 56, Expo Video Player, Camera Recording, Live Comments
-   * **Pencapaian**: Platform video vertikal pendek terinspirasi TikTok dengan putar otomatis video Expo Video, perekaman kamera, animasi double-tap like, dan overlay komentar live. *(Tier 1)*
-
-7. **Shopee E-Commerce Marketplace Mobile App** | [GitHub: shopee-clone-react-native-expo](https://github.com/mazkev/shopee-clone-react-native-expo)
-   * **Technologies**: React Native 0.85, Expo SDK 56, ShopeePay Wallet, Ongkir Shipping Calculator, Resi Tracker
-   * **Pencapaian**: Aplikasi marketplace mobile e-commerce dengan simulator dompet ShopeePay, kalkulator ongkir multi-ekspedisi, promo flash sale, dan pelacak nomor resi paket. *(Tier 1)*
-
-8. **WhatsApp Messenger Mobile App (Expo SDK 56)** | [GitHub: whatsapp-clone-react-native-expo](https://github.com/mazkev/whatsapp-clone-react-native-expo)
-   * **Technologies**: React Native 0.85, Expo SDK 56, Voice Note Recording, Location Pins, Status Stories
-   * **Pencapaian**: Aplikasi pesan mobile dengan React Native dan Expo dilengkapi rekaman pesan suara (VN), berbagi pin lokasi GPS, status cerita, dan polling jajak pendapat di chat. *(Tier 1)*
-
-9. **Employee Attendance & GPS Location Check-In** | [GitHub: react-native-employee-attendance](https://github.com/mazkev/react-native-employee-attendance)
-   * **Technologies**: React Native Expo 56, Selfie Camera Check-In, GPS Geo-Fence, Google Apps Script
-   * **Pencapaian**: Aplikasi absensi karyawan mobile dengan verifikasi kamera selfie depan, validasi geo-fencing radius kantor GPS, pengajuan cuti, dan sinkronisasi cloud spreadsheet. *(Tier 1)*
-
-### 🧪 5. Engineering Concept Labs & Explorations (5 Repositori)
-
-1. **CodeQuest: Gamified Algorithm Practice Sandbox** | [GitHub: codequest-app](https://github.com/mazkev/codequest-app)
+37. **CodeQuest: Gamified Algorithm Practice Sandbox** | [GitHub: codequest-app](https://github.com/mazkev/codequest-app)
    * **Technologies**: JavaScript, React, LeetCode-Style Sandbox, Code Runner, Synth Audio
    * **Pencapaian**: Platform latihan algoritma bergaya LeetCode dengan eksekutor kode client-side, efek suara synthesizer, dan level pengalaman XP. *(Tier 3)*
 
-2. **OmniDesk: Customer Support Queue Console** | [GitHub: omnidesk](https://github.com/mazkev/omnidesk)
+38. **OmniDesk: Customer Support Queue Console** | [GitHub: omnidesk](https://github.com/mazkev/omnidesk)
    * **Technologies**: JavaScript, React, Kanban Queue, Ticket System, Sound Effects
    * **Pencapaian**: Prototipe manajemen tiket bantuan pelanggan dengan antrean Kanban berprioritas, notifikasi suara, dan template pesan cepat. *(Tier 3)*
 
-3. **Syntax Translator: AI Multi-Language Code Converter** | [GitHub: syntax-translator](https://github.com/mazkev/syntax-translator)
+39. **Syntax Translator: AI Multi-Language Code Converter** | [GitHub: syntax-translator](https://github.com/mazkev/syntax-translator)
    * **Technologies**: JavaScript, React, AI Code Conversion, Syntax Highlighter
    * **Pencapaian**: Konverter sintaks kode multi-bahasa menggunakan API AI untuk mengonversi potongan kode antar JavaScript, Python, Go, dan Java. *(Tier 3)*
 
-4. **Vibe Coding Assistant & Prompt Playground** | [GitHub: vibe-coding-assistant](https://github.com/mazkev/vibe-coding-assistant)
+40. **Vibe Coding Assistant & Prompt Playground** | [GitHub: vibe-coding-assistant](https://github.com/mazkev/vibe-coding-assistant)
    * **Technologies**: JavaScript, React, Prompt Engineering, AI Stream Response
    * **Pencapaian**: Antarmuka asisten pair programming AI untuk eksperimen prompt streaming dan pembuatan prototipe kode secara cepat. *(Tier 3)*
 
-5. **AI SaaS Image Generator Studio Prototype** | [GitHub: AI-SaaS-Image-Generator](https://github.com/mazkev/AI-SaaS-Image-Generator)
+41. **AI SaaS Image Generator Studio Prototype** | [GitHub: AI-SaaS-Image-Generator](https://github.com/mazkev/AI-SaaS-Image-Generator)
    * **Technologies**: JavaScript, React, AI Image API, Gallery Export
    * **Pencapaian**: Prototipe studio pembuat gambar berbasis AI dengan preset prompt, pemilih rasio aspek gambar, dan galeri riwayat. *(Tier 3)*
 
@@ -441,10 +422,10 @@ Aplikasi berikut di-deploy secara aktif di Vercel dan dapat diakses serta diveri
 Gunakan prompt di bawah ini saat menyalin isi dokumen ini ke AI lain (ChatGPT / Claude / DeepSeek):
 
 ### Prompt 1: Audit Tingkat Senioritas & Gap Analysis
-> *"Berdasarkan resume dan katalog 82 repositori di atas, lakukan evaluasi komprehensif terhadap tingkat senioritas teknis Kevin Eka Pratama. Analisis kedalaman arsitektur backend (Go, Java Spring Boot, Microservices, ACID), kematangan fullstack, dan pengalaman Application Support enterprise di PT PLN Icon+. Berikan rekomendasi area teknis yang perlu diperdalam untuk mencapai posisi Senior Software Engineer di industri tech tier-1."*
+> *"Berdasarkan resume dan katalog 82 repositori di atas (19 Backend, 22 Fullstack & Mobile, 41 Frontend), lakukan evaluasi komprehensif terhadap tingkat senioritas teknis Kevin Eka Pratama. Analisis kedalaman arsitektur backend (Go, Java Spring Boot, Microservices, ACID), kematangan fullstack & mobile (Next.js 16, React Native, Flutter), dan pengalaman Application Support enterprise di PT PLN Icon+. Berikan rekomendasi area teknis yang perlu diperdalam untuk mencapai posisi Senior Software Engineer di industri tech tier-1."*
 
 ### Prompt 2: Penilaian Kecocokan Posisi (Job Match)
-> *"Saya ingin melamar posisi [SEBUTKAN NAMA POSISI, misal: Go Backend Engineer / Senior Fullstack Developer]. Evaluasi kecocokan profil, skill matrix, dan repositori di atas dengan kualifikasi standar posisi tersebut. Sebutkan 5 proyek unggulan yang paling relevan untuk ditonjolkan pada sesi wawancara teknis."*
+> *"Saya ingin melamar posisi [SEBUTKAN NAMA POSISI, misal: Go Backend Engineer / Fullstack & Mobile Developer / Senior Frontend Engineer]. Evaluasi kecocokan profil, skill matrix, dan repositori di atas dengan kualifikasi standar posisi tersebut. Sebutkan 5 proyek unggulan yang paling relevan untuk ditonjolkan pada sesi wawancara teknis."*
 
 ### Prompt 3: Generator Pertanyaan Wawancara Teknis (System Design & Code)
-> *"Bertindaklah sebagai Engineering Manager / Tech Lead yang sedang menguji kandidat ini. Buat 10 pertanyaan teknis mendalam dan studi kasus System Design berdasarkan proyek Go distributed microservices, transactional digital wallet, dan pengalaman database support PLN Icon+ yang ada pada resume ini."*
+> *"Bertindaklah sebagai Engineering Manager / Tech Lead yang sedang menguji kandidat ini. Buat 10 pertanyaan teknis mendalam dan studi kasus System Design berdasarkan proyek Go distributed microservices, transactional digital wallet, aplikasi mobile React Native/Flutter, dan pengalaman database support PLN Icon+ yang ada pada resume ini."*

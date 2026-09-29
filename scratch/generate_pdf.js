@@ -61,13 +61,11 @@ if (!ALL_REPOSITORIES || ALL_REPOSITORIES.length === 0) {
   process.exit(1);
 }
 
-// Domain groupings
+// Domain groupings (3 Core Pillars)
 const domains = [
   { key: 'backend', titleEn: '1. Backend & Cloud Systems', titleId: '1. Sistem Backend & Cloud', color: '#0284c7' },
-  { key: 'fullstack', titleEn: '2. Fullstack Web Platforms & Monorepos', titleId: '2. Platform Web Fullstack & Monorepo', color: '#4f46e5' },
+  { key: 'fullstack', titleEn: '2. Fullstack & Mobile Platforms', titleId: '2. Platform Fullstack & Mobile', color: '#4f46e5' },
   { key: 'frontend', titleEn: '3. Frontend Web Applications', titleId: '3. Aplikasi Web Frontend', color: '#059669' },
-  { key: 'mobile', titleEn: '4. Mobile Applications (iOS & Android)', titleId: '4. Aplikasi Mobile (iOS & Android)', color: '#7c3aed' },
-  { key: 'exploration', titleEn: '5. Engineering Exploration & Concept Labs', titleId: '5. Eksplorasi & Lab Rekayasa', color: '#d97706' },
 ];
 
 function cleanUrl(url) {
@@ -417,26 +415,22 @@ const html = `<!DOCTYPE html>
     </div>
 
     <!-- Executive Metrics Grid -->
-    <div class="metrics-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin: 8px 0 10px 0;">
+    <div class="metrics-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 8px 0 10px 0;">
       <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 5px; padding: 5px 6px; text-align: center;">
         <div style="font-size: 10pt; font-weight: 900; color: #15803d;">19</div>
-        <div style="font-size: 6.2pt; font-weight: 700; color: #166534; text-transform: uppercase;">Backend</div>
+        <div style="font-size: 6.2pt; font-weight: 700; color: #166534; text-transform: uppercase;">Backend Systems</div>
       </div>
       <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 5px; padding: 5px 6px; text-align: center;">
-        <div style="font-size: 10pt; font-weight: 900; color: #1d4ed8;">13</div>
-        <div style="font-size: 6.2pt; font-weight: 700; color: #1e40af; text-transform: uppercase;">Fullstack</div>
+        <div style="font-size: 10pt; font-weight: 900; color: #1d4ed8;">22</div>
+        <div style="font-size: 6.2pt; font-weight: 700; color: #1e40af; text-transform: uppercase;">Fullstack & Mobile</div>
       </div>
       <div style="background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 5px; padding: 5px 6px; text-align: center;">
-        <div style="font-size: 10pt; font-weight: 900; color: #7e22ce;">36</div>
-        <div style="font-size: 6.2pt; font-weight: 700; color: #6b21a8; text-transform: uppercase;">Frontend</div>
-      </div>
-      <div style="background: #fff7ed; border: 1px solid #fed7aa; border-radius: 5px; padding: 5px 6px; text-align: center;">
-        <div style="font-size: 10pt; font-weight: 900; color: #c2410c;">9</div>
-        <div style="font-size: 6.2pt; font-weight: 700; color: #9a3412; text-transform: uppercase;">Mobile</div>
+        <div style="font-size: 10pt; font-weight: 900; color: #7e22ce;">41</div>
+        <div style="font-size: 6.2pt; font-weight: 700; color: #6b21a8; text-transform: uppercase;">Frontend Apps</div>
       </div>
       <div style="background: #f0fdfa; border: 1px solid #99f6e4; border-radius: 5px; padding: 5px 6px; text-align: center;">
         <div style="font-size: 10pt; font-weight: 900; color: #0f766e;">12</div>
-        <div style="font-size: 6.2pt; font-weight: 700; color: #115e59; text-transform: uppercase;">Live Cloud</div>
+        <div style="font-size: 6.2pt; font-weight: 700; color: #115e59; text-transform: uppercase;">Live Cloud Apps</div>
       </div>
     </div>
 
@@ -544,22 +538,18 @@ const html = `<!DOCTYPE html>
     </div>
 
     <!-- Executive Metrics Grid ID -->
-    <div class="metrics-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin: 8px 0 10px 0;">
+    <div class="metrics-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 8px 0 10px 0;">
       <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 5px; padding: 5px 6px; text-align: center;">
         <div style="font-size: 10pt; font-weight: 900; color: #15803d;">19</div>
         <div style="font-size: 6.2pt; font-weight: 700; color: #166534; text-transform: uppercase;">Sistem Backend</div>
       </div>
       <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 5px; padding: 5px 6px; text-align: center;">
-        <div style="font-size: 10pt; font-weight: 900; color: #1d4ed8;">13</div>
-        <div style="font-size: 6.2pt; font-weight: 700; color: #1e40af; text-transform: uppercase;">Fullstack Web</div>
+        <div style="font-size: 10pt; font-weight: 900; color: #1d4ed8;">22</div>
+        <div style="font-size: 6.2pt; font-weight: 700; color: #1e40af; text-transform: uppercase;">Fullstack & Mobile</div>
       </div>
       <div style="background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 5px; padding: 5px 6px; text-align: center;">
-        <div style="font-size: 10pt; font-weight: 900; color: #7e22ce;">36</div>
+        <div style="font-size: 10pt; font-weight: 900; color: #7e22ce;">41</div>
         <div style="font-size: 6.2pt; font-weight: 700; color: #6b21a8; text-transform: uppercase;">Frontend Web</div>
-      </div>
-      <div style="background: #fff7ed; border: 1px solid #fed7aa; border-radius: 5px; padding: 5px 6px; text-align: center;">
-        <div style="font-size: 10pt; font-weight: 900; color: #c2410c;">9</div>
-        <div style="font-size: 6.2pt; font-weight: 700; color: #9a3412; text-transform: uppercase;">Aplikasi Mobile</div>
       </div>
       <div style="background: #f0fdfa; border: 1px solid #99f6e4; border-radius: 5px; padding: 5px 6px; text-align: center;">
         <div style="font-size: 10pt; font-weight: 900; color: #0f766e;">12</div>
