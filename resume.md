@@ -5,7 +5,7 @@
 > **Location**: Yogyakarta, Indonesia  
 > **Contact**: kevinxtkj3@gmail.com | +62 821-4170-8797  
 > **Profiles**: [GitHub](https://github.com/mazkev) | [Portfolio](https://mazkev.vercel.app) | [LinkedIn](https://linkedin.com/in/kevin-pratama-a704252b8)  
-> **Audited Repositories**: 93 Independent Software Repositories  
+> **Audited Repositories**: 82 Production & Open Source Repositories (Curated & Verified)  
 > **Last Updated**: September 2026  
 
 ---
@@ -13,13 +13,13 @@
 ## 📌 Executive Summaries
 
 ### Fullstack Software Engineer
-Fullstack Software Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record of independently designing, engineering, and maintaining 93 software repositories across distributed backend systems (Go, Java Spring Boot, Bun/Hono, Express.js), fullstack web platforms (Next.js 16, React 19, Laravel 12, FastAPI), modern frontend clients, and cross-platform mobile apps (React Native, Flutter). Strong foundation in database architecture, relational schema optimization (PostgreSQL, MySQL), NoSQL (MongoDB), ACID transactions, Clean Architecture, and containerized deployment via Docker.
+Fullstack Software Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record of independently designing, building, and deploying 82 curated software repositories across distributed backend systems (Go, Java Spring Boot, Bun/Hono, Express.js), fullstack web platforms (Next.js 16, React 19, Laravel 12, FastAPI), modern frontend clients, and cross-platform mobile apps (React Native, Flutter). Strong foundation in database architecture, relational schema optimization (PostgreSQL, MySQL), NoSQL (MongoDB), ACID transactions, Clean Architecture, and containerized deployment via Docker.
 
 ### Backend & Cloud Systems Engineer (Go / Java / Node.js)
-Backend & Cloud Systems Engineer specializing in Go (Golang), Java Spring Boot, Bun/Hono, and Node.js RESTful/gRPC microservices. Architect of 31+ backend and fullstack platforms implementing Clean Architecture, ACID transactional ledgers, Redis cache-aside, RabbitMQ message brokers, and database connection pooling (PostgreSQL, MongoDB, MySQL). Backed by 2+ years of Application Support at PT PLN Icon+, with rigorous practical mastery in database query optimization, production log troubleshooting, and high-availability operations.
+Backend & Cloud Systems Engineer specializing in Go (Golang), Java Spring Boot, Bun/Hono, and Node.js RESTful/gRPC microservices. Architect of 32 backend and fullstack platforms implementing Clean Architecture, ACID transactional ledgers, Redis cache-aside, RabbitMQ message brokers, and database connection pooling (PostgreSQL, MongoDB, MySQL). Backed by 2+ years of Application Support at PT PLN Icon+, with rigorous practical mastery in database query optimization, production log troubleshooting, and high-availability operations.
 
 ### Frontend & Mobile Engineer
-Frontend & Mobile Engineer specializing in high-performance, user-centric web and mobile platforms with React 19, Next.js 16, TypeScript, Vue 3, Angular 19, and React Native (Expo SDK 56). Creator of 49+ production-grade frontend and mobile applications featuring complex client state management (Zustand, Redux Toolkit, Signals), interactive canvas/3D graphics (React-Konva, Three.js), GIS mapping (Leaflet, OSRM), and real-time WebSockets. Backed by 2+ years of enterprise Application Support experience ensuring system reliability and user operational excellence.
+Frontend & Mobile Engineer specializing in high-performance, user-centric web and mobile platforms with React 19, Next.js 16, TypeScript, Vue 3, Angular 19, and React Native (Expo SDK 56). Creator of 45 production-grade frontend and mobile applications featuring complex client state management (Zustand, Redux Toolkit, Signals), interactive canvas/3D graphics (React-Konva, Three.js), GIS mapping (Leaflet, OSRM), and real-time WebSockets. Backed by 2+ years of enterprise Application Support experience ensuring system reliability and user operational excellence.
 
 ---
 
@@ -62,22 +62,16 @@ Frontend & Mobile Engineer specializing in high-performance, user-centric web an
 
 ---
 
-## 📊 Statistik Repositori Portofolio (93 Repositori)
+## 📊 Statistik Repositori Portofolio (82 Repositori)
 
-| Domain Rekayasa | Total Repo | 🌟 Tier 1 (Flagship) | ⚡ Tier 2 (Supporting) | 🧪 Tier 3 (Practice) | 📦 Tier 4 (Archive) |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| 🛡️ **Backend & Cloud Systems** | 18 | 14 | 4 | 0 | 0 |
-| 🌐 **Fullstack Web Platforms & Monorepos** | 13 | 13 | 0 | 0 | 0 |
-| ⚛️ **Frontend Web Applications** | 39 | 27 | 12 | 0 | 0 |
-| 📱 **Mobile Applications (iOS & Android)** | 10 | 9 | 0 | 0 | 1 |
-| 🧪 **Eksplorasi, Praktik & Konsep** | 13 | 0 | 0 | 11 | 2 |
-| **TOTAL** | **93** | **63** | **16** | **11** | **3** |
-
-*Catatan Kualifikasi:*
-* **Tier 1 (Flagship)**: Repositori utama dengan arsitektur matang, database nyata, state management kompleks, dan siap diuji di dunia kerja profesional.
-* **Tier 2 (Supporting)**: Proyek fungsional pendukung (starter API, data visualizer, kalkulator bisnis, UI slicing).
-* **Tier 3 (Practice)**: Lab algoritma, eksplorasi fitur modular, dan eksperimen awal.
-* **Tier 4 (Archive)**: Artefak pembelajaran awal atau prototipe historis.
+| Domain Rekayasa | Total Repo | 🌟 Tier 1 (Flagship) | ⚡ Tier 2 (Supporting) | 🧪 Tier 3 (Practice) |
+| :--- | :---: | :---: | :---: | :---: |
+| 🛡️ **Backend & Cloud Systems** | 19 | 14 | 5 | 0 |
+| 🌐 **Fullstack Web Platforms & Monorepos** | 13 | 13 | 0 | 0 |
+| ⚛️ **Frontend Web Applications** | 36 | 26 | 10 | 0 |
+| 📱 **Mobile Applications (iOS & Android)** | 9 | 9 | 0 | 0 |
+| 🧪 **Eksplorasi & Lab Konsep** | 5 | 0 | 0 | 5 |
+| **TOTAL** | **82** | **62** | **15** | **5** |
 
 ---
 
@@ -100,239 +94,345 @@ Aplikasi berikut di-deploy secara aktif di Vercel dan dapat diakses serta diveri
 
 ---
 
-## 📂 Katalog Lengkap 93 Repositori Teknis
+## 📂 Katalog Terkurasi 82 Repositori Teknis
 
-### 🛡️ 1. Backend & Cloud Systems (18 Repositori)
+### 🛡️ 1. Backend & Cloud Systems (19 Repositori)
 
 1. **Distributed Microservices & Concurrency Lab** | [GitHub: go-distributed-microservices-lab](https://github.com/mazkev/go-distributed-microservices-lab)
-   * **Tech**: Go, gRPC, Protobuf, RabbitMQ AMQP, Redis, Worker Pools, Clean Architecture
-   * **Pencapaian**: Arsitektur microservices terdistribusi dengan komunikasi RPC biner, antrean pesan asinkron RabbitMQ, cache-aside Redis, dan worker pool concurrency terisolasi. *(Tier 1)*
+   * **Technologies**: Go, gRPC, Protobuf, RabbitMQ, Redis, Clean Arch
+   * **Pencapaian**: Arsitektur microservices terdistribusi dengan gRPC, Protobuf, message broker RabbitMQ, Redis cache-aside, worker pool concurrency, dan Clean Architecture. *(Tier 1)*
 
 2. **E-Commerce Backend & API Gateway Engine** | [GitHub: go-ecommerce-gateway-engine](https://github.com/mazkev/go-ecommerce-gateway-engine)
-   * **Tech**: Go 1.26, Gin Router, MongoDB v2, Voucher Engine, Order Lifecycle, Reverse Proxy, Swagger UI
-   * **Pencapaian**: Engine backend e-commerce dan reverse proxy gateway dengan skema dokumen NoSQL MongoDB, manajemen voucher, dan dokumentasi OpenAPI interaktif. *(Tier 1)*
+   * **Technologies**: Go 1.26, Gin, MongoDB v2, Reverse Proxy, Swagger UI
+   * **Pencapaian**: Backend e-commerce dan API Gateway performa tinggi dengan Gin router, database MongoDB, sistem voucher, order lifecycle, reverse proxy, dan dokumentasi Swagger. *(Tier 1)*
 
 3. **Digital Wallet & Transactional Balance Transfer API** | [GitHub: go-banking-core-system](https://github.com/mazkev/go-banking-core-system)
-   * **Tech**: Go, Clean Architecture, PostgreSQL, ACID Transactions, GORM, Bcrypt PIN, Swagger UI
-   * **Pencapaian**: Layanan transfer saldo dompet digital dengan isolasi transfer atomik ACID, verifikasi PIN Bcrypt, audit logging, dan PostgreSQL connection pooling. *(Tier 1)*
+   * **Technologies**: Go, Clean Arch, PostgreSQL, ACID Transactions, GORM, Swagger UI
+   * **Pencapaian**: Layanan dompet digital dan transfer saldo yang menerapkan transfer saldo atomik dengan isolasi transaksi ACID, validasi PIN Bcrypt, audit logging, dan connection pooling PostgreSQL. *(Tier 1)*
 
-4. **Go Clean Architecture Domain Implementation** | [GitHub: go-clean-arch](https://github.com/mazkev/go-clean-arch)
-   * **Tech**: Go, Gin, Clean Architecture, Repository Pattern, PostgreSQL, Docker
-   * **Pencapaian**: Implementasi Clean Architecture modular memisahkan lapisan Domain, Usecase, dan Repository dengan PostgreSQL dan Swagger docs. *(Tier 1)*
+4. **Go Clean Architecture Domain-Driven REST API** | [GitHub: go-clean-arch](https://github.com/mazkev/go-clean-arch)
+   * **Technologies**: Go, Clean Architecture, Gin, PostgreSQL, Repository Pattern
+   * **Pencapaian**: REST API modular dengan Clean Architecture, memisahkan entitas domain, usecase logic, dan repository database untuk kemudahan unit testing dan migrasi database. *(Tier 1)*
 
-5. **Enterprise Go REST API Boilerplate** | [GitHub: go-rest-api-enterprise](https://github.com/mazkev/go-rest-api-enterprise)
-   * **Tech**: Go, Gin, GORM, Redis Caching, Uber Zap Logger, Graceful Shutdown, Rate Limiting
-   * **Pencapaian**: RESTful API enterprise dengan graceful shutdown OS signals, structured JSON logging Uber Zap, dan Redis token-bucket rate limiting. *(Tier 1)*
+5. **Enterprise Go REST API Production Boilerplate** | [GitHub: go-rest-api-enterprise](https://github.com/mazkev/go-rest-api-enterprise)
+   * **Technologies**: Go, Gin, GORM, Redis Caching, Uber Zap, Rate Limiting, Swagger UI
+   * **Pencapaian**: REST API Go standar enterprise dengan Gin, GORM, Redis caching, structured logging Uber Zap, graceful shutdown, rate limiting, dan dokumentasi Swagger UI. *(Tier 1)*
 
-6. **Enterprise Spring Boot 3.3 Platform** | [GitHub: spring-boot-enterprise-platform](https://github.com/mazkev/spring-boot-enterprise-platform)
-   * **Tech**: Java 17, Spring Boot 3.3, Spring Security 6, JWT, MongoDB, AOP, Bucket4j, Docker
-   * **Pencapaian**: Platform enterprise Java dengan proteksi otentikasi Spring Security stateless JWT, AOP logging, proteksi rate limiting Bucket4j, dan Docker Compose. *(Tier 1)*
+6. **Enterprise Spring Boot 3.3 Microservices Platform** | [GitHub: spring-boot-enterprise-platform](https://github.com/mazkev/spring-boot-enterprise-platform)
+   * **Technologies**: Java 17, Spring Boot 3.3, Spring Security, JWT, MongoDB, Bucket4j, Docker
+   * **Pencapaian**: Platform backend enterprise dengan Java 17 dan Spring Boot 3.3, Spring Security JWT, MongoDB, AOP logging, async mailer event-driven, Bucket4j rate limiting, dan Docker. *(Tier 1)*
 
-7. **Ultra-Fast Bun & Hono E-Commerce API** | [GitHub: hono-ecommerce-engine](https://github.com/mazkev/hono-ecommerce-engine)
-   * **Tech**: TypeScript, Bun Runtime, Hono v4, Drizzle ORM, WebSockets, Swagger UI
-   * **Pencapaian**: Backend berkinerja ultra-tinggi berbasis runtime Bun dan router Hono v4, live chat WebSocket, kupon diskon, dan Drizzle type-safe ORM. *(Tier 1)*
+7. **Ultra-Fast E-Commerce Engine (Bun + Hono + Drizzle)** | [GitHub: hono-ecommerce-engine](https://github.com/mazkev/hono-ecommerce-engine)
+   * **Technologies**: Bun, Hono v4, TypeScript, Drizzle ORM, WebSocket, Swagger UI
+   * **Pencapaian**: API e-commerce ultra cepat berbasis Bun runtime dan Hono v4 dengan Drizzle ORM, live chat WebSocket, order checkout, sistem kupon diskon, dan OpenAPI Swagger. *(Tier 1)*
 
-8. **Full RealWorld Conduit API Monorepo** | [GitHub: express-prisma-realworld-api](https://github.com/mazkev/express-prisma-realworld-api)
-   * **Tech**: TypeScript, Express v5, Prisma ORM, Nx Monorepo, JWT, Social Graph, Jest
-   * **Pencapaian**: Implementasi spesifikasi RealWorld Conduit standar industri dengan relasi social graph follower, tag filtering, dan test suite Jest. *(Tier 1)*
+8. **RealWorld Conduit Backend API (Nx Monorepo)** | [GitHub: express-prisma-realworld-api](https://github.com/mazkev/express-prisma-realworld-api)
+   * **Technologies**: Express, TypeScript, Prisma ORM, Nx Monorepo, JWT, Jest
+   * **Pencapaian**: Backend platform publikasi standar RealWorld menggunakan Express, TypeScript, Prisma ORM, Nx Monorepo, autentikasi JWT, relasi follower sosial, dan unit testing Jest. *(Tier 1)*
 
-9. **Type-Safe Express Prisma API** | [GitHub: express-typescript-prisma-api](https://github.com/mazkev/express-typescript-prisma-api)
-   * **Tech**: TypeScript, Express v5, Prisma 7 ORM, LibSQL Adapter, SQLite
-   * **Pencapaian**: REST API strictly type-safe dengan migrasi skema Prisma 7, runtime adapter LibSQL modern, dan auto-reloading tsx. *(Tier 1)*
+9. **Type-Safe Express REST API (Prisma 7 & LibSQL)** | [GitHub: express-typescript-prisma-api](https://github.com/mazkev/express-typescript-prisma-api)
+   * **Technologies**: Express v5, TypeScript, Prisma 7, LibSQL, SQLite, tsx runtime
+   * **Pencapaian**: REST API type-safe yang dibangun dengan Express v5, TypeScript, Prisma 7 ORM, adapter LibSQL, dan runtime pengembangan modern tsx. *(Tier 1)*
 
-10. **Prisma Product Catalog API** | [GitHub: express-prisma-product-api](https://github.com/mazkev/express-prisma-product-api)
-    * **Tech**: Node.js, Express v5, Prisma ORM, JWT, Multer Uploads, Zod, Supertest
-    * **Pencapaian**: REST API katalog produk dengan validasi schema payload Zod, upload multi-file Multer, dan integration test Supertest. *(Tier 1)*
+10. **Modular Product & Catalog REST API** | [GitHub: express-prisma-product-api](https://github.com/mazkev/express-prisma-product-api)
+   * **Technologies**: Node.js, Express v5, Prisma ORM, Zod Validation, Multer, Supertest
+   * **Pencapaian**: REST API dengan Express v5 dan Prisma ORM dilengkapi autentikasi JWT, upload file Multer, validasi skema runtime Zod, dan suite integrasi Jest/Supertest. *(Tier 1)*
 
-11. **ACID Transactions E-Commerce API** | [GitHub: express-sqlite-ecommerce-api](https://github.com/mazkev/express-sqlite-ecommerce-api)
-    * **Tech**: Node.js, Express v5, SQLite Prepared Statements, ACID Orders, JWT
-    * **Pencapaian**: API e-commerce dengan transaksi checkout atomik SQLite prepared statements untuk pencegahan race conditions dan SQL injection. *(Tier 1)*
+11. **Transactional E-Commerce REST API (SQLite ACID)** | [GitHub: express-sqlite-ecommerce-api](https://github.com/mazkev/express-sqlite-ecommerce-api)
+   * **Technologies**: Node.js, Express v5, SQLite, ACID Transactions, JWT, Swagger UI
+   * **Pencapaian**: API e-commerce ringan dengan Express v5 dan prepared statements SQLite, mengimplementasikan transaksi checkout order atomik, autentikasi JWT, dan Swagger UI. *(Tier 1)*
 
-12. **Real-Time Event Service (Socket.IO)** | [GitHub: express-realtime-api-service](https://github.com/mazkev/express-realtime-api-service)
-    * **Tech**: Node.js, Express v5, Socket.IO, Mongoose, MySQL, Winston Logger, Node-Cache
-    * **Pencapaian**: Layanan modular dengan WebSocket Socket.IO real-time bi-directional streaming, multi-database (MySQL + MongoDB), dan cache memori. *(Tier 1)*
+12. **Modular Real-Time API Service (Socket.IO & Redis)** | [GitHub: express-realtime-api-service](https://github.com/mazkev/express-realtime-api-service)
+   * **Technologies**: Node.js, Express v5, Socket.IO, Mongoose, MySQL, Winston, Node-Cache
+   * **Pencapaian**: Arsitektur Express v5 dengan real-time event broadcasting Socket.IO, dual database Mongoose dan MySQL, validasi Zod, logger Winston, dan in-memory cache. *(Tier 1)*
 
-13. **Payment Gateway Integration API** | [GitHub: express-prisma-payment-api](https://github.com/mazkev/express-prisma-payment-api)
-    * **Tech**: Node.js, Express v5, Prisma ORM, Midtrans Gateway, PDFKit Invoices, Nodemailer, Redis
-    * **Pencapaian**: Integrasi gateway pembayaran Midtrans (Snap/Core API), webhook signature verification, pembuatan invoice PDF otomatis, dan antrean email. *(Tier 1)*
+13. **E-Commerce Payment Gateway API (Midtrans & PDFKit)** | [GitHub: express-prisma-payment-api](https://github.com/mazkev/express-prisma-payment-api)
+   * **Technologies**: Node.js, Express v5, Prisma ORM, Midtrans Gateway, PDFKit, Nodemailer, Redis
+   * **Pencapaian**: Backend pemrosesan pembayaran mengintegrasikan webhook Midtrans payment gateway, pembuatan invoice PDF otomatis dengan PDFKit, notifikasi email, dan Redis. *(Tier 1)*
 
-14. **AI API Management & Proxy Console** | [GitHub: AI-api-manager](https://github.com/mazkev/AI-api-manager)
-    * **Tech**: Node.js, Express, React, API Key Validation, Rate Limiting, Usage Analytics
-    * **Pencapaian**: Server proxy gateway untuk manajemen lisensi API key, kuota request per token, logging trafik, dan konsol visual analitik. *(Tier 1)*
+14. **AI Gateway & API Management Proxy Console** | [GitHub: AI-api-manager](https://github.com/mazkev/AI-api-manager)
+   * **Technologies**: Node.js, Express, React, API Gateway Proxy, Rate Limiting, Analytics
+   * **Pencapaian**: Reverse proxy manajemen API dengan validasi API Key, pembatasan rate limiting, pelacakan kuota token, analitik latensi, dan dashboard manajemen interaktif React. *(Tier 1)*
 
-15. **Spring Boot Book Catalog API** | [GitHub: spring-boot-book-manager-api](https://github.com/mazkev/spring-boot-book-manager-api)
-    * **Tech**: Java 17, Spring Boot 3.3, Spring Data MongoDB, Pagination, Swagger UI *(Tier 2)*
-16. **Book Catalog Real-Time API** | [GitHub: express-book-catalog-api](https://github.com/mazkev/express-book-catalog-api)
-    * **Tech**: Node.js, Express v5, Prisma 7, Socket.IO, Redis Rate Limiting, Joi, Jest *(Tier 2)*
-17. **High-Performance URL Shortener** | [GitHub: express-redis-url-shortener](https://github.com/mazkev/express-redis-url-shortener)
-    * **Tech**: Node.js, Express v5, MongoDB, Redis Cache-Aside, Base62 Encoding, Gzip *(Tier 2)*
-18. **Content & Tutorial API with Cron** | [GitHub: express-mongo-content-api](https://github.com/mazkev/express-mongo-content-api)
-    * **Tech**: Node.js, Express, MongoDB, Redis, Socket.IO, node-cron, Nodemailer *(Tier 2)*
-19. **Express MongoDB Starter CRUD API** | [GitHub: express-mongodb-starter-api](https://github.com/mazkev/express-mongodb-starter-api)
-    * **Tech**: Node.js, Express, MongoDB Mongoose, JWT, Redis, Docker Compose *(Tier 2)*
+15. **Spring Boot 3.3 Book Catalog Service (MongoDB)** | [GitHub: spring-boot-book-manager-api](https://github.com/mazkev/spring-boot-book-manager-api)
+   * **Technologies**: Java 17, Spring Boot 3.3, Spring Data MongoDB, Swagger UI
+   * **Pencapaian**: Layanan RESTful API dengan Java 17 dan Spring Boot 3.3 menggunakan Spring Data MongoDB, paginasi data, pencarian multi-field, dan dokumentasi OpenAPI. *(Tier 2)*
 
----
+16. **Real-Time Book Catalog API (Socket.IO & Redis)** | [GitHub: express-book-catalog-api](https://github.com/mazkev/express-book-catalog-api)
+   * **Technologies**: Express v5, Prisma 7, Socket.IO, Redis Rate Limiter, Joi, Jest
+   * **Pencapaian**: REST API manajemen katalog buku dengan Express v5, Prisma 7, notifikasi langsung Socket.IO, rate limiting Redis, validasi Joi, dan pengujian Jest. *(Tier 2)*
+
+17. **High-Performance URL Shortener (Redis Cache-Aside)** | [GitHub: express-redis-url-shortener](https://github.com/mazkev/express-redis-url-shortener)
+   * **Technologies**: Express v5, MongoDB, Redis Cache-Aside, Gzip, Jest, Supertest
+   * **Pencapaian**: Backend pemendek tautan URL dengan pola Redis cache-aside untuk pengalihan sub-milidetik, didukung persistensi MongoDB dan unit test Jest. *(Tier 2)*
+
+18. **Content & Tutorial REST API Service** | [GitHub: express-mongo-content-api](https://github.com/mazkev/express-mongo-content-api)
+   * **Technologies**: Express, MongoDB, Redis Caching, Socket.IO, node-cron, Docker Compose
+   * **Pencapaian**: REST API manajemen konten dengan Express, MongoDB, Redis caching, broadcast real-time Socket.IO, penjadwalan cron job, dan orkestrasi Docker Compose. *(Tier 2)*
+
+19. **Express MongoDB Starter REST API Boilerplate** | [GitHub: express-mongodb-starter-api](https://github.com/mazkev/express-mongodb-starter-api)
+   * **Technologies**: Express, MongoDB Mongoose, JWT Auth, Redis, node-cron, Docker
+   * **Pencapaian**: Boilerplate RESTful CRUD API modular dengan Express, MongoDB Mongoose, autentikasi JWT, lapisan Redis cache, tugas terjadwal, dan Docker container. *(Tier 2)*
 
 ### 🌐 2. Fullstack Web Platforms & Monorepos (13 Repositori)
 
 1. **BayE E-Commerce & Auction Marketplace** | [GitHub: baye-ecommerce-marketplace](https://github.com/mazkev/baye-ecommerce-marketplace)
-   * **Tech**: Next.js 16, React 19, Prisma 7, LibSQL, Tailwind CSS, Product Compare, Invoice QR
-   * **Pencapaian**: Marketplace lelang dan e-commerce modern terinspirasi eBay dengan simulasi live bidding, perbandingan spesifikasi produk, dan pembuatan faktur QR. *(Tier 1)*
+   * **Technologies**: Next.js 16, React 19, Prisma 7, LibSQL, Product Compare, Invoice QR
+   * **Pencapaian**: Marketplace lelang dan e-commerce modern dengan Next.js 16, React 19, Prisma 7, LibSQL, simulasi bidding langsung, perbandingan spesifikasi produk, dan invoice QR. *(Tier 1)*
 
 2. **Fullstack Multi-Vendor Marketplace (Go & React)** | [GitHub: go-clean-marketplace-fullstack](https://github.com/mazkev/go-clean-marketplace-fullstack)
-   * **Tech**: Go 1.25, Gin, Clean Architecture, MongoDB NoSQL, React 19, Docker Compose
-   * **Pencapaian**: Marketplace multi-vendor memadukan backend Go Clean Architecture dan database NoSQL MongoDB dengan storefront React 19 terisolasi Docker Compose. *(Tier 1)*
+   * **Technologies**: Go 1.25, Gin, Clean Architecture, MongoDB NoSQL, React 19, Docker Compose
+   * **Pencapaian**: Marketplace multi-vendor yang memadukan backend Go 1.25 Gin Clean Architecture, database MongoDB NoSQL, dan antarmuka React 19 dengan Docker Compose. *(Tier 1)*
 
-3. **Fullstack C2C Escrow Marketplace** | [GitHub: go-react-c2c-marketplace](https://github.com/mazkev/go-react-c2c-marketplace) • **Live**: [semarketplace.vercel.app](https://semarketplace.vercel.app)
-   * **Tech**: Go Clean Architecture, Gin, GORM, PostgreSQL, React 19, Atomic Checkout, Rekening Bersama
-   * **Pencapaian**: Platform e-commerce C2C yang memadukan REST API Go dengan PostgreSQL dan frontend React 19, dilengkapi sistem rekening bersama dan transaksi atomik. *(Tier 1)*
+3. **Fullstack C2C Escrow Marketplace (Go & React)** | [GitHub: go-react-c2c-marketplace](https://github.com/mazkev/go-react-c2c-marketplace) • [Live: semarketplace.vercel.app](https://semarketplace.vercel.app)
+   * **Technologies**: Go Clean Arch, Gin, GORM, PostgreSQL, React 19, Atomic Checkout, Escrow
+   * **Pencapaian**: Platform e-commerce C2C yang memadukan REST API Go Clean Architecture dengan PostgreSQL dan frontend React 19, dilengkapi sistem rekening bersama dan transaksi atomik. *(Tier 1)*
 
-4. **Enterprise HRMS & Payroll Management** | [GitHub: laravel-hrms-platform](https://github.com/mazkev/laravel-hrms-platform)
-   * **Tech**: PHP 8.3, Laravel 12, MySQL, Selfie Camera Attendance, GPS Geolocation, THR & Payroll
-   * **Pencapaian**: Sistem manajemen SDM enterprise dengan absensi selfie berbasis kamera dan radius GPS, jadwal shift, kalkulasi otomatis THR, serta lembar evaluasi KPI. *(Tier 1)*
+4. **Enterprise HRMS & Payroll Management Platform** | [GitHub: laravel-hrms-platform](https://github.com/mazkev/laravel-hrms-platform)
+   * **Technologies**: PHP 8.3, Laravel 12, Selfie Attendance, Shift Management, THR & Payroll, MySQL
+   * **Pencapaian**: Sistem manajemen SDM & penggajian enterprise dengan Laravel 12, absensi selfie GPS, manajemen shift dinamis, kalkulasi otomatis THR & slip gaji, serta penilaian KPI. *(Tier 1)*
 
-5. **Fullstack Enterprise E-Commerce Platform** | [GitHub: java-spring-commerce-platform](https://github.com/mazkev/java-spring-commerce-platform)
-   * **Tech**: Java 17, Spring Boot 3.3, Vue 3, Pinia, PostgreSQL, OpenPDF, Apache POI
-   * **Pencapaian**: Platform e-commerce enterprise dengan Spring Security 6 JWT, inventaris stok, export faktur PDF OpenPDF, spreadsheet Apache POI, dan antarmuka Vue 3. *(Tier 1)*
+5. **Enterprise Commerce Platform (Spring Boot & Vue 3)** | [GitHub: java-spring-commerce-platform](https://github.com/mazkev/java-spring-commerce-platform)
+   * **Technologies**: Java 17, Spring Boot 3.3, Vue 3, Pinia, OpenPDF, Apache POI, PostgreSQL
+   * **Pencapaian**: Platform e-commerce dan pergudangan inventaris enterprise dengan Java 17, Spring Boot 3.3, Vue 3, Pinia, faktur OpenPDF, laporan Excel Apache POI, dan PostgreSQL. *(Tier 1)*
 
-6. **FastAPI & Angular Multi-Vendor Marketplace** | [GitHub: fastapi-angular-marketplace](https://github.com/mazkev/fastapi-angular-marketplace)
-   * **Tech**: Python 3, FastAPI, Angular 19, TypeScript, PostgreSQL, Recommendation Engine
-   * **Pencapaian**: Marketplace multi-vendor memadukan REST API asinkron FastAPI Python dengan SPA Angular 19, toko merchant, sistem voucher, dan engine rekomendasi produk. *(Tier 1)*
+6. **Multi-Vendor Marketplace (FastAPI & Angular)** | [GitHub: fastapi-angular-marketplace](https://github.com/mazkev/fastapi-angular-marketplace)
+   * **Technologies**: Python 3, FastAPI, Angular 19, TypeScript, Recommendation Engine, Vouchers
+   * **Pencapaian**: Platform marketplace multi-vendor yang memadukan backend performa tinggi FastAPI (Python 3) dengan frontend Angular (TypeScript), toko merchant, dan algoritma rekomendasi. *(Tier 1)*
 
-7. **P2P Marketplace Monorepo** | [GitHub: express-react-marketplace-monorepo](https://github.com/mazkev/express-react-marketplace-monorepo)
-   * **Tech**: JavaScript, Express v5, React 19, Sequelize MySQL, ACID Transactions, RBAC
-   * **Pencapaian**: Monorepo e-commerce peer-to-peer terpadu dengan transaksi buku besar MySQL atomik, manajemen keranjang, dan kontrol akses berbasis peran (RBAC). *(Tier 1)*
+7. **P2P Marketplace Monorepo (Express & React 19)** | [GitHub: express-react-marketplace-monorepo](https://github.com/mazkev/express-react-marketplace-monorepo)
+   * **Technologies**: Express v5, React 19, Sequelize ORM, MySQL, ACID Transactions, RBAC
+   * **Pencapaian**: Monorepo marketplace P2P fullstack dengan Express v5 dan React 19, Sequelize ORM, transaksi pesanan database atomik MySQL, dan kontrol akses peran RBAC. *(Tier 1)*
 
-8. **Nexus Workspace & Productivity Studio** | [GitHub: nextjs-nexus-workspace-studio](https://github.com/mazkev/nextjs-nexus-workspace-studio) • **Live**: [nexus-project-mu.vercel.app](https://nexus-project-mu.vercel.app)
-   * **Tech**: Next.js 16, React 19, dnd-kit, TanStack Table, Konva Canvas, Tailwind CSS
-   * **Pencapaian**: Workstation all-in-one developer: papan Kanban multi-sumbu dnd-kit, tabel data CRM TanStack Table, serta kanvas grafis 2D interaktif Konva. *(Tier 1)*
+8. **Nexus Developer Workspace Studio** | [GitHub: nextjs-nexus-workspace-studio](https://github.com/mazkev/nextjs-nexus-workspace-studio) • [Live: nexus-project-mu.vercel.app](https://nexus-project-mu.vercel.app)
+   * **Technologies**: Next.js 16, React 19, dnd-kit Kanban, TanStack Table CRM, Konva Canvas
+   * **Pencapaian**: Workstation produktivitas pengembang lengkap dengan Next.js 16, React 19, papan Kanban dnd-kit, tabel data CRM TanStack, dan editor kanvas grafis Konva 2D. *(Tier 1)*
 
-9. **Spotify Music Web Player & Audio Visualizer** | [GitHub: nextjs-spotify-music-player](https://github.com/mazkev/nextjs-spotify-music-player) • **Live**: [spotify-clonez.vercel.app](https://spotify-clonez.vercel.app)
-   * **Tech**: Next.js 16, TypeScript, Web Audio API, Canvas Visualizer, Dynamic Color Extraction
-   * **Pencapaian**: Player musik web modern dengan visualisator frekuensi kanvas Web Audio API 60 FPS, ekstraksi palet warna cover album dinamis, dan penampil lirik tersinkronisasi. *(Tier 1)*
+9. **Spotify Web Player & Audio Canvas Visualizer** | [GitHub: nextjs-spotify-music-player](https://github.com/mazkev/nextjs-spotify-music-player) • [Live: spotify-clonez.vercel.app](https://spotify-clonez.vercel.app)
+   * **Technologies**: Next.js 16, TypeScript, Web Audio API, Canvas Visualizer, Color Extraction, Lyrics
+   * **Pencapaian**: Web player musik terinspirasi Spotify dengan Next.js 16, TypeScript, visualisator audio kanvas Web Audio API, ekstraksi warna cover album dinamis, dan lirik lagu sinkron. *(Tier 1)*
 
-10. **Sports & Live Football Portal (INDOFOOTY)** | [GitHub: nextjs-football-sport-portal](https://github.com/mazkev/nextjs-football-sport-portal) • **Live**: [indofooty.vercel.app](https://indofooty.vercel.app)
-    * **Tech**: Next.js 16, Tailwind CSS v4, Live Match Center, News Reader, Admin CMS
-    * **Pencapaian**: Portal informasi sepakbola komprehensif dengan jadwal skor pertandingan langsung, pembaca berita responsif, klasemen liga, dan panel CMS admin. *(Tier 1)*
+10. **Football Live Score & Sports Portal (Indofooty)** | [GitHub: nextjs-football-sport-portal](https://github.com/mazkev/nextjs-football-sport-portal) • [Live: indofooty.vercel.app](https://indofooty.vercel.app)
+   * **Technologies**: Next.js 16, Tailwind CSS v4, Live Match Center, News Reader, Admin CMS
+   * **Pencapaian**: Portal berita dan skor sepak bola langsung dengan Next.js 16 dan Tailwind CSS v4, menampilkan match center real-time, klasemen liga, pembaca berita, dan konsol admin CMS. *(Tier 1)*
 
-11. **MazMarket Storefront & Back-Office (Vue 3)** | [GitHub: vue-ecommerce-storefront-platform](https://github.com/mazkev/vue-ecommerce-storefront-platform) • **Live**: [aplikasi-vue.vercel.app](https://aplikasi-vue.vercel.app)
-    * **Tech**: Vue 3, Pinia, Vite, Tailwind CSS, Product Compare, Order Tracking
-    * **Pencapaian**: Platform e-commerce storefront dan back-office lengkap berbasis Vue 3 Composition API dengan perbandingan spesifikasi produk, alur checkout, dan pelacak pesanan. *(Tier 1)*
+11. **Vue 3 Storefront & Back-Office Platform** | [GitHub: vue-ecommerce-storefront-platform](https://github.com/mazkev/vue-ecommerce-storefront-platform) • [Live: aplikasi-vue.vercel.app](https://aplikasi-vue.vercel.app)
+   * **Technologies**: Vue 3, Pinia, Product Comparison, Luxury Checkout, Order Tracking
+   * **Pencapaian**: Storefront dan sistem back-office e-commerce lengkap dengan Vue 3 Composition API dan Pinia, perbandingan produk multi-spesifikasi, alur checkout, dan pelacakan pesanan. *(Tier 1)*
 
-12. **Interactive Golang & Java Learning Sandbox** | [GitHub: learn-go-app](https://github.com/mazkev/learn-go-app) • **Live**: [learn-go-app-swart.vercel.app](https://learn-go-app-swart.vercel.app)
-    * **Tech**: React 19, Microsoft Monaco Editor, Go Playground API, 8-Module Curriculum, Vercel
-    * **Pencapaian**: Sandbox pembelajaran pemrograman interaktif dengan React 19, Monaco Editor, integrasi kompilasi API Go Playground, dan kurikulum pemrograman 8 modul terstruktur. *(Tier 1)*
+12. **Interactive Go & Java Code Learning Sandbox** | [GitHub: learn-go-app](https://github.com/mazkev/learn-go-app) • [Live: learn-go-app-swart.vercel.app](https://learn-go-app-swart.vercel.app)
+   * **Technologies**: React 19, Monaco Editor, Go Playground API, 8-Module Curriculum, Vercel
+   * **Pencapaian**: Sandbox pembelajaran pemrograman interaktif dengan React 19, Monaco Editor, integrasi kompilasi API Go Playground, dan kurikulum pemrograman 8 modul terstruktur. *(Tier 1)*
 
-13. **Developer Portfolio & Interactive Workstation** | [GitHub: mazkev-porto](https://github.com/mazkev/mazkev-porto) • **Live**: [mazkev.vercel.app](https://mazkev.vercel.app)
-    * **Tech**: Next.js 16, React 19, TypeScript, Tailwind CSS, Framer Motion, Terminal Simulator, ATS Resume Engine
-    * **Pencapaian**: Situs web portofolio developer interaktif menampilkan 93 direktori repositori terverifikasi, simulator wawancara teknis berbasis AI, dan resume viewer ATS. *(Tier 1)*
+13. **Developer Portfolio & Interactive Workstation** | [GitHub: mazkev-porto](https://github.com/mazkev/mazkev-porto) • [Live: mazkev.vercel.app](https://mazkev.vercel.app)
+   * **Technologies**: Next.js 16, React 19, Tailwind CSS v4, Dynamic Project Showcase, Terminal CLI
+   * **Pencapaian**: Website portofolio utama dengan Next.js 16 dan React 19, etalase proyek terverifikasi, generator CV ATS interaktif, simulator terminal CLI, dan tema modern dark mode. *(Tier 1)*
 
----
+### ⚛️ 3. Frontend Web Applications (36 Repositori)
 
-### ⚛️ 3. Frontend Web Applications (39 Repositori)
+1. **React 19 Enterprise Architecture Patterns** | [GitHub: react-enterprise-patterns](https://github.com/mazkev/react-enterprise-patterns)
+   * **Technologies**: React 19, TypeScript, Zustand, TanStack Query v5, Zod, React Hook Form
+   * **Pencapaian**: Pola arsitektur React 19 skala enterprise dengan manajemen state Zustand, TanStack Query v5 server caching, validasi Zod, dan integrasi React Hook Form. *(Tier 1)*
 
-#### 🌟 Flagship Frontend Applications (27 Repositori Tier 1)
-1. **Production-Ready React 19 Architecture Patterns** | [GitHub: react-enterprise-patterns](https://github.com/mazkev/react-enterprise-patterns) — Zustand client state, TanStack Query v5 server caching, Zod + React Hook Form validation.
-2. **Tokopedei E-Commerce Storefront** | [GitHub: tokopedia-react-storefront](https://github.com/mazkev/tokopedia-react-storefront) • **Live**: [tokopedia-react.vercel.app](https://tokopedia-react.vercel.app) — React 19, Vitest unit testing, Custom Hooks state, Cart, Wishlist, Admin Dashboard.
-3. **Retail POS Cashier System** | [GitHub: react-pos-cashier-system](https://github.com/mazkev/react-pos-cashier-system) — React 19, Zustand, FSM (Finite State Machine) checkout order flow, modal struk kasir, laporan penjualan harian.
-4. **Role-Based E-Commerce Storefront** | [GitHub: react-ecommerce-storefront](https://github.com/mazkev/react-ecommerce-storefront) — React 19, Axios FakeStore API, keranjang belanja dinamis, filter kategori, panel admin.
-5. **Stock & Inventory Operations Workspace** | [GitHub: react-inventory-workspace](https://github.com/mazkev/react-inventory-workspace) — React 19, Zustand, statistik KPI inventaris, modal penyesuaian stok, skeleton loading.
-6. **Retail Inventory Admin Dashboard** | [GitHub: react-inventory-admin-dashboard](https://github.com/mazkev/react-inventory-admin-dashboard) — React 19, CRUD produk, pelacakan ambang batas stok minimum, dan manajemen akun pengguna.
-7. **AI Resume Optimizer & ATS Analyzer** | [GitHub: react-ai-resume-tailor](https://github.com/mazkev/react-ai-resume-tailor) — React 19, TypeScript, Google Gemini API, voice interview coach, papan Kanban pelacak lamaran kerja.
-8. **HubSpot Enterprise CRM Platform** | [GitHub: react-hubspot-crm-platform](https://github.com/mazkev/react-hubspot-crm-platform) • **Live**: [hub-spot-clone-five.vercel.app](https://hub-spot-clone-five.vercel.app) — React 19, TanStack Table & Query v5, Zod, visualisasi sales funnel SVG, dialer kontak, pipeline deal.
-9. **3D Interactive Product Configurator** | [GitHub: react-3d-configurator](https://github.com/mazkev/react-3d-configurator) — React 19, Three.js, React Three Fiber, material finishes kustom, decals 3D, efek audio spasial.
-10. **Interactive English Learning Platform** | [GitHub: react-english-learning-platform](https://github.com/mazkev/react-english-learning-platform) — React 19, Mistral AI, Web Speech STT/TTS, pemeriksa tata bahasa, simulator tes TOEFL.
-11. **GitHub Repository Visualizer & Analytics** | [GitHub: gitstory-repo-visualizer](https://github.com/mazkev/gitstory-repo-visualizer) — React 19, Recharts, grafik commit SVG, perbandingan repositori ganda, pembuat release notes AI.
-12. **YouTube Creator Workstation** | [GitHub: youtube-creator-assistant](https://github.com/mazkev/youtube-creator-assistant) — React 19, YouTube Data API v3, teleprompter interaktif, pemotong transkrip video, SEO suite tag generator.
-13. **Legal Contract Risk Analyzer & AI Intelligence** | [GitHub: react-contract-document-analyzer](https://github.com/mazkev/react-contract-document-analyzer) — React 19, PDF.js, Mammoth, Gemini & OpenAI, mitigasi klausul kontrak hukum, IndexedDB.
-14. **Infinite Whiteboard Canvas (React-Konva)** | [GitHub: react-konva-whiteboard-canvas](https://github.com/mazkev/react-konva-whiteboard-canvas) — React 19, React-Konva, kanvas 60 FPS dual-layer, smart snapping, ekspor PNG/SVG resolusi tinggi.
-15. **Grab Superapp Web Simulator** | [GitHub: react-grab-superapp-simulator](https://github.com/mazkev/react-grab-superapp-simulator) — React 19, Leaflet GIS, routing OSRM, polyline rute berbasis kecepatan trafik, surge pricing hujan.
-16. **Canvass Visual Graphic Design Studio** | [GitHub: react-canva-design-studio](https://github.com/mazkev/react-canva-design-studio) • **Live**: [canva-clone-fawn.vercel.app](https://canva-clone-fawn.vercel.app) — React 19, Zustand, teks melengkung, kontrol layer z-index, ekspor PNG/JPEG resolusi tinggi.
-17. **Glassmorphism Kanban Project Suite** | [GitHub: react-trello-kanban-suite](https://github.com/mazkev/react-trello-kanban-suite) • **Live**: [trello-azure-five.vercel.app](https://trello-azure-five.vercel.app) — React 19, Zustand, @hello-pangea/dnd multi-sumbu, modal card editing, otomatisasi alur kerja.
-18. **Cryptocurrency Analytics & Portfolio Tracker** | [GitHub: react-crypto-analytics-dashboard](https://github.com/mazkev/react-crypto-analytics-dashboard) — React 19, Recharts, Framer Motion, data pasar live CoinGecko v3, pemantau transaksi paus (*whale*).
-19. **WhatsApp Web Client Clone** | [GitHub: react-whatsapp-web-client](https://github.com/mazkev/react-whatsapp-web-client) — React 19, BroadcastChannel API (sinkronisasi multi-tab real-time), penampil status/story, kanal komunitas.
-20. **YouTube Video Streaming Web Platform** | [GitHub: react-youtube-streaming-platform](https://github.com/mazkev/react-youtube-streaming-platform) — React 19, React Router v7, Zustand, mini-player PiP (Picture-in-Picture), feed Shorts vertikal, YouTube Data API.
-21. **Vacation Rental & Booking Platform** | [GitHub: react-airbnb-booking-platform](https://github.com/mazkev/react-airbnb-booking-platform) — React 19, klaster peta Leaflet interaktif, kalkulator harga sewa per malam, kuitansi digital, trip manager.
-22. **Twitter / X Social Network & AI Bot** | [GitHub: react-twitter-x-social-platform](https://github.com/mazkev/react-twitter-x-social-platform) — React 19, Tailwind CSS v4, Zustand, asisten chat X-Bot AI terintegrasi, bookmark, daftar kurasi, kanal komunitas.
-23. **Instagram Social Media Platform** | [GitHub: react-instagram-social-platform](https://github.com/mazkev/react-instagram-social-platform) — React 19, feed Reels putar otomatis vertikal, penampil story layar penuh dengan bar countdown, filter foto, DM dengan AI auto-reply.
-24. **Netflix Video Streaming Platform** | [GitHub: react-netflix-streaming-platform](https://github.com/mazkev/react-netflix-streaming-platform) — React 18, TypeScript, Redux Toolkit, Webpack 5, TMDB API, Firebase auth, komponen Storybook.
-25. **MarketX Angular 19 E-Commerce Storefront** | [GitHub: angular-marketplace-storefront](https://github.com/mazkev/angular-marketplace-storefront) • **Live**: [market-x-angular.vercel.app](https://market-x-angular.vercel.app) — Angular 19, TypeScript, Angular Signals, RxJS event streams, pelacak pesanan langsung, dashboard penjual.
-26. **Gojek Super-App Web Prototype** | [GitHub: vue-gojek-superapp-prototype](https://github.com/mazkev/vue-gojek-superapp-prototype) — Vue 3 Composition API, alur pemesanan GoRide & GoFood, dompet digital GoPay, chat driver, Vitest suites.
-27. **Type-Safe Shopping Cart & Catalog** | [GitHub: react-shopping-cart](https://github.com/mazkev/react-shopping-cart) — React, TypeScript, manajemen state Redux, sinkronisasi penyimpanan lokal persisten.
+2. **Tokopedia React E-Commerce Storefront** | [GitHub: tokopedia-react-storefront](https://github.com/mazkev/tokopedia-react-storefront) • [Live: tokopedia-react.vercel.app](https://tokopedia-react.vercel.app)
+   * **Technologies**: React 19, Vitest, Custom Hooks, Shopping Cart, Wishlist, Admin Dashboard
+   * **Pencapaian**: Storefront marketplace terinspirasi Tokopedia dengan React 19, custom hooks state management, keranjang belanja, wishlist, admin manajemen produk, dan unit testing Vitest. *(Tier 1)*
 
-#### ⚡ Supporting Frontend Projects (12 Repositori Tier 2)
-28. **Interactive Excel Learning Platform** | [GitHub: belajar-excel-app](https://github.com/mazkev/belajar-excel-app) — React 19, simulator spreadsheet, Groq AI tutor, SheetJS, modul gamifikasi.
-29. **Crypto Market Dashboard** | [GitHub: crypto-market-cap-dashboard](https://github.com/mazkev/crypto-market-cap-dashboard) — React 19, CoinGecko API v3, grafik interaktif ApexCharts & Recharts.
-30. **Snake AI Pathfinding Game** | [GitHub: react-snake-ai-pathfinding](https://github.com/mazkev/react-snake-ai-pathfinding) — React 19, HTML5 Canvas 60 FPS, algoritma pencarian jalur BFS otomatis, asisten Gemini AI.
-31. **AI UI Component Generator & Sandbox** | [GitHub: react-ai-component-wireframer](https://github.com/mazkev/react-ai-component-wireframer) — React 19, CodeSandbox Sandpack live runner, Google Generative AI, panel resizable.
-32. **AI Code Reviewer & Vulnerability Tool** | [GitHub: ai-code-reviewer](https://github.com/mazkev/ai-code-reviewer) — React 19, Prism syntax highlighter, ekstraksi arsip JSZip, template audit celah keamanan.
-33. **Hajj & Umrah Travel Agency Portal** | [GitHub: react-umrah-travel-landing](https://github.com/mazkev/react-umrah-travel-landing) — React 19, kalkulator biaya dinamis, jadwal itinerary harian, widget kontak WhatsApp.
-34. **Cloud PaaS Deployment Console Simulator** | [GitHub: react-cloud-console-simulator](https://github.com/mazkev/react-cloud-console-simulator) — React 19, streaming log terminal build, konfigurasi rute domain DNS, brankas rahasia environment.
-35. **Business Inventory & Supplier Management** | [GitHub: vue-inventory-management-system](https://github.com/mazkev/vue-inventory-management-system) — Vue.js, Tailwind CSS, ApexCharts, ekspor laporan PDF/Excel, audit log stok.
-36. **Medium Landing Page UI Clone** | [GitHub: medium-clone-bootstrap](https://github.com/mazkev/medium-clone-bootstrap) — HTML5, Bootstrap 5, Bootstrap Icons, tata letak grid artikel trending responsif.
-37. **E-Commerce Bootcamp Web App** | [GitHub: Ecommerce-bootcamp](https://github.com/mazkev/Ecommerce-bootcamp) — React, listing produk, cart drawer, dan alur checkout latihan.
-38. **E-Commerce Practice Client** | [GitHub: Ecommerce-botcamp](https://github.com/mazkev/Ecommerce-botcamp) — React practice app for client-side state flow.
-39. **Semarketplace Prototype Baseline** | [GitHub: Semarketplace](https://github.com/mazkev/Semarketplace) — React e-commerce early prototype.
+3. **Point of Sale (POS) Cashier Workstation** | [GitHub: react-pos-cashier-system](https://github.com/mazkev/react-pos-cashier-system)
+   * **Technologies**: React 19, Tailwind CSS v4, Zustand, Receipt Modal, Sales Reports, FSM State
+   * **Pencapaian**: Terminal kasir POS ritel dengan React 19, state store Zustand, simulasi cetak struk nota belanja, laporan omzet harian, dan alur Finite State Machine (FSM). *(Tier 1)*
 
----
+4. **Role-Based E-Commerce Storefront & Admin** | [GitHub: react-ecommerce-storefront](https://github.com/mazkev/react-ecommerce-storefront)
+   * **Technologies**: React 19, Tailwind CSS v4, Axios, FakeStore API, Role-Based Auth, Cart
+   * **Pencapaian**: Aplikasi e-commerce modern dengan React 19, Tailwind CSS v4, integrasi FakeStore API, hak akses berbasis peran, keranjang belanja, dan manajemen katalog admin. *(Tier 1)*
 
-### 📱 4. Mobile Applications (iOS & Android) (10 Repositori)
+5. **Warehouse & Inventory Operations Workspace** | [GitHub: react-inventory-workspace](https://github.com/mazkev/react-inventory-workspace)
+   * **Technologies**: React 19, Tailwind CSS v4, Zustand, KPI Metric Cards, Skeleton Loading
+   * **Pencapaian**: Workstation operasional gudang dan inventaris dengan React 19, Zustand, kartu analitik KPI, peringatan stok menipis, dan skeleton loader responsif. *(Tier 1)*
 
-1. **Grab Superapp Mobile & Web Clone** | [GitHub: flutter-grab-superapp-clone](https://github.com/mazkev/flutter-grab-superapp-clone)
-   * **Tech**: Flutter, Dart, Riverpod 3 State Management, OpenStreetMap Live Tracking
-   * **Pencapaian**: Aplikasi superapp komprehensif mendukung Web dan Mobile; pemesanan transportasi GrabRide, GrabFood, pelacakan rute kurir interaktif, dan dompet digital. *(Tier 1)*
+6. **Retail Inventory Admin Management Dashboard** | [GitHub: react-inventory-admin-dashboard](https://github.com/mazkev/react-inventory-admin-dashboard)
+   * **Technologies**: React 19, Tailwind CSS, Product CRUD, Stock Tracking, User Management
+   * **Pencapaian**: Dashboard manajemen inventaris ritel dengan alur CRUD produk lengkap, penyesuaian stok barang, pengaturan hak akses pengguna, dan filter data tabel. *(Tier 1)*
 
-2. **Traveloka Mobile Superapp Clone** | [GitHub: treveloka-react-native-expo](https://github.com/mazkev/treveloka-react-native-expo)
-   * **Tech**: React Native 0.85, Expo SDK 56, Expo Router, TypeScript, Google Gemini AI, QR E-Ticket
-   * **Pencapaian**: Aplikasi mobile pemesanan tiket pesawat dan hotel, asisten perjalanan pintar bertenaga Gemini AI, pembuatan e-tiket QR digital, dan navigasi tab modern. *(Tier 1)*
+7. **AI Resume Optimizer & ATS Analyzer Workstation** | [GitHub: react-ai-resume-tailor](https://github.com/mazkev/react-ai-resume-tailor)
+   * **Technologies**: TypeScript, React 19, Tailwind CSS v4, Google Gemini API, Voice Coach, Kanban Tracker
+   * **Pencapaian**: Aplikasi analisis dan optimasi CV ATS berbasis AI dengan Google Gemini API, simulator wawancara suara interaktif, dan papan Kanban pelacakan lamaran kerja. *(Tier 1)*
 
-3. **Warehouse Inventory & Barcode Scanner App** | [GitHub: react-native-inventory-tracker](https://github.com/mazkev/react-native-inventory-tracker)
-   * **Tech**: React Native 0.85, Expo SDK 56, Camera Barcode Scanner, Multi-Warehouse, Google Apps Script
-   * **Pencapaian**: Aplikasi mobile manajemen inventaris gudang dengan pemindai barcode kamera, transfer stok multi-lokasi, dan sinkronisasi cloud Google Apps Script. *(Tier 1)*
+8. **HubSpot-Inspired Enterprise CRM Platform** | [GitHub: react-hubspot-crm-platform](https://github.com/mazkev/react-hubspot-crm-platform) • [Live: hub-spot-clone-five.vercel.app](https://hub-spot-clone-five.vercel.app)
+   * **Technologies**: TypeScript, React 19, TanStack Table, TanStack Query v5, Zod, SVG Sales Funnel
+   * **Pencapaian**: Platform CRM penjualan enterprise dengan grid data TanStack Table, TanStack Query v5, visualisasi corong penjualan SVG interaktif, dialer kontak, dan pipeline deal. *(Tier 1)*
 
-4. **Mobile POS Retail Cashier Terminal** | [GitHub: react-native-pos-cashier](https://github.com/mazkev/react-native-pos-cashier)
-   * **Tech**: React Native 0.85, Expo SDK 56, PIN Lock Cashier, Shift Drawer Audit, Program Loyalitas
-   * **Pencapaian**: Terminal kasir mobile tablet/smartphone dengan proteksi PIN, pembukaan/penutupan shift kasir, katalog produk cepat, dan diskon kupon. *(Tier 1)*
+9. **Interactive 3D Product Customizer (Three.js & R3F)** | [GitHub: react-3d-configurator](https://github.com/mazkev/react-3d-configurator)
+   * **Technologies**: React 19, Three.js, React Three Fiber, Material Finishes, Decal Texturing, Web Audio
+   * **Pencapaian**: Studio kustomisasi produk 3D interaktif dengan React 19, Three.js, React Three Fiber, material shader PBR, tekstur stiker decal, teks 3D, dan efek audio. *(Tier 1)*
 
-5. **Duolingo Gamified Language Learning App** | [GitHub: duolingo-clone-react-native](https://github.com/mazkev/duolingo-clone-react-native)
-   * **Tech**: React Native 0.85, Expo SDK 56, Native Text-to-Speech (TTS), Lottie Animations, Zustand
-   * **Pencapaian**: Aplikasi mobile pembelajaran bahasa bergamifikasi dengan kuis interaktif, pelafalan audio native TTS, pohon keterampilan kurikulum, dan toko poin streak. *(Tier 1)*
+10. **Interactive AI English Learning & TOEFL Platform** | [GitHub: react-english-learning-platform](https://github.com/mazkev/react-english-learning-platform)
+   * **Technologies**: React 19, Mistral AI, Web Speech STT/TTS, Grammar Checker, TOEFL Simulator
+   * **Pencapaian**: Platform pembelajaran bahasa Inggris interaktif dengan Mistral AI, Web Speech STT/TTS untuk evaluasi pengucapan, pemeriksa tata bahasa, dan simulasi tes TOEFL. *(Tier 1)*
 
-6. **TikTok Short-Form Video Social App** | [GitHub: tiktok-clone-react-native-expo](https://github.com/mazkev/tiktok-clone-react-native-expo)
-   * **Tech**: React Native 0.85, Expo SDK 56, Expo Video Player, Camera Recording, Double-Tap Like
-   * **Pencapaian**: Platform video pendek mobile dengan feed video vertikal putar otomatis tanpa jeda, rekam video kamera, animasi love sentuh ganda, dan overlay komentar. *(Tier 1)*
+11. **GitStory: GitHub Analytics & Commit Graph Workstation** | [GitHub: gitstory-repo-visualizer](https://github.com/mazkev/gitstory-repo-visualizer)
+   * **Technologies**: React 19, Recharts, SVG Git Graphs, Dual Repo Comparison, AI Release Notes
+   * **Pencapaian**: Workstation analitik repositori GitHub dengan visualisasi grafik commit branch SVG, grafik kontribusi Recharts, komparasi dua repositori, dan generator changelog otomatis. *(Tier 1)*
+
+12. **YouTube Creator Suite & Live Teleprompter** | [GitHub: youtube-creator-assistant](https://github.com/mazkev/youtube-creator-assistant)
+   * **Technologies**: React 19, YouTube Data API v3, Live Teleprompter, Transcript Clipper, SEO Suite
+   * **Pencapaian**: Aplikasi pendukung kreator konten dengan integrasi YouTube Data API v3, teleprompter kecepatan variabel, pemotong transkrip video, dan analisis kata kunci SEO. *(Tier 1)*
+
+13. **Legal Contract Risk Analyzer & Document Intelligence** | [GitHub: react-contract-document-analyzer](https://github.com/mazkev/react-contract-document-analyzer)
+   * **Technologies**: React 19, PDF.js, Mammoth.js, Gemini & OpenAI API, IndexedDB
+   * **Pencapaian**: Aplikasi analisis risiko kontrak hukum dengan PDF.js dan Mammoth.js, identifikasi klausul berisiko tinggi menggunakan AI, dan penyimpanan riwayat aman di IndexedDB. *(Tier 1)*
+
+14. **Infinite Whiteboard Canvas (React-Konva 60 FPS)** | [GitHub: react-konva-whiteboard-canvas](https://github.com/mazkev/react-konva-whiteboard-canvas)
+   * **Technologies**: React 19, React-Konva, Dual-Layer 60 FPS, Smart Snapping, PNG/SVG Export
+   * **Pencapaian**: Kanvas whiteboard tak terbatas performa tinggi dengan React-Konva, rendering dual-layer 60 FPS, pena gambar halus, snapping bentuk otomatis, dan ekspor PNG/SVG. *(Tier 1)*
+
+15. **Grab Superapp Web Simulator & Route Tracker** | [GitHub: react-grab-superapp-simulator](https://github.com/mazkev/react-grab-superapp-simulator)
+   * **Technologies**: React 19, Leaflet Map, OSRM Routing, Traffic Speed Polyline, Weather Surge
+   * **Pencapaian**: Simulator web Grab superapp menggunakan Leaflet peta interaktif, kalkulasi rute jalan OSRM, warna polyline kondisi macet lalu lintas, dan simulasi tarif cuaca hujan. *(Tier 1)*
+
+16. **Canva-Inspired Graphic Design Studio** | [GitHub: react-canva-design-studio](https://github.com/mazkev/react-canva-design-studio) • [Live: canva-clone-fawn.vercel.app](https://canva-clone-fawn.vercel.app)
+   * **Technologies**: React 19, Zustand, Tailwind CSS v4, Curved Text, Layer Ordering, Export PNG/JPEG
+   * **Pencapaian**: Studio editor desain grafis berbasis web dengan React 19, Zustand, tipografi teks melengkung, manajemen layer z-index, pemilih warna, dan ekspor gambar PNG/JPEG. *(Tier 1)*
+
+17. **Trello-Inspired Glassmorphism Kanban Suite** | [GitHub: react-trello-kanban-suite](https://github.com/mazkev/react-trello-kanban-suite) • [Live: trello-azure-five.vercel.app](https://trello-azure-five.vercel.app)
+   * **Technologies**: React 19, Zustand, @hello-pangea/dnd, Workflow Automations, Calendar View
+   * **Pencapaian**: Dashboard manajemen proyek Kanban dengan React 19, drag-and-drop multi-axis @hello-pangea/dnd, editor modal kartu tugas, otomasi alur kerja, dan tampilan kalender. *(Tier 1)*
+
+18. **Cryptocurrency Analytics & Whale Tracker** | [GitHub: react-crypto-analytics-dashboard](https://github.com/mazkev/react-crypto-analytics-dashboard)
+   * **Technologies**: React 19, Recharts, Framer Motion, CoinGecko Live API, Whale Tracker
+   * **Pencapaian**: Dashboard analitik cryptocurrency dan portofolio dengan grafik Recharts, animasi Framer Motion, data pasar live CoinGecko v3, dan pemantau transaksi besar whale. *(Tier 1)*
+
+19. **WhatsApp Web Client (BroadcastChannel Multi-Tab)** | [GitHub: react-whatsapp-web-client](https://github.com/mazkev/react-whatsapp-web-client)
+   * **Technologies**: React 19, BroadcastChannel API, Cross-Tab Sync, Stories Viewer, Communities
+   * **Pencapaian**: Aplikasi pesan web terinspirasi WhatsApp dengan React 19, sinkronisasi pesan multi-tab langsung via BroadcastChannel API, penampil status cerita, dan kanal komunitas. *(Tier 1)*
+
+20. **YouTube Streaming Platform (Picture-in-Picture & Shorts)** | [GitHub: react-youtube-streaming-platform](https://github.com/mazkev/react-youtube-streaming-platform)
+   * **Technologies**: React 19, React Router v7, Zustand, PiP Mini-Player, Shorts Feed, YouTube API
+   * **Pencapaian**: Platform streaming video dengan React 19 dan React Router v7, pemutar mini Picture-in-Picture melayang, feed Shorts vertikal putar otomatis, dan integrasi YouTube Data API. *(Tier 1)*
+
+21. **Airbnb Vacation Rental & Reservation Platform** | [GitHub: react-airbnb-booking-platform](https://github.com/mazkev/react-airbnb-booking-platform)
+   * **Technologies**: React 19, Leaflet Clusters, Date-Range Picker, Digital Receipts, Trips Manager
+   * **Pencapaian**: Platform sewa penginapan terinspirasi Airbnb dengan React 19, klaster peta interaktif Leaflet, kalkulasi harga menginap kalender dinamis, kuitansi digital, dan manajemen trip. *(Tier 1)*
+
+22. **Twitter / X Social Network & AI Bot Platform** | [GitHub: react-twitter-x-social-platform](https://github.com/mazkev/react-twitter-x-social-platform)
+   * **Technologies**: React 19, Tailwind CSS v4, Zustand, X-Bot AI Chat, Communities, Lists
+   * **Pencapaian**: Platform jejaring sosial terinspirasi X/Twitter dengan React 19, Tailwind CSS v4, Zustand, asisten chat X-Bot AI terintegrasi, bookmark, daftar kurasi, dan kanal komunitas. *(Tier 1)*
+
+23. **Instagram Social Media Platform (Reels & AI DMs)** | [GitHub: react-instagram-social-platform](https://github.com/mazkev/react-instagram-social-platform)
+   * **Technologies**: React 19, Reels Feed, Stories Viewer, AI Auto-Reply DMs, Zustand
+   * **Pencapaian**: Klien web Instagram dengan React 19, feed Reels putar otomatis vertikal, penampil story layar penuh dengan bar countdown, filter foto, dan pesan langsung DM dengan AI auto-reply. *(Tier 1)*
+
+24. **Netflix Streaming Platform & Storybook Design System** | [GitHub: react-netflix-streaming-platform](https://github.com/mazkev/react-netflix-streaming-platform)
+   * **Technologies**: React 18, TypeScript, Redux Toolkit, Webpack 5, TMDB API, Firebase, Storybook
+   * **Pencapaian**: Platform streaming bioskop dengan React 18, TypeScript, Redux Toolkit, konfigurasi Webpack 5 kustom, katalog film TMDB, autentikasi Firebase, dan design system Storybook. *(Tier 1)*
+
+25. **Angular 19 Enterprise E-Commerce Storefront** | [GitHub: angular-marketplace-storefront](https://github.com/mazkev/angular-marketplace-storefront) • [Live: market-x-angular.vercel.app](https://market-x-angular.vercel.app)
+   * **Technologies**: Angular 19, TypeScript, Angular Signals, RxJS, Order Tracking, Seller Dashboard
+   * **Pencapaian**: Storefront e-commerce enterprise dengan Angular 19, Angular Signals reaktif, alur event RxJS, pelacak perkembangan status pesanan langsung, dan dashboard toko penjual. *(Tier 1)*
+
+26. **Gojek Super-App Web Prototype & Wallet (Vue 3)** | [GitHub: vue-gojek-superapp-prototype](https://github.com/mazkev/vue-gojek-superapp-prototype)
+   * **Technologies**: Vue 3 Composition API, GoRide & GoFood, GoPay Wallet, Driver Chat, Vitest
+   * **Pencapaian**: Prototipe web super-app dengan Vue 3 Composition API, alur pemesanan GoRide dan GoFood, dompet digital interaktif GoPay, obrolan dengan driver, dan pengujian Vitest. *(Tier 1)*
+
+27. **Type-Safe Shopping Cart & Catalog (React & Redux)** | [GitHub: react-shopping-cart](https://github.com/mazkev/react-shopping-cart)
+   * **Technologies**: React, TypeScript, Redux, Local Storage Persistence, Dynamic Cart
+   * **Pencapaian**: Aplikasi keranjang belanja type-safe dengan React, TypeScript, manajemen state Redux, dan sinkronisasi penyimpanan lokal persisten. *(Tier 2)*
+
+28. **Interactive Excel Simulator & AI Tutor (Groq AI)** | [GitHub: belajar-excel-app](https://github.com/mazkev/belajar-excel-app)
+   * **Technologies**: React 19, Spreadsheet Simulator, Groq AI Tutor, SheetJS, Gamification
+   * **Pencapaian**: Platform pembelajaran spreadsheet interaktif dengan simulator rumus Excel, tutor rumus cerdas Groq AI, parser SheetJS, dan tantangan latihan gamifikasi berlevel. *(Tier 2)*
+
+29. **Crypto Market Capitalization & Analytics Board** | [GitHub: crypto-market-cap-dashboard](https://github.com/mazkev/crypto-market-cap-dashboard)
+   * **Technologies**: React 19, CoinGecko API v3, ApexCharts, Recharts, Price Tracking
+   * **Pencapaian**: Papan pemantau pasar cryptocurrency dengan integrasi CoinGecko API v3 langsung, grafik pergerakan harga ApexCharts dan Recharts multi-timeframe, dan ranking koin. *(Tier 2)*
+
+30. **HTML5 Canvas Snake Game & BFS Pathfinding AI** | [GitHub: react-snake-ai-pathfinding](https://github.com/mazkev/react-snake-ai-pathfinding)
+   * **Technologies**: React 19, HTML5 Canvas 60 FPS, BFS Pathfinding, Zustand, Gemini AI Coach
+   * **Pencapaian**: Game Snake klasik berbasis kanvas HTML5 60 FPS dengan algoritma bot auto-play BFS shortest-path, manajemen state Zustand, dan ulasan taktik Gemini AI coach. *(Tier 2)*
+
+31. **AI UI Component Generator & Sandpack Sandbox** | [GitHub: react-ai-component-wireframer](https://github.com/mazkev/react-ai-component-wireframer)
+   * **Technologies**: React 19, Tailwind CSS v4, CodeSandbox Sandpack, Google Gen AI, Resizable Panels
+   * **Pencapaian**: Aplikasi pembuat komponen UI berbasis AI menggunakan Google Gemini dengan eksekusi langsung dalam lingkungan sandbox peramban aman CodeSandbox Sandpack. *(Tier 2)*
+
+32. **AI Code Security & Quality Reviewer** | [GitHub: ai-code-reviewer](https://github.com/mazkev/ai-code-reviewer)
+   * **Technologies**: React 19, Prism Highlighter, JSZip Unpacker, Security Audit, Gemini AI
+   * **Pencapaian**: Workstation review kode otomatis menggunakan JSZip untuk membaca berkas proyek, penyorot sintaks Prism.js, dan deteksi celah keamanan menggunakan model AI. *(Tier 2)*
+
+33. **Hajj & Umrah Travel Agency Booking Portal** | [GitHub: react-umrah-travel-landing](https://github.com/mazkev/react-umrah-travel-landing)
+   * **Technologies**: React 19, Cost Calculator, Daily Itineraries, WhatsApp Widget, Tailwind CSS
+   * **Pencapaian**: Portal travel haji dan umrah dengan kalkulator perkiraan biaya paket, jadwal perjalanan hari demi hari, testimoni jamaah, dan integrasi konsultasi WhatsApp langsung. *(Tier 2)*
+
+34. **Cloud PaaS Deployment Console Simulator** | [GitHub: react-cloud-console-simulator](https://github.com/mazkev/react-cloud-console-simulator)
+   * **Technologies**: React 19, Terminal Stream Logs, DNS Domains, Secrets Vault, Tailwind CSS
+   * **Pencapaian**: Simulator konsol cloud PaaS terinspirasi Vercel/Heroku dengan streaming log terminal build, konfigurasi domain DNS kustom, dan brankas rahasia environment variables. *(Tier 2)*
+
+35. **Vue Inventory & Supplier Audit System** | [GitHub: vue-inventory-management-system](https://github.com/mazkev/vue-inventory-management-system)
+   * **Technologies**: Vue.js, Tailwind CSS, ApexCharts, PDF/Excel Export, Audit Logs
+   * **Pencapaian**: Platform inventaris bisnis dengan Vue.js, direktori supplier, grafik tren stok barang ApexCharts, ekspor laporan format PDF/Excel, dan riwayat audit log. *(Tier 2)*
+
+36. **Medium Editorial Publishing Landing Page** | [GitHub: medium-clone-bootstrap](https://github.com/mazkev/medium-clone-bootstrap)
+   * **Technologies**: HTML5, Bootstrap 5, Bootstrap Icons, Trending Grid, Responsive Layout
+   * **Pencapaian**: Slicing antarmuka web Medium dengan HTML5 dan Bootstrap 5, menampilkan artikel trending bernomor urut, kategori topik artikel, dan tata letak tipografi responsif. *(Tier 2)*
+
+### 📱 4. Mobile Applications (iOS & Android) (9 Repositori)
+
+1. **Grab Superapp Mobile & Web (Flutter & Riverpod)** | [GitHub: flutter-grab-superapp-clone](https://github.com/mazkev/flutter-grab-superapp-clone)
+   * **Technologies**: Flutter 3, Dart, Riverpod 3, OpenStreetMap Live Tracking, Food & Ride Hailing
+   * **Pencapaian**: Aplikasi superapp mobile cross-platform dengan Flutter dan Riverpod 3, menampilkan pelacakan langsung driver di peta OpenStreetMap, pemesanan GrabFood dan GrabRide. *(Tier 1)*
+
+2. **Traveloka Superapp Clone (React Native & AI)** | [GitHub: treveloka-react-native-expo](https://github.com/mazkev/treveloka-react-native-expo)
+   * **Technologies**: React Native 0.85, Expo SDK 56, Expo Router, Gemini AI Assistant, E-Ticket QR
+   * **Pencapaian**: Aplikasi mobile pemesanan tiket perjalanan dengan React Native 0.85 dan Expo 56, pencarian tiket pesawat & hotel, asisten perjalanan Gemini AI, dan e-tiket QR. *(Tier 1)*
+
+3. **Warehouse Inventory Mobile App (Barcode Scanner)** | [GitHub: react-native-inventory-tracker](https://github.com/mazkev/react-native-inventory-tracker)
+   * **Technologies**: React Native 0.85, Expo SDK 56, Camera Barcode Scanner, Multi-Warehouse, Google Apps Script
+   * **Pencapaian**: Aplikasi pergudangan mobile dengan scanner barcode & QR kamera langsung, mutasi stok multi-gudang, offline cache, dan sinkronisasi Google Apps Script. *(Tier 1)*
+
+4. **Mobile POS Cashier Terminal (Expo SDK 56)** | [GitHub: react-native-pos-cashier](https://github.com/mazkev/react-native-pos-cashier)
+   * **Technologies**: React Native 0.85, Expo SDK 56, Cashier PIN Lock, Shift Drawer Audit, GAS Cloud
+   * **Pencapaian**: Terminal kasir POS mobile dengan proteksi PIN kasir, audit rekonsiliasi uang laci per shift, program poin loyalitas pelanggan, dan pencatatan transaksi cloud. *(Tier 1)*
+
+5. **Gamified Language Learning App (Duolingo Clone)** | [GitHub: duolingo-clone-react-native](https://github.com/mazkev/duolingo-clone-react-native)
+   * **Technologies**: React Native 0.85, Expo SDK 56, Native Audio TTS, Lottie Animations, Zustand Streak
+   * **Pencapaian**: Aplikasi belajar bahasa berbasis gamifikasi dengan React Native dan Expo, audio native text-to-speech, animasi Lottie, pelacak streak harian, dan toko item permata. *(Tier 1)*
+
+6. **Short-Form Video Social App (TikTok Clone)** | [GitHub: tiktok-clone-react-native-expo](https://github.com/mazkev/tiktok-clone-react-native-expo)
+   * **Technologies**: React Native 0.85, Expo SDK 56, Expo Video Player, Camera Recording, Live Comments
+   * **Pencapaian**: Platform video vertikal pendek terinspirasi TikTok dengan putar otomatis video Expo Video, perekaman kamera, animasi double-tap like, dan overlay komentar live. *(Tier 1)*
 
 7. **Shopee E-Commerce Marketplace Mobile App** | [GitHub: shopee-clone-react-native-expo](https://github.com/mazkev/shopee-clone-react-native-expo)
-   * **Tech**: React Native 0.85, Expo SDK 56, ShopeePay Wallet, Kalkulator Ongkir, Pelacak Resi
-   * **Pencapaian**: Klien mobile marketplace belanja online dengan dompet digital terintegrasi, kalkulasi ongkos kirim multi-ekspedisi, dan timeline pelacakan nomor resi. *(Tier 1)*
+   * **Technologies**: React Native 0.85, Expo SDK 56, ShopeePay Wallet, Ongkir Shipping Calculator, Resi Tracker
+   * **Pencapaian**: Aplikasi marketplace mobile e-commerce dengan simulator dompet ShopeePay, kalkulator ongkir multi-ekspedisi, promo flash sale, dan pelacak nomor resi paket. *(Tier 1)*
 
-8. **WhatsApp Messenger Mobile Clone** | [GitHub: whatsapp-clone-react-native-expo](https://github.com/mazkev/whatsapp-clone-react-native-expo)
-   * **Tech**: React Native 0.85, Expo SDK 56, Rekam Pesan Suara, Pin Lokasi Peta, Status Cerita
-   * **Pencapaian**: Aplikasi pesan instan mobile dengan rekaman voice note audio, berbagi titik lokasi GPS, polling grup interaktif, dan penampil status foto. *(Tier 1)*
+8. **WhatsApp Messenger Mobile App (Expo SDK 56)** | [GitHub: whatsapp-clone-react-native-expo](https://github.com/mazkev/whatsapp-clone-react-native-expo)
+   * **Technologies**: React Native 0.85, Expo SDK 56, Voice Note Recording, Location Pins, Status Stories
+   * **Pencapaian**: Aplikasi pesan mobile dengan React Native dan Expo dilengkapi rekaman pesan suara (VN), berbagi pin lokasi GPS, status cerita, dan polling jajak pendapat di chat. *(Tier 1)*
 
-9. **Employee Attendance & GPS Selfie Check-In** | [GitHub: react-native-employee-attendance](https://github.com/mazkev/react-native-employee-attendance)
-   * **Tech**: React Native Expo 56, Kamera Selfie Check-In, Radius Geolocation GPS, Google Apps Script
-   * **Pencapaian**: Aplikasi presensi mobile karyawan dengan validasi foto selfie kamera depan, batas radius koordinat GPS kantor, dan pengajuan izin cuti kerja. *(Tier 1)*
+9. **Employee Attendance & GPS Location Check-In** | [GitHub: react-native-employee-attendance](https://github.com/mazkev/react-native-employee-attendance)
+   * **Technologies**: React Native Expo 56, Selfie Camera Check-In, GPS Geo-Fence, Google Apps Script
+   * **Pencapaian**: Aplikasi absensi karyawan mobile dengan verifikasi kamera selfie depan, validasi geo-fencing radius kantor GPS, pengajuan cuti, dan sinkronisasi cloud spreadsheet. *(Tier 1)*
 
-10. **Shopee Mobile UI Baseline Clone** | [GitHub: Shovee-Frontend](https://github.com/mazkev/Shovee-Frontend) — React Native mobile baseline architecture practice. *(Tier 4)*
+### 🧪 5. Engineering Concept Labs & Explorations (5 Repositori)
 
----
+1. **CodeQuest: Gamified Algorithm Practice Sandbox** | [GitHub: codequest-app](https://github.com/mazkev/codequest-app)
+   * **Technologies**: JavaScript, React, LeetCode-Style Sandbox, Code Runner, Synth Audio
+   * **Pencapaian**: Platform latihan algoritma bergaya LeetCode dengan eksekutor kode client-side, efek suara synthesizer, dan level pengalaman XP. *(Tier 3)*
 
-### 🧪 5. Engineering Concept Labs & Explorations (13 Repositori)
+2. **OmniDesk: Customer Support Queue Console** | [GitHub: omnidesk](https://github.com/mazkev/omnidesk)
+   * **Technologies**: JavaScript, React, Kanban Queue, Ticket System, Sound Effects
+   * **Pencapaian**: Prototipe manajemen tiket bantuan pelanggan dengan antrean Kanban berprioritas, notifikasi suara, dan template pesan cepat. *(Tier 3)*
 
-1. **CodeQuest Interactive Coding Sandbox** | [GitHub: codequest-app](https://github.com/mazkev/codequest-app) — Lab latihan algoritma ala LeetCode dengan visualisasi eksekusi kode JavaScript. *(Tier 3)*
-2. **Omnidesk Customer Support Console** | [GitHub: omnidesk](https://github.com/mazkev/omnidesk) — Prototipe konsol helpdesk pelanggan dengan antrean tiket Kanban dan efek audio. *(Tier 3)*
-3. **AI Syntax & Code Language Translator** | [GitHub: syntax-translator](https://github.com/mazkev/syntax-translator) — Konversi sintaksis multi-bahasa pemrograman menggunakan AI. *(Tier 3)*
-4. **Backend & CSS Architecture Learning Lab** | [GitHub: belajar-backend-css-app](https://github.com/mazkev/belajar-backend-css-app) — Eksplorasi konsep modular CSS dan integrasi API backend. *(Tier 3)*
-5. **Vibe Coding AI Assistant Prototype** | [GitHub: vibe-coding-assistant](https://github.com/mazkev/vibe-coding-assistant) — Prototipe asisten coding kontekstual berbasis kecerdasan buatan. *(Tier 3)*
-6. **AI SaaS Image Generator Prototype** | [GitHub: AI-SaaS-Image-Generator](https://github.com/mazkev/AI-SaaS-Image-Generator) — Eksplorasi pembuatan antarmuka generator gambar AI dengan React. *(Tier 3)*
-7. **React Component Lifecycle Test Lab** | [GitHub: testReact5](https://github.com/mazkev/testReact5) — Eksperimen siklus hidup komponen dan re-render optimization. *(Tier 3)*
-8. **Java Spring Boot & Vue Exploration** | [GitHub: belajar-java-springboot](https://github.com/mazkev/belajar-java-springboot) — Lab integrasi awal Spring Boot REST API dengan Vue.js. *(Tier 3)*
-9. **GitHub Profile Configuration Engine** | [GitHub: mazkev](https://github.com/mazkev/mazkev) — Konfigurasi profil Markdown, metrik aktivitas GitHub, dan widget dinamis. *(Tier 3)*
-10. **HTML5 Semantic & Modern CSS Exercise** | [GitHub: tes-html](https://github.com/mazkev/tes-html) — Latihan dasar semantik HTML5 dan CSS Grid/Flexbox. *(Tier 3)*
-11. **Legacy Academic Final Project** | [GitHub: final-project](https://github.com/mazkev/final-project) — Arsip kode proyek akhir akademik. *(Tier 4)*
-12. **Initial Repository Placeholder** | [GitHub: Project](https://github.com/mazkev/Project) — Repositori inisialisasi awal. *(Tier 4)*
-13. **Legacy Semarketplace Web Archive** | [GitHub: Semarketplace](https://github.com/mazkev/Semarketplace) — Prototipe dasar marketplace React versi awal. *(Tier 3)*
+3. **Syntax Translator: AI Multi-Language Code Converter** | [GitHub: syntax-translator](https://github.com/mazkev/syntax-translator)
+   * **Technologies**: JavaScript, React, AI Code Conversion, Syntax Highlighter
+   * **Pencapaian**: Konverter sintaks kode multi-bahasa menggunakan API AI untuk mengonversi potongan kode antar JavaScript, Python, Go, dan Java. *(Tier 3)*
+
+4. **Vibe Coding Assistant & Prompt Playground** | [GitHub: vibe-coding-assistant](https://github.com/mazkev/vibe-coding-assistant)
+   * **Technologies**: JavaScript, React, Prompt Engineering, AI Stream Response
+   * **Pencapaian**: Antarmuka asisten pair programming AI untuk eksperimen prompt streaming dan pembuatan prototipe kode secara cepat. *(Tier 3)*
+
+5. **AI SaaS Image Generator Studio Prototype** | [GitHub: AI-SaaS-Image-Generator](https://github.com/mazkev/AI-SaaS-Image-Generator)
+   * **Technologies**: JavaScript, React, AI Image API, Gallery Export
+   * **Pencapaian**: Prototipe studio pembuat gambar berbasis AI dengan preset prompt, pemilih rasio aspek gambar, dan galeri riwayat. *(Tier 3)*
 
 ---
 
@@ -341,7 +441,7 @@ Aplikasi berikut di-deploy secara aktif di Vercel dan dapat diakses serta diveri
 Gunakan prompt di bawah ini saat menyalin isi dokumen ini ke AI lain (ChatGPT / Claude / DeepSeek):
 
 ### Prompt 1: Audit Tingkat Senioritas & Gap Analysis
-> *"Berdasarkan resume dan katalog 93 repositori di atas, lakukan evaluasi komprehensif terhadap tingkat senioritas teknis Kevin Eka Pratama. Analisis kedalaman arsitektur backend (Go, Java Spring Boot, Microservices, ACID), kematangan fullstack, dan pengalaman Application Support enterprise di PT PLN Icon+. Berikan rekomendasi area teknis yang perlu diperdalam untuk mencapai posisi Senior Software Engineer di industri tech tier-1."*
+> *"Berdasarkan resume dan katalog 82 repositori di atas, lakukan evaluasi komprehensif terhadap tingkat senioritas teknis Kevin Eka Pratama. Analisis kedalaman arsitektur backend (Go, Java Spring Boot, Microservices, ACID), kematangan fullstack, dan pengalaman Application Support enterprise di PT PLN Icon+. Berikan rekomendasi area teknis yang perlu diperdalam untuk mencapai posisi Senior Software Engineer di industri tech tier-1."*
 
 ### Prompt 2: Penilaian Kecocokan Posisi (Job Match)
 > *"Saya ingin melamar posisi [SEBUTKAN NAMA POSISI, misal: Go Backend Engineer / Senior Fullstack Developer]. Evaluasi kecocokan profil, skill matrix, dan repositori di atas dengan kualifikasi standar posisi tersebut. Sebutkan 5 proyek unggulan yang paling relevan untuk ditonjolkan pada sesi wawancara teknis."*

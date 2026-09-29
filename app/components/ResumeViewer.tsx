@@ -25,12 +25,12 @@ const roleContent = {
     en: {
       title: 'Fullstack Software Engineer',
       executiveSummaryTitle: 'Executive Summary',
-      executiveSummary: 'Fullstack Software Engineer with 2+ years of professional experience in Application Support at PT PLN Icon+. Proven track record of independently designing, building, and deploying 93 software repositories across distributed backend systems (Go, Java Spring Boot, Bun/Hono, Express.js), fullstack web platforms (Next.js 16, React 19, Laravel 12, FastAPI), modern frontend clients, and cross-platform mobile apps (React Native, Flutter). Strong foundation in database architecture, relational schema optimization (PostgreSQL, MySQL), NoSQL (MongoDB), ACID transactions, Clean Architecture, and containerized deployment.',
+      executiveSummary: 'Fullstack Software Engineer with 2+ years of professional experience in Application Support at PT PLN Icon+. Proven track record of independently designing, building, and deploying 82 software repositories across distributed backend systems (Go, Java Spring Boot, Bun/Hono, Express.js), fullstack web platforms (Next.js 16, React 19, Laravel 12, FastAPI), modern frontend clients, and cross-platform mobile apps (React Native, Flutter). Strong foundation in database architecture, relational schema optimization (PostgreSQL, MySQL), NoSQL (MongoDB), ACID transactions, Clean Architecture, and containerized deployment.',
     },
     id: {
       title: 'Fullstack Software Engineer',
       executiveSummaryTitle: 'Ringkasan Eksekutif',
-      executiveSummary: 'Fullstack Software Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+. Memiliki rekam jejak terverifikasi dalam merancang, membangun, dan mendokumentasikan 93 repositori perangkat lunak secara mandiri mencakup sistem backend terdistribusi (Go, Java Spring Boot, Bun/Hono, Express.js), platform web fullstack (Next.js 16, React 19, Laravel 12, FastAPI), aplikasi frontend modern, serta mobile cross-platform (React Native, Flutter). Menguasai arsitektur database relasional (PostgreSQL, MySQL), NoSQL (MongoDB), transaksi ACID, Clean Architecture, dan containerization Docker.',
+      executiveSummary: 'Fullstack Software Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+. Memiliki rekam jejak terverifikasi dalam merancang, membangun, dan mendokumentasikan 82 repositori perangkat lunak secara mandiri mencakup sistem backend terdistribusi (Go, Java Spring Boot, Bun/Hono, Express.js), platform web fullstack (Next.js 16, React 19, Laravel 12, FastAPI), aplikasi frontend modern, serta mobile cross-platform (React Native, Flutter). Menguasai arsitektur database relasional (PostgreSQL, MySQL), NoSQL (MongoDB), transaksi ACID, Clean Architecture, dan containerization Docker.',
     }
   },
   frontend: {
@@ -76,18 +76,18 @@ const commonText = {
     job2Title: 'Software Engineering & Open Source Development',
     job2Company: 'Independent Engineering & Technical Research',
     job2Date: '2024 - Present',
-    job2Bullet1: 'Engineered and audited 93 production-grade repositories spanning Backend Microservices, Fullstack Monorepos, Modern Frontend, and Cross-Platform Mobile Apps.',
+    job2Bullet1: 'Engineered and audited 82 production-grade repositories spanning Backend Microservices, Fullstack Monorepos, Modern Frontend, and Cross-Platform Mobile Apps.',
     job2Bullet2: 'Designed ACID transactional schemas, implemented JWT/RBAC security pipelines, and orchestrated multi-container environments using Docker Compose.',
     job2Bullet3: 'Maintained strict software craftsmanship: Clean Architecture domain-usecase-repository decoupling, automated CI/CD unit testing, and OpenAPI/Swagger documentation.',
     degree: 'Bachelor of Computer Science / Information Technology',
     university: 'Universitas AMIKOM • GPA: 3.42 / 4.00',
-    allReposCount: '93 Verified Production Repositories',
+    allReposCount: '82 Verified Production Repositories',
   },
   id: {
     downloadBtn: 'Unduh PDF',
     printBtn: 'Cetak Dokumen',
     experienceTitle: 'Pengalaman Profesional',
-    projectsTitle: 'Proyek Teknis & Repositori Rekayasa Perangkat Lunak (93 Repositori)',
+    projectsTitle: 'Proyek Teknis & Repositori Rekayasa Perangkat Lunak (82 Repositori)',
     skillsTitle: 'Kompetensi Teknis & Core Stack',
     educationTitle: 'Pendidikan',
     job1Title: 'Application Support',
@@ -99,12 +99,12 @@ const commonText = {
     job2Title: 'Rekayasa Perangkat Lunak & Pengembangan Open Source',
     job2Company: 'Pengembangan Mandiri & Riset Arsitektur',
     job2Date: '2024 - Sekarang',
-    job2Bullet1: 'Membangun dan mengaudit 93 repositori perangkat lunak mencakup Backend Microservices, Fullstack Monorepo, Frontend Modern, dan Mobile Cross-Platform.',
+    job2Bullet1: 'Membangun dan mengaudit 82 repositori perangkat lunak mencakup Backend Microservices, Fullstack Monorepo, Frontend Modern, dan Mobile Cross-Platform.',
     job2Bullet2: 'Merancang skema database transaksional ACID, menerapkan pipa keamanan JWT/RBAC, dan mengorkestrasikan lingkungan multi-container dengan Docker Compose.',
     job2Bullet3: 'Menerapkan standar rekayasa perangkat lunak: Clean Architecture decoupling (Domain, Usecase, Repository), unit testing otomatis, dan dokumentasi OpenAPI Swagger.',
     degree: 'Sarjana Ilmu Komputer / Teknologi Informasi',
     university: 'Universitas AMIKOM • IPK: 3.42 / 4.00',
-    allReposCount: '93 Repositori Terverifikasi (Backend, Fullstack, Frontend & Mobile)',
+    allReposCount: '82 Repositori Terverifikasi (Backend, Fullstack, Frontend & Mobile)',
   }
 };
 
@@ -299,6 +299,30 @@ function CVContent({ lang, activeRole, domainFilter, pageNumber, totalPages }: C
           </span>
         </div>
 
+        {/* EXECUTIVE REPOSITORY METRICS BAR */}
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 print:gap-1 p-2 print:p-1.5 bg-slate-50 print:bg-slate-100/70 rounded-lg border border-slate-300 print:break-inside-avoid">
+          <div className="text-center p-1 bg-white print:bg-transparent rounded border border-slate-200 print:border-none">
+            <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px]">19 Repos</div>
+            <div className="text-[8px] print:text-[6.5px] font-mono font-bold text-slate-500 uppercase">Backend & Cloud</div>
+          </div>
+          <div className="text-center p-1 bg-white print:bg-transparent rounded border border-slate-200 print:border-none">
+            <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px]">13 Repos</div>
+            <div className="text-[8px] print:text-[6.5px] font-mono font-bold text-slate-500 uppercase">Fullstack Web</div>
+          </div>
+          <div className="text-center p-1 bg-white print:bg-transparent rounded border border-slate-200 print:border-none">
+            <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px]">36 Repos</div>
+            <div className="text-[8px] print:text-[6.5px] font-mono font-bold text-slate-500 uppercase">Frontend Web</div>
+          </div>
+          <div className="text-center p-1 bg-white print:bg-transparent rounded border border-slate-200 print:border-none">
+            <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px]">9 Repos</div>
+            <div className="text-[8px] print:text-[6.5px] font-mono font-bold text-slate-500 uppercase">Mobile Apps</div>
+          </div>
+          <div className="col-span-2 sm:col-span-1 text-center p-1 bg-emerald-50 print:bg-transparent rounded border border-emerald-300 print:border-none">
+            <div className="font-extrabold text-emerald-800 text-xs md:text-sm print:text-[10px]">12 Live Apps</div>
+            <div className="text-[8px] print:text-[6.5px] font-mono font-bold text-emerald-600 uppercase">Active Vercel URLs</div>
+          </div>
+        </div>
+
         {domainOrder.map((domainKey) => {
           // If on screen with a specific domain filter active (and not 'all'), check filter
           const isFilteredOutScreen = domainFilter !== 'all' && domainFilter !== domainKey;
@@ -459,7 +483,7 @@ function PortfolioGalleryPage({ roleProjects }: { roleProjects: typeof projects 
 
       <div className="p-2.5 print:p-1.5 rounded-lg border border-slate-300 bg-slate-100 text-[11px] print:text-[8.5px] text-slate-800 font-medium flex items-center justify-between print:break-inside-avoid">
         <span>
-          <strong>Catatan:</strong> Seluruh 93 source code repositori dan tautan URL langsung dapat diakses dan diverifikasi melalui <strong>mazkev.vercel.app</strong> dan <strong>github.com/mazkev</strong>.
+          <strong>Catatan:</strong> Seluruh 82 source code repositori dan tautan URL langsung dapat diakses dan diverifikasi melalui <strong>mazkev.vercel.app</strong> dan <strong>github.com/mazkev</strong>.
         </span>
         <span className="text-[9px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
           Lampiran Visual Showcase

@@ -123,7 +123,7 @@ const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Kevin Eka Pratama - Comprehensive Engineering Resume (93 Repositories)</title>
+<title>Kevin Eka Pratama - Comprehensive Engineering Resume (82 Repositories)</title>
 <style>
   @page {
     size: A4;
@@ -343,10 +343,10 @@ const html = `<!DOCTYPE html>
   <div class="section">
     <div class="section-title">
       <span>Executive Summary</span>
-      <span class="badge">English ATS Standard • Complete 93-Repository Inventory</span>
+      <span class="badge">English ATS Standard • Complete 82-Repository Inventory</span>
     </div>
     <p class="summary-text">
-      Fullstack Software Engineer with 2+ years of professional Application Support experience at PT PLN Icon+. Proven track record of independently designing, building, and deploying 93 verified software repositories across distributed backend systems (Go, Java Spring Boot, Bun/Hono, Express.js), fullstack web platforms (Next.js 16, React 19, Laravel 12, FastAPI), modern frontend clients, and cross-platform mobile apps (React Native, Flutter). Rigorous foundation in relational database schema optimization (PostgreSQL, MySQL), NoSQL (MongoDB), ACID transactions, Clean Architecture, and containerized deployment with Docker.
+      Fullstack Software Engineer with 2+ years of professional Application Support experience at PT PLN Icon+. Proven track record of independently designing, building, and deploying 82 verified software repositories across distributed backend systems (Go, Java Spring Boot, Bun/Hono, Express.js), fullstack web platforms (Next.js 16, React 19, Laravel 12, FastAPI), modern frontend clients, and cross-platform mobile apps (React Native, Flutter). Rigorous foundation in relational database schema optimization (PostgreSQL, MySQL), NoSQL (MongoDB), ACID transactions, Clean Architecture, and containerized deployment with Docker.
     </p>
   </div>
 
@@ -377,7 +377,7 @@ const html = `<!DOCTYPE html>
         <span class="job-date">2024 - Present</span>
       </div>
       <ul class="bullets">
-        <li>Engineered and audited 93 production-grade repositories spanning Backend Microservices, Fullstack Monorepos, Modern Frontend, and Cross-Platform Mobile Apps.</li>
+        <li>Engineered and audited 82 production-grade repositories spanning Backend Microservices, Fullstack Monorepos, Modern Frontend, and Cross-Platform Mobile Apps.</li>
         <li>Designed ACID transactional schemas, implemented JWT/RBAC security pipelines, and orchestrated multi-container environments using Docker Compose.</li>
         <li>Maintained strict software craftsmanship: Clean Architecture domain-usecase-repository decoupling, automated CI/CD unit testing, and OpenAPI/Swagger documentation.</li>
       </ul>
@@ -412,8 +412,32 @@ const html = `<!DOCTYPE html>
   <!-- DIRECTORY TITLE -->
   <div class="section" style="margin-top: 14px;">
     <div class="section-title" style="border-bottom: 2px solid #0f172a;">
-      <span>Technical Projects & Engineering Repositories (93 Repositories)</span>
-      <span class="badge">93 Verified Production Repositories</span>
+      <span>Technical Projects & Engineering Repositories (82 Repositories)</span>
+      <span class="badge">82 Curated Production Repositories</span>
+    </div>
+
+    <!-- Executive Metrics Grid -->
+    <div class="metrics-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin: 8px 0 10px 0;">
+      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 5px; padding: 5px 6px; text-align: center;">
+        <div style="font-size: 10pt; font-weight: 900; color: #15803d;">19</div>
+        <div style="font-size: 6.2pt; font-weight: 700; color: #166534; text-transform: uppercase;">Backend</div>
+      </div>
+      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 5px; padding: 5px 6px; text-align: center;">
+        <div style="font-size: 10pt; font-weight: 900; color: #1d4ed8;">13</div>
+        <div style="font-size: 6.2pt; font-weight: 700; color: #1e40af; text-transform: uppercase;">Fullstack</div>
+      </div>
+      <div style="background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 5px; padding: 5px 6px; text-align: center;">
+        <div style="font-size: 10pt; font-weight: 900; color: #7e22ce;">36</div>
+        <div style="font-size: 6.2pt; font-weight: 700; color: #6b21a8; text-transform: uppercase;">Frontend</div>
+      </div>
+      <div style="background: #fff7ed; border: 1px solid #fed7aa; border-radius: 5px; padding: 5px 6px; text-align: center;">
+        <div style="font-size: 10pt; font-weight: 900; color: #c2410c;">9</div>
+        <div style="font-size: 6.2pt; font-weight: 700; color: #9a3412; text-transform: uppercase;">Mobile</div>
+      </div>
+      <div style="background: #f0fdfa; border: 1px solid #99f6e4; border-radius: 5px; padding: 5px 6px; text-align: center;">
+        <div style="font-size: 10pt; font-weight: 900; color: #0f766e;">12</div>
+        <div style="font-size: 6.2pt; font-weight: 700; color: #115e59; text-transform: uppercase;">Live Cloud</div>
+      </div>
     </div>
 
     ${renderRepoList('en')}
@@ -446,10 +470,10 @@ const html = `<!DOCTYPE html>
   <div class="section">
     <div class="section-title">
       <span>Ringkasan Eksekutif</span>
-      <span class="badge">Standar ATS Bahasa Indonesia • Direktori Lengkap 93 Repositori</span>
+      <span class="badge">Standar ATS Bahasa Indonesia • Direktori Lengkap 82 Repositori</span>
     </div>
     <p class="summary-text">
-      Fullstack Software Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+. Memiliki rekam jejak terverifikasi dalam merancang, membangun, dan mendokumentasikan 93 repositori perangkat lunak secara mandiri mencakup sistem backend terdistribusi (Go, Java Spring Boot, Bun/Hono, Express.js), platform web fullstack (Next.js 16, React 19, Laravel 12, FastAPI), aplikasi frontend modern, serta mobile cross-platform (React Native, Flutter). Menguasai arsitektur database relasional (PostgreSQL, MySQL), NoSQL (MongoDB), transaksi ACID, Clean Architecture, dan containerization Docker.
+      Fullstack Software Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support pada PT PLN Icon+. Memiliki rekam jejak terverifikasi dalam merancang, membangun, dan mendokumentasikan 82 repositori perangkat lunak secara mandiri mencakup sistem backend terdistribusi (Go, Java Spring Boot, Bun/Hono, Express.js), platform web fullstack (Next.js 16, React 19, Laravel 12, FastAPI), aplikasi frontend modern, serta mobile cross-platform (React Native, Flutter). Menguasai arsitektur database relasional (PostgreSQL, MySQL), NoSQL (MongoDB), transaksi ACID, Clean Architecture, dan containerization Docker.
     </p>
   </div>
 
@@ -480,7 +504,7 @@ const html = `<!DOCTYPE html>
         <span class="job-date">2024 - Sekarang</span>
       </div>
       <ul class="bullets">
-        <li>Membangun dan mengaudit 93 repositori perangkat lunak mencakup Backend Microservices, Fullstack Monorepo, Frontend Modern, dan Mobile Cross-Platform.</li>
+        <li>Membangun dan mengaudit 82 repositori perangkat lunak mencakup Backend Microservices, Fullstack Monorepo, Frontend Modern, dan Mobile Cross-Platform.</li>
         <li>Merancang skema database transaksional ACID, menerapkan pipa keamanan JWT/RBAC, dan mengorkestrasikan lingkungan multi-container dengan Docker Compose.</li>
         <li>Menerapkan standar rekayasa perangkat lunak: Clean Architecture decoupling (Domain, Usecase, Repository), unit testing otomatis, dan dokumentasi OpenAPI Swagger.</li>
       </ul>
@@ -515,8 +539,32 @@ const html = `<!DOCTYPE html>
   <!-- DIRECTORY TITLE -->
   <div class="section" style="margin-top: 14px;">
     <div class="section-title" style="border-bottom: 2px solid #0f172a;">
-      <span>Proyek Teknis & Repositori Rekayasa Perangkat Lunak (93 Repositori)</span>
-      <span class="badge">93 Repositori Terverifikasi (Backend, Fullstack, Frontend & Mobile)</span>
+      <span>Proyek Teknis & Repositori Rekayasa Perangkat Lunak (82 Repositori)</span>
+      <span class="badge">82 Repositori Terverifikasi (Backend, Fullstack, Frontend & Mobile)</span>
+    </div>
+
+    <!-- Executive Metrics Grid ID -->
+    <div class="metrics-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin: 8px 0 10px 0;">
+      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 5px; padding: 5px 6px; text-align: center;">
+        <div style="font-size: 10pt; font-weight: 900; color: #15803d;">19</div>
+        <div style="font-size: 6.2pt; font-weight: 700; color: #166534; text-transform: uppercase;">Sistem Backend</div>
+      </div>
+      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 5px; padding: 5px 6px; text-align: center;">
+        <div style="font-size: 10pt; font-weight: 900; color: #1d4ed8;">13</div>
+        <div style="font-size: 6.2pt; font-weight: 700; color: #1e40af; text-transform: uppercase;">Fullstack Web</div>
+      </div>
+      <div style="background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 5px; padding: 5px 6px; text-align: center;">
+        <div style="font-size: 10pt; font-weight: 900; color: #7e22ce;">36</div>
+        <div style="font-size: 6.2pt; font-weight: 700; color: #6b21a8; text-transform: uppercase;">Frontend Web</div>
+      </div>
+      <div style="background: #fff7ed; border: 1px solid #fed7aa; border-radius: 5px; padding: 5px 6px; text-align: center;">
+        <div style="font-size: 10pt; font-weight: 900; color: #c2410c;">9</div>
+        <div style="font-size: 6.2pt; font-weight: 700; color: #9a3412; text-transform: uppercase;">Aplikasi Mobile</div>
+      </div>
+      <div style="background: #f0fdfa; border: 1px solid #99f6e4; border-radius: 5px; padding: 5px 6px; text-align: center;">
+        <div style="font-size: 10pt; font-weight: 900; color: #0f766e;">12</div>
+        <div style="font-size: 6.2pt; font-weight: 700; color: #115e59; text-transform: uppercase;">Live Deployment</div>
+      </div>
     </div>
 
     ${renderRepoList('id')}
@@ -653,7 +701,7 @@ const html = `<!DOCTYPE html>
   </div>
 
   <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 6px 8px; background: #f1f5f9; display: flex; justify-content: space-between; align-items: center; margin-top: 10px; page-break-inside: avoid;">
-    <span style="font-size: 7.2pt; color: #1e293b;"><strong>Catatan:</strong> Seluruh 93 source code repositori dapat diverifikasi langsung pada profil GitHub resmi <strong>github.com/mazkev</strong> dan web portofolio <strong>mazkev.vercel.app</strong>.</span>
+    <span style="font-size: 7.2pt; color: #1e293b;"><strong>Catatan:</strong> Seluruh 82 source code repositori dapat diverifikasi langsung pada profil GitHub resmi <strong>github.com/mazkev</strong> dan web portofolio <strong>mazkev.vercel.app</strong>.</span>
     <span style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #64748b;">Visual Portfolio Showcase</span>
   </div>
 </div>
