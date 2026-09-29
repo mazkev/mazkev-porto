@@ -112,9 +112,9 @@ Aplikasi berikut di-deploy secara aktif di Vercel dan dapat diakses serta diveri
    * **Tech**: Go 1.26, Gin Router, MongoDB v2, Voucher Engine, Order Lifecycle, Reverse Proxy, Swagger UI
    * **Pencapaian**: Engine backend e-commerce dan reverse proxy gateway dengan skema dokumen NoSQL MongoDB, manajemen voucher, dan dokumentasi OpenAPI interaktif. *(Tier 1)*
 
-3. **Enterprise Core Banking Backend Engine** | [GitHub: go-banking-core-system](https://github.com/mazkev/go-banking-core-system)
+3. **Digital Wallet & Transactional Balance Transfer API** | [GitHub: go-banking-core-system](https://github.com/mazkev/go-banking-core-system)
    * **Tech**: Go, Clean Architecture, PostgreSQL, ACID Transactions, GORM, Bcrypt PIN, Swagger UI
-   * **Pencapaian**: Sistem transaksi perbankan atomik dengan isolasi transfer saldo keuangan ACID, verifikasi PIN Bcrypt, dan structured audit log. *(Tier 1)*
+   * **Pencapaian**: Layanan transfer saldo dompet digital dengan isolasi transfer atomik ACID, verifikasi PIN Bcrypt, audit logging, dan PostgreSQL connection pooling. *(Tier 1)*
 
 4. **Go Clean Architecture Domain Implementation** | [GitHub: go-clean-arch](https://github.com/mazkev/go-clean-arch)
    * **Tech**: Go, Gin, Clean Architecture, Repository Pattern, PostgreSQL, Docker
@@ -347,4 +347,4 @@ Gunakan prompt di bawah ini saat menyalin isi dokumen ini ke AI lain (ChatGPT / 
 > *"Saya ingin melamar posisi [SEBUTKAN NAMA POSISI, misal: Go Backend Engineer / Senior Fullstack Developer]. Evaluasi kecocokan profil, skill matrix, dan repositori di atas dengan kualifikasi standar posisi tersebut. Sebutkan 5 proyek unggulan yang paling relevan untuk ditonjolkan pada sesi wawancara teknis."*
 
 ### Prompt 3: Generator Pertanyaan Wawancara Teknis (System Design & Code)
-> *"Bertindaklah sebagai Engineering Manager / Tech Lead yang sedang menguji kandidat ini. Buat 10 pertanyaan teknis mendalam dan studi kasus System Design berdasarkan proyek Go distributed microservices, transactional core banking, dan pengalaman database support PLN Icon+ yang ada pada resume ini."*
+> *"Bertindaklah sebagai Engineering Manager / Tech Lead yang sedang menguji kandidat ini. Buat 10 pertanyaan teknis mendalam dan studi kasus System Design berdasarkan proyek Go distributed microservices, transactional digital wallet, dan pengalaman database support PLN Icon+ yang ada pada resume ini."*

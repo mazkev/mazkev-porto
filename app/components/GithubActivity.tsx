@@ -93,10 +93,10 @@ const CURATED_REPOS: CuratedRepo[] = [
   {
     name: 'go-bank',
     category: 'go',
-    categoryLabel: 'Go Banking Core',
+    categoryLabel: 'Go Digital Wallet',
     language: 'Go',
     langColor: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/20',
-    desc: 'Banking transfer engine with ledger history, account balance verification, and database migrations.',
+    desc: 'Digital wallet transfer service with ledger history, balance verification, and ACID transactions.',
     tech: ['Go', 'PostgreSQL', 'Docker', 'REST API'],
     githubUrl: 'https://github.com/mazkev/go-bank'
   },

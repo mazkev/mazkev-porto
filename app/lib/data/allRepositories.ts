@@ -55,17 +55,17 @@ export const ALL_REPOSITORIES: RepoItem[] = [
   {
     id: 'go-banking-core-system',
     name: 'go-banking-core-system',
-    title: 'Enterprise Core Banking Backend Engine',
+    title: 'Digital Wallet & Transactional Balance Transfer API',
     domain: 'backend',
     domainLabel: { en: 'Backend & Cloud Systems', id: 'Sistem Backend & Cloud' },
-    category: 'Backend / FinTech',
+    category: 'Backend / Digital Wallet',
     tech: ['Go', 'Clean Arch', 'PostgreSQL', 'ACID Transactions', 'GORM', 'Swagger UI'],
     tier: 1,
     sizeKb: 99,
     githubUrl: 'https://github.com/mazkev/go-banking-core-system',
     desc: {
-      en: 'Financial ledger transaction engine implementing atomic account-to-account balance transfers, Bcrypt PIN validation, audit logging, and PostgreSQL connection pooling.',
-      id: 'Engine transaksi keuangan berbasis Go dan PostgreSQL yang menerapkan transfer saldo atomik antar rekening, validasi PIN Bcrypt, audit logging, dan connection pooling.'
+      en: 'Transactional digital wallet and balance transfer service implementing atomic account-to-account transfers with ACID isolation, Bcrypt PIN validation, audit logging, and PostgreSQL connection pooling.',
+      id: 'Layanan dompet digital dan transfer saldo yang menerapkan transfer saldo atomik dengan isolasi transaksi ACID, validasi PIN Bcrypt, audit logging, dan connection pooling PostgreSQL.'
     }
   },
   {

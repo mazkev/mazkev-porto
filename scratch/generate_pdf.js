@@ -611,14 +611,14 @@ const html = `<!DOCTYPE html>
 
     <!-- CARD 6 -->
     <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 6px; background: #f8fafc; display: flex; gap: 7px; page-break-inside: avoid;">
-      <img src="${imgBanking}" style="width: 65px; height: 50px; border-radius: 4px; object-fit: cover; border: 1px solid #cbd5e1; flex-shrink: 0;" alt="Go Core Banking">
+      <img src="${imgBanking}" style="width: 65px; height: 50px; border-radius: 4px; object-fit: cover; border: 1px solid #cbd5e1; flex-shrink: 0;" alt="Go Digital Wallet">
       <div style="flex: 1; min-width: 0;">
         <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-          <strong style="font-size: 7.5pt; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">6. Go Banking Core Engine</strong>
+          <strong style="font-size: 7.5pt; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">6. Digital Wallet & Transfer API</strong>
           <span style="font-size: 6pt; background: #e2e8f0; font-family: monospace; font-weight: bold; padding: 1px 3px; border-radius: 2px;">BACK END</span>
         </div>
         <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #475569; margin: 1px 0;">GO • POSTGRESQL • ACID TRANSFERS • GORM</div>
-        <div style="font-size: 6.8pt; color: #334155; line-height: 1.25;">Engine transfer saldo keuangan atomik dengan verifikasi PIN Bcrypt dan structured audit logging.</div>
+        <div style="font-size: 6.8pt; color: #334155; line-height: 1.25;">Layanan transfer saldo dompet digital atomik dengan verifikasi PIN Bcrypt dan structured audit logging.</div>
         <div style="font-size: 6.5pt; font-family: monospace; font-weight: bold; color: #0369a1; margin-top: 2px;">Repo: gh/go-banking-core-system</div>
       </div>
     </div>

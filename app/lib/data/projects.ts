@@ -979,8 +979,8 @@ export const projects: ProjectData[] = [
     category: 'Back End',
   },
   {
-    title: 'Go Banking Core Engine',
-    description: 'Core banking transaction engine built with Go and PostgreSQL. Implements atomic account balance transfers, Bcrypt PIN validation, ledger verification, and structured audit logs.',
+    title: 'Digital Wallet & Balance Transfer API (Go)',
+    description: 'Transactional digital wallet and balance transfer service built with Go and PostgreSQL. Implements atomic balance transfers with ACID isolation, Bcrypt PIN validation, ledger verification, and structured audit logs.',
     tech: ['Go', 'PostgreSQL', 'ACID Transactions', 'GORM', 'Docker', 'Swagger UI'],
     image: '/projects/swagger-banking.png',
     live: 'https://github.com/mazkev/go-banking-core-system',
