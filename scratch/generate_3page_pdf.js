@@ -160,13 +160,13 @@ ${repoBlock('express-mongodb-starter-api', 'https://github.com/mazkev/express-mo
         label: 'github.com/mazkev/go-ecommerce-gateway-engine'
       },
       {
-        title: '3. Nexus Enterprise Microservices',
+        title: '3. Java Spring Commerce Platform',
         cat: 'Backend',
-        tech: 'Java Spring Boot 3.3 • Resilience4j • Eureka • PostgreSQL',
-        desc: isEn ? 'Enterprise backend architecture with Eureka service discovery, circuit-breaker failover protection, and JPA auditing.' : 'Arsitektur backend enterprise dengan service discovery Eureka, proteksi circuit breaker Resilience4j, dan auditing JPA.',
+        tech: 'Java 17 • Spring Boot 3.3 • Vue 3 • PostgreSQL',
+        desc: isEn ? 'Enterprise commerce and warehousing platform with Java 17, Spring Boot 3.3, Vue 3 Pinia, OpenPDF invoicing, and PostgreSQL.' : 'Platform e-commerce dan pergudangan enterprise dengan Java 17, Spring Boot 3.3, Vue 3 Pinia, faktur OpenPDF, dan PostgreSQL.',
         img: imgNexus,
-        link: 'https://github.com/mazkev/nexus-workspace-engine',
-        label: 'github.com/mazkev/nexus-workspace-engine'
+        link: 'https://github.com/mazkev/java-spring-commerce-platform',
+        label: 'github.com/mazkev/java-spring-commerce-platform'
       },
       {
         title: '4. Go Clean Architecture Engine',
@@ -291,11 +291,11 @@ ${repoBlock('express-mongodb-starter-api', 'https://github.com/mazkev/express-mo
           <span class="pillar-title">${isEn ? 'Flagship Frontend Web Applications & Interactive Workstations' : 'Aplikasi Web Unggulan & Workstation Grafis'}</span>
         </div>
 ${repoBlock('react-canva-design-studio', 'https://github.com/mazkev/react-canva-design-studio', 'React 19, TypeScript, React-Konva (60 FPS Infinite Canvas), Tailwind CSS', isEn)}
-${repoBlock('market-x-angular', 'https://github.com/mazkev/market-x-angular', 'Angular 19, TypeScript, Reactive Signals, RxJS Event Streams, Tailwind CSS', isEn)}
+${repoBlock('angular-marketplace-storefront', 'https://github.com/mazkev/angular-marketplace-storefront', 'Angular 19, TypeScript, Reactive Signals, RxJS Event Streams, Tailwind CSS', isEn)}
 ${repoBlock('nextjs-spotify-music-player', 'https://github.com/mazkev/nextjs-spotify-music-player', 'Next.js 16, TypeScript, Web Audio API, Canvas Visualizer, Tailwind CSS', isEn)}
 ${repoBlock('react-trello-kanban-suite', 'https://github.com/mazkev/react-trello-kanban-suite', 'React 19, TypeScript, Zustand, Multi-axis Drag & Drop, Glassmorphism UI', isEn)}
 ${repoBlock('baye-ecommerce-marketplace', 'https://github.com/mazkev/baye-ecommerce-marketplace', 'Next.js 16, React 19, TypeScript, LibSQL Serverless, Tailwind CSS', isEn)}
-${repoBlock('nexus-project-workspace', 'https://github.com/mazkev/nexus-project-workspace', 'React 19, TypeScript, Lucide Icons, Enterprise Dashboard UI', isEn)}
+${repoBlock('nextjs-nexus-workspace-studio', 'https://github.com/mazkev/nextjs-nexus-workspace-studio', 'React 19, TypeScript, Lucide Icons, Enterprise Dashboard UI', isEn)}
       </div>
 
       <div class="pillar-card">
@@ -416,8 +416,8 @@ ${repoBlock('flutter-grab-superapp-clone', 'https://github.com/mazkev/flutter-gr
         tech: 'React 19 • Tailwind CSS v4 • Interactive Datepicker',
         desc: isEn ? 'Property booking marketplace with interactive date pickers, guest counters, dynamic property filtering, and responsive cards.' : 'Marketplace sewa akomodasi dengan datepicker interaktif, penghitung tamu, filter spesifikasi dinamis, dan kartu galeri foto responsif.',
         img: imgAirbnb,
-        link: 'https://github.com/mazkev/airbnb-clone-react',
-        label: 'github.com/mazkev/airbnb-clone-react'
+        link: 'https://github.com/mazkev/react-airbnb-booking-platform',
+        label: 'github.com/mazkev/react-airbnb-booking-platform'
       },
       {
         title: '10. Netflix Cinematic Streaming Hub',
@@ -425,8 +425,8 @@ ${repoBlock('flutter-grab-superapp-clone', 'https://github.com/mazkev/flutter-gr
         tech: 'React 19 • TMDb API • Custom Video Modal • Tailwind',
         desc: isEn ? 'Streaming portal with video billboard preview hero, horizontal genre carousels, and detailed movie modal overviews.' : 'Portal streaming film dengan preview billboard video hero, carousel horizontal bergenre, dan modal deskripsi sinematik detail.',
         img: imgNetflix,
-        link: 'https://github.com/mazkev/netflix-clone-react',
-        label: 'github.com/mazkev/netflix-clone-react'
+        link: 'https://github.com/mazkev/react-netflix-streaming-platform',
+        label: 'github.com/mazkev/react-netflix-streaming-platform'
       },
       {
         title: '11. Umrah Travel Agency Booking Portal',
@@ -489,7 +489,7 @@ ${repoBlock('flutter-grab-superapp-clone', 'https://github.com/mazkev/flutter-gr
         </div>
 ${repoBlock('go-banking-core-system', 'https://github.com/mazkev/go-banking-core-system', 'Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI', isEn)}
 ${repoBlock('go-distributed-microservices-lab', 'https://github.com/mazkev/go-distributed-microservices-lab', 'Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker', isEn)}
-${repoBlock('nexus-workspace-engine', 'https://github.com/mazkev/nexus-workspace-engine', 'Java 17, Spring Boot 3.3, Resilience4j, Eureka Discovery, PostgreSQL', isEn)}
+${repoBlock('spring-boot-enterprise-platform', 'https://github.com/mazkev/spring-boot-enterprise-platform', 'Java 17, Spring Boot 3.3, Resilience4j, Eureka Discovery, PostgreSQL', isEn)}
 ${repoBlock('go-ecommerce-gateway-engine', 'https://github.com/mazkev/go-ecommerce-gateway-engine', 'Go 1.26, Gin, MongoDB, Reverse Proxy, Swagger OpenAPI', isEn)}
 ${repoBlock('hono-ecommerce-engine', 'https://github.com/mazkev/hono-ecommerce-engine', 'Bun Runtime, Hono v4, Drizzle ORM, WebSocket Live Chat, SQLite', isEn)}
 ${repoBlock('go-clean-arch', 'https://github.com/mazkev/go-clean-arch', 'Go, Clean Architecture (DDD), Domain/Usecase/Repository, PostgreSQL', isEn)}
@@ -512,11 +512,11 @@ ${repoBlock('flutter-grab-superapp-clone', 'https://github.com/mazkev/flutter-gr
           <span class="pillar-title">${isEn ? 'Pillar 3: Modern Frontend & Mobile Applications' : 'Pilar 3: Aplikasi Frontend Web Modern'}</span>
         </div>
 ${repoBlock('react-canva-design-studio', 'https://github.com/mazkev/react-canva-design-studio', 'React 19, TypeScript, React-Konva 60 FPS, Multi-format Export', isEn)}
-${repoBlock('market-x-angular', 'https://github.com/mazkev/market-x-angular', 'Angular 19, TypeScript, Signals, RxJS Event Streams, Seller Back-office', isEn)}
+${repoBlock('angular-marketplace-storefront', 'https://github.com/mazkev/angular-marketplace-storefront', 'Angular 19, TypeScript, Signals, RxJS Event Streams, Seller Back-office', isEn)}
 ${repoBlock('nextjs-spotify-music-player', 'https://github.com/mazkev/nextjs-spotify-music-player', 'Next.js 16, TypeScript, Web Audio API Canvas Visualizer, Synced Lyrics', isEn)}
 ${repoBlock('react-trello-kanban-suite', 'https://github.com/mazkev/react-trello-kanban-suite', 'React 19, TypeScript, Zustand, Multi-axis Drag & Drop, Glassmorphism', isEn)}
 ${repoBlock('tiktok-clone-react-native-expo', 'https://github.com/mazkev/tiktok-clone-react-native-expo', 'React Native, Expo Video Autoplay Feed, Camera Recording', isEn)}
-${repoBlock('indofooty-match-hub', 'https://github.com/mazkev/indofooty-match-hub', 'React 19, TypeScript, Sports Analytics Dashboard, Responsive UI', isEn)}
+${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-football-sport-portal', 'Next.js 16, Tailwind CSS v4, Live Match Center, Real-Time Sports API', isEn)}
       </div>
 
       <!-- 12 LIVE DEPLOYMENTS TABLE -->

@@ -81,14 +81,14 @@ const roleData = {
         label: 'github.com/mazkev/go-ecommerce-gateway-engine'
       },
       {
-        title: '3. Nexus Enterprise Microservices',
+        title: '3. Java Spring Commerce Platform',
         cat: 'Backend',
-        tech: 'Java Spring Boot 3.3 • Resilience4j • Eureka • PostgreSQL',
-        descEn: 'Enterprise backend architecture with Eureka service discovery, circuit-breaker failover protection, and JPA auditing.',
-        descId: 'Arsitektur backend enterprise dengan service discovery Eureka, proteksi circuit breaker Resilience4j, dan auditing JPA.',
+        tech: 'Java 17 • Spring Boot 3.3 • Vue 3 • PostgreSQL',
+        descEn: 'Enterprise commerce and warehousing platform with Java 17, Spring Boot 3.3, Vue 3 Pinia, OpenPDF invoicing, and PostgreSQL.',
+        descId: 'Platform e-commerce dan pergudangan enterprise dengan Java 17, Spring Boot 3.3, Vue 3 Pinia, faktur OpenPDF, dan PostgreSQL.',
         img: '/projects/nexus.png',
-        link: 'https://github.com/mazkev/nexus-workspace-engine',
-        label: 'github.com/mazkev/nexus-workspace-engine'
+        link: 'https://github.com/mazkev/java-spring-commerce-platform',
+        label: 'github.com/mazkev/java-spring-commerce-platform'
       },
       {
         title: '4. Go Clean Architecture Engine',
@@ -1071,11 +1071,11 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                       </div>
                       <div className="space-y-1.5 print:space-y-1 text-slate-700">
                         <RepoItem name="react-canva-design-studio" url="https://github.com/mazkev/react-canva-design-studio" tech="React 19, TypeScript, React-Konva (60 FPS Infinite Canvas), Tailwind CSS" lang={lang} />
-                        <RepoItem name="market-x-angular" url="https://github.com/mazkev/market-x-angular" tech="Angular 19, TypeScript, Reactive Signals, RxJS Event Streams, Tailwind CSS" lang={lang} />
+                        <RepoItem name="angular-marketplace-storefront" url="https://github.com/mazkev/angular-marketplace-storefront" tech="Angular 19, TypeScript, Reactive Signals, RxJS Event Streams, Tailwind CSS" lang={lang} />
                         <RepoItem name="nextjs-spotify-music-player" url="https://github.com/mazkev/nextjs-spotify-music-player" tech="Next.js 16, TypeScript, Web Audio API, Canvas Visualizer, Tailwind CSS" lang={lang} />
                         <RepoItem name="react-trello-kanban-suite" url="https://github.com/mazkev/react-trello-kanban-suite" tech="React 19, TypeScript, Zustand, Multi-axis Drag & Drop, Glassmorphism UI" lang={lang} />
                         <RepoItem name="baye-ecommerce-marketplace" url="https://github.com/mazkev/baye-ecommerce-marketplace" tech="Next.js 16, React 19, TypeScript, LibSQL Serverless, Tailwind CSS" lang={lang} />
-                        <RepoItem name="nexus-project-workspace" url="https://github.com/mazkev/nexus-project-workspace" tech="React 19, TypeScript, Lucide Icons, Enterprise Dashboard UI" lang={lang} />
+                        <RepoItem name="nextjs-nexus-workspace-studio" url="https://github.com/mazkev/nextjs-nexus-workspace-studio" tech="Next.js 16, React 19, dnd-kit Kanban, TanStack Table, Konva 2D" lang={lang} />
                       </div>
                     </div>
 
@@ -1168,7 +1168,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                       <div className="space-y-1.5 print:space-y-1 text-slate-700">
                         <RepoItem name="go-banking-core-system" url="https://github.com/mazkev/go-banking-core-system" tech="Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI" lang={lang} />
                         <RepoItem name="go-distributed-microservices-lab" url="https://github.com/mazkev/go-distributed-microservices-lab" tech="Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker" lang={lang} />
-                        <RepoItem name="nexus-workspace-engine" url="https://github.com/mazkev/nexus-workspace-engine" tech="Java 17, Spring Boot 3.3, Resilience4j, Eureka Discovery, PostgreSQL" lang={lang} />
+                        <RepoItem name="spring-boot-enterprise-platform" url="https://github.com/mazkev/spring-boot-enterprise-platform" tech="Java 17, Spring Boot 3.3, Spring Security JWT, Bucket4j, Docker" lang={lang} />
                         <RepoItem name="go-ecommerce-gateway-engine" url="https://github.com/mazkev/go-ecommerce-gateway-engine" tech="Go 1.26, Gin, MongoDB, Reverse Proxy, Swagger OpenAPI" lang={lang} />
                         <RepoItem name="hono-ecommerce-engine" url="https://github.com/mazkev/hono-ecommerce-engine" tech="Bun Runtime, Hono v4, Drizzle ORM, WebSocket Live Chat, SQLite" lang={lang} />
                         <RepoItem name="go-clean-arch" url="https://github.com/mazkev/go-clean-arch" tech="Go, Clean Architecture (DDD), Domain/Usecase/Repository, PostgreSQL" lang={lang} />
@@ -1201,11 +1201,11 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                       </div>
                       <div className="space-y-1.5 print:space-y-1 text-slate-700">
                         <RepoItem name="react-canva-design-studio" url="https://github.com/mazkev/react-canva-design-studio" tech="React 19, TypeScript, React-Konva 60 FPS, Multi-format Export" lang={lang} />
-                        <RepoItem name="market-x-angular" url="https://github.com/mazkev/market-x-angular" tech="Angular 19, TypeScript, Signals, RxJS Event Streams, Seller Back-office" lang={lang} />
+                        <RepoItem name="angular-marketplace-storefront" url="https://github.com/mazkev/angular-marketplace-storefront" tech="Angular 19, TypeScript, Signals, RxJS Event Streams, Seller Back-office" lang={lang} />
                         <RepoItem name="nextjs-spotify-music-player" url="https://github.com/mazkev/nextjs-spotify-music-player" tech="Next.js 16, TypeScript, Web Audio API Canvas Visualizer, Synced Lyrics" lang={lang} />
                         <RepoItem name="react-trello-kanban-suite" url="https://github.com/mazkev/react-trello-kanban-suite" tech="React 19, TypeScript, Zustand, Multi-axis Drag & Drop, Glassmorphism" lang={lang} />
                         <RepoItem name="tiktok-clone-react-native-expo" url="https://github.com/mazkev/tiktok-clone-react-native-expo" tech="React Native, Expo Video Autoplay Feed, Camera Recording" lang={lang} />
-                        <RepoItem name="indofooty-match-hub" url="https://github.com/mazkev/indofooty-match-hub" tech="React 19, TypeScript, Sports Analytics Dashboard, Responsive UI" lang={lang} />
+                        <RepoItem name="nextjs-football-sport-portal" url="https://github.com/mazkev/nextjs-football-sport-portal" tech="Next.js 16, Tailwind CSS v4, Live Match Center, Real-Time Sports API" lang={lang} />
                       </div>
                     </div>
 
