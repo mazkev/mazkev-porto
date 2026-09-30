@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-// Helper to load image as base64
 function getBase64Image(relPath) {
   const fullPath = path.resolve(relPath);
   if (fs.existsSync(fullPath)) {
@@ -34,7 +33,7 @@ function generateExecutive3PageHtml(lang) {
     : 'Sistem Backend • Platform Fullstack • Arsitektur Cloud';
 
   const summary = isEn
-    ? `Software Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record maintaining 100% SLA compliance for production operational tickets, authoring structured SQL queries (PostgreSQL, Oracle, MySQL) for transaction verification and data reporting, and monitoring high-availability system workflows 24/7. Concurrently architected and deployed 82 verified software repositories spanning distributed Go & Java Spring Boot microservices, modern Next.js 16 & React 19 web platforms, and mobile apps. Strong foundation in Clean Architecture (DDD), ACID transactional ledgers, Redis caching, RabbitMQ message brokers, and Docker containerization.`
+    ? `Software Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record maintaining 100% SLA compliance for production operational tickets, authoring structured SQL queries (PostgreSQL, Oracle, MySQL) for transaction verification and data reporting, and monitoring high-availability system workflows 24/7. Concurrently architected and deployed 82 verified software repositories spanning distributed Go & Java Spring Boot microservices, modern Next.js 16 & React 19 web platforms, and cross-platform mobile apps. Strong foundation in Clean Architecture (DDD), ACID transactional ledgers, Redis caching, RabbitMQ message brokers, and Docker containerization.`
     : `Software Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support Sistem Enterprise pada PT PLN Icon+. Memiliki keahlian teruji dalam penanganan tiket operasional produksi dengan kepatuhan SLA 100%, penulisan query SQL terstruktur (PostgreSQL, Oracle, MySQL) untuk validasi data transaksi dan pelaporan, serta pemantauan kestabilan sistem 24/7. Secara mandiri merancang dan membangun 82 repositori perangkat lunak terverifikasi mencakup microservices Go & Java Spring Boot, platform web modern Next.js 16 & React 19, serta aplikasi mobile. Menguasai Clean Architecture (DDD), transaksi atomik ACID, caching Redis, RabbitMQ, dan kontainerisasi Docker.`;
 
   const job1Title = 'Application Support Engineer';
@@ -260,38 +259,66 @@ function generateExecutive3PageHtml(lang) {
     font-family: monospace;
     color: #64748b;
   }
-  .case-study {
+
+  /* PAGE 2 STYLES: TECHNICAL REPOSITORY DIRECTORY */
+  .pillar-card {
     background: #f8fafc;
     border: 1px solid #cbd5e1;
     border-left: 3px solid #0f172a;
     border-radius: 4px;
     padding: 4px 6px;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
   }
-  .case-title {
-    font-size: 7.8pt;
-    font-weight: 800;
-    color: #0f172a;
+  .pillar-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    border-bottom: 0.5px solid #e2e8f0;
+    padding-bottom: 1.5px;
+    margin-bottom: 2.5px;
   }
-  .case-tech {
-    font-size: 6.6pt;
+  .pillar-title {
+    font-size: 8pt;
+    font-weight: 800;
+    color: #0f172a;
+    text-transform: uppercase;
+  }
+  .pillar-count {
+    font-size: 6.5pt;
     font-family: monospace;
     font-weight: 700;
     color: #475569;
-    margin: 1px 0;
+    background: #e2e8f0;
+    padding: 1px 4px;
+    border-radius: 2px;
   }
-  .case-desc {
-    font-size: 7.2pt;
+  .pillar-tech {
+    font-size: 6.5pt;
+    font-family: monospace;
+    font-weight: 700;
+    color: #1e40af;
+    margin-bottom: 2px;
+  }
+  .repo-item {
+    font-size: 7.1pt;
     color: #334155;
     line-height: 1.25;
+    margin-bottom: 2px;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .repo-name {
+    font-family: monospace;
+    font-weight: 700;
+    color: #0f172a;
+    text-decoration: underline;
+    font-size: 6.8pt;
   }
   .table-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4px;
+    gap: 3.5px;
     font-size: 6.8pt;
   }
   .live-item {
@@ -303,7 +330,8 @@ function generateExecutive3PageHtml(lang) {
     justify-content: space-between;
     align-items: baseline;
   }
-  /* PAGE 3 VISUAL CARDS */
+
+  /* PAGE 3 STYLES: VISUAL GALLERY */
   .visual-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -385,9 +413,9 @@ function generateExecutive3PageHtml(lang) {
 </head>
 <body>
 
-<!-- ========================================== -->
-<!-- PAGE 1: EXECUTIVE ATS CORE RESUME          -->
-<!-- ========================================== -->
+<!-- ============================================================== -->
+<!-- PAGE 1: EXECUTIVE ATS CORE RESUME (PROFIL & EXPERTISE)         -->
+<!-- ============================================================== -->
 <div class="page">
   <div>
     <!-- HEADER -->
@@ -495,25 +523,25 @@ function generateExecutive3PageHtml(lang) {
   <div class="page-footer">
     <span>Kevin Eka Pratama • ${roleTitle}</span>
     <span>kevinekapratama@gmail.com • +62 (813) 2661-2344</span>
-    <span>Page 1 of 3</span>
+    <span>Page 1 of 3 (Executive Profile)</span>
   </div>
 </div>
 
 <div class="page-break"></div>
 
-<!-- ========================================== -->
-<!-- PAGE 2: PROJECTS & REPOSITORIES (82 REPOS) -->
-<!-- ========================================== -->
+<!-- ============================================================== -->
+<!-- PAGE 2: TECHNICAL PROJECT & REPOSITORY DIRECTORY (82 REPOS)   -->
+<!-- ============================================================== -->
 <div class="page">
   <div>
     <!-- PAGE 2 HEADER -->
-    <div style="border-bottom: 2px solid #0f172a; padding-bottom: 5px; margin-bottom: 7px; display: flex; justify-content: space-between; align-items: baseline;">
+    <div style="border-bottom: 2px solid #0f172a; padding-bottom: 5px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: baseline;">
       <div>
         <h2 style="font-size: 11pt; font-weight: 900; text-transform: uppercase; color: #0f172a;">
-          ${isEn ? 'Technical Projects & Engineering Repositories' : 'Proyek Teknis & Repositori Rekayasa Perangkat Lunak'}
+          ${isEn ? 'Technical Project & Repository Directory' : 'Direktori & Katalog Repositori Rekayasa Perangkat Lunak'}
         </h2>
         <span style="font-size: 7pt; font-weight: 700; color: #475569;">
-          ${isEn ? '82 Curated Open-Source Repositories • 3 Engineering Pillars • 12 Live Deployments' : '82 Repositori Terverifikasi • 3 Pilar Rekayasa • 12 Aplikasi Aktif'}
+          ${isEn ? '82 Curated Open-Source Repositories Grouped by Engineering Pillars' : '82 Repositori Terverifikasi Dikelompokkan ke Dalam 3 Pilar Teknis'}
         </span>
       </div>
       <div style="font-size: 7pt; font-family: monospace; font-weight: 700; color: #334155;">
@@ -522,124 +550,131 @@ function generateExecutive3PageHtml(lang) {
     </div>
 
     <!-- EXECUTIVE METRICS GRID -->
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin-bottom: 7px;">
-      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 4px; padding: 4px 6px; text-align: center;">
-        <div style="font-size: 11pt; font-weight: 900; color: #15803d;">19 Repos</div>
-        <div style="font-size: 6.2pt; font-weight: 700; color: #166534; text-transform: uppercase;">Backend & Cloud</div>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin-bottom: 6px;">
+      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 4px; padding: 3px 5px; text-align: center;">
+        <div style="font-size: 10.5pt; font-weight: 900; color: #15803d;">19 Repos</div>
+        <div style="font-size: 6pt; font-weight: 700; color: #166534; text-transform: uppercase;">Backend & Cloud</div>
       </div>
-      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 4px; padding: 4px 6px; text-align: center;">
-        <div style="font-size: 11pt; font-weight: 900; color: #1d4ed8;">22 Repos</div>
-        <div style="font-size: 6.2pt; font-weight: 700; color: #1e40af; text-transform: uppercase;">Fullstack & Mobile</div>
+      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 4px; padding: 3px 5px; text-align: center;">
+        <div style="font-size: 10.5pt; font-weight: 900; color: #1d4ed8;">22 Repos</div>
+        <div style="font-size: 6pt; font-weight: 700; color: #1e40af; text-transform: uppercase;">Fullstack & Mobile</div>
       </div>
-      <div style="background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 4px; padding: 4px 6px; text-align: center;">
-        <div style="font-size: 11pt; font-weight: 900; color: #7e22ce;">41 Repos</div>
-        <div style="font-size: 6.2pt; font-weight: 700; color: #6b21a8; text-transform: uppercase;">Frontend Web Apps</div>
+      <div style="background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 4px; padding: 3px 5px; text-align: center;">
+        <div style="font-size: 10.5pt; font-weight: 900; color: #7e22ce;">41 Repos</div>
+        <div style="font-size: 6pt; font-weight: 700; color: #6b21a8; text-transform: uppercase;">Frontend Web Apps</div>
       </div>
-      <div style="background: #f0fdfa; border: 1px solid #99f6e4; border-radius: 4px; padding: 4px 6px; text-align: center;">
-        <div style="font-size: 11pt; font-weight: 900; color: #0f766e;">12 Live Apps</div>
-        <div style="font-size: 6.2pt; font-weight: 700; color: #115e59; text-transform: uppercase;">Active Vercel URLs</div>
-      </div>
-    </div>
-
-    <!-- 4 FEATURED CASE STUDIES -->
-    <div class="section">
-      <div class="section-title">
-        <span>${isEn ? '4 Featured Engineering Case Studies' : '4 Studi Kasus Rekayasa Arsitektur Utama'}</span>
-        <span class="badge">${isEn ? 'In-Depth Architectural Highlights' : 'Sorotan Arsitektur Mendalam'}</span>
-      </div>
-
-      <!-- STUDY 1 -->
-      <div class="case-study">
-        <div class="case-title">
-          <span>1. Distributed Microservices & Concurrency Lab</span>
-          <a href="https://github.com/mazkev/go-distributed-microservices-lab" style="font-size: 6.6pt; font-family: monospace; color: #0284c7; text-decoration: underline;">gh/go-distributed-microservices-lab</a>
-        </div>
-        <div class="case-tech">GO • GRPC • PROTOCOL BUFFERS • RABBITMQ • REDIS • CLEAN ARCHITECTURE • DOCKER</div>
-        <div class="case-desc">
-          ${isEn 
-            ? 'High-throughput microservices architecture with binary gRPC inter-service communication and RabbitMQ asynchronous message queues. Implemented Redis Cache-Aside pattern reducing read latency to sub-milliseconds, worker pool concurrency, and strict Domain-Usecase-Repository decoupling.'
-            : 'Arsitektur microservices performa tinggi dengan komunikasi biner gRPC dan antrean pesan asinkron RabbitMQ. Menerapkan pola Redis Cache-Aside yang mereduksi latensi baca ke sub-milidetik, worker pool concurrency, dan pemisahan lapisan Domain, Usecase, dan Repository.'}
-        </div>
-      </div>
-
-      <!-- STUDY 2 -->
-      <div class="case-study">
-        <div class="case-title">
-          <span>2. BayE Modern E-Commerce & Real-Time Auction Platform</span>
-          <span style="font-size: 6.6pt; font-family: monospace;">
-            <a href="https://baye-ecommerce-marketplace.vercel.app" style="color: #059669; font-weight: 700; text-decoration: underline;">Live: baye-ecommerce-marketplace.vercel.app</a>
-            • <a href="https://github.com/mazkev/baye-ecommerce-marketplace" style="color: #4f46e5; text-decoration: underline;">gh/baye-ecommerce-marketplace</a>
-          </span>
-        </div>
-        <div class="case-tech">NEXT.JS 16 (APP ROUTER) • REACT 19 • PRISMA 7 • LIBSQL • SERVER COMPONENTS • INVOICE QR</div>
-        <div class="case-desc">
-          ${isEn 
-            ? 'Production auction marketplace built with Next.js 16 and Prisma 7 LibSQL adapter. Features server-rendered initial hydration for instant load, responsive live bidding simulation, multi-product spec comparisons, and digital QR invoice generation.'
-            : 'Platform e-commerce lelang produksi dengan Next.js 16 dan adapter Prisma 7 LibSQL. Menampilkan server-rendered hydration untuk waktu muat instan, simulasi live bidding interaktif, perbandingan spesifikasi produk, dan generator invoice QR digital.'}
-        </div>
-      </div>
-
-      <!-- STUDY 3 -->
-      <div class="case-study">
-        <div class="case-title">
-          <span>3. Digital Wallet & Transactional Balance Transfer Engine</span>
-          <a href="https://github.com/mazkev/go-banking-core-system" style="font-size: 6.6pt; font-family: monospace; color: #0284c7; text-decoration: underline;">gh/go-banking-core-system</a>
-        </div>
-        <div class="case-tech">GO • POSTGRESQL • GORM • ACID TRANSACTION ISOLATION • BCRYPT PIN • SWAGGER OPENAPI</div>
-        <div class="case-desc">
-          ${isEn 
-            ? 'Financial balance transfer engine implementing atomic account-to-account transfers with ACID transaction isolation and row-level locking in PostgreSQL, preventing race conditions and double-spending. Features Bcrypt PIN validation and structured audit ledger logging.'
-            : 'Engine transfer saldo dompet digital yang menerapkan transfer akun atomik dengan isolasi transaksi ACID dan row-level locking di PostgreSQL untuk mencegah race condition. Dilengkapi validasi PIN Bcrypt dan structured audit ledger logging.'}
-        </div>
-      </div>
-
-      <!-- STUDY 4 -->
-      <div class="case-study">
-        <div class="case-title">
-          <span>4. Canvass Visual Graphic Design & Publishing Workstation</span>
-          <span style="font-size: 6.6pt; font-family: monospace;">
-            <a href="https://canva-clone-fawn.vercel.app" style="color: #059669; font-weight: 700; text-decoration: underline;">Live: canva-clone-fawn.vercel.app</a>
-            • <a href="https://github.com/mazkev/react-canva-design-studio" style="color: #4f46e5; text-decoration: underline;">gh/react-canva-design-studio</a>
-          </span>
-        </div>
-        <div class="case-tech">REACT 19 • REACT-KONVA • DUAL-LAYER 60 FPS CANVAS • ZUSTAND • TAILWIND CSS V4</div>
-        <div class="case-desc">
-          ${isEn 
-            ? 'Interactive vector publishing workspace built on React 19 and React-Konva. Utilizes dual-layer canvas architecture isolating transformation matrices from main UI rendering tree, reactive Zustand state, and high-resolution export pipelines.'
-            : 'Workstation desain vektor interaktif berbasis React 19 dan React-Konva. Menggunakan arsitektur dual-layer kanvas 60 FPS untuk mengisolasi transformasi grafis dari UI utama, state reaktif Zustand, dan pipeline ekspor multi-format resolusi tinggi.'}
-        </div>
+      <div style="background: #f0fdfa; border: 1px solid #99f6e4; border-radius: 4px; padding: 3px 5px; text-align: center;">
+        <div style="font-size: 10.5pt; font-weight: 900; color: #0f766e;">12 Live Apps</div>
+        <div style="font-size: 6pt; font-weight: 700; color: #115e59; text-transform: uppercase;">Active Vercel URLs</div>
       </div>
     </div>
 
-    <!-- 12 LIVE DEPLOYMENTS TABLE -->
-    <div class="section">
+    <!-- 3 PILLARS BREAKDOWN (TECHNICAL REPOSITORY DIRECTORY) -->
+    
+    <!-- PILLAR 1: BACKEND & CLOUD SYSTEMS (19 Repos) -->
+    <div class="pillar-card">
+      <div class="pillar-header">
+        <span class="pillar-title">${isEn ? 'Pillar 1: Backend Systems & Cloud Architecture' : 'Pilar 1: Sistem Backend & Arsitektur Cloud'}</span>
+        <span class="pillar-count">19 Repositories</span>
+      </div>
+      <div class="pillar-tech">Go (Golang) • Java Spring Boot • Bun/Hono • Node.js • PostgreSQL • Redis • RabbitMQ • gRPC • Docker</div>
+      <div class="repo-item">
+        <span>•</span>
+        <span><a href="https://github.com/mazkev/go-banking-core-system" class="repo-name">go-banking-core-system:</a> ${isEn ? 'Core banking engine with atomic balance transfers, ACID PostgreSQL row locks, and Bcrypt PIN.' : 'Engine core banking transaksi transfer saldo atomik dengan row-level lock PostgreSQL dan validasi PIN Bcrypt.'}</span>
+      </div>
+      <div class="repo-item">
+        <span>•</span>
+        <span><a href="https://github.com/mazkev/go-distributed-microservices-lab" class="repo-name">go-distributed-microservices-lab:</a> ${isEn ? 'High-throughput microservices communicating over binary gRPC and asynchronous RabbitMQ event bus.' : 'Layanan mikro terdistribusi dengan komunikasi biner gRPC dan antrean pesan asinkron RabbitMQ.'}</span>
+      </div>
+      <div class="repo-item">
+        <span>•</span>
+        <span><a href="https://github.com/mazkev/nexus-workspace-engine" class="repo-name">nexus-workspace-engine:</a> ${isEn ? 'Java Spring Boot 3.3 enterprise microservices ecosystem with Resilience4j circuit breakers and Eureka discovery.' : 'Ekosistem microservices enterprise Java Spring Boot 3.3 dengan circuit breaker Resilience4j dan discovery Eureka.'}</span>
+      </div>
+      <div class="repo-item">
+        <span>•</span>
+        <span><a href="https://github.com/mazkev/go-clean-arch" class="repo-name">go-clean-arch:</a> ${isEn ? 'Decoupled Clean Architecture boilerplate implementing strict Domain, Usecase, and Repository boundaries.' : 'Arsitektur Clean terstruktur dengan pemisahan tegas antara lapisan Domain, Usecase, dan Repository.'}</span>
+      </div>
+    </div>
+
+    <!-- PILLAR 2: FULLSTACK & MOBILE PLATFORMS (22 Repos) -->
+    <div class="pillar-card">
+      <div class="pillar-header">
+        <span class="pillar-title">${isEn ? 'Pillar 2: Fullstack Web Platforms & Mobile Applications' : 'Pilar 2: Platform Web Fullstack & Aplikasi Mobile'}</span>
+        <span class="pillar-count">22 Repositories</span>
+      </div>
+      <div class="pillar-tech">Next.js 16 • React 19 • React Native (Expo SDK 56) • Flutter • FastAPI • Laravel 12 • Prisma 7 • LibSQL</div>
+      <div class="repo-item">
+        <span>•</span>
+        <span><a href="https://github.com/mazkev/baye-ecommerce-marketplace" class="repo-name">baye-ecommerce-marketplace:</a> ${isEn ? 'Auction e-commerce with Next.js 16 Server Components, live bidding simulation, LibSQL, and digital QR invoices.' : 'Marketplace lelang produksi dengan Next.js 16, LibSQL serverless, komparasi produk, dan cetak invoice QR digital.'}</span>
+      </div>
+      <div class="repo-item">
+        <span>•</span>
+        <span><a href="https://github.com/mazkev/tokopedia-react-storefront" class="repo-name">tokopedia-react-storefront:</a> ${isEn ? 'Fullstack marketplace combining Go REST API backend with React 19, category filters, and optimistic cart checkout.' : 'E-commerce fullstack memadukan backend Go REST API dengan frontend React 19 dan sinkronisasi transaksi PostgreSQL.'}</span>
+      </div>
+      <div class="repo-item">
+        <span>•</span>
+        <span><a href="https://github.com/mazkev/treveloka-react-native-expo" class="repo-name">treveloka-react-native-expo:</a> ${isEn ? 'Mobile travel booking superapp with React Native 0.85, Expo Router, and Gemini AI itinerary assistant.' : 'Aplikasi mobile pemesanan perjalanan dengan React Native 0.85, Expo Router, dan asisten rencana perjalanan Gemini AI.'}</span>
+      </div>
+      <div class="repo-item">
+        <span>•</span>
+        <span><a href="https://github.com/mazkev/tiktok-clone-react-native-expo" class="repo-name">tiktok-clone-react-native-expo:</a> ${isEn ? 'Mobile short-video platform featuring Expo Video autoplay feeds, camera recording, and live comment overlays.' : 'Platform video pendek mobile dengan pemutar Expo Video seamless autoplay dan perekaman video kamera terintegrasi.'}</span>
+      </div>
+    </div>
+
+    <!-- PILLAR 3: FRONTEND WEB APPLICATIONS (41 Repos) -->
+    <div class="pillar-card">
+      <div class="pillar-header">
+        <span class="pillar-title">${isEn ? 'Pillar 3: Modern Frontend Web Applications' : 'Pilar 3: Aplikasi Frontend Web Modern'}</span>
+        <span class="pillar-count">41 Repositories</span>
+      </div>
+      <div class="pillar-tech">React 19 • Vue 3 (Pinia) • Angular 19 (Signals) • Zustand • Tailwind CSS v4 • React-Konva • Web Audio API</div>
+      <div class="repo-item">
+        <span>•</span>
+        <span><a href="https://github.com/mazkev/react-canva-design-studio" class="repo-name">react-canva-design-studio:</a> ${isEn ? 'Vector graphic studio with dual-layer 60 FPS React-Konva canvas, transformation matrices, and image export.' : 'Studio desain grafis berbasis web dengan dual-layer kanvas 60 FPS React-Konva dan pipeline ekspor multi-format.'}</span>
+      </div>
+      <div class="repo-item">
+        <span>•</span>
+        <span><a href="https://github.com/mazkev/market-x-angular" class="repo-name">market-x-angular:</a> ${isEn ? 'Enterprise e-commerce storefront powered by Angular 19 reactive Signals, RxJS event streams, and seller dashboard.' : 'Storefront e-commerce enterprise dengan reaktivitas Angular 19 Signals, RxJS streams, dan dashboard penjual.'}</span>
+      </div>
+      <div class="repo-item">
+        <span>•</span>
+        <span><a href="https://github.com/mazkev/nextjs-spotify-music-player" class="repo-name">nextjs-spotify-music-player:</a> ${isEn ? 'Music streaming player with real-time Web Audio API frequency analysis canvas visualizer and synchronized lyrics.' : 'Pemutar musik web dengan visualisasi frekuensi real-time Web Audio API pada kanvas dan sinkronisasi lirik.'}</span>
+      </div>
+      <div class="repo-item">
+        <span>•</span>
+        <span><a href="https://github.com/mazkev/react-trello-kanban-suite" class="repo-name">react-trello-kanban-suite:</a> ${isEn ? 'Glassmorphism Kanban project board with multi-axis drag-and-drop task sorting and Zustand state management.' : 'Board manajemen proyek Kanban glassmorphism dengan drag-and-drop multi-axis dan state store Zustand.'}</span>
+      </div>
+    </div>
+
+    <!-- 12 VERIFIED CLOUD DEPLOYMENTS -->
+    <div class="section" style="margin-bottom: 4px;">
       <div class="section-title">
         <span>${isEn ? '12 Verified Cloud Deployments (HTTP 200 OK on Vercel)' : '12 Aplikasi Aktif Terverifikasi di Cloud (Vercel)'}</span>
         <span class="badge">${isEn ? 'Clickable Live Demos' : 'Dapat Diuji Langsung'}</span>
       </div>
       <div class="table-grid">
-        <div class="live-item"><strong>1. BayE Auction Marketplace:</strong> <a href="https://baye-ecommerce-marketplace.vercel.app" style="color: #059669; text-decoration: underline;">baye-ecommerce-marketplace.vercel.app</a></div>
-        <div class="live-item"><strong>2. Nexus Workspace Studio:</strong> <a href="https://nexus-project-mu.vercel.app" style="color: #059669; text-decoration: underline;">nexus-project-mu.vercel.app</a></div>
-        <div class="live-item"><strong>3. Spotify Music Web Player:</strong> <a href="https://spotify-clonez.vercel.app" style="color: #059669; text-decoration: underline;">spotify-clonez.vercel.app</a></div>
-        <div class="live-item"><strong>4. Indofooty Live Match Center:</strong> <a href="https://indofooty.vercel.app" style="color: #059669; text-decoration: underline;">indofooty.vercel.app</a></div>
-        <div class="live-item"><strong>5. AI Component Wireframer:</strong> <a href="https://ai-component-wireframer.vercel.app" style="color: #059669; text-decoration: underline;">ai-component-wireframer.vercel.app</a></div>
-        <div class="live-item"><strong>6. Umrah Travel Landing Portal:</strong> <a href="https://umrah-travel-landing.vercel.app" style="color: #059669; text-decoration: underline;">umrah-travel-landing.vercel.app</a></div>
-        <div class="live-item"><strong>7. Cloud Console Simulator:</strong> <a href="https://cloud-console-simulator.vercel.app" style="color: #059669; text-decoration: underline;">cloud-console-simulator.vercel.app</a></div>
-        <div class="live-item"><strong>8. Snake AI Pathfinding Lab:</strong> <a href="https://snake-ai-pathfinding.vercel.app" style="color: #059669; text-decoration: underline;">snake-ai-pathfinding.vercel.app</a></div>
-        <div class="live-item"><strong>9. Canvass Visual Studio:</strong> <a href="https://canva-clone-fawn.vercel.app" style="color: #059669; text-decoration: underline;">canva-clone-fawn.vercel.app</a></div>
-        <div class="live-item"><strong>10. Trello Glassmorphism Kanban:</strong> <a href="https://trello-azure-five.vercel.app" style="color: #059669; text-decoration: underline;">trello-azure-five.vercel.app</a></div>
-        <div class="live-item"><strong>11. MarketX Angular 19 Store:</strong> <a href="https://market-x-angular.vercel.app" style="color: #059669; text-decoration: underline;">market-x-angular.vercel.app</a></div>
-        <div class="live-item"><strong>12. HubSpot Enterprise CRM:</strong> <a href="https://hub-spot-clone-five.vercel.app" style="color: #059669; text-decoration: underline;">hub-spot-clone-five.vercel.app</a></div>
+        <div class="live-item"><strong>1. BayE Auction Store:</strong> <a href="https://baye-ecommerce-marketplace.vercel.app" style="color: #059669; text-decoration: underline;">baye-ecommerce-marketplace.vercel.app</a></div>
+        <div class="live-item"><strong>2. Nexus Workspace:</strong> <a href="https://nexus-project-mu.vercel.app" style="color: #059669; text-decoration: underline;">nexus-project-mu.vercel.app</a></div>
+        <div class="live-item"><strong>3. Spotify Music Player:</strong> <a href="https://spotify-clonez.vercel.app" style="color: #059669; text-decoration: underline;">spotify-clonez.vercel.app</a></div>
+        <div class="live-item"><strong>4. Indofooty Match Hub:</strong> <a href="https://indofooty.vercel.app" style="color: #059669; text-decoration: underline;">indofooty.vercel.app</a></div>
+        <div class="live-item"><strong>5. AI Wireframer Lab:</strong> <a href="https://ai-component-wireframer.vercel.app" style="color: #059669; text-decoration: underline;">ai-component-wireframer.vercel.app</a></div>
+        <div class="live-item"><strong>6. Umrah Travel Portal:</strong> <a href="https://umrah-travel-landing.vercel.app" style="color: #059669; text-decoration: underline;">umrah-travel-landing.vercel.app</a></div>
+        <div class="live-item"><strong>7. Cloud Simulator:</strong> <a href="https://cloud-console-simulator.vercel.app" style="color: #059669; text-decoration: underline;">cloud-console-simulator.vercel.app</a></div>
+        <div class="live-item"><strong>8. Snake AI Pathfinding:</strong> <a href="https://snake-ai-pathfinding.vercel.app" style="color: #059669; text-decoration: underline;">snake-ai-pathfinding.vercel.app</a></div>
+        <div class="live-item"><strong>9. Canvass Design Studio:</strong> <a href="https://canva-clone-fawn.vercel.app" style="color: #059669; text-decoration: underline;">canva-clone-fawn.vercel.app</a></div>
+        <div class="live-item"><strong>10. Trello Kanban Suite:</strong> <a href="https://trello-azure-five.vercel.app" style="color: #059669; text-decoration: underline;">trello-azure-five.vercel.app</a></div>
+        <div class="live-item"><strong>11. MarketX Angular Store:</strong> <a href="https://market-x-angular.vercel.app" style="color: #059669; text-decoration: underline;">market-x-angular.vercel.app</a></div>
+        <div class="live-item"><strong>12. HubSpot CRM Platform:</strong> <a href="https://hub-spot-clone-five.vercel.app" style="color: #059669; text-decoration: underline;">hub-spot-clone-five.vercel.app</a></div>
       </div>
     </div>
 
     <!-- AUDIT NOTE -->
-    <div style="background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px 7px; margin-top: 5px;">
-      <span style="font-size: 6.8pt; color: #1e293b; line-height: 1.25;">
-        <strong>${isEn ? 'Complete 82-Repository Directory:' : 'Katalog Lengkap 82 Repositori:'}</strong> 
+    <div style="background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; padding: 3px 6px;">
+      <span style="font-size: 6.6pt; color: #1e293b; line-height: 1.25;">
+        <strong>${isEn ? 'Directory Audit Note:' : 'Catatan Audit Direktori:'}</strong> 
         ${isEn 
-          ? 'Source code for all 82 audited repositories across Backend (19), Fullstack & Mobile (22), and Frontend (41) is publicly available at <strong>github.com/mazkev</strong> and interactive web workstation at <strong>mazkev.vercel.app</strong>.'
-          : 'Seluruh source code 82 repositori terverifikasi (19 Backend, 22 Fullstack & Mobile, 41 Frontend) dapat diakses publik pada profil GitHub <strong>github.com/mazkev</strong> dan web workstation interaktif <strong>mazkev.vercel.app</strong>.'}
+          ? 'Full source code, commit history, and test suites for all 82 audited repositories are publicly available at <strong>github.com/mazkev</strong> and interactive web workstation at <strong>mazkev.vercel.app</strong>.'
+          : 'Seluruh source code, riwayat komit, dan dokumentasi arsitektur untuk 82 repositori terverifikasi dapat diaudit publik pada <strong>github.com/mazkev</strong> dan workstation <strong>mazkev.vercel.app</strong>.'}
       </span>
     </div>
   </div>
@@ -648,25 +683,25 @@ function generateExecutive3PageHtml(lang) {
   <div class="page-footer">
     <span>Kevin Eka Pratama • ${roleTitle}</span>
     <span>mazkev.vercel.app • github.com/mazkev</span>
-    <span>Page 2 of 3</span>
+    <span>Page 2 of 3 (Technical Project Directory)</span>
   </div>
 </div>
 
 <div class="page-break"></div>
 
-<!-- ========================================== -->
-<!-- PAGE 3: VISUAL PROJECT CASE STUDIES ANNEX  -->
-<!-- ========================================== -->
+<!-- ============================================================== -->
+<!-- PAGE 3: VISUAL PROJECT CASE STUDIES ANNEX (SHOWCASE GALLERY)   -->
+<!-- ============================================================== -->
 <div class="page">
   <div>
     <!-- PAGE 3 HEADER -->
     <div style="border-bottom: 2px solid #0f172a; padding-bottom: 5px; margin-bottom: 7px; display: flex; justify-content: space-between; align-items: baseline;">
       <div>
         <h2 style="font-size: 11pt; font-weight: 900; text-transform: uppercase; color: #0f172a;">
-          ${isEn ? 'Visual Case Studies & Technical Project Annex' : 'Lampiran Visual Proyek & Studi Kasus Rekayasa Perangkat Lunak'}
+          ${isEn ? 'Visual Project Annex & Production Interfaces' : 'Lampiran Visual Portofolio & Bukti Antarmuka Produksi'}
         </h2>
         <span style="font-size: 7pt; font-weight: 700; color: #475569;">
-          ${isEn ? 'Architectural Screenshots, System Flows & Production Interfaces' : 'Tangkapan Layar Arsitektur, Alur Sistem & Tampilan Antarmuka Produksi'}
+          ${isEn ? 'High-Fidelity Visual Proof: Real Production Screenshots, Workstation Canvas & Live Demos' : 'Bukti Visual Nyata: Tangkapan Layar Produksi Asli, Kanvas Interaktif & Live Demo'}
         </span>
       </div>
       <div style="font-size: 7pt; font-family: monospace; font-weight: 700; color: #334155;">
@@ -834,7 +869,7 @@ function generateExecutive3PageHtml(lang) {
   <div class="page-footer">
     <span>Kevin Eka Pratama • ${roleTitle}</span>
     <span>mazkev.vercel.app • github.com/mazkev</span>
-    <span>Page 3 of 3</span>
+    <span>Page 3 of 3 (Visual Project Annex)</span>
   </div>
 </div>
 
