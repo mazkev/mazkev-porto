@@ -32,6 +32,8 @@ const imgIndofooty = getBase64Image('public/projects/indofooty.jpg');
 const imgGrab = getBase64Image('public/projects/grab.png');
 const imgAirbnb = getBase64Image('public/projects/airbnb.png');
 const imgNetflix = getBase64Image('public/projects/netflix.jpg');
+const imgUmrah = getBase64Image('public/projects/umrah.jpg');
+const imgCloudConsole = getBase64Image('public/projects/cloudconsole.jpg');
 
 function repoBlock(name, url, tech, isEn) {
   const label = isEn ? 'Tech Stack:' : 'Teknologi:';
@@ -132,8 +134,8 @@ ${repoBlock('express-mongodb-starter-api', 'https://github.com/mazkev/express-mo
     `;
 
     page3Title = isEn 
-      ? 'Backend Visual Annex: 10 Production API Architectures & Contracts' 
-      : 'Lampiran Visual Backend: 10 Arsitektur API & Topologi Microservices';
+      ? 'Backend Visual Annex: 12 Production API Architectures & Contracts' 
+      : 'Lampiran Visual Backend: 12 Arsitektur API & Topologi Microservices';
     page3Subtitle = isEn
       ? 'Interactive API Contracts, Microservices Topologies, Schema Proofs & Rate Limiters'
       : 'Dokumentasi Kontrak API Interaktif, Topologi Microservices & Pembuktian Skema Transaksi';
@@ -228,6 +230,24 @@ ${repoBlock('express-mongodb-starter-api', 'https://github.com/mazkev/express-mo
         img: imgMarketinvent,
         link: 'https://github.com/mazkev/spring-boot-enterprise-platform',
         label: 'github.com/mazkev/spring-boot-enterprise-platform'
+      },
+      {
+        title: '11. Spring Boot Book Catalog API',
+        cat: 'Backend',
+        tech: 'Java 17 • Spring Boot 3.3 • MongoDB • OpenAPI 3.0',
+        desc: isEn ? 'Enterprise book catalog service with Spring Data MongoDB, automated OpenAPI documentation, and containerized deployment.' : 'Layanan katalog buku enterprise dengan Spring Data MongoDB, dokumentasi otomatis OpenAPI, dan kontainerisasi Docker.',
+        img: imgMarketinvent,
+        link: 'https://github.com/mazkev/spring-boot-book-manager-api',
+        label: 'github.com/mazkev/spring-boot-book-manager-api'
+      },
+      {
+        title: '12. Cloud PaaS Deployment Console Simulator',
+        cat: 'Cloud Tool',
+        tech: 'React 19 • Terminal Stream Logs • DNS • Secrets Vault',
+        desc: isEn ? 'PaaS cloud deployment simulator featuring real-time build streaming terminal logs, custom DNS domain routing, and environment secrets vault.' : 'Simulator konsol cloud PaaS dengan streaming log build terminal real-time, konfigurasi domain DNS, dan brankas rahasia env variables.',
+        img: imgCloudConsole,
+        link: 'https://github.com/mazkev/react-cloud-console-simulator',
+        label: 'github.com/mazkev/react-cloud-console-simulator'
       }
     ];
   } 
@@ -311,8 +331,8 @@ ${repoBlock('flutter-grab-superapp-clone', 'https://github.com/mazkev/flutter-gr
     `;
 
     page3Title = isEn 
-      ? 'Frontend & Mobile Visual Annex: 10 Flagship Interfaces & Demos' 
-      : 'Lampiran Visual Frontend & Mobile: 10 Antarmuka Unggulan & Live Demo';
+      ? 'Frontend & Mobile Visual Annex: 12 Flagship Interfaces & Demos' 
+      : 'Lampiran Visual Frontend & Mobile: 12 Antarmuka Unggulan & Live Demo';
     page3Subtitle = isEn
       ? 'Vector Canvas Workstations, Dynamic Media Clients, Dashboards & Mobile App Views'
       : 'Workstation Kanvas Vektor, Klien Media Dinamis, Dashboard & Tampilan Aplikasi Mobile';
@@ -407,6 +427,24 @@ ${repoBlock('flutter-grab-superapp-clone', 'https://github.com/mazkev/flutter-gr
         img: imgNetflix,
         link: 'https://github.com/mazkev/netflix-clone-react',
         label: 'github.com/mazkev/netflix-clone-react'
+      },
+      {
+        title: '11. Umrah Travel Agency Booking Portal',
+        cat: 'Frontend',
+        tech: 'React 19 • Cost Calculator • Itineraries • Tailwind',
+        desc: isEn ? 'Pilgrimage travel portal with dynamic package cost estimator, interactive daily itineraries, and WhatsApp booking consultation.' : 'Portal travel haji dan umrah dengan kalkulator estimasi biaya paket, jadwal perjalanan hari demi hari, dan integrasi konsultasi WhatsApp.',
+        img: imgUmrah,
+        link: 'https://github.com/mazkev/react-umrah-travel-landing',
+        label: 'github.com/mazkev/react-umrah-travel-landing'
+      },
+      {
+        title: '12. Cloud PaaS Deployment Console Simulator',
+        cat: 'Cloud Tool',
+        tech: 'React 19 • Terminal Stream Logs • DNS • Secrets Vault',
+        desc: isEn ? 'PaaS cloud deployment simulator featuring real-time build streaming terminal logs, custom DNS domain routing, and environment secrets vault.' : 'Simulator konsol cloud PaaS dengan streaming log build terminal real-time, konfigurasi domain DNS, dan brankas rahasia env variables.',
+        img: imgCloudConsole,
+        link: 'https://github.com/mazkev/react-cloud-console-simulator',
+        label: 'github.com/mazkev/react-cloud-console-simulator'
       }
     ];
   }
@@ -505,8 +543,8 @@ ${repoBlock('indofooty-match-hub', 'https://github.com/mazkev/indofooty-match-hu
     `;
 
     page3Title = isEn 
-      ? 'Visual Project Annex: 10 Production Interfaces & Workstations' 
-      : 'Lampiran Visual Portofolio: 10 Antarmuka Produksi & Workstation';
+      ? 'Visual Project Annex: 12 Production Interfaces & Workstations' 
+      : 'Lampiran Visual Portofolio: 12 Antarmuka Produksi & Workstation';
     page3Subtitle = isEn
       ? 'High-Fidelity Visual Proof: Real Production Screenshots, Workstation Canvas & Live Demos'
       : 'Bukti Visual Nyata: Tangkapan Layar Produksi Asli, Kanvas Interaktif & Live Demo';
@@ -601,6 +639,24 @@ ${repoBlock('indofooty-match-hub', 'https://github.com/mazkev/indofooty-match-hu
         img: imgSwaggerGo,
         link: 'https://github.com/mazkev/go-ecommerce-gateway-engine',
         label: 'github.com/mazkev/go-ecommerce-gateway-engine'
+      },
+      {
+        title: '11. Umrah Travel Agency Booking Portal',
+        cat: 'Frontend',
+        tech: 'React 19 • Cost Calculator • Itineraries • Tailwind',
+        desc: isEn ? 'Pilgrimage travel portal with dynamic package cost estimator, interactive daily itineraries, and WhatsApp booking consultation.' : 'Portal travel haji dan umrah dengan kalkulator estimasi biaya paket, jadwal perjalanan hari demi hari, dan integrasi konsultasi WhatsApp.',
+        img: imgUmrah,
+        link: 'https://github.com/mazkev/react-umrah-travel-landing',
+        label: 'github.com/mazkev/react-umrah-travel-landing'
+      },
+      {
+        title: '12. Cloud PaaS Deployment Console Simulator',
+        cat: 'Cloud Tool',
+        tech: 'React 19 • Terminal Stream Logs • DNS • Secrets Vault',
+        desc: isEn ? 'PaaS cloud deployment simulator featuring real-time build streaming terminal logs, custom DNS domain routing, and environment secrets vault.' : 'Simulator konsol cloud PaaS dengan streaming log build terminal real-time, konfigurasi domain DNS, dan brankas rahasia env variables.',
+        img: imgCloudConsole,
+        link: 'https://github.com/mazkev/react-cloud-console-simulator',
+        label: 'github.com/mazkev/react-cloud-console-simulator'
       }
     ];
   }
@@ -934,12 +990,12 @@ ${repoBlock('indofooty-match-hub', 'https://github.com/mazkev/indofooty-match-hu
     align-items: baseline;
   }
 
-  /* PAGE 3 STYLES: 10 VISUAL CARDS (2 cols x 5 rows) */
+  /* PAGE 3 STYLES: 12 VISUAL CARDS (2 cols x 6 rows) */
   .visual-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 5px;
-    margin-bottom: 5px;
+    gap: 4px;
+    margin-bottom: 4px;
   }
   .visual-card {
     border: 1px solid #cbd5e1;
@@ -950,7 +1006,7 @@ ${repoBlock('indofooty-match-hub', 'https://github.com/mazkev/indofooty-match-hu
     flex-direction: column;
   }
   .visual-img-container {
-    height: 50px;
+    height: 44px;
     width: 100%;
     background: #f1f5f9;
     border-bottom: 1px solid #e2e8f0;
@@ -963,14 +1019,14 @@ ${repoBlock('indofooty-match-hub', 'https://github.com/mazkev/indofooty-match-hu
     object-fit: cover;
   }
   .visual-body {
-    padding: 4px 6px;
+    padding: 3px 5px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
   .visual-title {
-    font-size: 8pt;
+    font-size: 7.8pt;
     font-weight: 800;
     color: #0f172a;
     display: flex;
@@ -981,7 +1037,7 @@ ${repoBlock('indofooty-match-hub', 'https://github.com/mazkev/indofooty-match-hu
     text-overflow: ellipsis;
   }
   .visual-cat {
-    font-size: 6.2pt;
+    font-size: 6pt;
     font-family: monospace;
     font-weight: 700;
     background: #e2e8f0;
@@ -991,23 +1047,23 @@ ${repoBlock('indofooty-match-hub', 'https://github.com/mazkev/indofooty-match-hu
     text-transform: uppercase;
   }
   .visual-tech {
-    font-size: 6.4pt;
+    font-size: 6.2pt;
     font-family: monospace;
     font-weight: 700;
     color: #475569;
-    margin: 1px 0;
+    margin: 0.5px 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   .visual-desc {
-    font-size: 6.8pt;
+    font-size: 6.6pt;
     color: #334155;
-    line-height: 1.25;
-    margin-bottom: 2px;
+    line-height: 1.22;
+    margin-bottom: 1.5px;
   }
   .visual-links {
-    font-size: 6.4pt;
+    font-size: 6.2pt;
     font-family: monospace;
     display: flex;
     gap: 4px;

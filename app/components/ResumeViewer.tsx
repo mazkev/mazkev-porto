@@ -35,7 +35,7 @@ const roleData = {
       skillsDevOps: 'Docker, Docker Compose, Linux Bash, Git & GitHub, Postman, Swagger / OpenAPI 3.0, CI/CD GitHub Actions',
       page2Title: 'Backend & Cloud Systems Project Directory',
       page2Subtitle: 'High-Performance Microservices, Distributed Systems & Database Engines',
-      page3Title: 'Backend Visual Annex: 10 Microservices & API Architectures',
+      page3Title: 'Backend Visual Annex: 12 Microservices & API Architectures',
       page3Subtitle: 'Interactive API Contracts, Microservices Topologies & Schema Proofs',
     },
     id: {
@@ -50,7 +50,7 @@ const roleData = {
       skillsDevOps: 'Docker, Docker Compose, Linux Bash, Git & GitHub, Postman, Swagger / OpenAPI 3.0, CI/CD GitHub Actions',
       page2Title: 'Direktori Proyek Sistem Backend & Cloud',
       page2Subtitle: 'Layanan Mikro Kinerja Tinggi, Sistem Terdistribusi & Mesin Basis Data',
-      page3Title: 'Lampiran Visual Backend: 10 Arsitektur API & Microservices',
+      page3Title: 'Lampiran Visual Backend: 12 Arsitektur API & Microservices',
       page3Subtitle: 'Dokumentasi Kontrak API Interaktif, Topologi Microservices & Pembuktian Skema',
     },
     metrics: [
@@ -159,6 +159,26 @@ const roleData = {
         img: '/projects/marketinvent.png',
         link: 'https://github.com/mazkev/spring-boot-enterprise-platform',
         label: 'github.com/mazkev/spring-boot-enterprise-platform'
+      },
+      {
+        title: '11. Spring Boot Book Catalog API',
+        cat: 'Backend',
+        tech: 'Java 17 • Spring Boot 3.3 • MongoDB • OpenAPI 3.0',
+        descEn: 'Enterprise book catalog service with Spring Data MongoDB, automated OpenAPI documentation, and containerized deployment.',
+        descId: 'Layanan katalog buku enterprise dengan Spring Data MongoDB, dokumentasi otomatis OpenAPI, dan kontainerisasi Docker.',
+        img: '/projects/marketinvent.png',
+        link: 'https://github.com/mazkev/spring-boot-book-manager-api',
+        label: 'github.com/mazkev/spring-boot-book-manager-api'
+      },
+      {
+        title: '12. Cloud PaaS Deployment Console Simulator',
+        cat: 'Cloud Tool',
+        tech: 'React 19 • Terminal Stream Logs • DNS • Secrets Vault',
+        descEn: 'PaaS cloud deployment simulator featuring real-time build streaming terminal logs, custom DNS domain routing, and environment secrets vault.',
+        descId: 'Simulator konsol cloud PaaS dengan streaming log build terminal real-time, konfigurasi domain DNS, dan brankas rahasia env variables.',
+        img: '/projects/cloudconsole.jpg',
+        link: 'https://github.com/mazkev/react-cloud-console-simulator',
+        label: 'github.com/mazkev/react-cloud-console-simulator'
       }
     ]
   },
@@ -179,7 +199,7 @@ const roleData = {
       skillsDevOps: 'React Native (Expo SDK 56, Expo Router), Flutter (Riverpod 3), Git & GitHub, Postman, Webpack 5, Vercel Edge Runtime',
       page2Title: 'Frontend Web & Mobile Engineering Directory',
       page2Subtitle: 'Modern Web Clients, Mobile Apps & 12 Verified Cloud Deployments',
-      page3Title: 'Frontend & Mobile Visual Annex: 10 Production Interfaces & Demos',
+      page3Title: 'Frontend & Mobile Visual Annex: 12 Production Interfaces & Demos',
       page3Subtitle: 'Vector Canvas Workstations, Dynamic Media Clients & Mobile App Views',
     },
     id: {
@@ -194,7 +214,7 @@ const roleData = {
       skillsDevOps: 'React Native (Expo SDK 56, Expo Router), Flutter (Riverpod 3), Git & GitHub, Postman, Webpack 5, Vercel Edge Runtime',
       page2Title: 'Direktori Proyek Frontend Web & Mobile',
       page2Subtitle: 'Klien Web Modern, Aplikasi Mobile & 12 Aplikasi Cloud Terverifikasi',
-      page3Title: 'Lampiran Visual Frontend & Mobile: 10 Antarmuka Produksi & Live Demo',
+      page3Title: 'Lampiran Visual Frontend & Mobile: 12 Antarmuka Unggulan & Live Demo',
       page3Subtitle: 'Workstation Kanvas Vektor, Klien Media Dinamis & Tampilan Aplikasi Mobile',
     },
     metrics: [
@@ -303,6 +323,26 @@ const roleData = {
         img: '/projects/netflix.jpg',
         link: 'https://github.com/mazkev/react-netflix-streaming-platform',
         label: 'github.com/mazkev/react-netflix-streaming-platform'
+      },
+      {
+        title: '11. Umrah Travel Agency Booking Portal',
+        cat: 'Frontend',
+        tech: 'React 19 • Cost Calculator • Itineraries • Tailwind',
+        descEn: 'Pilgrimage travel portal with dynamic package cost estimator, interactive daily itineraries, and WhatsApp booking consultation.',
+        descId: 'Portal travel haji dan umrah dengan kalkulator estimasi biaya paket, jadwal perjalanan hari demi hari, dan integrasi konsultasi WhatsApp.',
+        img: '/projects/umrah.jpg',
+        link: 'https://github.com/mazkev/react-umrah-travel-landing',
+        label: 'github.com/mazkev/react-umrah-travel-landing'
+      },
+      {
+        title: '12. Cloud PaaS Deployment Console Simulator',
+        cat: 'Cloud Tool',
+        tech: 'React 19 • Terminal Stream Logs • DNS • Secrets Vault',
+        descEn: 'PaaS cloud deployment simulator featuring real-time build streaming terminal logs, custom DNS domain routing, and environment secrets vault.',
+        descId: 'Simulator konsol cloud PaaS dengan streaming log build terminal real-time, konfigurasi domain DNS, dan brankas rahasia env variables.',
+        img: '/projects/cloudconsole.jpg',
+        link: 'https://github.com/mazkev/react-cloud-console-simulator',
+        label: 'github.com/mazkev/react-cloud-console-simulator'
       }
     ]
   },
@@ -323,7 +363,7 @@ const roleData = {
       skillsDevOps: 'Next.js 16 (App Router), React 19, Angular 19, React Native Expo SDK 56, Docker, Git & GitHub, Postman, Vercel Edge Runtime',
       page2Title: 'Software Engineering Project Directory',
       page2Subtitle: 'Curated Open-Source Production Projects Grouped by Engineering Pillars',
-      page3Title: 'Visual Project Annex: 10 Flagship Systems & Live Workstations',
+      page3Title: 'Visual Project Annex: 12 Flagship Systems & Live Workstations',
       page3Subtitle: 'High-Fidelity Visual Proof: Real Production Screenshots, Workstation Canvas & Live Demos',
     },
     id: {
@@ -338,7 +378,7 @@ const roleData = {
       skillsDevOps: 'Next.js 16 (App Router), React 19, Angular 19, React Native Expo SDK 56, Docker, Git & GitHub, Postman, Vercel Edge Runtime',
       page2Title: 'Direktori Proyek Rekayasa Perangkat Lunak',
       page2Subtitle: 'Katalog Proyek Produksi Terverifikasi Berdasarkan Pilar Rekayasa',
-      page3Title: 'Lampiran Visual Portofolio: 10 Sistem Unggulan & Workstation Aktif',
+      page3Title: 'Lampiran Visual Portofolio: 12 Sistem Unggulan & Workstation Aktif',
       page3Subtitle: 'Bukti Visual Nyata: Tangkapan Layar Produksi Asli, Kanvas Interaktif & Live Demo',
     },
     metrics: [
@@ -447,6 +487,26 @@ const roleData = {
         img: '/projects/swagger-go.png',
         link: 'https://github.com/mazkev/go-ecommerce-gateway-engine',
         label: 'github.com/mazkev/go-ecommerce-gateway-engine'
+      },
+      {
+        title: '11. Umrah Travel Agency Booking Portal',
+        cat: 'Frontend',
+        tech: 'React 19 • Cost Calculator • Itineraries • Tailwind',
+        descEn: 'Pilgrimage travel portal with dynamic package cost estimator, interactive daily itineraries, and WhatsApp booking consultation.',
+        descId: 'Portal travel haji dan umrah dengan kalkulator estimasi biaya paket, jadwal perjalanan hari demi hari, dan integrasi konsultasi WhatsApp.',
+        img: '/projects/umrah.jpg',
+        link: 'https://github.com/mazkev/react-umrah-travel-landing',
+        label: 'github.com/mazkev/react-umrah-travel-landing'
+      },
+      {
+        title: '12. Cloud PaaS Deployment Console Simulator',
+        cat: 'Cloud Tool',
+        tech: 'React 19 • Terminal Stream Logs • DNS • Secrets Vault',
+        descEn: 'PaaS cloud deployment simulator featuring real-time build streaming terminal logs, custom DNS domain routing, and environment secrets vault.',
+        descId: 'Simulator konsol cloud PaaS dengan streaming log build terminal real-time, konfigurasi domain DNS, dan brankas rahasia env variables.',
+        img: '/projects/cloudconsole.jpg',
+        link: 'https://github.com/mazkev/react-cloud-console-simulator',
+        label: 'github.com/mazkev/react-cloud-console-simulator'
       }
     ]
   }
@@ -1251,14 +1311,14 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                   </span>
                 </div>
 
-                {/* 10 VISUAL CARDS GRID (2 cols x 5 rows) */}
+                {/* 12 VISUAL CARDS GRID (2 cols x 6 rows) */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 print:gap-1">
                   {roleData[activeRole].visualCards.map((p, idx) => (
                     <div
                       key={idx}
                       className="border border-slate-300 rounded-lg overflow-hidden bg-white flex flex-col justify-between print:break-inside-avoid shadow-sm print:shadow-none"
                     >
-                      <div className="h-20 sm:h-24 print:h-[50px] w-full bg-slate-100 border-b border-slate-200 relative overflow-hidden">
+                      <div className="h-20 sm:h-24 print:h-[44px] w-full bg-slate-100 border-b border-slate-200 relative overflow-hidden">
                         <Image
                           src={p.img}
                           alt={p.title}
