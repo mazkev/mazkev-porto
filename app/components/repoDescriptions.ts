@@ -7,6 +7,10 @@ export const repoDescriptions: Record<string, { en: string; id: string }> = {
     en: 'High-throughput reverse proxy API gateway with MongoDB, order lifecycle engine, and Swagger OpenAPI.',
     id: 'Reverse proxy API gateway berkecepatan tinggi dengan database MongoDB, lifecycle order, dan Swagger OpenAPI.'
   },
+  'go-digital-wallet-lab': {
+    en: 'Digital wallet balance transfer simulation exploring ACID transactions, row-level locks, and Bcrypt PIN.',
+    id: 'Simulasi transfer saldo dompet digital untuk eksplorasi transaksi atomik ACID, row-level locks, dan PIN Bcrypt.'
+  },
   'go-banking-core-system': {
     en: 'Digital wallet balance transfer simulation exploring ACID transactions, row-level locks, and Bcrypt PIN.',
     id: 'Simulasi transfer saldo dompet digital untuk eksplorasi transaksi atomik ACID, row-level locks, dan PIN Bcrypt.'

@@ -69,7 +69,7 @@ const roleData = {
         descId: 'Simulasi REST API dompet digital untuk eksplorasi transfer saldo atomik berstandar ACID, Redis cache-aside, dan message broker RabbitMQ.',
         img: '/projects/gofinance.png',
         link: 'https://github.com/mazkev/go-banking-core-system',
-        label: 'github.com/mazkev/go-banking-core-system'
+        label: 'github.com/mazkev/go-digital-wallet-lab'
       },
       {
         title: '2. Swagger Go API Gateway Engine',
@@ -109,7 +109,7 @@ const roleData = {
         descId: 'Suite pengujian API interaktif untuk verifikasi cek saldo, transaksi debit/kredit atomik, dan mutasi buku besar pada simulasi dompet digital.',
         img: '/projects/swagger-banking.png',
         link: 'https://github.com/mazkev/go-banking-core-system',
-        label: 'github.com/mazkev/go-banking-core-system'
+        label: 'github.com/mazkev/go-digital-wallet-lab'
       },
       {
         title: '6. Distributed Microservices Concurrency Lab',
@@ -940,7 +940,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                       </span>
                     </div>
                     <div className="space-y-1.5 print:space-y-0.5 text-slate-700">
-                      <RepoItem name="go-banking-core-system" url="https://github.com/mazkev/go-banking-core-system" tech="Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI" lang={lang} />
+                      <RepoItem name="go-digital-wallet-lab" url="https://github.com/mazkev/go-banking-core-system" tech="Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI" lang={lang} />
                       <RepoItem name="go-distributed-microservices-lab" url="https://github.com/mazkev/go-distributed-microservices-lab" tech="Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker" lang={lang} />
                       <RepoItem name="spring-boot-enterprise-platform" url="https://github.com/mazkev/spring-boot-enterprise-platform" tech="Java 17, Spring Boot 3.3, Bucket4j, Docker" lang={lang} />
                       <RepoItem name="go-ecommerce-gateway-engine" url="https://github.com/mazkev/go-ecommerce-gateway-engine" tech="Go 1.26, Gin, MongoDB, Reverse Proxy, Swagger OpenAPI" lang={lang} />
@@ -1019,7 +1019,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                       <div className="space-y-1.5 print:space-y-0.5 text-slate-700">
                         <RepoItem name="go-distributed-microservices-lab" url="https://github.com/mazkev/go-distributed-microservices-lab" tech="Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker" lang={lang} />
                         <RepoItem name="go-ecommerce-gateway-engine" url="https://github.com/mazkev/go-ecommerce-gateway-engine" tech="Go 1.26, Gin, MongoDB, Reverse Proxy, Swagger OpenAPI" lang={lang} />
-                        <RepoItem name="go-banking-core-system" url="https://github.com/mazkev/go-banking-core-system" tech="Go, Echo, PostgreSQL, ACID Row-Level Locks, Bcrypt PIN, Swagger UI" lang={lang} />
+                        <RepoItem name="go-digital-wallet-lab" url="https://github.com/mazkev/go-banking-core-system" tech="Go, Echo, PostgreSQL, ACID Row-Level Locks, Bcrypt PIN, Swagger UI" lang={lang} />
                         <RepoItem name="go-clean-arch" url="https://github.com/mazkev/go-clean-arch" tech="Go, Clean Architecture (DDD), Domain/Usecase/Repository, PostgreSQL" lang={lang} />
                         <RepoItem name="go-rest-api-enterprise" url="https://github.com/mazkev/go-rest-api-enterprise" tech="Go, Gin, GORM, Redis Cache-Aside, Zap Structured Logging, Docker" lang={lang} />
                         <RepoItem name="spring-boot-enterprise-platform" url="https://github.com/mazkev/spring-boot-enterprise-platform" tech="Java 17, Spring Boot 3.3, Spring Security JWT, Bucket4j Rate Limiter, Docker" lang={lang} />

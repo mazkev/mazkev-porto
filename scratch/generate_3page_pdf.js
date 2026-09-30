@@ -105,7 +105,7 @@ function generateRoleHtml(role, lang) {
         </div>
 ${repoBlock('go-distributed-microservices-lab', 'https://github.com/mazkev/go-distributed-microservices-lab', 'Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker', isEn)}
 ${repoBlock('go-ecommerce-gateway-engine', 'https://github.com/mazkev/go-ecommerce-gateway-engine', 'Go 1.26, Gin, MongoDB, Reverse Proxy, Swagger OpenAPI', isEn)}
-${repoBlock('go-banking-core-system', 'https://github.com/mazkev/go-banking-core-system', 'Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI', isEn)}
+${repoBlock('go-digital-wallet-lab', 'https://github.com/mazkev/go-banking-core-system', 'Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI', isEn)}
 ${repoBlock('go-clean-arch', 'https://github.com/mazkev/go-clean-arch', 'Go, Clean Architecture (DDD), Domain/Usecase/Repository, PostgreSQL', isEn)}
 ${repoBlock('go-rest-api-enterprise', 'https://github.com/mazkev/go-rest-api-enterprise', 'Go, Gin, GORM, Redis Cache-Aside, Zap Structured Logging, Docker', isEn)}
 ${repoBlock('spring-boot-enterprise-platform', 'https://github.com/mazkev/spring-boot-enterprise-platform', 'Java 17, Spring Boot 3.3, Spring Security JWT, Bucket4j Rate Limiter, Docker', isEn)}
@@ -152,7 +152,7 @@ ${repoBlock('express-mongodb-starter-api', 'https://github.com/mazkev/express-mo
         desc: isEn ? 'Digital wallet REST API simulation exploring ACID transactional transfers, Redis cache-aside ledger, and RabbitMQ broker.' : 'Simulasi REST API dompet digital untuk eksplorasi transfer saldo atomik berstandar ACID, Redis cache-aside, dan message broker RabbitMQ.',
         img: imgGofinance,
         link: 'https://github.com/mazkev/go-banking-core-system',
-        label: 'github.com/mazkev/go-banking-core-system'
+        label: 'github.com/mazkev/go-digital-wallet-lab'
       },
       {
         title: '2. Swagger Go API Gateway Engine',
@@ -188,7 +188,7 @@ ${repoBlock('express-mongodb-starter-api', 'https://github.com/mazkev/express-mo
         desc: isEn ? 'Interactive API testing suite verifying balance inquiries, atomic debit/credit transactions, and audit ledger entries in a simulated wallet environment.' : 'Suite pengujian API interaktif untuk verifikasi cek saldo, transaksi debit/kredit atomik, dan mutasi buku besar pada simulasi dompet digital.',
         img: imgSwaggerBanking,
         link: 'https://github.com/mazkev/go-banking-core-system',
-        label: 'github.com/mazkev/go-banking-core-system'
+        label: 'github.com/mazkev/go-digital-wallet-lab'
       },
       {
         title: '6. Microservices Concurrency Lab',
@@ -491,7 +491,7 @@ ${repoBlock('flutter-grab-superapp-clone', 'https://github.com/mazkev/flutter-gr
         <div class="pillar-header">
           <span class="pillar-title">${isEn ? 'Pillar 1: Backend Systems & Distributed Services' : 'Pilar 1: Sistem Backend & Arsitektur Cloud'}</span>
         </div>
-${repoBlock('go-banking-core-system', 'https://github.com/mazkev/go-banking-core-system', 'Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI', isEn)}
+${repoBlock('go-digital-wallet-lab', 'https://github.com/mazkev/go-banking-core-system', 'Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI', isEn)}
 ${repoBlock('go-distributed-microservices-lab', 'https://github.com/mazkev/go-distributed-microservices-lab', 'Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker', isEn)}
 ${repoBlock('spring-boot-enterprise-platform', 'https://github.com/mazkev/spring-boot-enterprise-platform', 'Java 17, Spring Boot 3.3, Resilience4j, Eureka Discovery, PostgreSQL', isEn)}
 ${repoBlock('go-ecommerce-gateway-engine', 'https://github.com/mazkev/go-ecommerce-gateway-engine', 'Go 1.26, Gin, MongoDB, Reverse Proxy, Swagger OpenAPI', isEn)}
@@ -1167,7 +1167,7 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
         <span class="badge">${isEn ? '6 Verified Repositories' : '6 Repositori Terverifikasi'}</span>
       </div>
       <div class="pillar-card" style="margin-bottom: 0px;">
-${repoBlock('go-banking-core-system', 'https://github.com/mazkev/go-banking-core-system', 'Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI', isEn)}
+${repoBlock('go-digital-wallet-lab', 'https://github.com/mazkev/go-banking-core-system', 'Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI', isEn)}
 ${repoBlock('go-distributed-microservices-lab', 'https://github.com/mazkev/go-distributed-microservices-lab', 'Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker', isEn)}
 ${repoBlock('spring-boot-enterprise-platform', 'https://github.com/mazkev/spring-boot-enterprise-platform', 'Java 17, Spring Boot 3.3, Resilience4j, Eureka Discovery, PostgreSQL', isEn)}
 ${repoBlock('go-ecommerce-gateway-engine', 'https://github.com/mazkev/go-ecommerce-gateway-engine', 'Go 1.26, Gin, MongoDB, Reverse Proxy, Swagger OpenAPI', isEn)}
