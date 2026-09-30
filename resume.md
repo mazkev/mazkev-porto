@@ -2,7 +2,7 @@
 
 > **Candidate**: Kevin Eka Pratama  
 > **Role Target**: Software Engineer (Backend / Fullstack / Frontend — *Customizable per Target Application*)  
-> **Primary Specialization**: High-Performance Backend Systems & Modern Fullstack Platforms (Go, Java Spring Boot, React 19, Next.js 16, TypeScript, PostgreSQL)  
+> **Primary Specialization**: High-Performance Backend Systems, Modern Fullstack Platforms & AI-Assisted Engineering (Go, Java Spring Boot, React 19, Next.js 16, TypeScript, Gemini/Claude/OpenAI APIs, PostgreSQL)  
 > **Location**: Jakarta, Indonesia  
 > **Contact**: kevinekapratama@gmail.com | +62 (813) 2661-2344  
 > **Profiles**: [GitHub: github.com/mazkev](https://github.com/mazkev) | [Portfolio: mazkev.vercel.app](https://mazkev.vercel.app) | [LinkedIn: linkedin.com/in/kevin-pratama-a704252b8](https://linkedin.com/in/kevin-pratama-a704252b8)  
@@ -15,7 +15,7 @@
 
 Software Engineer dengan 2+ tahun pengalaman profesional di bidang **Application Support Sistem Enterprise pada PT PLN Icon+**. Memiliki keahlian teruji dalam penanganan dan investigasi ratusan tiket operasional dengan tingkat kepatuhan **SLA 100%**, penulisan query SQL terstruktur (**PostgreSQL, Oracle, MySQL**) untuk validasi data transaksi dan pelaporan, analisis log sistem saat insiden, serta pemantauan kestabilan layanan digital 24/7.
 
-Di luar peran korporat, memiliki rekam jejak dedikasi rekayasa mandiri dengan merancang, membangun, dan men-deploy **82 repositori terkurasi** mencakup arsitektur *microservices* terdistribusi (**Go, Java Spring Boot 3.3, Bun/Hono**), platform web modern (**Next.js 16, React 19, TypeScript**), serta aplikasi *mobile cross-platform* (**React Native Expo, Flutter**). Terbiasa dengan prinsip **Clean Architecture (DDD)**, transaksi atomik **ACID**, *caching* Redis, *message broker* RabbitMQ, dan kontainerisasi **Docker**.
+Sangat mahir dalam **AI-Assisted Software Engineering**, berkolaborasi intensif dengan *LLM tools* dan *agentic workflows* (Gemini 2.5, Claude 3.7, OpenAI, agentic coding tools) untuk akselerasi perancangan arsitektur, pemodelan skema database, *rapid prototyping*, serta otomasi *test suite*. Di luar peran korporat, memiliki rekam jejak dedikasi rekayasa mandiri dengan merancang, membangun, dan men-deploy **82 repositori terkurasi** mencakup arsitektur *microservices* terdistribusi (**Go, Java Spring Boot 3.3, Bun/Hono**), platform web modern (**Next.js 16, React 19, TypeScript**), serta aplikasi *mobile cross-platform* (**React Native Expo, Flutter**). Menerapkan prinsip **Clean Architecture (DDD)**, transaksi atomik **ACID**, *caching* Redis, *message broker* RabbitMQ, dan kontainerisasi **Docker**.
 
 ---
 
@@ -23,6 +23,7 @@ Di luar peran korporat, memiliki rekam jejak dedikasi rekayasa mandiri dengan me
 
 | Category | Technologies & Tools |
 | :--- | :--- |
+| **AI & Agentic Engineering** | Gemini 2.5, Claude 3.7, OpenAI APIs, Human-AI Pair Programming, LLM Agentic Workflows, AI Component Prototyping, Prompt Engineering, Automated Unit & Integration Testing |
 | **Programming Languages** | Go (Golang 1.25/1.26), Java (JDK 17/21), TypeScript, JavaScript (ES6+/Node.js/Bun), PHP 8.3, Python 3, Dart, SQL, HTML5, CSS3/Tailwind CSS v4 |
 | **Backend & Microservices** | Gin, Fiber, Java Spring Boot 3.3 (Spring Security 6, JPA, AOP), Bun + Hono v4, Express.js v5, Laravel 12, FastAPI, gRPC, Protocol Buffers, RESTful APIs, Reverse Proxy, Swagger / OpenAPI 3.0 |
 | **Architectural Patterns** | Clean Architecture (Domain-Driven Design / Decoupled Layers: Domain, Usecase, Repository), Event-Driven Architecture, Microservices, Worker Pool Concurrency, ACID Transactional Ledgers |
@@ -49,12 +50,13 @@ Di luar peran korporat, memiliki rekam jejak dedikasi rekayasa mandiri dengan me
 
 ---
 
-### **Independent Software Engineering & Open Source Research** — *Self-Directed Software Developer*
-**Periode**: 2023 – Sekarang | **Lokasi**: Yogyakarta, Indonesia  
+### **AI-Assisted Software Engineering & Open Source Research** — *Self-Directed AI-Assisted Software Engineer*
+**Periode**: 2023 – Sekarang | **Lokasi**: Yogyakarta / Jakarta, Indonesia  
 
-* Merancang, membangun, dan mengaudit **82 repositori perangkat lunak terverifikasi** mencakup sistem backend terdistribusi (**Go, Java Spring Boot 3.3, Bun/Hono**), platform web modern (**Next.js 16, React 19**), dan aplikasi mobile cross-platform.
-* Mengimplementasikan prinsip **Clean Architecture**, transaksi atomik **ACID**, caching Redis, message broker RabbitMQ, dan orkestrasi container Docker Compose.
-* Men-deploy dan memelihara **12 aplikasi produksi aktif** di cloud Vercel dengan integrasi database LibSQL dan MongoDB.
+* **Penerapan Alur Kerja Rekayasa Berbasis AI**: Memelopori alur kerja modern bersama agen AI (*Gemini 2.5, Claude 3.7, OpenAI, agentic coding tools*) untuk akselerasi perancangan arsitektur, pemodelan skema transaksional, *rapid prototyping*, dan generasi *automated test suite*.
+* **Pembangunan 82 Repositori Terkurasi**: Merancang, membangun, dan mengaudit **82 repositori perangkat lunak terverifikasi** mencakup sistem backend terdistribusi (**19 repositori Go, Java Spring Boot 3.3, Bun/Hono**), platform web fullstack & mobile (**22 repositori Next.js 16, React 19, React Native Expo**), dan aplikasi web frontend (**41 repositori**).
+* **Audit Ketat Arsitektur & Keamanan**: Melakukan verifikasi manual mendalam terhadap kode yang dihasilkan AI untuk menjamin kepatuhan standar enterprise: pencegahan *race condition* dan *double-spending* via *row-level locks* PostgreSQL, integritas transaksi atomik **ACID**, pola *Redis cache-aside*, dan *decoupled RabbitMQ message broker*.
+* **Manajemen 12 Aplikasi Live di Cloud**: Men-deploy dan memelihara **12 aplikasi produksi aktif** di cloud Vercel dengan integrasi database serverless (LibSQL, MongoDB) dan antarmuka reaktif modern.
 
 ---
 
@@ -465,7 +467,7 @@ Seluruh aplikasi berikut telah aktif (*HTTP 200 OK*) dan dapat diuji langsung ol
 Gunakan prompt di bawah ini saat menyalin isi dokumen ini ke AI lain (ChatGPT / Claude / DeepSeek):
 
 ### Prompt 1: Audit Tingkat Senioritas & Gap Analysis
-> *"Berdasarkan resume teknis dan portofolio 82 repositori di atas, lakukan evaluasi komprehensif terhadap tingkat senioritas teknis Kevin Eka Pratama. Analisis pengalaman 2+ tahun Application Support enterprise di PT PLN Icon+ (optimasi query SQL, pemantauan 24/7, SLA 98%), 4 Featured Engineering Case Studies (Go microservices, ACID transaction ledger, Next.js 16 live e-commerce, Canvas 60 FPS), dan kematangan 82 repositori. Berikan rekomendasi area teknis yang perlu diperdalam untuk mencapai posisi Senior Software Engineer di industri tech tier-1."*
+> *"Berdasarkan resume teknis dan portofolio 82 repositori di atas, lakukan evaluasi komprehensif terhadap tingkat senioritas teknis Kevin Eka Pratama. Analisis pengalaman 2+ tahun Application Support enterprise di PT PLN Icon+ (optimasi query SQL, pemantauan 24/7, SLA 100%), 4 Featured Engineering Case Studies (Go microservices, ACID transaction ledger, Next.js 16 live e-commerce, Canvas 60 FPS), dan kematangan 82 repositori. Berikan rekomendasi area teknis yang perlu diperdalam untuk mencapai posisi Senior Software Engineer di industri tech tier-1."*
 
 ### Prompt 2: Penilaian Kecocokan Posisi (Job Match)
 > *"Saya ingin melamar posisi [SEBUTKAN NAMA POSISI, misal: Go Backend Engineer / Fullstack Software Engineer]. Evaluasi kecocokan profil, skill matrix, pengalaman enterprise PLN Icon+, dan 4 Featured Case Studies di atas dengan kualifikasi standar posisi tersebut. Sebutkan kelebihan utama yang harus saya tekankan pada wawancara teknis."*

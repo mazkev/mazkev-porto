@@ -1098,6 +1098,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
 
                 {activeRole === 'fullstack' && (
                   <div className="space-y-2 print:space-y-1.5">
+                    {/* PILLAR 1: Backend Systems & Cloud Architecture (6 Repos) */}
                     <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
                       <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
                         <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
@@ -1107,13 +1108,17 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                           19 Repositories
                         </span>
                       </div>
-                      <div className="text-xs print:text-[9px] text-slate-700 space-y-1">
+                      <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
                         <p>• <a href="https://github.com/mazkev/go-banking-core-system" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-banking-core-system:</a> {lang === 'en' ? 'Core banking engine with atomic balance transfers, ACID PostgreSQL row locks, and Bcrypt PIN.' : 'Engine core banking transaksi transfer saldo atomik dengan row-level lock PostgreSQL dan validasi PIN Bcrypt.'}</p>
                         <p>• <a href="https://github.com/mazkev/go-distributed-microservices-lab" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-distributed-microservices-lab:</a> {lang === 'en' ? 'High-throughput microservices communicating over binary gRPC and asynchronous RabbitMQ event bus.' : 'Layanan mikro terdistribusi dengan komunikasi biner gRPC dan antrean pesan asinkron RabbitMQ.'}</p>
                         <p>• <a href="https://github.com/mazkev/nexus-workspace-engine" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">nexus-workspace-engine:</a> {lang === 'en' ? 'Java Spring Boot 3.3 enterprise microservices ecosystem with Resilience4j circuit breakers and Eureka discovery.' : 'Ekosistem microservices enterprise Java Spring Boot 3.3 dengan circuit breaker Resilience4j dan discovery Eureka.'}</p>
+                        <p>• <a href="https://github.com/mazkev/go-ecommerce-gateway-engine" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-ecommerce-gateway-engine:</a> {lang === 'en' ? 'High-performance API Gateway with Gin router, MongoDB v2, order lifecycle, reverse proxy, and Swagger docs.' : 'Backend e-commerce & API Gateway performa tinggi dengan Gin router, MongoDB, reverse proxy, dan dokumentasi Swagger.'}</p>
+                        <p>• <a href="https://github.com/mazkev/hono-ecommerce-engine" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">hono-ecommerce-engine:</a> {lang === 'en' ? 'Sub-millisecond REST API engine running on Bun runtime with Hono v4, Drizzle ORM, and WebSocket live chat.' : 'Engine REST API sub-milidetik berbasis Bun runtime dengan Hono v4, Drizzle ORM, dan live chat WebSocket.'}</p>
+                        <p>• <a href="https://github.com/mazkev/go-clean-arch" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-clean-arch:</a> {lang === 'en' ? 'Decoupled Clean Architecture boilerplate implementing strict Domain, Usecase, and Repository boundaries.' : 'Arsitektur Clean terstruktur dengan pemisahan tegas antara lapisan Domain, Usecase, dan Repository.'}</p>
                       </div>
                     </div>
 
+                    {/* PILLAR 2: Fullstack Web Platforms & Mobile Applications (6 Repos) */}
                     <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
                       <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
                         <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
@@ -1123,12 +1128,17 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                           22 Repositories
                         </span>
                       </div>
-                      <div className="text-xs print:text-[9px] text-slate-700 space-y-1">
+                      <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
                         <p>• <a href="https://github.com/mazkev/baye-ecommerce-marketplace" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">baye-ecommerce-marketplace:</a> {lang === 'en' ? 'Auction e-commerce with Next.js 16 Server Components, live bidding simulation, LibSQL, and digital QR invoices.' : 'Marketplace lelang produksi dengan Next.js 16, LibSQL serverless, komparasi produk, dan cetak invoice QR digital.'}</p>
                         <p>• <a href="https://github.com/mazkev/tokopedia-react-storefront" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">tokopedia-react-storefront:</a> {lang === 'en' ? 'Fullstack marketplace combining Go REST API backend with React 19, category filters, and optimistic cart checkout.' : 'E-commerce fullstack memadukan backend Go REST API dengan frontend React 19 dan sinkronisasi transaksi PostgreSQL.'}</p>
+                        <p>• <a href="https://github.com/mazkev/laravel-hrms-platform" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">laravel-hrms-platform:</a> {lang === 'en' ? 'Enterprise HRMS with Laravel 12, selfie attendance, dynamic shift management, and automated payroll calculations.' : 'Sistem manajemen SDM & penggajian enterprise dengan Laravel 12, absensi selfie GPS, shift dinamis, dan kalkulasi THR.'}</p>
+                        <p>• <a href="https://github.com/mazkev/java-spring-commerce-platform" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">java-spring-commerce-platform:</a> {lang === 'en' ? 'Enterprise warehouse commerce with Java 17 Spring Boot 3.3, Vue 3, Pinia, OpenPDF, and PostgreSQL.' : 'Platform e-commerce & pergudangan enterprise dengan Java 17 Spring Boot 3.3, Vue 3, Pinia, dan faktur OpenPDF.'}</p>
+                        <p>• <a href="https://github.com/mazkev/treveloka-react-native-expo" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">treveloka-react-native-expo:</a> {lang === 'en' ? 'Mobile travel booking superapp with React Native 0.85, Expo Router, and Gemini AI itinerary assistant.' : 'Aplikasi mobile pemesanan perjalanan dengan React Native 0.85, Expo Router, dan asisten rencana perjalanan Gemini AI.'}</p>
+                        <p>• <a href="https://github.com/mazkev/flutter-grab-superapp-clone" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">flutter-grab-superapp-clone:</a> {lang === 'en' ? 'Cross-platform mobile superapp with Flutter, Riverpod 3, live driver tracking on OpenStreetMap, and food ordering.' : 'Aplikasi superapp mobile cross-platform dengan Flutter dan Riverpod 3, pelacakan driver di peta, dan pesan makanan.'}</p>
                       </div>
                     </div>
 
+                    {/* PILLAR 3: Modern Frontend Web Applications (6 Repos) */}
                     <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
                       <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
                         <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
@@ -1138,9 +1148,75 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                           41 Repositories
                         </span>
                       </div>
-                      <div className="text-xs print:text-[9px] text-slate-700 space-y-1">
+                      <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
                         <p>• <a href="https://github.com/mazkev/react-canva-design-studio" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">react-canva-design-studio:</a> {lang === 'en' ? 'Vector graphic studio with dual-layer 60 FPS React-Konva canvas, transformation matrices, and image export.' : 'Studio desain grafis berbasis web dengan dual-layer kanvas 60 FPS React-Konva dan pipeline ekspor multi-format.'}</p>
                         <p>• <a href="https://github.com/mazkev/market-x-angular" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">market-x-angular:</a> {lang === 'en' ? 'Enterprise e-commerce storefront powered by Angular 19 reactive Signals, RxJS event streams, and seller dashboard.' : 'Storefront e-commerce enterprise dengan reaktivitas Angular 19 Signals, RxJS streams, dan dashboard penjual.'}</p>
+                        <p>• <a href="https://github.com/mazkev/nextjs-spotify-music-player" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">nextjs-spotify-music-player:</a> {lang === 'en' ? 'Music streaming player with real-time Web Audio API frequency analysis canvas visualizer and synchronized lyrics.' : 'Pemutar musik web dengan visualisasi frekuensi real-time Web Audio API pada kanvas dan sinkronisasi lirik.'}</p>
+                        <p>• <a href="https://github.com/mazkev/react-trello-kanban-suite" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">react-trello-kanban-suite:</a> {lang === 'en' ? 'Glassmorphism Kanban project board with multi-axis drag-and-drop task sorting and Zustand state store.' : 'Board manajemen proyek Kanban glassmorphism dengan drag-and-drop multi-axis dan state store Zustand.'}</p>
+                        <p>• <a href="https://github.com/mazkev/hub-spot-clone" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">hub-spot-clone:</a> {lang === 'en' ? 'Enterprise CRM platform with sales pipeline Kanban, TanStack data tables, and Recharts performance analytics.' : 'Platform CRM penjualan enterprise dengan pipeline transaksi interaktif, tabel data TanStack, dan analitik performa.'}</p>
+                        <p>• <a href="https://github.com/mazkev/nextjs-football-sport-portal" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">nextjs-football-sport-portal:</a> {lang === 'en' ? 'Live match center with Next.js 16, real-time sports feed parsing, league standings, and editorial CMS.' : 'Portal berita dan skor sepak bola langsung dengan Next.js 16, jadwal pertandingan real-time, dan konsol admin CMS.'}</p>
+                      </div>
+                    </div>
+
+                    {/* 12 LIVE DEPLOYMENTS TABLE */}
+                    <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
+                      <div className="flex items-center justify-between border-b border-slate-800 pb-0.5">
+                        <h3 className="text-xs print:text-[9.5px] font-extrabold uppercase tracking-wide text-slate-900">
+                          {lang === 'en' ? '12 Verified Cloud Deployments (HTTP 200 OK on Vercel)' : '12 Aplikasi Aktif Terverifikasi di Cloud (Vercel)'}
+                        </h3>
+                        <span className="text-[9px] print:text-[7.5px] font-mono font-bold text-emerald-700 uppercase">
+                          {lang === 'en' ? 'Clickable Live Demos' : 'Dapat Diuji Langsung'}
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-1 text-[10px] print:text-[8px] font-mono">
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>1. BayE Auction Store:</strong>
+                          <a href="https://baye-ecommerce-marketplace.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">baye-ecommerce-marketplace.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>2. Nexus Workspace:</strong>
+                          <a href="https://nexus-project-mu.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">nexus-project-mu.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>3. Spotify Music Player:</strong>
+                          <a href="https://spotify-clonez.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">spotify-clonez.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>4. Indofooty Match Hub:</strong>
+                          <a href="https://indofooty.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">indofooty.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>5. AI Wireframer Lab:</strong>
+                          <a href="https://ai-component-wireframer.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">ai-component-wireframer.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>6. Umrah Travel Portal:</strong>
+                          <a href="https://umrah-travel-landing.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">umrah-travel-landing.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>7. Cloud Simulator:</strong>
+                          <a href="https://cloud-console-simulator.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">cloud-console-simulator.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>8. Snake AI Pathfinding:</strong>
+                          <a href="https://snake-ai-pathfinding.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">snake-ai-pathfinding.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>9. Canvass Design Studio:</strong>
+                          <a href="https://canva-clone-fawn.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">canva-clone-fawn.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>10. Trello Kanban Suite:</strong>
+                          <a href="https://trello-azure-five.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">trello-azure-five.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>11. MarketX Angular Store:</strong>
+                          <a href="https://market-x-angular.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">market-x-angular.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>12. HubSpot CRM Platform:</strong>
+                          <a href="https://hub-spot-clone-five.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">hub-spot-clone-five.vercel.app</a>
+                        </div>
                       </div>
                     </div>
                   </div>
