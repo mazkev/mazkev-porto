@@ -17,54 +17,319 @@ interface ResumeViewerProps {
 export type ResumeRole = 'fullstack' | 'frontend' | 'backend';
 export type CVLang = 'en' | 'id';
 
-const roleContent = {
-  fullstack: {
-    en: {
-      title: 'Fullstack Software Engineer',
-      executiveSummaryTitle: 'Executive Summary',
-      executiveSummary: 'Fullstack Software Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record maintaining 100% SLA compliance for production operational tickets, authoring structured SQL queries (PostgreSQL, Oracle, MySQL) for transaction verification and data reporting, and monitoring high-availability system workflows 24/7. Concurrently architected and deployed 82 verified software repositories spanning distributed Go & Java Spring Boot microservices, modern Next.js 16 & React 19 web platforms, and mobile apps. Strong foundation in Clean Architecture (DDD), ACID transactional ledgers, Redis caching, RabbitMQ message brokers, and Docker containerization.',
-    },
-    id: {
-      title: 'Fullstack Software Engineer',
-      executiveSummaryTitle: 'Ringkasan Eksekutif',
-      executiveSummary: 'Fullstack Software Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support Sistem Enterprise pada PT PLN Icon+. Memiliki keahlian teruji dalam penanganan tiket operasional produksi dengan kepatuhan SLA 100%, penulisan query SQL terstruktur (PostgreSQL, Oracle, MySQL) untuk validasi data transaksi dan pelaporan, serta pemantauan kestabilan sistem 24/7. Secara mandiri merancang dan membangun 82 repositori perangkat lunak terverifikasi mencakup microservices Go & Java Spring Boot, platform web modern Next.js 16 & React 19, serta aplikasi mobile. Menguasai Clean Architecture (DDD), transaksi atomik ACID, caching Redis, RabbitMQ, dan kontainerisasi Docker.',
-    }
-  },
-  frontend: {
-    en: {
-      title: 'Frontend & Mobile Engineer',
-      executiveSummaryTitle: 'Executive Summary',
-      executiveSummary: 'Frontend & Mobile Engineer specializing in high-performance web and mobile platforms with Next.js 16, React 19, TypeScript, Vue 3, Angular 19, and React Native (Expo SDK 56). Creator of 48+ client applications featuring complex state management (Zustand, Redux Toolkit, Signals), interactive 2D/3D graphics (React-Konva, Canvas), and responsive real-time WebSockets. Backed by 2+ years of enterprise Application Support experience at PT PLN Icon+ ensuring production reliability and user operational excellence.',
-    },
-    id: {
-      title: 'Frontend & Mobile Engineer',
-      executiveSummaryTitle: 'Ringkasan Eksekutif',
-      executiveSummary: 'Frontend & Mobile Engineer dengan spesialisasi pengembangan antarmuka web dan mobile performa tinggi berbasis Next.js 16, React 19, TypeScript, Vue 3, Angular 19, dan React Native (Expo SDK 56). Membangun 48+ aplikasi frontend dan mobile dengan arsitektur state management kompleks (Zustand, Redux Toolkit, Signals), kanvas grafis interaktif (React-Konva, Canvas), serta real-time WebSockets. Didukung 2+ tahun pengalaman Application Support enterprise di PT PLN Icon+ dalam menjamin keandalan sistem dan alur kerja operasional.',
-    }
-  },
+// Role configurations for Page 1, Page 2, and Page 3
+const roleData = {
+  // ==========================================
+  // 1. BACKEND & CLOUD SYSTEMS ROLE
+  // ==========================================
   backend: {
     en: {
-      title: 'Backend & Cloud Systems Engineer (Go / Java / Node.js)',
+      roleTitle: 'Backend & Cloud Systems Engineer',
+      roleSubtitle: 'Distributed Microservices • High-Concurrency Go & Java Spring Boot • ACID Ledgers',
       executiveSummaryTitle: 'Executive Summary',
-      executiveSummary: 'Backend & Cloud Systems Engineer specializing in Go (Golang), Java Spring Boot, Bun/Hono, and Node.js RESTful/gRPC microservices. Architect of 32+ backend and fullstack platforms implementing Clean Architecture, ACID transactional ledgers, Redis cache-aside, RabbitMQ message brokers, and database connection pooling (PostgreSQL, MongoDB, MySQL). Backed by 2+ years of Application Support at PT PLN Icon+, with rigorous practical mastery in database query authoring, production log troubleshooting, and high-availability operations.',
+      executiveSummary: 'Backend & Cloud Systems Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record maintaining 100% SLA compliance for production operational tickets, authoring structured SQL queries (PostgreSQL, Oracle, MySQL) for transaction verification and data reporting, and monitoring high-availability system workflows 24/7. Independently architected and deployed 19 production-grade backend microservices and cloud systems using Go (Golang), Java Spring Boot 3.3, Bun/Hono, and Express.js. Strong practical mastery in Clean Architecture (DDD), ACID transactional ledgers with row-level locks, Redis cache-aside patterns, RabbitMQ message brokers, gRPC binary protocols, and Docker containerization.',
+      skillsLanguages: 'Go (Golang 1.25/1.26), Java (JDK 17/21), TypeScript, JavaScript (Node.js/Bun), Python 3, SQL, Bash',
+      skillsFrameworks: 'Java Spring Boot 3.3 (Spring Security 6, JPA), Go (Gin/Fiber/Echo), Bun + Hono, Express.js, FastAPI, Clean Architecture (DDD), gRPC (Protobuf), RESTful APIs, Microservices',
+      skillsDatabases: 'PostgreSQL (GORM, Prisma, ACID Transactions, Connection Pooling, Row-level Locks), MySQL, MongoDB (NoSQL), Redis (Cache-Aside, Rate Limiting), RabbitMQ (Message Broker)',
+      skillsDevOps: 'Docker, Docker Compose, Linux Bash, Git & GitHub, Postman, Swagger / OpenAPI 3.0, CI/CD GitHub Actions',
+      page2Title: 'Backend & Cloud Systems Repository Directory (19 Repositories)',
+      page2Subtitle: 'High-Performance Microservices, Distributed Systems & Database Engines',
+      page3Title: 'Backend Visual Annex: API Gateways, Swagger UI & Architecture',
+      page3Subtitle: 'Interactive API Contracts, Microservices Topologies & Schema Proofs',
     },
     id: {
-      title: 'Backend & Cloud Systems Engineer (Go / Java / Node.js)',
+      roleTitle: 'Backend & Cloud Systems Engineer',
+      roleSubtitle: 'Sistem Terdistribusi • Microservices Go & Java Spring Boot • Transaksi ACID',
       executiveSummaryTitle: 'Ringkasan Eksekutif',
-      executiveSummary: 'Backend & Cloud Systems Engineer dengan spesialisasi pengembangan layanan mikro RESTful/gRPC berkinerja tinggi menggunakan Go (Golang), Java Spring Boot, Bun/Hono, dan Node.js. Mengembangkan 32+ sistem backend dan fullstack berprinsip Clean Architecture, transaksi buku besar ACID, Redis cache-aside, message broker RabbitMQ, serta connection pooling database (PostgreSQL, MongoDB, MySQL). Diperkuat oleh 2+ tahun pengalaman Application Support di PT PLN Icon+ dengan kemahiran praktis dalam penulisan query SQL, investigasi log produksi, dan keandalan sistem berstandar enterprise.',
-    }
+      executiveSummary: 'Backend & Cloud Systems Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support Sistem Enterprise pada PT PLN Icon+. Memiliki keahlian teruji dalam penanganan tiket operasional produksi dengan kepatuhan SLA 100%, penulisan query SQL terstruktur (PostgreSQL, Oracle, MySQL) untuk validasi data transaksi dan pelaporan, serta pemantauan kestabilan sistem 24/7. Secara mandiri merancang dan membangun 19 repositori sistem backend dan microservices menggunakan Go (Golang), Java Spring Boot 3.3, Bun/Hono, dan Express.js. Menguasai Clean Architecture (DDD), transaksi atomik ACID dengan row-level lock, pola Redis cache-aside, message broker RabbitMQ, protokol biner gRPC, dan kontainerisasi Docker.',
+      skillsLanguages: 'Go (Golang 1.25/1.26), Java (JDK 17/21), TypeScript, JavaScript (Node.js/Bun), Python 3, SQL, Bash',
+      skillsFrameworks: 'Java Spring Boot 3.3 (Spring Security 6, JPA), Go (Gin/Fiber/Echo), Bun + Hono, Express.js, FastAPI, Clean Architecture (DDD), gRPC (Protobuf), RESTful APIs, Microservices',
+      skillsDatabases: 'PostgreSQL (GORM, Prisma, ACID Transactions, Connection Pooling, Row-level Locks), MySQL, MongoDB (NoSQL), Redis (Cache-Aside, Rate Limiting), RabbitMQ (Message Broker)',
+      skillsDevOps: 'Docker, Docker Compose, Linux Bash, Git & GitHub, Postman, Swagger / OpenAPI 3.0, CI/CD GitHub Actions',
+      page2Title: 'Direktori Repositori Backend & Cloud Systems (19 Repositori)',
+      page2Subtitle: 'Layanan Mikro Kinerja Tinggi, Sistem Terdistribusi & Mesin Basis Data',
+      page3Title: 'Lampiran Visual Backend: API Gateway, Swagger UI & Arsitektur',
+      page3Subtitle: 'Dokumentasi Kontrak API Interaktif, Topologi Microservices & Pembuktian Skema',
+    },
+    metrics: [
+      { num: '19 Repos', labelEn: 'Backend Repositories', labelId: 'Repositori Backend' },
+      { num: '8 Services', labelEn: 'Go (Golang) Microservices', labelId: 'Layanan Mikro Go' },
+      { num: '4 Services', labelEn: 'Java Spring Boot', labelId: 'Java Spring Boot' },
+      { num: '7 Services', labelEn: 'Node.js / Bun / Python', labelId: 'Node.js / Bun / Python' },
+    ],
+    visualCards: [
+      {
+        title: '1. GoFinance Banking Core API',
+        cat: 'Backend',
+        tech: 'Go • Echo • PostgreSQL • Redis • RabbitMQ • Docker',
+        descEn: 'High-concurrency banking engine with ACID transactional account transfers, Redis cache-aside ledger, and RabbitMQ message broker.',
+        descId: 'Engine core banking dengan transaksi transfer akun atomik berstandar ACID, Redis cache-aside, dan message broker RabbitMQ.',
+        img: '/projects/gofinance.png',
+        link: 'https://github.com/mazkev/go-banking-core-system',
+        label: 'github.com/mazkev/go-banking-core-system'
+      },
+      {
+        title: '2. Swagger Go API Gateway Engine',
+        cat: 'Backend',
+        tech: 'Go 1.26 • Gin • GORM • PostgreSQL • Swagger OpenAPI 3.0',
+        descEn: 'Production API gateway with interactive Swagger OpenAPI contract documentation, connection pooling, and JWT authorization.',
+        descId: 'API gateway produksi dengan dokumentasi kontrak OpenAPI Swagger interaktif, connection pooling, dan otorisasi JWT.',
+        img: '/projects/swagger-go.png',
+        link: 'https://github.com/mazkev/go-ecommerce-gateway-engine',
+        label: 'github.com/mazkev/go-ecommerce-gateway-engine'
+      },
+      {
+        title: '3. Nexus Enterprise Microservices',
+        cat: 'Backend',
+        tech: 'Java Spring Boot 3.3 • Resilience4j • Eureka • PostgreSQL',
+        descEn: 'Enterprise backend architecture with Eureka service discovery, circuit-breaker failover protection, and JPA auditing.',
+        descId: 'Arsitektur backend enterprise dengan service discovery Eureka, proteksi circuit breaker Resilience4j, dan auditing JPA.',
+        img: '/projects/nexus.png',
+        link: 'https://github.com/mazkev/nexus-workspace-engine',
+        label: 'github.com/mazkev/nexus-workspace-engine'
+      },
+      {
+        title: '4. Go Clean Architecture Engine',
+        cat: 'Backend',
+        tech: 'Go • Gin • Clean Architecture • Docker • Unit Tests',
+        descEn: 'Modular domain-driven design decoupling business logic, usecases, and repository data stores for maximum testability.',
+        descId: 'Desain domain-driven modular yang memisahkan logika bisnis, usecase, dan repositori data untuk testability maksimal.',
+        img: '/projects/goclean.png',
+        link: 'https://github.com/mazkev/go-clean-arch',
+        label: 'github.com/mazkev/go-clean-arch'
+      },
+      {
+        title: '5. Core Banking Swagger Documentation',
+        cat: 'Backend',
+        tech: 'Go • Echo • Swagger UI • Bcrypt PIN • Audit Logs',
+        descEn: 'Interactive API testing suite verifying balance inquiries, atomic debit/credit transactions, and audit ledger entries.',
+        descId: 'Suite pengujian API interaktif untuk verifikasi cek saldo, transaksi debit/kredit atomik, dan mutasi buku besar.',
+        img: '/projects/swagger-banking.png',
+        link: 'https://github.com/mazkev/go-banking-core-system',
+        label: 'github.com/mazkev/go-banking-core-system'
+      },
+      {
+        title: '6. Distributed Microservices Concurrency Lab',
+        cat: 'Backend',
+        tech: 'Go • gRPC • Protocol Buffers • RabbitMQ • Redis',
+        descEn: 'Binary inter-service communication pipeline with worker pool concurrency and decoupled background message queues.',
+        descId: 'Pipa komunikasi biner antar-service berkecepatan tinggi dengan worker pool concurrency dan antrean pesan background.',
+        img: '/projects/gofinance.png',
+        link: 'https://github.com/mazkev/go-distributed-microservices-lab',
+        label: 'github.com/mazkev/go-distributed-microservices-lab'
+      }
+    ]
+  },
+
+  // ==========================================
+  // 2. FRONTEND & MOBILE ROLE
+  // ==========================================
+  frontend: {
+    en: {
+      roleTitle: 'Frontend & Mobile Engineer',
+      roleSubtitle: 'Next.js 16 • React 19 • React Native (Expo) • Angular 19 • 60 FPS Canvas',
+      executiveSummaryTitle: 'Executive Summary',
+      executiveSummary: 'Frontend & Mobile Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record maintaining 100% SLA compliance for production operational tickets, user workflow issue resolution, and system stability. Creator of 48+ production-grade frontend web and mobile applications specializing in modern component architecture (Next.js 16 App Router, React 19, Angular 19 Signals, Vue 3 Pinia), reactive client state management (Zustand, Redux Toolkit, RxJS), dual-layer 60 FPS canvas graphics (React-Konva), and cross-platform mobile apps (React Native Expo SDK 56, Flutter). Strong foundation in responsive performance optimization, WebSockets, and Vercel edge deployment.',
+      skillsLanguages: 'TypeScript, JavaScript (ES6+), Dart, HTML5, CSS3, Tailwind CSS v4',
+      skillsFrameworks: 'Next.js 16 (App Router, Server Components), React 19, Angular 19 (Signals, RxJS), Vue 3 (Composition API, Pinia), Vite',
+      skillsDatabases: 'Zustand, Redux Toolkit, React-Konva (60 FPS Infinite Canvas), Web Audio API, Recharts, TanStack Query/Table',
+      skillsDevOps: 'React Native (Expo SDK 56, Expo Router), Flutter (Riverpod 3), Git & GitHub, Postman, Webpack 5, Vercel Edge Runtime',
+      page2Title: 'Frontend Web & Mobile Engineering Directory (48+ Repositories)',
+      page2Subtitle: 'Modern Web Clients, Mobile Apps & 12 Verified Cloud Deployments',
+      page3Title: 'Frontend & Mobile Visual Annex: Production Interfaces & Demos',
+      page3Subtitle: 'Vector Canvas Workstations, Dynamic Media Clients & Mobile App Views',
+    },
+    id: {
+      roleTitle: 'Frontend & Mobile Engineer',
+      roleSubtitle: 'Next.js 16 • React 19 • React Native (Expo) • Angular 19 • Kanvas 60 FPS',
+      executiveSummaryTitle: 'Ringkasan Eksekutif',
+      executiveSummary: 'Frontend & Mobile Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support Sistem Enterprise pada PT PLN Icon+. Memiliki keahlian teruji dalam penanganan tiket operasional produksi dengan kepatuhan SLA 100%, penyelesaian kendala antarmuka pengguna, dan kestabilan sistem. Membangun 48+ aplikasi frontend web dan mobile dengan spesialisasi arsitektur komponen modern (Next.js 16 App Router, React 19, Angular 19 Signals, Vue 3 Pinia), state management reaktif (Zustand, Redux Toolkit, RxJS), kanvas grafis dual-layer 60 FPS (React-Konva), dan mobile cross-platform (React Native Expo SDK 56, Flutter). Menguasai optimasi performa responsif, WebSockets, dan deployment Vercel.',
+      skillsLanguages: 'TypeScript, JavaScript (ES6+), Dart, HTML5, CSS3, Tailwind CSS v4',
+      skillsFrameworks: 'Next.js 16 (App Router, Server Components), React 19, Angular 19 (Signals, RxJS), Vue 3 (Composition API, Pinia), Vite',
+      skillsDatabases: 'Zustand, Redux Toolkit, React-Konva (60 FPS Infinite Canvas), Web Audio API, Recharts, TanStack Query/Table',
+      skillsDevOps: 'React Native (Expo SDK 56, Expo Router), Flutter (Riverpod 3), Git & GitHub, Postman, Webpack 5, Vercel Edge Runtime',
+      page2Title: 'Direktori Repositori Frontend Web & Mobile (48+ Repositori)',
+      page2Subtitle: 'Klien Web Modern, Aplikasi Mobile & 12 Aplikasi Cloud Terverifikasi',
+      page3Title: 'Lampiran Visual Frontend & Mobile: Antarmuka Produksi & Live Demo',
+      page3Subtitle: 'Workstation Kanvas Vektor, Klien Media Dinamis & Tampilan Aplikasi Mobile',
+    },
+    metrics: [
+      { num: '41 Repos', labelEn: 'Frontend Web Apps', labelId: 'Aplikasi Web Frontend' },
+      { num: '7 Repos', labelEn: 'Mobile Cross-Platform', labelId: 'Mobile Cross-Platform' },
+      { num: '12 Live Apps', labelEn: 'Active Vercel URLs', labelId: 'Aplikasi Aktif Vercel' },
+      { num: '100%', labelEn: 'TypeScript / Typed', labelId: 'TypeScript / Typed' },
+    ],
+    visualCards: [
+      {
+        title: '1. Canvass Visual Graphic Studio',
+        cat: 'Frontend',
+        tech: 'React 19 • React-Konva • Zustand • Tailwind CSS v4',
+        descEn: 'Browser vector graphic publishing workspace with dual-layer 60 FPS canvas, multi-element transform matrices, and high-resolution export.',
+        descId: 'Workstation desain vektor grafis berbasis web dengan dual-layer kanvas 60 FPS, manipulasi transform matriks elemen, dan ekspor multi-format.',
+        img: '/projects/canvass.png',
+        link: 'https://canva-clone-fawn.vercel.app',
+        label: 'canva-clone-fawn.vercel.app'
+      },
+      {
+        title: '2. Spotify Web Player & Visualizer',
+        cat: 'Frontend',
+        tech: 'Next.js 16 • Web Audio API • Frequency Visualizer • Tailwind',
+        descEn: 'High-fidelity audio streaming client with real-time Web Audio API frequency analysis canvas visualizer and synchronized lyrics.',
+        descId: 'Klien streaming audio dengan visualisasi frekuensi real-time Web Audio API pada kanvas, ekstraksi warna cover album, dan sinkronisasi lirik.',
+        img: '/projects/spotify.png',
+        link: 'https://spotify-clonez.vercel.app',
+        label: 'spotify-clonez.vercel.app'
+      },
+      {
+        title: '3. MarketX Angular 19 Storefront',
+        cat: 'Frontend',
+        tech: 'Angular 19 • Angular Signals • RxJS • Responsive Dash',
+        descEn: 'Enterprise storefront powered by Angular 19 reactive Signals and RxJS event streams with live order tracking and merchant back-office.',
+        descId: 'Storefront enterprise menggunakan reaktivitas Angular Signals dan RxJS event streams dengan pelacak status pesanan live dan back-office.',
+        img: '/projects/marketx.png',
+        link: 'https://market-x-angular.vercel.app',
+        label: 'market-x-angular.vercel.app'
+      },
+      {
+        title: '4. Trello Glassmorphism Kanban Workspace',
+        cat: 'Frontend',
+        tech: 'React 19 • Zustand • @hello-pangea/dnd • Tailwind v4',
+        descEn: 'Glassmorphism Kanban project board with multi-axis drag-and-drop task sorting and card detail modal editing.',
+        descId: 'Board manajemen proyek Kanban glassmorphism dengan drag-and-drop task sorting multi-axis dan pengeditan detail kartu modal.',
+        img: '/projects/trello.png',
+        link: 'https://trello-azure-five.vercel.app',
+        label: 'trello-azure-five.vercel.app'
+      },
+      {
+        title: '5. Traveloka Mobile App Clone',
+        cat: 'Mobile',
+        tech: 'React Native 0.85 • Expo SDK 56 • Gemini AI Assistant',
+        descEn: 'Mobile travel booking superapp featuring flight & hotel search grids, Gemini AI itinerary assistant, and QR e-ticket generation.',
+        descId: 'Aplikasi mobile pemesanan perjalanan dengan grid pencarian penerbangan & hotel, asisten rencana perjalanan Gemini AI, dan tiket QR.',
+        img: '/projects/nexus.png',
+        link: 'https://github.com/mazkev/treveloka-react-native-expo',
+        label: 'github.com/mazkev/treveloka-react-native-expo'
+      },
+      {
+        title: '6. HubSpot Enterprise CRM Platform',
+        cat: 'Frontend',
+        tech: 'React 19 • Recharts • Tailwind CSS v4 • REST API',
+        descEn: 'B2B sales and customer relationship management workspace featuring interactive deal pipelines, contacts table, and analytics.',
+        descId: 'Workspace CRM penjualan enterprise dengan pipeline transaksi interaktif, tabel manajemen kontak, dan grafik analitik.',
+        img: '/projects/hubspot.png',
+        link: 'https://hub-spot-clone-five.vercel.app',
+        label: 'hub-spot-clone-five.vercel.app'
+      }
+    ]
+  },
+
+  // ==========================================
+  // 3. FULLSTACK ROLE (DEFAULT)
+  // ==========================================
+  fullstack: {
+    en: {
+      roleTitle: 'Fullstack Software Engineer',
+      roleSubtitle: 'Backend Systems • Fullstack Platforms • Cloud Architecture',
+      executiveSummaryTitle: 'Executive Summary',
+      executiveSummary: 'Fullstack Software Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record maintaining 100% SLA compliance for production operational tickets, authoring structured SQL queries (PostgreSQL, Oracle, MySQL) for transaction verification and data reporting, and monitoring high-availability system workflows 24/7. Concurrently architected and deployed 82 verified software repositories spanning distributed Go & Java Spring Boot microservices, modern Next.js 16 & React 19 web platforms, and mobile apps. Strong foundation in Clean Architecture (DDD), ACID transactional ledgers, Redis caching, RabbitMQ message brokers, and Docker containerization.',
+      skillsLanguages: 'Go (Golang), Java (JDK 17/21), TypeScript, JavaScript (Node.js/Bun), Python 3, PHP 8, Dart, SQL, HTML5/CSS3',
+      skillsFrameworks: 'Java Spring Boot 3.3, Go (Gin/Fiber/Echo), Bun + Hono, Express.js, FastAPI, Laravel 12, Clean Architecture (DDD), RESTful APIs, gRPC (Protobuf), Microservices, WebSocket',
+      skillsDatabases: 'Next.js 16 (App Router), React 19, TypeScript, Vue 3 (Pinia), Angular 19 (Signals), React Native (Expo SDK 56), Flutter (Riverpod 3), Tailwind CSS v4, Zustand, Redux Toolkit',
+      skillsDevOps: 'PostgreSQL (GORM, Prisma, ACID Transactions, Connection Pooling), MySQL, MongoDB, SQLite (LibSQL), Redis (Cache-Aside, Rate Limiting), RabbitMQ, Docker, Git, Postman, Vercel',
+      page2Title: 'Technical Project & Repository Directory (82 Repositories)',
+      page2Subtitle: '82 Curated Open-Source Repositories Grouped by Engineering Pillars',
+      page3Title: 'Visual Project Annex & Production Interfaces',
+      page3Subtitle: 'High-Fidelity Visual Proof: Real Production Screenshots, Workstation Canvas & Live Demos',
+    },
+    id: {
+      roleTitle: 'Fullstack Software Engineer',
+      roleSubtitle: 'Sistem Backend • Platform Fullstack • Arsitektur Cloud',
+      executiveSummaryTitle: 'Ringkasan Eksekutif',
+      executiveSummary: 'Fullstack Software Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support Sistem Enterprise pada PT PLN Icon+. Memiliki keahlian teruji dalam penanganan tiket operasional produksi dengan kepatuhan SLA 100%, penulisan query SQL terstruktur (PostgreSQL, Oracle, MySQL) untuk validasi data transaksi dan pelaporan, serta pemantauan kestabilan sistem 24/7. Secara mandiri merancang dan membangun 82 repositori perangkat lunak terverifikasi mencakup microservices Go & Java Spring Boot, platform web modern Next.js 16 & React 19, serta aplikasi mobile. Menguasai Clean Architecture (DDD), transaksi atomik ACID, caching Redis, RabbitMQ, dan kontainerisasi Docker.',
+      skillsLanguages: 'Go (Golang), Java (JDK 17/21), TypeScript, JavaScript (Node.js/Bun), Python 3, PHP 8, Dart, SQL, HTML5/CSS3',
+      skillsFrameworks: 'Java Spring Boot 3.3, Go (Gin/Fiber/Echo), Bun + Hono, Express.js, FastAPI, Laravel 12, Clean Architecture (DDD), RESTful APIs, gRPC (Protobuf), Microservices, WebSocket',
+      skillsDatabases: 'Next.js 16 (App Router), React 19, TypeScript, Vue 3 (Pinia), Angular 19 (Signals), React Native (Expo SDK 56), Flutter (Riverpod 3), Tailwind CSS v4, Zustand, Redux Toolkit',
+      skillsDevOps: 'PostgreSQL (GORM, Prisma, ACID Transactions, Connection Pooling), MySQL, MongoDB, SQLite (LibSQL), Redis (Cache-Aside, Rate Limiting), RabbitMQ, Docker, Git, Postman, Vercel',
+      page2Title: 'Direktori & Katalog Repositori Rekayasa Perangkat Lunak (82 Repositori)',
+      page2Subtitle: '82 Repositori Terverifikasi Dikelompokkan ke Dalam 3 Pilar Teknis',
+      page3Title: 'Lampiran Visual Portofolio & Bukti Antarmuka Produksi',
+      page3Subtitle: 'Bukti Visual Nyata: Tangkapan Layar Produksi Asli, Kanvas Interaktif & Live Demo',
+    },
+    metrics: [
+      { num: '19 Repos', labelEn: 'Backend & Cloud', labelId: 'Backend & Cloud' },
+      { num: '22 Repos', labelEn: 'Fullstack & Mobile', labelId: 'Fullstack & Mobile' },
+      { num: '41 Repos', labelEn: 'Frontend Web Apps', labelId: 'Aplikasi Frontend Web' },
+      { num: '12 Live Apps', labelEn: 'Active Vercel URLs', labelId: 'Aplikasi Aktif Vercel' },
+    ],
+    visualCards: [
+      {
+        title: '1. GoFinance Banking Core API',
+        cat: 'Backend',
+        tech: 'Go • Echo • PostgreSQL • Redis • RabbitMQ • Docker',
+        descEn: 'High-concurrency banking engine with ACID transactional account transfers, Redis cache-aside ledger, RabbitMQ message brokers, and Bcrypt security.',
+        descId: 'Engine core banking dengan transaksi transfer akun atomik berstandar ACID, Redis cache-aside, message broker RabbitMQ, dan pengamanan Bcrypt.',
+        img: '/projects/gofinance.png',
+        link: 'https://github.com/mazkev/go-banking-core-system',
+        label: 'github.com/mazkev/go-banking-core-system'
+      },
+      {
+        title: '2. Nexus Enterprise Microservices',
+        cat: 'Fullstack',
+        tech: 'Next.js 16 • Java Spring Boot • Resilience4j • PostgreSQL',
+        descEn: 'Distributed enterprise platform featuring Spring Cloud service discovery, circuit-breaker failover protection, and reactive Next.js workspace client.',
+        descId: 'Platform enterprise terdistribusi dengan service discovery Spring Cloud, proteksi circuit breaker Resilience4j, dan klien workspace Next.js 16.',
+        img: '/projects/nexus.png',
+        link: 'https://nexus-project-mu.vercel.app',
+        label: 'nexus-project-mu.vercel.app'
+      },
+      {
+        title: '3. Tokopedia Fullstack Commerce',
+        cat: 'Fullstack',
+        tech: 'Go REST API • React 19 • PostgreSQL • Tailwind CSS v4',
+        descEn: 'Commercial e-commerce platform pairing a Go REST API with React 19. Features optimistic cart updates, category filtering chips, and checkout transactions.',
+        descId: 'Platform e-commerce mengintegrasikan Go REST API dengan React 19. Dilengkapi sinkronisasi keranjang optimistik dan checkout transaksi PostgreSQL.',
+        img: '/projects/tokopedia.png',
+        link: 'https://tokopedia-react.vercel.app',
+        label: 'tokopedia-react.vercel.app'
+      },
+      {
+        title: '4. Canvass Visual Graphic Studio',
+        cat: 'Frontend',
+        tech: 'React 19 • React-Konva • Zustand • Tailwind CSS v4',
+        descEn: 'Browser-based vector graphic publishing workspace with dual-layer 60 FPS canvas, multi-element transform matrices, and high-resolution PNG export.',
+        descId: 'Workstation desain vektor grafis berbasis web dengan dual-layer kanvas 60 FPS, manipulasi transform matriks elemen, dan ekspor multi-format.',
+        img: '/projects/canvass.png',
+        link: 'https://canva-clone-fawn.vercel.app',
+        label: 'canva-clone-fawn.vercel.app'
+      },
+      {
+        title: '5. MarketX Angular E-Commerce',
+        cat: 'Frontend',
+        tech: 'Angular 19 • Angular Signals • RxJS • Responsive Dash',
+        descEn: 'Enterprise storefront powered by Angular 19 reactive Signals and RxJS event streams. Features live order tracking and merchant back-office management.',
+        descId: 'Storefront enterprise menggunakan reaktivitas Angular Signals dan RxJS event streams. Dilengkapi pelacak status pesanan live dan back-office penjual.',
+        img: '/projects/marketx.png',
+        link: 'https://market-x-angular.vercel.app',
+        label: 'market-x-angular.vercel.app'
+      },
+      {
+        title: '6. Spotify Web Player & Visualizer',
+        cat: 'Frontend',
+        tech: 'Next.js 16 • Web Audio API • Frequency Visualizer • Tailwind',
+        descEn: 'High-fidelity audio streaming client with real-time Web Audio API frequency analysis canvas visualizer, dynamic album color palette extraction, and lyrics.',
+        descId: 'Klien streaming audio dengan visualisasi frekuensi real-time Web Audio API pada kanvas, ekstraksi warna cover album dinamis, dan sinkronisasi lirik.',
+        img: '/projects/spotify.png',
+        link: 'https://spotify-clonez.vercel.app',
+        label: 'spotify-clonez.vercel.app'
+      }
+    ]
   }
 };
 
 const commonText = {
   en: {
-    downloadBtn: 'Download PDF (3 Pages)',
+    downloadBtn: 'Download PDF',
     printBtn: 'Print / PDF',
-    page1Title: 'Executive Profile',
-    page2Title: 'Technical Project & Repository Directory (82 Repositories)',
-    page2Subtitle: '82 Curated Open-Source Repositories Grouped by Engineering Pillars',
-    page3Title: 'Visual Project Annex & Production Interfaces',
-    page3Subtitle: 'High-Fidelity Visual Proof: Real Production Screenshots & Live Demos',
     experienceTitle: 'Professional Experience',
     skillsTitle: 'Technical Competencies & Core Stack',
     educationTitle: 'Education',
@@ -74,25 +339,16 @@ const commonText = {
     job1Bullet1: 'Investigated and resolved technical operational tickets with a 100% SLA compliance rate, ensuring timely resolution of customer transaction issues.',
     job1Bullet2: 'Authored and executed complex SQL queries across PostgreSQL, Oracle, and MySQL for operational data validation, transaction auditing, and business reporting.',
     job1Bullet3: 'Monitored nationwide enterprise system workflows 24/7, analyzed application error logs (HTTP 5xx/4xx), and coordinated directly with core developers for bug/API fixes.',
-    job2Title: 'Software Engineering & Open Source Research',
     job2Company: 'Independent Engineering & Open Source Projects',
     job2Date: '2023 - Present',
-    job2Bullet1: 'Architected, built, and audited 82 production-grade repositories across Backend Microservices (Go, Java Spring Boot, Bun/Hono), Fullstack Web (Next.js 16, React 19), and Mobile.',
-    job2Bullet2: 'Designed ACID transactional schemas, implemented JWT/RBAC security pipelines, Redis cache-aside patterns, RabbitMQ brokers, and Docker Compose orchestration.',
-    job2Bullet3: 'Shipped and maintained 12 live cloud applications on Vercel with serverless databases, custom domain routing, and responsive UI architecture.',
     degree: 'Bachelor of Computer Science / Information Technology (S.Kom)',
     university: 'Universitas AMIKOM • GPA: 3.42 / 4.00',
     eduDate: '2017 - 2023',
     eduNote: '(Thesis Defense: Dec 2022 | Official Degree / Graduation: 2023)',
   },
   id: {
-    downloadBtn: 'Unduh PDF (3 Halaman)',
+    downloadBtn: 'Unduh PDF',
     printBtn: 'Cetak / PDF',
-    page1Title: 'Profil Eksekutif',
-    page2Title: 'Direktori & Katalog Repositori Rekayasa Perangkat Lunak (82 Repositori)',
-    page2Subtitle: '82 Repositori Terverifikasi Dikelompokkan ke Dalam 3 Pilar Teknis',
-    page3Title: 'Lampiran Visual Portofolio & Bukti Antarmuka Produksi',
-    page3Subtitle: 'Bukti Visual Nyata: Tangkapan Layar Produksi Asli, Kanvas Interaktif & Live Demo',
     experienceTitle: 'Pengalaman Profesional',
     skillsTitle: 'Kompetensi Teknis & Core Stack',
     educationTitle: 'Pendidikan',
@@ -102,111 +358,14 @@ const commonText = {
     job1Bullet1: 'Menginvestigasi dan menyelesaikan tiket insiden teknis serta permintaan operasional produksi dengan tingkat kepatuhan SLA mencapai 100% tepat waktu.',
     job1Bullet2: 'Merancang dan mengeksekusi query SQL terstruktur pada database PostgreSQL, Oracle, dan MySQL untuk validasi data transaksi, pelaporan operasional, dan pengecekan konsistensi data.',
     job1Bullet3: 'Memantau operasional alur sistem digital enterprise 24/7, menganalisis log error sistem (HTTP 5xx/4xx), dan berkoordinasi langsung dengan tim pengembang inti untuk verifikasi perbaikan API.',
-    job2Title: 'Rekayasa Perangkat Lunak & Riset Open Source',
     job2Company: 'Pengembangan Mandiri & Proyek Open Source',
     job2Date: '2023 - Sekarang',
-    job2Bullet1: 'Merancang, membangun, dan mengaudit 82 repositori perangkat lunak mencakup Backend Microservices (Go, Java Spring Boot, Bun/Hono), Fullstack Web (Next.js 16, React 19), dan Mobile.',
-    job2Bullet2: 'Merancang skema database transaksional ACID, pipa keamanan JWT/RBAC, pola Redis cache-aside, message broker RabbitMQ, dan orkestrasi Docker Compose.',
-    job2Bullet3: 'Men-deploy dan mengelola 12 aplikasi produksi aktif di cloud Vercel dengan integrasi database serverless dan antarmuka reaktif modern.',
     degree: 'Sarjana Ilmu Komputer / Teknik Informatika (S.Kom)',
     university: 'Universitas AMIKOM • IPK: 3.42 / 4.00',
     eduDate: '2017 - 2023',
     eduNote: '(Selesai Ujian Sidang: Des 2022 | Ijazah / Wisuda Resmi: 2023)',
   }
 };
-
-const visualProjects = [
-  {
-    id: 'gofinance',
-    title: 'GoFinance Banking Core API',
-    category: 'Backend',
-    catColor: 'bg-sky-100 text-sky-800 dark:bg-sky-950 dark:text-sky-300',
-    tech: 'Go • Echo • PostgreSQL • Redis • RabbitMQ • Docker',
-    desc: {
-      en: 'High-concurrency banking engine with ACID transactional account transfers, Redis cache-aside ledger, RabbitMQ message brokers, and Bcrypt security.',
-      id: 'Engine core banking dengan transaksi transfer akun atomik berstandar ACID, Redis cache-aside, message broker RabbitMQ, dan pengamanan Bcrypt.'
-    },
-    image: '/projects/gofinance.png',
-    link: 'https://github.com/mazkev/go-banking-core-system',
-    linkLabel: 'github.com/mazkev/go-banking-core-system',
-    isLive: false,
-  },
-  {
-    id: 'nexus',
-    title: 'Nexus Enterprise Microservices',
-    category: 'Fullstack',
-    catColor: 'bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300',
-    tech: 'Next.js 16 • Java Spring Boot • Resilience4j • PostgreSQL',
-    desc: {
-      en: 'Distributed enterprise platform featuring Spring Cloud service discovery, circuit-breaker failover protection, and reactive Next.js workspace client.',
-      id: 'Platform enterprise terdistribusi dengan service discovery Spring Cloud, proteksi circuit breaker Resilience4j, dan klien workspace Next.js 16.'
-    },
-    image: '/projects/nexus.png',
-    link: 'https://nexus-project-mu.vercel.app',
-    linkLabel: 'nexus-project-mu.vercel.app',
-    isLive: true,
-  },
-  {
-    id: 'tokopedia',
-    title: 'Tokopedia Fullstack Commerce',
-    category: 'Fullstack',
-    catColor: 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300',
-    tech: 'Go REST API • React 19 • PostgreSQL • Tailwind CSS v4',
-    desc: {
-      en: 'Commercial e-commerce platform pairing a Go REST API with React 19. Features optimistic cart updates, category filtering chips, and checkout transactions.',
-      id: 'Platform e-commerce mengintegrasikan Go REST API dengan React 19. Dilengkapi sinkronisasi keranjang optimistik dan checkout transaksi PostgreSQL.'
-    },
-    image: '/projects/tokopedia.png',
-    link: 'https://tokopedia-react.vercel.app',
-    linkLabel: 'tokopedia-react.vercel.app',
-    isLive: true,
-  },
-  {
-    id: 'canvass',
-    title: 'Canvass Visual Graphic Studio',
-    category: 'Frontend',
-    catColor: 'bg-purple-100 text-purple-800 dark:bg-purple-950 dark:text-purple-300',
-    tech: 'React 19 • React-Konva • Zustand • Tailwind CSS v4',
-    desc: {
-      en: 'Browser-based vector graphic publishing workspace with dual-layer 60 FPS canvas, multi-element transform matrices, and high-resolution PNG export.',
-      id: 'Workstation desain vektor grafis berbasis web dengan dual-layer kanvas 60 FPS, manipulasi transform matriks elemen, dan ekspor multi-format.'
-    },
-    image: '/projects/canvass.png',
-    link: 'https://canva-clone-fawn.vercel.app',
-    linkLabel: 'canva-clone-fawn.vercel.app',
-    isLive: true,
-  },
-  {
-    id: 'marketx',
-    title: 'MarketX Angular E-Commerce',
-    category: 'Frontend',
-    catColor: 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300',
-    tech: 'Angular 19 • Angular Signals • RxJS • Responsive Dash',
-    desc: {
-      en: 'Enterprise storefront powered by Angular 19 reactive Signals and RxJS event streams. Features live order tracking and merchant back-office management.',
-      id: 'Storefront enterprise menggunakan reaktivitas Angular Signals dan RxJS event streams. Dilengkapi pelacak status pesanan live dan back-office penjual.'
-    },
-    image: '/projects/marketx.png',
-    link: 'https://market-x-angular.vercel.app',
-    linkLabel: 'market-x-angular.vercel.app',
-    isLive: true,
-  },
-  {
-    id: 'spotify',
-    title: 'Spotify Web Player & Visualizer',
-    category: 'Frontend',
-    catColor: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300',
-    tech: 'Next.js 16 • Web Audio API • Frequency Visualizer • Tailwind',
-    desc: {
-      en: 'High-fidelity audio streaming client with real-time Web Audio API frequency analysis canvas visualizer, dynamic album color palette extraction, and lyrics.',
-      id: 'Klien streaming audio dengan visualisasi frekuensi real-time Web Audio API pada kanvas, ekstraksi warna cover album dinamis, dan sinkronisasi lirik.'
-    },
-    image: '/projects/spotify.png',
-    link: 'https://spotify-clonez.vercel.app',
-    linkLabel: 'spotify-clonez.vercel.app',
-    isLive: true,
-  },
-];
 
 export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
   const [lang, setLang] = useState<CVLang>('id');
@@ -216,8 +375,51 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
 
   if (!isOpen) return null;
 
-  const currentRole = roleContent[activeRole][lang];
+  const currentRole = roleData[activeRole][lang];
   const t = commonText[lang];
+
+  // Dynamic PDF download path matching role and language
+  const pdfDownloadPath = activeRole === 'fullstack'
+    ? (lang === 'id' ? '/resume-id.pdf' : '/resume.pdf')
+    : (lang === 'id' ? `/resume-${activeRole}-id.pdf` : `/resume-${activeRole}.pdf`);
+
+  const job2Title = lang === 'en'
+    ? (activeRole === 'backend' ? 'Backend Systems & Architecture Research' : activeRole === 'frontend' ? 'Frontend & Mobile Systems Research' : 'Software Engineering & Open Source Research')
+    : (activeRole === 'backend' ? 'Rekayasa Sistem Backend & Riset Arsitektur' : activeRole === 'frontend' ? 'Rekayasa Sistem Frontend & Mobile' : 'Rekayasa Perangkat Lunak & Riset Open Source');
+
+  const job2Bullets = lang === 'en' ? [
+    activeRole === 'backend'
+      ? 'Architected, built, and audited 19 production-grade backend microservices and cloud systems with Clean Architecture and Docker containerization.'
+      : activeRole === 'frontend'
+      ? 'Architected, built, and audited 48+ frontend web and mobile applications with responsive state management, canvas graphics, and mobile navigation.'
+      : 'Architected, built, and audited 82 production-grade repositories across Backend Microservices, Fullstack Web, and Mobile Platforms.',
+    activeRole === 'backend'
+      ? 'Designed ACID transactional schemas, implemented JWT/RBAC security pipelines, Redis cache-aside patterns, and RabbitMQ message queues.'
+      : activeRole === 'frontend'
+      ? 'Engineered dual-layer 60 FPS canvas graphics (React-Konva), reactive state stores (Zustand, Signals), and responsive modern UI components.'
+      : 'Designed ACID transactional schemas, implemented JWT/RBAC security pipelines, Redis cache-aside patterns, RabbitMQ brokers, and Docker Compose.',
+    activeRole === 'backend'
+      ? 'Maintained strict engineering standards: unit testing, Swagger/OpenAPI documentation, and high-availability operations.'
+      : activeRole === 'frontend'
+      ? 'Shipped and maintained 12 live cloud applications on Vercel with responsive mobile-first UI and fast hydration.'
+      : 'Shipped and maintained 12 live cloud applications on Vercel with serverless databases and responsive UI architecture.'
+  ] : [
+    activeRole === 'backend'
+      ? 'Merancang, membangun, dan mengaudit 19 repositori sistem backend microservices dan cloud berprinsip Clean Architecture dan kontainerisasi Docker.'
+      : activeRole === 'frontend'
+      ? 'Merancang, membangun, dan mengaudit 48+ aplikasi frontend web dan mobile dengan state management reaktif, kanvas grafis, dan navigasi mobile.'
+      : 'Merancang, membangun, dan mengaudit 82 repositori perangkat lunak mencakup Backend Microservices, Fullstack Web, dan Mobile.',
+    activeRole === 'backend'
+      ? 'Merancang skema database transaksional ACID, pipa keamanan JWT/RBAC, pola Redis cache-aside, dan message broker RabbitMQ.'
+      : activeRole === 'frontend'
+      ? 'Membangun kanvas grafis dual-layer 60 FPS (React-Konva), state store reaktif (Zustand, Signals), dan komponen antarmuka responsif.'
+      : 'Merancang skema database transaksional ACID, pipa keamanan JWT/RBAC, pola Redis cache-aside, message broker RabbitMQ, dan orkestrasi Docker Compose.',
+    activeRole === 'backend'
+      ? 'Menerapkan standar rekayasa ketat: unit testing, dokumentasi Swagger/OpenAPI, dan keandalan sistem berstandar enterprise.'
+      : activeRole === 'frontend'
+      ? 'Men-deploy dan mengelola 12 aplikasi web aktif di cloud Vercel dengan tampilan responsif dan waktu muat instan.'
+      : 'Men-deploy dan mengelola 12 aplikasi produksi aktif di cloud Vercel dengan integrasi database serverless dan antarmuka reaktif modern.'
+  ];
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end print:absolute print:inset-auto print:w-full print:h-auto print:block">
@@ -261,7 +463,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     ? 'bg-slate-900 text-white dark:bg-white dark:text-black shadow'
                     : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
                 }`}
-                title="Tampilkan seluruh kompetensi Fullstack"
+                title="Tampilkan CV Khusus Fullstack (3 Halaman)"
               >
                 <Layers size={13} /> Fullstack
               </button>
@@ -272,7 +474,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     ? 'bg-sky-600 text-white shadow'
                     : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
                 }`}
-                title="Prioritaskan sistem Backend & Cloud"
+                title="Tampilkan CV Khusus Backend (3 Halaman)"
               >
                 <Server size={13} /> Back End
               </button>
@@ -283,13 +485,13 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     ? 'bg-emerald-600 text-white shadow'
                     : 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white'
                 }`}
-                title="Prioritaskan Frontend & Mobile"
+                title="Tampilkan CV Khusus Frontend & Mobile (3 Halaman)"
               >
                 <Cpu size={13} /> Front End & Mobile
               </button>
             </div>
 
-            {/* LANGUAGE TOGGLE (3-PAGE STRICT) */}
+            {/* LANGUAGE TOGGLE */}
             <div className="flex items-center bg-slate-200 dark:bg-slate-800 p-1 rounded-xl border border-slate-300 dark:border-slate-700">
               <button
                 onClick={() => setLang('id')}
@@ -300,7 +502,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 }`}
                 title="Versi Bahasa Indonesia (Tepat 3 Halaman ATS)"
               >
-                🇮🇩 Indonesia (3 Hlm)
+                🇮🇩 ID (3 Hlm)
               </button>
               <button
                 onClick={() => setLang('en')}
@@ -311,7 +513,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 }`}
                 title="English Version (Strict 3-Page ATS)"
               >
-                🇬🇧 English (3 Pages)
+                🇬🇧 EN (3 Pages)
               </button>
             </div>
 
@@ -323,12 +525,12 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               <Printer size={14} /> {t.printBtn}
             </button>
             <a
-              href={lang === 'id' ? "/resume-id.pdf" : "/resume.pdf"}
+              href={pdfDownloadPath}
               target="_blank"
-              download={lang === 'id' ? "resume-kevin-eka-pratama-id.pdf" : "resume-kevin-eka-pratama.pdf"}
+              download={`resume-kevin-eka-pratama-${activeRole}${lang === 'id' ? '-id' : ''}.pdf`}
               className="px-3.5 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-900 dark:text-white text-xs font-bold rounded-xl flex items-center gap-1.5 transition-all cursor-pointer border border-slate-400 dark:border-slate-700"
             >
-              <Download size={14} /> {t.downloadBtn}
+              <Download size={14} /> {t.downloadBtn} ({activeRole.toUpperCase()})
             </a>
           </div>
 
@@ -367,9 +569,12 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     Kevin Eka Pratama
                   </h1>
                   <p className="text-xs sm:text-sm print:text-[10px] font-extrabold text-slate-800 uppercase tracking-wide">
-                    {currentRole.title}
+                    {currentRole.roleTitle}
                   </p>
-                  <div className="flex flex-wrap items-center gap-x-2.5 gap-y-0.5 text-xs print:text-[8.5px] text-slate-700 font-medium">
+                  <p className="text-[11px] print:text-[8px] font-bold text-slate-600">
+                    {currentRole.roleSubtitle}
+                  </p>
+                  <div className="flex flex-wrap items-center gap-x-2.5 gap-y-0.5 text-xs print:text-[8.5px] text-slate-700 font-medium pt-0.5">
                     <span className="flex items-center gap-1 font-mono">
                       <Mail size={11} className="text-slate-900 print:w-2.5 print:h-2.5" /> kevinekapratama@gmail.com
                     </span>
@@ -400,7 +605,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     <User size={14} className="text-slate-900 print:w-3 print:h-3" /> {currentRole.executiveSummaryTitle}
                   </h2>
                   <span className="text-[10px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
-                    {lang === 'en' ? 'Executive Profile (Page 1 of 3)' : 'Profil Eksekutif (Halaman 1 dari 3)'}
+                    {lang === 'en' ? `Target: ${activeRole.toUpperCase()} (Page 1 of 3)` : `Target: ${activeRole.toUpperCase()} (Halaman 1 dari 3)`}
                   </span>
                 </div>
                 <p className="text-slate-800 text-xs sm:text-sm print:text-[9.5px] leading-relaxed print:leading-normal font-medium text-justify">
@@ -441,7 +646,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     <div className="flex justify-between items-start flex-wrap gap-1">
                       <div>
                         <span className="font-extrabold text-slate-900 text-xs sm:text-sm print:text-[10px]">
-                          {t.job2Title}
+                          {job2Title}
                         </span>
                         <span className="text-slate-500 text-xs print:text-[9px]"> • </span>
                         <span className="text-xs print:text-[9.5px] font-bold text-slate-700">
@@ -453,9 +658,9 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                       </span>
                     </div>
                     <ul className="list-disc pl-4 text-slate-800 text-xs print:text-[9.5px] leading-relaxed print:leading-normal space-y-0.5 font-medium">
-                      <li>{t.job2Bullet1}</li>
-                      <li>{t.job2Bullet2}</li>
-                      <li>{t.job2Bullet3}</li>
+                      {job2Bullets.map((b, i) => (
+                        <li key={i}>{b}</li>
+                      ))}
                     </ul>
                   </div>
                 </div>
@@ -464,24 +669,21 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               {/* TECHNICAL COMPETENCIES */}
               <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
                 <h2 className="text-xs sm:text-sm print:text-[10px] font-extrabold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-0.5 flex items-center gap-1.5">
-                  <Code size={14} className="text-slate-900 print:w-3 print:h-3" /> {t.skillsTitle}
+                  <Code size={14} className="text-slate-900 print:w-3 print:h-3" /> {t.skillsTitle} ({currentRole.roleTitle})
                 </h2>
                 
                 <div className="space-y-1 text-xs print:text-[9px] text-slate-800 leading-relaxed font-medium">
                   <p>
-                    <strong>{lang === 'id' ? 'Bahasa Pemrograman:' : 'Programming Languages:'}</strong> Go (Golang), Java (JDK 17/21), TypeScript, JavaScript (Node.js/Bun), Python 3, PHP 8, Dart, SQL, HTML5/CSS3
+                    <strong>{lang === 'id' ? 'Bahasa Pemrograman:' : 'Programming Languages:'}</strong> {currentRole.skillsLanguages}
                   </p>
                   <p>
-                    <strong>{lang === 'id' ? 'Backend & Cloud:' : 'Backend & Cloud:'}</strong> Java Spring Boot 3.3, Go (Gin/Fiber/Echo), Bun + Hono, Express.js, FastAPI, Laravel 12, Clean Architecture (DDD), RESTful APIs, gRPC (Protobuf), Microservices, WebSocket
+                    <strong>{lang === 'id' ? 'Framework & Arsitektur:' : 'Frameworks & Architecture:'}</strong> {currentRole.skillsFrameworks}
                   </p>
                   <p>
-                    <strong>{lang === 'id' ? 'Frontend & Mobile:' : 'Frontend & Mobile:'}</strong> Next.js 16 (App Router), React 19, TypeScript, Vue 3 (Pinia), Angular 19 (Signals), React Native (Expo SDK 56), Flutter (Riverpod 3), Tailwind CSS v4, Zustand, Redux Toolkit
+                    <strong>{activeRole === 'backend' ? (lang === 'id' ? 'Database & Message Broker:' : 'Databases & Message Brokers:') : activeRole === 'frontend' ? (lang === 'id' ? 'State & Grafis Interaktif:' : 'State & Interactive Graphics:') : (lang === 'id' ? 'Database & Messaging:' : 'Databases & Messaging:')}</strong> {currentRole.skillsDatabases}
                   </p>
                   <p>
-                    <strong>{lang === 'id' ? 'Database & Messaging:' : 'Databases & Messaging:'}</strong> PostgreSQL (GORM, Prisma, ACID Transactions, Connection Pooling), MySQL, MongoDB, SQLite (LibSQL), Redis (Cache-Aside, Rate Limiting), RabbitMQ (Message Broker)
-                  </p>
-                  <p>
-                    <strong>{lang === 'id' ? 'DevOps, Tooling & Testing:' : 'DevOps & Tooling:'}</strong> Docker, Docker Compose, Git & GitHub, Postman, Swagger / OpenAPI, Vite, Webpack 5, Linux Bash, Vercel Edge Runtime
+                    <strong>{lang === 'id' ? 'DevOps, Cloud & Tooling:' : 'DevOps, Cloud & Tooling:'}</strong> {currentRole.skillsDevOps}
                   </p>
                 </div>
               </div>
@@ -510,7 +712,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
 
               {/* FOOTER PAGE 1 */}
               <div className="border-t border-slate-300 pt-1.5 flex justify-between items-center text-[10px] print:text-[7.5px] font-mono text-slate-500">
-                <span>Kevin Eka Pratama • Software Engineer</span>
+                <span>Kevin Eka Pratama • {currentRole.roleTitle}</span>
                 <span>kevinekapratama@gmail.com • +62 (813) 2661-2344</span>
                 <span className="font-bold">Page 1 of 3 (Executive Profile)</span>
               </div>
@@ -520,7 +722,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
             <div className="no-print my-8 py-3 border-y-2 border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-between text-xs font-mono text-slate-500">
               <span className="font-bold uppercase tracking-wider flex items-center gap-2 text-slate-900 dark:text-white">
                 <LayoutGrid size={15} className="text-sky-600 dark:text-sky-400" />
-                {lang === 'id' ? 'Halaman 2: Direktori & Katalog 82 Repositori Rekayasa' : 'Page 2: Technical Project & 82 Repository Directory'}
+                {lang === 'id' ? `Halaman 2: Direktori Proyek Khusus (${activeRole.toUpperCase()})` : `Page 2: Dedicated Project Directory (${activeRole.toUpperCase()})`}
               </span>
               <span className="bg-slate-200 dark:bg-slate-800 px-2 py-0.5 rounded text-[10px] font-bold text-slate-700 dark:text-slate-300">
                 Page 2 of 3
@@ -530,7 +732,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
             <div className="page-break" />
 
             {/* ========================================================= */}
-            {/* PAGE 2: TECHNICAL PROJECT & REPOSITORY DIRECTORY (82 REPOS)*/}
+            {/* PAGE 2: TECHNICAL PROJECT & REPOSITORY DIRECTORY          */}
             {/* ========================================================= */}
             <div className="space-y-3.5 print:space-y-2 pt-2 print:pt-0 pb-4 print:pb-0">
               {/* PAGE 2 HEADER */}
@@ -538,10 +740,10 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 <div>
                   <h2 className="text-sm md:text-base print:text-xs font-black uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
                     <LayoutGrid size={16} className="text-slate-900 print:w-3 print:h-3" />
-                    {t.page2Title}
+                    {currentRole.page2Title}
                   </h2>
                   <p className="text-[11px] print:text-[8px] font-bold text-slate-600">
-                    {t.page2Subtitle}
+                    {currentRole.page2Subtitle}
                   </p>
                 </div>
                 <span className="text-[10px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
@@ -551,165 +753,200 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
 
               {/* EXECUTIVE METRICS BAR */}
               <div className="grid grid-cols-4 gap-2 print:gap-1 p-2 print:p-1.5 bg-slate-50 print:bg-slate-100 rounded-lg border border-slate-300 print:break-inside-avoid">
-                <div className="text-center p-1 bg-white print:bg-transparent rounded border border-slate-200 print:border-none">
-                  <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px]">19 Repos</div>
-                  <div className="text-[8px] print:text-[6.5px] font-mono font-bold text-slate-600 uppercase">Backend & Cloud</div>
-                </div>
-                <div className="text-center p-1 bg-white print:bg-transparent rounded border border-slate-200 print:border-none">
-                  <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px]">22 Repos</div>
-                  <div className="text-[8px] print:text-[6.5px] font-mono font-bold text-slate-600 uppercase">Fullstack & Mobile</div>
-                </div>
-                <div className="text-center p-1 bg-white print:bg-transparent rounded border border-slate-200 print:border-none">
-                  <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px]">41 Repos</div>
-                  <div className="text-[8px] print:text-[6.5px] font-mono font-bold text-slate-600 uppercase">Frontend Web</div>
-                </div>
-                <div className="text-center p-1 bg-emerald-50 print:bg-transparent rounded border border-emerald-300 print:border-none">
-                  <div className="font-extrabold text-emerald-800 text-xs md:text-sm print:text-[10px]">12 Live Apps</div>
-                  <div className="text-[8px] print:text-[6.5px] font-mono font-bold text-emerald-600 uppercase">Active Vercel URLs</div>
-                </div>
+                {roleData[activeRole].metrics.map((m, idx) => (
+                  <div key={idx} className="text-center p-1 bg-white print:bg-transparent rounded border border-slate-200 print:border-none">
+                    <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px]">{m.num}</div>
+                    <div className="text-[8px] print:text-[6.5px] font-mono font-bold text-slate-600 uppercase">
+                      {lang === 'en' ? m.labelEn : m.labelId}
+                    </div>
+                  </div>
+                ))}
               </div>
 
-              {/* 3 PILLARS REPOSITORY DIRECTORY */}
-              <div className="space-y-2 print:space-y-1.5">
-                {/* PILLAR 1: BACKEND */}
-                <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
-                  <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
-                    <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
-                      {lang === 'en' ? 'Pillar 1: Backend Systems & Cloud Architecture' : 'Pilar 1: Sistem Backend & Arsitektur Cloud'}
-                    </span>
-                    <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
-                      19 Repositories
-                    </span>
+              {/* ROLE-SPECIFIC REPOSITORY DIRECTORY */}
+              {activeRole === 'backend' && (
+                <div className="space-y-2 print:space-y-1.5">
+                  <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
+                    <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
+                      <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
+                        {lang === 'en' ? 'Core Financial & High-Throughput Microservices' : 'Layanan Mikro Finansial & Throughput Tinggi'}
+                      </span>
+                      <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
+                        Go & Java Ecosystem
+                      </span>
+                    </div>
+                    <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
+                      <p>• <a href="https://github.com/mazkev/go-banking-core-system" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-banking-core-system:</a> {lang === 'en' ? 'Atomic account transfer engine with ACID transaction isolation, PostgreSQL row-level locks, Bcrypt PIN, and Swagger docs.' : 'Engine transfer rekening atomik dengan isolasi transaksi ACID, row-level lock PostgreSQL, PIN Bcrypt, dan dokumentasi Swagger.'}</p>
+                      <p>• <a href="https://github.com/mazkev/go-distributed-microservices-lab" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-distributed-microservices-lab:</a> {lang === 'en' ? 'Distributed services communicating over binary gRPC, asynchronous RabbitMQ event bus, and Redis cache-aside.' : 'Layanan mikro terdistribusi dengan komunikasi biner gRPC, antrean pesan asinkron RabbitMQ, dan caching Redis.'}</p>
+                      <p>• <a href="https://github.com/mazkev/nexus-workspace-engine" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">nexus-workspace-engine:</a> {lang === 'en' ? 'Java Spring Boot 3.3 enterprise microservices ecosystem with Resilience4j circuit breakers and Eureka discovery.' : 'Ekosistem microservices enterprise Java Spring Boot 3.3 dengan circuit breaker Resilience4j dan discovery Eureka.'}</p>
+                      <p>• <a href="https://github.com/mazkev/go-clean-arch" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-clean-arch:</a> {lang === 'en' ? 'Domain-Driven Design (DDD) Clean Architecture boilerplate decoupling Domain, Usecase, and Repository layers.' : 'Arsitektur Clean terstruktur dengan pemisahan tegas antara lapisan Domain, Usecase, dan Repository.'}</p>
+                    </div>
                   </div>
-                  <div className="text-[9px] print:text-[7px] font-mono font-bold text-sky-800">
-                    Go (Golang) • Java Spring Boot • Bun/Hono • Node.js • PostgreSQL • Redis • RabbitMQ • gRPC • Docker
-                  </div>
-                  <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
-                    <p>• <a href="https://github.com/mazkev/go-banking-core-system" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-banking-core-system:</a> {lang === 'en' ? 'Core banking engine with atomic balance transfers, ACID PostgreSQL row locks, and Bcrypt PIN.' : 'Engine core banking transaksi transfer saldo atomik dengan row-level lock PostgreSQL dan validasi PIN Bcrypt.'}</p>
-                    <p>• <a href="https://github.com/mazkev/go-distributed-microservices-lab" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-distributed-microservices-lab:</a> {lang === 'en' ? 'High-throughput microservices communicating over binary gRPC and asynchronous RabbitMQ event bus.' : 'Layanan mikro terdistribusi dengan komunikasi biner gRPC dan antrean pesan asinkron RabbitMQ.'}</p>
-                    <p>• <a href="https://github.com/mazkev/nexus-workspace-engine" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">nexus-workspace-engine:</a> {lang === 'en' ? 'Java Spring Boot 3.3 enterprise microservices ecosystem with Resilience4j circuit breakers and Eureka discovery.' : 'Ekosistem microservices enterprise Java Spring Boot 3.3 dengan circuit breaker Resilience4j dan discovery Eureka.'}</p>
-                    <p>• <a href="https://github.com/mazkev/go-clean-arch" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-clean-arch:</a> {lang === 'en' ? 'Decoupled Clean Architecture boilerplate implementing strict Domain, Usecase, and Repository boundaries.' : 'Arsitektur Clean terstruktur dengan pemisahan tegas antara lapisan Domain, Usecase, dan Repository.'}</p>
-                  </div>
-                </div>
 
-                {/* PILLAR 2: FULLSTACK & MOBILE */}
-                <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
-                  <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
-                    <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
-                      {lang === 'en' ? 'Pillar 2: Fullstack Web Platforms & Mobile Applications' : 'Pilar 2: Platform Web Fullstack & Aplikasi Mobile'}
-                    </span>
-                    <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
-                      22 Repositories
-                    </span>
+                  <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
+                    <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
+                      <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
+                        {lang === 'en' ? 'API Gateways, Messaging & Database Engines' : 'API Gateway, Message Queue & Mesin Basis Data'}
+                      </span>
+                      <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
+                        Ultra-Low Latency Stacks
+                      </span>
+                    </div>
+                    <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
+                      <p>• <a href="https://github.com/mazkev/go-ecommerce-gateway-engine" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-ecommerce-gateway-engine:</a> {lang === 'en' ? 'Reverse proxy API gateway with rate limiting, GORM PostgreSQL connection pooling, and JWT authorization.' : 'API gateway reverse proxy dengan rate limiting, connection pooling GORM PostgreSQL, dan otorisasi JWT.'}</p>
+                      <p>• <a href="https://github.com/mazkev/bun-hono-ecommerce-api" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">bun-hono-ecommerce-api:</a> {lang === 'en' ? 'Sub-millisecond REST API engine running on Bun runtime with Hono v4 framework and MongoDB NoSQL storage.' : 'Engine REST API sub-milidetik berbasis Bun runtime dengan framework Hono v4 dan basis data MongoDB NoSQL.'}</p>
+                      <p>• <a href="https://github.com/mazkev/fastapi-task-queue-redis" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">fastapi-task-queue-redis:</a> {lang === 'en' ? 'Asynchronous Python background task processing engine using Celery, Redis broker, and FastAPI REST endpoints.' : 'Engine pemrosesan antrean tugas asinkron Python menggunakan Celery, broker Redis, dan REST API FastAPI.'}</p>
+                      <p>• <a href="https://github.com/mazkev/express-multitenant-saas" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">express-multitenant-saas:</a> {lang === 'en' ? 'Multitenant backend architecture with schema-isolated database routing and scoped JWT security.' : 'Arsitektur backend multitenant dengan routing database terisolasi skema dan keamanan JWT terspesifikasi.'}</p>
+                    </div>
                   </div>
-                  <div className="text-[9px] print:text-[7px] font-mono font-bold text-indigo-800">
-                    Next.js 16 • React 19 • React Native (Expo SDK 56) • Flutter • FastAPI • Laravel 12 • Prisma 7 • LibSQL
-                  </div>
-                  <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
-                    <p>• <a href="https://github.com/mazkev/baye-ecommerce-marketplace" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">baye-ecommerce-marketplace:</a> {lang === 'en' ? 'Auction e-commerce with Next.js 16 Server Components, live bidding simulation, LibSQL, and digital QR invoices.' : 'Marketplace lelang produksi dengan Next.js 16, LibSQL serverless, komparasi produk, dan cetak invoice QR digital.'}</p>
-                    <p>• <a href="https://github.com/mazkev/tokopedia-react-storefront" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">tokopedia-react-storefront:</a> {lang === 'en' ? 'Fullstack marketplace combining Go REST API backend with React 19, category filters, and optimistic cart checkout.' : 'E-commerce fullstack memadukan backend Go REST API dengan frontend React 19 dan sinkronisasi transaksi PostgreSQL.'}</p>
-                    <p>• <a href="https://github.com/mazkev/treveloka-react-native-expo" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">treveloka-react-native-expo:</a> {lang === 'en' ? 'Mobile travel booking superapp with React Native 0.85, Expo Router, and Gemini AI itinerary assistant.' : 'Aplikasi mobile pemesanan perjalanan dengan React Native 0.85, Expo Router, dan asisten rencana perjalanan Gemini AI.'}</p>
-                    <p>• <a href="https://github.com/mazkev/tiktok-clone-react-native-expo" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">tiktok-clone-react-native-expo:</a> {lang === 'en' ? 'Mobile short-video platform featuring Expo Video autoplay feeds, camera recording, and live comment overlays.' : 'Platform video pendek mobile dengan pemutar Expo Video seamless autoplay dan perekaman video kamera terintegrasi.'}</p>
-                  </div>
-                </div>
 
-                {/* PILLAR 3: FRONTEND */}
-                <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
-                  <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
-                    <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
-                      {lang === 'en' ? 'Pillar 3: Modern Frontend Web Applications' : 'Pilar 3: Aplikasi Frontend Web Modern'}
-                    </span>
-                    <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
-                      41 Repositories
-                    </span>
-                  </div>
-                  <div className="text-[9px] print:text-[7px] font-mono font-bold text-purple-800">
-                    React 19 • Vue 3 (Pinia) • Angular 19 (Signals) • Zustand • Tailwind CSS v4 • React-Konva • Web Audio API
-                  </div>
-                  <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
-                    <p>• <a href="https://github.com/mazkev/react-canva-design-studio" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">react-canva-design-studio:</a> {lang === 'en' ? 'Vector graphic studio with dual-layer 60 FPS React-Konva canvas, transformation matrices, and image export.' : 'Studio desain grafis berbasis web dengan dual-layer kanvas 60 FPS React-Konva dan pipeline ekspor multi-format.'}</p>
-                    <p>• <a href="https://github.com/mazkev/market-x-angular" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">market-x-angular:</a> {lang === 'en' ? 'Enterprise e-commerce storefront powered by Angular 19 reactive Signals, RxJS event streams, and seller dashboard.' : 'Storefront e-commerce enterprise dengan reaktivitas Angular 19 Signals, RxJS streams, dan dashboard penjual.'}</p>
-                    <p>• <a href="https://github.com/mazkev/nextjs-spotify-music-player" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">nextjs-spotify-music-player:</a> {lang === 'en' ? 'Music streaming player with real-time Web Audio API frequency analysis canvas visualizer and synchronized lyrics.' : 'Pemutar musik web dengan visualisasi frekuensi real-time Web Audio API pada kanvas dan sinkronisasi lirik.'}</p>
-                    <p>• <a href="https://github.com/mazkev/react-trello-kanban-suite" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">react-trello-kanban-suite:</a> {lang === 'en' ? 'Glassmorphism Kanban project board with multi-axis drag-and-drop task sorting and Zustand state management.' : 'Board manajemen proyek Kanban glassmorphism dengan drag-and-drop multi-axis dan state store Zustand.'}</p>
+                  <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
+                    <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
+                      <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
+                        {lang === 'en' ? 'Production Architectural Standards & Patterns' : 'Standar Arsitektur & Pola Rekayasa Produksi'}
+                      </span>
+                      <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
+                        Enterprise Grade
+                      </span>
+                    </div>
+                    <div className="text-[11px] print:text-[8px] text-slate-700 space-y-0.5 font-medium">
+                      <p>• <strong>{lang === 'en' ? 'ACID Transactional Ledgers:' : 'Transaksi Atomik ACID:'}</strong> {lang === 'en' ? 'Strict row-level locking preventing race conditions and double-spending across financial workflows.' : 'Row-level locking di PostgreSQL untuk mencegah race condition dan double spending pada mutasi saldo.'}</p>
+                      <p>• <strong>{lang === 'en' ? 'Cache-Aside & Throttling:' : 'Cache-Aside & Throttling:'}</strong> {lang === 'en' ? 'Redis cache-aside pattern reducing read latency by >85% and distributed token bucket rate limiters.' : 'Redis cache-aside yang mereduksi latensi baca >85% dan rate limiter terdistribusi.'}</p>
+                      <p>• <strong>{lang === 'en' ? 'Asynchronous Event Broker:' : 'Message Broker Asinkron:'}</strong> {lang === 'en' ? 'RabbitMQ exchange/queue bindings ensuring at-least-once message delivery and decoupled microservices.' : 'RabbitMQ queue binding untuk pengiriman pesan andal tanpa memblokir thread HTTP.'}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
 
-              {/* 12 LIVE DEPLOYMENTS TABLE */}
-              <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-0.5">
-                  <h3 className="text-xs print:text-[9.5px] font-extrabold uppercase tracking-wide text-slate-900">
-                    {lang === 'en' ? '12 Verified Cloud Deployments (HTTP 200 OK on Vercel)' : '12 Aplikasi Aktif Terverifikasi di Cloud (Vercel)'}
-                  </h3>
-                  <span className="text-[9px] print:text-[7px] font-mono font-bold text-emerald-700 uppercase">
-                    {lang === 'en' ? 'Clickable Live Demos' : 'Dapat Diuji Langsung'}
-                  </span>
+              {activeRole === 'frontend' && (
+                <div className="space-y-2 print:space-y-1.5">
+                  <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
+                    <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
+                      <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
+                        {lang === 'en' ? 'Flagship Frontend Web Applications & Interactive Workstations' : 'Aplikasi Web Unggulan & Workstation Grafis'}
+                      </span>
+                      <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
+                        React 19 • Next.js 16 • Angular 19
+                      </span>
+                    </div>
+                    <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
+                      <p>• <a href="https://github.com/mazkev/react-canva-design-studio" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">react-canva-design-studio:</a> {lang === 'en' ? 'Browser vector graphic design studio with dual-layer 60 FPS React-Konva canvas, transformation matrices, and image export.' : 'Studio desain grafis berbasis web dengan dual-layer kanvas 60 FPS React-Konva dan pipeline ekspor multi-format.'}</p>
+                      <p>• <a href="https://github.com/mazkev/market-x-angular" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">market-x-angular:</a> {lang === 'en' ? 'Enterprise e-commerce storefront powered by Angular 19 reactive Signals, RxJS event streams, and seller back-office.' : 'Storefront e-commerce enterprise dengan reaktivitas Angular 19 Signals, RxJS streams, dan dashboard penjual.'}</p>
+                      <p>• <a href="https://github.com/mazkev/nextjs-spotify-music-player" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">nextjs-spotify-music-player:</a> {lang === 'en' ? 'Music streaming player with real-time Web Audio API frequency analysis canvas visualizer and synchronized lyrics.' : 'Pemutar musik web dengan visualisasi frekuensi real-time Web Audio API pada kanvas dan sinkronisasi lirik.'}</p>
+                      <p>• <a href="https://github.com/mazkev/react-trello-kanban-suite" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">react-trello-kanban-suite:</a> {lang === 'en' ? 'Glassmorphism Kanban project board with multi-axis drag-and-drop task sorting and Zustand state store.' : 'Board manajemen proyek Kanban glassmorphism dengan drag-and-drop multi-axis dan state store Zustand.'}</p>
+                    </div>
+                  </div>
+
+                  <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
+                    <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
+                      <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
+                        {lang === 'en' ? 'Cross-Platform Mobile Applications' : 'Aplikasi Mobile Cross-Platform'}
+                      </span>
+                      <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
+                        React Native & Flutter
+                      </span>
+                    </div>
+                    <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
+                      <p>• <a href="https://github.com/mazkev/treveloka-react-native-expo" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">treveloka-react-native-expo:</a> {lang === 'en' ? 'Mobile travel booking superapp with React Native 0.85, Expo Router, and Gemini AI itinerary assistant.' : 'Aplikasi mobile pemesanan perjalanan dengan React Native 0.85, Expo Router, dan asisten rencana perjalanan Gemini AI.'}</p>
+                      <p>• <a href="https://github.com/mazkev/tiktok-clone-react-native-expo" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">tiktok-clone-react-native-expo:</a> {lang === 'en' ? 'Mobile short-video platform featuring Expo Video autoplay feeds, camera recording, and live comment overlays.' : 'Platform video pendek mobile dengan pemutar Expo Video seamless autoplay dan perekaman video kamera terintegrasi.'}</p>
+                    </div>
+                  </div>
+
+                  {/* 12 LIVE DEPLOYMENTS TABLE */}
+                  <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
+                    <div className="flex items-center justify-between border-b border-slate-800 pb-0.5">
+                      <h3 className="text-xs print:text-[9.5px] font-extrabold uppercase tracking-wide text-slate-900">
+                        {lang === 'en' ? '12 Verified Cloud Deployments (HTTP 200 OK on Vercel)' : '12 Aplikasi Aktif Terverifikasi di Cloud (Vercel)'}
+                      </h3>
+                      <span className="text-[9px] print:text-[7px] font-mono font-bold text-emerald-700 uppercase">
+                        {lang === 'en' ? 'Clickable Live Demos' : 'Dapat Diuji Langsung'}
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-1 text-[10px] print:text-[7.5px] font-mono">
+                      <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <strong>1. Canvass Design Studio:</strong>
+                        <a href="https://canva-clone-fawn.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">canva-clone-fawn.vercel.app</a>
+                      </div>
+                      <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <strong>2. Spotify Music Player:</strong>
+                        <a href="https://spotify-clonez.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">spotify-clonez.vercel.app</a>
+                      </div>
+                      <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <strong>3. MarketX Angular Store:</strong>
+                        <a href="https://market-x-angular.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">market-x-angular.vercel.app</a>
+                      </div>
+                      <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <strong>4. Trello Kanban Suite:</strong>
+                        <a href="https://trello-azure-five.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">trello-azure-five.vercel.app</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="grid grid-cols-2 gap-1 text-[10px] print:text-[7.5px] font-mono">
-                  <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                    <strong>1. BayE Auction Store:</strong>
-                    <a href="https://baye-ecommerce-marketplace.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">baye-ecommerce-marketplace.vercel.app</a>
+              )}
+
+              {activeRole === 'fullstack' && (
+                <div className="space-y-2 print:space-y-1.5">
+                  <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
+                    <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
+                      <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
+                        {lang === 'en' ? 'Pillar 1: Backend Systems & Cloud Architecture' : 'Pilar 1: Sistem Backend & Arsitektur Cloud'}
+                      </span>
+                      <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
+                        19 Repositories
+                      </span>
+                    </div>
+                    <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
+                      <p>• <a href="https://github.com/mazkev/go-banking-core-system" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-banking-core-system:</a> {lang === 'en' ? 'Core banking engine with atomic balance transfers, ACID PostgreSQL row locks, and Bcrypt PIN.' : 'Engine core banking transaksi transfer saldo atomik dengan row-level lock PostgreSQL dan validasi PIN Bcrypt.'}</p>
+                      <p>• <a href="https://github.com/mazkev/go-distributed-microservices-lab" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-distributed-microservices-lab:</a> {lang === 'en' ? 'High-throughput microservices communicating over binary gRPC and asynchronous RabbitMQ event bus.' : 'Layanan mikro terdistribusi dengan komunikasi biner gRPC dan antrean pesan asinkron RabbitMQ.'}</p>
+                      <p>• <a href="https://github.com/mazkev/nexus-workspace-engine" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">nexus-workspace-engine:</a> {lang === 'en' ? 'Java Spring Boot 3.3 enterprise microservices ecosystem with Resilience4j circuit breakers and Eureka discovery.' : 'Ekosistem microservices enterprise Java Spring Boot 3.3 dengan circuit breaker Resilience4j dan discovery Eureka.'}</p>
+                    </div>
                   </div>
-                  <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                    <strong>2. Nexus Workspace:</strong>
-                    <a href="https://nexus-project-mu.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">nexus-project-mu.vercel.app</a>
+
+                  <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
+                    <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
+                      <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
+                        {lang === 'en' ? 'Pillar 2: Fullstack Web Platforms & Mobile Applications' : 'Pilar 2: Platform Web Fullstack & Aplikasi Mobile'}
+                      </span>
+                      <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
+                        22 Repositories
+                      </span>
+                    </div>
+                    <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
+                      <p>• <a href="https://github.com/mazkev/baye-ecommerce-marketplace" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">baye-ecommerce-marketplace:</a> {lang === 'en' ? 'Auction e-commerce with Next.js 16 Server Components, live bidding simulation, LibSQL, and digital QR invoices.' : 'Marketplace lelang produksi dengan Next.js 16, LibSQL serverless, komparasi produk, dan cetak invoice QR digital.'}</p>
+                      <p>• <a href="https://github.com/mazkev/tokopedia-react-storefront" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">tokopedia-react-storefront:</a> {lang === 'en' ? 'Fullstack marketplace combining Go REST API backend with React 19, category filters, and optimistic cart checkout.' : 'E-commerce fullstack memadukan backend Go REST API dengan frontend React 19 dan sinkronisasi transaksi PostgreSQL.'}</p>
+                    </div>
                   </div>
-                  <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                    <strong>3. Spotify Web Player:</strong>
-                    <a href="https://spotify-clonez.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">spotify-clonez.vercel.app</a>
-                  </div>
-                  <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                    <strong>4. Indofooty Match Hub:</strong>
-                    <a href="https://indofooty.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">indofooty.vercel.app</a>
-                  </div>
-                  <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                    <strong>5. AI Wireframer Lab:</strong>
-                    <a href="https://ai-component-wireframer.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">ai-component-wireframer.vercel.app</a>
-                  </div>
-                  <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                    <strong>6. Umrah Travel Portal:</strong>
-                    <a href="https://umrah-travel-landing.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">umrah-travel-landing.vercel.app</a>
-                  </div>
-                  <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                    <strong>7. Cloud Simulator:</strong>
-                    <a href="https://cloud-console-simulator.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">cloud-console-simulator.vercel.app</a>
-                  </div>
-                  <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                    <strong>8. Snake AI Pathfinding:</strong>
-                    <a href="https://snake-ai-pathfinding.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">snake-ai-pathfinding.vercel.app</a>
-                  </div>
-                  <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                    <strong>9. Canvass Design Studio:</strong>
-                    <a href="https://canva-clone-fawn.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">canva-clone-fawn.vercel.app</a>
-                  </div>
-                  <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                    <strong>10. Trello Kanban Suite:</strong>
-                    <a href="https://trello-azure-five.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">trello-azure-five.vercel.app</a>
-                  </div>
-                  <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                    <strong>11. MarketX Angular Store:</strong>
-                    <a href="https://market-x-angular.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">market-x-angular.vercel.app</a>
-                  </div>
-                  <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                    <strong>12. HubSpot CRM Platform:</strong>
-                    <a href="https://hub-spot-clone-five.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">hub-spot-clone-five.vercel.app</a>
+
+                  <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
+                    <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
+                      <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
+                        {lang === 'en' ? 'Pillar 3: Modern Frontend Web Applications' : 'Pilar 3: Aplikasi Frontend Web Modern'}
+                      </span>
+                      <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
+                        41 Repositories
+                      </span>
+                    </div>
+                    <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
+                      <p>• <a href="https://github.com/mazkev/react-canva-design-studio" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">react-canva-design-studio:</a> {lang === 'en' ? 'Vector graphic studio with dual-layer 60 FPS React-Konva canvas, transformation matrices, and image export.' : 'Studio desain grafis berbasis web dengan dual-layer kanvas 60 FPS React-Konva dan pipeline ekspor multi-format.'}</p>
+                      <p>• <a href="https://github.com/mazkev/market-x-angular" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">market-x-angular:</a> {lang === 'en' ? 'Enterprise e-commerce storefront powered by Angular 19 reactive Signals, RxJS event streams, and seller dashboard.' : 'Storefront e-commerce enterprise dengan reaktivitas Angular 19 Signals, RxJS streams, dan dashboard penjual.'}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
 
               {/* AUDIT NOTE */}
               <div className="p-2 print:p-1.5 rounded bg-slate-100 border border-slate-300 text-[10px] print:text-[7.5px] text-slate-800 font-medium leading-tight">
                 <strong>{lang === 'en' ? 'Directory Audit Note: ' : 'Catatan Audit Direktori: '}</strong>
                 {lang === 'en' 
-                  ? 'Full source code, commit history, and test suites for all 82 audited repositories are publicly available at github.com/mazkev and interactive web workstation at mazkev.vercel.app.'
-                  : 'Seluruh source code, riwayat komit, dan dokumentasi arsitektur untuk 82 repositori terverifikasi dapat diaudit publik pada github.com/mazkev dan workstation mazkev.vercel.app.'}
+                  ? 'Full source code, commit history, and test suites for all repositories are publicly available at github.com/mazkev and interactive web workstation at mazkev.vercel.app.'
+                  : 'Seluruh source code, riwayat komit, dan dokumentasi arsitektur untuk seluruh repositori terverifikasi dapat diaudit publik pada github.com/mazkev dan workstation mazkev.vercel.app.'}
               </div>
 
               {/* FOOTER PAGE 2 */}
               <div className="border-t border-slate-300 pt-1.5 flex justify-between items-center text-[10px] print:text-[7.5px] font-mono text-slate-500">
-                <span>Kevin Eka Pratama • Software Engineer</span>
+                <span>Kevin Eka Pratama • {currentRole.roleTitle}</span>
                 <span>mazkev.vercel.app • github.com/mazkev</span>
-                <span className="font-bold">Page 2 of 3 (Technical Project Directory)</span>
+                <span className="font-bold">Page 2 of 3 ({lang === 'en' ? 'Dedicated Directory' : 'Direktori Terdedikasi'})</span>
               </div>
             </div>
 
@@ -717,7 +954,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
             <div className="no-print my-8 py-3 border-y-2 border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-between text-xs font-mono text-slate-500">
               <span className="font-bold uppercase tracking-wider flex items-center gap-2 text-slate-900 dark:text-white">
                 <FileText size={15} className="text-emerald-600 dark:text-emerald-400" />
-                {lang === 'id' ? 'Halaman 3: Lampiran Visual Portofolio & Bukti Antarmuka Produksi' : 'Page 3: Visual Project Annex & Production Interfaces'}
+                {lang === 'id' ? `Halaman 3: Lampiran Visual Portofolio (${activeRole.toUpperCase()})` : `Page 3: Dedicated Visual Project Annex (${activeRole.toUpperCase()})`}
               </span>
               <span className="bg-slate-200 dark:bg-slate-800 px-2 py-0.5 rounded text-[10px] font-bold text-slate-700 dark:text-slate-300">
                 Page 3 of 3
@@ -735,10 +972,10 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 <div>
                   <h2 className="text-sm md:text-base print:text-xs font-black uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
                     <FileText size={16} className="text-slate-900 print:w-3 print:h-3" />
-                    {t.page3Title}
+                    {currentRole.page3Title}
                   </h2>
                   <p className="text-[11px] print:text-[8px] font-bold text-slate-600">
-                    {t.page3Subtitle}
+                    {currentRole.page3Subtitle}
                   </p>
                 </div>
                 <span className="text-[10px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
@@ -748,14 +985,14 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
 
               {/* 6 VISUAL CARDS GRID (2 cols x 3 rows) */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 print:gap-1.5">
-                {visualProjects.map((p, idx) => (
+                {roleData[activeRole].visualCards.map((p, idx) => (
                   <div
-                    key={p.id}
+                    key={idx}
                     className="border border-slate-300 rounded-lg overflow-hidden bg-white flex flex-col justify-between print:break-inside-avoid shadow-sm print:shadow-none"
                   >
                     <div className="h-24 sm:h-28 print:h-16 w-full bg-slate-100 border-b border-slate-200 relative overflow-hidden">
                       <Image
-                        src={p.image}
+                        src={p.img}
                         alt={p.title}
                         width={280}
                         height={120}
@@ -765,17 +1002,17 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     <div className="p-2 print:p-1.5 space-y-1">
                       <div className="flex justify-between items-center gap-1">
                         <span className="font-extrabold text-slate-900 text-xs print:text-[9px] leading-tight">
-                          {idx + 1}. {p.title}
+                          {p.title}
                         </span>
-                        <span className={`text-[8.5px] print:text-[6.5px] font-mono font-bold px-1.5 py-0.5 rounded uppercase flex-shrink-0 ${p.catColor}`}>
-                          {p.category}
+                        <span className="text-[8.5px] print:text-[6.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase flex-shrink-0">
+                          {p.cat}
                         </span>
                       </div>
                       <div className="text-[9px] print:text-[7px] font-mono font-bold text-slate-600 truncate">
                         {p.tech}
                       </div>
                       <p className="text-[10.5px] print:text-[7.5px] text-slate-700 font-medium leading-snug">
-                        {p.desc[lang]}
+                        {lang === 'en' ? p.descEn : p.descId}
                       </p>
                       <div className="pt-1 border-t border-slate-100 flex items-center gap-1 text-[9.5px] print:text-[7px] font-mono">
                         <a
@@ -784,7 +1021,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                           rel="noreferrer"
                           className="text-sky-700 hover:underline flex items-center gap-0.5"
                         >
-                          <span>{p.linkLabel}</span>
+                          <span>{p.label}</span>
                           <ExternalLink size={9} className="opacity-70" />
                         </a>
                       </div>
@@ -797,13 +1034,13 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               <div className="p-2 print:p-1.5 rounded bg-slate-100 border border-slate-300 text-[10px] print:text-[7.5px] text-slate-800 font-medium leading-tight">
                 <strong>{lang === 'en' ? 'Interactive Demonstration & Source Code Audit: ' : 'Demonstrasi Interaktif & Audit Kode Sumber: '}</strong>
                 {lang === 'en'
-                  ? 'Live deployments, interactive case studies, architectural documentation, and full source code for all 82 projects are accessible at mazkev.vercel.app and github.com/mazkev.'
-                  : 'Seluruh demo aplikasi langsung, studi kasus interaktif, dokumentasi arsitektur, dan kode sumber untuk 82 repositori dapat diakses publik pada mazkev.vercel.app dan github.com/mazkev.'}
+                  ? 'Live deployments, interactive case studies, architectural documentation, and full source code are accessible at mazkev.vercel.app and github.com/mazkev.'
+                  : 'Seluruh demo aplikasi langsung, studi kasus interaktif, dokumentasi arsitektur, dan kode sumber dapat diakses publik pada mazkev.vercel.app dan github.com/mazkev.'}
               </div>
 
               {/* FOOTER PAGE 3 */}
               <div className="border-t border-slate-300 pt-1.5 flex justify-between items-center text-[10px] print:text-[7.5px] font-mono text-slate-500">
-                <span>Kevin Eka Pratama • Software Engineer</span>
+                <span>Kevin Eka Pratama • {currentRole.roleTitle}</span>
                 <span>mazkev.vercel.app • github.com/mazkev</span>
                 <span className="font-bold">Page 3 of 3 (Visual Project Annex)</span>
               </div>
