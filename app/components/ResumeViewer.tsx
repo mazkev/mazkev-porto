@@ -1200,57 +1200,57 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     </div>
 
                     {/* SHOWCASE 8 PLATFORM FULLSTACK UNGGULAN */}
-                    <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
-                      <div className="border-b border-slate-800 pb-0.5 flex justify-between items-center">
-                        <h3 className="font-extrabold text-slate-900 text-xs print:text-[9.2px] uppercase tracking-wide">
+                    <div className="space-y-2 print:space-y-1 print:break-inside-avoid">
+                      <div className="border-b border-slate-800 pb-1 flex justify-between items-center">
+                        <h3 className="font-extrabold text-slate-900 text-xs sm:text-sm print:text-[9.8px] uppercase tracking-wide">
                           {lang === 'en' ? 'Flagship Fullstack Systems Showcase (8 Selected Architectures)' : 'Showcase 8 Platform Fullstack Unggulan'}
                         </h3>
-                        <span className="text-[9px] print:text-[7.2px] font-mono font-bold text-slate-500 uppercase">
+                        <span className="text-[10px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
                           {lang === 'en' ? 'Live Deployments & Monorepos' : 'Aplikasi Live & Monorepo'}
                         </span>
                       </div>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 print:gap-1">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 print:gap-2">
                         {roleData.fullstack.visualCards.map((p, idx) => (
                           <div
                             key={idx}
-                            className="border border-slate-300 rounded p-1 print:p-0.5 bg-white flex flex-col justify-between print:break-inside-avoid shadow-sm print:shadow-none"
+                            className="border border-slate-300 rounded-lg p-2 print:p-1.5 bg-white flex flex-col justify-between print:break-inside-avoid shadow-sm print:shadow-none hover:border-slate-400 transition-colors"
                           >
-                            <div className="flex gap-1.5 items-start">
-                              <div className="w-16 h-11 print:w-14 print:h-9 bg-slate-100 rounded overflow-hidden flex-shrink-0 border border-slate-200">
+                            <div className="flex gap-2.5 items-start">
+                              <div className="w-20 h-14 sm:w-24 sm:h-16 print:w-16 print:h-11 bg-slate-100 rounded overflow-hidden flex-shrink-0 border border-slate-200">
                                 <Image
                                   src={p.img}
                                   alt={p.title}
-                                  width={100}
-                                  height={60}
+                                  width={120}
+                                  height={80}
                                   className="w-full h-full object-cover"
                                 />
                               </div>
                               <div className="flex-1 min-w-0 space-y-0.5">
                                 <div className="flex justify-between items-center gap-1">
-                                  <span className="font-extrabold text-slate-900 text-[11px] print:text-[8px] leading-tight truncate">
+                                  <span className="font-extrabold text-slate-900 text-xs sm:text-[13px] print:text-[8.8px] leading-tight truncate">
                                     {p.title}
                                   </span>
-                                  <span className="text-[7.5px] print:text-[6.5px] font-mono font-bold px-1 rounded bg-slate-200 text-slate-800 uppercase flex-shrink-0">
+                                  <span className="text-[8px] print:text-[6.8px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase flex-shrink-0">
                                     {p.cat}
                                   </span>
                                 </div>
-                                <div className="text-[9px] print:text-[6.8px] font-mono font-bold text-slate-600 truncate">
+                                <div className="text-[9.5px] print:text-[7.2px] font-mono font-bold text-slate-600 truncate">
                                   {p.tech}
                                 </div>
-                                <p className="text-[9.5px] print:text-[6.8px] text-slate-700 font-medium leading-tight line-clamp-2">
+                                <p className="text-[10.5px] print:text-[7.4px] text-slate-700 font-medium leading-normal line-clamp-3">
                                   {lang === 'en' ? p.descEn : p.descId}
                                 </p>
                               </div>
                             </div>
-                            <div className="pt-0.5 mt-0.5 border-t border-slate-100 flex items-center justify-between text-[8.5px] print:text-[6.5px] font-mono">
+                            <div className="pt-1 mt-1 border-t border-slate-100 flex items-center justify-between text-[9px] print:text-[7px] font-mono">
                               <a
                                 href={p.link}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="text-sky-700 hover:underline flex items-center gap-0.5 truncate"
+                                className="text-sky-700 hover:underline flex items-center gap-1 truncate font-medium"
                               >
                                 <span>{p.label}</span>
-                                <ExternalLink size={8} className="opacity-70 flex-shrink-0" />
+                                <ExternalLink size={9} className="opacity-70 flex-shrink-0" />
                               </a>
                             </div>
                           </div>
@@ -1259,61 +1259,61 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     </div>
 
                     {/* 12 LIVE DEPLOYMENTS TABLE */}
-                    <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
+                    <div className="space-y-1.5 print:space-y-0.5 print:break-inside-avoid">
                       <div className="flex items-center justify-between border-b border-slate-800 pb-0.5">
-                        <h3 className="text-xs print:text-[8.8px] font-extrabold uppercase tracking-wide text-slate-900">
+                        <h3 className="text-xs print:text-[9.2px] font-extrabold uppercase tracking-wide text-slate-900">
                           {lang === 'en' ? '12 Verified Cloud Deployments (HTTP 200 OK on Vercel)' : '12 Aplikasi Aktif Terverifikasi di Cloud (Vercel)'}
                         </h3>
-                        <span className="text-[9px] print:text-[7px] font-mono font-bold text-emerald-700 uppercase">
+                        <span className="text-[9.5px] print:text-[7.5px] font-mono font-bold text-emerald-700 uppercase">
                           {lang === 'en' ? 'Clickable Live Demos' : 'Dapat Diuji Langsung'}
                         </span>
                       </div>
-                      <div className="grid grid-cols-2 gap-1 text-[9.5px] print:text-[7.2px] font-mono">
-                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                      <div className="grid grid-cols-2 gap-1 text-[10px] print:text-[7.5px] font-mono">
+                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>1. BayE Auction Store:</strong>
                           <a href="https://baye-ecommerce-marketplace.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">baye-ecommerce-marketplace.vercel.app</a>
                         </div>
-                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>2. Nexus Workspace:</strong>
                           <a href="https://nexus-project-mu.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">nexus-project-mu.vercel.app</a>
                         </div>
-                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>3. Spotify Music Player:</strong>
                           <a href="https://spotify-clonez.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">spotify-clonez.vercel.app</a>
                         </div>
-                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>4. Indofooty Match Hub:</strong>
                           <a href="https://indofooty.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">indofooty.vercel.app</a>
                         </div>
-                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>5. AI Wireframer Lab:</strong>
                           <a href="https://ai-component-wireframer.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">ai-component-wireframer.vercel.app</a>
                         </div>
-                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>6. Umrah Travel Portal:</strong>
                           <a href="https://umrah-travel-landing.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">umrah-travel-landing.vercel.app</a>
                         </div>
-                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>7. Cloud Simulator:</strong>
                           <a href="https://cloud-console-simulator.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">cloud-console-simulator.vercel.app</a>
                         </div>
-                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>8. Snake AI Pathfinding:</strong>
                           <a href="https://snake-ai-pathfinding.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">snake-ai-pathfinding.vercel.app</a>
                         </div>
-                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>9. Canvass Design Studio:</strong>
                           <a href="https://canva-clone-fawn.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">canva-clone-fawn.vercel.app</a>
                         </div>
-                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>10. Trello Kanban Suite:</strong>
                           <a href="https://trello-azure-five.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">trello-azure-five.vercel.app</a>
                         </div>
-                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>11. MarketX Angular Store:</strong>
                           <a href="https://market-x-angular.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">market-x-angular.vercel.app</a>
                         </div>
-                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>12. HubSpot CRM Platform:</strong>
                           <a href="https://hub-spot-clone-five.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">hub-spot-clone-five.vercel.app</a>
                         </div>

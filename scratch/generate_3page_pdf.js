@@ -1228,25 +1228,25 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
     </div>
 
     <!-- 8 FULLSTACK VISUAL CARDS GRID -->
-    <div class="section-title" style="margin-bottom: 2.5px;">
+    <div class="section-title" style="margin-bottom: 4px; padding-bottom: 2px;">
       <span>${isEn ? '8 Flagship Fullstack Systems (Production Architecture Proof)' : '8 Sistem Fullstack Unggulan (Pembuktian Arsitektur Produksi)'}</span>
       <span class="badge">${isEn ? 'Clickable Demos & Repos' : 'Demo & Repositori Terverifikasi'}</span>
     </div>
 
-    <div class="visual-grid" style="grid-template-columns: 1fr 1fr; gap: 3.5px; margin-bottom: 3.5px;">
+    <div class="visual-grid" style="grid-template-columns: 1fr 1fr; gap: 5.5px; margin-bottom: 6px;">
       ${page3Cards.map((c, idx) => `
         <div class="visual-card">
-          <div class="visual-img-container" style="height: 38px;">
+          <div class="visual-img-container" style="height: 48px;">
             <img src="${c.img}" alt="${c.title}" class="visual-img">
           </div>
-          <div class="visual-body" style="padding: 1.5px 3.5px;">
-            <div class="visual-title" style="font-size: 7.1pt;">
+          <div class="visual-body" style="padding: 2.5px 4.5px;">
+            <div class="visual-title" style="font-size: 7.3pt;">
               <span>${c.title}</span>
               <span class="visual-cat">${c.cat}</span>
             </div>
-            <div class="visual-tech" style="font-size: 5.8pt;">${c.tech}</div>
-            <p class="visual-desc" style="font-size: 6.1pt; line-height: 1.16; margin-bottom: 0.5px;">${c.desc}</p>
-            <div class="visual-links" style="font-size: 5.7pt; padding-top: 1px;">
+            <div class="visual-tech" style="font-size: 6pt; margin: 1px 0;">${c.tech}</div>
+            <p class="visual-desc" style="font-size: 6.4pt; line-height: 1.22; margin-bottom: 1px;">${c.desc}</p>
+            <div class="visual-links" style="font-size: 5.9pt; padding-top: 1.5px;">
               <a href="${c.link}">${c.label}</a>
             </div>
           </div>
@@ -1255,12 +1255,12 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
     </div>
 
     <!-- VERIFIED CLOUD DEPLOYMENTS STRIP -->
-    <div style="background: #f8fafc; border: 0.8px solid #cbd5e1; border-radius: 3px; padding: 2px 5px; margin-bottom: 3px;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5px;">
-        <span style="font-size: 6.8pt; font-weight: 800; color: #0f172a;">${isEn ? 'Verified Live Deployments (HTTP 200 OK on Vercel):' : 'Aplikasi Aktif Terverifikasi di Cloud (Vercel):'}</span>
-        <span style="font-size: 5.8pt; color: #059669; font-weight: 700; font-family: monospace;">● ${isEn ? 'All Deployments Operational' : 'Semua Deployment Aktif'}</span>
+    <div style="background: #f8fafc; border: 0.8px solid #cbd5e1; border-radius: 3px; padding: 3px 6px; margin-bottom: 5px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+        <span style="font-size: 7pt; font-weight: 800; color: #0f172a;">${isEn ? 'Verified Live Deployments (HTTP 200 OK on Vercel):' : 'Aplikasi Aktif Terverifikasi di Cloud (Vercel):'}</span>
+        <span style="font-size: 6pt; color: #059669; font-weight: 700; font-family: monospace;">● ${isEn ? 'All Deployments Operational' : 'Semua Deployment Aktif'}</span>
       </div>
-      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5px 4px; font-size: 6pt; font-family: monospace;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px 5px; font-size: 6.2pt; font-family: monospace;">
         <div>• <a href="https://baye-ecommerce-marketplace.vercel.app" style="color: #0284c7; text-decoration: underline;">baye-marketplace.vercel.app</a></div>
         <div>• <a href="https://semarketplace.vercel.app" style="color: #0284c7; text-decoration: underline;">semarketplace.vercel.app</a></div>
         <div>• <a href="https://market-x-angular.vercel.app" style="color: #0284c7; text-decoration: underline;">market-x-angular.vercel.app</a></div>
@@ -1270,8 +1270,8 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
       </div>
     </div>
 
-    <div style="background: #f1f5f9; border: 0.8px solid #cbd5e1; border-radius: 3px; padding: 2px 5px;">
-      <span style="font-size: 6.3pt; color: #1e293b; line-height: 1.2;">
+    <div style="background: #f1f5f9; border: 0.8px solid #cbd5e1; border-radius: 3px; padding: 3px 6px;">
+      <span style="font-size: 6.5pt; color: #1e293b; line-height: 1.25;">
         <strong>${isEn ? 'Architecture & Source Code Audit:' : 'Audit Arsitektur & Kode Sumber:'}</strong> 
         ${isEn 
           ? `Full source code, git commit history, and test suites for all repositories are accessible at <strong>github.com/mazkev</strong> and interactive workstation at <strong>mazkev.vercel.app</strong>.` 
