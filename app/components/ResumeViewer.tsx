@@ -818,7 +818,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                       <User size={14} className="text-slate-900 print:w-3 print:h-3" /> {currentRole.executiveSummaryTitle}
                     </h2>
                     <span className="text-[10px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
-                      {lang === 'en' ? `Target: ${activeRole.toUpperCase()} (Page 1 of 3)` : `Target: ${activeRole.toUpperCase()} (Halaman 1 dari 3)`}
+                      {lang === 'en' ? `Target: ${activeRole.toUpperCase()} (Page 1 of ${activeRole === 'fullstack' ? '2' : '3'})` : `Target: ${activeRole.toUpperCase()} (Halaman 1 dari ${activeRole === 'fullstack' ? '2' : '3'})`}
                     </span>
                   </div>
                   <p className="text-slate-800 text-xs sm:text-sm print:text-[9.5px] leading-relaxed print:leading-normal font-medium text-justify">
@@ -933,7 +933,9 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               <div className="border-t border-slate-300 pt-1.5 flex justify-between items-center text-[10px] print:text-[8px] font-mono text-slate-500 mt-2">
                 <span>Kevin Eka Pratama • {currentRole.roleTitle}</span>
                 <span>kevinekapratama@gmail.com • +62 (813) 2661-2344</span>
-                <span className="font-bold">Page 1 of 3 (Executive Profile)</span>
+                <span className="font-bold">
+                  {lang === 'en' ? `Page 1 of ${activeRole === 'fullstack' ? '2' : '3'} (Executive Profile)` : `Halaman 1 dari ${activeRole === 'fullstack' ? '2' : '3'} (Profil Eksekutif)`}
+                </span>
               </div>
             </div>
 
@@ -941,10 +943,12 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
             <div className="no-print my-8 py-3 border-y-2 border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-between text-xs font-mono text-slate-500">
               <span className="font-bold uppercase tracking-wider flex items-center gap-2 text-slate-900 dark:text-white">
                 <LayoutGrid size={15} className="text-sky-600 dark:text-sky-400" />
-                {lang === 'id' ? `Halaman 2: Direktori Proyek Khusus (${activeRole.toUpperCase()})` : `Page 2: Dedicated Project Directory (${activeRole.toUpperCase()})`}
+                {activeRole === 'fullstack'
+                  ? (lang === 'id' ? 'Halaman 2: Showcase 8 Platform Fullstack Lengkap' : 'Page 2: 8 Flagship Fullstack Systems Showcase')
+                  : (lang === 'id' ? `Halaman 2: Direktori Proyek Khusus (${activeRole.toUpperCase()})` : `Page 2: Dedicated Project Directory (${activeRole.toUpperCase()})`)}
               </span>
               <span className="bg-slate-200 dark:bg-slate-800 px-2 py-0.5 rounded text-[10px] font-bold text-slate-700 dark:text-slate-300">
-                Page 2 of 3
+                Page 2 of {activeRole === 'fullstack' ? '2' : '3'}
               </span>
             </div>
 
@@ -1256,107 +1260,116 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               <div className="border-t border-slate-300 pt-1.5 flex justify-between items-center text-[10px] print:text-[8px] font-mono text-slate-500 mt-2">
                 <span>Kevin Eka Pratama • {currentRole.roleTitle}</span>
                 <span>mazkev.vercel.app • github.com/mazkev</span>
-                <span className="font-bold">Page 2 of 3 ({lang === 'en' ? 'Dedicated Directory' : 'Direktori Terdedikasi'})</span>
+                <span className="font-bold">
+                  {activeRole === 'fullstack'
+                    ? (lang === 'en' ? 'Page 2 of 2 (Fullstack Systems Showcase)' : 'Halaman 2 dari 2 (Showcase Sistem Fullstack)')
+                    : (lang === 'en' ? 'Page 2 of 3 (Dedicated Directory)' : 'Halaman 2 dari 3 (Direktori Terdedikasi)')}
+                </span>
               </div>
             </div>
 
-            {/* SCREEN DIVIDER */}
-            <div className="no-print my-8 py-3 border-y-2 border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-between text-xs font-mono text-slate-500">
-              <span className="font-bold uppercase tracking-wider flex items-center gap-2 text-slate-900 dark:text-white">
-                <FileText size={15} className="text-emerald-600 dark:text-emerald-400" />
-                {lang === 'id' ? `Halaman 3: Lampiran Visual Portofolio (${activeRole.toUpperCase()})` : `Page 3: Dedicated Visual Project Annex (${activeRole.toUpperCase()})`}
-              </span>
-              <span className="bg-slate-200 dark:bg-slate-800 px-2 py-0.5 rounded text-[10px] font-bold text-slate-700 dark:text-slate-300">
-                Page 3 of 3
-              </span>
-            </div>
-
-            <div className="page-break" />
-
-            {/* ========================================================= */}
-            {/* PAGE 3: VISUAL PROJECT ANNEX (SHOWCASE GALLERY)           */}
-            {/* ========================================================= */}
-            <div className="print-page flex flex-col justify-between pt-2 print:pt-0">
-              <div className="space-y-3 print:space-y-2">
-                {/* PAGE 3 HEADER */}
-                <div className="border-b-2 border-slate-900 pb-2 print:pb-1.5 flex justify-between items-baseline gap-2">
-                  <div>
-                    <h2 className="text-sm md:text-base print:text-xs font-black uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
-                      <FileText size={16} className="text-slate-900 print:w-3 print:h-3" />
-                      {currentRole.page3Title}
-                    </h2>
-                    <p className="text-[11px] print:text-[8px] font-bold text-slate-600">
-                      {currentRole.page3Subtitle}
-                    </p>
-                  </div>
-                  <span className="text-[10px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
-                    mazkev.vercel.app
+            {/* PAGE 3: VISUAL ANNEX FOR BACKEND & FRONTEND */}
+            {activeRole !== 'fullstack' && (
+              <>
+                {/* SCREEN DIVIDER */}
+                <div className="no-print my-8 py-3 border-y-2 border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-between text-xs font-mono text-slate-500">
+                  <span className="font-bold uppercase tracking-wider flex items-center gap-2 text-slate-900 dark:text-white">
+                    <FileText size={15} className="text-emerald-600 dark:text-emerald-400" />
+                    {lang === 'id' ? `Halaman 3: Lampiran Visual Portofolio (${activeRole.toUpperCase()})` : `Page 3: Dedicated Visual Project Annex (${activeRole.toUpperCase()})`}
+                  </span>
+                  <span className="bg-slate-200 dark:bg-slate-800 px-2 py-0.5 rounded text-[10px] font-bold text-slate-700 dark:text-slate-300">
+                    Page 3 of 3
                   </span>
                 </div>
 
-                {/* VISUAL CARDS GRID */}
-                <div className={`grid grid-cols-1 sm:grid-cols-2 ${activeRole === 'fullstack' ? 'gap-3 print:gap-1.5' : 'gap-2 print:gap-1'}`}>
-                  {roleData[activeRole].visualCards.map((p, idx) => (
-                    <div
-                      key={idx}
-                      className="border border-slate-300 rounded-lg overflow-hidden bg-white flex flex-col justify-between print:break-inside-avoid shadow-sm print:shadow-none"
-                    >
-                      <div className={`w-full bg-slate-100 border-b border-slate-200 relative overflow-hidden ${activeRole === 'fullstack' ? 'h-24 sm:h-28 print:h-[60px]' : 'h-20 sm:h-24 print:h-[44px]'}`}>
-                        <Image
-                          src={p.img}
-                          alt={p.title}
-                          width={400}
-                          height={180}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="p-1.5 print:p-1 space-y-0.5">
-                        <div className="flex justify-between items-center gap-1">
-                          <span className="font-extrabold text-slate-900 text-xs print:text-[8.5px] leading-tight truncate">
-                            {p.title}
-                          </span>
-                          <span className="text-[8px] print:text-[6.8px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase flex-shrink-0">
-                            {p.cat}
-                          </span>
-                        </div>
-                        <div className="text-[8.5px] print:text-[6.8px] font-mono font-bold text-slate-600 truncate">
-                          {p.tech}
-                        </div>
-                        <p className="text-[10px] print:text-[7.2px] text-slate-700 font-medium leading-tight">
-                          {lang === 'en' ? p.descEn : p.descId}
+                <div className="page-break" />
+
+                {/* ========================================================= */}
+                {/* PAGE 3: VISUAL PROJECT ANNEX (SHOWCASE GALLERY)           */}
+                {/* ========================================================= */}
+                <div className="print-page flex flex-col justify-between pt-2 print:pt-0">
+                  <div className="space-y-3 print:space-y-2">
+                    {/* PAGE 3 HEADER */}
+                    <div className="border-b-2 border-slate-900 pb-2 print:pb-1.5 flex justify-between items-baseline gap-2">
+                      <div>
+                        <h2 className="text-sm md:text-base print:text-xs font-black uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
+                          <FileText size={16} className="text-slate-900 print:w-3 print:h-3" />
+                          {currentRole.page3Title}
+                        </h2>
+                        <p className="text-[11px] print:text-[8px] font-bold text-slate-600">
+                          {currentRole.page3Subtitle}
                         </p>
-                        <div className="pt-0.5 border-t border-slate-100 flex items-center gap-1 text-[9px] print:text-[6.8px] font-mono">
-                          <a
-                            href={p.link}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-sky-700 hover:underline flex items-center gap-0.5"
-                          >
-                            <span>{p.label}</span>
-                            <ExternalLink size={9} className="opacity-70" />
-                          </a>
-                        </div>
                       </div>
+                      <span className="text-[10px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
+                        mazkev.vercel.app
+                      </span>
                     </div>
-                  ))}
-                </div>
 
-                {/* AUDIT NOTICE */}
-                <div className="p-2 print:p-1.5 rounded bg-slate-100 border border-slate-300 text-[10px] print:text-[8px] text-slate-800 font-medium leading-tight">
-                  <strong>{lang === 'en' ? 'Interactive Demonstration & Source Code Audit: ' : 'Demonstrasi Interaktif & Audit Kode Sumber: '}</strong>
-                  {lang === 'en'
-                    ? 'Live deployments, interactive case studies, architectural documentation, and full source code are accessible at mazkev.vercel.app and github.com/mazkev.'
-                    : 'Seluruh demo aplikasi langsung, studi kasus interaktif, dokumentasi arsitektur, dan kode sumber dapat diakses publik pada mazkev.vercel.app dan github.com/mazkev.'}
-                </div>
-              </div>
+                    {/* VISUAL CARDS GRID */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 print:gap-1">
+                      {roleData[activeRole].visualCards.map((p, idx) => (
+                        <div
+                          key={idx}
+                          className="border border-slate-300 rounded-lg overflow-hidden bg-white flex flex-col justify-between print:break-inside-avoid shadow-sm print:shadow-none"
+                        >
+                          <div className="w-full bg-slate-100 border-b border-slate-200 relative overflow-hidden h-20 sm:h-24 print:h-[44px]">
+                            <Image
+                              src={p.img}
+                              alt={p.title}
+                              width={400}
+                              height={180}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="p-1.5 print:p-1 space-y-0.5">
+                            <div className="flex justify-between items-center gap-1">
+                              <span className="font-extrabold text-slate-900 text-xs print:text-[8.5px] leading-tight truncate">
+                                {p.title}
+                              </span>
+                              <span className="text-[8px] print:text-[6.8px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase flex-shrink-0">
+                                {p.cat}
+                              </span>
+                            </div>
+                            <div className="text-[8.5px] print:text-[6.8px] font-mono font-bold text-slate-600 truncate">
+                              {p.tech}
+                            </div>
+                            <p className="text-[10px] print:text-[7.2px] text-slate-700 font-medium leading-tight">
+                              {lang === 'en' ? p.descEn : p.descId}
+                            </p>
+                            <div className="pt-0.5 border-t border-slate-100 flex items-center gap-1 text-[9px] print:text-[6.8px] font-mono">
+                              <a
+                                href={p.link}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-sky-700 hover:underline flex items-center gap-0.5"
+                              >
+                                <span>{p.label}</span>
+                                <ExternalLink size={9} className="opacity-70" />
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
 
-              {/* FOOTER PAGE 3 */}
-              <div className="border-t border-slate-300 pt-1.5 flex justify-between items-center text-[10px] print:text-[8px] font-mono text-slate-500 mt-2">
-                <span>Kevin Eka Pratama • {currentRole.roleTitle}</span>
-                <span>mazkev.vercel.app • github.com/mazkev</span>
-                <span className="font-bold">Page 3 of 3 (Visual Project Annex)</span>
-              </div>
-            </div>
+                    {/* AUDIT NOTICE */}
+                    <div className="p-2 print:p-1.5 rounded bg-slate-100 border border-slate-300 text-[10px] print:text-[8px] text-slate-800 font-medium leading-tight">
+                      <strong>{lang === 'en' ? 'Interactive Demonstration & Source Code Audit: ' : 'Demonstrasi Interaktif & Audit Kode Sumber: '}</strong>
+                      {lang === 'en'
+                        ? 'Live deployments, interactive case studies, architectural documentation, and full source code are accessible at mazkev.vercel.app and github.com/mazkev.'
+                        : 'Seluruh demo aplikasi langsung, studi kasus interaktif, dokumentasi arsitektur, dan kode sumber dapat diakses publik pada mazkev.vercel.app dan github.com/mazkev.'}
+                    </div>
+                  </div>
+
+                  {/* FOOTER PAGE 3 */}
+                  <div className="border-t border-slate-300 pt-1.5 flex justify-between items-center text-[10px] print:text-[8px] font-mono text-slate-500 mt-2">
+                    <span>Kevin Eka Pratama • {currentRole.roleTitle}</span>
+                    <span>mazkev.vercel.app • github.com/mazkev</span>
+                    <span className="font-bold">Page 3 of 3 (Visual Project Annex)</span>
+                  </div>
+                </div>
+              </>
+            )}
 
           </div>
         </div>

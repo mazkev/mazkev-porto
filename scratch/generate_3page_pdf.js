@@ -1089,7 +1089,7 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
     <div class="section">
       <div class="section-title">
         <span>${isEn ? 'Executive Summary' : 'Ringkasan Eksekutif'}</span>
-        <span class="badge">${isEn ? `Target: ${role.toUpperCase()} (Page 1 of 3)` : `Target: ${role.toUpperCase()} (Halaman 1 dari 3)`}</span>
+        <span class="badge">${isEn ? `Target: ${role.toUpperCase()} (Page 1 of ${role === 'fullstack' ? '2' : '3'})` : `Target: ${role.toUpperCase()} (Halaman 1 dari ${role === 'fullstack' ? '2' : '3'})`}</span>
       </div>
       <p class="summary-text">${summary}</p>
     </div>
@@ -1155,13 +1155,85 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
   <div class="page-footer">
     <span>Kevin Eka Pratama • ${roleTitle}</span>
     <span>kevinekapratama@gmail.com • +62 (813) 2661-2344</span>
-    <span>Page 1 of 3 (${isEn ? 'Executive Profile' : 'Profil Eksekutif'})</span>
+    <span>Page 1 of ${role === 'fullstack' ? '2' : '3'} (${isEn ? 'Executive Profile' : 'Profil Eksekutif'})</span>
   </div>
 </div>
 
 <div class="page-break"></div>
 
-<!-- PAGE 2 -->
+${role === 'fullstack' ? `
+<!-- PAGE 2 (FULLSTACK 2-PAGE SHOWCASE) -->
+<div class="page">
+  <div>
+    <div style="border-bottom: 2px solid #0f172a; padding-bottom: 5px; margin-bottom: 7px; display: flex; justify-content: space-between; align-items: baseline;">
+      <div>
+        <h2 style="font-size: 11pt; font-weight: 900; text-transform: uppercase; color: #0f172a;">
+          ${page3Title}
+        </h2>
+        <span style="font-size: 7pt; font-weight: 700; color: #475569;">
+          ${page3Subtitle}
+        </span>
+      </div>
+      <div style="font-size: 7pt; font-family: monospace; font-weight: 700; color: #334155;">
+        <span>mazkev.vercel.app</span>
+      </div>
+    </div>
+
+    <div class="visual-grid">
+      ${page3Cards.map((c, idx) => `
+        <div class="visual-card">
+          <div class="visual-img-container">
+            <img src="${c.img}" alt="${c.title}" class="visual-img">
+          </div>
+          <div class="visual-body">
+            <div class="visual-title">
+              <span>${c.title}</span>
+              <span class="visual-cat">${c.cat}</span>
+            </div>
+            <div class="visual-tech">${c.tech}</div>
+            <p class="visual-desc">${c.desc}</p>
+            <div class="visual-links">
+              <a href="${c.link}">${c.label}</a>
+            </div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+
+    <!-- VERIFIED CLOUD DEPLOYMENTS STRIP -->
+    <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 4px; padding: 3px 6px; margin-bottom: 5px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+        <span style="font-size: 6.9pt; font-weight: 800; color: #0f172a;">${isEn ? 'Verified Live Deployments (HTTP 200 OK):' : 'Aplikasi Aktif Terverifikasi di Cloud (Vercel):'}</span>
+        <span style="font-size: 6pt; color: #059669; font-weight: 700; font-family: monospace;">● ${isEn ? 'Production Live' : 'Produksi Aktif'}</span>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px 4px; font-size: 6.3pt; font-family: monospace;">
+        <div>• <a href="https://baye-ecommerce-marketplace.vercel.app" style="color: #0284c7; text-decoration: underline;">baye-marketplace.vercel.app</a></div>
+        <div>• <a href="https://semarketplace.vercel.app" style="color: #0284c7; text-decoration: underline;">semarketplace.vercel.app</a></div>
+        <div>• <a href="https://market-x-angular.vercel.app" style="color: #0284c7; text-decoration: underline;">market-x-angular.vercel.app</a></div>
+        <div>• <a href="https://canva-clone-fawn.vercel.app" style="color: #0284c7; text-decoration: underline;">canva-clone-fawn.vercel.app</a></div>
+        <div>• <a href="https://spotify-clonez.vercel.app" style="color: #0284c7; text-decoration: underline;">spotify-clonez.vercel.app</a></div>
+        <div>• <a href="https://trello-azure-five.vercel.app" style="color: #0284c7; text-decoration: underline;">trello-azure-five.vercel.app</a></div>
+      </div>
+    </div>
+
+    <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px 7px;">
+      <span style="font-size: 6.8pt; color: #1e293b; line-height: 1.25;">
+        <strong>${isEn ? 'Interactive Demonstration & Source Code Audit:' : 'Demonstrasi Interaktif & Audit Kode Sumber:'}</strong> 
+        ${isEn 
+          ? `Live deployments, interactive case studies, architectural documentation, and full source code are accessible at <strong>mazkev.vercel.app</strong> and <strong>github.com/mazkev</strong>.` 
+          : `Seluruh demo aplikasi langsung, studi kasus interaktif, dokumentasi arsitektur, dan kode sumber dapat diakses publik pada <strong>mazkev.vercel.app</strong> dan <strong>github.com/mazkev</strong>.`}
+      </span>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Kevin Eka Pratama • ${roleTitle}</span>
+    <span>mazkev.vercel.app • github.com/mazkev</span>
+    <span>Page 2 of 2 (${isEn ? 'Fullstack Systems Showcase' : 'Showcase Sistem Fullstack'})</span>
+  </div>
+</div>
+` : `
+<!-- PAGE 2 (BACKEND / FRONTEND DIRECTORY) -->
 <div class="page">
   <div>
     <div style="border-bottom: 2px solid #0f172a; padding-bottom: 5px; margin-bottom: 7px; display: flex; justify-content: space-between; align-items: baseline;">
@@ -1201,7 +1273,7 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
 
 <div class="page-break"></div>
 
-<!-- PAGE 3 -->
+<!-- PAGE 3 (BACKEND / FRONTEND VISUAL ANNEX) -->
 <div class="page">
   <div>
     <div style="border-bottom: 2px solid #0f172a; padding-bottom: 5px; margin-bottom: 7px; display: flex; justify-content: space-between; align-items: baseline;">
@@ -1255,6 +1327,7 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
     <span>Page 3 of 3 (${isEn ? 'Visual Project Annex' : 'Lampiran Visual Portofolio'})</span>
   </div>
 </div>
+`}
 
 </body>
 </html>`;
