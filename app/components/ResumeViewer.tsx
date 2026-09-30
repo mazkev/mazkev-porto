@@ -522,9 +522,10 @@ const commonText = {
     job1Title: 'Application Support Engineer',
     job1Company: 'PT PLN Icon+',
     job1Date: '2023 - Present',
-    job1Bullet1: 'Investigated and resolved technical operational tickets with a 100% SLA compliance rate, ensuring timely resolution of customer transaction issues.',
-    job1Bullet2: 'Authored and executed complex SQL queries across PostgreSQL, Oracle, and MySQL for operational data validation, transaction auditing, and business reporting.',
-    job1Bullet3: 'Monitored nationwide enterprise system workflows 24/7, analyzed application error logs (HTTP 5xx/4xx), and coordinated directly with core developers for bug/API fixes.',
+    job1Bullet1: 'Investigated and resolved technical operational and incident tickets for enterprise utility platforms with a strict 100% SLA compliance rate, ensuring zero-downtime operations.',
+    job1Bullet2: 'Authored and executed complex SQL queries across PostgreSQL, Oracle, and MySQL for transactional data validation, data auditing, anomaly rectification, and executive operational reporting.',
+    job1Bullet3: 'Monitored nationwide enterprise system workflows and microservices 24/7, proactively identifying transaction failures, API synchronization bottlenecks, and external service latency spikes.',
+    job1Bullet4: 'Investigated application log telemetry (trace IDs, stack traces), conducted Root Cause Analyses (RCA), and collaborated directly with core backend developers to verify and deploy production bug hotfixes.',
     job2Company: 'Independent Engineering & Open Source Projects',
     job2Date: '2023 - Present',
     degree: 'Bachelor of Computer Science / Information Technology (S.Kom)',
@@ -541,9 +542,10 @@ const commonText = {
     job1Title: 'Application Support Engineer',
     job1Company: 'PT PLN Icon+',
     job1Date: '2023 - Sekarang',
-    job1Bullet1: 'Menginvestigasi dan menyelesaikan tiket insiden teknis serta permintaan operasional produksi dengan tingkat kepatuhan SLA mencapai 100% tepat waktu.',
-    job1Bullet2: 'Merancang dan mengeksekusi query SQL terstruktur pada database PostgreSQL, Oracle, dan MySQL untuk validasi data transaksi, pelaporan operasional, dan pengecekan konsistensi data.',
-    job1Bullet3: 'Memantau operasional alur sistem digital enterprise 24/7, menganalisis log error sistem (HTTP 5xx/4xx), dan berkoordinasi langsung dengan tim pengembang inti untuk verifikasi perbaikan API.',
+    job1Bullet1: 'Menginvestigasi dan menyelesaikan tiket insiden teknis serta permintaan operasional produksi sistem enterprise dengan kepatuhan SLA mencapai 100% tepat waktu tanpa keterlambatan.',
+    job1Bullet2: 'Merancang dan mengeksekusi query SQL terstruktur tingkat lanjut pada database PostgreSQL, Oracle, dan MySQL untuk validasi integritas transaksi, pelaporan operasional, dan perbaikan data anomali.',
+    job1Bullet3: 'Memantau operasional alur microservices & sistem digital enterprise 24/7, mendeteksi secara proaktif kegagalan transaksi pembayaran, bottleneck sinkronisasi API, dan error integrasi pihak ketiga.',
+    job1Bullet4: 'Menganalisis application log error (trace ID, stack trace), menyusun laporan Root Cause Analysis (RCA), serta berkoordinasi langsung dengan tim pengembang inti untuk pengujian patch dan rilis hotfix API.',
     job2Company: 'Pengembangan Mandiri & Proyek Open Source',
     job2Date: '2023 - Sekarang',
     degree: 'Sarjana Ilmu Komputer / Teknik Informatika (S.Kom)',
@@ -585,29 +587,39 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
     : (activeRole === 'backend' ? 'Rekayasa Sistem Backend & Arsitektur Berbasis AI' : activeRole === 'frontend' ? 'Rekayasa Frontend & Mobile Berbasis AI' : 'AI-Assisted Software Engineer & Kontributor Open Source');
 
   const job2Bullets = lang === 'en' ? [
-    'Pioneered AI-assisted software engineering workflows (Gemini 2.5, Claude 3.7, OpenAI, agentic coding tools) for rapid architectural scaffolding, schema design, and automated test suite generation.',
+    'Pioneered human-AI pair programming workflows with frontier models (Gemini 2.5, Claude 3.7, OpenAI APIs) to accelerate architectural design, relational schema modeling, and automated test suite generation.',
     activeRole === 'backend'
-      ? 'Architected, built, and audited 19 production-grade backend microservices and cloud systems with Clean Architecture, ACID transactional schemas, and Docker containerization.'
+      ? 'Independently architected, developed, and audited 19 production-grade backend microservices applying Clean Architecture (DDD) and Docker containerization.'
       : activeRole === 'frontend'
-      ? 'Architected, built, and audited 48+ frontend web and mobile applications with responsive state management, dual-layer 60 FPS canvas graphics, and mobile navigation.'
-      : 'Architected, built, and audited 82 production-grade repositories across Backend Microservices, Fullstack Web Platforms, and Mobile Applications.',
+      ? 'Independently architected, developed, and audited 48+ frontend and mobile applications with responsive state management, dual-layer 60 FPS canvas graphics, and mobile navigation.'
+      : 'Independently architected, developed, and audited 82 production-grade repositories applying Clean Architecture (DDD) and Docker containerization.',
     activeRole === 'backend'
-      ? 'Audited AI-generated architectures for strict security, PostgreSQL row-level locks, Redis cache-aside patterns, and RabbitMQ decoupled message brokers.'
+      ? 'Designed financial-grade ledger engines preventing race conditions and double-spending via PostgreSQL row-level locks (SELECT FOR UPDATE), Redis cache-aside patterns, and RabbitMQ message brokers.'
       : activeRole === 'frontend'
-      ? 'Shipped and maintained 12 live cloud applications on Vercel with responsive mobile-first UI, fast hydration, and accessible design systems.'
-      : 'Shipped and maintained 12 live cloud applications on Vercel with serverless databases, ACID transactions, and responsive modern UI architecture.'
+      ? 'Engineered interactive user interfaces featuring dual-layer 60 FPS graphics (React-Konva), responsive state machines (Zustand, Signals), and cross-platform mobile apps (React Native Expo, Flutter).'
+      : 'Engineered high-concurrency transactional architectures with PostgreSQL ACID row-level locks, Redis cache-aside patterns, RabbitMQ decoupled event brokers, and dual-layer 60 FPS canvas graphics.',
+    activeRole === 'backend'
+      ? 'Audited microservice security contracts, implemented Token Bucket distributed rate limiting, and maintained containerized orchestration environments.'
+      : activeRole === 'frontend'
+      ? 'Deployed and maintained 12 production applications live on Vercel with mobile-first responsiveness, accessible design systems, and instantaneous page hydrations.'
+      : 'Deployed and maintained 12 production applications live on Vercel with serverless database connectivity, reactive Next.js 16 Server Components, and zero-downtime deployment pipelines.'
   ] : [
-    'Menerapkan alur kerja rekayasa perangkat lunak modern berbasis AI (Gemini 2.5, Claude 3.7, OpenAI, agentic coding tools) untuk akselerasi perancangan arsitektur, pemodelan skema, dan generasi automated test suite.',
+    'Menerapkan alur kerja rekayasa perangkat lunak modern berbasis AI (Gemini 2.5, Claude 3.7, OpenAI APIs) untuk akselerasi perancangan arsitektur sistem, pemodelan skema relasional, dan generasi automated unit test.',
     activeRole === 'backend'
-      ? 'Merancang, membangun, dan mengaudit 19 repositori sistem backend microservices dan cloud berprinsip Clean Architecture, skema transaksi ACID, dan kontainerisasi Docker.'
+      ? 'Secara mandiri merancang, membangun, dan mengaudit 19 repositori sistem backend microservices berstandar Clean Architecture (DDD) dan kontainerisasi Docker.'
       : activeRole === 'frontend'
-      ? 'Merancang, membangun, dan mengaudit 48+ aplikasi frontend web dan mobile dengan state management reaktif, kanvas grafis dual-layer 60 FPS, dan navigasi mobile.'
-      : 'Merancang, membangun, dan mengaudit 82 repositori perangkat lunak mencakup Backend Microservices, Platform Web Fullstack, dan Aplikasi Mobile.',
+      ? 'Secara mandiri merancang, membangun, dan mengaudit 48+ aplikasi frontend dan mobile dengan state management reaktif, kanvas grafis dual-layer 60 FPS, dan navigasi mobile.'
+      : 'Secara mandiri merancang, membangun, dan mengaudit 82 repositori perangkat lunak berstandar Clean Architecture (DDD) dan kontainerisasi Docker.',
     activeRole === 'backend'
-      ? 'Melakukan audit mendalam kode arsitektur: menjamin keamanan celah injeksi, isolasi transaksi row-level lock PostgreSQL, pola Redis cache-aside, dan message broker RabbitMQ.'
+      ? 'Menerapkan arsitektur ledger finansial anti-race condition dan anti-double spending dengan row-level locking PostgreSQL (SELECT FOR UPDATE), caching Redis cache-aside, dan RabbitMQ message broker.'
       : activeRole === 'frontend'
-      ? 'Men-deploy dan mengelola 12 aplikasi web aktif di cloud Vercel dengan tampilan antarmuka responsif mobile-first, waktu muat instan, dan standar aksesibilitas.'
-      : 'Men-deploy dan mengelola 12 aplikasi produksi aktif di cloud Vercel dengan integrasi database serverless, transaksi ACID, dan antarmuka reaktif modern.'
+      ? 'Membangun antarmuka pengguna interaktif berperforma tinggi dengan kanvas grafis dual-layer 60 FPS (React-Konva), state reaktif (Zustand, Signals), dan mobile cross-platform (React Native Expo, Flutter).'
+      : 'Mengintegrasikan arsitektur konkurensi tinggi dengan transaksi atomik ACID & row-level locks PostgreSQL, caching Redis cache-aside, message broker RabbitMQ, dan kanvas dual-layer 60 FPS.',
+    activeRole === 'backend'
+      ? 'Melakukan audit keamanan endpoint API, menerapkan rate limiting terdistribusi Token Bucket, serta mengelola orkestrasi kontainer Docker Compose.'
+      : activeRole === 'frontend'
+      ? 'Men-deploy dan mengelola 12 aplikasi produksi aktif di cloud Vercel dengan tampilan antarmuka responsif mobile-first, waktu muat instan, dan standar aksesibilitas.'
+      : 'Men-deploy dan mengelola 12 aplikasi produksi aktif di cloud Vercel dengan integrasi database serverless, Server Components Next.js 16, dan pipeline deployment otomatis.'
   ];
 
   return (
@@ -871,6 +883,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                         <li>{t.job1Bullet1}</li>
                         <li>{t.job1Bullet2}</li>
                         <li>{t.job1Bullet3}</li>
+                        <li>{t.job1Bullet4}</li>
                       </ul>
                     </div>
 

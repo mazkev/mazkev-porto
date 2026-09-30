@@ -665,13 +665,15 @@ ${repoBlock('indofooty-match-hub', 'https://github.com/mazkev/indofooty-match-hu
   const job1Company = 'PT PLN Icon+';
   const job1Date = isEn ? '2023 - Present' : '2023 - Sekarang';
   const job1Bullets = isEn ? [
-    'Investigated and resolved technical operational tickets with a <strong>100% SLA compliance rate</strong>, ensuring timely resolution of customer transaction issues.',
-    'Authored and executed complex SQL queries across <strong>PostgreSQL, Oracle, and MySQL</strong> for operational data validation, transaction auditing, and business reporting.',
-    'Monitored nationwide enterprise system workflows 24/7, analyzed application error logs (HTTP 5xx/4xx), and coordinated directly with core developers for bug/API fixes.'
+    'Investigated and resolved technical operational and incident tickets for enterprise utility platforms with a strict <strong>100% SLA compliance rate</strong>, ensuring zero-downtime operations.',
+    'Authored and executed complex SQL queries across <strong>PostgreSQL, Oracle, and MySQL</strong> for transactional data validation, data auditing, anomaly rectification, and executive operational reporting.',
+    'Monitored nationwide enterprise system workflows and microservices 24/7, proactively identifying transaction failures, API synchronization bottlenecks, and external service latency spikes.',
+    'Investigated application log telemetry (trace IDs, stack traces), conducted Root Cause Analyses (RCA), and collaborated directly with core backend developers to verify and deploy production bug hotfixes.'
   ] : [
-    'Menginvestigasi dan menyelesaikan tiket insiden teknis serta permintaan operasional produksi dengan tingkat kepatuhan <strong>SLA mencapai 100%</strong> tepat waktu.',
-    'Merancang dan mengeksekusi query SQL terstruktur pada database <strong>PostgreSQL, Oracle, dan MySQL</strong> untuk validasi data transaksi, pelaporan operasional, dan pengecekan konsistensi data.',
-    'Memantau operasional alur sistem digital enterprise 24/7, menganalisis log error sistem (HTTP 5xx/4xx), dan berkoordinasi langsung dengan tim pengembang inti untuk verifikasi perbaikan API.'
+    'Menginvestigasi dan menyelesaikan tiket insiden teknis serta permintaan operasional produksi sistem enterprise dengan kepatuhan <strong>SLA mencapai 100%</strong> tepat waktu tanpa keterlambatan.',
+    'Merancang dan mengeksekusi query SQL terstruktur tingkat lanjut pada database <strong>PostgreSQL, Oracle, dan MySQL</strong> untuk validasi integritas transaksi, pelaporan operasional, dan perbaikan data anomali.',
+    'Memantau operasional alur microservices & sistem digital enterprise 24/7, mendeteksi secara proaktif kegagalan transaksi pembayaran, bottleneck sinkronisasi API, dan error integrasi pihak ketiga.',
+    'Menganalisis application log error (trace ID, stack trace), menyusun laporan Root Cause Analysis (RCA), serta berkoordinasi langsung dengan tim pengembang inti untuk pengujian patch dan rilis hotfix API.'
   ];
 
   const job2Title = isEn 
@@ -682,21 +684,31 @@ ${repoBlock('indofooty-match-hub', 'https://github.com/mazkev/indofooty-match-hu
     : 'Pengembangan Mandiri & Proyek Open Source';
   const job2Date = isEn ? '2023 - Present' : '2023 - Sekarang';
   const job2Bullets = isEn ? [
-    'Pioneered AI-assisted software engineering workflows (Gemini 2.5, Claude 3.7, OpenAI, agentic coding tools) for rapid architectural scaffolding, schema design, and automated test suite generation.',
-    `Architected, built, and audited <strong>${role === 'backend' ? '19 production-grade backend microservices' : role === 'frontend' ? '48+ frontend and mobile applications' : '82 production-grade repositories'}</strong> with Clean Architecture and Docker containerization.`,
+    'Pioneered human-AI pair programming workflows with frontier models (<strong>Gemini 2.5, Claude 3.7, OpenAI APIs</strong>) to accelerate architectural design, relational schema modeling, and automated test suite generation.',
+    `Independently architected, developed, and audited <strong>${role === 'backend' ? '19 production-grade backend microservices' : role === 'frontend' ? '48+ frontend and mobile applications' : '82 production-grade repositories'}</strong> applying Clean Architecture (DDD) and Docker containerization.`,
     role === 'backend'
-      ? 'Audited AI-generated architectures for strict security, PostgreSQL row-level locks, Redis cache-aside patterns, and RabbitMQ decoupled message brokers.'
+      ? 'Designed financial-grade ledger engines preventing race conditions and double-spending via <strong>PostgreSQL row-level locks (SELECT FOR UPDATE)</strong>, Redis cache-aside patterns, and RabbitMQ message brokers.'
       : role === 'frontend'
-      ? 'Shipped and maintained 12 live cloud applications on Vercel with responsive mobile-first UI, fast hydration, and accessible design systems.'
-      : 'Shipped and maintained 12 live cloud applications on Vercel with serverless databases, ACID transactions, and responsive modern UI architecture.'
+      ? 'Engineered interactive user interfaces featuring <strong>dual-layer 60 FPS graphics (React-Konva)</strong>, responsive state machines (Zustand, Signals), and cross-platform mobile apps (React Native Expo, Flutter).'
+      : 'Engineered high-concurrency transactional architectures with <strong>PostgreSQL ACID row-level locks</strong>, Redis cache-aside patterns, RabbitMQ decoupled event brokers, and dual-layer 60 FPS canvas graphics.',
+    role === 'backend'
+      ? 'Audited microservice security contracts, implemented Token Bucket distributed rate limiting, and maintained containerized orchestration environments.'
+      : role === 'frontend'
+      ? 'Deployed and maintained <strong>12 production applications live on Vercel</strong> with mobile-first responsiveness, accessible design systems, and instantaneous page hydrations.'
+      : 'Deployed and maintained <strong>12 production applications live on Vercel</strong> with serverless database connectivity, reactive Next.js 16 Server Components, and zero-downtime deployment pipelines.'
   ] : [
-    'Menerapkan alur kerja rekayasa perangkat lunak modern berbasis AI (Gemini 2.5, Claude 3.7, OpenAI, agentic coding tools) untuk akselerasi perancangan arsitektur, pemodelan skema, dan generasi automated test suite.',
-    `Merancang, membangun, dan mengaudit <strong>${role === 'backend' ? '19 repositori sistem backend microservices' : role === 'frontend' ? '48+ aplikasi frontend dan mobile' : '82 repositori perangkat lunak'}</strong> berprinsip Clean Architecture dan kontainerisasi Docker.`,
+    'Menerapkan alur kerja rekayasa perangkat lunak modern berbasis AI (<strong>Gemini 2.5, Claude 3.7, OpenAI APIs</strong>) untuk akselerasi perancangan arsitektur sistem, pemodelan skema relasional, dan generasi automated unit test.',
+    `Secara mandiri merancang, membangun, dan mengaudit <strong>${role === 'backend' ? '19 repositori sistem backend microservices' : role === 'frontend' ? '48+ aplikasi frontend dan mobile' : '82 repositori perangkat lunak'}</strong> berstandar Clean Architecture (DDD) dan kontainerisasi Docker.`,
     role === 'backend'
-      ? 'Melakukan audit mendalam kode arsitektur: menjamin keamanan celah injeksi, isolasi transaksi row-level lock PostgreSQL, pola Redis cache-aside, dan message broker RabbitMQ.'
+      ? 'Menerapkan arsitektur ledger finansial anti-race condition dan anti-double spending dengan <strong>row-level locking PostgreSQL (SELECT FOR UPDATE)</strong>, caching Redis cache-aside, dan RabbitMQ message broker.'
       : role === 'frontend'
-      ? 'Men-deploy dan mengelola 12 aplikasi web aktif di cloud Vercel dengan tampilan antarmuka responsif mobile-first, waktu muat instan, dan standar aksesibilitas.'
-      : 'Men-deploy dan mengelola 12 aplikasi produksi aktif di cloud Vercel dengan integrasi database serverless, transaksi ACID, dan antarmuka reaktif modern.'
+      ? 'Membangun antarmuka pengguna interaktif berperforma tinggi dengan <strong>kanvas grafis dual-layer 60 FPS (React-Konva)</strong>, state reaktif (Zustand, Signals), dan mobile cross-platform (React Native Expo, Flutter).'
+      : 'Mengintegrasikan arsitektur konkurensi tinggi dengan <strong>transaksi atomik ACID & row-level locks PostgreSQL</strong>, caching Redis cache-aside, message broker RabbitMQ, dan kanvas dual-layer 60 FPS.',
+    role === 'backend'
+      ? 'Melakukan audit keamanan endpoint API, menerapkan rate limiting terdistribusi Token Bucket, serta mengelola orkestrasi kontainer Docker Compose.'
+      : role === 'frontend'
+      ? 'Men-deploy dan mengelola <strong>12 aplikasi produksi aktif di cloud Vercel</strong> dengan tampilan antarmuka responsif mobile-first, waktu muat instan, dan standar aksesibilitas.'
+      : 'Men-deploy dan mengelola <strong>12 aplikasi produksi aktif di cloud Vercel</strong> dengan integrasi database serverless, Server Components Next.js 16, dan pipeline deployment otomatis.'
   ];
 
   const eduDegree = isEn 
