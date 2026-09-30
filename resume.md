@@ -3,8 +3,8 @@
 > **Candidate**: Kevin Eka Pratama  
 > **Role Target**: Software Engineer (Backend / Fullstack / Frontend — *Customizable per Target Application*)  
 > **Primary Specialization**: High-Performance Backend Systems & Modern Fullstack Platforms (Go, Java Spring Boot, React 19, Next.js 16, TypeScript, PostgreSQL)  
-> **Location**: Yogyakarta, Indonesia (Open to Hybrid / Onsite Jakarta & Remote)  
-> **Contact**: kevinxtkj3@gmail.com | +62 821-4170-8797  
+> **Location**: Jakarta, Indonesia  
+> **Contact**: kevinekapratama@gmail.com | +62 (813) 2661-2344  
 > **Profiles**: [GitHub: github.com/mazkev](https://github.com/mazkev) | [Portfolio: mazkev.vercel.app](https://mazkev.vercel.app) | [LinkedIn: linkedin.com/in/kevin-pratama-a704252b8](https://linkedin.com/in/kevin-pratama-a704252b8)  
 > **Curated Portfolio**: 82 Verified Repositories (19 Backend • 22 Fullstack & Mobile • 41 Frontend) | 12 Live Deployments  
 > **Last Updated**: September 2026  

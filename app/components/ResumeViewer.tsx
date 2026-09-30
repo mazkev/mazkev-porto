@@ -657,12 +657,12 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               <Printer size={14} /> Cetak / PDF
             </button>
             <a
-              href="/resume.pdf"
+              href={cvMode === 'id' ? "/resume-id.pdf" : "/resume.pdf"}
               target="_blank"
-              download="resume-kevin-eka-pratama.pdf"
+              download={cvMode === 'id' ? "resume-kevin-eka-pratama-id.pdf" : "resume-kevin-eka-pratama.pdf"}
               className="px-3.5 py-2 bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-900 dark:text-white text-xs font-bold rounded-xl flex items-center gap-1.5 transition-all cursor-pointer border border-slate-400 dark:border-slate-700"
             >
-              <Download size={14} /> Unduh PDF
+              <Download size={14} /> {cvMode === 'id' ? 'Unduh PDF (ID)' : 'Unduh PDF'}
             </a>
           </div>
 
@@ -697,7 +697,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                   Bagian 2: Versi Bahasa Indonesia Lengkap (Standar ATS)
                 </span>
                 <span className="bg-slate-200 dark:bg-slate-800 px-2.5 py-1 rounded-md text-[10px] font-bold text-slate-700 dark:text-slate-300">
-                  93 Repositori Terverifikasi
+                  82 Repositori Terverifikasi
                 </span>
               </div>
 
