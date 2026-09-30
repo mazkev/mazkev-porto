@@ -31,7 +31,7 @@ export default function Home() {
           <span className="font-bold font-geist">Mazkev<span className="text-primary">.</span></span>
         </div>
         
-        <span>© {new Date().getFullYear()} All rights reserved. build by mazkev.</span>
+        <span suppressHydrationWarning>© {new Date().getFullYear()} All rights reserved. build by mazkev.</span>
         
         <div className="flex gap-6">
           <a href="#" className="hover:text-primary transition-all cursor-pointer">Privacy</a>

@@ -199,7 +199,7 @@ const FALLBACK_EVENTS: GitHubEvent[] = [
     payload: {
       commits: [{ message: 'feat: add layered Architecture Flow pipeline visualizer', sha: '9ae59c0' }]
     },
-    created_at: new Date(Date.now() - 1000 * 60 * 60 * 5).toISOString(),
+    created_at: '2026-03-29T10:00:00.000Z',
   },
   {
     id: '2',
@@ -208,7 +208,7 @@ const FALLBACK_EVENTS: GitHubEvent[] = [
     payload: {
       commits: [{ message: 'feat: modern e-commerce backend with Bun, Hono, Drizzle ORM, Zod, and JWT', sha: 'a4e1bc2' }]
     },
-    created_at: new Date(Date.now() - 1000 * 60 * 60 * 24 * 2).toISOString(),
+    created_at: '2026-03-28T08:30:00.000Z',
   },
   {
     id: '3',
@@ -217,7 +217,7 @@ const FALLBACK_EVENTS: GitHubEvent[] = [
     payload: {
       commits: [{ message: 'feat: fullstack e-commerce platform with Java 17, Spring Boot 3, and Vue 3', sha: 'f89c31d' }]
     },
-    created_at: new Date(Date.now() - 1000 * 60 * 60 * 24 * 3).toISOString(),
+    created_at: '2026-03-27T14:15:00.000Z',
   },
   {
     id: '4',
@@ -226,7 +226,7 @@ const FALLBACK_EVENTS: GitHubEvent[] = [
     payload: {
       commits: [{ message: 'feat: transactional checkout handling with GORM and PostgreSQL pooling', sha: '8c991a0' }]
     },
-    created_at: new Date(Date.now() - 1000 * 60 * 60 * 24 * 5).toISOString(),
+    created_at: '2026-03-25T11:20:00.000Z',
   },
 ];
 
@@ -526,7 +526,7 @@ export default function GithubActivity() {
                           <Github size={13} className="text-slate-400 flex-shrink-0" />
                           <span className="truncate">{repoName}</span>
                         </a>
-                        <span className="text-[10px] font-mono font-semibold text-slate-400 whitespace-nowrap bg-slate-100 dark:bg-slate-800/60 px-2 py-0.5 rounded-md">
+                        <span suppressHydrationWarning className="text-[10px] font-mono font-semibold text-slate-400 whitespace-nowrap bg-slate-100 dark:bg-slate-800/60 px-2 py-0.5 rounded-md">
                           {formatTimeAgo(event.created_at)}
                         </span>
                       </div>

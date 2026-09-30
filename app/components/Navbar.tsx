@@ -52,8 +52,6 @@ export default function Navbar() {
     btn.style.transform = `translate3d(0, 0, 0)`;
   };
 
-  if (!mounted) return null;
-
   return (
     <header className="fixed top-0 w-full z-50 glass h-20 no-print print:hidden">
       <div className="container-max flex justify-between items-center h-full px-6">
@@ -78,10 +76,11 @@ export default function Navbar() {
             onClick={toggleTheme}
             onMouseMove={handleMagneticMove}
             onMouseLeave={handleMagneticLeave}
+            suppressHydrationWarning
             className="m-btn p-2 rounded-full hover:bg-slate-100 dark:hover:bg-white/10 transition-all cursor-pointer"
             aria-label="Toggle theme"
           >
-            {resolvedTheme === 'dark' ? (
+            {mounted && resolvedTheme === 'dark' ? (
               <Sun size={20} className="text-gray-300" />
             ) : (
               <Moon size={20} className="text-gray-500" />

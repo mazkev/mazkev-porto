@@ -42,8 +42,6 @@ export default function MobileNav() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  if (!mounted) return null;
-
   return (
     <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 md:hidden no-print print:hidden w-[calc(100%-3rem)] max-w-[24rem]">
       <div className="glass flex items-center justify-between px-6 py-2.5 rounded-3xl shadow-2xl shadow-brand-600/10 border border-slate-200/50 dark:border-slate-800/60 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl">
