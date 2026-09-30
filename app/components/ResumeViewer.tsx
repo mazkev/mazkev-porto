@@ -8,6 +8,7 @@ import {
   FileText, User, ExternalLink
 } from 'lucide-react';
 import Image from 'next/image';
+import { repoDescriptions } from './repoDescriptions';
 
 interface ResumeViewerProps {
   isOpen: boolean;
@@ -557,16 +558,20 @@ const commonText = {
   }
 };
 
-const RepoItem = ({ name, url, tech, lang }: { name: string; url: string; tech: string; lang: CVLang }) => (
-  <div className="space-y-0.5 print:space-y-0">
-    <div className="text-xs print:text-[8.3pt] font-mono font-bold text-slate-900 leading-tight">
-      • <a href={url} target="_blank" rel="noreferrer" className="underline hover:text-sky-700">{name}</a>
+const RepoItem = ({ name, url, tech, lang }: { name: string; url: string; tech: string; lang: CVLang }) => {
+  const desc = repoDescriptions[name] ? repoDescriptions[name][lang] : '';
+  return (
+    <div className="space-y-0.5 print:space-y-0">
+      <div className="text-xs print:text-[8pt] font-sans leading-tight">
+        <span className="font-mono font-bold text-slate-900">• <a href={url} target="_blank" rel="noreferrer" className="underline hover:text-sky-700">{name}</a></span>
+        {desc && <span className="text-slate-600 text-[11px] print:text-[7.4pt] font-medium"> — {desc}</span>}
+      </div>
+      <div className="pl-3.5 print:pl-2 text-[10.5px] print:text-[6.8pt] font-mono text-slate-500 leading-tight">
+        <span className="font-bold text-slate-700">{lang === 'en' ? 'Tech Stack:' : 'Teknologi:'}</span> {tech}
+      </div>
     </div>
-    <div className="pl-3.5 print:pl-2.5 text-[11px] print:text-[7.3pt] font-mono text-slate-600 leading-tight">
-      <span className="font-bold text-slate-700">{lang === 'en' ? 'Tech Stack:' : 'Teknologi:'}</span> {tech}
-    </div>
-  </div>
-);
+  );
+};
 
 export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
   const [lang, setLang] = useState<CVLang>('id');
@@ -1013,13 +1018,13 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 {activeRole === 'backend' && (
                   <div className="space-y-2.5 print:space-y-1.5">
                     {/* PILLAR 1: Distributed Go & Java High-Throughput Engines */}
-                    <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1.5 print:break-inside-avoid">
-                      <div className="border-b border-slate-200 pb-1">
-                        <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
+                    <div className="space-y-1.5 print:space-y-0.5 print:break-inside-avoid">
+                      <div className="border-b border-slate-800 pb-0.5">
+                        <h3 className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
                           {lang === 'en' ? 'Pillar 1: Distributed Go & Java Systems' : 'Pilar 1: Sistem Terdistribusi Go & Java'}
-                        </span>
+                        </h3>
                       </div>
-                      <div className="space-y-1.5 print:space-y-1 text-slate-700">
+                      <div className="space-y-1.5 print:space-y-0.5 text-slate-700">
                         <RepoItem name="go-distributed-microservices-lab" url="https://github.com/mazkev/go-distributed-microservices-lab" tech="Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker" lang={lang} />
                         <RepoItem name="go-ecommerce-gateway-engine" url="https://github.com/mazkev/go-ecommerce-gateway-engine" tech="Go 1.26, Gin, MongoDB, Reverse Proxy, Swagger OpenAPI" lang={lang} />
                         <RepoItem name="go-banking-core-system" url="https://github.com/mazkev/go-banking-core-system" tech="Go, Echo, PostgreSQL, ACID Row-Level Locks, Bcrypt PIN, Swagger UI" lang={lang} />
@@ -1030,13 +1035,13 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     </div>
 
                     {/* PILLAR 2: Cloud APIs & TypeScript Microservices */}
-                    <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1.5 print:break-inside-avoid">
-                      <div className="border-b border-slate-200 pb-1">
-                        <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
+                    <div className="space-y-1.5 print:space-y-0.5 print:break-inside-avoid">
+                      <div className="border-b border-slate-800 pb-0.5">
+                        <h3 className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
                           {lang === 'en' ? 'Pillar 2: Cloud APIs & TypeScript Microservices' : 'Pilar 2: API Cloud & Microservices TypeScript'}
-                        </span>
+                        </h3>
                       </div>
-                      <div className="space-y-1.5 print:space-y-1 text-slate-700">
+                      <div className="space-y-1.5 print:space-y-0.5 text-slate-700">
                         <RepoItem name="hono-ecommerce-engine" url="https://github.com/mazkev/hono-ecommerce-engine" tech="Bun Runtime, Hono v4, Drizzle ORM, WebSocket Live Chat, SQLite" lang={lang} />
                         <RepoItem name="express-prisma-realworld-api" url="https://github.com/mazkev/express-prisma-realworld-api" tech="Express.js, TypeScript, Prisma ORM, Nx Monorepo, JWT, Jest Suite" lang={lang} />
                         <RepoItem name="express-typescript-prisma-api" url="https://github.com/mazkev/express-typescript-prisma-api" tech="Express v5, TypeScript, Prisma 7 ORM, LibSQL Adapter, tsx" lang={lang} />
@@ -1047,13 +1052,13 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     </div>
 
                     {/* PILLAR 3: Specialized Microservices, Webhooks & Data Pipelines */}
-                    <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1.5 print:break-inside-avoid">
-                      <div className="border-b border-slate-200 pb-1">
-                        <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
+                    <div className="space-y-1.5 print:space-y-0.5 print:break-inside-avoid">
+                      <div className="border-b border-slate-800 pb-0.5">
+                        <h3 className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
                           {lang === 'en' ? 'Pillar 3: Specialized Microservices, Webhooks & Data Pipelines' : 'Pilar 3: Layanan Mikro Khusus, Webhook & Pipeline Data'}
-                        </span>
+                        </h3>
                       </div>
-                      <div className="space-y-1.5 print:space-y-1 text-slate-700">
+                      <div className="space-y-1.5 print:space-y-0.5 text-slate-700">
                         <RepoItem name="express-prisma-payment-api" url="https://github.com/mazkev/express-prisma-payment-api" tech="Express.js, Midtrans Webhook, PDFKit Invoicing, Nodemailer" lang={lang} />
                         <RepoItem name="AI-api-manager" url="https://github.com/mazkev/AI-api-manager" tech="Node.js, Reverse Proxy Gateway, Redis Rate Limiting, API Key Auth, React UI" lang={lang} />
                         <RepoItem name="spring-boot-book-manager-api" url="https://github.com/mazkev/spring-boot-book-manager-api" tech="Java 17, Spring Boot 3.3, Spring Data MongoDB, OpenAPI 3.0" lang={lang} />
@@ -1068,13 +1073,13 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
 
                 {activeRole === 'frontend' && (
                   <div className="space-y-2.5 print:space-y-1.5">
-                    <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1.5 print:break-inside-avoid">
-                      <div className="border-b border-slate-200 pb-1">
-                        <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
+                    <div className="space-y-1.5 print:space-y-0.5 print:break-inside-avoid">
+                      <div className="border-b border-slate-800 pb-0.5">
+                        <h3 className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
                           {lang === 'en' ? 'Flagship Frontend Web Applications & Interactive Workstations' : 'Aplikasi Web Unggulan & Workstation Grafis'}
-                        </span>
+                        </h3>
                       </div>
-                      <div className="space-y-1.5 print:space-y-1 text-slate-700">
+                      <div className="space-y-1.5 print:space-y-0.5 text-slate-700">
                         <RepoItem name="react-canva-design-studio" url="https://github.com/mazkev/react-canva-design-studio" tech="React 19, TypeScript, React-Konva (60 FPS Infinite Canvas), Tailwind CSS" lang={lang} />
                         <RepoItem name="angular-marketplace-storefront" url="https://github.com/mazkev/angular-marketplace-storefront" tech="Angular 19, TypeScript, Reactive Signals, RxJS Event Streams, Tailwind CSS" lang={lang} />
                         <RepoItem name="nextjs-spotify-music-player" url="https://github.com/mazkev/nextjs-spotify-music-player" tech="Next.js 16, TypeScript, Web Audio API, Canvas Visualizer, Tailwind CSS" lang={lang} />
@@ -1084,13 +1089,13 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                       </div>
                     </div>
 
-                    <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1.5 print:break-inside-avoid">
-                      <div className="border-b border-slate-200 pb-1">
-                        <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
+                    <div className="space-y-1.5 print:space-y-0.5 print:break-inside-avoid">
+                      <div className="border-b border-slate-800 pb-0.5">
+                        <h3 className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
                           {lang === 'en' ? 'Cross-Platform Mobile Applications' : 'Aplikasi Mobile Cross-Platform'}
-                        </span>
+                        </h3>
                       </div>
-                      <div className="space-y-1.5 print:space-y-1 text-slate-700">
+                      <div className="space-y-1.5 print:space-y-0.5 text-slate-700">
                         <RepoItem name="treveloka-react-native-expo" url="https://github.com/mazkev/treveloka-react-native-expo" tech="React Native 0.85, Expo Router, TypeScript, Gemini AI API Assistant" lang={lang} />
                         <RepoItem name="tiktok-clone-react-native-expo" url="https://github.com/mazkev/tiktok-clone-react-native-expo" tech="React Native, Expo Video Autoplay, Camera API, Interactive UI" lang={lang} />
                         <RepoItem name="flutter-grab-superapp-clone" url="https://github.com/mazkev/flutter-grab-superapp-clone" tech="Flutter 3, Dart, Riverpod 3, OpenStreetMap Live Driver Tracking" lang={lang} />
@@ -1164,13 +1169,13 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 {activeRole === 'fullstack' && (
                   <div className="space-y-2.5 print:space-y-1.5">
                     {/* PILLAR 1: Backend Systems & Distributed Services */}
-                    <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1.5 print:break-inside-avoid">
-                      <div className="border-b border-slate-200 pb-1">
-                        <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
+                    <div className="space-y-1.5 print:space-y-0.5 print:break-inside-avoid">
+                      <div className="border-b border-slate-800 pb-0.5">
+                        <h3 className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
                           {lang === 'en' ? 'Pillar 1: Backend Systems & Distributed Services' : 'Pilar 1: Sistem Backend & Arsitektur Cloud'}
-                        </span>
+                        </h3>
                       </div>
-                      <div className="space-y-1.5 print:space-y-1 text-slate-700">
+                      <div className="space-y-1.5 print:space-y-0.5 text-slate-700">
                         <RepoItem name="go-banking-core-system" url="https://github.com/mazkev/go-banking-core-system" tech="Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI" lang={lang} />
                         <RepoItem name="go-distributed-microservices-lab" url="https://github.com/mazkev/go-distributed-microservices-lab" tech="Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker" lang={lang} />
                         <RepoItem name="spring-boot-enterprise-platform" url="https://github.com/mazkev/spring-boot-enterprise-platform" tech="Java 17, Spring Boot 3.3, Spring Security JWT, Bucket4j, Docker" lang={lang} />
@@ -1181,13 +1186,13 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     </div>
 
                     {/* PILLAR 2: Fullstack Web Platforms & Enterprise Systems */}
-                    <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1.5 print:break-inside-avoid">
-                      <div className="border-b border-slate-200 pb-1">
-                        <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
+                    <div className="space-y-1.5 print:space-y-0.5 print:break-inside-avoid">
+                      <div className="border-b border-slate-800 pb-0.5">
+                        <h3 className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
                           {lang === 'en' ? 'Pillar 2: Fullstack Web Platforms & Enterprise Systems' : 'Pilar 2: Platform Web Fullstack & Aplikasi Mobile'}
-                        </span>
+                        </h3>
                       </div>
-                      <div className="space-y-1.5 print:space-y-1 text-slate-700">
+                      <div className="space-y-1.5 print:space-y-0.5 text-slate-700">
                         <RepoItem name="baye-ecommerce-marketplace" url="https://github.com/mazkev/baye-ecommerce-marketplace" tech="Next.js 16, React 19, TypeScript, LibSQL Serverless, QR Digital Invoices" lang={lang} />
                         <RepoItem name="tokopedia-react-storefront" url="https://github.com/mazkev/tokopedia-react-storefront" tech="React 19, TypeScript, Go REST API Backend, PostgreSQL, Tailwind" lang={lang} />
                         <RepoItem name="laravel-hrms-platform" url="https://github.com/mazkev/laravel-hrms-platform" tech="Laravel 12, PHP 8.3, MySQL, GPS Selfie Attendance, Automated Payroll" lang={lang} />
@@ -1198,13 +1203,13 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     </div>
 
                     {/* PILLAR 3: Modern Frontend & Mobile Applications */}
-                    <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1.5 print:break-inside-avoid">
-                      <div className="border-b border-slate-200 pb-1">
-                        <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
+                    <div className="space-y-1.5 print:space-y-0.5 print:break-inside-avoid">
+                      <div className="border-b border-slate-800 pb-0.5">
+                        <h3 className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
                           {lang === 'en' ? 'Pillar 3: Modern Frontend & Mobile Applications' : 'Pilar 3: Aplikasi Frontend Web Modern'}
-                        </span>
+                        </h3>
                       </div>
-                      <div className="space-y-1.5 print:space-y-1 text-slate-700">
+                      <div className="space-y-1.5 print:space-y-0.5 text-slate-700">
                         <RepoItem name="react-canva-design-studio" url="https://github.com/mazkev/react-canva-design-studio" tech="React 19, TypeScript, React-Konva 60 FPS, Multi-format Export" lang={lang} />
                         <RepoItem name="angular-marketplace-storefront" url="https://github.com/mazkev/angular-marketplace-storefront" tech="Angular 19, TypeScript, Signals, RxJS Event Streams, Seller Back-office" lang={lang} />
                         <RepoItem name="nextjs-spotify-music-player" url="https://github.com/mazkev/nextjs-spotify-music-player" tech="Next.js 16, TypeScript, Web Audio API Canvas Visualizer, Synced Lyrics" lang={lang} />

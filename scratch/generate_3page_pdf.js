@@ -35,10 +35,14 @@ const imgNetflix = getBase64Image('public/projects/netflix.jpg');
 const imgUmrah = getBase64Image('public/projects/umrah.jpg');
 const imgCloudConsole = getBase64Image('public/projects/cloudconsole.jpg');
 
+const { repoDescriptions } = require('./repo_descriptions');
+
 function repoBlock(name, url, tech, isEn) {
+  const descObj = repoDescriptions[name];
+  const desc = descObj ? (isEn ? descObj.en : descObj.id) : '';
   const label = isEn ? 'Tech Stack:' : 'Teknologi:';
   return `        <div class="repo-block">
-          <div class="repo-title-row">• <a href="${url}" class="repo-name">${name}</a></div>
+          <div class="repo-title-row">• <a href="${url}" class="repo-name">${name}</a>${desc ? ` <span class="repo-desc">— ${desc}</span>` : ''}</div>
           <div class="repo-tech-row"><span class="repo-tech-label">${label}</span> <span class="repo-tech-desc">${tech}</span></div>
         </div>`;
 }
@@ -911,23 +915,18 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
 
   /* PAGE 2 STYLES: TECHNICAL REPOSITORY DIRECTORY */
   .pillar-card {
-    background: #f8fafc;
-    border: 1px solid #cbd5e1;
-    border-left: 3.5px solid #0f172a;
-    border-radius: 4px;
-    padding: 5px 8px;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
   }
   .pillar-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    border-bottom: 1px solid #cbd5e1;
-    padding-bottom: 2.5px;
-    margin-bottom: 4px;
+    border-bottom: 1.2px solid #0f172a;
+    padding-bottom: 2px;
+    margin-bottom: 3.5px;
   }
   .pillar-title {
-    font-size: 8.5pt;
+    font-size: 8.3pt;
     font-weight: 800;
     color: #0f172a;
     text-transform: uppercase;
@@ -950,14 +949,14 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
     margin-bottom: 2.5px;
   }
   .repo-block {
-    margin-bottom: 4px;
+    margin-bottom: 2.5px;
   }
   .repo-block:last-child {
-    margin-bottom: 1px;
+    margin-bottom: 0px;
   }
   .repo-title-row {
-    font-size: 8.3pt;
-    line-height: 1.25;
+    font-size: 7.9pt;
+    line-height: 1.22;
     color: #0f172a;
   }
   .repo-name {
@@ -965,13 +964,19 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
     font-weight: 700;
     color: #0f172a;
     text-decoration: underline;
-    font-size: 8.3pt;
+    font-size: 7.9pt;
+  }
+  .repo-desc {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 7.4pt;
+    color: #334155;
+    font-weight: 500;
   }
   .repo-tech-row {
-    padding-left: 10px;
+    padding-left: 9px;
     font-family: monospace;
-    font-size: 7.3pt;
-    line-height: 1.25;
+    font-size: 6.7pt;
+    line-height: 1.2;
     color: #475569;
   }
   .repo-tech-label {
