@@ -547,11 +547,11 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
     `;
 
     page3Title = isEn 
-      ? 'Visual Project Annex: 12 Production Interfaces & Workstations' 
-      : 'Lampiran Visual Portofolio: 12 Antarmuka Produksi & Workstation';
+      ? 'Visual Project Annex: 8 Flagship Fullstack Systems' 
+      : 'Lampiran Visual Portofolio: 8 Sistem Fullstack Unggulan';
     page3Subtitle = isEn
-      ? 'High-Fidelity Visual Proof: Real Production Screenshots, Workstation Canvas & Live Demos'
-      : 'Bukti Visual Nyata: Tangkapan Layar Produksi Asli, Kanvas Interaktif & Live Demo';
+      ? 'Fullstack Web Architecture Proof: Live Vercel Deployments, Monorepo Systems & Relational Persistence'
+      : 'Bukti Arsitektur Sistem Fullstack: Live Demo Vercel, Monorepo & Integrasi Basis Data';
 
     page3Cards = [
       {
@@ -625,42 +625,6 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
         img: imgMazmarket,
         link: 'https://github.com/mazkev/hono-ecommerce-engine',
         label: 'github.com/mazkev/hono-ecommerce-engine'
-      },
-      {
-        title: '9. Vue 3 Storefront & Back-Office Platform',
-        cat: 'Fullstack',
-        tech: 'Vue 3 Composition API • Pinia • Tailwind CSS • Live Demo',
-        desc: isEn ? 'Complete commerce storefront and administrative back-office system with Vue 3 and Pinia, multi-spec product comparison, and order tracking.' : 'Storefront dan sistem back-office e-commerce lengkap dengan Vue 3 dan Pinia, komparasi produk multi-spesifikasi, dan pelacakan pesanan.',
-        img: imgMarketinvent,
-        link: 'https://aplikasi-vue.vercel.app',
-        label: 'aplikasi-vue.vercel.app'
-      },
-      {
-        title: '10. Grab Superapp Mobile Cross-Platform Clone',
-        cat: 'Mobile',
-        tech: 'Flutter 3 • Dart • Riverpod 3 • OpenStreetMap Live GPS',
-        desc: isEn ? 'Cross-platform mobile superapp built with Flutter and Riverpod 3, featuring real-time driver tracking on OpenStreetMap, GrabFood, and GrabRide.' : 'Aplikasi mobile superapp cross-platform dengan Flutter dan Riverpod 3, menampilkan pelacakan langsung driver di peta OpenStreetMap, GrabFood, dan GrabRide.',
-        img: imgGrab,
-        link: 'https://github.com/mazkev/flutter-grab-superapp-clone',
-        label: 'github.com/mazkev/flutter-grab-superapp-clone'
-      },
-      {
-        title: '11. Traveloka Mobile App Travel Booking Clone',
-        cat: 'Mobile',
-        tech: 'React Native 0.85 • Expo SDK 56 • Expo Router • Gemini AI',
-        desc: isEn ? 'Cross-platform mobile travel booking app with React Native and Expo 56, flight & hotel search engine, Gemini AI itinerary assistant, and QR e-tickets.' : 'Aplikasi mobile pemesanan tiket perjalanan dengan React Native dan Expo 56, pencarian tiket pesawat & hotel, asisten Gemini AI, dan e-tiket QR.',
-        img: imgAirbnb,
-        link: 'https://github.com/mazkev/treveloka-react-native-expo',
-        label: 'github.com/mazkev/treveloka-react-native-expo'
-      },
-      {
-        title: '12. React Native POS Cashier & Shift Manager',
-        cat: 'Mobile',
-        tech: 'React Native 0.85 • Expo SDK 56 • Cashier PIN • Shift Reconciliation',
-        desc: isEn ? 'Mobile retail cashier terminal with cashier PIN lock, per-shift drawer cash audit reconciliation, customer loyalty rewards, and cloud transaction logging.' : 'Terminal kasir POS mobile dengan proteksi PIN kasir, audit rekonsiliasi kas laci per shift, program loyalitas pelanggan, dan sinkronisasi cloud.',
-        img: imgGofinance,
-        link: 'https://github.com/mazkev/react-native-pos-cashier',
-        label: 'github.com/mazkev/react-native-pos-cashier'
       }
     ];
   }
@@ -1011,12 +975,12 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
     align-items: baseline;
   }
 
-  /* PAGE 3 STYLES: 12 VISUAL CARDS (2 cols x 6 rows) */
+  /* PAGE 3 STYLES: VISUAL CARDS */
   .visual-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    margin-bottom: 4px;
+    gap: ${role === 'fullstack' ? '6px' : '4px'};
+    margin-bottom: ${role === 'fullstack' ? '6px' : '4px'};
   }
   .visual-card {
     border: 1px solid #cbd5e1;
@@ -1027,7 +991,7 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
     flex-direction: column;
   }
   .visual-img-container {
-    height: 44px;
+    height: ${role === 'fullstack' ? '65px' : '44px'};
     width: 100%;
     background: #f1f5f9;
     border-bottom: 1px solid #e2e8f0;

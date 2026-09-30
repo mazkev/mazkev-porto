@@ -364,8 +364,8 @@ const roleData = {
       skillsDevOps: 'Next.js 16 (App Router), React 19, Angular 19, React Native Expo SDK 56, Docker, Git & GitHub, Postman, Vercel Edge Runtime',
       page2Title: 'Software Engineering Project Directory',
       page2Subtitle: 'Curated Open-Source Production Projects Grouped by Engineering Pillars',
-      page3Title: 'Visual Project Annex: 12 Flagship Systems & Live Workstations',
-      page3Subtitle: 'High-Fidelity Visual Proof: Real Production Screenshots, Workstation Canvas & Live Demos',
+      page3Title: 'Visual Project Annex: 8 Flagship Fullstack Systems',
+      page3Subtitle: 'Fullstack Architecture Proof: Live Vercel Deployments, Monorepo Systems & Relational Persistence',
     },
     id: {
       roleTitle: 'Fullstack Software Engineer',
@@ -379,8 +379,8 @@ const roleData = {
       skillsDevOps: 'Next.js 16 (App Router), React 19, Angular 19, React Native Expo SDK 56, Docker, Git & GitHub, Postman, Vercel Edge Runtime',
       page2Title: 'Direktori Proyek Rekayasa Perangkat Lunak',
       page2Subtitle: 'Katalog Proyek Produksi Terverifikasi Berdasarkan Pilar Rekayasa',
-      page3Title: 'Lampiran Visual Portofolio: 12 Sistem Unggulan & Workstation Aktif',
-      page3Subtitle: 'Bukti Visual Nyata: Tangkapan Layar Produksi Asli, Kanvas Interaktif & Live Demo',
+      page3Title: 'Lampiran Visual Portofolio: 8 Sistem Fullstack Unggulan',
+      page3Subtitle: 'Bukti Arsitektur Sistem Fullstack: Live Demo Vercel, Monorepo & Integrasi Basis Data',
     },
     metrics: [
       { num: '19 Repos', labelEn: 'Backend & Cloud', labelId: 'Backend & Cloud' },
@@ -468,46 +468,6 @@ const roleData = {
         img: '/projects/mazmarket.png',
         link: 'https://github.com/mazkev/hono-ecommerce-engine',
         label: 'github.com/mazkev/hono-ecommerce-engine'
-      },
-      {
-        title: '9. Vue 3 Storefront & Back-Office Platform',
-        cat: 'Fullstack',
-        tech: 'Vue 3 Composition API • Pinia • Tailwind CSS • Live Demo',
-        descEn: 'Complete commerce storefront and administrative back-office system with Vue 3 and Pinia, multi-spec product comparison, and order tracking.',
-        descId: 'Storefront dan sistem back-office e-commerce lengkap dengan Vue 3 dan Pinia, komparasi produk multi-spesifikasi, dan pelacakan pesanan.',
-        img: '/projects/marketinvent.png',
-        link: 'https://aplikasi-vue.vercel.app',
-        label: 'aplikasi-vue.vercel.app'
-      },
-      {
-        title: '10. Grab Superapp Mobile Cross-Platform Clone',
-        cat: 'Mobile',
-        tech: 'Flutter 3 • Dart • Riverpod 3 • OpenStreetMap Live GPS',
-        descEn: 'Cross-platform mobile superapp built with Flutter and Riverpod 3, featuring real-time driver tracking on OpenStreetMap, GrabFood, and GrabRide.',
-        descId: 'Aplikasi mobile superapp cross-platform dengan Flutter dan Riverpod 3, menampilkan pelacakan langsung driver di peta OpenStreetMap, GrabFood, dan GrabRide.',
-        img: '/projects/grab.png',
-        link: 'https://github.com/mazkev/flutter-grab-superapp-clone',
-        label: 'github.com/mazkev/flutter-grab-superapp-clone'
-      },
-      {
-        title: '11. Traveloka Mobile App Travel Booking Clone',
-        cat: 'Mobile',
-        tech: 'React Native 0.85 • Expo SDK 56 • Expo Router • Gemini AI',
-        descEn: 'Cross-platform mobile travel booking app with React Native and Expo 56, flight & hotel search engine, Gemini AI itinerary assistant, and QR e-tickets.',
-        descId: 'Aplikasi mobile pemesanan tiket perjalanan dengan React Native dan Expo 56, pencarian tiket pesawat & hotel, asisten Gemini AI, dan e-tiket QR.',
-        img: '/projects/airbnb.png',
-        link: 'https://github.com/mazkev/treveloka-react-native-expo',
-        label: 'github.com/mazkev/treveloka-react-native-expo'
-      },
-      {
-        title: '12. React Native POS Cashier & Shift Manager',
-        cat: 'Mobile',
-        tech: 'React Native 0.85 • Expo SDK 56 • Cashier PIN • Shift Reconciliation',
-        descEn: 'Mobile retail cashier terminal with cashier PIN lock, per-shift drawer cash audit reconciliation, customer loyalty rewards, and cloud transaction logging.',
-        descId: 'Terminal kasir POS mobile dengan proteksi PIN kasir, audit rekonsiliasi kas laci per shift, program loyalitas pelanggan, dan sinkronisasi cloud.',
-        img: '/projects/gofinance.png',
-        link: 'https://github.com/mazkev/react-native-pos-cashier',
-        label: 'github.com/mazkev/react-native-pos-cashier'
       }
     ]
   }
@@ -1334,14 +1294,14 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                   </span>
                 </div>
 
-                {/* 12 VISUAL CARDS GRID (2 cols x 6 rows) */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 print:gap-1">
+                {/* VISUAL CARDS GRID */}
+                <div className={`grid grid-cols-1 sm:grid-cols-2 ${activeRole === 'fullstack' ? 'gap-3 print:gap-1.5' : 'gap-2 print:gap-1'}`}>
                   {roleData[activeRole].visualCards.map((p, idx) => (
                     <div
                       key={idx}
                       className="border border-slate-300 rounded-lg overflow-hidden bg-white flex flex-col justify-between print:break-inside-avoid shadow-sm print:shadow-none"
                     >
-                      <div className="h-20 sm:h-24 print:h-[44px] w-full bg-slate-100 border-b border-slate-200 relative overflow-hidden">
+                      <div className={`w-full bg-slate-100 border-b border-slate-200 relative overflow-hidden ${activeRole === 'fullstack' ? 'h-24 sm:h-28 print:h-[60px]' : 'h-20 sm:h-24 print:h-[44px]'}`}>
                         <Image
                           src={p.img}
                           alt={p.title}
