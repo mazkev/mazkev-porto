@@ -427,12 +427,54 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
         @page { size: A4; margin: 8mm 10mm; }
         @media print {
           .no-print { display: none !important; }
-          html, body { height: auto !important; overflow: visible !important; margin: 0 !important; background: white !important; }
+          html, body {
+            height: auto !important;
+            overflow: visible !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: white !important;
+          }
           body * { visibility: hidden; }
           #print-area, #print-area * { visibility: visible; }
-          #print-area { position: absolute; left: 0; top: 0; width: 100%; background: white; color: black; }
-          .page-break { display: block !important; page-break-before: always !important; break-before: page !important; height: 0 !important; margin: 0 !important; }
-          #print-area * { color: black !important; border-color: #000000 !important; }
+          #print-area {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100% !important;
+            background: white !important;
+            color: black !important;
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+          .print-page {
+            box-sizing: border-box !important;
+            width: 100% !important;
+            min-height: 279mm !important;
+            height: 279mm !important;
+            max-height: 279mm !important;
+            overflow: hidden !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            page-break-after: always !important;
+            break-after: page !important;
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+          .print-page:last-child {
+            page-break-after: avoid !important;
+            break-after: avoid !important;
+          }
+          .page-break {
+            display: none !important;
+          }
+          #print-area * {
+            color: black !important;
+            border-color: #cbd5e1 !important;
+          }
+          #print-area a {
+            color: #0284c7 !important;
+          }
         }
       `}</style>
 
@@ -550,168 +592,170 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
             {/* ========================================================= */}
             {/* PAGE 1: EXECUTIVE PROFILE, EXPERIENCE & EDUCATION         */}
             {/* ========================================================= */}
-            <div className="space-y-4 print:space-y-2.5 pb-4 print:pb-0">
-              {/* HEADER */}
-              <div className="border-b-2 border-slate-900 pb-3 print:pb-2 flex flex-row items-center justify-between gap-4 print:gap-2.5">
-                <div className="w-16 h-16 md:w-20 md:h-20 print:w-14 print:h-14 flex-shrink-0 rounded-xl overflow-hidden border-2 border-slate-900 shadow-sm bg-white print:border-none print:shadow-none">
-                  <Image
-                    src="/profile/kev.png"
-                    alt="Kevin Eka Pratama"
-                    width={80}
-                    height={80}
-                    className="w-full h-full object-cover"
-                    priority
-                  />
-                </div>
+            <div className="print-page flex flex-col justify-between">
+              <div className="space-y-3.5 print:space-y-2">
+                {/* HEADER */}
+                <div className="border-b-2 border-slate-900 pb-3 print:pb-2 flex flex-row items-center justify-between gap-4 print:gap-2.5">
+                  <div className="w-16 h-16 md:w-20 md:h-20 print:w-16 print:h-16 flex-shrink-0 rounded-xl overflow-hidden border-2 border-slate-900 shadow-sm bg-white print:border-none print:shadow-none">
+                    <Image
+                      src="/profile/kev.png"
+                      alt="Kevin Eka Pratama"
+                      width={80}
+                      height={80}
+                      className="w-full h-full object-cover"
+                      priority
+                    />
+                  </div>
 
-                <div className="flex-grow space-y-0.5">
-                  <h1 className="text-xl sm:text-2xl md:text-3xl print:text-lg font-black text-slate-900 uppercase tracking-tight">
-                    Kevin Eka Pratama
-                  </h1>
-                  <p className="text-xs sm:text-sm print:text-[10px] font-extrabold text-slate-800 uppercase tracking-wide">
-                    {currentRole.roleTitle}
-                  </p>
-                  <p className="text-[11px] print:text-[8px] font-bold text-slate-600">
-                    {currentRole.roleSubtitle}
-                  </p>
-                  <div className="flex flex-wrap items-center gap-x-2.5 gap-y-0.5 text-xs print:text-[8.5px] text-slate-700 font-medium pt-0.5">
-                    <span className="flex items-center gap-1 font-mono">
-                      <Mail size={11} className="text-slate-900 print:w-2.5 print:h-2.5" /> kevinekapratama@gmail.com
-                    </span>
-                    <span className="hidden sm:inline print:inline">•</span>
-                    <span className="flex items-center gap-1 font-mono">
-                      <Phone size={11} className="text-slate-900 print:w-2.5 print:h-2.5" /> +62 (813) 2661-2344
-                    </span>
-                    <span className="hidden sm:inline print:inline">•</span>
-                    <a href="https://mazkev.vercel.app" target="_blank" rel="noreferrer" className="flex items-center gap-1 font-mono text-slate-900 hover:underline">
-                      <Globe size={11} className="text-slate-900 print:w-2.5 print:h-2.5" /> mazkev.vercel.app
-                    </a>
-                    <span className="hidden sm:inline print:inline">•</span>
-                    <a href="https://github.com/mazkev" target="_blank" rel="noreferrer" className="flex items-center gap-1 font-mono text-slate-900 hover:underline">
-                      <Github size={11} className="text-slate-900 print:w-2.5 print:h-2.5" /> github.com/mazkev
-                    </a>
-                    <span className="hidden sm:inline print:inline">•</span>
-                    <span className="flex items-center gap-1 font-mono">
-                      <MapPin size={11} className="text-slate-900 print:w-2.5 print:h-2.5" /> Jakarta, Indonesia
-                    </span>
+                  <div className="flex-grow space-y-0.5">
+                    <h1 className="text-xl sm:text-2xl md:text-3xl print:text-xl font-black text-slate-900 uppercase tracking-tight">
+                      Kevin Eka Pratama
+                    </h1>
+                    <p className="text-xs sm:text-sm print:text-[10.5px] font-extrabold text-slate-800 uppercase tracking-wide">
+                      {currentRole.roleTitle}
+                    </p>
+                    <p className="text-[11px] print:text-[8.5px] font-bold text-slate-600">
+                      {currentRole.roleSubtitle}
+                    </p>
+                    <div className="flex flex-wrap items-center gap-x-2.5 gap-y-0.5 text-xs print:text-[8.5px] text-slate-700 font-medium pt-0.5">
+                      <span className="flex items-center gap-1 font-mono">
+                        <Mail size={11} className="text-slate-900 print:w-2.5 print:h-2.5" /> kevinekapratama@gmail.com
+                      </span>
+                      <span className="hidden sm:inline print:inline">•</span>
+                      <span className="flex items-center gap-1 font-mono">
+                        <Phone size={11} className="text-slate-900 print:w-2.5 print:h-2.5" /> +62 (813) 2661-2344
+                      </span>
+                      <span className="hidden sm:inline print:inline">•</span>
+                      <a href="https://mazkev.vercel.app" target="_blank" rel="noreferrer" className="flex items-center gap-1 font-mono text-slate-900 hover:underline">
+                        <Globe size={11} className="text-slate-900 print:w-2.5 print:h-2.5" /> mazkev.vercel.app
+                      </a>
+                      <span className="hidden sm:inline print:inline">•</span>
+                      <a href="https://github.com/mazkev" target="_blank" rel="noreferrer" className="flex items-center gap-1 font-mono text-slate-900 hover:underline">
+                        <Github size={11} className="text-slate-900 print:w-2.5 print:h-2.5" /> github.com/mazkev
+                      </a>
+                      <span className="hidden sm:inline print:inline">•</span>
+                      <span className="flex items-center gap-1 font-mono">
+                        <MapPin size={11} className="text-slate-900 print:w-2.5 print:h-2.5" /> Jakarta, Indonesia
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* EXECUTIVE SUMMARY */}
-              <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-0.5">
-                  <h2 className="text-xs sm:text-sm print:text-[10px] font-extrabold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
-                    <User size={14} className="text-slate-900 print:w-3 print:h-3" /> {currentRole.executiveSummaryTitle}
+                {/* EXECUTIVE SUMMARY */}
+                <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
+                  <div className="flex items-center justify-between border-b border-slate-800 pb-0.5">
+                    <h2 className="text-xs sm:text-sm print:text-[10px] font-extrabold uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
+                      <User size={14} className="text-slate-900 print:w-3 print:h-3" /> {currentRole.executiveSummaryTitle}
+                    </h2>
+                    <span className="text-[10px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
+                      {lang === 'en' ? `Target: ${activeRole.toUpperCase()} (Page 1 of 3)` : `Target: ${activeRole.toUpperCase()} (Halaman 1 dari 3)`}
+                    </span>
+                  </div>
+                  <p className="text-slate-800 text-xs sm:text-sm print:text-[9.5px] leading-relaxed print:leading-normal font-medium text-justify">
+                    {currentRole.executiveSummary}
+                  </p>
+                </div>
+
+                {/* PROFESSIONAL EXPERIENCE */}
+                <div className="space-y-1.5 print:space-y-1 print:break-inside-avoid">
+                  <h2 className="text-xs sm:text-sm print:text-[10px] font-extrabold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-0.5 flex items-center gap-1.5">
+                    <Briefcase size={14} className="text-slate-900 print:w-3 print:h-3" /> {t.experienceTitle}
                   </h2>
-                  <span className="text-[10px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
-                    {lang === 'en' ? `Target: ${activeRole.toUpperCase()} (Page 1 of 3)` : `Target: ${activeRole.toUpperCase()} (Halaman 1 dari 3)`}
-                  </span>
-                </div>
-                <p className="text-slate-800 text-xs sm:text-sm print:text-[9.5px] leading-relaxed print:leading-normal font-medium text-justify">
-                  {currentRole.executiveSummary}
-                </p>
-              </div>
 
-              {/* PROFESSIONAL EXPERIENCE */}
-              <div className="space-y-1.5 print:space-y-1 print:break-inside-avoid">
-                <h2 className="text-xs sm:text-sm print:text-[10px] font-extrabold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-0.5 flex items-center gap-1.5">
-                  <Briefcase size={14} className="text-slate-900 print:w-3 print:h-3" /> {t.experienceTitle}
-                </h2>
-
-                <div className="space-y-2 print:space-y-1">
-                  <div className="space-y-0.5 print:break-inside-avoid">
-                    <div className="flex justify-between items-start flex-wrap gap-1">
-                      <div>
-                        <span className="font-extrabold text-slate-900 text-xs sm:text-sm print:text-[10px]">
-                          {t.job1Title}
-                        </span>
-                        <span className="text-slate-500 text-xs print:text-[9px]"> • </span>
-                        <span className="text-xs print:text-[9.5px] font-bold text-slate-700">
-                          {t.job1Company}
+                  <div className="space-y-2 print:space-y-1">
+                    <div className="space-y-0.5 print:break-inside-avoid">
+                      <div className="flex justify-between items-start flex-wrap gap-1">
+                        <div>
+                          <span className="font-extrabold text-slate-900 text-xs sm:text-sm print:text-[10px]">
+                            {t.job1Title}
+                          </span>
+                          <span className="text-slate-500 text-xs print:text-[9px]"> • </span>
+                          <span className="text-xs print:text-[9.5px] font-bold text-slate-700">
+                            {t.job1Company}
+                          </span>
+                        </div>
+                        <span className="text-[10px] print:text-[8px] font-mono font-bold text-slate-900 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-300">
+                          {t.job1Date}
                         </span>
                       </div>
-                      <span className="text-[10px] print:text-[8px] font-mono font-bold text-slate-900 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-300">
-                        {t.job1Date}
-                      </span>
+                      <ul className="list-disc pl-4 text-slate-800 text-xs print:text-[9.2px] leading-relaxed print:leading-normal space-y-0.5 font-medium">
+                        <li>{t.job1Bullet1}</li>
+                        <li>{t.job1Bullet2}</li>
+                        <li>{t.job1Bullet3}</li>
+                      </ul>
                     </div>
-                    <ul className="list-disc pl-4 text-slate-800 text-xs print:text-[9.5px] leading-relaxed print:leading-normal space-y-0.5 font-medium">
-                      <li>{t.job1Bullet1}</li>
-                      <li>{t.job1Bullet2}</li>
-                      <li>{t.job1Bullet3}</li>
-                    </ul>
-                  </div>
 
-                  <div className="space-y-0.5 print:break-inside-avoid">
-                    <div className="flex justify-between items-start flex-wrap gap-1">
-                      <div>
-                        <span className="font-extrabold text-slate-900 text-xs sm:text-sm print:text-[10px]">
-                          {job2Title}
-                        </span>
-                        <span className="text-slate-500 text-xs print:text-[9px]"> • </span>
-                        <span className="text-xs print:text-[9.5px] font-bold text-slate-700">
-                          {t.job2Company}
+                    <div className="space-y-0.5 print:break-inside-avoid">
+                      <div className="flex justify-between items-start flex-wrap gap-1">
+                        <div>
+                          <span className="font-extrabold text-slate-900 text-xs sm:text-sm print:text-[10px]">
+                            {job2Title}
+                          </span>
+                          <span className="text-slate-500 text-xs print:text-[9px]"> • </span>
+                          <span className="text-xs print:text-[9.5px] font-bold text-slate-700">
+                            {t.job2Company}
+                          </span>
+                        </div>
+                        <span className="text-[10px] print:text-[8px] font-mono font-bold text-slate-900 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-300">
+                          {t.job2Date}
                         </span>
                       </div>
-                      <span className="text-[10px] print:text-[8px] font-mono font-bold text-slate-900 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-300">
-                        {t.job2Date}
-                      </span>
+                      <ul className="list-disc pl-4 text-slate-800 text-xs print:text-[9.2px] leading-relaxed print:leading-normal space-y-0.5 font-medium">
+                        {job2Bullets.map((b, i) => (
+                          <li key={i}>{b}</li>
+                        ))}
+                      </ul>
                     </div>
-                    <ul className="list-disc pl-4 text-slate-800 text-xs print:text-[9.5px] leading-relaxed print:leading-normal space-y-0.5 font-medium">
-                      {job2Bullets.map((b, i) => (
-                        <li key={i}>{b}</li>
-                      ))}
-                    </ul>
                   </div>
                 </div>
-              </div>
 
-              {/* TECHNICAL COMPETENCIES */}
-              <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
-                <h2 className="text-xs sm:text-sm print:text-[10px] font-extrabold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-0.5 flex items-center gap-1.5">
-                  <Code size={14} className="text-slate-900 print:w-3 print:h-3" /> {t.skillsTitle} ({currentRole.roleTitle})
-                </h2>
-                
-                <div className="space-y-1 text-xs print:text-[9px] text-slate-800 leading-relaxed font-medium">
-                  <p>
-                    <strong>{lang === 'id' ? 'Bahasa Pemrograman:' : 'Programming Languages:'}</strong> {currentRole.skillsLanguages}
-                  </p>
-                  <p>
-                    <strong>{lang === 'id' ? 'Framework & Arsitektur:' : 'Frameworks & Architecture:'}</strong> {currentRole.skillsFrameworks}
-                  </p>
-                  <p>
-                    <strong>{activeRole === 'backend' ? (lang === 'id' ? 'Database & Message Broker:' : 'Databases & Message Brokers:') : activeRole === 'frontend' ? (lang === 'id' ? 'State & Grafis Interaktif:' : 'State & Interactive Graphics:') : (lang === 'id' ? 'Database & Messaging:' : 'Databases & Messaging:')}</strong> {currentRole.skillsDatabases}
-                  </p>
-                  <p>
-                    <strong>{lang === 'id' ? 'DevOps, Cloud & Tooling:' : 'DevOps, Cloud & Tooling:'}</strong> {currentRole.skillsDevOps}
-                  </p>
-                </div>
-              </div>
-
-              {/* EDUCATION */}
-              <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
-                <h2 className="text-xs sm:text-sm print:text-[10px] font-extrabold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-0.5 flex items-center gap-1.5">
-                  <GraduationCap size={14} className="text-slate-900 print:w-3 print:h-3" /> {t.educationTitle}
-                </h2>
-                <div className="flex justify-between items-start flex-wrap gap-1 text-xs print:text-[9.5px]">
-                  <div>
-                    <span className="font-extrabold text-slate-900">
-                      {t.degree}
-                    </span>
-                    <span className="text-slate-500"> • </span>
-                    <span className="font-bold text-slate-700">
-                      {t.university}
-                    </span>
-                    <span className="text-slate-500 text-[10px] print:text-[8px] font-mono"> {t.eduNote}</span>
+                {/* TECHNICAL COMPETENCIES */}
+                <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
+                  <h2 className="text-xs sm:text-sm print:text-[10px] font-extrabold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-0.5 flex items-center gap-1.5">
+                    <Code size={14} className="text-slate-900 print:w-3 print:h-3" /> {t.skillsTitle} ({currentRole.roleTitle})
+                  </h2>
+                  
+                  <div className="space-y-1 text-xs print:text-[9px] text-slate-800 leading-relaxed font-medium">
+                    <p>
+                      <strong>{lang === 'id' ? 'Bahasa Pemrograman:' : 'Programming Languages:'}</strong> {currentRole.skillsLanguages}
+                    </p>
+                    <p>
+                      <strong>{lang === 'id' ? 'Framework & Arsitektur:' : 'Frameworks & Architecture:'}</strong> {currentRole.skillsFrameworks}
+                    </p>
+                    <p>
+                      <strong>{activeRole === 'backend' ? (lang === 'id' ? 'Database & Message Broker:' : 'Databases & Message Brokers:') : activeRole === 'frontend' ? (lang === 'id' ? 'State & Grafis Interaktif:' : 'State & Interactive Graphics:') : (lang === 'id' ? 'Database & Messaging:' : 'Databases & Messaging:')}</strong> {currentRole.skillsDatabases}
+                    </p>
+                    <p>
+                      <strong>{lang === 'id' ? 'DevOps, Cloud & Tooling:' : 'DevOps, Cloud & Tooling:'}</strong> {currentRole.skillsDevOps}
+                    </p>
                   </div>
-                  <span className="text-[10px] print:text-[8px] font-mono font-bold text-slate-900 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-300">
-                    {t.eduDate}
-                  </span>
+                </div>
+
+                {/* EDUCATION */}
+                <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
+                  <h2 className="text-xs sm:text-sm print:text-[10px] font-extrabold uppercase tracking-wider text-slate-900 border-b border-slate-800 pb-0.5 flex items-center gap-1.5">
+                    <GraduationCap size={14} className="text-slate-900 print:w-3 print:h-3" /> {t.educationTitle}
+                  </h2>
+                  <div className="flex justify-between items-start flex-wrap gap-1 text-xs print:text-[9.5px]">
+                    <div>
+                      <span className="font-extrabold text-slate-900">
+                        {t.degree}
+                      </span>
+                      <span className="text-slate-500"> • </span>
+                      <span className="font-bold text-slate-700">
+                        {t.university}
+                      </span>
+                      <span className="text-slate-500 text-[10px] print:text-[8px] font-mono"> {t.eduNote}</span>
+                    </div>
+                    <span className="text-[10px] print:text-[8px] font-mono font-bold text-slate-900 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-300">
+                      {t.eduDate}
+                    </span>
+                  </div>
                 </div>
               </div>
 
               {/* FOOTER PAGE 1 */}
-              <div className="border-t border-slate-300 pt-1.5 flex justify-between items-center text-[10px] print:text-[7.5px] font-mono text-slate-500">
+              <div className="border-t border-slate-300 pt-1.5 flex justify-between items-center text-[10px] print:text-[8px] font-mono text-slate-500 mt-2">
                 <span>Kevin Eka Pratama • {currentRole.roleTitle}</span>
                 <span>kevinekapratama@gmail.com • +62 (813) 2661-2344</span>
                 <span className="font-bold">Page 1 of 3 (Executive Profile)</span>
@@ -734,216 +778,253 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
             {/* ========================================================= */}
             {/* PAGE 2: TECHNICAL PROJECT & REPOSITORY DIRECTORY          */}
             {/* ========================================================= */}
-            <div className="space-y-3.5 print:space-y-2 pt-2 print:pt-0 pb-4 print:pb-0">
-              {/* PAGE 2 HEADER */}
-              <div className="border-b-2 border-slate-900 pb-2 print:pb-1.5 flex justify-between items-baseline gap-2">
-                <div>
-                  <h2 className="text-sm md:text-base print:text-xs font-black uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
-                    <LayoutGrid size={16} className="text-slate-900 print:w-3 print:h-3" />
-                    {currentRole.page2Title}
-                  </h2>
-                  <p className="text-[11px] print:text-[8px] font-bold text-slate-600">
-                    {currentRole.page2Subtitle}
-                  </p>
+            {/* ========================================================= */}
+            {/* PAGE 2: TECHNICAL PROJECT & REPOSITORY DIRECTORY          */}
+            {/* ========================================================= */}
+            <div className="print-page flex flex-col justify-between pt-2 print:pt-0">
+              <div className="space-y-3.5 print:space-y-2">
+                {/* PAGE 2 HEADER */}
+                <div className="border-b-2 border-slate-900 pb-2 print:pb-1.5 flex justify-between items-baseline gap-2">
+                  <div>
+                    <h2 className="text-sm md:text-base print:text-xs font-black uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
+                      <LayoutGrid size={16} className="text-slate-900 print:w-3 print:h-3" />
+                      {currentRole.page2Title}
+                    </h2>
+                    <p className="text-[11px] print:text-[8px] font-bold text-slate-600">
+                      {currentRole.page2Subtitle}
+                    </p>
+                  </div>
+                  <span className="text-[10px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
+                    mazkev.vercel.app
+                  </span>
                 </div>
-                <span className="text-[10px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
-                  mazkev.vercel.app
-                </span>
-              </div>
 
-              {/* EXECUTIVE METRICS BAR */}
-              <div className="grid grid-cols-4 gap-2 print:gap-1 p-2 print:p-1.5 bg-slate-50 print:bg-slate-100 rounded-lg border border-slate-300 print:break-inside-avoid">
-                {roleData[activeRole].metrics.map((m, idx) => (
-                  <div key={idx} className="text-center p-1 bg-white print:bg-transparent rounded border border-slate-200 print:border-none">
-                    <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[10px]">{m.num}</div>
-                    <div className="text-[8px] print:text-[6.5px] font-mono font-bold text-slate-600 uppercase">
-                      {lang === 'en' ? m.labelEn : m.labelId}
+                {/* EXECUTIVE METRICS BAR */}
+                <div className="grid grid-cols-4 gap-2 print:gap-1.5 p-2 print:p-2 bg-slate-50 print:bg-slate-100 rounded-lg border border-slate-300 print:break-inside-avoid">
+                  {roleData[activeRole].metrics.map((m, idx) => (
+                    <div key={idx} className="text-center p-1 bg-white print:bg-transparent rounded border border-slate-200 print:border-none">
+                      <div className="font-extrabold text-slate-900 text-xs md:text-sm print:text-[12px]">{m.num}</div>
+                      <div className="text-[8px] print:text-[7px] font-mono font-bold text-slate-600 uppercase">
+                        {lang === 'en' ? m.labelEn : m.labelId}
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* ROLE-SPECIFIC REPOSITORY DIRECTORY */}
-              {activeRole === 'backend' && (
-                <div className="space-y-2 print:space-y-1.5">
-                  <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
-                    <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
-                      <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
-                        {lang === 'en' ? 'Core Financial & High-Throughput Microservices' : 'Layanan Mikro Finansial & Throughput Tinggi'}
-                      </span>
-                      <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
-                        Go & Java Ecosystem
-                      </span>
-                    </div>
-                    <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
-                      <p>• <a href="https://github.com/mazkev/go-banking-core-system" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-banking-core-system:</a> {lang === 'en' ? 'Atomic account transfer engine with ACID transaction isolation, PostgreSQL row-level locks, Bcrypt PIN, and Swagger docs.' : 'Engine transfer rekening atomik dengan isolasi transaksi ACID, row-level lock PostgreSQL, PIN Bcrypt, dan dokumentasi Swagger.'}</p>
-                      <p>• <a href="https://github.com/mazkev/go-distributed-microservices-lab" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-distributed-microservices-lab:</a> {lang === 'en' ? 'Distributed services communicating over binary gRPC, asynchronous RabbitMQ event bus, and Redis cache-aside.' : 'Layanan mikro terdistribusi dengan komunikasi biner gRPC, antrean pesan asinkron RabbitMQ, dan caching Redis.'}</p>
-                      <p>• <a href="https://github.com/mazkev/nexus-workspace-engine" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">nexus-workspace-engine:</a> {lang === 'en' ? 'Java Spring Boot 3.3 enterprise microservices ecosystem with Resilience4j circuit breakers and Eureka discovery.' : 'Ekosistem microservices enterprise Java Spring Boot 3.3 dengan circuit breaker Resilience4j dan discovery Eureka.'}</p>
-                      <p>• <a href="https://github.com/mazkev/go-clean-arch" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-clean-arch:</a> {lang === 'en' ? 'Domain-Driven Design (DDD) Clean Architecture boilerplate decoupling Domain, Usecase, and Repository layers.' : 'Arsitektur Clean terstruktur dengan pemisahan tegas antara lapisan Domain, Usecase, dan Repository.'}</p>
-                    </div>
-                  </div>
-
-                  <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
-                    <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
-                      <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
-                        {lang === 'en' ? 'API Gateways, Messaging & Database Engines' : 'API Gateway, Message Queue & Mesin Basis Data'}
-                      </span>
-                      <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
-                        Ultra-Low Latency Stacks
-                      </span>
-                    </div>
-                    <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
-                      <p>• <a href="https://github.com/mazkev/go-ecommerce-gateway-engine" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-ecommerce-gateway-engine:</a> {lang === 'en' ? 'Reverse proxy API gateway with rate limiting, GORM PostgreSQL connection pooling, and JWT authorization.' : 'API gateway reverse proxy dengan rate limiting, connection pooling GORM PostgreSQL, dan otorisasi JWT.'}</p>
-                      <p>• <a href="https://github.com/mazkev/bun-hono-ecommerce-api" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">bun-hono-ecommerce-api:</a> {lang === 'en' ? 'Sub-millisecond REST API engine running on Bun runtime with Hono v4 framework and MongoDB NoSQL storage.' : 'Engine REST API sub-milidetik berbasis Bun runtime dengan framework Hono v4 dan basis data MongoDB NoSQL.'}</p>
-                      <p>• <a href="https://github.com/mazkev/fastapi-task-queue-redis" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">fastapi-task-queue-redis:</a> {lang === 'en' ? 'Asynchronous Python background task processing engine using Celery, Redis broker, and FastAPI REST endpoints.' : 'Engine pemrosesan antrean tugas asinkron Python menggunakan Celery, broker Redis, dan REST API FastAPI.'}</p>
-                      <p>• <a href="https://github.com/mazkev/express-multitenant-saas" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">express-multitenant-saas:</a> {lang === 'en' ? 'Multitenant backend architecture with schema-isolated database routing and scoped JWT security.' : 'Arsitektur backend multitenant dengan routing database terisolasi skema dan keamanan JWT terspesifikasi.'}</p>
-                    </div>
-                  </div>
-
-                  <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
-                    <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
-                      <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
-                        {lang === 'en' ? 'Production Architectural Standards & Patterns' : 'Standar Arsitektur & Pola Rekayasa Produksi'}
-                      </span>
-                      <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
-                        Enterprise Grade
-                      </span>
-                    </div>
-                    <div className="text-[11px] print:text-[8px] text-slate-700 space-y-0.5 font-medium">
-                      <p>• <strong>{lang === 'en' ? 'ACID Transactional Ledgers:' : 'Transaksi Atomik ACID:'}</strong> {lang === 'en' ? 'Strict row-level locking preventing race conditions and double-spending across financial workflows.' : 'Row-level locking di PostgreSQL untuk mencegah race condition dan double spending pada mutasi saldo.'}</p>
-                      <p>• <strong>{lang === 'en' ? 'Cache-Aside & Throttling:' : 'Cache-Aside & Throttling:'}</strong> {lang === 'en' ? 'Redis cache-aside pattern reducing read latency by >85% and distributed token bucket rate limiters.' : 'Redis cache-aside yang mereduksi latensi baca >85% dan rate limiter terdistribusi.'}</p>
-                      <p>• <strong>{lang === 'en' ? 'Asynchronous Event Broker:' : 'Message Broker Asinkron:'}</strong> {lang === 'en' ? 'RabbitMQ exchange/queue bindings ensuring at-least-once message delivery and decoupled microservices.' : 'RabbitMQ queue binding untuk pengiriman pesan andal tanpa memblokir thread HTTP.'}</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
-              )}
 
-              {activeRole === 'frontend' && (
-                <div className="space-y-2 print:space-y-1.5">
-                  <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
-                    <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
-                      <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
-                        {lang === 'en' ? 'Flagship Frontend Web Applications & Interactive Workstations' : 'Aplikasi Web Unggulan & Workstation Grafis'}
-                      </span>
-                      <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
-                        React 19 • Next.js 16 • Angular 19
-                      </span>
+                {/* ROLE-SPECIFIC REPOSITORY DIRECTORY */}
+                {activeRole === 'backend' && (
+                  <div className="space-y-2 print:space-y-1.5">
+                    <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
+                      <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
+                        <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
+                          {lang === 'en' ? 'Core Financial & High-Throughput Microservices' : 'Layanan Mikro Finansial & Throughput Tinggi'}
+                        </span>
+                        <span className="text-[9px] print:text-[7.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
+                          Go & Java Ecosystem
+                        </span>
+                      </div>
+                      <div className="text-xs print:text-[9px] text-slate-700 space-y-1">
+                        <p>• <a href="https://github.com/mazkev/go-banking-core-system" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-banking-core-system:</a> {lang === 'en' ? 'Atomic account transfer engine with ACID transaction isolation, PostgreSQL row-level locks, Bcrypt PIN, and Swagger docs.' : 'Engine transfer rekening atomik dengan isolasi transaksi ACID, row-level lock PostgreSQL, PIN Bcrypt, dan dokumentasi Swagger.'}</p>
+                        <p>• <a href="https://github.com/mazkev/go-distributed-microservices-lab" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-distributed-microservices-lab:</a> {lang === 'en' ? 'Distributed services communicating over binary gRPC, asynchronous RabbitMQ event bus, and Redis cache-aside.' : 'Layanan mikro terdistribusi dengan komunikasi biner gRPC, antrean pesan asinkron RabbitMQ, dan caching Redis.'}</p>
+                        <p>• <a href="https://github.com/mazkev/nexus-workspace-engine" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">nexus-workspace-engine:</a> {lang === 'en' ? 'Java Spring Boot 3.3 enterprise microservices ecosystem with Resilience4j circuit breakers and Eureka discovery.' : 'Ekosistem microservices enterprise Java Spring Boot 3.3 dengan circuit breaker Resilience4j dan discovery Eureka.'}</p>
+                        <p>• <a href="https://github.com/mazkev/go-clean-arch" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-clean-arch:</a> {lang === 'en' ? 'Domain-Driven Design (DDD) Clean Architecture boilerplate decoupling Domain, Usecase, and Repository layers.' : 'Arsitektur Clean terstruktur dengan pemisahan tegas antara lapisan Domain, Usecase, dan Repository.'}</p>
+                      </div>
                     </div>
-                    <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
-                      <p>• <a href="https://github.com/mazkev/react-canva-design-studio" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">react-canva-design-studio:</a> {lang === 'en' ? 'Browser vector graphic design studio with dual-layer 60 FPS React-Konva canvas, transformation matrices, and image export.' : 'Studio desain grafis berbasis web dengan dual-layer kanvas 60 FPS React-Konva dan pipeline ekspor multi-format.'}</p>
-                      <p>• <a href="https://github.com/mazkev/market-x-angular" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">market-x-angular:</a> {lang === 'en' ? 'Enterprise e-commerce storefront powered by Angular 19 reactive Signals, RxJS event streams, and seller back-office.' : 'Storefront e-commerce enterprise dengan reaktivitas Angular 19 Signals, RxJS streams, dan dashboard penjual.'}</p>
-                      <p>• <a href="https://github.com/mazkev/nextjs-spotify-music-player" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">nextjs-spotify-music-player:</a> {lang === 'en' ? 'Music streaming player with real-time Web Audio API frequency analysis canvas visualizer and synchronized lyrics.' : 'Pemutar musik web dengan visualisasi frekuensi real-time Web Audio API pada kanvas dan sinkronisasi lirik.'}</p>
-                      <p>• <a href="https://github.com/mazkev/react-trello-kanban-suite" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">react-trello-kanban-suite:</a> {lang === 'en' ? 'Glassmorphism Kanban project board with multi-axis drag-and-drop task sorting and Zustand state store.' : 'Board manajemen proyek Kanban glassmorphism dengan drag-and-drop multi-axis dan state store Zustand.'}</p>
-                    </div>
-                  </div>
 
-                  <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
-                    <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
-                      <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
-                        {lang === 'en' ? 'Cross-Platform Mobile Applications' : 'Aplikasi Mobile Cross-Platform'}
-                      </span>
-                      <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
-                        React Native & Flutter
-                      </span>
+                    <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
+                      <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
+                        <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
+                          {lang === 'en' ? 'API Gateways, Messaging & Database Engines' : 'API Gateway, Message Queue & Mesin Basis Data'}
+                        </span>
+                        <span className="text-[9px] print:text-[7.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
+                          Ultra-Low Latency Stacks
+                        </span>
+                      </div>
+                      <div className="text-xs print:text-[9px] text-slate-700 space-y-1">
+                        <p>• <a href="https://github.com/mazkev/go-ecommerce-gateway-engine" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-ecommerce-gateway-engine:</a> {lang === 'en' ? 'Reverse proxy API gateway with rate limiting, GORM PostgreSQL connection pooling, and JWT authorization.' : 'API gateway reverse proxy dengan rate limiting, connection pooling GORM PostgreSQL, dan otorisasi JWT.'}</p>
+                        <p>• <a href="https://github.com/mazkev/bun-hono-ecommerce-api" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">bun-hono-ecommerce-api:</a> {lang === 'en' ? 'Sub-millisecond REST API engine running on Bun runtime with Hono v4 framework and MongoDB NoSQL storage.' : 'Engine REST API sub-milidetik berbasis Bun runtime dengan framework Hono v4 dan basis data MongoDB NoSQL.'}</p>
+                        <p>• <a href="https://github.com/mazkev/fastapi-task-queue-redis" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">fastapi-task-queue-redis:</a> {lang === 'en' ? 'Asynchronous Python background task processing engine using Celery, Redis broker, and FastAPI REST endpoints.' : 'Engine pemrosesan antrean tugas asinkron Python menggunakan Celery, broker Redis, dan REST API FastAPI.'}</p>
+                        <p>• <a href="https://github.com/mazkev/express-multitenant-saas" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">express-multitenant-saas:</a> {lang === 'en' ? 'Multitenant backend architecture with schema-isolated database routing and scoped JWT security.' : 'Arsitektur backend multitenant dengan routing database terisolasi skema dan keamanan JWT terspesifikasi.'}</p>
+                      </div>
                     </div>
-                    <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
-                      <p>• <a href="https://github.com/mazkev/treveloka-react-native-expo" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">treveloka-react-native-expo:</a> {lang === 'en' ? 'Mobile travel booking superapp with React Native 0.85, Expo Router, and Gemini AI itinerary assistant.' : 'Aplikasi mobile pemesanan perjalanan dengan React Native 0.85, Expo Router, dan asisten rencana perjalanan Gemini AI.'}</p>
-                      <p>• <a href="https://github.com/mazkev/tiktok-clone-react-native-expo" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">tiktok-clone-react-native-expo:</a> {lang === 'en' ? 'Mobile short-video platform featuring Expo Video autoplay feeds, camera recording, and live comment overlays.' : 'Platform video pendek mobile dengan pemutar Expo Video seamless autoplay dan perekaman video kamera terintegrasi.'}</p>
-                    </div>
-                  </div>
 
-                  {/* 12 LIVE DEPLOYMENTS TABLE */}
-                  <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
-                    <div className="flex items-center justify-between border-b border-slate-800 pb-0.5">
-                      <h3 className="text-xs print:text-[9.5px] font-extrabold uppercase tracking-wide text-slate-900">
-                        {lang === 'en' ? '12 Verified Cloud Deployments (HTTP 200 OK on Vercel)' : '12 Aplikasi Aktif Terverifikasi di Cloud (Vercel)'}
-                      </h3>
-                      <span className="text-[9px] print:text-[7px] font-mono font-bold text-emerald-700 uppercase">
-                        {lang === 'en' ? 'Clickable Live Demos' : 'Dapat Diuji Langsung'}
-                      </span>
-                    </div>
-                    <div className="grid grid-cols-2 gap-1 text-[10px] print:text-[7.5px] font-mono">
-                      <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                        <strong>1. Canvass Design Studio:</strong>
-                        <a href="https://canva-clone-fawn.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">canva-clone-fawn.vercel.app</a>
+                    <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
+                      <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
+                        <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
+                          {lang === 'en' ? 'Production Architectural Standards & Patterns' : 'Standar Arsitektur & Pola Rekayasa Produksi'}
+                        </span>
+                        <span className="text-[9px] print:text-[7.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
+                          Enterprise Grade
+                        </span>
                       </div>
-                      <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                        <strong>2. Spotify Music Player:</strong>
-                        <a href="https://spotify-clonez.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">spotify-clonez.vercel.app</a>
-                      </div>
-                      <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                        <strong>3. MarketX Angular Store:</strong>
-                        <a href="https://market-x-angular.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">market-x-angular.vercel.app</a>
-                      </div>
-                      <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                        <strong>4. Trello Kanban Suite:</strong>
-                        <a href="https://trello-azure-five.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">trello-azure-five.vercel.app</a>
+                      <div className="text-[11px] print:text-[8.5px] text-slate-700 space-y-1 font-medium">
+                        <p>• <strong>{lang === 'en' ? 'ACID Transactional Ledgers:' : 'Transaksi Atomik ACID:'}</strong> {lang === 'en' ? 'Strict row-level locking preventing race conditions and double-spending across financial workflows.' : 'Row-level locking di PostgreSQL untuk mencegah race condition dan double spending pada mutasi saldo.'}</p>
+                        <p>• <strong>{lang === 'en' ? 'Cache-Aside & Throttling:' : 'Cache-Aside & Throttling:'}</strong> {lang === 'en' ? 'Redis cache-aside pattern reducing read latency by >85% and distributed token bucket rate limiters.' : 'Redis cache-aside yang mereduksi latensi baca >85% dan rate limiter terdistribusi.'}</p>
+                        <p>• <strong>{lang === 'en' ? 'Asynchronous Event Broker:' : 'Message Broker Asinkron:'}</strong> {lang === 'en' ? 'RabbitMQ exchange/queue bindings ensuring at-least-once message delivery and decoupled microservices.' : 'RabbitMQ queue binding untuk pengiriman pesan andal tanpa memblokir thread HTTP.'}</p>
                       </div>
                     </div>
                   </div>
+                )}
+
+                {activeRole === 'frontend' && (
+                  <div className="space-y-2 print:space-y-1.5">
+                    <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
+                      <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
+                        <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
+                          {lang === 'en' ? 'Flagship Frontend Web Applications & Interactive Workstations' : 'Aplikasi Web Unggulan & Workstation Grafis'}
+                        </span>
+                        <span className="text-[9px] print:text-[7.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
+                          React 19 • Next.js 16 • Angular 19
+                        </span>
+                      </div>
+                      <div className="text-xs print:text-[9px] text-slate-700 space-y-1">
+                        <p>• <a href="https://github.com/mazkev/react-canva-design-studio" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">react-canva-design-studio:</a> {lang === 'en' ? 'Browser vector graphic design studio with dual-layer 60 FPS React-Konva canvas, transformation matrices, and image export.' : 'Studio desain grafis berbasis web dengan dual-layer kanvas 60 FPS React-Konva dan pipeline ekspor multi-format.'}</p>
+                        <p>• <a href="https://github.com/mazkev/market-x-angular" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">market-x-angular:</a> {lang === 'en' ? 'Enterprise e-commerce storefront powered by Angular 19 reactive Signals, RxJS event streams, and seller back-office.' : 'Storefront e-commerce enterprise dengan reaktivitas Angular 19 Signals, RxJS streams, dan dashboard penjual.'}</p>
+                        <p>• <a href="https://github.com/mazkev/nextjs-spotify-music-player" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">nextjs-spotify-music-player:</a> {lang === 'en' ? 'Music streaming player with real-time Web Audio API frequency analysis canvas visualizer and synchronized lyrics.' : 'Pemutar musik web dengan visualisasi frekuensi real-time Web Audio API pada kanvas dan sinkronisasi lirik.'}</p>
+                        <p>• <a href="https://github.com/mazkev/react-trello-kanban-suite" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">react-trello-kanban-suite:</a> {lang === 'en' ? 'Glassmorphism Kanban project board with multi-axis drag-and-drop task sorting and Zustand state store.' : 'Board manajemen proyek Kanban glassmorphism dengan drag-and-drop multi-axis dan state store Zustand.'}</p>
+                      </div>
+                    </div>
+
+                    <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
+                      <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
+                        <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
+                          {lang === 'en' ? 'Cross-Platform Mobile Applications' : 'Aplikasi Mobile Cross-Platform'}
+                        </span>
+                        <span className="text-[9px] print:text-[7.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
+                          React Native & Flutter
+                        </span>
+                      </div>
+                      <div className="text-xs print:text-[9px] text-slate-700 space-y-1">
+                        <p>• <a href="https://github.com/mazkev/treveloka-react-native-expo" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">treveloka-react-native-expo:</a> {lang === 'en' ? 'Mobile travel booking superapp with React Native 0.85, Expo Router, and Gemini AI itinerary assistant.' : 'Aplikasi mobile pemesanan perjalanan dengan React Native 0.85, Expo Router, dan asisten rencana perjalanan Gemini AI.'}</p>
+                        <p>• <a href="https://github.com/mazkev/tiktok-clone-react-native-expo" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">tiktok-clone-react-native-expo:</a> {lang === 'en' ? 'Mobile short-video platform featuring Expo Video autoplay feeds, camera recording, and live comment overlays.' : 'Platform video pendek mobile dengan pemutar Expo Video seamless autoplay dan perekaman video kamera terintegrasi.'}</p>
+                      </div>
+                    </div>
+
+                    {/* 12 LIVE DEPLOYMENTS TABLE */}
+                    <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
+                      <div className="flex items-center justify-between border-b border-slate-800 pb-0.5">
+                        <h3 className="text-xs print:text-[9.5px] font-extrabold uppercase tracking-wide text-slate-900">
+                          {lang === 'en' ? '12 Verified Cloud Deployments (HTTP 200 OK on Vercel)' : '12 Aplikasi Aktif Terverifikasi di Cloud (Vercel)'}
+                        </h3>
+                        <span className="text-[9px] print:text-[7.5px] font-mono font-bold text-emerald-700 uppercase">
+                          {lang === 'en' ? 'Clickable Live Demos' : 'Dapat Diuji Langsung'}
+                        </span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-1 text-[10px] print:text-[8px] font-mono">
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>1. Canvass Design Studio:</strong>
+                          <a href="https://canva-clone-fawn.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">canva-clone-fawn.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>2. Spotify Music Player:</strong>
+                          <a href="https://spotify-clonez.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">spotify-clonez.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>3. MarketX Angular Store:</strong>
+                          <a href="https://market-x-angular.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">market-x-angular.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>4. Trello Kanban Suite:</strong>
+                          <a href="https://trello-azure-five.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">trello-azure-five.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>5. BayE Auction Store:</strong>
+                          <a href="https://baye-ecommerce-marketplace.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">baye-ecommerce-marketplace.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>6. Nexus Workspace:</strong>
+                          <a href="https://nexus-project-mu.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">nexus-project-mu.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>7. Indofooty Match Hub:</strong>
+                          <a href="https://indofooty.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">indofooty.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>8. AI Wireframer Lab:</strong>
+                          <a href="https://ai-component-wireframer.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">ai-component-wireframer.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>9. Umrah Travel Portal:</strong>
+                          <a href="https://umrah-travel-landing.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">umrah-travel-landing.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>10. Cloud Simulator:</strong>
+                          <a href="https://cloud-console-simulator.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">cloud-console-simulator.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>11. Snake AI Pathfinding:</strong>
+                          <a href="https://snake-ai-pathfinding.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">snake-ai-pathfinding.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>12. HubSpot CRM Platform:</strong>
+                          <a href="https://hub-spot-clone-five.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">hub-spot-clone-five.vercel.app</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {activeRole === 'fullstack' && (
+                  <div className="space-y-2 print:space-y-1.5">
+                    <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
+                      <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
+                        <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
+                          {lang === 'en' ? 'Pillar 1: Backend Systems & Cloud Architecture' : 'Pilar 1: Sistem Backend & Arsitektur Cloud'}
+                        </span>
+                        <span className="text-[9px] print:text-[7.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
+                          19 Repositories
+                        </span>
+                      </div>
+                      <div className="text-xs print:text-[9px] text-slate-700 space-y-1">
+                        <p>• <a href="https://github.com/mazkev/go-banking-core-system" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-banking-core-system:</a> {lang === 'en' ? 'Core banking engine with atomic balance transfers, ACID PostgreSQL row locks, and Bcrypt PIN.' : 'Engine core banking transaksi transfer saldo atomik dengan row-level lock PostgreSQL dan validasi PIN Bcrypt.'}</p>
+                        <p>• <a href="https://github.com/mazkev/go-distributed-microservices-lab" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-distributed-microservices-lab:</a> {lang === 'en' ? 'High-throughput microservices communicating over binary gRPC and asynchronous RabbitMQ event bus.' : 'Layanan mikro terdistribusi dengan komunikasi biner gRPC dan antrean pesan asinkron RabbitMQ.'}</p>
+                        <p>• <a href="https://github.com/mazkev/nexus-workspace-engine" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">nexus-workspace-engine:</a> {lang === 'en' ? 'Java Spring Boot 3.3 enterprise microservices ecosystem with Resilience4j circuit breakers and Eureka discovery.' : 'Ekosistem microservices enterprise Java Spring Boot 3.3 dengan circuit breaker Resilience4j dan discovery Eureka.'}</p>
+                      </div>
+                    </div>
+
+                    <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
+                      <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
+                        <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
+                          {lang === 'en' ? 'Pillar 2: Fullstack Web Platforms & Mobile Applications' : 'Pilar 2: Platform Web Fullstack & Aplikasi Mobile'}
+                        </span>
+                        <span className="text-[9px] print:text-[7.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
+                          22 Repositories
+                        </span>
+                      </div>
+                      <div className="text-xs print:text-[9px] text-slate-700 space-y-1">
+                        <p>• <a href="https://github.com/mazkev/baye-ecommerce-marketplace" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">baye-ecommerce-marketplace:</a> {lang === 'en' ? 'Auction e-commerce with Next.js 16 Server Components, live bidding simulation, LibSQL, and digital QR invoices.' : 'Marketplace lelang produksi dengan Next.js 16, LibSQL serverless, komparasi produk, dan cetak invoice QR digital.'}</p>
+                        <p>• <a href="https://github.com/mazkev/tokopedia-react-storefront" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">tokopedia-react-storefront:</a> {lang === 'en' ? 'Fullstack marketplace combining Go REST API backend with React 19, category filters, and optimistic cart checkout.' : 'E-commerce fullstack memadukan backend Go REST API dengan frontend React 19 dan sinkronisasi transaksi PostgreSQL.'}</p>
+                      </div>
+                    </div>
+
+                    <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
+                      <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
+                        <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
+                          {lang === 'en' ? 'Pillar 3: Modern Frontend Web Applications' : 'Pilar 3: Aplikasi Frontend Web Modern'}
+                        </span>
+                        <span className="text-[9px] print:text-[7.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
+                          41 Repositories
+                        </span>
+                      </div>
+                      <div className="text-xs print:text-[9px] text-slate-700 space-y-1">
+                        <p>• <a href="https://github.com/mazkev/react-canva-design-studio" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">react-canva-design-studio:</a> {lang === 'en' ? 'Vector graphic studio with dual-layer 60 FPS React-Konva canvas, transformation matrices, and image export.' : 'Studio desain grafis berbasis web dengan dual-layer kanvas 60 FPS React-Konva dan pipeline ekspor multi-format.'}</p>
+                        <p>• <a href="https://github.com/mazkev/market-x-angular" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">market-x-angular:</a> {lang === 'en' ? 'Enterprise e-commerce storefront powered by Angular 19 reactive Signals, RxJS event streams, and seller dashboard.' : 'Storefront e-commerce enterprise dengan reaktivitas Angular 19 Signals, RxJS streams, dan dashboard penjual.'}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* AUDIT NOTE */}
+                <div className="p-2 print:p-1.5 rounded bg-slate-100 border border-slate-300 text-[10px] print:text-[8px] text-slate-800 font-medium leading-tight">
+                  <strong>{lang === 'en' ? 'Directory Audit Note: ' : 'Catatan Audit Direktori: '}</strong>
+                  {lang === 'en' 
+                    ? 'Full source code, commit history, and test suites for all repositories are publicly available at github.com/mazkev and interactive web workstation at mazkev.vercel.app.'
+                    : 'Seluruh source code, riwayat komit, dan dokumentasi arsitektur untuk seluruh repositori terverifikasi dapat diaudit publik pada github.com/mazkev dan workstation mazkev.vercel.app.'}
                 </div>
-              )}
-
-              {activeRole === 'fullstack' && (
-                <div className="space-y-2 print:space-y-1.5">
-                  <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
-                    <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
-                      <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
-                        {lang === 'en' ? 'Pillar 1: Backend Systems & Cloud Architecture' : 'Pilar 1: Sistem Backend & Arsitektur Cloud'}
-                      </span>
-                      <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
-                        19 Repositories
-                      </span>
-                    </div>
-                    <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
-                      <p>• <a href="https://github.com/mazkev/go-banking-core-system" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-banking-core-system:</a> {lang === 'en' ? 'Core banking engine with atomic balance transfers, ACID PostgreSQL row locks, and Bcrypt PIN.' : 'Engine core banking transaksi transfer saldo atomik dengan row-level lock PostgreSQL dan validasi PIN Bcrypt.'}</p>
-                      <p>• <a href="https://github.com/mazkev/go-distributed-microservices-lab" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-distributed-microservices-lab:</a> {lang === 'en' ? 'High-throughput microservices communicating over binary gRPC and asynchronous RabbitMQ event bus.' : 'Layanan mikro terdistribusi dengan komunikasi biner gRPC dan antrean pesan asinkron RabbitMQ.'}</p>
-                      <p>• <a href="https://github.com/mazkev/nexus-workspace-engine" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">nexus-workspace-engine:</a> {lang === 'en' ? 'Java Spring Boot 3.3 enterprise microservices ecosystem with Resilience4j circuit breakers and Eureka discovery.' : 'Ekosistem microservices enterprise Java Spring Boot 3.3 dengan circuit breaker Resilience4j dan discovery Eureka.'}</p>
-                    </div>
-                  </div>
-
-                  <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
-                    <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
-                      <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
-                        {lang === 'en' ? 'Pillar 2: Fullstack Web Platforms & Mobile Applications' : 'Pilar 2: Platform Web Fullstack & Aplikasi Mobile'}
-                      </span>
-                      <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
-                        22 Repositories
-                      </span>
-                    </div>
-                    <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
-                      <p>• <a href="https://github.com/mazkev/baye-ecommerce-marketplace" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">baye-ecommerce-marketplace:</a> {lang === 'en' ? 'Auction e-commerce with Next.js 16 Server Components, live bidding simulation, LibSQL, and digital QR invoices.' : 'Marketplace lelang produksi dengan Next.js 16, LibSQL serverless, komparasi produk, dan cetak invoice QR digital.'}</p>
-                      <p>• <a href="https://github.com/mazkev/tokopedia-react-storefront" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">tokopedia-react-storefront:</a> {lang === 'en' ? 'Fullstack marketplace combining Go REST API backend with React 19, category filters, and optimistic cart checkout.' : 'E-commerce fullstack memadukan backend Go REST API dengan frontend React 19 dan sinkronisasi transaksi PostgreSQL.'}</p>
-                    </div>
-                  </div>
-
-                  <div className="p-2.5 print:p-1.5 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1 print:break-inside-avoid">
-                    <div className="flex justify-between items-baseline border-b border-slate-200 pb-1">
-                      <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
-                        {lang === 'en' ? 'Pillar 3: Modern Frontend Web Applications' : 'Pilar 3: Aplikasi Frontend Web Modern'}
-                      </span>
-                      <span className="text-[9px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase">
-                        41 Repositories
-                      </span>
-                    </div>
-                    <div className="text-xs print:text-[8.5px] text-slate-700 space-y-0.5">
-                      <p>• <a href="https://github.com/mazkev/react-canva-design-studio" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">react-canva-design-studio:</a> {lang === 'en' ? 'Vector graphic studio with dual-layer 60 FPS React-Konva canvas, transformation matrices, and image export.' : 'Studio desain grafis berbasis web dengan dual-layer kanvas 60 FPS React-Konva dan pipeline ekspor multi-format.'}</p>
-                      <p>• <a href="https://github.com/mazkev/market-x-angular" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">market-x-angular:</a> {lang === 'en' ? 'Enterprise e-commerce storefront powered by Angular 19 reactive Signals, RxJS event streams, and seller dashboard.' : 'Storefront e-commerce enterprise dengan reaktivitas Angular 19 Signals, RxJS streams, dan dashboard penjual.'}</p>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* AUDIT NOTE */}
-              <div className="p-2 print:p-1.5 rounded bg-slate-100 border border-slate-300 text-[10px] print:text-[7.5px] text-slate-800 font-medium leading-tight">
-                <strong>{lang === 'en' ? 'Directory Audit Note: ' : 'Catatan Audit Direktori: '}</strong>
-                {lang === 'en' 
-                  ? 'Full source code, commit history, and test suites for all repositories are publicly available at github.com/mazkev and interactive web workstation at mazkev.vercel.app.'
-                  : 'Seluruh source code, riwayat komit, dan dokumentasi arsitektur untuk seluruh repositori terverifikasi dapat diaudit publik pada github.com/mazkev dan workstation mazkev.vercel.app.'}
               </div>
 
               {/* FOOTER PAGE 2 */}
-              <div className="border-t border-slate-300 pt-1.5 flex justify-between items-center text-[10px] print:text-[7.5px] font-mono text-slate-500">
+              <div className="border-t border-slate-300 pt-1.5 flex justify-between items-center text-[10px] print:text-[8px] font-mono text-slate-500 mt-2">
                 <span>Kevin Eka Pratama • {currentRole.roleTitle}</span>
                 <span>mazkev.vercel.app • github.com/mazkev</span>
                 <span className="font-bold">Page 2 of 3 ({lang === 'en' ? 'Dedicated Directory' : 'Direktori Terdedikasi'})</span>
@@ -966,80 +1047,82 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
             {/* ========================================================= */}
             {/* PAGE 3: VISUAL PROJECT ANNEX (SHOWCASE GALLERY)           */}
             {/* ========================================================= */}
-            <div className="space-y-3 print:space-y-2 pt-2 print:pt-0">
-              {/* PAGE 3 HEADER */}
-              <div className="border-b-2 border-slate-900 pb-2 print:pb-1.5 flex justify-between items-baseline gap-2">
-                <div>
-                  <h2 className="text-sm md:text-base print:text-xs font-black uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
-                    <FileText size={16} className="text-slate-900 print:w-3 print:h-3" />
-                    {currentRole.page3Title}
-                  </h2>
-                  <p className="text-[11px] print:text-[8px] font-bold text-slate-600">
-                    {currentRole.page3Subtitle}
-                  </p>
-                </div>
-                <span className="text-[10px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
-                  mazkev.vercel.app
-                </span>
-              </div>
-
-              {/* 6 VISUAL CARDS GRID (2 cols x 3 rows) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 print:gap-1.5">
-                {roleData[activeRole].visualCards.map((p, idx) => (
-                  <div
-                    key={idx}
-                    className="border border-slate-300 rounded-lg overflow-hidden bg-white flex flex-col justify-between print:break-inside-avoid shadow-sm print:shadow-none"
-                  >
-                    <div className="h-24 sm:h-28 print:h-16 w-full bg-slate-100 border-b border-slate-200 relative overflow-hidden">
-                      <Image
-                        src={p.img}
-                        alt={p.title}
-                        width={280}
-                        height={120}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="p-2 print:p-1.5 space-y-1">
-                      <div className="flex justify-between items-center gap-1">
-                        <span className="font-extrabold text-slate-900 text-xs print:text-[9px] leading-tight">
-                          {p.title}
-                        </span>
-                        <span className="text-[8.5px] print:text-[6.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase flex-shrink-0">
-                          {p.cat}
-                        </span>
-                      </div>
-                      <div className="text-[9px] print:text-[7px] font-mono font-bold text-slate-600 truncate">
-                        {p.tech}
-                      </div>
-                      <p className="text-[10.5px] print:text-[7.5px] text-slate-700 font-medium leading-snug">
-                        {lang === 'en' ? p.descEn : p.descId}
-                      </p>
-                      <div className="pt-1 border-t border-slate-100 flex items-center gap-1 text-[9.5px] print:text-[7px] font-mono">
-                        <a
-                          href={p.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="text-sky-700 hover:underline flex items-center gap-0.5"
-                        >
-                          <span>{p.label}</span>
-                          <ExternalLink size={9} className="opacity-70" />
-                        </a>
-                      </div>
-                    </div>
+            <div className="print-page flex flex-col justify-between pt-2 print:pt-0">
+              <div className="space-y-3 print:space-y-2">
+                {/* PAGE 3 HEADER */}
+                <div className="border-b-2 border-slate-900 pb-2 print:pb-1.5 flex justify-between items-baseline gap-2">
+                  <div>
+                    <h2 className="text-sm md:text-base print:text-xs font-black uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
+                      <FileText size={16} className="text-slate-900 print:w-3 print:h-3" />
+                      {currentRole.page3Title}
+                    </h2>
+                    <p className="text-[11px] print:text-[8px] font-bold text-slate-600">
+                      {currentRole.page3Subtitle}
+                    </p>
                   </div>
-                ))}
-              </div>
+                  <span className="text-[10px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
+                    mazkev.vercel.app
+                  </span>
+                </div>
 
-              {/* AUDIT NOTICE */}
-              <div className="p-2 print:p-1.5 rounded bg-slate-100 border border-slate-300 text-[10px] print:text-[7.5px] text-slate-800 font-medium leading-tight">
-                <strong>{lang === 'en' ? 'Interactive Demonstration & Source Code Audit: ' : 'Demonstrasi Interaktif & Audit Kode Sumber: '}</strong>
-                {lang === 'en'
-                  ? 'Live deployments, interactive case studies, architectural documentation, and full source code are accessible at mazkev.vercel.app and github.com/mazkev.'
-                  : 'Seluruh demo aplikasi langsung, studi kasus interaktif, dokumentasi arsitektur, dan kode sumber dapat diakses publik pada mazkev.vercel.app dan github.com/mazkev.'}
+                {/* 6 VISUAL CARDS GRID (2 cols x 3 rows) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 print:gap-2">
+                  {roleData[activeRole].visualCards.map((p, idx) => (
+                    <div
+                      key={idx}
+                      className="border border-slate-300 rounded-lg overflow-hidden bg-white flex flex-col justify-between print:break-inside-avoid shadow-sm print:shadow-none"
+                    >
+                      <div className="h-24 sm:h-28 print:h-[105px] w-full bg-slate-100 border-b border-slate-200 relative overflow-hidden">
+                        <Image
+                          src={p.img}
+                          alt={p.title}
+                          width={400}
+                          height={180}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="p-2 print:p-1.5 space-y-0.5">
+                        <div className="flex justify-between items-center gap-1">
+                          <span className="font-extrabold text-slate-900 text-xs print:text-[9.5px] leading-tight">
+                            {p.title}
+                          </span>
+                          <span className="text-[8.5px] print:text-[7px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase flex-shrink-0">
+                            {p.cat}
+                          </span>
+                        </div>
+                        <div className="text-[9px] print:text-[7.5px] font-mono font-bold text-slate-600 truncate">
+                          {p.tech}
+                        </div>
+                        <p className="text-[10.5px] print:text-[8px] text-slate-700 font-medium leading-snug">
+                          {lang === 'en' ? p.descEn : p.descId}
+                        </p>
+                        <div className="pt-0.5 border-t border-slate-100 flex items-center gap-1 text-[9.5px] print:text-[7.5px] font-mono">
+                          <a
+                            href={p.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-sky-700 hover:underline flex items-center gap-0.5"
+                          >
+                            <span>{p.label}</span>
+                            <ExternalLink size={9} className="opacity-70" />
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* AUDIT NOTICE */}
+                <div className="p-2 print:p-1.5 rounded bg-slate-100 border border-slate-300 text-[10px] print:text-[8px] text-slate-800 font-medium leading-tight">
+                  <strong>{lang === 'en' ? 'Interactive Demonstration & Source Code Audit: ' : 'Demonstrasi Interaktif & Audit Kode Sumber: '}</strong>
+                  {lang === 'en'
+                    ? 'Live deployments, interactive case studies, architectural documentation, and full source code are accessible at mazkev.vercel.app and github.com/mazkev.'
+                    : 'Seluruh demo aplikasi langsung, studi kasus interaktif, dokumentasi arsitektur, dan kode sumber dapat diakses publik pada mazkev.vercel.app dan github.com/mazkev.'}
+                </div>
               </div>
 
               {/* FOOTER PAGE 3 */}
-              <div className="border-t border-slate-300 pt-1.5 flex justify-between items-center text-[10px] print:text-[7.5px] font-mono text-slate-500">
+              <div className="border-t border-slate-300 pt-1.5 flex justify-between items-center text-[10px] print:text-[8px] font-mono text-slate-500 mt-2">
                 <span>Kevin Eka Pratama • {currentRole.roleTitle}</span>
                 <span>mazkev.vercel.app • github.com/mazkev</span>
                 <span className="font-bold">Page 3 of 3 (Visual Project Annex)</span>
