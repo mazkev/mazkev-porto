@@ -172,14 +172,14 @@ const roleData = {
         label: 'github.com/mazkev/spring-boot-book-manager-api'
       },
       {
-        title: '12. Cloud PaaS Deployment Console Simulator',
-        cat: 'Cloud Tool',
-        tech: 'React 19 • Terminal Stream Logs • DNS • Secrets Vault',
-        descEn: 'PaaS cloud deployment simulator featuring real-time build streaming terminal logs, custom DNS domain routing, and environment secrets vault.',
-        descId: 'Simulator konsol cloud PaaS dengan streaming log build terminal real-time, konfigurasi domain DNS, dan brankas rahasia env variables.',
-        img: '/projects/cloudconsole.jpg',
-        link: 'https://github.com/mazkev/react-cloud-console-simulator',
-        label: 'github.com/mazkev/react-cloud-console-simulator'
+        title: '12. Go Enterprise REST API Boilerplate',
+        cat: 'Backend',
+        tech: 'Go • Gin • GORM • Redis Cache • Uber Zap • Swagger UI',
+        descEn: 'Enterprise Go REST API boilerplate featuring Gin router, GORM ORM, Redis cache-aside, Uber Zap structured logging, and Swagger UI documentation.',
+        descId: 'Boilerplate Go REST API enterprise dengan Gin router, GORM ORM, caching Redis cache-aside, structured logging Uber Zap, dan dokumentasi Swagger UI.',
+        img: '/projects/swagger-go.png',
+        link: 'https://github.com/mazkev/go-rest-api-enterprise',
+        label: 'github.com/mazkev/go-rest-api-enterprise'
       }
     ]
   },
@@ -390,124 +390,124 @@ const roleData = {
     ],
     visualCards: [
       {
-        title: '1. GoFinance Digital Wallet & Transfer API',
-        cat: 'Backend',
-        tech: 'Go • Echo • PostgreSQL • Redis • RabbitMQ • Docker',
-        descEn: 'Digital wallet REST API simulation exploring ACID transactional account transfers, Redis cache-aside ledger, RabbitMQ message brokers, and Bcrypt security.',
-        descId: 'Simulasi REST API dompet digital untuk eksplorasi transfer saldo atomik berstandar ACID, Redis cache-aside, message broker RabbitMQ, dan pengamanan Bcrypt.',
-        img: '/projects/gofinance.png',
-        link: 'https://github.com/mazkev/go-banking-core-system',
-        label: 'github.com/mazkev/go-banking-core-system'
-      },
-      {
-        title: '2. Nexus Enterprise Microservices',
+        title: '1. BayE Auction & E-Commerce Marketplace',
         cat: 'Fullstack',
-        tech: 'Next.js 16 • Java Spring Boot • Resilience4j • PostgreSQL',
-        descEn: 'Distributed enterprise platform featuring Spring Cloud service discovery, circuit-breaker failover protection, and reactive Next.js workspace client.',
-        descId: 'Platform enterprise terdistribusi dengan service discovery Spring Cloud, proteksi circuit breaker Resilience4j, dan klien workspace Next.js 16.',
-        img: '/projects/nexus.png',
-        link: 'https://nexus-project-mu.vercel.app',
-        label: 'nexus-project-mu.vercel.app'
-      },
-      {
-        title: '3. Tokopedia Fullstack Commerce',
-        cat: 'Fullstack',
-        tech: 'Go REST API • React 19 • PostgreSQL • Tailwind CSS v4',
-        descEn: 'Commercial e-commerce platform pairing a Go REST API with React 19. Features optimistic cart updates, category filtering chips, and checkout transactions.',
-        descId: 'Platform e-commerce mengintegrasikan Go REST API dengan React 19. Dilengkapi sinkronisasi keranjang optimistik dan checkout transaksi PostgreSQL.',
+        tech: 'Next.js 16 • React 19 • Prisma 7 • LibSQL Serverless Database',
+        descEn: 'Fullstack auction and e-commerce marketplace featuring live bidding simulation, serverless LibSQL database, product spec comparison, and QR invoice generation.',
+        descId: 'Marketplace lelang dan e-commerce fullstack dengan simulasi live bidding, database serverless LibSQL, komparasi spesifikasi produk, dan faktur digital QR.',
         img: '/projects/tokopedia.png',
-        link: 'https://tokopedia-react.vercel.app',
-        label: 'tokopedia-react.vercel.app'
+        link: 'https://baye-ecommerce-marketplace.vercel.app',
+        label: 'baye-ecommerce-marketplace.vercel.app'
       },
       {
-        title: '4. Canvass Visual Graphic Studio',
-        cat: 'Frontend',
-        tech: 'React 19 • React-Konva • Zustand • Tailwind CSS v4',
-        descEn: 'Browser-based vector graphic publishing workspace with dual-layer 60 FPS canvas, multi-element transform matrices, and high-resolution PNG export.',
-        descId: 'Workstation desain vektor grafis berbasis web dengan dual-layer kanvas 60 FPS, manipulasi transform matriks elemen, dan ekspor multi-format.',
-        img: '/projects/canvass.png',
-        link: 'https://canva-clone-fawn.vercel.app',
-        label: 'canva-clone-fawn.vercel.app'
-      },
-      {
-        title: '5. MarketX Angular E-Commerce',
-        cat: 'Frontend',
-        tech: 'Angular 19 • Angular Signals • RxJS • Responsive Dash',
-        descEn: 'Enterprise storefront powered by Angular 19 reactive Signals and RxJS event streams. Features live order tracking and merchant back-office management.',
-        descId: 'Storefront enterprise menggunakan reaktivitas Angular Signals dan RxJS event streams. Dilengkapi pelacak status pesanan live dan back-office penjual.',
-        img: '/projects/marketx.png',
-        link: 'https://market-x-angular.vercel.app',
-        label: 'market-x-angular.vercel.app'
-      },
-      {
-        title: '6. Spotify Web Player & Visualizer',
-        cat: 'Frontend',
-        tech: 'Next.js 16 • Web Audio API • Frequency Visualizer • Tailwind',
-        descEn: 'High-fidelity audio streaming client with real-time Web Audio API frequency analysis canvas visualizer, dynamic album color palette extraction, and lyrics.',
-        descId: 'Klien streaming audio dengan visualisasi frekuensi real-time Web Audio API pada kanvas, ekstraksi warna cover album dinamis, dan sinkronisasi lirik.',
-        img: '/projects/spotify.png',
-        link: 'https://spotify-clonez.vercel.app',
-        label: 'spotify-clonez.vercel.app'
-      },
-      {
-        title: '7. Trello Glassmorphism Kanban Workspace',
-        cat: 'Frontend',
-        tech: 'React 19 • Zustand • @hello-pangea/dnd • Tailwind v4',
-        descEn: 'Glassmorphism Kanban project board with multi-axis drag-and-drop task sorting, card detail modal editing, and workflow automation.',
-        descId: 'Board manajemen proyek Kanban glassmorphism dengan drag-and-drop multi-axis, pengeditan modal kartu tugas, dan otomasi alur kerja.',
-        img: '/projects/trello.png',
-        link: 'https://trello-azure-five.vercel.app',
-        label: 'trello-azure-five.vercel.app'
-      },
-      {
-        title: '8. HubSpot Enterprise CRM Platform',
-        cat: 'Frontend',
-        tech: 'React 19 • TanStack Table • Recharts • REST API',
-        descEn: 'Enterprise CRM sales platform featuring interactive deal pipelines, contact data grid, and automated performance tracking.',
-        descId: 'Platform CRM penjualan enterprise dengan pipeline transaksi interaktif, tabel data kontak, dan pelacakan performa otomatis.',
-        img: '/projects/hubspot.png',
-        link: 'https://hub-spot-clone-five.vercel.app',
-        label: 'hub-spot-clone-five.vercel.app'
-      },
-      {
-        title: '9. Indofooty Real-Time Match Center',
+        title: '2. Go & React C2C Escrow Marketplace',
         cat: 'Fullstack',
-        tech: 'Next.js 16 • Tailwind CSS v4 • Real-Time Sports API',
-        descEn: 'Live sports score and news portal with Next.js 16, real-time match fixture feeds, league standings, and editorial CMS console.',
-        descId: 'Portal berita dan skor sepak bola langsung dengan Next.js 16, jadwal pertandingan real-time, klasemen liga, dan konsol admin CMS.',
-        img: '/projects/indofooty.jpg',
-        link: 'https://indofooty.vercel.app',
-        label: 'indofooty.vercel.app'
+        tech: 'Go Clean Arch • React 19 • PostgreSQL • Escrow Transactions',
+        descEn: 'Fullstack C2C commerce platform pairing a Go Clean Architecture REST API with React 19 frontend, PostgreSQL transactions, and escrow fund protection.',
+        descId: 'Platform e-commerce C2C memadukan backend Go Clean Architecture dengan frontend React 19, transaksi atomik PostgreSQL, dan rekening bersama.',
+        img: '/projects/semarketplace.jpg',
+        link: 'https://semarketplace.vercel.app',
+        label: 'semarketplace.vercel.app'
       },
       {
-        title: '10. Swagger Go API Gateway Engine',
-        cat: 'Backend',
-        tech: 'Go 1.26 • Gin • GORM • PostgreSQL • Swagger OpenAPI 3.0',
-        descEn: 'Production API gateway with interactive Swagger OpenAPI contract documentation, reverse proxy routing, and JWT authorization.',
-        descId: 'API gateway produksi dengan dokumentasi kontrak OpenAPI Swagger interaktif, routing reverse proxy, dan otorisasi JWT.',
+        title: '3. Java Spring Commerce & Warehousing Platform',
+        cat: 'Fullstack',
+        tech: 'Java 17 • Spring Boot 3.3 • Vue 3 Pinia • OpenPDF • PostgreSQL',
+        descEn: 'Enterprise fullstack commerce and inventory platform with Spring Boot 3.3, Vue 3 Pinia client, OpenPDF billing invoices, and Apache POI Excel export.',
+        descId: 'Platform e-commerce dan pergudangan inventaris enterprise dengan Spring Boot 3.3, klien Vue 3 Pinia, faktur OpenPDF, dan laporan Excel Apache POI.',
+        img: '/projects/marketinvent.png',
+        link: 'https://github.com/mazkev/java-spring-commerce-platform',
+        label: 'github.com/mazkev/java-spring-commerce-platform'
+      },
+      {
+        title: '4. Go Clean Architecture Multi-Vendor Marketplace',
+        cat: 'Fullstack',
+        tech: 'Go 1.25 • Gin • React 19 • MongoDB NoSQL • Docker Compose',
+        descEn: 'Multi-vendor commerce architecture pairing a Go Gin Clean Architecture backend with MongoDB NoSQL and a modern React 19 merchant interface.',
+        descId: 'Marketplace multi-vendor memadukan backend Go Gin Clean Architecture dengan MongoDB NoSQL dan antarmuka merchant modern React 19.',
+        img: '/projects/goclean.png',
+        link: 'https://github.com/mazkev/go-clean-marketplace-fullstack',
+        label: 'github.com/mazkev/go-clean-marketplace-fullstack'
+      },
+      {
+        title: '5. Laravel 12 HRMS & Payroll Management Platform',
+        cat: 'Fullstack',
+        tech: 'PHP 8.3 • Laravel 12 • MySQL • Selfie GPS • Automated Payroll',
+        descEn: 'Enterprise human resources and payroll management platform featuring selfie camera GPS attendance verification, shift scheduling, and salary calculation.',
+        descId: 'Sistem manajemen SDM & payroll enterprise dengan absensi kamera selfie GPS, manajemen shift kerja, dan kalkulasi otomatis slip gaji karyawan.',
+        img: '/projects/marketx.png',
+        link: 'https://github.com/mazkev/laravel-hrms-platform',
+        label: 'github.com/mazkev/laravel-hrms-platform'
+      },
+      {
+        title: '6. FastAPI & Angular Multi-Vendor Marketplace',
+        cat: 'Fullstack',
+        tech: 'Python 3 • FastAPI • Angular 19 • PostgreSQL • Recommendation',
+        descEn: 'High-throughput multi-vendor platform coupling asynchronous FastAPI backend with an Angular 19 reactive Signals storefront and recommendation logic.',
+        descId: 'Platform multi-vendor memadukan backend asinkron FastAPI Python dengan antarmuka Angular 19 Signals dan sistem rekomendasi produk.',
+        img: '/projects/marketx.png',
+        link: 'https://github.com/mazkev/fastapi-angular-marketplace',
+        label: 'github.com/mazkev/fastapi-angular-marketplace'
+      },
+      {
+        title: '7. Express React P2P Marketplace Monorepo',
+        cat: 'Fullstack',
+        tech: 'Node.js • Express v5 • React 19 • Sequelize ORM • MySQL',
+        descEn: 'Fullstack P2P monorepo with Express v5 and React 19, Sequelize ORM, atomic MySQL database order fulfillment, and role-based access control (RBAC).',
+        descId: 'Monorepo marketplace P2P fullstack dengan Express v5 dan React 19, Sequelize ORM, transaksi pesanan database atomik MySQL, dan kontrol akses RBAC.',
         img: '/projects/swagger-go.png',
-        link: 'https://github.com/mazkev/go-ecommerce-gateway-engine',
-        label: 'github.com/mazkev/go-ecommerce-gateway-engine'
+        link: 'https://github.com/mazkev/express-react-marketplace-monorepo',
+        label: 'github.com/mazkev/express-react-marketplace-monorepo'
       },
       {
-        title: '11. Umrah Travel Agency Booking Portal',
-        cat: 'Frontend',
-        tech: 'React 19 • Cost Calculator • Itineraries • Tailwind',
-        descEn: 'Pilgrimage travel portal with dynamic package cost estimator, interactive daily itineraries, and WhatsApp booking consultation.',
-        descId: 'Portal travel haji dan umrah dengan kalkulator estimasi biaya paket, jadwal perjalanan hari demi hari, dan integrasi konsultasi WhatsApp.',
-        img: '/projects/umrah.jpg',
-        link: 'https://github.com/mazkev/react-umrah-travel-landing',
-        label: 'github.com/mazkev/react-umrah-travel-landing'
+        title: '8. Bun Hono E-Commerce Engine & Storefront',
+        cat: 'Fullstack',
+        tech: 'Bun • Hono v4 • Drizzle ORM • TypeScript • WebSocket',
+        descEn: 'High-velocity fullstack commerce engine running on Bun runtime with Drizzle ORM, real-time customer WebSocket chat, and coupon discount validation.',
+        descId: 'Engine e-commerce fullstack berbasis Bun runtime dengan Drizzle ORM, live chat WebSocket, kupon diskon dinamis, dan OpenAPI documentation.',
+        img: '/projects/mazmarket.png',
+        link: 'https://github.com/mazkev/hono-ecommerce-engine',
+        label: 'github.com/mazkev/hono-ecommerce-engine'
       },
       {
-        title: '12. Cloud PaaS Deployment Console Simulator',
-        cat: 'Cloud Tool',
-        tech: 'React 19 • Terminal Stream Logs • DNS • Secrets Vault',
-        descEn: 'PaaS cloud deployment simulator featuring real-time build streaming terminal logs, custom DNS domain routing, and environment secrets vault.',
-        descId: 'Simulator konsol cloud PaaS dengan streaming log build terminal real-time, konfigurasi domain DNS, dan brankas rahasia env variables.',
-        img: '/projects/cloudconsole.jpg',
-        link: 'https://github.com/mazkev/react-cloud-console-simulator',
-        label: 'github.com/mazkev/react-cloud-console-simulator'
+        title: '9. Vue 3 Storefront & Back-Office Platform',
+        cat: 'Fullstack',
+        tech: 'Vue 3 Composition API • Pinia • Tailwind CSS • Live Demo',
+        descEn: 'Complete commerce storefront and administrative back-office system with Vue 3 and Pinia, multi-spec product comparison, and order tracking.',
+        descId: 'Storefront dan sistem back-office e-commerce lengkap dengan Vue 3 dan Pinia, komparasi produk multi-spesifikasi, dan pelacakan pesanan.',
+        img: '/projects/marketinvent.png',
+        link: 'https://aplikasi-vue.vercel.app',
+        label: 'aplikasi-vue.vercel.app'
+      },
+      {
+        title: '10. Grab Superapp Mobile Cross-Platform Clone',
+        cat: 'Mobile',
+        tech: 'Flutter 3 • Dart • Riverpod 3 • OpenStreetMap Live GPS',
+        descEn: 'Cross-platform mobile superapp built with Flutter and Riverpod 3, featuring real-time driver tracking on OpenStreetMap, GrabFood, and GrabRide.',
+        descId: 'Aplikasi mobile superapp cross-platform dengan Flutter dan Riverpod 3, menampilkan pelacakan langsung driver di peta OpenStreetMap, GrabFood, dan GrabRide.',
+        img: '/projects/grab.png',
+        link: 'https://github.com/mazkev/flutter-grab-superapp-clone',
+        label: 'github.com/mazkev/flutter-grab-superapp-clone'
+      },
+      {
+        title: '11. Traveloka Mobile App Travel Booking Clone',
+        cat: 'Mobile',
+        tech: 'React Native 0.85 • Expo SDK 56 • Expo Router • Gemini AI',
+        descEn: 'Cross-platform mobile travel booking app with React Native and Expo 56, flight & hotel search engine, Gemini AI itinerary assistant, and QR e-tickets.',
+        descId: 'Aplikasi mobile pemesanan tiket perjalanan dengan React Native dan Expo 56, pencarian tiket pesawat & hotel, asisten Gemini AI, dan e-tiket QR.',
+        img: '/projects/airbnb.png',
+        link: 'https://github.com/mazkev/treveloka-react-native-expo',
+        label: 'github.com/mazkev/treveloka-react-native-expo'
+      },
+      {
+        title: '12. React Native POS Cashier & Shift Manager',
+        cat: 'Mobile',
+        tech: 'React Native 0.85 • Expo SDK 56 • Cashier PIN • Shift Reconciliation',
+        descEn: 'Mobile retail cashier terminal with cashier PIN lock, per-shift drawer cash audit reconciliation, customer loyalty rewards, and cloud transaction logging.',
+        descId: 'Terminal kasir POS mobile dengan proteksi PIN kasir, audit rekonsiliasi kas laci per shift, program loyalitas pelanggan, dan sinkronisasi cloud.',
+        img: '/projects/gofinance.png',
+        link: 'https://github.com/mazkev/react-native-pos-cashier',
+        label: 'github.com/mazkev/react-native-pos-cashier'
       }
     ]
   }

@@ -236,15 +236,15 @@ Seluruh aplikasi berikut telah aktif (*HTTP 200 OK*) dan dapat diuji langsung ol
    * **Technologies**: Express v5, React 19, Sequelize ORM, MySQL, ACID Transactions, RBAC
    * **Pencapaian**: Monorepo marketplace P2P fullstack dengan Express v5 dan React 19, Sequelize ORM, transaksi pesanan database atomik MySQL, dan kontrol akses peran RBAC. *(Tier 1)*
 
-8. **Nexus Developer Workspace Studio** (🌐 Fullstack Web) | [GitHub: nextjs-nexus-workspace-studio](https://github.com/mazkev/nextjs-nexus-workspace-studio) • [Live: nexus-project-mu.vercel.app](https://nexus-project-mu.vercel.app)
+8. **Nexus Developer Workspace Studio** (⚛️ Frontend Web App) | [GitHub: nextjs-nexus-workspace-studio](https://github.com/mazkev/nextjs-nexus-workspace-studio) • [Live: nexus-project-mu.vercel.app](https://nexus-project-mu.vercel.app)
    * **Technologies**: Next.js 16, React 19, dnd-kit Kanban, TanStack Table CRM, Konva Canvas
    * **Pencapaian**: Workstation produktivitas pengembang lengkap dengan Next.js 16, React 19, papan Kanban dnd-kit, tabel data CRM TanStack, dan editor kanvas grafis Konva 2D. *(Tier 1)*
 
-9. **Spotify Web Player & Audio Canvas Visualizer** (🌐 Fullstack Web) | [GitHub: nextjs-spotify-music-player](https://github.com/mazkev/nextjs-spotify-music-player) • [Live: spotify-clonez.vercel.app](https://spotify-clonez.vercel.app)
+9. **Spotify Web Player & Audio Canvas Visualizer** (⚛️ Frontend Web App) | [GitHub: nextjs-spotify-music-player](https://github.com/mazkev/nextjs-spotify-music-player) • [Live: spotify-clonez.vercel.app](https://spotify-clonez.vercel.app)
    * **Technologies**: Next.js 16, TypeScript, Web Audio API, Canvas Visualizer, Color Extraction, Lyrics
    * **Pencapaian**: Web player musik terinspirasi Spotify dengan Next.js 16, TypeScript, visualisator audio kanvas Web Audio API, ekstraksi warna cover album dinamis, dan lirik lagu sinkron. *(Tier 1)*
 
-10. **Football Live Score & Sports Portal (Indofooty)** (🌐 Fullstack Web) | [GitHub: nextjs-football-sport-portal](https://github.com/mazkev/nextjs-football-sport-portal) • [Live: indofooty.vercel.app](https://indofooty.vercel.app)
+10. **Football Live Score & Sports Portal (Indofooty)** (⚛️ Frontend Web App) | [GitHub: nextjs-football-sport-portal](https://github.com/mazkev/nextjs-football-sport-portal) • [Live: indofooty.vercel.app](https://indofooty.vercel.app)
    * **Technologies**: Next.js 16, Tailwind CSS v4, Live Match Center, News Reader, Admin CMS
    * **Pencapaian**: Portal berita dan skor sepak bola langsung dengan Next.js 16 dan Tailwind CSS v4, menampilkan match center real-time, klasemen liga, pembaca berita, dan konsol admin CMS. *(Tier 1)*
 
