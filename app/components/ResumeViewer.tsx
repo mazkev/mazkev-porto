@@ -927,6 +927,28 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     </span>
                   </div>
                 </div>
+
+                {/* PILLAR 1 FOR FULLSTACK */}
+                {activeRole === 'fullstack' && (
+                  <div className="space-y-1.5 print:space-y-0.5 print:break-inside-avoid">
+                    <div className="flex items-center justify-between border-b border-slate-800 pb-0.5">
+                      <h3 className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
+                        {lang === 'en' ? 'Pillar 1: Backend Systems & Distributed Services' : 'Pilar 1: Sistem Backend & Arsitektur Cloud'}
+                      </h3>
+                      <span className="text-[9px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
+                        6 Repos
+                      </span>
+                    </div>
+                    <div className="space-y-1.5 print:space-y-0.5 text-slate-700">
+                      <RepoItem name="go-banking-core-system" url="https://github.com/mazkev/go-banking-core-system" tech="Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI" lang={lang} />
+                      <RepoItem name="go-distributed-microservices-lab" url="https://github.com/mazkev/go-distributed-microservices-lab" tech="Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker" lang={lang} />
+                      <RepoItem name="spring-boot-enterprise-platform" url="https://github.com/mazkev/spring-boot-enterprise-platform" tech="Java 17, Spring Boot 3.3, Bucket4j, Docker" lang={lang} />
+                      <RepoItem name="go-ecommerce-gateway-engine" url="https://github.com/mazkev/go-ecommerce-gateway-engine" tech="Go 1.26, Gin, MongoDB, Reverse Proxy, Swagger OpenAPI" lang={lang} />
+                      <RepoItem name="hono-ecommerce-engine" url="https://github.com/mazkev/hono-ecommerce-engine" tech="Bun Runtime, Hono v4, Drizzle ORM, WebSocket Live Chat, SQLite" lang={lang} />
+                      <RepoItem name="go-clean-arch" url="https://github.com/mazkev/go-clean-arch" tech="Go, Clean Architecture (DDD), Domain/Usecase/Repository, PostgreSQL" lang={lang} />
+                    </div>
+                  </div>
+                )}
               </div>
 
               {/* FOOTER PAGE 1 */}
@@ -934,7 +956,9 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 <span>Kevin Eka Pratama • {currentRole.roleTitle}</span>
                 <span>kevinekapratama@gmail.com • +62 (813) 2661-2344</span>
                 <span className="font-bold">
-                  {lang === 'en' ? `Page 1 of ${activeRole === 'fullstack' ? '2' : '3'} (Executive Profile)` : `Halaman 1 dari ${activeRole === 'fullstack' ? '2' : '3'} (Profil Eksekutif)`}
+                  {lang === 'en' 
+                    ? `Page 1 of ${activeRole === 'fullstack' ? '2' : '3'} (${activeRole === 'fullstack' ? 'Executive Profile & Pillar 1 Architecture' : 'Executive Profile'})` 
+                    : `Halaman 1 dari ${activeRole === 'fullstack' ? '2' : '3'} (${activeRole === 'fullstack' ? 'Profil Eksekutif & Arsitektur Pilar 1' : 'Profil Eksekutif'})`}
                 </span>
               </div>
             </div>
@@ -944,7 +968,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
               <span className="font-bold uppercase tracking-wider flex items-center gap-2 text-slate-900 dark:text-white">
                 <LayoutGrid size={15} className="text-sky-600 dark:text-sky-400" />
                 {activeRole === 'fullstack'
-                  ? (lang === 'id' ? 'Halaman 2: Showcase 8 Platform Fullstack Lengkap' : 'Page 2: 8 Flagship Fullstack Systems Showcase')
+                  ? (lang === 'id' ? 'Halaman 2: Pilar 2 & 3 + Showcase 8 Platform Fullstack' : 'Page 2: Pillars 2 & 3 + 8 Flagship Fullstack Systems')
                   : (lang === 'id' ? `Halaman 2: Direktori Proyek Khusus (${activeRole.toUpperCase()})` : `Page 2: Dedicated Project Directory (${activeRole.toUpperCase()})`)}
               </span>
               <span className="bg-slate-200 dark:bg-slate-800 px-2 py-0.5 rounded text-[10px] font-bold text-slate-700 dark:text-slate-300">
@@ -963,14 +987,18 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
             <div className="print-page flex flex-col justify-between pt-2 print:pt-0">
               <div className="space-y-3.5 print:space-y-2">
                 {/* PAGE 2 HEADER */}
-                <div className="border-b-2 border-slate-900 pb-2 print:pb-1.5 flex justify-between items-baseline gap-2">
+                <div className="border-b-2 border-slate-900 pb-2 print:pb-1 flex justify-between items-baseline gap-2">
                   <div>
                     <h2 className="text-sm md:text-base print:text-xs font-black uppercase tracking-wider text-slate-900 flex items-center gap-1.5">
                       <LayoutGrid size={16} className="text-slate-900 print:w-3 print:h-3" />
-                      {currentRole.page2Title}
+                      {activeRole === 'fullstack'
+                        ? (lang === 'en' ? 'Fullstack Platforms, Frontend Workstations & Showcase' : 'Platform Fullstack, Aplikasi Web & Showcase Sistem')
+                        : currentRole.page2Title}
                     </h2>
                     <p className="text-[11px] print:text-[8px] font-bold text-slate-600">
-                      {currentRole.page2Subtitle}
+                      {activeRole === 'fullstack'
+                        ? (lang === 'en' ? 'Pillars 2 & 3 Engineering Catalog + 8 Flagship Live Platforms' : 'Katalog Rekayasa Pilar 2 & 3 + 8 Platform Produksi Unggulan')
+                        : currentRole.page2Subtitle}
                     </p>
                   </div>
                   <span className="text-[10px] print:text-[7.5px] font-mono font-bold text-slate-500 uppercase">
@@ -1131,114 +1159,161 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 )}
 
                 {activeRole === 'fullstack' && (
-                  <div className="space-y-2.5 print:space-y-1.5">
-                    {/* PILLAR 1: Backend Systems & Distributed Services */}
-                    <div className="space-y-1.5 print:space-y-0.5 print:break-inside-avoid">
-                      <div className="border-b border-slate-800 pb-0.5">
-                        <h3 className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
-                          {lang === 'en' ? 'Pillar 1: Backend Systems & Distributed Services' : 'Pilar 1: Sistem Backend & Arsitektur Cloud'}
-                        </h3>
+                  <div className="space-y-2 print:space-y-1">
+                    {/* PILLARS 2 & 3 SIDE-BY-SIDE IN 2 COLUMNS */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 print:gap-2">
+                      {/* PILLAR 2 */}
+                      <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
+                        <div className="border-b border-slate-800 pb-0.5 flex justify-between items-center">
+                          <h3 className="font-extrabold text-slate-900 text-xs print:text-[8.8px] uppercase tracking-wide">
+                            {lang === 'en' ? 'Pillar 2: Fullstack & Mobile Platforms' : 'Pilar 2: Platform Fullstack & Mobile'}
+                          </h3>
+                          <span className="text-[9px] print:text-[7px] font-mono font-bold text-slate-500 uppercase">6 Repos</span>
+                        </div>
+                        <div className="space-y-1 print:space-y-0.5 text-slate-700">
+                          <RepoItem name="baye-ecommerce-marketplace" url="https://github.com/mazkev/baye-ecommerce-marketplace" tech="Next.js 16, React 19, LibSQL Serverless, QR Invoices" lang={lang} />
+                          <RepoItem name="tokopedia-react-storefront" url="https://github.com/mazkev/tokopedia-react-storefront" tech="React 19, TypeScript, Go REST API Backend, PostgreSQL" lang={lang} />
+                          <RepoItem name="laravel-hrms-platform" url="https://github.com/mazkev/laravel-hrms-platform" tech="Laravel 12, PHP 8.3, MySQL, GPS Attendance, Payroll" lang={lang} />
+                          <RepoItem name="java-spring-commerce-platform" url="https://github.com/mazkev/java-spring-commerce-platform" tech="Java 17, Spring Boot 3.3, Vue 3, Pinia, PostgreSQL" lang={lang} />
+                          <RepoItem name="treveloka-react-native-expo" url="https://github.com/mazkev/treveloka-react-native-expo" tech="React Native 0.85, Expo Router, Gemini AI Assistant" lang={lang} />
+                          <RepoItem name="flutter-grab-superapp-clone" url="https://github.com/mazkev/flutter-grab-superapp-clone" tech="Flutter 3, Dart, Riverpod 3, Driver Tracking" lang={lang} />
+                        </div>
                       </div>
-                      <div className="space-y-1.5 print:space-y-0.5 text-slate-700">
-                        <RepoItem name="go-banking-core-system" url="https://github.com/mazkev/go-banking-core-system" tech="Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI" lang={lang} />
-                        <RepoItem name="go-distributed-microservices-lab" url="https://github.com/mazkev/go-distributed-microservices-lab" tech="Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker" lang={lang} />
-                        <RepoItem name="spring-boot-enterprise-platform" url="https://github.com/mazkev/spring-boot-enterprise-platform" tech="Java 17, Spring Boot 3.3, Spring Security JWT, Bucket4j, Docker" lang={lang} />
-                        <RepoItem name="go-ecommerce-gateway-engine" url="https://github.com/mazkev/go-ecommerce-gateway-engine" tech="Go 1.26, Gin, MongoDB, Reverse Proxy, Swagger OpenAPI" lang={lang} />
-                        <RepoItem name="hono-ecommerce-engine" url="https://github.com/mazkev/hono-ecommerce-engine" tech="Bun Runtime, Hono v4, Drizzle ORM, WebSocket Live Chat, SQLite" lang={lang} />
-                        <RepoItem name="go-clean-arch" url="https://github.com/mazkev/go-clean-arch" tech="Go, Clean Architecture (DDD), Domain/Usecase/Repository, PostgreSQL" lang={lang} />
+
+                      {/* PILLAR 3 */}
+                      <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
+                        <div className="border-b border-slate-800 pb-0.5 flex justify-between items-center">
+                          <h3 className="font-extrabold text-slate-900 text-xs print:text-[8.8px] uppercase tracking-wide">
+                            {lang === 'en' ? 'Pillar 3: Modern Frontend Workstations' : 'Pilar 3: Aplikasi Frontend Modern'}
+                          </h3>
+                          <span className="text-[9px] print:text-[7px] font-mono font-bold text-slate-500 uppercase">6 Repos</span>
+                        </div>
+                        <div className="space-y-1 print:space-y-0.5 text-slate-700">
+                          <RepoItem name="react-canva-design-studio" url="https://github.com/mazkev/react-canva-design-studio" tech="React 19, TypeScript, React-Konva 60 FPS, Canvas Export" lang={lang} />
+                          <RepoItem name="angular-marketplace-storefront" url="https://github.com/mazkev/angular-marketplace-storefront" tech="Angular 19, TypeScript, Signals, RxJS Event Streams" lang={lang} />
+                          <RepoItem name="nextjs-spotify-music-player" url="https://github.com/mazkev/nextjs-spotify-music-player" tech="Next.js 16, TypeScript, Web Audio API Canvas Visualizer" lang={lang} />
+                          <RepoItem name="react-trello-kanban-suite" url="https://github.com/mazkev/react-trello-kanban-suite" tech="React 19, TypeScript, Zustand, Multi-axis Drag & Drop" lang={lang} />
+                          <RepoItem name="tiktok-clone-react-native-expo" url="https://github.com/mazkev/tiktok-clone-react-native-expo" tech="React Native, Expo Video Feed, Camera Recording" lang={lang} />
+                          <RepoItem name="nextjs-football-sport-portal" url="https://github.com/mazkev/nextjs-football-sport-portal" tech="Next.js 16, Tailwind CSS v4, Live Match Center, Sports API" lang={lang} />
+                        </div>
                       </div>
                     </div>
 
-                    {/* PILLAR 2: Fullstack Web Platforms & Enterprise Systems */}
-                    <div className="space-y-1.5 print:space-y-0.5 print:break-inside-avoid">
-                      <div className="border-b border-slate-800 pb-0.5">
-                        <h3 className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
-                          {lang === 'en' ? 'Pillar 2: Fullstack Web Platforms & Enterprise Systems' : 'Pilar 2: Platform Web Fullstack & Aplikasi Mobile'}
+                    {/* SHOWCASE 8 PLATFORM FULLSTACK UNGGULAN */}
+                    <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
+                      <div className="border-b border-slate-800 pb-0.5 flex justify-between items-center">
+                        <h3 className="font-extrabold text-slate-900 text-xs print:text-[9.2px] uppercase tracking-wide">
+                          {lang === 'en' ? 'Flagship Fullstack Systems Showcase (8 Selected Architectures)' : 'Showcase 8 Platform Fullstack Unggulan'}
                         </h3>
+                        <span className="text-[9px] print:text-[7.2px] font-mono font-bold text-slate-500 uppercase">
+                          {lang === 'en' ? 'Live Deployments & Monorepos' : 'Aplikasi Live & Monorepo'}
+                        </span>
                       </div>
-                      <div className="space-y-1.5 print:space-y-0.5 text-slate-700">
-                        <RepoItem name="baye-ecommerce-marketplace" url="https://github.com/mazkev/baye-ecommerce-marketplace" tech="Next.js 16, React 19, TypeScript, LibSQL Serverless, QR Digital Invoices" lang={lang} />
-                        <RepoItem name="tokopedia-react-storefront" url="https://github.com/mazkev/tokopedia-react-storefront" tech="React 19, TypeScript, Go REST API Backend, PostgreSQL, Tailwind" lang={lang} />
-                        <RepoItem name="laravel-hrms-platform" url="https://github.com/mazkev/laravel-hrms-platform" tech="Laravel 12, PHP 8.3, MySQL, GPS Selfie Attendance, Automated Payroll" lang={lang} />
-                        <RepoItem name="java-spring-commerce-platform" url="https://github.com/mazkev/java-spring-commerce-platform" tech="Java 17, Spring Boot 3.3, Vue 3, Pinia, OpenPDF, PostgreSQL" lang={lang} />
-                        <RepoItem name="treveloka-react-native-expo" url="https://github.com/mazkev/treveloka-react-native-expo" tech="React Native 0.85, Expo Router, Gemini AI Itinerary Assistant" lang={lang} />
-                        <RepoItem name="flutter-grab-superapp-clone" url="https://github.com/mazkev/flutter-grab-superapp-clone" tech="Flutter 3, Dart, Riverpod 3, OpenStreetMap Live Driver Tracking" lang={lang} />
-                      </div>
-                    </div>
-
-                    {/* PILLAR 3: Modern Frontend & Mobile Applications */}
-                    <div className="space-y-1.5 print:space-y-0.5 print:break-inside-avoid">
-                      <div className="border-b border-slate-800 pb-0.5">
-                        <h3 className="font-extrabold text-slate-900 text-xs print:text-[9.5px] uppercase tracking-wide">
-                          {lang === 'en' ? 'Pillar 3: Modern Frontend & Mobile Applications' : 'Pilar 3: Aplikasi Frontend Web Modern'}
-                        </h3>
-                      </div>
-                      <div className="space-y-1.5 print:space-y-0.5 text-slate-700">
-                        <RepoItem name="react-canva-design-studio" url="https://github.com/mazkev/react-canva-design-studio" tech="React 19, TypeScript, React-Konva 60 FPS, Multi-format Export" lang={lang} />
-                        <RepoItem name="angular-marketplace-storefront" url="https://github.com/mazkev/angular-marketplace-storefront" tech="Angular 19, TypeScript, Signals, RxJS Event Streams, Seller Back-office" lang={lang} />
-                        <RepoItem name="nextjs-spotify-music-player" url="https://github.com/mazkev/nextjs-spotify-music-player" tech="Next.js 16, TypeScript, Web Audio API Canvas Visualizer, Synced Lyrics" lang={lang} />
-                        <RepoItem name="react-trello-kanban-suite" url="https://github.com/mazkev/react-trello-kanban-suite" tech="React 19, TypeScript, Zustand, Multi-axis Drag & Drop, Glassmorphism" lang={lang} />
-                        <RepoItem name="tiktok-clone-react-native-expo" url="https://github.com/mazkev/tiktok-clone-react-native-expo" tech="React Native, Expo Video Autoplay Feed, Camera Recording" lang={lang} />
-                        <RepoItem name="nextjs-football-sport-portal" url="https://github.com/mazkev/nextjs-football-sport-portal" tech="Next.js 16, Tailwind CSS v4, Live Match Center, Real-Time Sports API" lang={lang} />
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 print:gap-1">
+                        {roleData.fullstack.visualCards.map((p, idx) => (
+                          <div
+                            key={idx}
+                            className="border border-slate-300 rounded p-1 print:p-0.5 bg-white flex flex-col justify-between print:break-inside-avoid shadow-sm print:shadow-none"
+                          >
+                            <div className="flex gap-1.5 items-start">
+                              <div className="w-16 h-11 print:w-14 print:h-9 bg-slate-100 rounded overflow-hidden flex-shrink-0 border border-slate-200">
+                                <Image
+                                  src={p.img}
+                                  alt={p.title}
+                                  width={100}
+                                  height={60}
+                                  className="w-full h-full object-cover"
+                                />
+                              </div>
+                              <div className="flex-1 min-w-0 space-y-0.5">
+                                <div className="flex justify-between items-center gap-1">
+                                  <span className="font-extrabold text-slate-900 text-[11px] print:text-[8px] leading-tight truncate">
+                                    {p.title}
+                                  </span>
+                                  <span className="text-[7.5px] print:text-[6.5px] font-mono font-bold px-1 rounded bg-slate-200 text-slate-800 uppercase flex-shrink-0">
+                                    {p.cat}
+                                  </span>
+                                </div>
+                                <div className="text-[9px] print:text-[6.8px] font-mono font-bold text-slate-600 truncate">
+                                  {p.tech}
+                                </div>
+                                <p className="text-[9.5px] print:text-[6.8px] text-slate-700 font-medium leading-tight line-clamp-2">
+                                  {lang === 'en' ? p.descEn : p.descId}
+                                </p>
+                              </div>
+                            </div>
+                            <div className="pt-0.5 mt-0.5 border-t border-slate-100 flex items-center justify-between text-[8.5px] print:text-[6.5px] font-mono">
+                              <a
+                                href={p.link}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="text-sky-700 hover:underline flex items-center gap-0.5 truncate"
+                              >
+                                <span>{p.label}</span>
+                                <ExternalLink size={8} className="opacity-70 flex-shrink-0" />
+                              </a>
+                            </div>
+                          </div>
+                        ))}
                       </div>
                     </div>
 
                     {/* 12 LIVE DEPLOYMENTS TABLE */}
                     <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
                       <div className="flex items-center justify-between border-b border-slate-800 pb-0.5">
-                        <h3 className="text-xs print:text-[9.5px] font-extrabold uppercase tracking-wide text-slate-900">
+                        <h3 className="text-xs print:text-[8.8px] font-extrabold uppercase tracking-wide text-slate-900">
                           {lang === 'en' ? '12 Verified Cloud Deployments (HTTP 200 OK on Vercel)' : '12 Aplikasi Aktif Terverifikasi di Cloud (Vercel)'}
                         </h3>
-                        <span className="text-[9px] print:text-[7.5px] font-mono font-bold text-emerald-700 uppercase">
+                        <span className="text-[9px] print:text-[7px] font-mono font-bold text-emerald-700 uppercase">
                           {lang === 'en' ? 'Clickable Live Demos' : 'Dapat Diuji Langsung'}
                         </span>
                       </div>
-                      <div className="grid grid-cols-2 gap-1 text-[10px] print:text-[8px] font-mono">
-                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                      <div className="grid grid-cols-2 gap-1 text-[9.5px] print:text-[7.2px] font-mono">
+                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>1. BayE Auction Store:</strong>
                           <a href="https://baye-ecommerce-marketplace.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">baye-ecommerce-marketplace.vercel.app</a>
                         </div>
-                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>2. Nexus Workspace:</strong>
                           <a href="https://nexus-project-mu.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">nexus-project-mu.vercel.app</a>
                         </div>
-                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>3. Spotify Music Player:</strong>
                           <a href="https://spotify-clonez.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">spotify-clonez.vercel.app</a>
                         </div>
-                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>4. Indofooty Match Hub:</strong>
                           <a href="https://indofooty.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">indofooty.vercel.app</a>
                         </div>
-                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>5. AI Wireframer Lab:</strong>
                           <a href="https://ai-component-wireframer.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">ai-component-wireframer.vercel.app</a>
                         </div>
-                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>6. Umrah Travel Portal:</strong>
                           <a href="https://umrah-travel-landing.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">umrah-travel-landing.vercel.app</a>
                         </div>
-                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>7. Cloud Simulator:</strong>
                           <a href="https://cloud-console-simulator.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">cloud-console-simulator.vercel.app</a>
                         </div>
-                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>8. Snake AI Pathfinding:</strong>
                           <a href="https://snake-ai-pathfinding.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">snake-ai-pathfinding.vercel.app</a>
                         </div>
-                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>9. Canvass Design Studio:</strong>
                           <a href="https://canva-clone-fawn.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">canva-clone-fawn.vercel.app</a>
                         </div>
-                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>10. Trello Kanban Suite:</strong>
                           <a href="https://trello-azure-five.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">trello-azure-five.vercel.app</a>
                         </div>
-                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>11. MarketX Angular Store:</strong>
                           <a href="https://market-x-angular.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">market-x-angular.vercel.app</a>
                         </div>
-                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                        <div className="p-0.5 px-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
                           <strong>12. HubSpot CRM Platform:</strong>
                           <a href="https://hub-spot-clone-five.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">hub-spot-clone-five.vercel.app</a>
                         </div>
@@ -1262,7 +1337,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 <span>mazkev.vercel.app • github.com/mazkev</span>
                 <span className="font-bold">
                   {activeRole === 'fullstack'
-                    ? (lang === 'en' ? 'Page 2 of 2 (Fullstack Systems Showcase)' : 'Halaman 2 dari 2 (Showcase Sistem Fullstack)')
+                    ? (lang === 'en' ? 'Page 2 of 2 (Pillars 2-3, Fullstack Showcase & Deployments)' : 'Halaman 2 dari 2 (Pilar 2-3, Showcase Fullstack & Deployment)')
                     : (lang === 'en' ? 'Page 2 of 3 (Dedicated Directory)' : 'Halaman 2 dari 3 (Direktori Terdedikasi)')}
                 </span>
               </div>

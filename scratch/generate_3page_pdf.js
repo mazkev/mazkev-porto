@@ -1150,28 +1150,45 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
         <span class="job-date">${eduDate}</span>
       </div>
     </div>
+
+    ${role === 'fullstack' ? `
+    <div class="section" style="margin-top: 3px; margin-bottom: 0px;">
+      <div class="section-title">
+        <span>${isEn ? 'Pillar 1: Backend Systems & Distributed Services' : 'Pilar 1: Sistem Backend & Arsitektur Cloud'}</span>
+        <span class="badge">${isEn ? '6 Verified Repositories' : '6 Repositori Terverifikasi'}</span>
+      </div>
+      <div class="pillar-card" style="margin-bottom: 0px;">
+${repoBlock('go-banking-core-system', 'https://github.com/mazkev/go-banking-core-system', 'Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI', isEn)}
+${repoBlock('go-distributed-microservices-lab', 'https://github.com/mazkev/go-distributed-microservices-lab', 'Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker', isEn)}
+${repoBlock('spring-boot-enterprise-platform', 'https://github.com/mazkev/spring-boot-enterprise-platform', 'Java 17, Spring Boot 3.3, Resilience4j, Eureka Discovery, PostgreSQL', isEn)}
+${repoBlock('go-ecommerce-gateway-engine', 'https://github.com/mazkev/go-ecommerce-gateway-engine', 'Go 1.26, Gin, MongoDB, Reverse Proxy, Swagger OpenAPI', isEn)}
+${repoBlock('hono-ecommerce-engine', 'https://github.com/mazkev/hono-ecommerce-engine', 'Bun Runtime, Hono v4, Drizzle ORM, WebSocket Live Chat, SQLite', isEn)}
+${repoBlock('go-clean-arch', 'https://github.com/mazkev/go-clean-arch', 'Go, Clean Architecture (DDD), Domain/Usecase/Repository, PostgreSQL', isEn)}
+      </div>
+    </div>
+    ` : ''}
   </div>
 
   <div class="page-footer">
     <span>Kevin Eka Pratama • ${roleTitle}</span>
     <span>kevinekapratama@gmail.com • +62 (813) 2661-2344</span>
-    <span>Page 1 of ${role === 'fullstack' ? '2' : '3'} (${isEn ? 'Executive Profile' : 'Profil Eksekutif'})</span>
+    <span>Page 1 of ${role === 'fullstack' ? '2' : '3'} (${isEn ? 'Executive Profile & Pillar 1 Architecture' : 'Profil Eksekutif & Arsitektur Pilar 1'})</span>
   </div>
 </div>
 
 <div class="page-break"></div>
 
 ${role === 'fullstack' ? `
-<!-- PAGE 2 (FULLSTACK 2-PAGE SHOWCASE) -->
+<!-- PAGE 2 (FULLSTACK: PILLARS 2 & 3 + 8 SHOWCASE CARDS + DEPLOYMENTS) -->
 <div class="page">
   <div>
-    <div style="border-bottom: 2px solid #0f172a; padding-bottom: 5px; margin-bottom: 7px; display: flex; justify-content: space-between; align-items: baseline;">
+    <div style="border-bottom: 2px solid #0f172a; padding-bottom: 3px; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: baseline;">
       <div>
-        <h2 style="font-size: 11pt; font-weight: 900; text-transform: uppercase; color: #0f172a;">
-          ${page3Title}
+        <h2 style="font-size: 10pt; font-weight: 900; text-transform: uppercase; color: #0f172a;">
+          ${isEn ? 'Fullstack Platforms, Frontend Workstations & Showcase' : 'Platform Fullstack, Aplikasi Web & Showcase Sistem'}
         </h2>
-        <span style="font-size: 7pt; font-weight: 700; color: #475569;">
-          ${page3Subtitle}
+        <span style="font-size: 6.8pt; font-weight: 700; color: #475569;">
+          ${isEn ? 'Pillars 2 & 3 Engineering Catalog + 8 Flagship Live Platforms' : 'Katalog Rekayasa Pilar 2 & 3 + 8 Platform Produksi Unggulan'}
         </span>
       </div>
       <div style="font-size: 7pt; font-family: monospace; font-weight: 700; color: #334155;">
@@ -1179,20 +1196,57 @@ ${role === 'fullstack' ? `
       </div>
     </div>
 
-    <div class="visual-grid">
+    <!-- PILLARS 2 & 3 SIDE-BY-SIDE -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-bottom: 4px;">
+      <!-- PILLAR 2 -->
+      <div class="pillar-card" style="margin-bottom: 0px; background: #f8fafc; border: 0.8px solid #cbd5e1; border-radius: 3px; padding: 2px 4px;">
+        <div class="pillar-header" style="margin-bottom: 1.5px; padding-bottom: 1px;">
+          <span class="pillar-title" style="font-size: 7pt;">${isEn ? 'Pillar 2: Fullstack & Mobile' : 'Pilar 2: Platform Fullstack & Mobile'}</span>
+          <span class="pillar-count">6 Repos</span>
+        </div>
+${repoBlock('baye-ecommerce-marketplace', 'https://github.com/mazkev/baye-ecommerce-marketplace', 'Next.js 16, React 19, TypeScript, LibSQL Serverless, QR Invoices', isEn)}
+${repoBlock('tokopedia-react-storefront', 'https://github.com/mazkev/tokopedia-react-storefront', 'React 19, TypeScript, Go REST API Backend, PostgreSQL, Tailwind', isEn)}
+${repoBlock('laravel-hrms-platform', 'https://github.com/mazkev/laravel-hrms-platform', 'Laravel 12, PHP 8.3, MySQL, GPS Attendance, Automated Payroll', isEn)}
+${repoBlock('java-spring-commerce-platform', 'https://github.com/mazkev/java-spring-commerce-platform', 'Java 17, Spring Boot 3.3, Vue 3, Pinia, OpenPDF, PostgreSQL', isEn)}
+${repoBlock('treveloka-react-native-expo', 'https://github.com/mazkev/treveloka-react-native-expo', 'React Native 0.85, Expo Router, Gemini AI Assistant', isEn)}
+${repoBlock('flutter-grab-superapp-clone', 'https://github.com/mazkev/flutter-grab-superapp-clone', 'Flutter 3, Dart, Riverpod 3, OpenStreetMap Live Driver Tracking', isEn)}
+      </div>
+
+      <!-- PILLAR 3 -->
+      <div class="pillar-card" style="margin-bottom: 0px; background: #f8fafc; border: 0.8px solid #cbd5e1; border-radius: 3px; padding: 2px 4px;">
+        <div class="pillar-header" style="margin-bottom: 1.5px; padding-bottom: 1px;">
+          <span class="pillar-title" style="font-size: 7pt;">${isEn ? 'Pillar 3: Modern Web & Tools' : 'Pilar 3: Aplikasi Web Frontend & Tools'}</span>
+          <span class="pillar-count">6 Repos</span>
+        </div>
+${repoBlock('react-canva-design-studio', 'https://github.com/mazkev/react-canva-design-studio', 'React 19, TypeScript, React-Konva 60 FPS, Multi-format Export', isEn)}
+${repoBlock('angular-marketplace-storefront', 'https://github.com/mazkev/angular-marketplace-storefront', 'Angular 19, TypeScript, Signals, RxJS Streams, Merchant Store', isEn)}
+${repoBlock('nextjs-spotify-music-player', 'https://github.com/mazkev/nextjs-spotify-music-player', 'Next.js 16, TypeScript, Web Audio API Canvas Visualizer, Lyrics', isEn)}
+${repoBlock('react-trello-kanban-suite', 'https://github.com/mazkev/react-trello-kanban-suite', 'React 19, TypeScript, Zustand, Multi-axis Drag & Drop', isEn)}
+${repoBlock('react-cloud-console-simulator', 'https://github.com/mazkev/react-cloud-console-simulator', 'React 19, Terminal Build Stream Logs, DNS Domain Manager', isEn)}
+${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-football-sport-portal', 'Next.js 16, Tailwind CSS v4, Live Match Center Sports API', isEn)}
+      </div>
+    </div>
+
+    <!-- 8 FULLSTACK VISUAL CARDS GRID -->
+    <div class="section-title" style="margin-bottom: 2.5px;">
+      <span>${isEn ? '8 Flagship Fullstack Systems (Production Architecture Proof)' : '8 Sistem Fullstack Unggulan (Pembuktian Arsitektur Produksi)'}</span>
+      <span class="badge">${isEn ? 'Clickable Demos & Repos' : 'Demo & Repositori Terverifikasi'}</span>
+    </div>
+
+    <div class="visual-grid" style="grid-template-columns: 1fr 1fr; gap: 3.5px; margin-bottom: 3.5px;">
       ${page3Cards.map((c, idx) => `
         <div class="visual-card">
-          <div class="visual-img-container">
+          <div class="visual-img-container" style="height: 38px;">
             <img src="${c.img}" alt="${c.title}" class="visual-img">
           </div>
-          <div class="visual-body">
-            <div class="visual-title">
+          <div class="visual-body" style="padding: 1.5px 3.5px;">
+            <div class="visual-title" style="font-size: 7.1pt;">
               <span>${c.title}</span>
               <span class="visual-cat">${c.cat}</span>
             </div>
-            <div class="visual-tech">${c.tech}</div>
-            <p class="visual-desc">${c.desc}</p>
-            <div class="visual-links">
+            <div class="visual-tech" style="font-size: 5.8pt;">${c.tech}</div>
+            <p class="visual-desc" style="font-size: 6.1pt; line-height: 1.16; margin-bottom: 0.5px;">${c.desc}</p>
+            <div class="visual-links" style="font-size: 5.7pt; padding-top: 1px;">
               <a href="${c.link}">${c.label}</a>
             </div>
           </div>
@@ -1201,12 +1255,12 @@ ${role === 'fullstack' ? `
     </div>
 
     <!-- VERIFIED CLOUD DEPLOYMENTS STRIP -->
-    <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 4px; padding: 3px 6px; margin-bottom: 5px;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
-        <span style="font-size: 6.9pt; font-weight: 800; color: #0f172a;">${isEn ? 'Verified Live Deployments (HTTP 200 OK):' : 'Aplikasi Aktif Terverifikasi di Cloud (Vercel):'}</span>
-        <span style="font-size: 6pt; color: #059669; font-weight: 700; font-family: monospace;">● ${isEn ? 'Production Live' : 'Produksi Aktif'}</span>
+    <div style="background: #f8fafc; border: 0.8px solid #cbd5e1; border-radius: 3px; padding: 2px 5px; margin-bottom: 3px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5px;">
+        <span style="font-size: 6.8pt; font-weight: 800; color: #0f172a;">${isEn ? 'Verified Live Deployments (HTTP 200 OK on Vercel):' : 'Aplikasi Aktif Terverifikasi di Cloud (Vercel):'}</span>
+        <span style="font-size: 5.8pt; color: #059669; font-weight: 700; font-family: monospace;">● ${isEn ? 'All Deployments Operational' : 'Semua Deployment Aktif'}</span>
       </div>
-      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px 4px; font-size: 6.3pt; font-family: monospace;">
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5px 4px; font-size: 6pt; font-family: monospace;">
         <div>• <a href="https://baye-ecommerce-marketplace.vercel.app" style="color: #0284c7; text-decoration: underline;">baye-marketplace.vercel.app</a></div>
         <div>• <a href="https://semarketplace.vercel.app" style="color: #0284c7; text-decoration: underline;">semarketplace.vercel.app</a></div>
         <div>• <a href="https://market-x-angular.vercel.app" style="color: #0284c7; text-decoration: underline;">market-x-angular.vercel.app</a></div>
@@ -1216,12 +1270,12 @@ ${role === 'fullstack' ? `
       </div>
     </div>
 
-    <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px 7px;">
-      <span style="font-size: 6.8pt; color: #1e293b; line-height: 1.25;">
-        <strong>${isEn ? 'Interactive Demonstration & Source Code Audit:' : 'Demonstrasi Interaktif & Audit Kode Sumber:'}</strong> 
+    <div style="background: #f1f5f9; border: 0.8px solid #cbd5e1; border-radius: 3px; padding: 2px 5px;">
+      <span style="font-size: 6.3pt; color: #1e293b; line-height: 1.2;">
+        <strong>${isEn ? 'Architecture & Source Code Audit:' : 'Audit Arsitektur & Kode Sumber:'}</strong> 
         ${isEn 
-          ? `Live deployments, interactive case studies, architectural documentation, and full source code are accessible at <strong>mazkev.vercel.app</strong> and <strong>github.com/mazkev</strong>.` 
-          : `Seluruh demo aplikasi langsung, studi kasus interaktif, dokumentasi arsitektur, dan kode sumber dapat diakses publik pada <strong>mazkev.vercel.app</strong> dan <strong>github.com/mazkev</strong>.`}
+          ? `Full source code, git commit history, and test suites for all repositories are accessible at <strong>github.com/mazkev</strong> and interactive workstation at <strong>mazkev.vercel.app</strong>.` 
+          : `Seluruh source code, riwayat komit, dan dokumentasi arsitektur untuk seluruh repositori terverifikasi dapat diaudit publik pada <strong>github.com/mazkev</strong> dan workstation <strong>mazkev.vercel.app</strong>.`}
       </span>
     </div>
   </div>
@@ -1229,7 +1283,7 @@ ${role === 'fullstack' ? `
   <div class="page-footer">
     <span>Kevin Eka Pratama • ${roleTitle}</span>
     <span>mazkev.vercel.app • github.com/mazkev</span>
-    <span>Page 2 of 2 (${isEn ? 'Fullstack Systems Showcase' : 'Showcase Sistem Fullstack'})</span>
+    <span>Page 2 of 2 (${isEn ? 'Pillars 2-3, Fullstack Showcase & Verified Deployments' : 'Pilar 2-3, Showcase Fullstack & Deployment Terverifikasi'})</span>
   </div>
 </div>
 ` : `
