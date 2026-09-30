@@ -253,27 +253,65 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
   );
 }`,
   },
-  'Go Banking Core Engine': {
-    architectureFlow: 'Transfer Request ➔ Account Verification ➔ Database Transaction ➔ Ledger Balance Update ➔ Audit Logging',
+  'Digital Wallet Simulation API (Go)': {
+    architectureFlow: 'Simulated Transfer ➔ Account Validation ➔ Row Lock (SELECT FOR UPDATE) ➔ Atomic Balance Update ➔ Audit Ledger Logging',
     specs: {
-      architecture: 'Digital Wallet REST Engine (Go + PostgreSQL)',
-      database: 'PostgreSQL 15 (Relational Accounts & Ledger Tables)',
-      auth: 'Account Verification & Audit Logging Pipeline',
-      devopsOrTesting: 'Dockerized PostgreSQL Migrations & Verification',
+      architecture: 'Self-Directed Digital Wallet Simulation (Go + PostgreSQL)',
+      database: 'PostgreSQL 15 (ACID Transactional Ledger & Accounts)',
+      auth: 'Bcrypt PIN Validation & Account Audit Trail',
+      devopsOrTesting: 'Docker Compose & Swagger OpenAPI Testing Suite',
     },
     features: [
-      'Account-to-account balance transfer engine with error recovery',
-      'PostgreSQL transactional ledger preventing invalid balance deductions',
-      'Immutable transaction audit ledger recording credit and debit entries',
-      'Comprehensive error boundaries returning serialized banking error codes',
-      'Dockerized database migration runner with seed data',
+      'Independent self-directed simulation exploring banking concurrency challenges',
+      'Atomic balance transfer engine using PostgreSQL row-level locks (SELECT FOR UPDATE)',
+      'Immutable transaction ledger recording debit and credit journal entries',
+      'Bcrypt-hashed customer PIN authorization for simulated transactions',
+      'Interactive Swagger OpenAPI contract documentation for endpoint testing',
     ],
-    challenge: 'Executing balance transfers between simulated accounts with accurate ledger recording and database consistency.',
-    solution: 'Designed modular database transactions in Go and PostgreSQL with comprehensive rollback safeguards and error handling.',
+    challenge: 'Independently learning and experimenting with high-concurrency race conditions, deadlocks, and double-spending prevention in financial ledger transactions.',
+    solution: 'Enforced PostgreSQL row-level locks (SELECT FOR UPDATE) inside atomic transactions (tx.Begin) with strict account ID ordering to prevent deadlocks and ensure transactional integrity.',
     contributions: [
-      'Engineered transfer transaction handlers with ledger balance verification.',
-      'Implemented Dockerized PostgreSQL testing suite with seed migrations.',
-      'Structured REST API endpoints with robust error boundary returns.',
+      'Independently architected Go Echo REST API service simulating digital wallet transfers.',
+      'Designed PostgreSQL normalized accounts and immutable transfer ledger tables.',
+      'Documented interactive API contracts via Swagger OpenAPI and containerized testing environment with Docker.',
+    ],
+    codeLang: 'go',
+    codeSnippet: `// TransferTx executes money transfer with serialized account locking
+func (store *SQLStore) TransferTx(ctx context.Context, arg TransferTxParams) (TransferTxResult, error) {
+	var result TransferTxResult
+	err := store.execTx(ctx, func(q *Queries) error {
+		// Strict ID ordering prevents database deadlocks under high concurrency
+		if arg.FromAccountID < arg.ToAccountID {
+			result.FromAccount, result.ToAccount, _ = addMoney(ctx, q, arg.FromAccountID, -arg.Amount, arg.ToAccountID, arg.Amount)
+		} else {
+			result.ToAccount, result.FromAccount, _ = addMoney(ctx, q, arg.ToAccountID, arg.Amount, arg.FromAccountID, -arg.Amount)
+		}
+		return nil
+	})
+	return result, err
+}`,
+  },
+  'Go Banking Core Engine': {
+    architectureFlow: 'Simulated Transfer ➔ Account Validation ➔ Row Lock (SELECT FOR UPDATE) ➔ Atomic Balance Update ➔ Audit Ledger Logging',
+    specs: {
+      architecture: 'Self-Directed Digital Wallet Simulation (Go + PostgreSQL)',
+      database: 'PostgreSQL 15 (ACID Transactional Ledger & Accounts)',
+      auth: 'Bcrypt PIN Validation & Account Audit Trail',
+      devopsOrTesting: 'Docker Compose & Swagger OpenAPI Testing Suite',
+    },
+    features: [
+      'Independent self-directed simulation exploring banking concurrency challenges',
+      'Atomic balance transfer engine using PostgreSQL row-level locks (SELECT FOR UPDATE)',
+      'Immutable transaction ledger recording debit and credit journal entries',
+      'Bcrypt-hashed customer PIN authorization for simulated transactions',
+      'Interactive Swagger OpenAPI contract documentation for endpoint testing',
+    ],
+    challenge: 'Independently learning and experimenting with high-concurrency race conditions, deadlocks, and double-spending prevention in financial ledger transactions.',
+    solution: 'Enforced PostgreSQL row-level locks (SELECT FOR UPDATE) inside atomic transactions (tx.Begin) with strict account ID ordering to prevent deadlocks and ensure transactional integrity.',
+    contributions: [
+      'Independently architected Go Echo REST API service simulating digital wallet transfers.',
+      'Designed PostgreSQL normalized accounts and immutable transfer ledger tables.',
+      'Documented interactive API contracts via Swagger OpenAPI and containerized testing environment with Docker.',
     ],
     codeLang: 'go',
     codeSnippet: `// TransferTx executes money transfer with serialized account locking
@@ -979,9 +1017,9 @@ export const projects: ProjectData[] = [
     category: 'Back End',
   },
   {
-    title: 'Digital Wallet & Balance Transfer API (Go)',
-    description: 'Transactional digital wallet and balance transfer service built with Go and PostgreSQL. Implements atomic balance transfers with ACID isolation, Bcrypt PIN validation, ledger verification, and structured audit logs.',
-    tech: ['Go', 'PostgreSQL', 'ACID Transactions', 'GORM', 'Docker', 'Swagger UI'],
+    title: 'Digital Wallet Simulation API (Go)',
+    description: 'Independent self-directed simulation exploring banking concurrency challenges. Implements atomic balance transfers with PostgreSQL ACID row-level locks (SELECT FOR UPDATE), Bcrypt PIN hashing, transaction ledger verification, and Swagger OpenAPI testing.',
+    tech: ['Go', 'PostgreSQL', 'ACID Row Locks', 'Bcrypt', 'Docker', 'Swagger UI'],
     image: '/projects/swagger-banking.png',
     live: 'https://github.com/mazkev/go-banking-core-system',
     github: 'https://github.com/mazkev/go-banking-core-system',
