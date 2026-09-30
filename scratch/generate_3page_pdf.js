@@ -668,12 +668,14 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
     'Investigated and resolved technical operational and incident tickets for enterprise utility platforms with a strict <strong>100% SLA compliance rate</strong>, ensuring zero-downtime operations.',
     'Authored and executed complex SQL queries across <strong>PostgreSQL, Oracle, and MySQL</strong> for transactional data validation, data auditing, anomaly rectification, and executive operational reporting.',
     'Monitored nationwide enterprise system workflows and microservices 24/7, proactively identifying transaction failures, API synchronization bottlenecks, and external service latency spikes.',
-    'Investigated application log telemetry (trace IDs, stack traces), conducted Root Cause Analyses (RCA), and collaborated directly with core backend developers to verify and deploy production bug hotfixes.'
+    'Investigated application log telemetry (trace IDs, stack traces), conducted Root Cause Analyses (RCA), and collaborated directly with core backend developers to verify and deploy production bug hotfixes.',
+    'Documented recurring operational incident runbooks and standardized SQL query templates, accelerating triage duration for similar tickets and staging UAT patch verifications.'
   ] : [
     'Menginvestigasi dan menyelesaikan tiket insiden teknis serta permintaan operasional produksi sistem enterprise dengan kepatuhan <strong>SLA mencapai 100%</strong> tepat waktu tanpa keterlambatan.',
     'Merancang dan mengeksekusi query SQL terstruktur tingkat lanjut pada database <strong>PostgreSQL, Oracle, dan MySQL</strong> untuk validasi integritas transaksi, pelaporan operasional, dan perbaikan data anomali.',
     'Memantau operasional alur microservices & sistem digital enterprise 24/7, mendeteksi secara proaktif kegagalan transaksi pembayaran, bottleneck sinkronisasi API, dan error integrasi pihak ketiga.',
-    'Menganalisis application log error (trace ID, stack trace), menyusun laporan Root Cause Analysis (RCA), serta berkoordinasi langsung dengan tim pengembang inti untuk pengujian patch dan rilis hotfix API.'
+    'Menganalisis application log error (trace ID, stack trace), menyusun laporan Root Cause Analysis (RCA), serta berkoordinasi langsung dengan tim pengembang inti untuk pengujian patch dan rilis hotfix API.',
+    'Menyusun dokumentasi prosedur operasional (runbook) dan standarisasi template query SQL untuk kendala berulang, mempercepat durasi penanganan tiket dan verifikasi pengujian patch di lingkungan staging.'
   ];
 
   const job2Title = isEn 
@@ -686,6 +688,7 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
   const job2Bullets = isEn ? [
     'Pioneered human-AI pair programming workflows with frontier models (<strong>Gemini 2.5, Claude 3.7, OpenAI APIs</strong>) to accelerate architectural design, relational schema modeling, and automated test suite generation.',
     `Independently architected, developed, and audited <strong>${role === 'backend' ? '19 production-grade backend microservices' : role === 'frontend' ? '48+ frontend and mobile applications' : '82 production-grade repositories'}</strong> applying Clean Architecture (DDD) and Docker containerization.`,
+    'Architected normalized relational database schemas with structured foreign keys, strict server-side schema validation, and decoupled domain layers (handler, service, repository) for long-term maintainability.',
     role === 'backend'
       ? 'Designed financial-grade ledger engines preventing race conditions and double-spending via <strong>PostgreSQL row-level locks (SELECT FOR UPDATE)</strong>, Redis cache-aside patterns, and RabbitMQ message brokers.'
       : role === 'frontend'
@@ -699,6 +702,7 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
   ] : [
     'Menerapkan alur kerja rekayasa perangkat lunak modern berbasis AI (<strong>Gemini 2.5, Claude 3.7, OpenAI APIs</strong>) untuk akselerasi perancangan arsitektur sistem, pemodelan skema relasional, dan generasi automated unit test.',
     `Secara mandiri merancang, membangun, dan mengaudit <strong>${role === 'backend' ? '19 repositori sistem backend microservices' : role === 'frontend' ? '48+ aplikasi frontend dan mobile' : '82 repositori perangkat lunak'}</strong> berstandar Clean Architecture (DDD) dan kontainerisasi Docker.`,
+    'Merancang skema database relasional ternormalisasi, validasi skema input ketat di sisi API, dan pemisahan lapisan logika bisnis (handler, service, repository) untuk kemudahan pemeliharaan kode jangka panjang.',
     role === 'backend'
       ? 'Menerapkan arsitektur ledger finansial anti-race condition dan anti-double spending dengan <strong>row-level locking PostgreSQL (SELECT FOR UPDATE)</strong>, caching Redis cache-aside, dan RabbitMQ message broker.'
       : role === 'frontend'

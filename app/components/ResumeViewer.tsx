@@ -526,6 +526,7 @@ const commonText = {
     job1Bullet2: 'Authored and executed complex SQL queries across PostgreSQL, Oracle, and MySQL for transactional data validation, data auditing, anomaly rectification, and executive operational reporting.',
     job1Bullet3: 'Monitored nationwide enterprise system workflows and microservices 24/7, proactively identifying transaction failures, API synchronization bottlenecks, and external service latency spikes.',
     job1Bullet4: 'Investigated application log telemetry (trace IDs, stack traces), conducted Root Cause Analyses (RCA), and collaborated directly with core backend developers to verify and deploy production bug hotfixes.',
+    job1Bullet5: 'Documented recurring operational incident runbooks and standardized SQL query templates, accelerating triage duration for similar tickets and staging UAT patch verifications.',
     job2Company: 'Independent Engineering & Open Source Projects',
     job2Date: '2023 - Present',
     degree: 'Bachelor of Computer Science / Information Technology (S.Kom)',
@@ -546,6 +547,7 @@ const commonText = {
     job1Bullet2: 'Merancang dan mengeksekusi query SQL terstruktur tingkat lanjut pada database PostgreSQL, Oracle, dan MySQL untuk validasi integritas transaksi, pelaporan operasional, dan perbaikan data anomali.',
     job1Bullet3: 'Memantau operasional alur microservices & sistem digital enterprise 24/7, mendeteksi secara proaktif kegagalan transaksi pembayaran, bottleneck sinkronisasi API, dan error integrasi pihak ketiga.',
     job1Bullet4: 'Menganalisis application log error (trace ID, stack trace), menyusun laporan Root Cause Analysis (RCA), serta berkoordinasi langsung dengan tim pengembang inti untuk pengujian patch dan rilis hotfix API.',
+    job1Bullet5: 'Menyusun dokumentasi prosedur operasional (runbook) dan standarisasi template query SQL untuk kendala berulang, mempercepat durasi penanganan tiket dan verifikasi pengujian patch di lingkungan staging.',
     job2Company: 'Pengembangan Mandiri & Proyek Open Source',
     job2Date: '2023 - Sekarang',
     degree: 'Sarjana Ilmu Komputer / Teknik Informatika (S.Kom)',
@@ -593,6 +595,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
       : activeRole === 'frontend'
       ? 'Independently architected, developed, and audited 48+ frontend and mobile applications with responsive state management, dual-layer 60 FPS canvas graphics, and mobile navigation.'
       : 'Independently architected, developed, and audited 82 production-grade repositories applying Clean Architecture (DDD) and Docker containerization.',
+    'Architected normalized relational database schemas with structured foreign keys, strict server-side schema validation, and decoupled domain layers (handler, service, repository) for long-term maintainability.',
     activeRole === 'backend'
       ? 'Designed financial-grade ledger engines preventing race conditions and double-spending via PostgreSQL row-level locks (SELECT FOR UPDATE), Redis cache-aside patterns, and RabbitMQ message brokers.'
       : activeRole === 'frontend'
@@ -610,6 +613,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
       : activeRole === 'frontend'
       ? 'Secara mandiri merancang, membangun, dan mengaudit 48+ aplikasi frontend dan mobile dengan state management reaktif, kanvas grafis dual-layer 60 FPS, dan navigasi mobile.'
       : 'Secara mandiri merancang, membangun, dan mengaudit 82 repositori perangkat lunak berstandar Clean Architecture (DDD) dan kontainerisasi Docker.',
+    'Merancang skema database relasional ternormalisasi, validasi skema input ketat di sisi API, dan pemisahan lapisan logika bisnis (handler, service, repository) untuk kemudahan pemeliharaan kode jangka panjang.',
     activeRole === 'backend'
       ? 'Menerapkan arsitektur ledger finansial anti-race condition dan anti-double spending dengan row-level locking PostgreSQL (SELECT FOR UPDATE), caching Redis cache-aside, dan RabbitMQ message broker.'
       : activeRole === 'frontend'
@@ -884,6 +888,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                         <li>{t.job1Bullet2}</li>
                         <li>{t.job1Bullet3}</li>
                         <li>{t.job1Bullet4}</li>
+                        <li>{t.job1Bullet5}</li>
                       </ul>
                     </div>
 

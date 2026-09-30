@@ -47,6 +47,7 @@ Sangat mahir dalam **AI-Assisted Software Engineering**, berkolaborasi intensif 
 * **Pembuatan Query SQL & Validasi Data**: Merancang dan mengeksekusi query SQL terstruktur pada database **PostgreSQL, Oracle, dan MySQL** untuk keperluan investigasi data transaksi, ekstraksi data pelaporan operasional, dan validasi anomali sistem.
 * **Pemantauan Sistem Enterprise 24/7**: Memantau operasional alur sistem digital enterprise secara berkala untuk mendeteksi transaksi gagal, error integrasi, serta memastikan kelancaran alur data pelanggan nasional.
 * **Investigasi Log & Koordinasi Masalah ke Core Developer**: Memeriksa log error aplikasi saat terjadi kendala produksi, mendokumentasikan temuan teknis secara rinci pada tiket, dan berkoordinasi langsung dengan tim pengembang inti (*core developers*) untuk proses perbaikan bug dan API.
+* **Dokumentasi Prosedur Operasional (Runbook) & Standarisasi SQL**: Menyusun dokumentasi runbook teknis atas kendala berulang serta standarisasi template query SQL investigasi, memangkas durasi triage penanganan tiket dan mempercepat proses verifikasi pengujian patch pada lingkungan staging.
 
 ---
 
@@ -55,6 +56,7 @@ Sangat mahir dalam **AI-Assisted Software Engineering**, berkolaborasi intensif 
 
 * **Penerapan Alur Kerja Rekayasa Berbasis AI**: Memelopori alur kerja modern bersama agen AI (*Gemini 2.5, Claude 3.7, OpenAI, agentic coding tools*) untuk akselerasi perancangan arsitektur, pemodelan skema transaksional, *rapid prototyping*, dan generasi *automated test suite*.
 * **Pembangunan 82 Repositori Terkurasi**: Merancang, membangun, dan mengaudit **82 repositori perangkat lunak terverifikasi** mencakup sistem backend terdistribusi (**19 repositori Go, Java Spring Boot 3.3, Bun/Hono**), platform web fullstack & mobile (**22 repositori Next.js 16, React 19, React Native Expo**), dan aplikasi web frontend (**41 repositori**).
+* **Perancangan Skema Basis Data & Pemisahan Logika Bersih**: Merancang skema database relasional ternormalisasi dengan *foreign keys* terstruktur, validasi skema input ketat di sisi server untuk pencegahan data anomali, serta pemisahan lapisan arsitektur modular (*controller, usecase service, repository*) demi kemudahan *maintenance* dan pengujian.
 * **Audit Ketat Arsitektur & Keamanan**: Melakukan verifikasi manual mendalam terhadap kode yang dihasilkan AI untuk menjamin kepatuhan standar enterprise: pencegahan *race condition* dan *double-spending* via *row-level locks* PostgreSQL, integritas transaksi atomik **ACID**, pola *Redis cache-aside*, dan *decoupled RabbitMQ message broker*.
 * **Manajemen 12 Aplikasi Live di Cloud**: Men-deploy dan memelihara **12 aplikasi produksi aktif** di cloud Vercel dengan integrasi database serverless (LibSQL, MongoDB) dan antarmuka reaktif modern.
 
