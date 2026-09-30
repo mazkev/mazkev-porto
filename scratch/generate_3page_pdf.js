@@ -24,6 +24,14 @@ const imgMarketx = getBase64Image('public/projects/marketx.png');
 const imgSpotify = getBase64Image('public/projects/spotify.png');
 const imgTrello = getBase64Image('public/projects/trello.png');
 const imgHubspot = getBase64Image('public/projects/hubspot.png');
+const imgMazmarket = getBase64Image('public/projects/mazmarket.png');
+const imgMazcloud = getBase64Image('public/projects/mazcloud.png');
+const imgSemarketplace = getBase64Image('public/projects/semarketplace.jpg');
+const imgMarketinvent = getBase64Image('public/projects/marketinvent.png');
+const imgIndofooty = getBase64Image('public/projects/indofooty.jpg');
+const imgGrab = getBase64Image('public/projects/grab.png');
+const imgAirbnb = getBase64Image('public/projects/airbnb.png');
+const imgNetflix = getBase64Image('public/projects/netflix.jpg');
 
 function generateRoleHtml(role, lang) {
   const isEn = lang === 'en';
@@ -56,13 +64,14 @@ function generateRoleHtml(role, lang) {
       : 'Sistem Terdistribusi • Microservices Go & Java Spring Boot • Transaksi ACID';
 
     summary = isEn
-      ? `Backend & Cloud Systems Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record maintaining 100% SLA compliance for production operational tickets, authoring structured SQL queries (PostgreSQL, Oracle, MySQL) for transaction verification and data reporting, and monitoring high-availability system workflows 24/7. Independently architected and deployed 19 production-grade backend microservices and cloud systems using Go (Golang), Java Spring Boot 3.3, Bun/Hono, and Express.js. Strong practical mastery in Clean Architecture (DDD), ACID transactional ledgers with row-level locks, Redis cache-aside patterns, RabbitMQ message brokers, gRPC binary protocols, and Docker containerization.`
-      : `Backend & Cloud Systems Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support Sistem Enterprise pada PT PLN Icon+. Memiliki keahlian teruji dalam penanganan tiket operasional produksi dengan kepatuhan SLA 100%, penulisan query SQL terstruktur (PostgreSQL, Oracle, MySQL) untuk validasi data transaksi dan pelaporan, serta pemantauan kestabilan sistem 24/7. Secara mandiri merancang dan membangun 19 repositori sistem backend dan microservices menggunakan Go (Golang), Java Spring Boot 3.3, Bun/Hono, dan Express.js. Menguasai Clean Architecture (DDD), transaksi atomik ACID dengan row-level lock, pola Redis cache-aside, message broker RabbitMQ, protokol biner gRPC, dan kontainerisasi Docker.`;
+      ? `Backend & Cloud Systems Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record maintaining 100% SLA compliance for production operational tickets, authoring complex SQL queries (PostgreSQL, Oracle, MySQL) for data auditing, and monitoring 24/7 high-availability system workflows. Deeply proficient in AI-Assisted Engineering, pairing with LLM tools to accelerate schema design, boilerplate generation, and integration testing. Independently architected and deployed 19 production-grade backend microservices and cloud systems using Go (Golang), Java Spring Boot 3.3, Bun/Hono, and Express.js. Strong mastery in Clean Architecture (DDD), ACID transactional ledgers with row-level locks, Redis cache-aside patterns, RabbitMQ message brokers, gRPC binary protocols, and Docker containerization.`
+      : `Backend & Cloud Systems Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support Sistem Enterprise pada PT PLN Icon+. Memiliki keahlian teruji dalam penanganan tiket operasional produksi dengan kepatuhan SLA 100%, penulisan query SQL terstruktur (PostgreSQL, Oracle, MySQL) untuk validasi data transaksi dan pelaporan, serta pemantauan kestabilan sistem 24/7. Sangat mahir dalam Rekayasa Berbasis AI (AI-Assisted Engineering), memanfaatkan LLM tools untuk akselerasi pemodelan skema, scaffolding arsitektur, dan automated testing. Secara mandiri merancang dan membangun 19 repositori sistem backend dan microservices menggunakan Go (Golang), Java Spring Boot 3.3, Bun/Hono, dan Express.js berprinsip Clean Architecture (DDD), transaksi atomik ACID, caching Redis, dan Docker.`;
 
     skillsHtml = `
       <div><strong>${isEn ? 'Backend Languages:' : 'Bahasa Pemrograman:'}</strong> Go (Golang 1.25/1.26), Java (JDK 17/21), TypeScript, JavaScript (Node.js/Bun), Python 3, SQL, Bash</div>
       <div><strong>${isEn ? 'Frameworks & Architecture:' : 'Framework & Arsitektur:'}</strong> Java Spring Boot 3.3 (Spring Security 6, JPA), Go (Gin/Fiber/Echo), Bun + Hono, Express.js, FastAPI, Clean Architecture (DDD), gRPC (Protobuf), RESTful APIs, Microservices</div>
       <div><strong>${isEn ? 'Databases & Message Brokers:' : 'Basis Data & Messaging:'}</strong> PostgreSQL (GORM, Prisma, ACID Transactions, Connection Pooling, Row-level Locks), MySQL, MongoDB (NoSQL), Redis (Cache-Aside, Rate Limiting), RabbitMQ (Message Broker)</div>
+      <div><strong>${isEn ? 'AI & Agentic Engineering:' : 'AI & Rekayasa Agentic:'}</strong> Gemini 2.5, Claude 3.7, OpenAI APIs, AI Component Prototyping, Prompt Engineering, Agentic Tooling, Automated Testing</div>
       <div><strong>${isEn ? 'DevOps, Cloud & Tooling:' : 'DevOps & Alat Rekayasa:'}</strong> Docker, Docker Compose, Linux Bash, Git & GitHub, Postman, Swagger / OpenAPI 3.0, CI/CD GitHub Actions</div>
     `;
 
@@ -95,78 +104,58 @@ function generateRoleHtml(role, lang) {
     page2Content = `
       <div class="pillar-card">
         <div class="pillar-header">
-          <span class="pillar-title">${isEn ? 'Core Financial & High-Throughput Microservices' : 'Layanan Mikro Finansial & Throughput Tinggi'}</span>
-          <span class="pillar-count">Go & Java Ecosystem</span>
+          <span class="pillar-title">${isEn ? 'Pillar 1: Distributed Go & Java High-Throughput Engines' : 'Pilar 1: Layanan Mikro Go & Java Kinerja Tinggi Terdistribusi'}</span>
+          <span class="pillar-count">6 Repositories</span>
         </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/go-banking-core-system" class="repo-name">go-banking-core-system:</a> ${isEn ? 'Atomic account transfer engine with ACID transaction isolation, PostgreSQL row-level locks, Bcrypt PIN, and Swagger docs.' : 'Engine transfer rekening atomik dengan isolasi transaksi ACID, row-level lock PostgreSQL, PIN Bcrypt, dan dokumentasi Swagger.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/go-distributed-microservices-lab" class="repo-name">go-distributed-microservices-lab:</a> ${isEn ? 'Distributed services communicating over binary gRPC, asynchronous RabbitMQ event bus, and Redis cache-aside.' : 'Layanan mikro terdistribusi dengan komunikasi biner gRPC, antrean pesan asinkron RabbitMQ, dan caching Redis.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/nexus-workspace-engine" class="repo-name">nexus-workspace-engine:</a> ${isEn ? 'Java Spring Boot 3.3 enterprise microservices ecosystem with Resilience4j circuit breakers and Eureka discovery.' : 'Ekosistem microservices enterprise Java Spring Boot 3.3 dengan circuit breaker Resilience4j dan discovery Eureka.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/go-clean-arch" class="repo-name">go-clean-arch:</a> ${isEn ? 'Domain-Driven Design (DDD) Clean Architecture boilerplate decoupling Domain, Usecase, and Repository layers.' : 'Arsitektur Clean terstruktur dengan pemisahan tegas antara lapisan Domain, Usecase, dan Repository.'}</span>
-        </div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-distributed-microservices-lab" class="repo-name">go-distributed-microservices-lab:</a> ${isEn ? 'High-throughput microservices with binary gRPC, Protocol Buffers, RabbitMQ event bus, and Redis cache-aside.' : 'Layanan mikro terdistribusi dengan komunikasi biner gRPC, antrean pesan asinkron RabbitMQ, dan caching Redis.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-ecommerce-gateway-engine" class="repo-name">go-ecommerce-gateway-engine:</a> ${isEn ? 'High-performance API Gateway with Gin router, MongoDB v2, order lifecycle, reverse proxy, and Swagger docs.' : 'Backend e-commerce & API Gateway performa tinggi dengan Gin router, MongoDB, reverse proxy, dan dokumentasi Swagger.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-banking-core-system" class="repo-name">go-banking-core-system:</a> ${isEn ? 'Core banking ledger with atomic balance transfers, ACID PostgreSQL row locks, Bcrypt PIN, and Swagger docs.' : 'Engine transfer rekening atomik dengan isolasi transaksi ACID, row-level lock PostgreSQL, PIN Bcrypt, dan dokumentasi Swagger.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-clean-arch" class="repo-name">go-clean-arch:</a> ${isEn ? 'Domain-Driven Design (DDD) Clean Architecture decoupling Domain, Usecase, and Repository data layers.' : 'Arsitektur Clean terstruktur dengan pemisahan tegas antara lapisan Domain, Usecase, dan Repository.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-rest-api-enterprise" class="repo-name">go-rest-api-enterprise:</a> ${isEn ? 'Enterprise Go REST API with Gin, GORM, Redis caching, Uber Zap structured logging, and graceful shutdown.' : 'REST API Go standar enterprise dengan Gin, GORM, Redis caching, structured logging Uber Zap, dan graceful shutdown.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/spring-boot-enterprise-platform" class="repo-name">spring-boot-enterprise-platform:</a> ${isEn ? 'Java 17 Spring Boot 3.3 enterprise platform with Spring Security JWT, AOP logging, Bucket4j rate limiting, and Docker.' : 'Platform enterprise Java 17 Spring Boot 3.3 dengan Spring Security JWT, audit logging AOP, Bucket4j rate limiter, dan Docker.'}</span></div>
       </div>
 
       <div class="pillar-card">
         <div class="pillar-header">
-          <span class="pillar-title">${isEn ? 'API Gateways, Messaging & Database Engines' : 'API Gateway, Message Queue & Mesin Basis Data'}</span>
-          <span class="pillar-count">Ultra-Low Latency Stacks</span>
+          <span class="pillar-title">${isEn ? 'Pillar 2: Cloud APIs & TypeScript Micro-Frameworks' : 'Pilar 2: API Cloud & Framework TypeScript Mikro'}</span>
+          <span class="pillar-count">6 Repositories</span>
         </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/go-ecommerce-gateway-engine" class="repo-name">go-ecommerce-gateway-engine:</a> ${isEn ? 'Reverse proxy API gateway with rate limiting, GORM PostgreSQL connection pooling, and JWT authorization.' : 'API gateway reverse proxy dengan rate limiting, connection pooling GORM PostgreSQL, dan otorisasi JWT.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/bun-hono-ecommerce-api" class="repo-name">bun-hono-ecommerce-api:</a> ${isEn ? 'Sub-millisecond REST API engine running on Bun runtime with Hono v4 framework and MongoDB NoSQL storage.' : 'Engine REST API sub-milidetik berbasis Bun runtime dengan framework Hono v4 dan basis data MongoDB NoSQL.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/fastapi-task-queue-redis" class="repo-name">fastapi-task-queue-redis:</a> ${isEn ? 'Asynchronous Python background task processing engine using Celery, Redis broker, and FastAPI REST endpoints.' : 'Engine pemrosesan antrean tugas asinkron Python menggunakan Celery, broker Redis, dan REST API FastAPI.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/express-multitenant-saas" class="repo-name">express-multitenant-saas:</a> ${isEn ? 'Multitenant backend architecture with schema-isolated database routing and scoped JWT security.' : 'Arsitektur backend multitenant dengan routing database terisolasi skema dan keamanan JWT terspesifikasi.'}</span>
-        </div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/hono-ecommerce-engine" class="repo-name">hono-ecommerce-engine:</a> ${isEn ? 'Sub-millisecond REST API engine running on Bun runtime with Hono v4, Drizzle ORM, and WebSocket live chat.' : 'Engine REST API sub-milidetik berbasis Bun runtime dengan Hono v4, Drizzle ORM, dan live chat WebSocket.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-prisma-realworld-api" class="repo-name">express-prisma-realworld-api:</a> ${isEn ? 'RealWorld standard backend with Express, TypeScript, Prisma ORM, Nx Monorepo, JWT, and Jest test suite.' : 'Backend standar RealWorld dengan Express, TypeScript, Prisma ORM, Nx Monorepo, JWT, dan unit testing Jest.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-typescript-prisma-api" class="repo-name">express-typescript-prisma-api:</a> ${isEn ? 'Type-safe REST API built with Express v5, TypeScript, Prisma 7 ORM, LibSQL adapter, and tsx development.' : 'REST API type-safe dengan Express v5, TypeScript, Prisma 7 ORM, LibSQL adapter, dan runtime modern tsx.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-prisma-product-api" class="repo-name">express-prisma-product-api:</a> ${isEn ? 'REST API with Express v5, Prisma ORM, JWT authentication, Multer upload, and Zod runtime validation.' : 'REST API dengan Express v5 dan Prisma ORM dilengkapi autentikasi JWT, Multer upload, dan validasi Zod.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-sqlite-ecommerce-api" class="repo-name">express-sqlite-ecommerce-api:</a> ${isEn ? 'Lightweight e-commerce API with Express v5, SQLite prepared statements, ACID checkout, and Swagger UI.' : 'API e-commerce dengan Express v5 dan SQLite prepared statements, transaksi order atomik, dan Swagger UI.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-realtime-api-service" class="repo-name">express-realtime-api-service:</a> ${isEn ? 'Express v5 with Socket.IO real-time broadcasting, dual database (Mongoose + MySQL), Winston logger, and Zod.' : 'Arsitektur Express v5 dengan real-time Socket.IO broadcasting, dual database (Mongoose + MySQL), dan logger Winston.'}</span></div>
       </div>
 
-      <div class="pillar-card" style="margin-bottom: 3px;">
+      <div class="pillar-card" style="margin-bottom: 2px;">
         <div class="pillar-header">
-          <span class="pillar-title">${isEn ? 'Production Engineering Patterns & Architectural Standards' : 'Standar Arsitektur & Pola Rekayasa Produksi'}</span>
-          <span class="pillar-count">Enterprise Compliance</span>
+          <span class="pillar-title">${isEn ? 'Pillar 3: Specialized Microservices, Webhooks & Caching' : 'Pilar 3: Layanan Mikro Khusus, Webhook & Caching'}</span>
+          <span class="pillar-count">7 Repositories</span>
         </div>
-        <div style="font-size: 6.8pt; color: #334155; line-height: 1.35;">
-          • <strong>${isEn ? 'ACID Transactional Ledgers:' : 'Transaksi Atomik ACID:'}</strong> ${isEn ? 'Strict row-level locking preventing race conditions and double-spending across financial workflows.' : 'Row-level locking di PostgreSQL untuk mencegah race condition dan double spending pada mutasi saldo.'}<br>
-          • <strong>${isEn ? 'Cache-Aside & Throttling:' : 'Cache-Aside & Throttling:'}</strong> ${isEn ? 'Redis cache-aside pattern reducing read latency by >85% and distributed token bucket rate limiters.' : 'Redis cache-aside yang mereduksi latensi baca >85% dan rate limiter terdistribusi.'}<br>
-          • <strong>${isEn ? 'Asynchronous Event Broker:' : 'Message Broker Asinkron:'}</strong> ${isEn ? 'RabbitMQ exchange/queue bindings ensuring at-least-once message delivery and decoupled microservices.' : 'RabbitMQ queue binding untuk pengiriman pesan andal tanpa memblokir thread HTTP.'}
-        </div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-prisma-payment-api" class="repo-name">express-prisma-payment-api:</a> ${isEn ? 'Payment backend with Midtrans webhook verification, automated PDFKit digital invoice rendering, and email.' : 'Backend pemrosesan pembayaran dengan webhook Midtrans, pembuatan invoice PDF otomatis dengan PDFKit, dan email.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/AI-api-manager" class="repo-name">AI-api-manager:</a> ${isEn ? 'Reverse proxy API gateway with API key authentication, distributed rate limiting, token quota tracking, and React UI.' : 'Reverse proxy API gateway dengan autentikasi API Key, rate limiting Redis, pelacakan kuota token, dan konsol React.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/spring-boot-book-manager-api" class="repo-name">spring-boot-book-manager-api:</a> ${isEn ? 'Java 17 and Spring Boot 3.3 REST service with Spring Data MongoDB, pagination, and OpenAPI docs.' : 'Layanan RESTful API Java 17 dan Spring Boot 3.3 dengan Spring Data MongoDB, paginasi, dan dokumentasi OpenAPI.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-book-catalog-api" class="repo-name">express-book-catalog-api:</a> ${isEn ? 'Book catalog API with Express v5, Prisma 7, Socket.IO live notifications, Redis rate limiting, and Jest tests.' : 'REST API katalog buku dengan Express v5, Prisma 7, notifikasi langsung Socket.IO, Redis limiter, dan pengujian Jest.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-redis-url-shortener" class="repo-name">express-redis-url-shortener:</a> ${isEn ? 'URL shortener engine with Redis cache-aside pattern for sub-millisecond redirects and MongoDB persistence.' : 'Backend pemendek URL dengan pola Redis cache-aside untuk pengalihan sub-milidetik dan persistensi MongoDB.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-mongo-content-api" class="repo-name">express-mongo-content-api:</a> ${isEn ? 'Content management REST API with Express, MongoDB, Redis caching, Socket.IO broadcasting, and cron jobs.' : 'REST API manajemen konten dengan Express, MongoDB, Redis caching, broadcast Socket.IO, dan cron job.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-mongodb-starter-api" class="repo-name">express-mongodb-starter-api:</a> ${isEn ? 'Modular CRUD boilerplate with Express, MongoDB Mongoose, JWT auth, Redis caching, and Docker container.' : 'Boilerplate RESTful CRUD API modular dengan Express, MongoDB Mongoose, JWT auth, Redis cache, dan Docker.'}</span></div>
       </div>
     `;
 
     page3Title = isEn 
-      ? 'Backend Visual Annex: API Gateways, Swagger UI & Architecture' 
-      : 'Lampiran Visual Backend: API Gateway, Swagger UI & Arsitektur';
+      ? 'Backend Visual Annex: 10 Production API Architectures & Contracts' 
+      : 'Lampiran Visual Backend: 10 Arsitektur API & Topologi Microservices';
     page3Subtitle = isEn
-      ? 'Interactive API Contracts, Microservices Topologies & Schema Proofs'
-      : 'Dokumentasi Kontrak API Interaktif, Topologi Microservices & Pembuktian Skema';
+      ? 'Interactive API Contracts, Microservices Topologies, Schema Proofs & Rate Limiters'
+      : 'Dokumentasi Kontrak API Interaktif, Topologi Microservices & Pembuktian Skema Transaksi';
 
     page3Cards = [
       {
         title: '1. GoFinance Banking Core API',
         cat: 'Backend',
         tech: 'Go • Echo • PostgreSQL • Redis • RabbitMQ • Docker',
-        desc: isEn 
-          ? 'High-concurrency banking engine with ACID transactional account transfers, Redis cache-aside ledger, and RabbitMQ broker.'
-          : 'Engine core banking dengan transaksi transfer akun atomik berstandar ACID, Redis cache-aside, dan message broker RabbitMQ.',
+        desc: isEn ? 'High-concurrency banking engine with ACID transactional transfers, Redis cache-aside ledger, and RabbitMQ broker.' : 'Engine core banking dengan transaksi transfer akun atomik berstandar ACID, Redis cache-aside, dan message broker RabbitMQ.',
         img: imgGofinance,
         link: 'https://github.com/mazkev/go-banking-core-system',
         label: 'github.com/mazkev/go-banking-core-system'
@@ -174,10 +163,8 @@ function generateRoleHtml(role, lang) {
       {
         title: '2. Swagger Go API Gateway Engine',
         cat: 'Backend',
-        tech: 'Go 1.26 • Gin • GORM • PostgreSQL • Swagger OpenAPI 3.0',
-        desc: isEn 
-          ? 'Production API gateway with interactive Swagger OpenAPI contract documentation, connection pooling, and JWT authorization.'
-          : 'API gateway produksi dengan dokumentasi kontrak OpenAPI Swagger interaktif, connection pooling, dan otorisasi JWT.',
+        tech: 'Go 1.26 • Gin • GORM • PostgreSQL • Swagger OpenAPI',
+        desc: isEn ? 'Production API gateway with interactive Swagger OpenAPI contract documentation, connection pooling, and JWT authorization.' : 'API gateway produksi dengan dokumentasi kontrak OpenAPI Swagger interaktif, connection pooling, dan otorisasi JWT.',
         img: imgSwaggerGo,
         link: 'https://github.com/mazkev/go-ecommerce-gateway-engine',
         label: 'github.com/mazkev/go-ecommerce-gateway-engine'
@@ -186,9 +173,7 @@ function generateRoleHtml(role, lang) {
         title: '3. Nexus Enterprise Microservices',
         cat: 'Backend',
         tech: 'Java Spring Boot 3.3 • Resilience4j • Eureka • PostgreSQL',
-        desc: isEn 
-          ? 'Enterprise backend architecture with Eureka service discovery, circuit-breaker failover protection, and JPA auditing.'
-          : 'Arsitektur backend enterprise dengan service discovery Eureka, proteksi circuit breaker Resilience4j, dan auditing JPA.',
+        desc: isEn ? 'Enterprise backend architecture with Eureka service discovery, circuit-breaker failover protection, and JPA auditing.' : 'Arsitektur backend enterprise dengan service discovery Eureka, proteksi circuit breaker Resilience4j, dan auditing JPA.',
         img: imgNexus,
         link: 'https://github.com/mazkev/nexus-workspace-engine',
         label: 'github.com/mazkev/nexus-workspace-engine'
@@ -197,34 +182,64 @@ function generateRoleHtml(role, lang) {
         title: '4. Go Clean Architecture Engine',
         cat: 'Backend',
         tech: 'Go • Gin • Clean Architecture • Docker • Unit Tests',
-        desc: isEn 
-          ? 'Modular domain-driven design decoupling business logic, usecases, and repository data stores for maximum testability.'
-          : 'Desain domain-driven modular yang memisahkan logika bisnis, usecase, dan repositori data untuk testability maksimal.',
+        desc: isEn ? 'Modular domain-driven design decoupling business logic, usecases, and repository data stores for maximum testability.' : 'Desain domain-driven modular yang memisahkan logika bisnis, usecase, dan repositori data untuk testability maksimal.',
         img: imgGoclean,
         link: 'https://github.com/mazkev/go-clean-arch',
         label: 'github.com/mazkev/go-clean-arch'
       },
       {
-        title: '5. Core Banking Swagger Documentation',
+        title: '5. Core Banking Swagger UI & Ledger',
         cat: 'Backend',
         tech: 'Go • Echo • Swagger UI • Bcrypt PIN • Audit Logs',
-        desc: isEn 
-          ? 'Interactive API testing suite verifying balance inquiries, atomic debit/credit transactions, and audit ledger entries.'
-          : 'Suite pengujian API interaktif untuk verifikasi cek saldo, transaksi debit/kredit atomik, dan mutasi buku besar.',
+        desc: isEn ? 'Interactive API testing suite verifying balance inquiries, atomic debit/credit transactions, and audit ledger entries.' : 'Suite pengujian API interaktif untuk verifikasi cek saldo, transaksi debit/kredit atomik, dan mutasi buku besar.',
         img: imgSwaggerBanking,
         link: 'https://github.com/mazkev/go-banking-core-system',
         label: 'github.com/mazkev/go-banking-core-system'
       },
       {
-        title: '6. Distributed Microservices Concurrency Lab',
+        title: '6. Microservices Concurrency Lab',
         cat: 'Backend',
         tech: 'Go • gRPC • Protocol Buffers • RabbitMQ • Redis',
-        desc: isEn 
-          ? 'Binary inter-service communication pipeline with worker pool concurrency and decoupled background message queues.'
-          : 'Pipa komunikasi biner antar-service berkecepatan tinggi dengan worker pool concurrency dan antrean pesan background.',
+        desc: isEn ? 'Binary inter-service communication pipeline with worker pool concurrency and decoupled background message queues.' : 'Pipa komunikasi biner antar-service berkecepatan tinggi dengan worker pool concurrency dan antrean pesan background.',
         img: imgGofinance,
         link: 'https://github.com/mazkev/go-distributed-microservices-lab',
         label: 'github.com/mazkev/go-distributed-microservices-lab'
+      },
+      {
+        title: '7. Bun Hono Ultra-Fast REST Engine',
+        cat: 'Backend',
+        tech: 'Bun • Hono v4 • Drizzle ORM • TypeScript • WebSocket',
+        desc: isEn ? 'Sub-millisecond REST API engine running on Bun runtime with Drizzle ORM, live WebSocket chat, and coupon discount logic.' : 'Engine REST API sub-milidetik berbasis Bun runtime dengan Drizzle ORM, live chat WebSocket, dan kupon diskon.',
+        img: imgMazmarket,
+        link: 'https://github.com/mazkev/hono-ecommerce-engine',
+        label: 'github.com/mazkev/hono-ecommerce-engine'
+      },
+      {
+        title: '8. AI API Manager & Rate Limiter',
+        cat: 'Backend',
+        tech: 'Node.js • Express • Redis • Token Quotas • React Console',
+        desc: isEn ? 'Reverse proxy API gateway with API key authentication, distributed rate limiting, token quota tracking, and latency analytics.' : 'API gateway reverse proxy dengan otentikasi API key, rate limiting terdistribusi, pelacakan kuota token, dan analitik latensi.',
+        img: imgMazcloud,
+        link: 'https://github.com/mazkev/AI-api-manager',
+        label: 'github.com/mazkev/AI-api-manager'
+      },
+      {
+        title: '9. Midtrans Payment Gateway API',
+        cat: 'Backend',
+        tech: 'Node.js • Express v5 • Prisma ORM • Midtrans • PDFKit',
+        desc: isEn ? 'Payment processing backend with Midtrans webhook verification, automated digital PDF invoice rendering, and email notifications.' : 'Backend pembayaran dengan webhook Midtrans, pembuatan invoice PDF otomatis dengan PDFKit, dan notifikasi email.',
+        img: imgSemarketplace,
+        link: 'https://github.com/mazkev/express-prisma-payment-api',
+        label: 'github.com/mazkev/express-prisma-payment-api'
+      },
+      {
+        title: '10. Spring Boot Enterprise Platform',
+        cat: 'Backend',
+        tech: 'Java 17 • Spring Boot 3.3 • JWT • Bucket4j • MongoDB',
+        desc: isEn ? 'Enterprise platform with Spring Security JWT, AOP audit logging, async event-driven mailers, Bucket4j rate limiting, and Docker.' : 'Platform enterprise dengan Spring Security JWT, audit logging AOP, emailer asinkron event-driven, dan rate limiting Bucket4j.',
+        img: imgMarketinvent,
+        link: 'https://github.com/mazkev/spring-boot-enterprise-platform',
+        label: 'github.com/mazkev/spring-boot-enterprise-platform'
       }
     ];
   } 
@@ -241,14 +256,15 @@ function generateRoleHtml(role, lang) {
       : 'Next.js 16 • React 19 • React Native (Expo) • Angular 19 • Kanvas 60 FPS';
 
     summary = isEn
-      ? `Frontend & Mobile Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record maintaining 100% SLA compliance for production operational tickets, user workflow issue resolution, and system stability. Creator of 48+ production-grade frontend web and mobile applications specializing in modern component architecture (Next.js 16 App Router, React 19, Angular 19 Signals, Vue 3 Pinia), reactive client state management (Zustand, Redux Toolkit, RxJS), dual-layer 60 FPS canvas graphics (React-Konva), and cross-platform mobile apps (React Native Expo SDK 56, Flutter). Strong foundation in responsive performance optimization, WebSockets, and Vercel edge deployment.`
-      : `Frontend & Mobile Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support Sistem Enterprise pada PT PLN Icon+. Memiliki keahlian teruji dalam penanganan tiket operasional produksi dengan kepatuhan SLA 100%, penyelesaian kendala antarmuka pengguna, dan kestabilan sistem. Membangun 48+ aplikasi frontend web dan mobile dengan spesialisasi arsitektur komponen modern (Next.js 16 App Router, React 19, Angular 19 Signals, Vue 3 Pinia), state management reaktif (Zustand, Redux Toolkit, RxJS), kanvas grafis dual-layer 60 FPS (React-Konva), dan mobile cross-platform (React Native Expo SDK 56, Flutter). Menguasai optimasi performa responsif, WebSockets, dan deployment Vercel.`;
+      ? `Frontend & Mobile Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record maintaining 100% SLA compliance for production operational tickets, user workflow issue resolution, and system stability. Deeply proficient in AI-Assisted Engineering, pairing with LLM tools to accelerate component prototyping, state architecture, and accessibility testing. Creator of 48+ production-grade frontend web and mobile applications specializing in modern component architecture (Next.js 16 App Router, React 19, Angular 19 Signals, Vue 3 Pinia), reactive client state management (Zustand, Redux Toolkit, RxJS), dual-layer 60 FPS canvas graphics (React-Konva), and cross-platform mobile apps (React Native Expo SDK 56, Flutter). Strong foundation in responsive performance optimization, WebSockets, and Vercel edge deployment.`
+      : `Frontend & Mobile Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support Sistem Enterprise pada PT PLN Icon+. Memiliki keahlian teruji dalam penanganan tiket operasional produksi dengan kepatuhan SLA 100%, penyelesaian kendala antarmuka pengguna, dan kestabilan sistem. Sangat mahir dalam Rekayasa Berbasis AI (AI-Assisted Engineering), memanfaatkan LLM tools untuk akselerasi prototyping komponen, perancangan arsitektur state, dan pengujian aksesibilitas. Membangun 48+ aplikasi frontend web dan mobile dengan spesialisasi arsitektur komponen modern (Next.js 16 App Router, React 19, Angular 19 Signals, Vue 3 Pinia), state management reaktif (Zustand, Redux Toolkit, RxJS), kanvas grafis dual-layer 60 FPS (React-Konva), dan mobile cross-platform (React Native Expo SDK 56, Flutter). Menguasai optimasi performa responsif, WebSockets, dan deployment Vercel.`;
 
     skillsHtml = `
       <div><strong>${isEn ? 'Core Languages:' : 'Bahasa Pemrograman:'}</strong> TypeScript, JavaScript (ES6+), Dart, HTML5, CSS3, Tailwind CSS v4</div>
       <div><strong>${isEn ? 'Web Frameworks:' : 'Framework Web:'}</strong> Next.js 16 (App Router, Server Components), React 19, Angular 19 (Signals, RxJS), Vue 3 (Composition API, Pinia), Vite</div>
       <div><strong>${isEn ? 'Mobile Development:' : 'Pengembangan Mobile:'}</strong> React Native (Expo SDK 56, Expo Router, New Architecture), Flutter (Riverpod 3, Dart), Camera/Video APIs</div>
       <div><strong>${isEn ? 'State & Interactive Graphics:' : 'State & Grafis Interaktif:'}</strong> Zustand, Redux Toolkit, React-Konva (60 FPS Infinite Canvas), Web Audio API, Recharts, TanStack Query/Table</div>
+      <div><strong>${isEn ? 'AI & Agentic Engineering:' : 'AI & Rekayasa Agentic:'}</strong> Gemini 2.5, Claude 3.7, OpenAI APIs, AI Component Prototyping, Prompt Engineering, Agentic Tooling, Automated Frontend Testing</div>
       <div><strong>${isEn ? 'DevOps & Tooling:' : 'DevOps & Alat Rekayasa:'}</strong> Git & GitHub, Postman, Webpack 5, Linux Bash, Vercel Edge Runtime, Responsive CSS Grid</div>
     `;
 
@@ -284,22 +300,12 @@ function generateRoleHtml(role, lang) {
           <span class="pillar-title">${isEn ? 'Flagship Frontend Web Applications & Interactive Workstations' : 'Aplikasi Web Unggulan & Workstation Grafis'}</span>
           <span class="pillar-count">React 19 • Next.js 16 • Angular 19</span>
         </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/react-canva-design-studio" class="repo-name">react-canva-design-studio:</a> ${isEn ? 'Browser vector graphic design studio with dual-layer 60 FPS React-Konva canvas, transformation matrices, and image export.' : 'Studio desain grafis berbasis web dengan dual-layer kanvas 60 FPS React-Konva dan pipeline ekspor multi-format.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/market-x-angular" class="repo-name">market-x-angular:</a> ${isEn ? 'Enterprise e-commerce storefront powered by Angular 19 reactive Signals, RxJS event streams, and seller back-office.' : 'Storefront e-commerce enterprise dengan reaktivitas Angular 19 Signals, RxJS streams, dan dashboard penjual.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/nextjs-spotify-music-player" class="repo-name">nextjs-spotify-music-player:</a> ${isEn ? 'Music streaming player with real-time Web Audio API frequency analysis canvas visualizer and synchronized lyrics.' : 'Pemutar musik web dengan visualisasi frekuensi real-time Web Audio API pada kanvas dan sinkronisasi lirik.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/react-trello-kanban-suite" class="repo-name">react-trello-kanban-suite:</a> ${isEn ? 'Glassmorphism Kanban project board with multi-axis drag-and-drop task sorting and Zustand state store.' : 'Board manajemen proyek Kanban glassmorphism dengan drag-and-drop multi-axis dan state store Zustand.'}</span>
-        </div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/react-canva-design-studio" class="repo-name">react-canva-design-studio:</a> ${isEn ? 'Browser vector graphic design studio with dual-layer 60 FPS React-Konva canvas, transformation matrices, and image export.' : 'Studio desain grafis berbasis web dengan dual-layer kanvas 60 FPS React-Konva dan pipeline ekspor multi-format.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/market-x-angular" class="repo-name">market-x-angular:</a> ${isEn ? 'Enterprise e-commerce storefront powered by Angular 19 reactive Signals, RxJS event streams, and seller back-office.' : 'Storefront e-commerce enterprise dengan reaktivitas Angular 19 Signals, RxJS streams, dan dashboard penjual.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/nextjs-spotify-music-player" class="repo-name">nextjs-spotify-music-player:</a> ${isEn ? 'Music streaming player with real-time Web Audio API frequency analysis canvas visualizer and synchronized lyrics.' : 'Pemutar musik web dengan visualisasi frekuensi real-time Web Audio API pada kanvas dan sinkronisasi lirik.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/react-trello-kanban-suite" class="repo-name">react-trello-kanban-suite:</a> ${isEn ? 'Glassmorphism Kanban project board with multi-axis drag-and-drop task sorting and Zustand state store.' : 'Board manajemen proyek Kanban glassmorphism dengan drag-and-drop multi-axis dan state store Zustand.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/hub-spot-clone" class="repo-name">hub-spot-clone:</a> ${isEn ? 'Enterprise CRM platform with sales pipeline Kanban, TanStack data tables, and Recharts performance analytics.' : 'Platform CRM penjualan enterprise dengan pipeline transaksi interaktif, tabel data TanStack, dan analitik performa.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/nextjs-football-sport-portal" class="repo-name">nextjs-football-sport-portal:</a> ${isEn ? 'Live match center with Next.js 16, real-time sports feed parsing, league standings, and editorial CMS.' : 'Portal berita dan skor sepak bola langsung dengan Next.js 16, jadwal pertandingan real-time, dan konsol admin CMS.'}</span></div>
       </div>
 
       <div class="pillar-card">
@@ -307,18 +313,11 @@ function generateRoleHtml(role, lang) {
           <span class="pillar-title">${isEn ? 'Cross-Platform Mobile Applications' : 'Aplikasi Mobile Cross-Platform'}</span>
           <span class="pillar-count">React Native (Expo 56) & Flutter</span>
         </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/treveloka-react-native-expo" class="repo-name">treveloka-react-native-expo:</a> ${isEn ? 'Mobile travel booking superapp with React Native 0.85, Expo Router, and Gemini AI itinerary assistant.' : 'Aplikasi mobile pemesanan perjalanan dengan React Native 0.85, Expo Router, dan asisten rencana perjalanan Gemini AI.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/tiktok-clone-react-native-expo" class="repo-name">tiktok-clone-react-native-expo:</a> ${isEn ? 'Mobile short-video platform featuring Expo Video autoplay feeds, camera recording, and live comment overlays.' : 'Platform video pendek mobile dengan pemutar Expo Video seamless autoplay dan perekaman video kamera terintegrasi.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/flutter-ecommerce-riverpod" class="repo-name">flutter-ecommerce-riverpod:</a> ${isEn ? 'Cross-platform mobile e-commerce platform built with Flutter, Dart, Riverpod 3 state management, and Clean Arch.' : 'Aplikasi mobile e-commerce cross-platform berbasis Flutter dan state management Riverpod 3 berstandar Clean Architecture.'}</span>
-        </div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/treveloka-react-native-expo" class="repo-name">treveloka-react-native-expo:</a> ${isEn ? 'Mobile travel booking superapp with React Native 0.85, Expo Router, and Gemini AI itinerary assistant.' : 'Aplikasi mobile pemesanan perjalanan dengan React Native 0.85, Expo Router, dan asisten rencana perjalanan Gemini AI.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/tiktok-clone-react-native-expo" class="repo-name">tiktok-clone-react-native-expo:</a> ${isEn ? 'Mobile short-video platform featuring Expo Video autoplay feeds, camera recording, and live comment overlays.' : 'Platform video pendek mobile dengan pemutar Expo Video seamless autoplay dan perekaman video kamera terintegrasi.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/shopee-clone-react-native-expo" class="repo-name">shopee-clone-react-native-expo:</a> ${isEn ? 'Mobile e-commerce marketplace with ShopeePay wallet simulator, multi-courier shipping calculator, and flash sales.' : 'Aplikasi marketplace mobile dengan simulator ShopeePay, kalkulator ongkir multi-ekspedisi, dan flash sale.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/react-native-inventory-tracker" class="repo-name">react-native-inventory-tracker:</a> ${isEn ? 'Mobile warehousing app with live camera barcode & QR scanner, multi-warehouse stock mutations, and offline cache.' : 'Aplikasi pergudangan mobile dengan scanner barcode & QR kamera langsung, mutasi stok, dan offline cache.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/flutter-grab-superapp-clone" class="repo-name">flutter-grab-superapp-clone:</a> ${isEn ? 'Cross-platform mobile superapp with Flutter, Riverpod 3, live driver tracking on OpenStreetMap, and food ordering.' : 'Aplikasi superapp mobile cross-platform dengan Flutter dan Riverpod 3, pelacakan driver di peta, dan pesan makanan.'}</span></div>
       </div>
 
       <!-- 12 LIVE DEPLOYMENTS TABLE -->
@@ -345,20 +344,18 @@ function generateRoleHtml(role, lang) {
     `;
 
     page3Title = isEn 
-      ? 'Frontend & Mobile Visual Annex: Production Interfaces & Demos' 
-      : 'Lampiran Visual Frontend & Mobile: Antarmuka Produksi & Live Demo';
+      ? 'Frontend & Mobile Visual Annex: 10 Flagship Interfaces & Demos' 
+      : 'Lampiran Visual Frontend & Mobile: 10 Antarmuka Unggulan & Live Demo';
     page3Subtitle = isEn
-      ? 'Vector Canvas Workstations, Dynamic Media Clients & Mobile App Views'
-      : 'Workstation Kanvas Vektor, Klien Media Dinamis & Tampilan Aplikasi Mobile';
+      ? 'Vector Canvas Workstations, Dynamic Media Clients, Dashboards & Mobile App Views'
+      : 'Workstation Kanvas Vektor, Klien Media Dinamis, Dashboard & Tampilan Aplikasi Mobile';
 
     page3Cards = [
       {
         title: '1. Canvass Visual Graphic Studio',
         cat: 'Frontend',
         tech: 'React 19 • React-Konva • Zustand • Tailwind CSS v4',
-        desc: isEn 
-          ? 'Browser vector graphic publishing workspace with dual-layer 60 FPS canvas, multi-element transform matrices, and high-resolution export.'
-          : 'Workstation desain vektor grafis berbasis web dengan dual-layer kanvas 60 FPS, manipulasi transform matriks elemen, dan ekspor multi-format.',
+        desc: isEn ? 'Browser vector graphic publishing workspace with dual-layer 60 FPS canvas, multi-element transform matrices, and high-resolution export.' : 'Workstation desain vektor grafis berbasis web dengan dual-layer kanvas 60 FPS, manipulasi transform matriks elemen, dan ekspor multi-format.',
         img: imgCanvass,
         link: 'https://canva-clone-fawn.vercel.app',
         label: 'canva-clone-fawn.vercel.app'
@@ -367,9 +364,7 @@ function generateRoleHtml(role, lang) {
         title: '2. Spotify Web Player & Visualizer',
         cat: 'Frontend',
         tech: 'Next.js 16 • Web Audio API • Frequency Visualizer • Tailwind',
-        desc: isEn 
-          ? 'High-fidelity audio streaming client with real-time Web Audio API frequency analysis canvas visualizer and synchronized lyrics.'
-          : 'Klien streaming audio dengan visualisasi frekuensi real-time Web Audio API pada kanvas, ekstraksi warna cover album, dan sinkronisasi lirik.',
+        desc: isEn ? 'High-fidelity audio streaming client with real-time Web Audio API frequency analysis canvas visualizer and synchronized lyrics.' : 'Klien streaming audio dengan visualisasi frekuensi real-time Web Audio API pada kanvas, ekstraksi warna cover album, dan sinkronisasi lirik.',
         img: imgSpotify,
         link: 'https://spotify-clonez.vercel.app',
         label: 'spotify-clonez.vercel.app'
@@ -378,9 +373,7 @@ function generateRoleHtml(role, lang) {
         title: '3. MarketX Angular 19 Storefront',
         cat: 'Frontend',
         tech: 'Angular 19 • Angular Signals • RxJS • Responsive Dash',
-        desc: isEn 
-          ? 'Enterprise storefront powered by Angular 19 reactive Signals and RxJS event streams with live order tracking and merchant back-office.'
-          : 'Storefront enterprise menggunakan reaktivitas Angular Signals dan RxJS event streams dengan pelacak status pesanan live dan back-office.',
+        desc: isEn ? 'Enterprise storefront powered by Angular 19 reactive Signals and RxJS event streams with live order tracking and merchant back-office.' : 'Storefront enterprise menggunakan reaktivitas Angular Signals dan RxJS event streams dengan pelacak status pesanan live dan back-office.',
         img: imgMarketx,
         link: 'https://market-x-angular.vercel.app',
         label: 'market-x-angular.vercel.app'
@@ -389,34 +382,64 @@ function generateRoleHtml(role, lang) {
         title: '4. Trello Glassmorphism Kanban Workspace',
         cat: 'Frontend',
         tech: 'React 19 • Zustand • @hello-pangea/dnd • Tailwind v4',
-        desc: isEn 
-          ? 'Glassmorphism Kanban project board with multi-axis drag-and-drop task sorting and card detail modal editing.'
-          : 'Board manajemen proyek Kanban glassmorphism dengan drag-and-drop task sorting multi-axis dan pengeditan detail kartu modal.',
+        desc: isEn ? 'Glassmorphism Kanban project board with multi-axis drag-and-drop task sorting and card detail modal editing.' : 'Board manajemen proyek Kanban glassmorphism dengan drag-and-drop task sorting multi-axis dan pengeditan detail kartu modal.',
         img: imgTrello,
         link: 'https://trello-azure-five.vercel.app',
         label: 'trello-azure-five.vercel.app'
       },
       {
-        title: '5. Traveloka Mobile App Clone',
+        title: '5. HubSpot Enterprise CRM Platform',
+        cat: 'Frontend',
+        tech: 'React 19 • Recharts • Tailwind CSS v4 • REST API',
+        desc: isEn ? 'B2B sales and customer relationship management workspace featuring interactive deal pipelines, contacts table, and analytics.' : 'Workspace CRM penjualan enterprise dengan pipeline transaksi interaktif, tabel manajemen kontak, dan grafik analitik.',
+        img: imgHubspot,
+        link: 'https://hub-spot-clone-five.vercel.app',
+        label: 'hub-spot-clone-five.vercel.app'
+      },
+      {
+        title: '6. Indofooty Real-Time Match Center',
+        cat: 'Frontend',
+        tech: 'Next.js 16 • Tailwind CSS v4 • Real-Time Sports API',
+        desc: isEn ? 'Live sports match fixture hub with league standings, dynamic club comparison, and interactive editorial reader.' : 'Hub pertandingan olahraga sepak bola langsung dengan klasemen liga, komparasi statistik klub, dan pembaca artikel berita interaktif.',
+        img: imgIndofooty,
+        link: 'https://indofooty.vercel.app',
+        label: 'indofooty.vercel.app'
+      },
+      {
+        title: '7. Traveloka Mobile App Clone',
         cat: 'Mobile',
         tech: 'React Native 0.85 • Expo SDK 56 • Gemini AI Assistant',
-        desc: isEn 
-          ? 'Mobile travel booking superapp featuring flight & hotel search grids, Gemini AI itinerary assistant, and QR e-ticket generation.'
-          : 'Aplikasi mobile pemesanan perjalanan dengan grid pencarian penerbangan & hotel, asisten rencana perjalanan Gemini AI, dan tiket QR.',
+        desc: isEn ? 'Mobile travel booking superapp featuring flight & hotel search grids, Gemini AI itinerary assistant, and QR e-ticket generation.' : 'Aplikasi mobile pemesanan perjalanan dengan grid pencarian penerbangan & hotel, asisten rencana perjalanan Gemini AI, dan tiket QR.',
         img: imgNexus,
         link: 'https://github.com/mazkev/treveloka-react-native-expo',
         label: 'github.com/mazkev/treveloka-react-native-expo'
       },
       {
-        title: '6. HubSpot Enterprise CRM Platform',
+        title: '8. Grab Cross-Platform Superapp Clone',
+        cat: 'Mobile',
+        tech: 'Flutter • Dart • Riverpod 3 • OpenStreetMap',
+        desc: isEn ? 'Mobile superapp clone featuring live driver coordinate rendering, food delivery ordering, and wallet integration.' : 'Superapp mobile cross-platform dengan visualisasi koordinat driver peta OpenStreetMap, pemesanan GrabFood, dan integrasi dompet.',
+        img: imgGrab,
+        link: 'https://github.com/mazkev/flutter-grab-superapp-clone',
+        label: 'github.com/mazkev/flutter-grab-superapp-clone'
+      },
+      {
+        title: '9. Airbnb Fullstack Property Rental',
         cat: 'Frontend',
-        tech: 'React 19 • Recharts • Tailwind CSS v4 • REST API',
-        desc: isEn 
-          ? 'B2B sales and customer relationship management workspace featuring interactive deal pipelines, contacts table, and analytics.'
-          : 'Workspace CRM penjualan enterprise dengan pipeline transaksi interaktif, tabel manajemen kontak, dan grafik analitik.',
-        img: imgHubspot,
-        link: 'https://hub-spot-clone-five.vercel.app',
-        label: 'hub-spot-clone-five.vercel.app'
+        tech: 'React 19 • Tailwind CSS v4 • Interactive Datepicker',
+        desc: isEn ? 'Property booking marketplace with interactive date pickers, guest counters, dynamic property filtering, and responsive cards.' : 'Marketplace sewa akomodasi dengan datepicker interaktif, penghitung tamu, filter spesifikasi dinamis, dan kartu galeri foto responsif.',
+        img: imgAirbnb,
+        link: 'https://github.com/mazkev/airbnb-clone-react',
+        label: 'github.com/mazkev/airbnb-clone-react'
+      },
+      {
+        title: '10. Netflix Cinematic Streaming Hub',
+        cat: 'Frontend',
+        tech: 'React 19 • TMDb API • Custom Video Modal • Tailwind',
+        desc: isEn ? 'Streaming portal with video billboard preview hero, horizontal genre carousels, and detailed movie modal overviews.' : 'Portal streaming film dengan preview billboard video hero, carousel horizontal bergenre, dan modal deskripsi sinematik detail.',
+        img: imgNetflix,
+        link: 'https://github.com/mazkev/netflix-clone-react',
+        label: 'github.com/mazkev/netflix-clone-react'
       }
     ];
   }
@@ -433,14 +456,15 @@ function generateRoleHtml(role, lang) {
       : 'Sistem Backend • Platform Fullstack • Arsitektur Cloud';
 
     summary = isEn
-      ? `Fullstack Software Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record maintaining 100% SLA compliance for production operational tickets, authoring structured SQL queries (PostgreSQL, Oracle, MySQL) for transaction verification and data reporting, and monitoring high-availability system workflows 24/7. Concurrently architected and deployed 82 verified software repositories spanning distributed Go & Java Spring Boot microservices, modern Next.js 16 & React 19 web platforms, and mobile apps. Strong foundation in Clean Architecture (DDD), ACID transactional ledgers, Redis caching, RabbitMQ message brokers, and Docker containerization.`
-      : `Fullstack Software Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support Sistem Enterprise pada PT PLN Icon+. Memiliki keahlian teruji dalam penanganan tiket operasional produksi dengan kepatuhan SLA 100%, penulisan query SQL terstruktur (PostgreSQL, Oracle, MySQL) untuk validasi data transaksi dan pelaporan, serta pemantauan kestabilan sistem 24/7. Secara mandiri merancang dan membangun 82 repositori perangkat lunak terverifikasi mencakup microservices Go & Java Spring Boot, platform web modern Next.js 16 & React 19, serta aplikasi mobile. Menguasai Clean Architecture (DDD), transaksi atomik ACID, caching Redis, RabbitMQ, dan kontainerisasi Docker.`;
+      ? `Fullstack Software Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record maintaining 100% SLA compliance for production operational tickets, authoring structured SQL queries (PostgreSQL, Oracle, MySQL) for transaction verification and data reporting, and monitoring high-availability system workflows 24/7. Deeply proficient in AI-Assisted Engineering, pairing with LLM tools to accelerate architecture design, component prototyping, and automated test generation. Concurrently architected and deployed 82 verified software repositories spanning distributed Go & Java Spring Boot microservices, modern Next.js 16 & React 19 web platforms, and mobile apps. Strong foundation in Clean Architecture (DDD), ACID transactional ledgers, Redis caching, RabbitMQ message brokers, and Docker containerization.`
+      : `Fullstack Software Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support Sistem Enterprise pada PT PLN Icon+. Memiliki keahlian teruji dalam penanganan tiket operasional produksi dengan kepatuhan SLA 100%, penulisan query SQL terstruktur (PostgreSQL, Oracle, MySQL) untuk validasi data transaksi dan pelaporan, serta pemantauan kestabilan sistem 24/7. Sangat mahir dalam Rekayasa Berbasis AI (AI-Assisted Engineering), memanfaatkan LLM tools untuk akselerasi perancangan arsitektur, prototyping antarmuka, dan otomasi test suite. Secara mandiri merancang dan membangun 82 repositori perangkat lunak terverifikasi mencakup microservices Go & Java Spring Boot, platform web modern Next.js 16 & React 19, serta aplikasi mobile berprinsip Clean Architecture (DDD), transaksi atomik ACID, caching Redis, dan kontainerisasi Docker.`;
 
     skillsHtml = `
       <div><strong>${isEn ? 'Languages:' : 'Bahasa Pemrograman:'}</strong> Go (Golang), Java (JDK 17/21), TypeScript, JavaScript (Node.js/Bun), Python 3, PHP 8, Dart, SQL, HTML5/CSS3</div>
       <div><strong>${isEn ? 'Backend & Cloud:' : 'Backend & Arsitektur:'}</strong> Java Spring Boot 3.3, Go (Gin/Fiber/Echo), Bun + Hono, Express.js, FastAPI, Laravel 12, Clean Architecture (DDD), RESTful APIs, gRPC (Protobuf), Microservices, WebSocket</div>
       <div><strong>${isEn ? 'Frontend & Mobile:' : 'Frontend & Mobile:'}</strong> Next.js 16 (App Router), React 19, TypeScript, Vue 3 (Pinia), Angular 19 (Signals), React Native (Expo SDK 56), Flutter (Riverpod 3), Tailwind CSS v4, Zustand, Redux Toolkit</div>
       <div><strong>${isEn ? 'Databases & Messaging:' : 'Database & Message Broker:'}</strong> PostgreSQL (GORM, Prisma, ACID Transactions, Connection Pooling), MySQL, MongoDB, SQLite (LibSQL), Redis (Cache-Aside, Rate Limiting), RabbitMQ (Message Broker)</div>
+      <div><strong>${isEn ? 'AI & Agentic Engineering:' : 'AI & Rekayasa Agentic:'}</strong> Gemini 2.5, Claude 3.7, OpenAI APIs, AI Component Prototyping, Prompt Engineering, Agentic Tooling, Automated Testing</div>
       <div><strong>${isEn ? 'DevOps, Tooling & Testing:' : 'DevOps & Alat Rekayasa:'}</strong> Docker, Docker Compose, Git & GitHub, Postman, Swagger / OpenAPI, Vite, Webpack 5, Linux Bash, Vercel Edge Runtime</div>
     `;
 
@@ -477,22 +501,10 @@ function generateRoleHtml(role, lang) {
           <span class="pillar-count">19 Repositories</span>
         </div>
         <div class="pillar-tech">Go (Golang) • Java Spring Boot • Bun/Hono • Node.js • PostgreSQL • Redis • RabbitMQ • gRPC • Docker</div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/go-banking-core-system" class="repo-name">go-banking-core-system:</a> ${isEn ? 'Core banking engine with atomic balance transfers, ACID PostgreSQL row locks, and Bcrypt PIN.' : 'Engine core banking transaksi transfer saldo atomik dengan row-level lock PostgreSQL dan validasi PIN Bcrypt.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/go-distributed-microservices-lab" class="repo-name">go-distributed-microservices-lab:</a> ${isEn ? 'High-throughput microservices communicating over binary gRPC and asynchronous RabbitMQ event bus.' : 'Layanan mikro terdistribusi dengan komunikasi biner gRPC dan antrean pesan asinkron RabbitMQ.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/nexus-workspace-engine" class="repo-name">nexus-workspace-engine:</a> ${isEn ? 'Java Spring Boot 3.3 enterprise microservices ecosystem with Resilience4j circuit breakers and Eureka discovery.' : 'Ekosistem microservices enterprise Java Spring Boot 3.3 dengan circuit breaker Resilience4j dan discovery Eureka.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/go-clean-arch" class="repo-name">go-clean-arch:</a> ${isEn ? 'Decoupled Clean Architecture boilerplate implementing strict Domain, Usecase, and Repository boundaries.' : 'Arsitektur Clean terstruktur dengan pemisahan tegas antara lapisan Domain, Usecase, dan Repository.'}</span>
-        </div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-banking-core-system" class="repo-name">go-banking-core-system:</a> ${isEn ? 'Core banking engine with atomic balance transfers, ACID PostgreSQL row locks, and Bcrypt PIN.' : 'Engine core banking transaksi transfer saldo atomik dengan row-level lock PostgreSQL dan validasi PIN Bcrypt.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-distributed-microservices-lab" class="repo-name">go-distributed-microservices-lab:</a> ${isEn ? 'High-throughput microservices communicating over binary gRPC and asynchronous RabbitMQ event bus.' : 'Layanan mikro terdistribusi dengan komunikasi biner gRPC dan antrean pesan asinkron RabbitMQ.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/nexus-workspace-engine" class="repo-name">nexus-workspace-engine:</a> ${isEn ? 'Java Spring Boot 3.3 enterprise microservices ecosystem with Resilience4j circuit breakers and Eureka discovery.' : 'Ekosistem microservices enterprise Java Spring Boot 3.3 dengan circuit breaker Resilience4j dan discovery Eureka.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-clean-arch" class="repo-name">go-clean-arch:</a> ${isEn ? 'Decoupled Clean Architecture boilerplate implementing strict Domain, Usecase, and Repository boundaries.' : 'Arsitektur Clean terstruktur dengan pemisahan tegas antara lapisan Domain, Usecase, dan Repository.'}</span></div>
       </div>
 
       <div class="pillar-card">
@@ -501,22 +513,10 @@ function generateRoleHtml(role, lang) {
           <span class="pillar-count">22 Repositories</span>
         </div>
         <div class="pillar-tech">Next.js 16 • React 19 • React Native (Expo SDK 56) • Flutter • FastAPI • Laravel 12 • Prisma 7 • LibSQL</div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/baye-ecommerce-marketplace" class="repo-name">baye-ecommerce-marketplace:</a> ${isEn ? 'Auction e-commerce with Next.js 16 Server Components, live bidding simulation, LibSQL, and digital QR invoices.' : 'Marketplace lelang produksi dengan Next.js 16, LibSQL serverless, komparasi produk, dan cetak invoice QR digital.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/tokopedia-react-storefront" class="repo-name">tokopedia-react-storefront:</a> ${isEn ? 'Fullstack marketplace combining Go REST API backend with React 19, category filters, and optimistic cart checkout.' : 'E-commerce fullstack memadukan backend Go REST API dengan frontend React 19 dan sinkronisasi transaksi PostgreSQL.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/treveloka-react-native-expo" class="repo-name">treveloka-react-native-expo:</a> ${isEn ? 'Mobile travel booking superapp with React Native 0.85, Expo Router, and Gemini AI itinerary assistant.' : 'Aplikasi mobile pemesanan perjalanan dengan React Native 0.85, Expo Router, dan asisten rencana perjalanan Gemini AI.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/tiktok-clone-react-native-expo" class="repo-name">tiktok-clone-react-native-expo:</a> ${isEn ? 'Mobile short-video platform featuring Expo Video autoplay feeds, camera recording, and live comment overlays.' : 'Platform video pendek mobile dengan pemutar Expo Video seamless autoplay dan perekaman video kamera terintegrasi.'}</span>
-        </div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/baye-ecommerce-marketplace" class="repo-name">baye-ecommerce-marketplace:</a> ${isEn ? 'Auction e-commerce with Next.js 16 Server Components, live bidding simulation, LibSQL, and digital QR invoices.' : 'Marketplace lelang produksi dengan Next.js 16, LibSQL serverless, komparasi produk, dan cetak invoice QR digital.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/tokopedia-react-storefront" class="repo-name">tokopedia-react-storefront:</a> ${isEn ? 'Fullstack marketplace combining Go REST API backend with React 19, category filters, and optimistic cart checkout.' : 'E-commerce fullstack memadukan backend Go REST API dengan frontend React 19 dan sinkronisasi transaksi PostgreSQL.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/treveloka-react-native-expo" class="repo-name">treveloka-react-native-expo:</a> ${isEn ? 'Mobile travel booking superapp with React Native 0.85, Expo Router, and Gemini AI itinerary assistant.' : 'Aplikasi mobile pemesanan perjalanan dengan React Native 0.85, Expo Router, dan asisten rencana perjalanan Gemini AI.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/tiktok-clone-react-native-expo" class="repo-name">tiktok-clone-react-native-expo:</a> ${isEn ? 'Mobile short-video platform featuring Expo Video autoplay feeds, camera recording, and live comment overlays.' : 'Platform video pendek mobile dengan pemutar Expo Video seamless autoplay dan perekaman video kamera terintegrasi.'}</span></div>
       </div>
 
       <div class="pillar-card">
@@ -525,22 +525,10 @@ function generateRoleHtml(role, lang) {
           <span class="pillar-count">41 Repositories</span>
         </div>
         <div class="pillar-tech">React 19 • Vue 3 (Pinia) • Angular 19 (Signals) • Zustand • Tailwind CSS v4 • React-Konva • Web Audio API</div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/react-canva-design-studio" class="repo-name">react-canva-design-studio:</a> ${isEn ? 'Vector graphic studio with dual-layer 60 FPS React-Konva canvas, transformation matrices, and image export.' : 'Studio desain grafis berbasis web dengan dual-layer kanvas 60 FPS React-Konva dan pipeline ekspor multi-format.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/market-x-angular" class="repo-name">market-x-angular:</a> ${isEn ? 'Enterprise e-commerce storefront powered by Angular 19 reactive Signals, RxJS event streams, and seller dashboard.' : 'Storefront e-commerce enterprise dengan reaktivitas Angular 19 Signals, RxJS streams, dan dashboard penjual.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/nextjs-spotify-music-player" class="repo-name">nextjs-spotify-music-player:</a> ${isEn ? 'Music streaming player with real-time Web Audio API frequency analysis canvas visualizer and synchronized lyrics.' : 'Pemutar musik web dengan visualisasi frekuensi real-time Web Audio API pada kanvas dan sinkronisasi lirik.'}</span>
-        </div>
-        <div class="repo-item">
-          <span>•</span>
-          <span><a href="https://github.com/mazkev/react-trello-kanban-suite" class="repo-name">react-trello-kanban-suite:</a> ${isEn ? 'Glassmorphism Kanban project board with multi-axis drag-and-drop task sorting and Zustand state store.' : 'Board manajemen proyek Kanban glassmorphism dengan drag-and-drop multi-axis dan state store Zustand.'}</span>
-        </div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/react-canva-design-studio" class="repo-name">react-canva-design-studio:</a> ${isEn ? 'Vector graphic studio with dual-layer 60 FPS React-Konva canvas, transformation matrices, and image export.' : 'Studio desain grafis berbasis web dengan dual-layer kanvas 60 FPS React-Konva dan pipeline ekspor multi-format.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/market-x-angular" class="repo-name">market-x-angular:</a> ${isEn ? 'Enterprise e-commerce storefront powered by Angular 19 reactive Signals, RxJS event streams, and seller dashboard.' : 'Storefront e-commerce enterprise dengan reaktivitas Angular 19 Signals, RxJS streams, dan dashboard penjual.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/nextjs-spotify-music-player" class="repo-name">nextjs-spotify-music-player:</a> ${isEn ? 'Music streaming player with real-time Web Audio API frequency analysis canvas visualizer and synchronized lyrics.' : 'Pemutar musik web dengan visualisasi frekuensi real-time Web Audio API pada kanvas dan sinkronisasi lirik.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/react-trello-kanban-suite" class="repo-name">react-trello-kanban-suite:</a> ${isEn ? 'Glassmorphism Kanban project board with multi-axis drag-and-drop task sorting and Zustand state store.' : 'Board manajemen proyek Kanban glassmorphism dengan drag-and-drop multi-axis dan state store Zustand.'}</span></div>
       </div>
 
       <!-- 12 LIVE DEPLOYMENTS TABLE -->
@@ -567,8 +555,8 @@ function generateRoleHtml(role, lang) {
     `;
 
     page3Title = isEn 
-      ? 'Visual Project Annex & Production Interfaces' 
-      : 'Lampiran Visual Portofolio & Bukti Antarmuka Produksi';
+      ? 'Visual Project Annex: 10 Production Interfaces & Workstations' 
+      : 'Lampiran Visual Portofolio: 10 Antarmuka Produksi & Workstation';
     page3Subtitle = isEn
       ? 'High-Fidelity Visual Proof: Real Production Screenshots, Workstation Canvas & Live Demos'
       : 'Bukti Visual Nyata: Tangkapan Layar Produksi Asli, Kanvas Interaktif & Live Demo';
@@ -578,9 +566,7 @@ function generateRoleHtml(role, lang) {
         title: '1. GoFinance Banking Core API',
         cat: 'Backend',
         tech: 'Go • Echo • PostgreSQL • Redis • RabbitMQ • Docker',
-        desc: isEn 
-          ? 'High-concurrency banking engine with ACID transactional account transfers, Redis cache-aside ledger, RabbitMQ message brokers, and Bcrypt security.' 
-          : 'Engine core banking dengan transaksi transfer akun atomik berstandar ACID, Redis cache-aside, message broker RabbitMQ, dan pengamanan Bcrypt.',
+        desc: isEn ? 'High-concurrency banking engine with ACID transactional account transfers, Redis cache-aside ledger, RabbitMQ message brokers, and Bcrypt security.' : 'Engine core banking dengan transaksi transfer akun atomik berstandar ACID, Redis cache-aside, message broker RabbitMQ, dan pengamanan Bcrypt.',
         img: imgGofinance,
         link: 'https://github.com/mazkev/go-banking-core-system',
         label: 'github.com/mazkev/go-banking-core-system'
@@ -589,9 +575,7 @@ function generateRoleHtml(role, lang) {
         title: '2. Nexus Enterprise Microservices',
         cat: 'Fullstack',
         tech: 'Next.js 16 • Java Spring Boot • Resilience4j • PostgreSQL',
-        desc: isEn 
-          ? 'Distributed enterprise platform featuring Spring Cloud service discovery, circuit-breaker failover protection, and reactive Next.js workspace client.' 
-          : 'Platform enterprise terdistribusi dengan service discovery Spring Cloud, proteksi circuit breaker Resilience4j, dan klien workspace Next.js 16.',
+        desc: isEn ? 'Distributed enterprise platform featuring Spring Cloud service discovery, circuit-breaker failover protection, and reactive Next.js workspace client.' : 'Platform enterprise terdistribusi dengan service discovery Spring Cloud, proteksi circuit breaker Resilience4j, dan klien workspace Next.js 16.',
         img: imgNexus,
         link: 'https://nexus-project-mu.vercel.app',
         label: 'nexus-project-mu.vercel.app'
@@ -600,9 +584,7 @@ function generateRoleHtml(role, lang) {
         title: '3. Tokopedia Fullstack Commerce',
         cat: 'Fullstack',
         tech: 'Go REST API • React 19 • PostgreSQL • Tailwind CSS v4',
-        desc: isEn 
-          ? 'Commercial e-commerce platform pairing a Go REST API with React 19. Features optimistic cart updates, category filtering chips, and checkout transactions.' 
-          : 'Platform e-commerce mengintegrasikan Go REST API dengan React 19. Dilengkapi sinkronisasi keranjang optimistik dan checkout transaksi PostgreSQL.',
+        desc: isEn ? 'Commercial e-commerce platform pairing a Go REST API with React 19. Features optimistic cart updates, category filtering chips, and checkout transactions.' : 'Platform e-commerce mengintegrasikan Go REST API dengan React 19. Dilengkapi sinkronisasi keranjang optimistik dan checkout transaksi PostgreSQL.',
         img: imgTokopedia,
         link: 'https://tokopedia-react.vercel.app',
         label: 'tokopedia-react.vercel.app'
@@ -611,9 +593,7 @@ function generateRoleHtml(role, lang) {
         title: '4. Canvass Visual Graphic Studio',
         cat: 'Frontend',
         tech: 'React 19 • React-Konva • Zustand • Tailwind CSS v4',
-        desc: isEn 
-          ? 'Browser-based vector graphic publishing workspace with dual-layer 60 FPS canvas, multi-element transform matrices, and high-resolution PNG export.' 
-          : 'Workstation desain vektor grafis berbasis web dengan dual-layer kanvas 60 FPS, manipulasi transform matriks elemen, dan ekspor multi-format.',
+        desc: isEn ? 'Browser-based vector graphic publishing workspace with dual-layer 60 FPS canvas, multi-element transform matrices, and high-resolution PNG export.' : 'Workstation desain vektor grafis berbasis web dengan dual-layer kanvas 60 FPS, manipulasi transform matriks elemen, dan ekspor multi-format.',
         img: imgCanvass,
         link: 'https://canva-clone-fawn.vercel.app',
         label: 'canva-clone-fawn.vercel.app'
@@ -622,9 +602,7 @@ function generateRoleHtml(role, lang) {
         title: '5. MarketX Angular E-Commerce',
         cat: 'Frontend',
         tech: 'Angular 19 • Angular Signals • RxJS • Responsive Dash',
-        desc: isEn 
-          ? 'Enterprise storefront powered by Angular 19 reactive Signals and RxJS event streams. Features live order tracking and merchant back-office management.' 
-          : 'Storefront enterprise menggunakan reaktivitas Angular Signals dan RxJS event streams. Dilengkapi pelacak status pesanan live dan back-office penjual.',
+        desc: isEn ? 'Enterprise storefront powered by Angular 19 reactive Signals and RxJS event streams. Features live order tracking and merchant back-office management.' : 'Storefront enterprise menggunakan reaktivitas Angular Signals dan RxJS event streams. Dilengkapi pelacak status pesanan live dan back-office penjual.',
         img: imgMarketx,
         link: 'https://market-x-angular.vercel.app',
         label: 'market-x-angular.vercel.app'
@@ -633,12 +611,46 @@ function generateRoleHtml(role, lang) {
         title: '6. Spotify Web Player & Visualizer',
         cat: 'Frontend',
         tech: 'Next.js 16 • Web Audio API • Frequency Visualizer • Tailwind',
-        desc: isEn 
-          ? 'High-fidelity audio streaming client with real-time Web Audio API frequency analysis canvas visualizer, dynamic album color palette extraction, and lyrics.' 
-          : 'Klien streaming audio dengan visualisasi frekuensi real-time Web Audio API pada kanvas, ekstraksi warna cover album dinamis, dan sinkronisasi lirik.',
+        desc: isEn ? 'High-fidelity audio streaming client with real-time Web Audio API frequency analysis canvas visualizer, dynamic album color palette extraction, and lyrics.' : 'Klien streaming audio dengan visualisasi frekuensi real-time Web Audio API pada kanvas, ekstraksi warna cover album dinamis, dan sinkronisasi lirik.',
         img: imgSpotify,
         link: 'https://spotify-clonez.vercel.app',
         label: 'spotify-clonez.vercel.app'
+      },
+      {
+        title: '7. Trello Glassmorphism Kanban Workspace',
+        cat: 'Frontend',
+        tech: 'React 19 • Zustand • @hello-pangea/dnd • Tailwind v4',
+        desc: isEn ? 'Glassmorphism Kanban project board with multi-axis drag-and-drop task sorting, card detail modal editing, and workflow automation.' : 'Board manajemen proyek Kanban glassmorphism dengan drag-and-drop multi-axis, pengeditan modal kartu tugas, dan otomasi alur kerja.',
+        img: imgTrello,
+        link: 'https://trello-azure-five.vercel.app',
+        label: 'trello-azure-five.vercel.app'
+      },
+      {
+        title: '8. HubSpot Enterprise CRM Platform',
+        cat: 'Frontend',
+        tech: 'React 19 • TanStack Table • Recharts • REST API',
+        desc: isEn ? 'Enterprise CRM sales platform featuring interactive deal pipelines, contact data grid, and automated performance tracking.' : 'Platform CRM penjualan enterprise dengan pipeline transaksi interaktif, tabel data kontak, dan pelacakan performa otomatis.',
+        img: imgHubspot,
+        link: 'https://hub-spot-clone-five.vercel.app',
+        label: 'hub-spot-clone-five.vercel.app'
+      },
+      {
+        title: '9. Indofooty Real-Time Match Center',
+        cat: 'Fullstack',
+        tech: 'Next.js 16 • Tailwind CSS v4 • Real-Time Sports API',
+        desc: isEn ? 'Live sports score and news portal with Next.js 16, real-time match fixture feeds, league standings, and editorial CMS console.' : 'Portal berita dan skor sepak bola langsung dengan Next.js 16, jadwal pertandingan real-time, klasemen liga, dan konsol admin CMS.',
+        img: imgIndofooty,
+        link: 'https://indofooty.vercel.app',
+        label: 'indofooty.vercel.app'
+      },
+      {
+        title: '10. Swagger Go API Gateway Engine',
+        cat: 'Backend',
+        tech: 'Go 1.26 • Gin • GORM • PostgreSQL • Swagger OpenAPI 3.0',
+        desc: isEn ? 'Production API gateway with interactive Swagger OpenAPI contract documentation, reverse proxy routing, and JWT authorization.' : 'API gateway produksi dengan dokumentasi kontrak OpenAPI Swagger interaktif, routing reverse proxy, dan otorisasi JWT.',
+        img: imgSwaggerGo,
+        link: 'https://github.com/mazkev/go-ecommerce-gateway-engine',
+        label: 'github.com/mazkev/go-ecommerce-gateway-engine'
       }
     ];
   }
@@ -657,20 +669,28 @@ function generateRoleHtml(role, lang) {
   ];
 
   const job2Title = isEn 
-    ? (role === 'backend' ? 'Backend Systems & Architecture Research' : role === 'frontend' ? 'Frontend & Mobile Systems Research' : 'Software Engineering & Open Source Research')
-    : (role === 'backend' ? 'Rekayasa Sistem Backend & Riset Arsitektur' : role === 'frontend' ? 'Rekayasa Sistem Frontend & Mobile' : 'Rekayasa Perangkat Lunak & Riset Open Source');
+    ? (role === 'backend' ? 'AI-Assisted Backend Systems & Architecture' : role === 'frontend' ? 'AI-Assisted Frontend & Mobile Engineering' : 'AI-Assisted Software Engineer & Open Source Contributor')
+    : (role === 'backend' ? 'Rekayasa Sistem Backend & Arsitektur Berbasis AI' : role === 'frontend' ? 'Rekayasa Frontend & Mobile Berbasis AI' : 'AI-Assisted Software Engineer & Kontributor Open Source');
   const job2Company = isEn 
     ? 'Independent Engineering & Open Source Projects' 
     : 'Pengembangan Mandiri & Proyek Open Source';
   const job2Date = isEn ? '2023 - Present' : '2023 - Sekarang';
   const job2Bullets = isEn ? [
+    'Pioneered AI-assisted software engineering workflows (Gemini 2.5, Claude 3.7, OpenAI, agentic coding tools) for rapid architectural scaffolding, schema design, and automated test suite generation.',
     `Architected, built, and audited <strong>${role === 'backend' ? '19 production-grade backend microservices' : role === 'frontend' ? '48+ frontend and mobile applications' : '82 production-grade repositories'}</strong> with Clean Architecture and Docker containerization.`,
-    'Designed <strong>ACID transactional schemas</strong>, implemented JWT/RBAC security pipelines, Redis cache-aside patterns, and RabbitMQ brokers.',
-    'Maintained strict engineering standards: unit testing, Swagger/OpenAPI documentation, and high-availability operations.'
+    role === 'backend'
+      ? 'Audited AI-generated architectures for strict security, PostgreSQL row-level locks, Redis cache-aside patterns, and RabbitMQ decoupled message brokers.'
+      : role === 'frontend'
+      ? 'Shipped and maintained 12 live cloud applications on Vercel with responsive mobile-first UI, fast hydration, and accessible design systems.'
+      : 'Shipped and maintained 12 live cloud applications on Vercel with serverless databases, ACID transactions, and responsive modern UI architecture.'
   ] : [
+    'Menerapkan alur kerja rekayasa perangkat lunak modern berbasis AI (Gemini 2.5, Claude 3.7, OpenAI, agentic coding tools) untuk akselerasi perancangan arsitektur, pemodelan skema, dan generasi automated test suite.',
     `Merancang, membangun, dan mengaudit <strong>${role === 'backend' ? '19 repositori sistem backend microservices' : role === 'frontend' ? '48+ aplikasi frontend dan mobile' : '82 repositori perangkat lunak'}</strong> berprinsip Clean Architecture dan kontainerisasi Docker.`,
-    'Merancang skema database transaksional <strong>ACID</strong>, pipa keamanan JWT/RBAC, pola Redis cache-aside, dan message broker RabbitMQ.',
-    'Menerapkan standar rekayasa ketat: unit testing, dokumentasi Swagger/OpenAPI, dan keandalan sistem berstandar enterprise.'
+    role === 'backend'
+      ? 'Melakukan audit mendalam kode arsitektur: menjamin keamanan celah injeksi, isolasi transaksi row-level lock PostgreSQL, pola Redis cache-aside, dan message broker RabbitMQ.'
+      : role === 'frontend'
+      ? 'Men-deploy dan mengelola 12 aplikasi web aktif di cloud Vercel dengan tampilan antarmuka responsif mobile-first, waktu muat instan, dan standar aksesibilitas.'
+      : 'Men-deploy dan mengelola 12 aplikasi produksi aktif di cloud Vercel dengan integrasi database serverless, transaksi ACID, dan antarmuka reaktif modern.'
   ];
 
   const eduDegree = isEn 
@@ -690,7 +710,7 @@ function generateRoleHtml(role, lang) {
 <style>
   @page {
     size: A4;
-    margin: 8mm 11mm;
+    margin: 8mm 10mm;
   }
   * {
     box-sizing: border-box;
@@ -725,12 +745,12 @@ function generateRoleHtml(role, lang) {
     align-items: center;
     justify-content: space-between;
     border-bottom: 2px solid #0f172a;
-    padding-bottom: 7px;
-    margin-bottom: 9px;
+    padding-bottom: 6px;
+    margin-bottom: 8px;
   }
   .photo {
-    width: 64px;
-    height: 64px;
+    width: 60px;
+    height: 60px;
     border-radius: 8px;
     object-fit: cover;
     border: 1.5px solid #0f172a;
@@ -739,27 +759,27 @@ function generateRoleHtml(role, lang) {
     text-align: right;
   }
   .name {
-    font-size: 17pt;
+    font-size: 16pt;
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: -0.5px;
     color: #0f172a;
   }
   .role-title {
-    font-size: 9.2pt;
+    font-size: 9pt;
     font-weight: 800;
     color: #0f172a;
     text-transform: uppercase;
     letter-spacing: 0.5px;
   }
   .role-subtitle {
-    font-size: 7.8pt;
+    font-size: 7.6pt;
     font-weight: 700;
     color: #475569;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
   }
   .contact-info {
-    font-size: 7.6pt;
+    font-size: 7.4pt;
     font-family: monospace;
     font-weight: 600;
     color: #334155;
@@ -773,35 +793,35 @@ function generateRoleHtml(role, lang) {
     text-decoration: underline;
   }
   .section {
-    margin-bottom: 9px;
+    margin-bottom: 7px;
   }
   .section-title {
-    font-size: 8.8pt;
+    font-size: 8.6pt;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     color: #0f172a;
     border-bottom: 1.2px solid #0f172a;
-    padding-bottom: 2.5px;
-    margin-bottom: 5px;
+    padding-bottom: 2px;
+    margin-bottom: 4px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
   }
   .badge {
-    font-size: 7pt;
+    font-size: 6.8pt;
     font-family: monospace;
     font-weight: 700;
     color: #64748b;
   }
   .summary-text {
-    font-size: 8.3pt;
+    font-size: 8.1pt;
     color: #1e293b;
     text-align: justify;
-    line-height: 1.42;
+    line-height: 1.38;
   }
   .job {
-    margin-bottom: 7px;
+    margin-bottom: 5px;
   }
   .job-header {
     display: flex;
@@ -810,42 +830,42 @@ function generateRoleHtml(role, lang) {
     margin-bottom: 2px;
   }
   .job-title {
-    font-size: 8.8pt;
+    font-size: 8.6pt;
     font-weight: 800;
     color: #0f172a;
   }
   .job-company {
-    font-size: 8pt;
+    font-size: 7.8pt;
     font-weight: 700;
     color: #334155;
   }
   .job-date {
-    font-size: 7.2pt;
+    font-size: 7pt;
     font-family: monospace;
     font-weight: 700;
     color: #475569;
     background: #f1f5f9;
-    padding: 1.5px 5px;
+    padding: 1px 4px;
     border-radius: 3px;
     border: 0.5px solid #cbd5e1;
   }
   .bullets {
     list-style: square;
     padding-left: 14px;
-    font-size: 8.1pt;
+    font-size: 7.9pt;
     color: #1e293b;
-    line-height: 1.4;
+    line-height: 1.36;
   }
   .bullets li {
-    margin-bottom: 3px;
+    margin-bottom: 2px;
   }
   .skills-block {
-    font-size: 7.8pt;
+    font-size: 7.6pt;
     color: #1e293b;
-    line-height: 1.42;
+    line-height: 1.38;
   }
   .skills-block div {
-    margin-bottom: 3px;
+    margin-bottom: 2.5px;
   }
   .skills-block strong {
     color: #0f172a;
@@ -861,8 +881,8 @@ function generateRoleHtml(role, lang) {
     justify-content: space-between;
     align-items: center;
     border-top: 0.8px solid #cbd5e1;
-    padding-top: 4px;
-    font-size: 7.2pt;
+    padding-top: 3px;
+    font-size: 7pt;
     font-family: monospace;
     color: #64748b;
   }
@@ -873,88 +893,88 @@ function generateRoleHtml(role, lang) {
     border: 1px solid #cbd5e1;
     border-left: 3px solid #0f172a;
     border-radius: 4px;
-    padding: 6px 8px;
-    margin-bottom: 8px;
+    padding: 4px 7px;
+    margin-bottom: 6px;
   }
   .pillar-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     border-bottom: 0.5px solid #cbd5e1;
-    padding-bottom: 2.5px;
-    margin-bottom: 4px;
+    padding-bottom: 2px;
+    margin-bottom: 3px;
   }
   .pillar-title {
-    font-size: 8.6pt;
+    font-size: 8.2pt;
     font-weight: 800;
     color: #0f172a;
     text-transform: uppercase;
   }
   .pillar-count {
-    font-size: 7pt;
+    font-size: 6.8pt;
     font-family: monospace;
     font-weight: 700;
     color: #475569;
     background: #e2e8f0;
-    padding: 1.5px 5px;
+    padding: 1px 4px;
     border-radius: 2px;
   }
   .pillar-tech {
-    font-size: 7pt;
+    font-size: 6.8pt;
     font-family: monospace;
     font-weight: 700;
     color: #1e40af;
-    margin-bottom: 3px;
+    margin-bottom: 2.5px;
   }
   .repo-item {
-    font-size: 7.8pt;
+    font-size: 7.4pt;
     color: #334155;
-    line-height: 1.35;
-    margin-bottom: 3.5px;
+    line-height: 1.3;
+    margin-bottom: 2.5px;
     display: flex;
     align-items: baseline;
-    gap: 5px;
+    gap: 4px;
   }
   .repo-name {
     font-family: monospace;
     font-weight: 700;
     color: #0f172a;
     text-decoration: underline;
-    font-size: 7.5pt;
+    font-size: 7.2pt;
   }
   .table-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 5px;
-    font-size: 7.4pt;
+    gap: 4px;
+    font-size: 7.1pt;
   }
   .live-item {
     background: #f8fafc;
     border: 0.5px solid #cbd5e1;
     border-radius: 3px;
-    padding: 4px 7px;
+    padding: 3px 6px;
     display: flex;
     justify-content: space-between;
     align-items: baseline;
   }
 
-  /* PAGE 3 STYLES: VISUAL GALLERY */
+  /* PAGE 3 STYLES: 10 VISUAL CARDS (2 cols x 5 rows) */
   .visual-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 8px;
+    gap: 5px;
+    margin-bottom: 5px;
   }
   .visual-card {
     border: 1px solid #cbd5e1;
-    border-radius: 5px;
+    border-radius: 4px;
     background: #ffffff;
     overflow: hidden;
     display: flex;
     flex-direction: column;
   }
   .visual-img-container {
-    height: 104px;
+    height: 50px;
     width: 100%;
     background: #f1f5f9;
     border-bottom: 1px solid #e2e8f0;
@@ -967,50 +987,56 @@ function generateRoleHtml(role, lang) {
     object-fit: cover;
   }
   .visual-body {
-    padding: 5px 8px;
+    padding: 4px 6px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
   .visual-title {
-    font-size: 8.4pt;
+    font-size: 8pt;
     font-weight: 800;
     color: #0f172a;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .visual-cat {
-    font-size: 6.4pt;
+    font-size: 6.2pt;
     font-family: monospace;
     font-weight: 700;
     background: #e2e8f0;
     color: #1e293b;
-    padding: 1.5px 4px;
+    padding: 1px 3px;
     border-radius: 2px;
     text-transform: uppercase;
   }
   .visual-tech {
-    font-size: 6.8pt;
+    font-size: 6.4pt;
     font-family: monospace;
     font-weight: 700;
     color: #475569;
-    margin: 2px 0;
+    margin: 1px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .visual-desc {
-    font-size: 7.4pt;
+    font-size: 6.8pt;
     color: #334155;
-    line-height: 1.32;
-    margin-bottom: 4px;
+    line-height: 1.25;
+    margin-bottom: 2px;
   }
   .visual-links {
-    font-size: 6.8pt;
+    font-size: 6.4pt;
     font-family: monospace;
     display: flex;
-    gap: 6px;
+    gap: 4px;
     border-top: 0.5px solid #f1f5f9;
-    padding-top: 3px;
+    padding-top: 2px;
   }
   .visual-links a {
     color: #0284c7;
@@ -1046,7 +1072,7 @@ function generateRoleHtml(role, lang) {
     <div class="section">
       <div class="section-title">
         <span>${isEn ? 'Executive Summary' : 'Ringkasan Eksekutif'}</span>
-        <span class="badge">${isEn ? 'Professional Engineering Profile' : 'Profil Rekayasa Profesional'}</span>
+        <span class="badge">${isEn ? `Target: ${role.toUpperCase()} (Page 1 of 3)` : `Target: ${role.toUpperCase()} (Halaman 1 dari 3)`}</span>
       </div>
       <p class="summary-text">${summary}</p>
     </div>
@@ -1054,14 +1080,12 @@ function generateRoleHtml(role, lang) {
     <div class="section">
       <div class="section-title">
         <span>${isEn ? 'Professional Experience' : 'Pengalaman Profesional'}</span>
-        <span class="badge">${isEn ? 'Production Systems & Open Source' : 'Sistem Produksi & Open Source'}</span>
       </div>
-
       <div class="job">
         <div class="job-header">
           <div>
             <span class="job-title">${job1Title}</span>
-            <span style="color: #64748b; font-size: 7.5pt;"> • </span>
+            <span style="color: #64748b;"> • </span>
             <span class="job-company">${job1Company}</span>
           </div>
           <span class="job-date">${job1Date}</span>
@@ -1075,7 +1099,7 @@ function generateRoleHtml(role, lang) {
         <div class="job-header">
           <div>
             <span class="job-title">${job2Title}</span>
-            <span style="color: #64748b; font-size: 7.5pt;"> • </span>
+            <span style="color: #64748b;"> • </span>
             <span class="job-company">${job2Company}</span>
           </div>
           <span class="job-date">${job2Date}</span>
@@ -1089,24 +1113,22 @@ function generateRoleHtml(role, lang) {
     <div class="section">
       <div class="section-title">
         <span>${isEn ? 'Technical Competencies & Core Stack' : 'Kompetensi Teknis & Core Stack'}</span>
-        <span class="badge">${roleTitle}</span>
       </div>
       <div class="skills-block">
         ${skillsHtml}
       </div>
     </div>
 
-    <div class="section" style="margin-bottom: 0;">
+    <div class="section">
       <div class="section-title">
         <span>${isEn ? 'Education' : 'Pendidikan'}</span>
-        <span class="badge">Accredited Degree</span>
       </div>
       <div class="edu-row">
         <div>
-          <span style="font-size: 8.2pt; font-weight: 800; color: #0f172a;">${eduDegree}</span>
-          <span style="color: #64748b; font-size: 7.5pt;"> • </span>
-          <span style="font-size: 7.5pt; font-weight: 700; color: #334155;">${eduUni}</span>
-          <span style="font-size: 6.8pt; color: #64748b; font-family: monospace;"> ${eduNote}</span>
+          <strong style="font-size: 8.5pt;">${eduDegree}</strong>
+          <span style="color: #64748b;"> • </span>
+          <span style="font-size: 8.2pt; font-weight: 600; color: #334155;">${eduUni}</span>
+          <span style="font-size: 7.2pt; color: #64748b; font-family: monospace;"> ${eduNote}</span>
         </div>
         <span class="job-date">${eduDate}</span>
       </div>
@@ -1116,7 +1138,7 @@ function generateRoleHtml(role, lang) {
   <div class="page-footer">
     <span>Kevin Eka Pratama • ${roleTitle}</span>
     <span>kevinekapratama@gmail.com • +62 (813) 2661-2344</span>
-    <span>Page 1 of 3 (Executive Profile)</span>
+    <span>Page 1 of 3 (${isEn ? 'Executive Profile' : 'Profil Eksekutif'})</span>
   </div>
 </div>
 
@@ -1125,7 +1147,7 @@ function generateRoleHtml(role, lang) {
 <!-- PAGE 2 -->
 <div class="page">
   <div>
-    <div style="border-bottom: 2px solid #0f172a; padding-bottom: 5px; margin-bottom: 6px; display: flex; justify-content: space-between; align-items: baseline;">
+    <div style="border-bottom: 2px solid #0f172a; padding-bottom: 5px; margin-bottom: 7px; display: flex; justify-content: space-between; align-items: baseline;">
       <div>
         <h2 style="font-size: 11pt; font-weight: 900; text-transform: uppercase; color: #0f172a;">
           ${page2Title}
@@ -1139,14 +1161,17 @@ function generateRoleHtml(role, lang) {
       </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin-bottom: 6px;">
+    <!-- METRICS -->
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 7px;">
       ${page2Metrics}
     </div>
 
+    <!-- CONTENT -->
     ${page2Content}
 
-    <div style="background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; padding: 3px 6px;">
-      <span style="font-size: 6.6pt; color: #1e293b; line-height: 1.25;">
+    <!-- AUDIT NOTE -->
+    <div style="background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 4px; padding: 4px 7px;">
+      <span style="font-size: 6.8pt; color: #1e293b; line-height: 1.25;">
         <strong>${isEn ? 'Directory Audit Note:' : 'Catatan Audit Direktori:'}</strong> 
         ${isEn 
           ? `Full source code, commit history, and test suites for all repositories are publicly available at <strong>github.com/mazkev</strong> and interactive web workstation at <strong>mazkev.vercel.app</strong>.`
