@@ -289,20 +289,23 @@
     margin-bottom: 6px;
   }
   .visual-card {
-    border: 1px solid #cbd5e1;
+    border: 1px solid #94a3b8;
     border-radius: 4px;
     background: #ffffff;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
   }
   .visual-img-container {
-    height: 65px;
+    height: 48px;
     width: 100%;
     background: #f1f5f9;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid #cbd5e1;
     overflow: hidden;
     position: relative;
+    flex-shrink: 0;
   }
   .visual-img {
     width: 100%;
@@ -311,13 +314,13 @@
   }
   .visual-body {
     padding: 3px 5px;
-    flex-grow: 1;
+    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
   .visual-title {
-    font-size: 7.8pt;
+    font-size: 7.4pt;
     font-weight: 800;
     color: #0f172a;
     display: flex;
@@ -326,40 +329,46 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 1.2;
   }
   .visual-cat {
     font-size: 6pt;
     font-family: monospace;
-    font-weight: 700;
+    font-weight: 800;
     background: #e2e8f0;
-    color: #1e293b;
+    color: #0f172a;
+    border: 0.5px solid #94a3b8;
     padding: 1px 3px;
     border-radius: 2px;
     text-transform: uppercase;
+    flex-shrink: 0;
   }
   .visual-tech {
-    font-size: 6.2pt;
+    font-size: 6.1pt;
     font-family: monospace;
     font-weight: 700;
-    color: #475569;
-    margin: 0.5px 0;
+    color: #0369a1;
+    margin: 1px 0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   .visual-desc {
-    font-size: 6.6pt;
-    color: #334155;
-    line-height: 1.22;
-    margin-bottom: 1.5px;
+    font-size: 6.4pt;
+    color: #1e293b;
+    line-height: 1.24;
+    margin-bottom: auto;
+    padding-bottom: 2px;
   }
   .visual-links {
-    font-size: 6.2pt;
+    font-size: 6pt;
     font-family: monospace;
+    font-weight: 700;
     display: flex;
     gap: 4px;
-    border-top: 0.5px solid #f1f5f9;
+    border-top: 0.8px solid #e2e8f0;
     padding-top: 2px;
+    margin-top: 2px;
   }
   .visual-links a {
     color: #0284c7;

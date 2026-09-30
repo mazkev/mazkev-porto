@@ -1163,38 +1163,42 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                     {/* PILLARS 2 & 3 SIDE-BY-SIDE IN 2 COLUMNS */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 print:gap-2">
                       {/* PILLAR 2 */}
-                      <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
-                        <div className="border-b border-slate-800 pb-0.5 flex justify-between items-center">
-                          <h3 className="font-extrabold text-slate-900 text-xs print:text-[8.8px] uppercase tracking-wide">
-                            {lang === 'en' ? 'Pillar 2: Fullstack & Mobile Platforms' : 'Pilar 2: Platform Fullstack & Mobile'}
-                          </h3>
-                          <span className="text-[9px] print:text-[7px] font-mono font-bold text-slate-500 uppercase">6 Repos</span>
-                        </div>
-                        <div className="space-y-1 print:space-y-0.5 text-slate-700">
-                          <RepoItem name="baye-ecommerce-marketplace" url="https://github.com/mazkev/baye-ecommerce-marketplace" tech="Next.js 16, React 19, LibSQL Serverless, QR Invoices" lang={lang} />
-                          <RepoItem name="tokopedia-react-storefront" url="https://github.com/mazkev/tokopedia-react-storefront" tech="React 19, TypeScript, Go REST API Backend, PostgreSQL" lang={lang} />
-                          <RepoItem name="laravel-hrms-platform" url="https://github.com/mazkev/laravel-hrms-platform" tech="Laravel 12, PHP 8.3, MySQL, GPS Attendance, Payroll" lang={lang} />
-                          <RepoItem name="java-spring-commerce-platform" url="https://github.com/mazkev/java-spring-commerce-platform" tech="Java 17, Spring Boot 3.3, Vue 3, Pinia, PostgreSQL" lang={lang} />
-                          <RepoItem name="treveloka-react-native-expo" url="https://github.com/mazkev/treveloka-react-native-expo" tech="React Native 0.85, Expo Router, Gemini AI Assistant" lang={lang} />
-                          <RepoItem name="flutter-grab-superapp-clone" url="https://github.com/mazkev/flutter-grab-superapp-clone" tech="Flutter 3, Dart, Riverpod 3, Driver Tracking" lang={lang} />
+                      <div className="bg-slate-50 border border-slate-300 print:border-slate-400 rounded-md p-2 print:p-1.5 space-y-1 print:space-y-0.5 print:break-inside-avoid flex flex-col justify-between shadow-sm print:shadow-none">
+                        <div>
+                          <div className="border-b border-slate-800 pb-0.5 flex justify-between items-center mb-1">
+                            <h3 className="font-extrabold text-slate-900 text-xs print:text-[8.8px] uppercase tracking-wide">
+                              {lang === 'en' ? 'Pillar 2: Fullstack & Mobile Platforms' : 'Pilar 2: Platform Fullstack & Mobile'}
+                            </h3>
+                            <span className="text-[9px] print:text-[7px] font-mono font-bold text-slate-700 uppercase bg-slate-200 px-1 py-0.2 rounded border border-slate-300">6 Repos</span>
+                          </div>
+                          <div className="space-y-1 print:space-y-0.5 text-slate-800">
+                            <RepoItem name="baye-ecommerce-marketplace" url="https://github.com/mazkev/baye-ecommerce-marketplace" tech="Next.js 16, React 19, LibSQL Serverless, QR Invoices" lang={lang} />
+                            <RepoItem name="tokopedia-react-storefront" url="https://github.com/mazkev/tokopedia-react-storefront" tech="React 19, TypeScript, Go REST API Backend, PostgreSQL" lang={lang} />
+                            <RepoItem name="laravel-hrms-platform" url="https://github.com/mazkev/laravel-hrms-platform" tech="Laravel 12, PHP 8.3, MySQL, GPS Attendance, Payroll" lang={lang} />
+                            <RepoItem name="java-spring-commerce-platform" url="https://github.com/mazkev/java-spring-commerce-platform" tech="Java 17, Spring Boot 3.3, Vue 3, Pinia, PostgreSQL" lang={lang} />
+                            <RepoItem name="treveloka-react-native-expo" url="https://github.com/mazkev/treveloka-react-native-expo" tech="React Native 0.85, Expo Router, Gemini AI Assistant" lang={lang} />
+                            <RepoItem name="flutter-grab-superapp-clone" url="https://github.com/mazkev/flutter-grab-superapp-clone" tech="Flutter 3, Dart, Riverpod 3, Driver Tracking" lang={lang} />
+                          </div>
                         </div>
                       </div>
 
                       {/* PILLAR 3 */}
-                      <div className="space-y-1 print:space-y-0.5 print:break-inside-avoid">
-                        <div className="border-b border-slate-800 pb-0.5 flex justify-between items-center">
-                          <h3 className="font-extrabold text-slate-900 text-xs print:text-[8.8px] uppercase tracking-wide">
-                            {lang === 'en' ? 'Pillar 3: Modern Frontend Workstations' : 'Pilar 3: Aplikasi Frontend Modern'}
-                          </h3>
-                          <span className="text-[9px] print:text-[7px] font-mono font-bold text-slate-500 uppercase">6 Repos</span>
-                        </div>
-                        <div className="space-y-1 print:space-y-0.5 text-slate-700">
-                          <RepoItem name="react-canva-design-studio" url="https://github.com/mazkev/react-canva-design-studio" tech="React 19, TypeScript, React-Konva 60 FPS, Canvas Export" lang={lang} />
-                          <RepoItem name="angular-marketplace-storefront" url="https://github.com/mazkev/angular-marketplace-storefront" tech="Angular 19, TypeScript, Signals, RxJS Event Streams" lang={lang} />
-                          <RepoItem name="nextjs-spotify-music-player" url="https://github.com/mazkev/nextjs-spotify-music-player" tech="Next.js 16, TypeScript, Web Audio API Canvas Visualizer" lang={lang} />
-                          <RepoItem name="react-trello-kanban-suite" url="https://github.com/mazkev/react-trello-kanban-suite" tech="React 19, TypeScript, Zustand, Multi-axis Drag & Drop" lang={lang} />
-                          <RepoItem name="tiktok-clone-react-native-expo" url="https://github.com/mazkev/tiktok-clone-react-native-expo" tech="React Native, Expo Video Feed, Camera Recording" lang={lang} />
-                          <RepoItem name="nextjs-football-sport-portal" url="https://github.com/mazkev/nextjs-football-sport-portal" tech="Next.js 16, Tailwind CSS v4, Live Match Center, Sports API" lang={lang} />
+                      <div className="bg-slate-50 border border-slate-300 print:border-slate-400 rounded-md p-2 print:p-1.5 space-y-1 print:space-y-0.5 print:break-inside-avoid flex flex-col justify-between shadow-sm print:shadow-none">
+                        <div>
+                          <div className="border-b border-slate-800 pb-0.5 flex justify-between items-center mb-1">
+                            <h3 className="font-extrabold text-slate-900 text-xs print:text-[8.8px] uppercase tracking-wide">
+                              {lang === 'en' ? 'Pillar 3: Modern Frontend Workstations' : 'Pilar 3: Aplikasi Frontend Modern'}
+                            </h3>
+                            <span className="text-[9px] print:text-[7px] font-mono font-bold text-slate-700 uppercase bg-slate-200 px-1 py-0.2 rounded border border-slate-300">6 Repos</span>
+                          </div>
+                          <div className="space-y-1 print:space-y-0.5 text-slate-800">
+                            <RepoItem name="react-canva-design-studio" url="https://github.com/mazkev/react-canva-design-studio" tech="React 19, TypeScript, React-Konva 60 FPS, Canvas Export" lang={lang} />
+                            <RepoItem name="angular-marketplace-storefront" url="https://github.com/mazkev/angular-marketplace-storefront" tech="Angular 19, TypeScript, Signals, RxJS Event Streams" lang={lang} />
+                            <RepoItem name="nextjs-spotify-music-player" url="https://github.com/mazkev/nextjs-spotify-music-player" tech="Next.js 16, TypeScript, Web Audio API Canvas Visualizer" lang={lang} />
+                            <RepoItem name="react-trello-kanban-suite" url="https://github.com/mazkev/react-trello-kanban-suite" tech="React 19, TypeScript, Zustand, Multi-axis Drag & Drop" lang={lang} />
+                            <RepoItem name="tiktok-clone-react-native-expo" url="https://github.com/mazkev/tiktok-clone-react-native-expo" tech="React Native, Expo Video Feed, Camera Recording" lang={lang} />
+                            <RepoItem name="nextjs-football-sport-portal" url="https://github.com/mazkev/nextjs-football-sport-portal" tech="Next.js 16, Tailwind CSS v4, Live Match Center, Sports API" lang={lang} />
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -1213,10 +1217,10 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                         {roleData.fullstack.visualCards.map((p, idx) => (
                           <div
                             key={idx}
-                            className="border border-slate-300 rounded-lg p-2 print:p-1.5 bg-white flex flex-col justify-between print:break-inside-avoid shadow-sm print:shadow-none hover:border-slate-400 transition-colors"
+                            className="border border-slate-300 print:border-slate-400 rounded-lg p-2.5 print:p-1.5 bg-white flex flex-col justify-between print:break-inside-avoid shadow-sm print:shadow-none hover:border-slate-400 transition-colors h-full"
                           >
                             <div className="flex gap-2.5 items-start">
-                              <div className="w-20 h-14 sm:w-24 sm:h-16 print:w-16 print:h-11 bg-slate-100 rounded overflow-hidden flex-shrink-0 border border-slate-200">
+                              <div className="w-20 h-16 sm:w-24 sm:h-16 print:w-16 print:h-12 bg-slate-100 rounded-md overflow-hidden flex-shrink-0 border border-slate-300">
                                 <Image
                                   src={p.img}
                                   alt={p.title}
@@ -1230,27 +1234,27 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                                   <span className="font-extrabold text-slate-900 text-xs sm:text-[13px] print:text-[8.8px] leading-tight truncate">
                                     {p.title}
                                   </span>
-                                  <span className="text-[8px] print:text-[6.8px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 text-slate-800 uppercase flex-shrink-0">
+                                  <span className="text-[8px] print:text-[6.8px] font-mono font-bold px-1.5 py-0.5 rounded bg-slate-200 border border-slate-300 text-slate-900 uppercase flex-shrink-0">
                                     {p.cat}
                                   </span>
                                 </div>
-                                <div className="text-[9.5px] print:text-[7.2px] font-mono font-bold text-slate-600 truncate">
+                                <div className="text-[9.5px] print:text-[7.2px] font-mono font-bold text-sky-800 truncate">
                                   {p.tech}
                                 </div>
-                                <p className="text-[10.5px] print:text-[7.4px] text-slate-700 font-medium leading-normal line-clamp-3">
+                                <p className="text-[10.5px] print:text-[7.4px] text-slate-800 font-medium leading-normal line-clamp-3">
                                   {lang === 'en' ? p.descEn : p.descId}
                                 </p>
                               </div>
                             </div>
-                            <div className="pt-1 mt-1 border-t border-slate-100 flex items-center justify-between text-[9px] print:text-[7px] font-mono">
+                            <div className="pt-1.5 mt-auto border-t border-slate-200 flex items-center justify-between text-[9px] print:text-[7px] font-mono">
                               <a
                                 href={p.link}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="text-sky-700 hover:underline flex items-center gap-1 truncate font-medium"
+                                className="text-sky-700 hover:text-sky-900 hover:underline flex items-center gap-1 truncate font-bold"
                               >
                                 <span>{p.label}</span>
-                                <ExternalLink size={9} className="opacity-70 flex-shrink-0" />
+                                <ExternalLink size={9} className="opacity-80 flex-shrink-0" />
                               </a>
                             </div>
                           </div>
