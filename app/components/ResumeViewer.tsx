@@ -493,6 +493,17 @@ const commonText = {
   }
 };
 
+const RepoItem = ({ name, url, tech, lang }: { name: string; url: string; tech: string; lang: CVLang }) => (
+  <div className="space-y-0.5 print:space-y-0">
+    <div className="text-xs print:text-[8.3pt] font-mono font-bold text-slate-900 leading-tight">
+      • <a href={url} target="_blank" rel="noreferrer" className="underline hover:text-sky-700">{name}</a>
+    </div>
+    <div className="pl-3.5 print:pl-2.5 text-[11px] print:text-[7.3pt] font-mono text-slate-600 leading-tight">
+      <span className="font-bold text-slate-700">{lang === 'en' ? 'Tech Stack:' : 'Teknologi:'}</span> {tech}
+    </div>
+  </div>
+);
+
 export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
   const [lang, setLang] = useState<CVLang>('id');
   const [activeRole, setActiveRole] = useState<ResumeRole>('fullstack');
@@ -922,7 +933,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
 
                 {/* ROLE-SPECIFIC REPOSITORY DIRECTORY */}
                 {activeRole === 'backend' && (
-                  <div className="space-y-2.5 print:space-y-2">
+                  <div className="space-y-2.5 print:space-y-1.5">
                     {/* PILLAR 1: Distributed Go & Java High-Throughput Engines */}
                     <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1.5 print:break-inside-avoid">
                       <div className="border-b border-slate-200 pb-1">
@@ -930,13 +941,13 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                           {lang === 'en' ? 'Pillar 1: Distributed Go & Java Systems' : 'Pilar 1: Sistem Terdistribusi Go & Java'}
                         </span>
                       </div>
-                      <div className="text-xs print:text-[8.5px] text-slate-700 space-y-1">
-                        <p>• <a href="https://github.com/mazkev/go-distributed-microservices-lab" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-distributed-microservices-lab</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker</span></p>
-                        <p>• <a href="https://github.com/mazkev/go-ecommerce-gateway-engine" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-ecommerce-gateway-engine</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Go 1.26, Gin, MongoDB, Reverse Proxy, Swagger OpenAPI</span></p>
-                        <p>• <a href="https://github.com/mazkev/go-banking-core-system" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-banking-core-system</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Go, Echo, PostgreSQL, ACID Row-Level Locks, Bcrypt PIN, Swagger UI</span></p>
-                        <p>• <a href="https://github.com/mazkev/go-clean-arch" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-clean-arch</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Go, Clean Architecture (DDD), Domain/Usecase/Repository, PostgreSQL</span></p>
-                        <p>• <a href="https://github.com/mazkev/go-rest-api-enterprise" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-rest-api-enterprise</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Go, Gin, GORM, Redis Cache-Aside, Zap Structured Logging, Docker</span></p>
-                        <p>• <a href="https://github.com/mazkev/spring-boot-enterprise-platform" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">spring-boot-enterprise-platform</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Java 17, Spring Boot 3.3, Spring Security JWT, Bucket4j Rate Limiter, Docker</span></p>
+                      <div className="space-y-1.5 print:space-y-1 text-slate-700">
+                        <RepoItem name="go-distributed-microservices-lab" url="https://github.com/mazkev/go-distributed-microservices-lab" tech="Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker" lang={lang} />
+                        <RepoItem name="go-ecommerce-gateway-engine" url="https://github.com/mazkev/go-ecommerce-gateway-engine" tech="Go 1.26, Gin, MongoDB, Reverse Proxy, Swagger OpenAPI" lang={lang} />
+                        <RepoItem name="go-banking-core-system" url="https://github.com/mazkev/go-banking-core-system" tech="Go, Echo, PostgreSQL, ACID Row-Level Locks, Bcrypt PIN, Swagger UI" lang={lang} />
+                        <RepoItem name="go-clean-arch" url="https://github.com/mazkev/go-clean-arch" tech="Go, Clean Architecture (DDD), Domain/Usecase/Repository, PostgreSQL" lang={lang} />
+                        <RepoItem name="go-rest-api-enterprise" url="https://github.com/mazkev/go-rest-api-enterprise" tech="Go, Gin, GORM, Redis Cache-Aside, Zap Structured Logging, Docker" lang={lang} />
+                        <RepoItem name="spring-boot-enterprise-platform" url="https://github.com/mazkev/spring-boot-enterprise-platform" tech="Java 17, Spring Boot 3.3, Spring Security JWT, Bucket4j Rate Limiter, Docker" lang={lang} />
                       </div>
                     </div>
 
@@ -947,13 +958,13 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                           {lang === 'en' ? 'Pillar 2: Cloud APIs & TypeScript Microservices' : 'Pilar 2: API Cloud & Microservices TypeScript'}
                         </span>
                       </div>
-                      <div className="text-xs print:text-[8.5px] text-slate-700 space-y-1">
-                        <p>• <a href="https://github.com/mazkev/hono-ecommerce-engine" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">hono-ecommerce-engine</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Bun Runtime, Hono v4, Drizzle ORM, WebSocket Live Chat, SQLite</span></p>
-                        <p>• <a href="https://github.com/mazkev/express-prisma-realworld-api" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">express-prisma-realworld-api</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Express.js, TypeScript, Prisma ORM, Nx Monorepo, JWT, Jest Suite</span></p>
-                        <p>• <a href="https://github.com/mazkev/express-typescript-prisma-api" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">express-typescript-prisma-api</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Express v5, TypeScript, Prisma 7 ORM, LibSQL Adapter, tsx</span></p>
-                        <p>• <a href="https://github.com/mazkev/express-prisma-product-api" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">express-prisma-product-api</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Express v5, TypeScript, Prisma ORM, JWT Auth, Multer, Zod Validation</span></p>
-                        <p>• <a href="https://github.com/mazkev/express-sqlite-ecommerce-api" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">express-sqlite-ecommerce-api</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Express v5, SQLite Prepared Statements, ACID Transactions, Swagger UI</span></p>
-                        <p>• <a href="https://github.com/mazkev/express-realtime-api-service" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">express-realtime-api-service</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Express v5, Socket.IO, Dual DB (MongoDB + MySQL), Winston, Zod</span></p>
+                      <div className="space-y-1.5 print:space-y-1 text-slate-700">
+                        <RepoItem name="hono-ecommerce-engine" url="https://github.com/mazkev/hono-ecommerce-engine" tech="Bun Runtime, Hono v4, Drizzle ORM, WebSocket Live Chat, SQLite" lang={lang} />
+                        <RepoItem name="express-prisma-realworld-api" url="https://github.com/mazkev/express-prisma-realworld-api" tech="Express.js, TypeScript, Prisma ORM, Nx Monorepo, JWT, Jest Suite" lang={lang} />
+                        <RepoItem name="express-typescript-prisma-api" url="https://github.com/mazkev/express-typescript-prisma-api" tech="Express v5, TypeScript, Prisma 7 ORM, LibSQL Adapter, tsx" lang={lang} />
+                        <RepoItem name="express-prisma-product-api" url="https://github.com/mazkev/express-prisma-product-api" tech="Express v5, TypeScript, Prisma ORM, JWT Auth, Multer, Zod Validation" lang={lang} />
+                        <RepoItem name="express-sqlite-ecommerce-api" url="https://github.com/mazkev/express-sqlite-ecommerce-api" tech="Express v5, SQLite Prepared Statements, ACID Transactions, Swagger UI" lang={lang} />
+                        <RepoItem name="express-realtime-api-service" url="https://github.com/mazkev/express-realtime-api-service" tech="Express v5, Socket.IO, Dual DB (MongoDB + MySQL), Winston, Zod" lang={lang} />
                       </div>
                     </div>
 
@@ -964,34 +975,34 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                           {lang === 'en' ? 'Pillar 3: Specialized Microservices, Webhooks & Data Pipelines' : 'Pilar 3: Layanan Mikro Khusus, Webhook & Pipeline Data'}
                         </span>
                       </div>
-                      <div className="text-xs print:text-[8.5px] text-slate-700 space-y-1">
-                        <p>• <a href="https://github.com/mazkev/express-prisma-payment-api" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">express-prisma-payment-api</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Express.js, Midtrans Webhook, PDFKit Invoicing, Nodemailer</span></p>
-                        <p>• <a href="https://github.com/mazkev/AI-api-manager" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">AI-api-manager</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Node.js, Reverse Proxy Gateway, Redis Rate Limiting, API Key Auth, React UI</span></p>
-                        <p>• <a href="https://github.com/mazkev/spring-boot-book-manager-api" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">spring-boot-book-manager-api</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Java 17, Spring Boot 3.3, Spring Data MongoDB, OpenAPI 3.0</span></p>
-                        <p>• <a href="https://github.com/mazkev/express-book-catalog-api" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">express-book-catalog-api</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Express v5, Prisma 7, Socket.IO Real-time, Redis Rate Limiter, Jest</span></p>
-                        <p>• <a href="https://github.com/mazkev/express-redis-url-shortener" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">express-redis-url-shortener</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Express, Redis Cache-Aside, Sub-millisecond Redirects, MongoDB</span></p>
-                        <p>• <a href="https://github.com/mazkev/express-mongo-content-api" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">express-mongo-content-api</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Express, MongoDB Mongoose, Redis Caching, Socket.IO, Cron Jobs</span></p>
-                        <p>• <a href="https://github.com/mazkev/express-mongodb-starter-api" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">express-mongodb-starter-api</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Express, MongoDB Mongoose, JWT Auth, Redis Cache, Docker Compose</span></p>
+                      <div className="space-y-1.5 print:space-y-1 text-slate-700">
+                        <RepoItem name="express-prisma-payment-api" url="https://github.com/mazkev/express-prisma-payment-api" tech="Express.js, Midtrans Webhook, PDFKit Invoicing, Nodemailer" lang={lang} />
+                        <RepoItem name="AI-api-manager" url="https://github.com/mazkev/AI-api-manager" tech="Node.js, Reverse Proxy Gateway, Redis Rate Limiting, API Key Auth, React UI" lang={lang} />
+                        <RepoItem name="spring-boot-book-manager-api" url="https://github.com/mazkev/spring-boot-book-manager-api" tech="Java 17, Spring Boot 3.3, Spring Data MongoDB, OpenAPI 3.0" lang={lang} />
+                        <RepoItem name="express-book-catalog-api" url="https://github.com/mazkev/express-book-catalog-api" tech="Express v5, Prisma 7, Socket.IO Real-time, Redis Rate Limiter, Jest" lang={lang} />
+                        <RepoItem name="express-redis-url-shortener" url="https://github.com/mazkev/express-redis-url-shortener" tech="Express, Redis Cache-Aside, Sub-millisecond Redirects, MongoDB" lang={lang} />
+                        <RepoItem name="express-mongo-content-api" url="https://github.com/mazkev/express-mongo-content-api" tech="Express, MongoDB Mongoose, Redis Caching, Socket.IO, Cron Jobs" lang={lang} />
+                        <RepoItem name="express-mongodb-starter-api" url="https://github.com/mazkev/express-mongodb-starter-api" tech="Express, MongoDB Mongoose, JWT Auth, Redis Cache, Docker Compose" lang={lang} />
                       </div>
                     </div>
                   </div>
                 )}
 
                 {activeRole === 'frontend' && (
-                  <div className="space-y-2.5 print:space-y-2">
+                  <div className="space-y-2.5 print:space-y-1.5">
                     <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1.5 print:break-inside-avoid">
                       <div className="border-b border-slate-200 pb-1">
                         <span className="font-extrabold text-slate-900 text-xs print:text-[10px] uppercase tracking-wide">
                           {lang === 'en' ? 'Flagship Frontend Web Applications & Interactive Workstations' : 'Aplikasi Web Unggulan & Workstation Grafis'}
                         </span>
                       </div>
-                      <div className="text-xs print:text-[8.5px] text-slate-700 space-y-1">
-                        <p>• <a href="https://github.com/mazkev/react-canva-design-studio" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">react-canva-design-studio</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">React 19, TypeScript, React-Konva (60 FPS Infinite Canvas), Tailwind CSS</span></p>
-                        <p>• <a href="https://github.com/mazkev/market-x-angular" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">market-x-angular</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Angular 19, TypeScript, Reactive Signals, RxJS Event Streams, Tailwind CSS</span></p>
-                        <p>• <a href="https://github.com/mazkev/nextjs-spotify-music-player" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">nextjs-spotify-music-player</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Next.js 16, TypeScript, Web Audio API, Canvas Visualizer, Tailwind CSS</span></p>
-                        <p>• <a href="https://github.com/mazkev/react-trello-kanban-suite" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">react-trello-kanban-suite</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">React 19, TypeScript, Zustand, Multi-axis Drag & Drop, Glassmorphism UI</span></p>
-                        <p>• <a href="https://github.com/mazkev/baye-ecommerce-marketplace" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">baye-ecommerce-marketplace</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Next.js 16, React 19, TypeScript, LibSQL Serverless, Tailwind CSS</span></p>
-                        <p>• <a href="https://github.com/mazkev/nexus-project-workspace" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">nexus-project-workspace</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">React 19, TypeScript, Lucide Icons, Enterprise Dashboard UI</span></p>
+                      <div className="space-y-1.5 print:space-y-1 text-slate-700">
+                        <RepoItem name="react-canva-design-studio" url="https://github.com/mazkev/react-canva-design-studio" tech="React 19, TypeScript, React-Konva (60 FPS Infinite Canvas), Tailwind CSS" lang={lang} />
+                        <RepoItem name="market-x-angular" url="https://github.com/mazkev/market-x-angular" tech="Angular 19, TypeScript, Reactive Signals, RxJS Event Streams, Tailwind CSS" lang={lang} />
+                        <RepoItem name="nextjs-spotify-music-player" url="https://github.com/mazkev/nextjs-spotify-music-player" tech="Next.js 16, TypeScript, Web Audio API, Canvas Visualizer, Tailwind CSS" lang={lang} />
+                        <RepoItem name="react-trello-kanban-suite" url="https://github.com/mazkev/react-trello-kanban-suite" tech="React 19, TypeScript, Zustand, Multi-axis Drag & Drop, Glassmorphism UI" lang={lang} />
+                        <RepoItem name="baye-ecommerce-marketplace" url="https://github.com/mazkev/baye-ecommerce-marketplace" tech="Next.js 16, React 19, TypeScript, LibSQL Serverless, Tailwind CSS" lang={lang} />
+                        <RepoItem name="nexus-project-workspace" url="https://github.com/mazkev/nexus-project-workspace" tech="React 19, TypeScript, Lucide Icons, Enterprise Dashboard UI" lang={lang} />
                       </div>
                     </div>
 
@@ -1001,10 +1012,10 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                           {lang === 'en' ? 'Cross-Platform Mobile Applications' : 'Aplikasi Mobile Cross-Platform'}
                         </span>
                       </div>
-                      <div className="text-xs print:text-[8.5px] text-slate-700 space-y-1">
-                        <p>• <a href="https://github.com/mazkev/treveloka-react-native-expo" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">treveloka-react-native-expo</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">React Native 0.85, Expo Router, TypeScript, Gemini AI API Assistant</span></p>
-                        <p>• <a href="https://github.com/mazkev/tiktok-clone-react-native-expo" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">tiktok-clone-react-native-expo</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">React Native, Expo Video Autoplay, Camera API, Interactive UI</span></p>
-                        <p>• <a href="https://github.com/mazkev/flutter-grab-superapp-clone" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">flutter-grab-superapp-clone</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Flutter 3, Dart, Riverpod 3, OpenStreetMap Live Driver Tracking</span></p>
+                      <div className="space-y-1.5 print:space-y-1 text-slate-700">
+                        <RepoItem name="treveloka-react-native-expo" url="https://github.com/mazkev/treveloka-react-native-expo" tech="React Native 0.85, Expo Router, TypeScript, Gemini AI API Assistant" lang={lang} />
+                        <RepoItem name="tiktok-clone-react-native-expo" url="https://github.com/mazkev/tiktok-clone-react-native-expo" tech="React Native, Expo Video Autoplay, Camera API, Interactive UI" lang={lang} />
+                        <RepoItem name="flutter-grab-superapp-clone" url="https://github.com/mazkev/flutter-grab-superapp-clone" tech="Flutter 3, Dart, Riverpod 3, OpenStreetMap Live Driver Tracking" lang={lang} />
                       </div>
                     </div>
 
@@ -1073,7 +1084,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                 )}
 
                 {activeRole === 'fullstack' && (
-                  <div className="space-y-2.5 print:space-y-2">
+                  <div className="space-y-2.5 print:space-y-1.5">
                     {/* PILLAR 1: Backend Systems & Distributed Services */}
                     <div className="p-2.5 print:p-2 rounded-lg bg-slate-50 border border-slate-300 border-l-4 border-l-slate-900 space-y-1.5 print:break-inside-avoid">
                       <div className="border-b border-slate-200 pb-1">
@@ -1081,13 +1092,13 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                           {lang === 'en' ? 'Pillar 1: Backend Systems & Distributed Services' : 'Pilar 1: Sistem Backend & Arsitektur Cloud'}
                         </span>
                       </div>
-                      <div className="text-xs print:text-[8.5px] text-slate-700 space-y-1">
-                        <p>• <a href="https://github.com/mazkev/go-banking-core-system" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-banking-core-system</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI</span></p>
-                        <p>• <a href="https://github.com/mazkev/go-distributed-microservices-lab" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-distributed-microservices-lab</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker</span></p>
-                        <p>• <a href="https://github.com/mazkev/nexus-workspace-engine" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">nexus-workspace-engine</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Java 17, Spring Boot 3.3, Resilience4j, Eureka Discovery, PostgreSQL</span></p>
-                        <p>• <a href="https://github.com/mazkev/go-ecommerce-gateway-engine" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-ecommerce-gateway-engine</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Go 1.26, Gin, MongoDB, Reverse Proxy, Swagger OpenAPI</span></p>
-                        <p>• <a href="https://github.com/mazkev/hono-ecommerce-engine" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">hono-ecommerce-engine</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Bun Runtime, Hono v4, Drizzle ORM, WebSocket Live Chat, SQLite</span></p>
-                        <p>• <a href="https://github.com/mazkev/go-clean-arch" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">go-clean-arch</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Go, Clean Architecture (DDD), Domain/Usecase/Repository, PostgreSQL</span></p>
+                      <div className="space-y-1.5 print:space-y-1 text-slate-700">
+                        <RepoItem name="go-banking-core-system" url="https://github.com/mazkev/go-banking-core-system" tech="Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI" lang={lang} />
+                        <RepoItem name="go-distributed-microservices-lab" url="https://github.com/mazkev/go-distributed-microservices-lab" tech="Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker" lang={lang} />
+                        <RepoItem name="nexus-workspace-engine" url="https://github.com/mazkev/nexus-workspace-engine" tech="Java 17, Spring Boot 3.3, Resilience4j, Eureka Discovery, PostgreSQL" lang={lang} />
+                        <RepoItem name="go-ecommerce-gateway-engine" url="https://github.com/mazkev/go-ecommerce-gateway-engine" tech="Go 1.26, Gin, MongoDB, Reverse Proxy, Swagger OpenAPI" lang={lang} />
+                        <RepoItem name="hono-ecommerce-engine" url="https://github.com/mazkev/hono-ecommerce-engine" tech="Bun Runtime, Hono v4, Drizzle ORM, WebSocket Live Chat, SQLite" lang={lang} />
+                        <RepoItem name="go-clean-arch" url="https://github.com/mazkev/go-clean-arch" tech="Go, Clean Architecture (DDD), Domain/Usecase/Repository, PostgreSQL" lang={lang} />
                       </div>
                     </div>
 
@@ -1098,13 +1109,13 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                           {lang === 'en' ? 'Pillar 2: Fullstack Web Platforms & Enterprise Systems' : 'Pilar 2: Platform Web Fullstack & Aplikasi Mobile'}
                         </span>
                       </div>
-                      <div className="text-xs print:text-[8.5px] text-slate-700 space-y-1">
-                        <p>• <a href="https://github.com/mazkev/baye-ecommerce-marketplace" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">baye-ecommerce-marketplace</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Next.js 16, React 19, TypeScript, LibSQL Serverless, QR Digital Invoices</span></p>
-                        <p>• <a href="https://github.com/mazkev/tokopedia-react-storefront" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">tokopedia-react-storefront</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">React 19, TypeScript, Go REST API Backend, PostgreSQL, Tailwind</span></p>
-                        <p>• <a href="https://github.com/mazkev/laravel-hrms-platform" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">laravel-hrms-platform</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Laravel 12, PHP 8.3, MySQL, GPS Selfie Attendance, Automated Payroll</span></p>
-                        <p>• <a href="https://github.com/mazkev/java-spring-commerce-platform" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">java-spring-commerce-platform</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Java 17, Spring Boot 3.3, Vue 3, Pinia, OpenPDF, PostgreSQL</span></p>
-                        <p>• <a href="https://github.com/mazkev/treveloka-react-native-expo" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">treveloka-react-native-expo</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">React Native 0.85, Expo Router, Gemini AI Itinerary Assistant</span></p>
-                        <p>• <a href="https://github.com/mazkev/flutter-grab-superapp-clone" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">flutter-grab-superapp-clone</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Flutter 3, Dart, Riverpod 3, OpenStreetMap Live Driver Tracking</span></p>
+                      <div className="space-y-1.5 print:space-y-1 text-slate-700">
+                        <RepoItem name="baye-ecommerce-marketplace" url="https://github.com/mazkev/baye-ecommerce-marketplace" tech="Next.js 16, React 19, TypeScript, LibSQL Serverless, QR Digital Invoices" lang={lang} />
+                        <RepoItem name="tokopedia-react-storefront" url="https://github.com/mazkev/tokopedia-react-storefront" tech="React 19, TypeScript, Go REST API Backend, PostgreSQL, Tailwind" lang={lang} />
+                        <RepoItem name="laravel-hrms-platform" url="https://github.com/mazkev/laravel-hrms-platform" tech="Laravel 12, PHP 8.3, MySQL, GPS Selfie Attendance, Automated Payroll" lang={lang} />
+                        <RepoItem name="java-spring-commerce-platform" url="https://github.com/mazkev/java-spring-commerce-platform" tech="Java 17, Spring Boot 3.3, Vue 3, Pinia, OpenPDF, PostgreSQL" lang={lang} />
+                        <RepoItem name="treveloka-react-native-expo" url="https://github.com/mazkev/treveloka-react-native-expo" tech="React Native 0.85, Expo Router, Gemini AI Itinerary Assistant" lang={lang} />
+                        <RepoItem name="flutter-grab-superapp-clone" url="https://github.com/mazkev/flutter-grab-superapp-clone" tech="Flutter 3, Dart, Riverpod 3, OpenStreetMap Live Driver Tracking" lang={lang} />
                       </div>
                     </div>
 
@@ -1115,13 +1126,13 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                           {lang === 'en' ? 'Pillar 3: Modern Frontend & Mobile Applications' : 'Pilar 3: Aplikasi Frontend Web Modern'}
                         </span>
                       </div>
-                      <div className="text-xs print:text-[8.5px] text-slate-700 space-y-1">
-                        <p>• <a href="https://github.com/mazkev/react-canva-design-studio" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">react-canva-design-studio</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">React 19, TypeScript, React-Konva 60 FPS, Multi-format Export</span></p>
-                        <p>• <a href="https://github.com/mazkev/market-x-angular" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">market-x-angular</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Angular 19, TypeScript, Signals, RxJS Event Streams, Seller Back-office</span></p>
-                        <p>• <a href="https://github.com/mazkev/nextjs-spotify-music-player" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">nextjs-spotify-music-player</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">Next.js 16, TypeScript, Web Audio API Canvas Visualizer, Synced Lyrics</span></p>
-                        <p>• <a href="https://github.com/mazkev/react-trello-kanban-suite" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">react-trello-kanban-suite</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">React 19, TypeScript, Zustand, Multi-axis Drag & Drop, Glassmorphism</span></p>
-                        <p>• <a href="https://github.com/mazkev/tiktok-clone-react-native-expo" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">tiktok-clone-react-native-expo</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">React Native, Expo Video Autoplay Feed, Camera Recording</span></p>
-                        <p>• <a href="https://github.com/mazkev/indofooty-match-hub" target="_blank" rel="noreferrer" className="font-mono font-bold text-slate-900 underline hover:text-sky-700">indofooty-match-hub</a> <span className="text-slate-400">—</span> <span className="font-mono text-slate-700">React 19, TypeScript, Sports Analytics Dashboard, Responsive UI</span></p>
+                      <div className="space-y-1.5 print:space-y-1 text-slate-700">
+                        <RepoItem name="react-canva-design-studio" url="https://github.com/mazkev/react-canva-design-studio" tech="React 19, TypeScript, React-Konva 60 FPS, Multi-format Export" lang={lang} />
+                        <RepoItem name="market-x-angular" url="https://github.com/mazkev/market-x-angular" tech="Angular 19, TypeScript, Signals, RxJS Event Streams, Seller Back-office" lang={lang} />
+                        <RepoItem name="nextjs-spotify-music-player" url="https://github.com/mazkev/nextjs-spotify-music-player" tech="Next.js 16, TypeScript, Web Audio API Canvas Visualizer, Synced Lyrics" lang={lang} />
+                        <RepoItem name="react-trello-kanban-suite" url="https://github.com/mazkev/react-trello-kanban-suite" tech="React 19, TypeScript, Zustand, Multi-axis Drag & Drop, Glassmorphism" lang={lang} />
+                        <RepoItem name="tiktok-clone-react-native-expo" url="https://github.com/mazkev/tiktok-clone-react-native-expo" tech="React Native, Expo Video Autoplay Feed, Camera Recording" lang={lang} />
+                        <RepoItem name="indofooty-match-hub" url="https://github.com/mazkev/indofooty-match-hub" tech="React 19, TypeScript, Sports Analytics Dashboard, Responsive UI" lang={lang} />
                       </div>
                     </div>
 
