@@ -90,12 +90,12 @@ Sebelum meninjau katalog lengkap 82 repositori, berikut adalah **4 studi kasus r
 * **Tantangan Rekayasa**: Menyediakan simulasi penawaran lelang (*live bidding*) yang responsif dengan *state hydration* yang mulus dan pencetakan faktur digital tanpa membebani thread utama browser.
 * **Solusi & Hasil**: Mengoptimalkan Server Components Next.js 16 untuk Initial Page Load instan, dipadukan dengan Client Components untuk interaktivitas dinamis, adapter LibSQL serverless untuk efisiensi query, generator invoice QR interaktif, dan komparasi spesifikasi multi-produk.
 
-### 3. Digital Wallet & Transactional Balance Transfer Engine
-* **Kategori**: Core Backend & Financial Integrity | **Tier**: 🌟 Tier 1
+### 3. Digital Wallet & Balance Transfer Simulation Lab
+* **Kategori**: Backend Exploration Lab & Concurrency Safety | **Tier**: 🌟 Tier 1
 * **Tech Stack**: Go (Golang), PostgreSQL, GORM, ACID Transactions, Bcrypt, Swagger OpenAPI
 * **Repositori GitHub**: [go-banking-core-system](https://github.com/mazkev/go-banking-core-system)
-* **Tantangan Rekayasa**: Mencegah *race condition* dan *double-spending* saat transfer saldo antar-rekening terjadi secara serentak (*concurrent balance deductions*).
-* **Solusi & Hasil**: Merancang mekanisme transfer saldo atomik dengan **ACID Transaction Isolation** dan *row-level locking* di PostgreSQL. Dilengkapi enkripsi PIN Bcrypt, structured audit ledger logging untuk setiap mutasi dana, serta dokumentasi endpoint interaktif menggunakan Swagger UI.
+* **Tantangan Rekayasa**: Mencegah *race condition* dan *double-spending* saat simulasi transfer saldo antar-akun terjadi secara bersamaan (*concurrent balance deductions*).
+* **Solusi & Hasil**: Membangun lab eksplorasi mandiri untuk memvalidasi transfer saldo atomik dengan **ACID Transaction Isolation** dan *row-level locking* di PostgreSQL. Dilengkapi enkripsi PIN Bcrypt, structured transaction audit ledger untuk setiap mutasi saldo, serta dokumentasi endpoint interaktif menggunakan Swagger UI.
 
 ### 4. Canvass Visual Graphic Design & Publishing Workstation
 * **Kategori**: Frontend Graphics Engineering | **Tier**: 🌟 Tier 1 | **Status**: 🚀 **Live Production**
@@ -138,9 +138,9 @@ Seluruh aplikasi berikut telah aktif (*HTTP 200 OK*) dan dapat diuji langsung ol
    * **Technologies**: Go 1.26, Gin, MongoDB v2, Reverse Proxy, Swagger UI
    * **Pencapaian**: Backend e-commerce dan API Gateway performa tinggi dengan Gin router, database MongoDB, sistem voucher, order lifecycle, reverse proxy, dan dokumentasi Swagger. *(Tier 1)*
 
-3. **Digital Wallet & Transactional Balance Transfer API** | [GitHub: go-banking-core-system](https://github.com/mazkev/go-banking-core-system)
+3. **Simulasi Transfer Saldo & Dompet Digital (Personal Lab)** | [GitHub: go-banking-core-system](https://github.com/mazkev/go-banking-core-system)
    * **Technologies**: Go, Clean Arch, PostgreSQL, ACID Transactions, GORM, Swagger UI
-   * **Pencapaian**: Layanan dompet digital dan transfer saldo yang menerapkan transfer saldo atomik dengan isolasi transaksi ACID, validasi PIN Bcrypt, audit logging, dan connection pooling PostgreSQL. *(Tier 1)*
+   * **Pencapaian**: Proyek eksplorasi mandiri untuk simulasi dompet digital dan transfer saldo atomik berstandar ACID, validasi PIN Bcrypt, audit logging transaksi, dan connection pooling PostgreSQL. *(Tier 1)*
 
 4. **Go Clean Architecture Domain-Driven REST API** | [GitHub: go-clean-arch](https://github.com/mazkev/go-clean-arch)
    * **Technologies**: Go, Clean Architecture, Gin, PostgreSQL, Repository Pattern

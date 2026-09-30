@@ -62,11 +62,11 @@ const roleData = {
     ],
     visualCards: [
       {
-        title: '1. GoFinance Banking Core API',
+        title: '1. GoFinance Digital Wallet & Transfer API',
         cat: 'Backend',
         tech: 'Go • Echo • PostgreSQL • Redis • RabbitMQ • Docker',
-        descEn: 'High-concurrency banking engine with ACID transactional account transfers, Redis cache-aside ledger, and RabbitMQ message broker.',
-        descId: 'Engine core banking dengan transaksi transfer akun atomik berstandar ACID, Redis cache-aside, dan message broker RabbitMQ.',
+        descEn: 'Digital wallet REST API simulation exploring ACID transactional account transfers, Redis cache-aside ledger, and RabbitMQ message broker.',
+        descId: 'Simulasi REST API dompet digital untuk eksplorasi transfer saldo atomik berstandar ACID, Redis cache-aside, dan message broker RabbitMQ.',
         img: '/projects/gofinance.png',
         link: 'https://github.com/mazkev/go-banking-core-system',
         label: 'github.com/mazkev/go-banking-core-system'
@@ -102,11 +102,11 @@ const roleData = {
         label: 'github.com/mazkev/go-clean-arch'
       },
       {
-        title: '5. Core Banking Swagger UI & Ledger',
+        title: '5. Digital Wallet Swagger UI & Transfer Ledger',
         cat: 'Backend',
         tech: 'Go • Echo • Swagger UI • Bcrypt PIN • Audit Logs',
-        descEn: 'Interactive API testing suite verifying balance inquiries, atomic debit/credit transactions, and audit ledger entries.',
-        descId: 'Suite pengujian API interaktif untuk verifikasi cek saldo, transaksi debit/kredit atomik, dan mutasi buku besar.',
+        descEn: 'Interactive API testing suite verifying balance inquiries, atomic debit/credit transactions, and audit ledger entries in a simulated wallet environment.',
+        descId: 'Suite pengujian API interaktif untuk verifikasi cek saldo, transaksi debit/kredit atomik, dan mutasi buku besar pada simulasi dompet digital.',
         img: '/projects/swagger-banking.png',
         link: 'https://github.com/mazkev/go-banking-core-system',
         label: 'github.com/mazkev/go-banking-core-system'
@@ -390,11 +390,11 @@ const roleData = {
     ],
     visualCards: [
       {
-        title: '1. GoFinance Banking Core API',
+        title: '1. GoFinance Digital Wallet & Transfer API',
         cat: 'Backend',
         tech: 'Go • Echo • PostgreSQL • Redis • RabbitMQ • Docker',
-        descEn: 'High-concurrency banking engine with ACID transactional account transfers, Redis cache-aside ledger, RabbitMQ message brokers, and Bcrypt security.',
-        descId: 'Engine core banking dengan transaksi transfer akun atomik berstandar ACID, Redis cache-aside, message broker RabbitMQ, dan pengamanan Bcrypt.',
+        descEn: 'Digital wallet REST API simulation exploring ACID transactional account transfers, Redis cache-aside ledger, RabbitMQ message brokers, and Bcrypt security.',
+        descId: 'Simulasi REST API dompet digital untuk eksplorasi transfer saldo atomik berstandar ACID, Redis cache-aside, message broker RabbitMQ, dan pengamanan Bcrypt.',
         img: '/projects/gofinance.png',
         link: 'https://github.com/mazkev/go-banking-core-system',
         label: 'github.com/mazkev/go-banking-core-system'
@@ -602,7 +602,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
       : 'Independently architected, developed, and audited 82 production-grade repositories applying Clean Architecture (DDD) and Docker containerization.',
     'Architected normalized relational database schemas with structured foreign keys, strict server-side schema validation, and decoupled domain layers (handler, service, repository) for long-term maintainability.',
     activeRole === 'backend'
-      ? 'Designed financial-grade ledger engines preventing race conditions and double-spending via PostgreSQL row-level locks (SELECT FOR UPDATE), Redis cache-aside patterns, and RabbitMQ message brokers.'
+      ? 'Developed a digital wallet simulation lab exploring concurrency safety and preventing double-spending via PostgreSQL row-level locks (SELECT FOR UPDATE) and Redis caching.'
       : activeRole === 'frontend'
       ? 'Engineered interactive user interfaces featuring dual-layer 60 FPS graphics (React-Konva), responsive state machines (Zustand, Signals), and cross-platform mobile apps (React Native Expo, Flutter).'
       : 'Engineered high-concurrency transactional architectures with PostgreSQL ACID row-level locks, Redis cache-aside patterns, RabbitMQ decoupled event brokers, and dual-layer 60 FPS canvas graphics.',
@@ -620,7 +620,7 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
       : 'Secara mandiri merancang, membangun, dan mengaudit 82 repositori perangkat lunak berstandar Clean Architecture (DDD) dan kontainerisasi Docker.',
     'Merancang skema database relasional ternormalisasi, validasi skema input ketat di sisi API, dan pemisahan lapisan logika bisnis (handler, service, repository) untuk kemudahan pemeliharaan kode jangka panjang.',
     activeRole === 'backend'
-      ? 'Menerapkan arsitektur ledger finansial anti-race condition dan anti-double spending dengan row-level locking PostgreSQL (SELECT FOR UPDATE), caching Redis cache-aside, dan RabbitMQ message broker.'
+      ? 'Membangun simulasi dompet digital sebagai proyek mandiri untuk mempelajari penanganan konkurensi dan pencegahan double-spending via row-level locks PostgreSQL (SELECT FOR UPDATE) dan caching Redis.'
       : activeRole === 'frontend'
       ? 'Membangun antarmuka pengguna interaktif berperforma tinggi dengan kanvas grafis dual-layer 60 FPS (React-Konva), state reaktif (Zustand, Signals), dan mobile cross-platform (React Native Expo, Flutter).'
       : 'Mengintegrasikan arsitektur konkurensi tinggi dengan transaksi atomik ACID & row-level locks PostgreSQL, caching Redis cache-aside, message broker RabbitMQ, dan kanvas dual-layer 60 FPS.',

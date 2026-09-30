@@ -256,7 +256,7 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
   'Go Banking Core Engine': {
     architectureFlow: 'Transfer Request ➔ Account Verification ➔ Database Transaction ➔ Ledger Balance Update ➔ Audit Logging',
     specs: {
-      architecture: 'Banking REST Engine (Go + PostgreSQL)',
+      architecture: 'Digital Wallet REST Engine (Go + PostgreSQL)',
       database: 'PostgreSQL 15 (Relational Accounts & Ledger Tables)',
       auth: 'Account Verification & Audit Logging Pipeline',
       devopsOrTesting: 'Dockerized PostgreSQL Migrations & Verification',
@@ -264,11 +264,11 @@ export default async function ProductDetailPage({ params }: { params: { id: stri
     features: [
       'Account-to-account balance transfer engine with error recovery',
       'PostgreSQL transactional ledger preventing invalid balance deductions',
-      'Immutable financial audit ledger recording credit and debit entries',
+      'Immutable transaction audit ledger recording credit and debit entries',
       'Comprehensive error boundaries returning serialized banking error codes',
       'Dockerized database migration runner with seed data',
     ],
-    challenge: 'Executing financial balance transfers between user accounts with accurate ledger recording and database consistency.',
+    challenge: 'Executing balance transfers between simulated accounts with accurate ledger recording and database consistency.',
     solution: 'Designed modular database transactions in Go and PostgreSQL with comprehensive rollback safeguards and error handling.',
     contributions: [
       'Engineered transfer transaction handlers with ledger balance verification.',

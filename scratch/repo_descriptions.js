@@ -8,8 +8,8 @@ const repoDescriptions = {
     id: 'Reverse proxy API gateway berkecepatan tinggi dengan database MongoDB, lifecycle order, dan Swagger OpenAPI.'
   },
   'go-banking-core-system': {
-    en: 'Digital wallet and transactional transfer engine with ACID atomic isolation, row-level locks, and Bcrypt PIN.',
-    id: 'Layanan dompet digital & transfer dana dengan isolasi atomik ACID, row-level locking, dan PIN Bcrypt.'
+    en: 'Digital wallet balance transfer simulation exploring ACID transactions, row-level locks, and Bcrypt PIN.',
+    id: 'Simulasi transfer saldo dompet digital untuk eksplorasi transaksi atomik ACID, row-level locks, dan PIN Bcrypt.'
   },
   'go-clean-arch': {
     en: 'Domain-driven Clean Architecture REST API decoupling business usecases from repository persistence.',

@@ -146,10 +146,10 @@ ${repoBlock('express-mongodb-starter-api', 'https://github.com/mazkev/express-mo
 
     page3Cards = [
       {
-        title: '1. GoFinance Banking Core API',
+        title: '1. GoFinance Digital Wallet & Transfer API',
         cat: 'Backend',
         tech: 'Go • Echo • PostgreSQL • Redis • RabbitMQ • Docker',
-        desc: isEn ? 'High-concurrency banking engine with ACID transactional transfers, Redis cache-aside ledger, and RabbitMQ broker.' : 'Engine core banking dengan transaksi transfer akun atomik berstandar ACID, Redis cache-aside, dan message broker RabbitMQ.',
+        desc: isEn ? 'Digital wallet REST API simulation exploring ACID transactional transfers, Redis cache-aside ledger, and RabbitMQ broker.' : 'Simulasi REST API dompet digital untuk eksplorasi transfer saldo atomik berstandar ACID, Redis cache-aside, dan message broker RabbitMQ.',
         img: imgGofinance,
         link: 'https://github.com/mazkev/go-banking-core-system',
         label: 'github.com/mazkev/go-banking-core-system'
@@ -182,10 +182,10 @@ ${repoBlock('express-mongodb-starter-api', 'https://github.com/mazkev/express-mo
         label: 'github.com/mazkev/go-clean-arch'
       },
       {
-        title: '5. Core Banking Swagger UI & Ledger',
+        title: '5. Digital Wallet Swagger UI & Transfer Ledger',
         cat: 'Backend',
         tech: 'Go • Echo • Swagger UI • Bcrypt PIN • Audit Logs',
-        desc: isEn ? 'Interactive API testing suite verifying balance inquiries, atomic debit/credit transactions, and audit ledger entries.' : 'Suite pengujian API interaktif untuk verifikasi cek saldo, transaksi debit/kredit atomik, dan mutasi buku besar.',
+        desc: isEn ? 'Interactive API testing suite verifying balance inquiries, atomic debit/credit transactions, and audit ledger entries in a simulated wallet environment.' : 'Suite pengujian API interaktif untuk verifikasi cek saldo, transaksi debit/kredit atomik, dan mutasi buku besar pada simulasi dompet digital.',
         img: imgSwaggerBanking,
         link: 'https://github.com/mazkev/go-banking-core-system',
         label: 'github.com/mazkev/go-banking-core-system'
@@ -555,10 +555,10 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
 
     page3Cards = [
       {
-        title: '1. GoFinance Banking Core API',
+        title: '1. GoFinance Digital Wallet & Transfer API',
         cat: 'Backend',
         tech: 'Go • Echo • PostgreSQL • Redis • RabbitMQ • Docker',
-        desc: isEn ? 'High-concurrency banking engine with ACID transactional account transfers, Redis cache-aside ledger, RabbitMQ message brokers, and Bcrypt security.' : 'Engine core banking dengan transaksi transfer akun atomik berstandar ACID, Redis cache-aside, message broker RabbitMQ, dan pengamanan Bcrypt.',
+        desc: isEn ? 'Digital wallet REST API simulation exploring ACID transactional account transfers, Redis cache-aside ledger, RabbitMQ message brokers, and Bcrypt security.' : 'Simulasi REST API dompet digital untuk eksplorasi transfer saldo atomik berstandar ACID, Redis cache-aside, message broker RabbitMQ, dan pengamanan Bcrypt.',
         img: imgGofinance,
         link: 'https://github.com/mazkev/go-banking-core-system',
         label: 'github.com/mazkev/go-banking-core-system'
@@ -694,7 +694,7 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
     `Independently architected, developed, and audited <strong>${role === 'backend' ? '19 production-grade backend microservices' : role === 'frontend' ? '48+ frontend and mobile applications' : '82 production-grade repositories'}</strong> applying Clean Architecture (DDD) and Docker containerization.`,
     'Architected normalized relational database schemas with structured foreign keys, strict server-side schema validation, and decoupled domain layers (handler, service, repository) for long-term maintainability.',
     role === 'backend'
-      ? 'Designed financial-grade ledger engines preventing race conditions and double-spending via <strong>PostgreSQL row-level locks (SELECT FOR UPDATE)</strong>, Redis cache-aside patterns, and RabbitMQ message brokers.'
+      ? 'Developed a digital wallet simulation lab exploring concurrency safety and preventing double-spending via <strong>PostgreSQL row-level locks (SELECT FOR UPDATE)</strong> and Redis caching.'
       : role === 'frontend'
       ? 'Engineered interactive user interfaces featuring <strong>dual-layer 60 FPS graphics (React-Konva)</strong>, responsive state machines (Zustand, Signals), and cross-platform mobile apps (React Native Expo, Flutter).'
       : 'Engineered high-concurrency transactional architectures with <strong>PostgreSQL ACID row-level locks</strong>, Redis cache-aside patterns, RabbitMQ decoupled event brokers, and dual-layer 60 FPS canvas graphics.',
@@ -708,7 +708,7 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
     `Secara mandiri merancang, membangun, dan mengaudit <strong>${role === 'backend' ? '19 repositori sistem backend microservices' : role === 'frontend' ? '48+ aplikasi frontend dan mobile' : '82 repositori perangkat lunak'}</strong> berstandar Clean Architecture (DDD) dan kontainerisasi Docker.`,
     'Merancang skema database relasional ternormalisasi, validasi skema input ketat di sisi API, dan pemisahan lapisan logika bisnis (handler, service, repository) untuk kemudahan pemeliharaan kode jangka panjang.',
     role === 'backend'
-      ? 'Menerapkan arsitektur ledger finansial anti-race condition dan anti-double spending dengan <strong>row-level locking PostgreSQL (SELECT FOR UPDATE)</strong>, caching Redis cache-aside, dan RabbitMQ message broker.'
+      ? 'Membangun simulasi dompet digital sebagai proyek mandiri untuk mempelajari penanganan konkurensi dan pencegahan double-spending via <strong>row-level locks PostgreSQL (SELECT FOR UPDATE)</strong> dan caching Redis.'
       : role === 'frontend'
       ? 'Membangun antarmuka pengguna interaktif berperforma tinggi dengan <strong>kanvas grafis dual-layer 60 FPS (React-Konva)</strong>, state reaktif (Zustand, Signals), dan mobile cross-platform (React Native Expo, Flutter).'
       : 'Mengintegrasikan arsitektur konkurensi tinggi dengan <strong>transaksi atomik ACID & row-level locks PostgreSQL</strong>, caching Redis cache-aside, message broker RabbitMQ, dan kanvas dual-layer 60 FPS.',
