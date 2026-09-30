@@ -238,6 +238,12 @@
     text-decoration: underline;
     font-size: 7.2pt;
   }
+  .repo-tech {
+    font-family: monospace;
+    font-weight: 600;
+    color: #334155;
+    font-size: 7.1pt;
+  }
   .table-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -452,7 +458,7 @@
     <div style="border-bottom: 2px solid #0f172a; padding-bottom: 5px; margin-bottom: 7px; display: flex; justify-content: space-between; align-items: baseline;">
       <div>
         <h2 style="font-size: 11pt; font-weight: 900; text-transform: uppercase; color: #0f172a;">
-          Backend & Cloud Systems Repository Directory (19 Repositories)
+          Backend & Cloud Systems Project Directory
         </h2>
         <span style="font-size: 7pt; font-weight: 700; color: #475569;">
           High-Performance Microservices, Distributed Systems & Database Engines
@@ -463,68 +469,43 @@
       </div>
     </div>
 
-    <!-- METRICS -->
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 7px;">
-      
-      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 4px; padding: 3px 5px; text-align: center;">
-        <div style="font-size: 10.5pt; font-weight: 900; color: #15803d;">19 Repos</div>
-        <div style="font-size: 6pt; font-weight: 700; color: #166534; text-transform: uppercase;">Backend Repositories</div>
-      </div>
-      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 4px; padding: 3px 5px; text-align: center;">
-        <div style="font-size: 10.5pt; font-weight: 900; color: #1d4ed8;">8 Microservices</div>
-        <div style="font-size: 6pt; font-weight: 700; color: #1e40af; text-transform: uppercase;">Go (Golang) Services</div>
-      </div>
-      <div style="background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 4px; padding: 3px 5px; text-align: center;">
-        <div style="font-size: 10.5pt; font-weight: 900; color: #7e22ce;">4 Services</div>
-        <div style="font-size: 6pt; font-weight: 700; color: #6b21a8; text-transform: uppercase;">Java Spring Boot</div>
-      </div>
-      <div style="background: #f0fdfa; border: 1px solid #99f6e4; border-radius: 4px; padding: 3px 5px; text-align: center;">
-        <div style="font-size: 10.5pt; font-weight: 900; color: #0f766e;">7 Services</div>
-        <div style="font-size: 6pt; font-weight: 700; color: #115e59; text-transform: uppercase;">Node.js / Bun / Python</div>
-      </div>
-    
-    </div>
-
     <!-- CONTENT -->
     
       <div class="pillar-card">
         <div class="pillar-header">
-          <span class="pillar-title">Pillar 1: Distributed Go & Java High-Throughput Engines</span>
-          <span class="pillar-count">6 Repositories</span>
+          <span class="pillar-title">Pillar 1: Distributed Go & Java Systems</span>
         </div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-distributed-microservices-lab" class="repo-name">go-distributed-microservices-lab:</a> High-throughput microservices with binary gRPC, Protocol Buffers, RabbitMQ event bus, and Redis cache-aside.</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-ecommerce-gateway-engine" class="repo-name">go-ecommerce-gateway-engine:</a> High-performance API Gateway with Gin router, MongoDB v2, order lifecycle, reverse proxy, and Swagger docs.</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-banking-core-system" class="repo-name">go-banking-core-system:</a> Core banking ledger with atomic balance transfers, ACID PostgreSQL row locks, Bcrypt PIN, and Swagger docs.</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-clean-arch" class="repo-name">go-clean-arch:</a> Domain-Driven Design (DDD) Clean Architecture decoupling Domain, Usecase, and Repository data layers.</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-rest-api-enterprise" class="repo-name">go-rest-api-enterprise:</a> Enterprise Go REST API with Gin, GORM, Redis caching, Uber Zap structured logging, and graceful shutdown.</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/spring-boot-enterprise-platform" class="repo-name">spring-boot-enterprise-platform:</a> Java 17 Spring Boot 3.3 enterprise platform with Spring Security JWT, AOP logging, Bucket4j rate limiting, and Docker.</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-distributed-microservices-lab" class="repo-name">go-distributed-microservices-lab</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-ecommerce-gateway-engine" class="repo-name">go-ecommerce-gateway-engine</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Go 1.26, Gin, MongoDB, Reverse Proxy, Swagger OpenAPI</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-banking-core-system" class="repo-name">go-banking-core-system</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-clean-arch" class="repo-name">go-clean-arch</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Go, Clean Architecture (DDD), Domain/Usecase/Repository, PostgreSQL</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-rest-api-enterprise" class="repo-name">go-rest-api-enterprise</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Go, Gin, GORM, Redis Cache-Aside, Zap Structured Logging, Docker</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/spring-boot-enterprise-platform" class="repo-name">spring-boot-enterprise-platform</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Java 17, Spring Boot 3.3, Spring Security JWT, Bucket4j Rate Limiter, Docker</span></span></div>
       </div>
 
       <div class="pillar-card">
         <div class="pillar-header">
-          <span class="pillar-title">Pillar 2: Cloud APIs & TypeScript Micro-Frameworks</span>
-          <span class="pillar-count">6 Repositories</span>
+          <span class="pillar-title">Pillar 2: Cloud APIs & TypeScript Microservices</span>
         </div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/hono-ecommerce-engine" class="repo-name">hono-ecommerce-engine:</a> Sub-millisecond REST API engine running on Bun runtime with Hono v4, Drizzle ORM, and WebSocket live chat.</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-prisma-realworld-api" class="repo-name">express-prisma-realworld-api:</a> RealWorld standard backend with Express, TypeScript, Prisma ORM, Nx Monorepo, JWT, and Jest test suite.</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-typescript-prisma-api" class="repo-name">express-typescript-prisma-api:</a> Type-safe REST API built with Express v5, TypeScript, Prisma 7 ORM, LibSQL adapter, and tsx development.</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-prisma-product-api" class="repo-name">express-prisma-product-api:</a> REST API with Express v5, Prisma ORM, JWT authentication, Multer upload, and Zod runtime validation.</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-sqlite-ecommerce-api" class="repo-name">express-sqlite-ecommerce-api:</a> Lightweight e-commerce API with Express v5, SQLite prepared statements, ACID checkout, and Swagger UI.</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-realtime-api-service" class="repo-name">express-realtime-api-service:</a> Express v5 with Socket.IO real-time broadcasting, dual database (Mongoose + MySQL), Winston logger, and Zod.</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/hono-ecommerce-engine" class="repo-name">hono-ecommerce-engine</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Bun Runtime, Hono v4, Drizzle ORM, WebSocket Live Chat, SQLite</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-prisma-realworld-api" class="repo-name">express-prisma-realworld-api</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express.js, TypeScript, Prisma ORM, Nx Monorepo, JWT, Jest Suite</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-typescript-prisma-api" class="repo-name">express-typescript-prisma-api</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express v5, TypeScript, Prisma 7 ORM, LibSQL Adapter, tsx</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-prisma-product-api" class="repo-name">express-prisma-product-api</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express v5, TypeScript, Prisma ORM, JWT Auth, Multer, Zod Validation</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-sqlite-ecommerce-api" class="repo-name">express-sqlite-ecommerce-api</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express v5, SQLite Prepared Statements, ACID Transactions, Swagger UI</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-realtime-api-service" class="repo-name">express-realtime-api-service</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express v5, Socket.IO, Dual DB (MongoDB + MySQL), Winston, Zod</span></span></div>
       </div>
 
       <div class="pillar-card" style="margin-bottom: 2px;">
         <div class="pillar-header">
-          <span class="pillar-title">Pillar 3: Specialized Microservices, Webhooks & Caching</span>
-          <span class="pillar-count">7 Repositories</span>
+          <span class="pillar-title">Pillar 3: Specialized Microservices, Webhooks & Data Pipelines</span>
         </div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-prisma-payment-api" class="repo-name">express-prisma-payment-api:</a> Payment backend with Midtrans webhook verification, automated PDFKit digital invoice rendering, and email.</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/AI-api-manager" class="repo-name">AI-api-manager:</a> Reverse proxy API gateway with API key authentication, distributed rate limiting, token quota tracking, and React UI.</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/spring-boot-book-manager-api" class="repo-name">spring-boot-book-manager-api:</a> Java 17 and Spring Boot 3.3 REST service with Spring Data MongoDB, pagination, and OpenAPI docs.</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-book-catalog-api" class="repo-name">express-book-catalog-api:</a> Book catalog API with Express v5, Prisma 7, Socket.IO live notifications, Redis rate limiting, and Jest tests.</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-redis-url-shortener" class="repo-name">express-redis-url-shortener:</a> URL shortener engine with Redis cache-aside pattern for sub-millisecond redirects and MongoDB persistence.</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-mongo-content-api" class="repo-name">express-mongo-content-api:</a> Content management REST API with Express, MongoDB, Redis caching, Socket.IO broadcasting, and cron jobs.</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-mongodb-starter-api" class="repo-name">express-mongodb-starter-api:</a> Modular CRUD boilerplate with Express, MongoDB Mongoose, JWT auth, Redis caching, and Docker container.</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-prisma-payment-api" class="repo-name">express-prisma-payment-api</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express.js, Midtrans Webhook, PDFKit Invoicing, Nodemailer</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/AI-api-manager" class="repo-name">AI-api-manager</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Node.js, Reverse Proxy Gateway, Redis Rate Limiting, API Key Auth, React UI</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/spring-boot-book-manager-api" class="repo-name">spring-boot-book-manager-api</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Java 17, Spring Boot 3.3, Spring Data MongoDB, OpenAPI 3.0</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-book-catalog-api" class="repo-name">express-book-catalog-api</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express v5, Prisma 7, Socket.IO Real-time, Redis Rate Limiter, Jest</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-redis-url-shortener" class="repo-name">express-redis-url-shortener</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express, Redis Cache-Aside, Sub-millisecond Redirects, MongoDB</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-mongo-content-api" class="repo-name">express-mongo-content-api</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express, MongoDB Mongoose, Redis Caching, Socket.IO, Cron Jobs</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-mongodb-starter-api" class="repo-name">express-mongodb-starter-api</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express, MongoDB Mongoose, JWT Auth, Redis Cache, Docker Compose</span></span></div>
       </div>
     
 

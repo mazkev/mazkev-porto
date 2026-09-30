@@ -76,70 +76,50 @@ function generateRoleHtml(role, lang) {
     `;
 
     page2Title = isEn 
-      ? 'Backend & Cloud Systems Repository Directory (19 Repositories)' 
-      : 'Direktori Repositori Backend & Cloud Systems (19 Repositori)';
+      ? 'Backend & Cloud Systems Project Directory' 
+      : 'Direktori Proyek Sistem Backend & Cloud';
     page2Subtitle = isEn
       ? 'High-Performance Microservices, Distributed Systems & Database Engines'
       : 'Layanan Mikro Kinerja Tinggi, Sistem Terdistribusi & Mesin Basis Data';
 
-    page2Metrics = `
-      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 4px; padding: 3px 5px; text-align: center;">
-        <div style="font-size: 10.5pt; font-weight: 900; color: #15803d;">19 Repos</div>
-        <div style="font-size: 6pt; font-weight: 700; color: #166534; text-transform: uppercase;">Backend Repositories</div>
-      </div>
-      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 4px; padding: 3px 5px; text-align: center;">
-        <div style="font-size: 10.5pt; font-weight: 900; color: #1d4ed8;">8 Microservices</div>
-        <div style="font-size: 6pt; font-weight: 700; color: #1e40af; text-transform: uppercase;">Go (Golang) Services</div>
-      </div>
-      <div style="background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 4px; padding: 3px 5px; text-align: center;">
-        <div style="font-size: 10.5pt; font-weight: 900; color: #7e22ce;">4 Services</div>
-        <div style="font-size: 6pt; font-weight: 700; color: #6b21a8; text-transform: uppercase;">Java Spring Boot</div>
-      </div>
-      <div style="background: #f0fdfa; border: 1px solid #99f6e4; border-radius: 4px; padding: 3px 5px; text-align: center;">
-        <div style="font-size: 10.5pt; font-weight: 900; color: #0f766e;">7 Services</div>
-        <div style="font-size: 6pt; font-weight: 700; color: #115e59; text-transform: uppercase;">Node.js / Bun / Python</div>
-      </div>
-    `;
+    page2Metrics = '';
 
     page2Content = `
       <div class="pillar-card">
         <div class="pillar-header">
-          <span class="pillar-title">${isEn ? 'Pillar 1: Distributed Go & Java High-Throughput Engines' : 'Pilar 1: Layanan Mikro Go & Java Kinerja Tinggi Terdistribusi'}</span>
-          <span class="pillar-count">6 Repositories</span>
+          <span class="pillar-title">${isEn ? 'Pillar 1: Distributed Go & Java Systems' : 'Pilar 1: Sistem Terdistribusi Go & Java'}</span>
         </div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-distributed-microservices-lab" class="repo-name">go-distributed-microservices-lab:</a> ${isEn ? 'High-throughput microservices with binary gRPC, Protocol Buffers, RabbitMQ event bus, and Redis cache-aside.' : 'Layanan mikro terdistribusi dengan komunikasi biner gRPC, antrean pesan asinkron RabbitMQ, dan caching Redis.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-ecommerce-gateway-engine" class="repo-name">go-ecommerce-gateway-engine:</a> ${isEn ? 'High-performance API Gateway with Gin router, MongoDB v2, order lifecycle, reverse proxy, and Swagger docs.' : 'Backend e-commerce & API Gateway performa tinggi dengan Gin router, MongoDB, reverse proxy, dan dokumentasi Swagger.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-banking-core-system" class="repo-name">go-banking-core-system:</a> ${isEn ? 'Core banking ledger with atomic balance transfers, ACID PostgreSQL row locks, Bcrypt PIN, and Swagger docs.' : 'Engine transfer rekening atomik dengan isolasi transaksi ACID, row-level lock PostgreSQL, PIN Bcrypt, dan dokumentasi Swagger.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-clean-arch" class="repo-name">go-clean-arch:</a> ${isEn ? 'Domain-Driven Design (DDD) Clean Architecture decoupling Domain, Usecase, and Repository data layers.' : 'Arsitektur Clean terstruktur dengan pemisahan tegas antara lapisan Domain, Usecase, dan Repository.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-rest-api-enterprise" class="repo-name">go-rest-api-enterprise:</a> ${isEn ? 'Enterprise Go REST API with Gin, GORM, Redis caching, Uber Zap structured logging, and graceful shutdown.' : 'REST API Go standar enterprise dengan Gin, GORM, Redis caching, structured logging Uber Zap, dan graceful shutdown.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/spring-boot-enterprise-platform" class="repo-name">spring-boot-enterprise-platform:</a> ${isEn ? 'Java 17 Spring Boot 3.3 enterprise platform with Spring Security JWT, AOP logging, Bucket4j rate limiting, and Docker.' : 'Platform enterprise Java 17 Spring Boot 3.3 dengan Spring Security JWT, audit logging AOP, Bucket4j rate limiter, dan Docker.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-distributed-microservices-lab" class="repo-name">go-distributed-microservices-lab</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-ecommerce-gateway-engine" class="repo-name">go-ecommerce-gateway-engine</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Go 1.26, Gin, MongoDB, Reverse Proxy, Swagger OpenAPI</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-banking-core-system" class="repo-name">go-banking-core-system</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-clean-arch" class="repo-name">go-clean-arch</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Go, Clean Architecture (DDD), Domain/Usecase/Repository, PostgreSQL</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-rest-api-enterprise" class="repo-name">go-rest-api-enterprise</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Go, Gin, GORM, Redis Cache-Aside, Zap Structured Logging, Docker</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/spring-boot-enterprise-platform" class="repo-name">spring-boot-enterprise-platform</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Java 17, Spring Boot 3.3, Spring Security JWT, Bucket4j Rate Limiter, Docker</span></span></div>
       </div>
 
       <div class="pillar-card">
         <div class="pillar-header">
-          <span class="pillar-title">${isEn ? 'Pillar 2: Cloud APIs & TypeScript Micro-Frameworks' : 'Pilar 2: API Cloud & Framework TypeScript Mikro'}</span>
-          <span class="pillar-count">6 Repositories</span>
+          <span class="pillar-title">${isEn ? 'Pillar 2: Cloud APIs & TypeScript Microservices' : 'Pilar 2: API Cloud & Microservices TypeScript'}</span>
         </div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/hono-ecommerce-engine" class="repo-name">hono-ecommerce-engine:</a> ${isEn ? 'Sub-millisecond REST API engine running on Bun runtime with Hono v4, Drizzle ORM, and WebSocket live chat.' : 'Engine REST API sub-milidetik berbasis Bun runtime dengan Hono v4, Drizzle ORM, dan live chat WebSocket.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-prisma-realworld-api" class="repo-name">express-prisma-realworld-api:</a> ${isEn ? 'RealWorld standard backend with Express, TypeScript, Prisma ORM, Nx Monorepo, JWT, and Jest test suite.' : 'Backend standar RealWorld dengan Express, TypeScript, Prisma ORM, Nx Monorepo, JWT, dan unit testing Jest.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-typescript-prisma-api" class="repo-name">express-typescript-prisma-api:</a> ${isEn ? 'Type-safe REST API built with Express v5, TypeScript, Prisma 7 ORM, LibSQL adapter, and tsx development.' : 'REST API type-safe dengan Express v5, TypeScript, Prisma 7 ORM, LibSQL adapter, dan runtime modern tsx.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-prisma-product-api" class="repo-name">express-prisma-product-api:</a> ${isEn ? 'REST API with Express v5, Prisma ORM, JWT authentication, Multer upload, and Zod runtime validation.' : 'REST API dengan Express v5 dan Prisma ORM dilengkapi autentikasi JWT, Multer upload, dan validasi Zod.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-sqlite-ecommerce-api" class="repo-name">express-sqlite-ecommerce-api:</a> ${isEn ? 'Lightweight e-commerce API with Express v5, SQLite prepared statements, ACID checkout, and Swagger UI.' : 'API e-commerce dengan Express v5 dan SQLite prepared statements, transaksi order atomik, dan Swagger UI.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-realtime-api-service" class="repo-name">express-realtime-api-service:</a> ${isEn ? 'Express v5 with Socket.IO real-time broadcasting, dual database (Mongoose + MySQL), Winston logger, and Zod.' : 'Arsitektur Express v5 dengan real-time Socket.IO broadcasting, dual database (Mongoose + MySQL), dan logger Winston.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/hono-ecommerce-engine" class="repo-name">hono-ecommerce-engine</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Bun Runtime, Hono v4, Drizzle ORM, WebSocket Live Chat, SQLite</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-prisma-realworld-api" class="repo-name">express-prisma-realworld-api</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express.js, TypeScript, Prisma ORM, Nx Monorepo, JWT, Jest Suite</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-typescript-prisma-api" class="repo-name">express-typescript-prisma-api</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express v5, TypeScript, Prisma 7 ORM, LibSQL Adapter, tsx</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-prisma-product-api" class="repo-name">express-prisma-product-api</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express v5, TypeScript, Prisma ORM, JWT Auth, Multer, Zod Validation</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-sqlite-ecommerce-api" class="repo-name">express-sqlite-ecommerce-api</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express v5, SQLite Prepared Statements, ACID Transactions, Swagger UI</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-realtime-api-service" class="repo-name">express-realtime-api-service</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express v5, Socket.IO, Dual DB (MongoDB + MySQL), Winston, Zod</span></span></div>
       </div>
 
       <div class="pillar-card" style="margin-bottom: 2px;">
         <div class="pillar-header">
-          <span class="pillar-title">${isEn ? 'Pillar 3: Specialized Microservices, Webhooks & Caching' : 'Pilar 3: Layanan Mikro Khusus, Webhook & Caching'}</span>
-          <span class="pillar-count">7 Repositories</span>
+          <span class="pillar-title">${isEn ? 'Pillar 3: Specialized Microservices, Webhooks & Data Pipelines' : 'Pilar 3: Layanan Mikro Khusus, Webhook & Pipeline Data'}</span>
         </div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-prisma-payment-api" class="repo-name">express-prisma-payment-api:</a> ${isEn ? 'Payment backend with Midtrans webhook verification, automated PDFKit digital invoice rendering, and email.' : 'Backend pemrosesan pembayaran dengan webhook Midtrans, pembuatan invoice PDF otomatis dengan PDFKit, dan email.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/AI-api-manager" class="repo-name">AI-api-manager:</a> ${isEn ? 'Reverse proxy API gateway with API key authentication, distributed rate limiting, token quota tracking, and React UI.' : 'Reverse proxy API gateway dengan autentikasi API Key, rate limiting Redis, pelacakan kuota token, dan konsol React.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/spring-boot-book-manager-api" class="repo-name">spring-boot-book-manager-api:</a> ${isEn ? 'Java 17 and Spring Boot 3.3 REST service with Spring Data MongoDB, pagination, and OpenAPI docs.' : 'Layanan RESTful API Java 17 dan Spring Boot 3.3 dengan Spring Data MongoDB, paginasi, dan dokumentasi OpenAPI.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-book-catalog-api" class="repo-name">express-book-catalog-api:</a> ${isEn ? 'Book catalog API with Express v5, Prisma 7, Socket.IO live notifications, Redis rate limiting, and Jest tests.' : 'REST API katalog buku dengan Express v5, Prisma 7, notifikasi langsung Socket.IO, Redis limiter, dan pengujian Jest.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-redis-url-shortener" class="repo-name">express-redis-url-shortener:</a> ${isEn ? 'URL shortener engine with Redis cache-aside pattern for sub-millisecond redirects and MongoDB persistence.' : 'Backend pemendek URL dengan pola Redis cache-aside untuk pengalihan sub-milidetik dan persistensi MongoDB.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-mongo-content-api" class="repo-name">express-mongo-content-api:</a> ${isEn ? 'Content management REST API with Express, MongoDB, Redis caching, Socket.IO broadcasting, and cron jobs.' : 'REST API manajemen konten dengan Express, MongoDB, Redis caching, broadcast Socket.IO, dan cron job.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-mongodb-starter-api" class="repo-name">express-mongodb-starter-api:</a> ${isEn ? 'Modular CRUD boilerplate with Express, MongoDB Mongoose, JWT auth, Redis caching, and Docker container.' : 'Boilerplate RESTful CRUD API modular dengan Express, MongoDB Mongoose, JWT auth, Redis cache, dan Docker.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-prisma-payment-api" class="repo-name">express-prisma-payment-api</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express.js, Midtrans Webhook, PDFKit Invoicing, Nodemailer</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/AI-api-manager" class="repo-name">AI-api-manager</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Node.js, Reverse Proxy Gateway, Redis Rate Limiting, API Key Auth, React UI</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/spring-boot-book-manager-api" class="repo-name">spring-boot-book-manager-api</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Java 17, Spring Boot 3.3, Spring Data MongoDB, OpenAPI 3.0</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-book-catalog-api" class="repo-name">express-book-catalog-api</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express v5, Prisma 7, Socket.IO Real-time, Redis Rate Limiter, Jest</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-redis-url-shortener" class="repo-name">express-redis-url-shortener</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express, Redis Cache-Aside, Sub-millisecond Redirects, MongoDB</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-mongo-content-api" class="repo-name">express-mongo-content-api</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express, MongoDB Mongoose, Redis Caching, Socket.IO, Cron Jobs</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/express-mongodb-starter-api" class="repo-name">express-mongodb-starter-api</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Express, MongoDB Mongoose, JWT Auth, Redis Cache, Docker Compose</span></span></div>
       </div>
     `;
 
@@ -269,55 +249,34 @@ function generateRoleHtml(role, lang) {
     `;
 
     page2Title = isEn 
-      ? 'Frontend Web & Mobile Engineering Directory (48+ Repositories)' 
-      : 'Direktori Repositori Frontend Web & Mobile (48+ Repositori)';
+      ? 'Frontend Web & Mobile Engineering Directory' 
+      : 'Direktori Proyek Frontend Web & Mobile';
     page2Subtitle = isEn
       ? 'Modern Web Clients, Mobile Apps & 12 Verified Cloud Deployments'
       : 'Klien Web Modern, Aplikasi Mobile & 12 Aplikasi Cloud Terverifikasi';
 
-    page2Metrics = `
-      <div style="background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 4px; padding: 3px 5px; text-align: center;">
-        <div style="font-size: 10.5pt; font-weight: 900; color: #7e22ce;">41 Repos</div>
-        <div style="font-size: 6pt; font-weight: 700; color: #6b21a8; text-transform: uppercase;">Frontend Web Apps</div>
-      </div>
-      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 4px; padding: 3px 5px; text-align: center;">
-        <div style="font-size: 10.5pt; font-weight: 900; color: #1d4ed8;">7 Repos</div>
-        <div style="font-size: 6pt; font-weight: 700; color: #1e40af; text-transform: uppercase;">Mobile Cross-Platform</div>
-      </div>
-      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 4px; padding: 3px 5px; text-align: center;">
-        <div style="font-size: 10.5pt; font-weight: 900; color: #15803d;">12 Live Apps</div>
-        <div style="font-size: 6pt; font-weight: 700; color: #166534; text-transform: uppercase;">Active Vercel URLs</div>
-      </div>
-      <div style="background: #f0fdfa; border: 1px solid #99f6e4; border-radius: 4px; padding: 3px 5px; text-align: center;">
-        <div style="font-size: 10.5pt; font-weight: 900; color: #0f766e;">100%</div>
-        <div style="font-size: 6pt; font-weight: 700; color: #115e59; text-transform: uppercase;">TypeScript / Typed</div>
-      </div>
-    `;
+    page2Metrics = '';
 
     page2Content = `
       <div class="pillar-card">
         <div class="pillar-header">
           <span class="pillar-title">${isEn ? 'Flagship Frontend Web Applications & Interactive Workstations' : 'Aplikasi Web Unggulan & Workstation Grafis'}</span>
-          <span class="pillar-count">React 19 • Next.js 16 • Angular 19</span>
         </div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/react-canva-design-studio" class="repo-name">react-canva-design-studio:</a> ${isEn ? 'Browser vector graphic design studio with dual-layer 60 FPS React-Konva canvas, transformation matrices, and image export.' : 'Studio desain grafis berbasis web dengan dual-layer kanvas 60 FPS React-Konva dan pipeline ekspor multi-format.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/market-x-angular" class="repo-name">market-x-angular:</a> ${isEn ? 'Enterprise e-commerce storefront powered by Angular 19 reactive Signals, RxJS event streams, and seller back-office.' : 'Storefront e-commerce enterprise dengan reaktivitas Angular 19 Signals, RxJS streams, dan dashboard penjual.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/nextjs-spotify-music-player" class="repo-name">nextjs-spotify-music-player:</a> ${isEn ? 'Music streaming player with real-time Web Audio API frequency analysis canvas visualizer and synchronized lyrics.' : 'Pemutar musik web dengan visualisasi frekuensi real-time Web Audio API pada kanvas dan sinkronisasi lirik.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/react-trello-kanban-suite" class="repo-name">react-trello-kanban-suite:</a> ${isEn ? 'Glassmorphism Kanban project board with multi-axis drag-and-drop task sorting and Zustand state store.' : 'Board manajemen proyek Kanban glassmorphism dengan drag-and-drop multi-axis dan state store Zustand.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/hub-spot-clone" class="repo-name">hub-spot-clone:</a> ${isEn ? 'Enterprise CRM platform with sales pipeline Kanban, TanStack data tables, and Recharts performance analytics.' : 'Platform CRM penjualan enterprise dengan pipeline transaksi interaktif, tabel data TanStack, dan analitik performa.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/nextjs-football-sport-portal" class="repo-name">nextjs-football-sport-portal:</a> ${isEn ? 'Live match center with Next.js 16, real-time sports feed parsing, league standings, and editorial CMS.' : 'Portal berita dan skor sepak bola langsung dengan Next.js 16, jadwal pertandingan real-time, dan konsol admin CMS.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/react-canva-design-studio" class="repo-name">react-canva-design-studio</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">React 19, TypeScript, React-Konva (60 FPS Infinite Canvas), Tailwind CSS</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/market-x-angular" class="repo-name">market-x-angular</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Angular 19, TypeScript, Reactive Signals, RxJS Event Streams, Tailwind CSS</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/nextjs-spotify-music-player" class="repo-name">nextjs-spotify-music-player</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Next.js 16, TypeScript, Web Audio API, Canvas Visualizer, Tailwind CSS</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/react-trello-kanban-suite" class="repo-name">react-trello-kanban-suite</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">React 19, TypeScript, Zustand, Multi-axis Drag & Drop, Glassmorphism UI</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/baye-ecommerce-marketplace" class="repo-name">baye-ecommerce-marketplace</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Next.js 16, React 19, TypeScript, LibSQL Serverless, Tailwind CSS</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/nexus-project-workspace" class="repo-name">nexus-project-workspace</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">React 19, TypeScript, Lucide Icons, Enterprise Dashboard UI</span></span></div>
       </div>
 
       <div class="pillar-card">
         <div class="pillar-header">
           <span class="pillar-title">${isEn ? 'Cross-Platform Mobile Applications' : 'Aplikasi Mobile Cross-Platform'}</span>
-          <span class="pillar-count">React Native (Expo 56) & Flutter</span>
         </div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/treveloka-react-native-expo" class="repo-name">treveloka-react-native-expo:</a> ${isEn ? 'Mobile travel booking superapp with React Native 0.85, Expo Router, and Gemini AI itinerary assistant.' : 'Aplikasi mobile pemesanan perjalanan dengan React Native 0.85, Expo Router, dan asisten rencana perjalanan Gemini AI.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/tiktok-clone-react-native-expo" class="repo-name">tiktok-clone-react-native-expo:</a> ${isEn ? 'Mobile short-video platform featuring Expo Video autoplay feeds, camera recording, and live comment overlays.' : 'Platform video pendek mobile dengan pemutar Expo Video seamless autoplay dan perekaman video kamera terintegrasi.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/shopee-clone-react-native-expo" class="repo-name">shopee-clone-react-native-expo:</a> ${isEn ? 'Mobile e-commerce marketplace with ShopeePay wallet simulator, multi-courier shipping calculator, and flash sales.' : 'Aplikasi marketplace mobile dengan simulator ShopeePay, kalkulator ongkir multi-ekspedisi, dan flash sale.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/react-native-inventory-tracker" class="repo-name">react-native-inventory-tracker:</a> ${isEn ? 'Mobile warehousing app with live camera barcode & QR scanner, multi-warehouse stock mutations, and offline cache.' : 'Aplikasi pergudangan mobile dengan scanner barcode & QR kamera langsung, mutasi stok, dan offline cache.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/flutter-grab-superapp-clone" class="repo-name">flutter-grab-superapp-clone:</a> ${isEn ? 'Cross-platform mobile superapp with Flutter, Riverpod 3, live driver tracking on OpenStreetMap, and food ordering.' : 'Aplikasi superapp mobile cross-platform dengan Flutter dan Riverpod 3, pelacakan driver di peta, dan pesan makanan.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/treveloka-react-native-expo" class="repo-name">treveloka-react-native-expo</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">React Native 0.85, Expo Router, TypeScript, Gemini AI API Assistant</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/tiktok-clone-react-native-expo" class="repo-name">tiktok-clone-react-native-expo</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">React Native, Expo Video Autoplay, Camera API, Interactive UI</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/flutter-grab-superapp-clone" class="repo-name">flutter-grab-superapp-clone</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Flutter 3, Dart, Riverpod 3, OpenStreetMap Live Driver Tracking</span></span></div>
       </div>
 
       <!-- 12 LIVE DEPLOYMENTS TABLE -->
@@ -469,66 +428,49 @@ function generateRoleHtml(role, lang) {
     `;
 
     page2Title = isEn 
-      ? 'Technical Project & Repository Directory (82 Repositories)' 
-      : 'Direktori & Katalog Repositori Rekayasa Perangkat Lunak (82 Repositori)';
+      ? 'Software Engineering Project Directory' 
+      : 'Direktori Proyek Rekayasa Perangkat Lunak';
     page2Subtitle = isEn
-      ? '82 Curated Open-Source Repositories Grouped by Engineering Pillars'
-      : '82 Repositori Terverifikasi Dikelompokkan ke Dalam 3 Pilar Teknis';
+      ? 'Curated Open-Source Production Projects Grouped by Engineering Pillars'
+      : 'Katalog Proyek Produksi Terverifikasi Berdasarkan Pilar Rekayasa';
 
-    page2Metrics = `
-      <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 4px; padding: 3px 5px; text-align: center;">
-        <div style="font-size: 10.5pt; font-weight: 900; color: #15803d;">19 Repos</div>
-        <div style="font-size: 6pt; font-weight: 700; color: #166534; text-transform: uppercase;">Backend & Cloud</div>
-      </div>
-      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 4px; padding: 3px 5px; text-align: center;">
-        <div style="font-size: 10.5pt; font-weight: 900; color: #1d4ed8;">22 Repos</div>
-        <div style="font-size: 6pt; font-weight: 700; color: #1e40af; text-transform: uppercase;">Fullstack & Mobile</div>
-      </div>
-      <div style="background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 4px; padding: 3px 5px; text-align: center;">
-        <div style="font-size: 10.5pt; font-weight: 900; color: #7e22ce;">41 Repos</div>
-        <div style="font-size: 6pt; font-weight: 700; color: #6b21a8; text-transform: uppercase;">Frontend Web Apps</div>
-      </div>
-      <div style="background: #f0fdfa; border: 1px solid #99f6e4; border-radius: 4px; padding: 3px 5px; text-align: center;">
-        <div style="font-size: 10.5pt; font-weight: 900; color: #0f766e;">12 Live Apps</div>
-        <div style="font-size: 6pt; font-weight: 700; color: #115e59; text-transform: uppercase;">Active Vercel URLs</div>
-      </div>
-    `;
+    page2Metrics = '';
 
     page2Content = `
       <div class="pillar-card">
         <div class="pillar-header">
-          <span class="pillar-title">${isEn ? 'Pillar 1: Backend Systems & Cloud Architecture' : 'Pilar 1: Sistem Backend & Arsitektur Cloud'}</span>
-          <span class="pillar-count">19 Repositories</span>
+          <span class="pillar-title">${isEn ? 'Pillar 1: Backend Systems & Distributed Services' : 'Pilar 1: Sistem Backend & Arsitektur Cloud'}</span>
         </div>
-        <div class="pillar-tech">Go (Golang) • Java Spring Boot • Bun/Hono • Node.js • PostgreSQL • Redis • RabbitMQ • gRPC • Docker</div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-banking-core-system" class="repo-name">go-banking-core-system:</a> ${isEn ? 'Core banking engine with atomic balance transfers, ACID PostgreSQL row locks, and Bcrypt PIN.' : 'Engine core banking transaksi transfer saldo atomik dengan row-level lock PostgreSQL dan validasi PIN Bcrypt.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-distributed-microservices-lab" class="repo-name">go-distributed-microservices-lab:</a> ${isEn ? 'High-throughput microservices communicating over binary gRPC and asynchronous RabbitMQ event bus.' : 'Layanan mikro terdistribusi dengan komunikasi biner gRPC dan antrean pesan asinkron RabbitMQ.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/nexus-workspace-engine" class="repo-name">nexus-workspace-engine:</a> ${isEn ? 'Java Spring Boot 3.3 enterprise microservices ecosystem with Resilience4j circuit breakers and Eureka discovery.' : 'Ekosistem microservices enterprise Java Spring Boot 3.3 dengan circuit breaker Resilience4j dan discovery Eureka.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-clean-arch" class="repo-name">go-clean-arch:</a> ${isEn ? 'Decoupled Clean Architecture boilerplate implementing strict Domain, Usecase, and Repository boundaries.' : 'Arsitektur Clean terstruktur dengan pemisahan tegas antara lapisan Domain, Usecase, dan Repository.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-banking-core-system" class="repo-name">go-banking-core-system</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Go, Echo, PostgreSQL, ACID Row Locks, Bcrypt PIN, Swagger UI</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-distributed-microservices-lab" class="repo-name">go-distributed-microservices-lab</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Go, gRPC, Protobuf, RabbitMQ, Redis, Worker Pools, Docker</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/nexus-workspace-engine" class="repo-name">nexus-workspace-engine</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Java 17, Spring Boot 3.3, Resilience4j, Eureka Discovery, PostgreSQL</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-ecommerce-gateway-engine" class="repo-name">go-ecommerce-gateway-engine</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Go 1.26, Gin, MongoDB, Reverse Proxy, Swagger OpenAPI</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/hono-ecommerce-engine" class="repo-name">hono-ecommerce-engine</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Bun Runtime, Hono v4, Drizzle ORM, WebSocket Live Chat, SQLite</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/go-clean-arch" class="repo-name">go-clean-arch</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Go, Clean Architecture (DDD), Domain/Usecase/Repository, PostgreSQL</span></span></div>
       </div>
 
       <div class="pillar-card">
         <div class="pillar-header">
-          <span class="pillar-title">${isEn ? 'Pillar 2: Fullstack Web Platforms & Mobile Applications' : 'Pilar 2: Platform Web Fullstack & Aplikasi Mobile'}</span>
-          <span class="pillar-count">22 Repositories</span>
+          <span class="pillar-title">${isEn ? 'Pillar 2: Fullstack Web Platforms & Enterprise Systems' : 'Pilar 2: Platform Web Fullstack & Aplikasi Mobile'}</span>
         </div>
-        <div class="pillar-tech">Next.js 16 • React 19 • React Native (Expo SDK 56) • Flutter • FastAPI • Laravel 12 • Prisma 7 • LibSQL</div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/baye-ecommerce-marketplace" class="repo-name">baye-ecommerce-marketplace:</a> ${isEn ? 'Auction e-commerce with Next.js 16 Server Components, live bidding simulation, LibSQL, and digital QR invoices.' : 'Marketplace lelang produksi dengan Next.js 16, LibSQL serverless, komparasi produk, dan cetak invoice QR digital.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/tokopedia-react-storefront" class="repo-name">tokopedia-react-storefront:</a> ${isEn ? 'Fullstack marketplace combining Go REST API backend with React 19, category filters, and optimistic cart checkout.' : 'E-commerce fullstack memadukan backend Go REST API dengan frontend React 19 dan sinkronisasi transaksi PostgreSQL.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/treveloka-react-native-expo" class="repo-name">treveloka-react-native-expo:</a> ${isEn ? 'Mobile travel booking superapp with React Native 0.85, Expo Router, and Gemini AI itinerary assistant.' : 'Aplikasi mobile pemesanan perjalanan dengan React Native 0.85, Expo Router, dan asisten rencana perjalanan Gemini AI.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/tiktok-clone-react-native-expo" class="repo-name">tiktok-clone-react-native-expo:</a> ${isEn ? 'Mobile short-video platform featuring Expo Video autoplay feeds, camera recording, and live comment overlays.' : 'Platform video pendek mobile dengan pemutar Expo Video seamless autoplay dan perekaman video kamera terintegrasi.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/baye-ecommerce-marketplace" class="repo-name">baye-ecommerce-marketplace</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Next.js 16, React 19, TypeScript, LibSQL Serverless, QR Digital Invoices</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/tokopedia-react-storefront" class="repo-name">tokopedia-react-storefront</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">React 19, TypeScript, Go REST API Backend, PostgreSQL, Tailwind</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/laravel-hrms-platform" class="repo-name">laravel-hrms-platform</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Laravel 12, PHP 8.3, MySQL, GPS Attendance, Automated Payroll</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/java-spring-commerce-platform" class="repo-name">java-spring-commerce-platform</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Java 17, Spring Boot 3.3, Vue 3, Pinia, OpenPDF, PostgreSQL</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/treveloka-react-native-expo" class="repo-name">treveloka-react-native-expo</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">React Native 0.85, Expo Router, Gemini AI Itinerary Assistant</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/flutter-grab-superapp-clone" class="repo-name">flutter-grab-superapp-clone</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Flutter 3, Dart, Riverpod 3, OpenStreetMap Live Driver Tracking</span></span></div>
       </div>
 
       <div class="pillar-card">
         <div class="pillar-header">
-          <span class="pillar-title">${isEn ? 'Pillar 3: Modern Frontend Web Applications' : 'Pilar 3: Aplikasi Frontend Web Modern'}</span>
-          <span class="pillar-count">41 Repositories</span>
+          <span class="pillar-title">${isEn ? 'Pillar 3: Modern Frontend & Mobile Applications' : 'Pilar 3: Aplikasi Frontend Web Modern'}</span>
         </div>
-        <div class="pillar-tech">React 19 • Vue 3 (Pinia) • Angular 19 (Signals) • Zustand • Tailwind CSS v4 • React-Konva • Web Audio API</div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/react-canva-design-studio" class="repo-name">react-canva-design-studio:</a> ${isEn ? 'Vector graphic studio with dual-layer 60 FPS React-Konva canvas, transformation matrices, and image export.' : 'Studio desain grafis berbasis web dengan dual-layer kanvas 60 FPS React-Konva dan pipeline ekspor multi-format.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/market-x-angular" class="repo-name">market-x-angular:</a> ${isEn ? 'Enterprise e-commerce storefront powered by Angular 19 reactive Signals, RxJS event streams, and seller dashboard.' : 'Storefront e-commerce enterprise dengan reaktivitas Angular 19 Signals, RxJS streams, dan dashboard penjual.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/nextjs-spotify-music-player" class="repo-name">nextjs-spotify-music-player:</a> ${isEn ? 'Music streaming player with real-time Web Audio API frequency analysis canvas visualizer and synchronized lyrics.' : 'Pemutar musik web dengan visualisasi frekuensi real-time Web Audio API pada kanvas dan sinkronisasi lirik.'}</span></div>
-        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/react-trello-kanban-suite" class="repo-name">react-trello-kanban-suite:</a> ${isEn ? 'Glassmorphism Kanban project board with multi-axis drag-and-drop task sorting and Zustand state store.' : 'Board manajemen proyek Kanban glassmorphism dengan drag-and-drop multi-axis dan state store Zustand.'}</span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/react-canva-design-studio" class="repo-name">react-canva-design-studio</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">React 19, TypeScript, React-Konva 60 FPS, Multi-format Export</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/market-x-angular" class="repo-name">market-x-angular</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Angular 19, TypeScript, Signals, RxJS Event Streams, Seller Back-office</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/nextjs-spotify-music-player" class="repo-name">nextjs-spotify-music-player</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">Next.js 16, TypeScript, Web Audio API Canvas Visualizer, Synced Lyrics</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/react-trello-kanban-suite" class="repo-name">react-trello-kanban-suite</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">React 19, TypeScript, Zustand, Multi-axis Drag & Drop, Glassmorphism</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/tiktok-clone-react-native-expo" class="repo-name">tiktok-clone-react-native-expo</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">React Native, Expo Video Autoplay Feed, Camera Recording</span></span></div>
+        <div class="repo-item"><span>•</span><span><a href="https://github.com/mazkev/indofooty-match-hub" class="repo-name">indofooty-match-hub</a> <span style="color:#94a3b8;">—</span> <span class="repo-tech">React 19, TypeScript, Sports Analytics Dashboard, Responsive UI</span></span></div>
       </div>
 
       <!-- 12 LIVE DEPLOYMENTS TABLE -->
@@ -942,6 +884,12 @@ function generateRoleHtml(role, lang) {
     text-decoration: underline;
     font-size: 7.2pt;
   }
+  .repo-tech {
+    font-family: monospace;
+    font-weight: 600;
+    color: #334155;
+    font-size: 7.1pt;
+  }
   .table-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1159,11 +1107,6 @@ function generateRoleHtml(role, lang) {
       <div style="font-size: 7pt; font-family: monospace; font-weight: 700; color: #334155;">
         <span>mazkev.vercel.app</span>
       </div>
-    </div>
-
-    <!-- METRICS -->
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-bottom: 7px;">
-      ${page2Metrics}
     </div>
 
     <!-- CONTENT -->
