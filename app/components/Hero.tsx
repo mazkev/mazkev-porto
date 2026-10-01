@@ -198,8 +198,12 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      <ResumeViewer isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
-      <CoverLetterViewer isOpen={isCoverLetterOpen} onClose={() => setIsCoverLetterOpen(false)} />
+      {isResumeOpen && (
+        <ResumeViewer isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
+      )}
+      {isCoverLetterOpen && (
+        <CoverLetterViewer isOpen={isCoverLetterOpen} onClose={() => setIsCoverLetterOpen(false)} />
+      )}
     </section>
   );
 }

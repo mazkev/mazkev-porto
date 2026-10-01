@@ -475,8 +475,11 @@ export default function GithubActivity() {
                   <img
                     src="https://ghchart.rshah.org/10b981/mazkev"
                     alt="Kevin Eka Pratama GitHub Contribution Chart"
-                    className="w-full h-auto max-w-4xl dark:invert-[0.05] dark:hue-rotate-180"
+                    width={890}
+                    height={128}
+                    decoding="async"
                     loading="lazy"
+                    className="w-full h-auto max-w-4xl dark:invert-[0.05] dark:hue-rotate-180 aspect-[890/128]"
                   />
                 </div>
               </div>

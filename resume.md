@@ -13,9 +13,9 @@
 
 ## 📌 Executive Summary (Ringkasan Eksekutif)
 
-Software Engineer dengan 2+ tahun pengalaman profesional di bidang **Application Support Sistem Enterprise pada PT PLN Icon+**. Memiliki keahlian teruji dalam penanganan dan investigasi ratusan tiket operasional dengan tingkat kepatuhan **SLA 100%**, penulisan query SQL terstruktur (**PostgreSQL, Oracle, MySQL**) untuk validasi data transaksi dan pelaporan, analisis log sistem saat insiden, serta pemantauan kestabilan layanan digital 24/7.
+Software Engineer dengan 2+ tahun pengalaman profesional di bidang **Application Support Sistem Enterprise pada PT PLN Icon+**. Memiliki keahlian teruji dalam investigasi insiden teknis dan anomali operasional dengan konsistensi pencapaian target **SLA di atas 98%**, perancangan query SQL analitis (**PostgreSQL, Oracle, MySQL**) untuk validasi integritas transaksi dan pelaporan, observabilitas log telemetri saat insiden, serta analisis Root Cause Analysis (RCA) bersama tim core developers.
 
-Sangat mahir dalam **AI-Assisted Software Engineering**, berkolaborasi intensif dengan *LLM tools* dan *agentic workflows* (Gemini 2.5, Claude 3.7, OpenAI, agentic coding tools) untuk akselerasi perancangan arsitektur, pemodelan skema database, *rapid prototyping*, serta otomasi *test suite*. Di luar peran korporat, memiliki rekam jejak dedikasi rekayasa mandiri dengan merancang, membangun, dan men-deploy **82 repositori terkurasi** mencakup arsitektur *microservices* terdistribusi (**Go, Java Spring Boot 3.3, Bun/Hono**), platform web modern (**Next.js 16, React 19, TypeScript**), serta aplikasi *mobile cross-platform* (**React Native Expo, Flutter**). Menerapkan prinsip **Clean Architecture (DDD)**, transaksi atomik **ACID**, *caching* Redis, *message broker* RabbitMQ, dan kontainerisasi **Docker**.
+Di luar peran korporat, memiliki rekam jejak dedikasi rekayasa mandiri dengan merancang, membangun, dan men-deploy **20+ repositori terkurasi** mencakup arsitektur *microservices* terdistribusi (**Go, Java Spring Boot 3.3, Bun/Hono**), platform web modern (**Next.js 16, React 19, TypeScript**), serta aplikasi *mobile cross-platform* (**React Native Expo, Flutter**). Menerapkan prinsip **Clean Architecture (DDD)**, simulasi transaksi atomik **ACID & row-level locks**, *caching* Redis, *message broker* RabbitMQ, dan kontainerisasi **Docker**.
 
 ---
 
@@ -43,11 +43,11 @@ Sangat mahir dalam **AI-Assisted Software Engineering**, berkolaborasi intensif 
 **Periode**: 2023 – Sekarang (2+ Tahun) | **Lokasi**: Indonesia  
 *PT PLN Icon+ adalah anak perusahaan utilitas ketenagalistrikan terkemuka di Indonesia yang mengelola infrastruktur digital dan layanan kelistrikan nasional.*
 
-* **Penyelesaian Tiket & Kepatuhan SLA 100%**: Menginvestigasi dan menyelesaikan ratusan tiket insiden teknis serta permintaan operasional produksi dengan tingkat kepatuhan **SLA mencapai 100%**, memastikan setiap kendala data dan laporan operasional terselesaikan tepat waktu.
-* **Pembuatan Query SQL & Validasi Data**: Merancang dan mengeksekusi query SQL terstruktur pada database **PostgreSQL, Oracle, dan MySQL** untuk keperluan investigasi data transaksi, ekstraksi data pelaporan operasional, dan validasi anomali sistem.
-* **Pemantauan Sistem Enterprise 24/7**: Memantau operasional alur sistem digital enterprise secara berkala untuk mendeteksi transaksi gagal, error integrasi, serta memastikan kelancaran alur data pelanggan nasional.
-* **Investigasi Log & Koordinasi Masalah ke Core Developer**: Memeriksa log error aplikasi saat terjadi kendala produksi, mendokumentasikan temuan teknis secara rinci pada tiket, dan berkoordinasi langsung dengan tim pengembang inti (*core developers*) untuk proses perbaikan bug dan API.
-* **Dokumentasi Prosedur Operasional (Runbook) & Standarisasi SQL**: Menyusun dokumentasi runbook teknis atas kendala berulang serta standarisasi template query SQL investigasi, memangkas durasi triage penanganan tiket dan mempercepat proses verifikasi pengujian patch pada lingkungan staging.
+* **Penyelesaian Insiden & Kepatuhan SLA Realistis**: Menginvestigasi dan menyelesaikan insiden teknis serta anomali operasional pada sistem enterprise berskala nasional dengan konsistensi pencapaian target **SLA di atas 98%**.
+* **Investigasi Data & Skrip Perbaikan Transaksional**: Merancang query SQL analitis kompleks (**PostgreSQL, Oracle, MySQL**) untuk rekonsiliasi data transaksional, audit anomali, serta menyusun skrip perbaikan data terverifikasi sesuai prosedur *change management*.
+* **Observabilitas Layanan & On-Call**: Memantau kesehatan layanan microservices enterprise dan integrasi API pihak ketiga (*payment gateway/partner*) melalui dashboard telemetri log & APM dalam rotasi operasional on-call.
+* **Analisis RCA & Validasi Hotfix Bersama Core Developer**: Menganalisis error logs dan *trace ID* untuk menyusun laporan Root Cause Analysis (RCA), mereproduksi *issue* di lingkungan staging, serta berkolaborasi langsung dengan tim pengembang inti untuk validasi patch dan rilis hotfix API.
+* **Dokumentasi Runbook Teknis & Pengurangan MTTR**: Menyusun dokumentasi runbook teknis dan standarisasi repositori query investigasi, berhasil memangkas durasi MTTR (*Mean Time to Resolve*) untuk penanganan kendala berulang.
 
 ---
 
@@ -110,18 +110,18 @@ Sebelum meninjau katalog lengkap 82 repositori, berikut adalah **4 studi kasus r
 
 Seluruh aplikasi berikut telah aktif (*HTTP 200 OK*) dan dapat diuji langsung oleh rekruter & hiring manager secara instan:
 
-1. **BayE Marketplace**: [https://baye-ecommerce-marketplace.vercel.app](https://baye-ecommerce-marketplace.vercel.app)
+1. **SE Marketplace C2C**: [https://semarketplace.vercel.app](https://semarketplace.vercel.app)
 2. **Nexus Workspace Studio**: [https://nexus-project-mu.vercel.app](https://nexus-project-mu.vercel.app)
 3. **Spotify Music Web Player**: [https://spotify-clonez.vercel.app](https://spotify-clonez.vercel.app)
 4. **Indofooty Live Match Center**: [https://indofooty.vercel.app](https://indofooty.vercel.app)
-5. **AI Component Wireframer**: [https://ai-component-wireframer.vercel.app](https://ai-component-wireframer.vercel.app)
-6. **Umrah Travel Landing**: [https://umrah-travel-landing.vercel.app](https://umrah-travel-landing.vercel.app)
-7. **Cloud Console Simulator**: [https://cloud-console-simulator.vercel.app](https://cloud-console-simulator.vercel.app)
-8. **Snake AI Pathfinding Lab**: [https://snake-ai-pathfinding.vercel.app](https://snake-ai-pathfinding.vercel.app)
-9. **Canvass Visual Graphic Design Studio**: [https://canva-clone-fawn.vercel.app](https://canva-clone-fawn.vercel.app)
-10. **Trello Glassmorphism Kanban Workspace**: [https://trello-azure-five.vercel.app](https://trello-azure-five.vercel.app)
-11. **MarketX Angular 19 E-Commerce Storefront**: [https://market-x-angular.vercel.app](https://market-x-angular.vercel.app)
-12. **HubSpot Enterprise CRM Platform**: [https://hub-spot-clone-five.vercel.app](https://hub-spot-clone-five.vercel.app)
+5. **Canva Visual Graphic Design Studio**: [https://canva-clone-fawn.vercel.app](https://canva-clone-fawn.vercel.app)
+6. **Trello Glassmorphism Kanban Workspace**: [https://trello-azure-five.vercel.app](https://trello-azure-five.vercel.app)
+7. **MarketX Angular 19 E-Commerce Storefront**: [https://market-x-angular.vercel.app](https://market-x-angular.vercel.app)
+8. **HubSpot Enterprise CRM Platform**: [https://hub-spot-clone-five.vercel.app](https://hub-spot-clone-five.vercel.app)
+9. **Tokopedia React Storefront**: [https://tokopedia-react.vercel.app](https://tokopedia-react.vercel.app)
+10. **Vue 3 Luxury E-Commerce**: [https://aplikasi-vue.vercel.app](https://aplikasi-vue.vercel.app)
+11. **Learn Go Code Sandbox**: [https://learn-go-app-swart.vercel.app](https://learn-go-app-swart.vercel.app)
+12. **Developer Portfolio Portal**: [https://mazkev.vercel.app](https://mazkev.vercel.app)
 
 ---
 

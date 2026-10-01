@@ -59,6 +59,7 @@ export default function LogoMarquee() {
                 width={40}
                 height={40}
                 loading="lazy"
+                decoding="async"
                 unoptimized
                 className="h-8 w-8 md:h-10 md:w-10 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
               />

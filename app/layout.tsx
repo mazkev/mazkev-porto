@@ -76,6 +76,8 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://cdn.simpleicons.org" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://cdn.simpleicons.org" />
+        <link rel="preconnect" href="https://ghchart.rshah.org" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://ghchart.rshah.org" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

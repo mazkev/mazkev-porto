@@ -23,18 +23,18 @@
 
 Seluruh aplikasi berikut telah terverifikasi aktif (*HTTP 200 OK*) dan dapat diakses langsung oleh rekruter secara instan:
 
-1. **BayE Marketplace**: [https://baye-ecommerce-marketplace.vercel.app](https://baye-ecommerce-marketplace.vercel.app)
+1. **SE Marketplace C2C**: [https://semarketplace.vercel.app](https://semarketplace.vercel.app)
 2. **Nexus Workspace Studio**: [https://nexus-project-mu.vercel.app](https://nexus-project-mu.vercel.app)
 3. **Spotify Music Web Player**: [https://spotify-clonez.vercel.app](https://spotify-clonez.vercel.app)
 4. **Indofooty Live Match Center**: [https://indofooty.vercel.app](https://indofooty.vercel.app)
-5. **AI Component Wireframer**: [https://ai-component-wireframer.vercel.app](https://ai-component-wireframer.vercel.app)
-6. **Umrah Travel Landing**: [https://umrah-travel-landing.vercel.app](https://umrah-travel-landing.vercel.app)
-7. **Cloud Console Simulator**: [https://cloud-console-simulator.vercel.app](https://cloud-console-simulator.vercel.app)
-8. **Snake AI Pathfinding Lab**: [https://snake-ai-pathfinding.vercel.app](https://snake-ai-pathfinding.vercel.app)
-9. **Canvass Visual Design Studio**: [https://canva-clone-fawn.vercel.app](https://canva-clone-fawn.vercel.app)
-10. **Trello Kanban Workspace**: [https://trello-azure-five.vercel.app](https://trello-azure-five.vercel.app)
-11. **MarketX Angular 19 Storefront**: [https://market-x-angular.vercel.app](https://market-x-angular.vercel.app)
-12. **HubSpot Enterprise CRM**: [https://hub-spot-clone-five.vercel.app](https://hub-spot-clone-five.vercel.app)
+5. **Canva Visual Design Studio**: [https://canva-clone-fawn.vercel.app](https://canva-clone-fawn.vercel.app)
+6. **Trello Kanban Workspace**: [https://trello-azure-five.vercel.app](https://trello-azure-five.vercel.app)
+7. **MarketX Angular 19 Storefront**: [https://market-x-angular.vercel.app](https://market-x-angular.vercel.app)
+8. **HubSpot Enterprise CRM**: [https://hub-spot-clone-five.vercel.app](https://hub-spot-clone-five.vercel.app)
+9. **Tokopedia React Storefront**: [https://tokopedia-react.vercel.app](https://tokopedia-react.vercel.app)
+10. **Vue 3 Luxury E-Commerce**: [https://aplikasi-vue.vercel.app](https://aplikasi-vue.vercel.app)
+11. **Learn Go Code Sandbox**: [https://learn-go-app-swart.vercel.app](https://learn-go-app-swart.vercel.app)
+12. **Developer Portfolio Portal**: [https://mazkev.vercel.app](https://mazkev.vercel.app)
 
 ---
 

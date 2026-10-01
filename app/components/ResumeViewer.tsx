@@ -28,12 +28,12 @@ const roleData = {
       roleTitle: 'Backend & Cloud Systems Engineer',
       roleSubtitle: 'Distributed Microservices • High-Concurrency Go & Java Spring Boot • ACID Ledgers',
       executiveSummaryTitle: 'Executive Summary',
-      executiveSummary: 'Backend & Cloud Systems Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record maintaining 100% SLA compliance for production operational tickets, authoring structured SQL queries (PostgreSQL, Oracle, MySQL) for transaction verification and data reporting, and monitoring high-availability system workflows 24/7. Deeply skilled in AI-Assisted Software Engineering, utilizing LLM & Agentic AI workflows to accelerate architectural design, unit testing, and code quality. Independently architected and deployed 19 production-grade backend microservices using Go (Golang), Java Spring Boot 3.3, Bun/Hono, and Express.js, with mastery in Clean Architecture (DDD), ACID transactional ledgers with row-level locks, Redis caching, RabbitMQ message brokers, gRPC, and Docker containerization.',
-      skillsLanguages: 'Go (Golang 1.25/1.26), Java (JDK 17/21), TypeScript, JavaScript (Node.js/Bun), Python 3, SQL, Bash',
-      skillsFrameworks: 'Java Spring Boot 3.3 (Spring Security 6, JPA), Go (Gin/Fiber/Echo), Bun + Hono, Express.js, FastAPI, Clean Architecture (DDD), gRPC (Protobuf), RESTful APIs, Microservices',
-      skillsDatabases: 'PostgreSQL (GORM, Prisma, ACID Transactions, Connection Pooling, Row-level Locks), MySQL, MongoDB (NoSQL), Redis (Cache-Aside, Rate Limiting), RabbitMQ (Message Broker)',
-      skillsAi: 'Gemini AI, Claude/OpenAI APIs, AI-Assisted System Architecture, Prompt Engineering, Agentic Coding Workflows, Automated Test Generation & Code Refactoring',
-      skillsDevOps: 'Docker, Docker Compose, Linux Bash, Git & GitHub, Postman, Swagger / OpenAPI 3.0, CI/CD GitHub Actions',
+      executiveSummary: 'Backend & Cloud Systems Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record maintaining over 98% SLA compliance for production operational tickets, authoring structured SQL queries (PostgreSQL, Oracle, MySQL) for transaction verification and data reporting, and monitoring high-availability system workflows in on-call rotations. Strong background in modular systems engineering, Clean Architecture, and automated test coverage. Independently architected and deployed 20+ production-grade backend microservices using Go (Golang), Java Spring Boot 3.3, Bun/Hono, and Express.js, with mastery in Clean Architecture (DDD), ACID transactional ledgers with row-level locks, Redis caching, RabbitMQ message brokers, gRPC, and Docker containerization.',
+      skillsLanguages: 'Go (Golang 1.25/1.26), SQL (PostgreSQL, Oracle, MySQL), TypeScript, JavaScript (Node.js/Bun), Bash • Familiar: Java 17, Python 3',
+      skillsFrameworks: 'Go Clean Architecture (DDD), Gin, Echo, Fiber, gRPC (Protobuf), RESTful APIs, Express.js, Bun + Hono • Familiar: Java Spring Boot 3.3, FastAPI',
+      skillsDatabases: 'PostgreSQL (ACID Transactions, Row-Level Locks, Connection Pooling, GORM/Prisma), Redis (Cache-Aside, Distributed Rate Limiting), RabbitMQ, MySQL, MongoDB',
+      skillsAi: 'AI-Assisted System Architecture (Claude, Gemini, OpenAI APIs), Prompt Engineering, Agentic Coding Workflows, Automated API Unit Testing & Incident RCA',
+      skillsDevOps: 'Docker, Docker Compose, Linux Bash, Postman, Swagger / OpenAPI 3.0, Git & GitHub, CI/CD GitHub Actions',
       page2Title: 'Backend & Cloud Systems Project Directory',
       page2Subtitle: 'High-Performance Microservices, Distributed Systems & Database Engines',
       page3Title: 'Backend Visual Annex: 12 Microservices & API Architectures',
@@ -43,19 +43,19 @@ const roleData = {
       roleTitle: 'Backend & Cloud Systems Engineer',
       roleSubtitle: 'Sistem Terdistribusi • Microservices Go & Java Spring Boot • Transaksi ACID',
       executiveSummaryTitle: 'Ringkasan Eksekutif',
-      executiveSummary: 'Backend & Cloud Systems Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support Sistem Enterprise pada PT PLN Icon+. Memiliki keahlian teruji dalam penanganan tiket operasional produksi dengan kepatuhan SLA 100%, penulisan query SQL terstruktur (PostgreSQL, Oracle, MySQL) untuk validasi data transaksi dan pelaporan, serta pemantauan kestabilan sistem 24/7. Mahir bekerja bersama teknologi AI (AI-Assisted Engineering), memanfaatkan LLM dan agentic workflows untuk akselerasi perancangan arsitektur, pembuatan unit test, dan refactoring. Secara mandiri merancang dan membangun 19 repositori sistem backend dan microservices menggunakan Go (Golang), Java Spring Boot 3.3, Bun/Hono, dan Express.js berstandar Clean Architecture (DDD), transaksi atomik ACID, Redis cache-aside, RabbitMQ, gRPC, dan Docker.',
-      skillsLanguages: 'Go (Golang 1.25/1.26), Java (JDK 17/21), TypeScript, JavaScript (Node.js/Bun), Python 3, SQL, Bash',
-      skillsFrameworks: 'Java Spring Boot 3.3 (Spring Security 6, JPA), Go (Gin/Fiber/Echo), Bun + Hono, Express.js, FastAPI, Clean Architecture (DDD), gRPC (Protobuf), RESTful APIs, Microservices',
-      skillsDatabases: 'PostgreSQL (GORM, Prisma, ACID Transactions, Connection Pooling, Row-level Locks), MySQL, MongoDB (NoSQL), Redis (Cache-Aside, Rate Limiting), RabbitMQ (Message Broker)',
-      skillsAi: 'Gemini AI, Claude/OpenAI APIs, Arsitektur Berbasis AI & Refactoring, Prompt Engineering, Agentic Coding Workflows, Otomasi Pembuatan Unit Test',
-      skillsDevOps: 'Docker, Docker Compose, Linux Bash, Git & GitHub, Postman, Swagger / OpenAPI 3.0, CI/CD GitHub Actions',
+      executiveSummary: 'Backend & Cloud Systems Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support Sistem Enterprise pada PT PLN Icon+. Memiliki keahlian teruji dalam penanganan tiket operasional produksi dengan kepatuhan SLA di atas 98%, penulisan query SQL terstruktur (PostgreSQL, Oracle, MySQL) untuk validasi data transaksi dan pelaporan, serta pemantauan kestabilan sistem dalam rotasi on-call. Memiliki keahlian mendalam dalam rekayasa sistem modular, Clean Architecture, dan automated test coverage untuk menjamin keandalan sistem. Secara mandiri merancang dan membangun 20+ repositori sistem backend dan microservices menggunakan Go (Golang), Java Spring Boot 3.3, Bun/Hono, dan Express.js berstandar Clean Architecture (DDD), transaksi atomik ACID, Redis cache-aside, RabbitMQ, gRPC, dan Docker.',
+      skillsLanguages: 'Go (Golang 1.25/1.26), SQL (PostgreSQL, Oracle, MySQL), TypeScript, JavaScript (Node.js/Bun), Bash • Terbiasa: Java 17, Python 3',
+      skillsFrameworks: 'Go Clean Architecture (DDD), Gin, Echo, Fiber, gRPC (Protobuf), RESTful APIs, Express.js, Bun + Hono • Terbiasa: Java Spring Boot 3.3, FastAPI',
+      skillsDatabases: 'PostgreSQL (Transaksi Atomik ACID, Row-Level Locks, Connection Pooling, GORM/Prisma), Redis (Cache-Aside, Rate Limiting Terdistribusi), RabbitMQ, MySQL, MongoDB',
+      skillsAi: 'Arsitektur Sistem Berbasis AI (Claude, Gemini, OpenAI APIs), Prompt Engineering, Alur Kerja Agentic Coding, Otomasi Unit Test API & Analisis RCA Insiden',
+      skillsDevOps: 'Docker, Docker Compose, Linux Bash, Postman, Swagger / OpenAPI 3.0, Git & GitHub, CI/CD GitHub Actions',
       page2Title: 'Direktori Proyek Sistem Backend & Cloud',
       page2Subtitle: 'Layanan Mikro Kinerja Tinggi, Sistem Terdistribusi & Mesin Basis Data',
       page3Title: 'Lampiran Visual Backend: 12 Arsitektur API & Microservices',
       page3Subtitle: 'Dokumentasi Kontrak API Interaktif, Topologi Microservices & Pembuktian Skema',
     },
     metrics: [
-      { num: '19 Repos', labelEn: 'Backend Repositories', labelId: 'Repositori Backend' },
+      { num: '20+ Repos', labelEn: 'Backend Repositories', labelId: 'Repositori Backend' },
       { num: '8 Services', labelEn: 'Go (Golang) Microservices', labelId: 'Layanan Mikro Go' },
       { num: '4 Services', labelEn: 'Java Spring Boot', labelId: 'Java Spring Boot' },
       { num: '7 Services', labelEn: 'Node.js / Bun / Python', labelId: 'Node.js / Bun / Python' },
@@ -192,12 +192,12 @@ const roleData = {
       roleTitle: 'Frontend & Mobile Engineer',
       roleSubtitle: 'Next.js 16 • React 19 • React Native (Expo) • Angular 19 • 60 FPS Canvas',
       executiveSummaryTitle: 'Executive Summary',
-      executiveSummary: 'Frontend & Mobile Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record maintaining 100% SLA compliance for production operational tickets, user workflow issue resolution, and system stability. Deeply proficient in AI-Assisted Engineering, pairing with LLM tools to accelerate component prototyping, state architecture, and accessibility testing. Creator of 48+ production-grade frontend web and mobile applications specializing in modern component architecture (Next.js 16 App Router, React 19, Angular 19 Signals, Vue 3 Pinia), reactive client state management (Zustand, Redux Toolkit, RxJS), dual-layer 60 FPS canvas graphics (React-Konva), and cross-platform mobile apps (React Native Expo SDK 56, Flutter). Strong foundation in responsive performance optimization, WebSockets, and Vercel edge deployment.',
-      skillsLanguages: 'TypeScript, JavaScript (ES6+), Dart, HTML5, CSS3, Tailwind CSS v4',
-      skillsFrameworks: 'Next.js 16 (App Router, Server Components), React 19, Angular 19 (Signals, RxJS), Vue 3 (Composition API, Pinia), Vite',
-      skillsDatabases: 'Zustand, Redux Toolkit, React-Konva (60 FPS Infinite Canvas), Web Audio API, Recharts, TanStack Query/Table',
-      skillsAi: 'Gemini AI, Claude/OpenAI APIs, AI Component Prototyping, Prompt Engineering, Agentic Tooling, Automated Frontend Testing',
-      skillsDevOps: 'React Native (Expo SDK 56, Expo Router), Flutter (Riverpod 3), Git & GitHub, Postman, Webpack 5, Vercel Edge Runtime',
+      executiveSummary: 'Frontend & Mobile Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record maintaining over 98% SLA compliance for production operational tickets, user workflow issue resolution, and system stability within on-call rotations. Proficient in modern component architecture, state management, and accessibility standards. Creator of 20+ production-grade frontend web and mobile applications specializing in modern component architecture (Next.js 16 App Router, React 19, Angular 19 Signals, Vue 3 Pinia), reactive client state management (Zustand, Redux Toolkit, RxJS), dual-layer 60 FPS canvas graphics (React-Konva), and cross-platform mobile apps (React Native Expo SDK 56, Flutter). Strong foundation in responsive performance optimization, WebSockets, and Vercel edge deployment.',
+      skillsLanguages: 'TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS v4 • Familiar: Dart, SQL',
+      skillsFrameworks: 'Next.js 16 (App Router), React 19, Tailwind CSS v4, Vue 3 (Pinia), Angular 19 (Signals) • Mobile: React Native (Expo SDK 56), Flutter (Riverpod 3)',
+      skillsDatabases: 'Zustand, TanStack Query/Table, React-Konva (60 FPS Canvas), Web Audio API, Recharts, Responsive UI & A11y',
+      skillsAi: 'AI-Assisted UI Prototyping (Gemini, Claude, OpenAI APIs), Component Generation, Prompt Engineering, Automated UI Testing',
+      skillsDevOps: 'Git & GitHub, Postman, Webpack 5, Vite, Chrome DevTools Profiling, Vercel Edge Deployments',
       page2Title: 'Frontend Web & Mobile Engineering Directory',
       page2Subtitle: 'Modern Web Clients, Mobile Apps & 12 Verified Cloud Deployments',
       page3Title: 'Frontend & Mobile Visual Annex: 12 Production Interfaces & Demos',
@@ -207,19 +207,19 @@ const roleData = {
       roleTitle: 'Frontend & Mobile Engineer',
       roleSubtitle: 'Next.js 16 • React 19 • React Native (Expo) • Angular 19 • Kanvas 60 FPS',
       executiveSummaryTitle: 'Ringkasan Eksekutif',
-      executiveSummary: 'Frontend & Mobile Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support Sistem Enterprise pada PT PLN Icon+. Memiliki keahlian teruji dalam penanganan tiket operasional produksi dengan kepatuhan SLA 100%, penyelesaian kendala antarmuka pengguna, dan kestabilan sistem. Mahir bekerja bersama teknologi AI (AI-Assisted Engineering) untuk mempercepat pembuatan prototipe komponen, state architecture, dan pengujian UI. Membangun 48+ aplikasi frontend web dan mobile dengan spesialisasi arsitektur komponen modern (Next.js 16 App Router, React 19, Angular 19 Signals, Vue 3 Pinia), state management reaktif (Zustand, Redux Toolkit, RxJS), kanvas grafis dual-layer 60 FPS (React-Konva), dan mobile cross-platform (React Native Expo SDK 56, Flutter). Menguasai optimasi performa responsif, WebSockets, dan deployment Vercel.',
-      skillsLanguages: 'TypeScript, JavaScript (ES6+), Dart, HTML5, CSS3, Tailwind CSS v4',
-      skillsFrameworks: 'Next.js 16 (App Router, Server Components), React 19, Angular 19 (Signals, RxJS), Vue 3 (Composition API, Pinia), Vite',
-      skillsDatabases: 'Zustand, Redux Toolkit, React-Konva (60 FPS Infinite Canvas), Web Audio API, Recharts, TanStack Query/Table',
-      skillsAi: 'Gemini AI, Claude/OpenAI APIs, Pembuatan Prototipe Komponen UI Berbasis AI, Prompt Engineering, Otomasi Pengujian Antarmuka',
-      skillsDevOps: 'React Native (Expo SDK 56, Expo Router), Flutter (Riverpod 3), Git & GitHub, Postman, Webpack 5, Vercel Edge Runtime',
+      executiveSummary: 'Frontend & Mobile Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support Sistem Enterprise pada PT PLN Icon+. Memiliki keahlian teruji dalam penanganan tiket operasional produksi dengan kepatuhan SLA di atas 98%, penyelesaian kendala antarmuka pengguna, dan kestabilan sistem dalam rotasi on-call. Memiliki keahlian mendalam dalam perancangan arsitektur antarmuka modern, state management reaktif, dan standar aksesibilitas web. Membangun 20+ aplikasi frontend web dan mobile dengan spesialisasi arsitektur komponen modern (Next.js 16 App Router, React 19, Angular 19 Signals, Vue 3 Pinia), state management reaktif (Zustand, Redux Toolkit, RxJS), kanvas grafis dual-layer 60 FPS (React-Konva), dan mobile cross-platform (React Native Expo SDK 56, Flutter). Menguasai optimasi performa responsif, WebSockets, dan deployment Vercel.',
+      skillsLanguages: 'TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS v4 • Terbiasa: Dart, SQL',
+      skillsFrameworks: 'Next.js 16 (App Router), React 19, Tailwind CSS v4, Vue 3 (Pinia), Angular 19 (Signals) • Mobile: React Native (Expo SDK 56), Flutter (Riverpod 3)',
+      skillsDatabases: 'Zustand, TanStack Query/Table, React-Konva (Kanvas 60 FPS), Web Audio API, Recharts, Desain UI Responsif & Aksesibilitas',
+      skillsAi: 'Prototipe UI Berbasis AI (Gemini, Claude, OpenAI APIs), Generasi Komponen, Prompt Engineering, Otomasi Pengujian UI',
+      skillsDevOps: 'Git & GitHub, Postman, Webpack 5, Vite, Profiling Chrome DevTools, Deployment Vercel Edge',
       page2Title: 'Direktori Proyek Frontend Web & Mobile',
       page2Subtitle: 'Klien Web Modern, Aplikasi Mobile & 12 Aplikasi Cloud Terverifikasi',
       page3Title: 'Lampiran Visual Frontend & Mobile: 12 Antarmuka Unggulan & Live Demo',
       page3Subtitle: 'Workstation Kanvas Vektor, Klien Media Dinamis & Tampilan Aplikasi Mobile',
     },
     metrics: [
-      { num: '41 Repos', labelEn: 'Frontend Web Apps', labelId: 'Aplikasi Web Frontend' },
+      { num: '20+ Repos', labelEn: 'Frontend Web Apps', labelId: 'Aplikasi Web Frontend' },
       { num: '7 Repos', labelEn: 'Mobile Cross-Platform', labelId: 'Mobile Cross-Platform' },
       { num: '12 Live Apps', labelEn: 'Active Vercel URLs', labelId: 'Aplikasi Aktif Vercel' },
       { num: '100%', labelEn: 'TypeScript / Typed', labelId: 'TypeScript / Typed' },
@@ -356,12 +356,12 @@ const roleData = {
       roleTitle: 'Fullstack Software Engineer',
       roleSubtitle: 'Backend Systems • Fullstack Platforms • Cloud Architecture',
       executiveSummaryTitle: 'Executive Summary',
-      executiveSummary: 'Fullstack Software Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record maintaining 100% SLA compliance for production operational tickets, authoring structured SQL queries (PostgreSQL, Oracle, MySQL) for transaction verification and data reporting, and monitoring high-availability system workflows 24/7. Deeply skilled in AI-Assisted Software Engineering, utilizing LLM and Agentic AI workflows to accelerate full-cycle development from system design to automated testing. Independently architected and deployed 82 verified software repositories spanning distributed Go & Java Spring Boot microservices, modern Next.js 16 & React 19 web platforms, and mobile apps, with strong mastery in Clean Architecture (DDD), ACID transactional ledgers, Redis caching, RabbitMQ message brokers, and Docker containerization.',
-      skillsLanguages: 'Go (Golang), Java (JDK 17/21), TypeScript, JavaScript (Node.js/Bun), Python 3, PHP 8, Dart, SQL, HTML5/CSS3',
-      skillsFrameworks: 'Java Spring Boot 3.3, Go (Gin/Fiber/Echo), Bun + Hono, Express.js, FastAPI, Laravel 12, Clean Architecture (DDD), RESTful APIs, gRPC (Protobuf), Microservices, WebSocket',
-      skillsDatabases: 'PostgreSQL (GORM, Prisma, ACID Transactions, Connection Pooling), MySQL, MongoDB, SQLite (LibSQL), Redis (Cache-Aside, Rate Limiting), RabbitMQ',
-      skillsAi: 'Gemini AI, Claude/OpenAI APIs, AI-Assisted System Architecture, Prompt Engineering, Agentic Coding Workflows, Automated Test Generation & Code Refactoring',
-      skillsDevOps: 'Next.js 16 (App Router), React 19, Angular 19, React Native Expo SDK 56, Docker, Git & GitHub, Postman, Vercel Edge Runtime',
+      executiveSummary: 'Fullstack Software Engineer with 2+ years of enterprise Application Support experience at PT PLN Icon+. Proven track record maintaining over 98% SLA compliance for production operational tickets, authoring structured SQL queries (PostgreSQL, Oracle, MySQL) for transaction verification and data reporting, and monitoring high-availability system workflows in on-call rotations. Strong proficiency in full-cycle software engineering, clean architecture, and automated test coverage. Independently architected and deployed 20+ verified production-grade repositories spanning distributed Go microservices, modern Next.js 16 & React 19 web platforms, and mobile apps, with strong mastery in Clean Architecture (DDD), ACID transactional ledgers, Redis caching, responsive REST APIs, WebSockets, and Docker containerization.',
+      skillsLanguages: 'Go (Golang), TypeScript, JavaScript (Node.js), SQL (PostgreSQL, Oracle, MySQL), HTML5/CSS3 • Familiar: Java 17, Python 3, PHP 8',
+      skillsFrameworks: 'Next.js 16 (App Router), React 19, Go (Gin/Echo, Clean Architecture), Tailwind CSS v4, RESTful APIs, WebSocket • Familiar: Java Spring Boot 3.3, Vue 3, Bun/Hono',
+      skillsDatabases: 'PostgreSQL (ACID Transactions, Connection Pooling, Row Locks, Prisma/GORM), MySQL, Redis (Cache-Aside), MongoDB, SQLite',
+      skillsAi: 'AI-Assisted Software Engineering (Claude, Gemini, OpenAI APIs), Agentic Coding Workflows, Prompt Engineering, Automated Unit Test Generation',
+      skillsDevOps: 'Docker, Docker Compose, Git & GitHub, Postman, Swagger / OpenAPI 3.0, Linux Bash, Vercel Edge Deployments',
       page2Title: 'Software Engineering Project Directory',
       page2Subtitle: 'Curated Open-Source Production Projects Grouped by Engineering Pillars',
       page3Title: 'Visual Project Annex: 8 Flagship Fullstack Systems',
@@ -371,22 +371,22 @@ const roleData = {
       roleTitle: 'Fullstack Software Engineer',
       roleSubtitle: 'Sistem Backend • Platform Fullstack • Arsitektur Cloud',
       executiveSummaryTitle: 'Ringkasan Eksekutif',
-      executiveSummary: 'Fullstack Software Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support Sistem Enterprise pada PT PLN Icon+. Memiliki keahlian teruji dalam penanganan tiket operasional produksi dengan kepatuhan SLA 100%, penulisan query SQL terstruktur (PostgreSQL, Oracle, MySQL) untuk validasi data transaksi dan pelaporan, serta pemantauan kestabilan sistem 24/7. Mahir bekerja bersama teknologi AI (AI-Assisted Engineering) untuk melipatgandakan kecepatan deliveri sistem dan kualitas kode secara menyeluruh. Secara mandiri merancang dan membangun 82 repositori perangkat lunak terverifikasi mencakup microservices Go & Java Spring Boot, platform web modern Next.js 16 & React 19, serta aplikasi mobile berstandar Clean Architecture (DDD), transaksi atomik ACID, caching Redis, RabbitMQ, dan kontainerisasi Docker.',
-      skillsLanguages: 'Go (Golang), Java (JDK 17/21), TypeScript, JavaScript (Node.js/Bun), Python 3, PHP 8, Dart, SQL, HTML5/CSS3',
-      skillsFrameworks: 'Java Spring Boot 3.3, Go (Gin/Fiber/Echo), Bun + Hono, Express.js, FastAPI, Laravel 12, Clean Architecture (DDD), RESTful APIs, gRPC (Protobuf), Microservices, WebSocket',
-      skillsDatabases: 'PostgreSQL (GORM, Prisma, ACID Transactions, Connection Pooling), MySQL, MongoDB, SQLite (LibSQL), Redis (Cache-Aside, Rate Limiting), RabbitMQ',
-      skillsAi: 'Gemini AI, Claude/OpenAI APIs, Arsitektur Berbasis AI & Refactoring, Prompt Engineering, Agentic Coding Workflows, Otomasi Pembuatan Unit Test',
-      skillsDevOps: 'Next.js 16 (App Router), React 19, Angular 19, React Native Expo SDK 56, Docker, Git & GitHub, Postman, Vercel Edge Runtime',
+      executiveSummary: 'Fullstack Software Engineer dengan 2+ tahun pengalaman profesional di bidang Application Support Sistem Enterprise pada PT PLN Icon+. Memiliki keahlian teruji dalam penanganan tiket operasional produksi dengan kepatuhan SLA di atas 98%, penulisan query SQL terstruktur (PostgreSQL, Oracle, MySQL) untuk validasi data transaksi dan pelaporan, serta pemantauan kestabilan sistem dalam rotasi on-call. Memiliki keahlian rekayasa perangkat lunak menyeluruh (full-cycle), Clean Architecture, dan automated test coverage untuk menjamin keandalan sistem. Secara mandiri merancang dan membangun 20+ repositori perangkat lunak unggulan mencakup microservices Go, platform web modern Next.js 16 & React 19, serta aplikasi mobile berstandar Clean Architecture (DDD), transaksi atomik ACID, caching Redis, integrasi RESTful API, WebSocket, dan kontainerisasi Docker.',
+      skillsLanguages: 'Go (Golang), TypeScript, JavaScript (Node.js), SQL (PostgreSQL, Oracle, MySQL), HTML5/CSS3 • Terbiasa: Java 17, Python 3, PHP 8',
+      skillsFrameworks: 'Next.js 16 (App Router), React 19, Go (Gin/Echo, Clean Architecture), Tailwind CSS v4, RESTful APIs, WebSocket • Terbiasa: Java Spring Boot 3.3, Vue 3, Bun/Hono',
+      skillsDatabases: 'PostgreSQL (Transaksi Atomik ACID, Connection Pooling, Row Locks, Prisma/GORM), MySQL, Redis (Cache-Aside), MongoDB, SQLite',
+      skillsAi: 'Rekayasa Berbasis AI (AI-Assisted Engineering: Claude, Gemini, OpenAI APIs), Alur Kerja Agentic Coding, Prompt Engineering, Otomasi Unit Test',
+      skillsDevOps: 'Docker, Docker Compose, Git & GitHub, Postman, Swagger / OpenAPI 3.0, Linux Bash, Deployment Vercel',
       page2Title: 'Direktori Proyek Rekayasa Perangkat Lunak',
       page2Subtitle: 'Katalog Proyek Produksi Terverifikasi Berdasarkan Pilar Rekayasa',
       page3Title: 'Lampiran Visual Portofolio: 8 Sistem Fullstack Unggulan',
       page3Subtitle: 'Bukti Arsitektur Sistem Fullstack: Live Demo Vercel, Monorepo & Integrasi Basis Data',
     },
     metrics: [
-      { num: '19 Repos', labelEn: 'Backend & Cloud', labelId: 'Backend & Cloud' },
-      { num: '22 Repos', labelEn: 'Fullstack & Mobile', labelId: 'Fullstack & Mobile' },
-      { num: '41 Repos', labelEn: 'Frontend Web Apps', labelId: 'Aplikasi Frontend Web' },
+      { num: '20+ Repos', labelEn: 'Curated Repositories', labelId: 'Repositori Unggulan' },
       { num: '12 Live Apps', labelEn: 'Active Vercel URLs', labelId: 'Aplikasi Aktif Vercel' },
+      { num: '>98% SLA', labelEn: 'Enterprise Support', labelId: 'Kepatuhan SLA' },
+      { num: 'Clean Arch', labelEn: 'Modular Architecture', labelId: 'Arsitektur Modular' },
     ],
     visualCards: [
       {
@@ -396,8 +396,8 @@ const roleData = {
         descEn: 'Fullstack auction and e-commerce marketplace featuring live bidding simulation, serverless LibSQL database, product spec comparison, and QR invoice generation.',
         descId: 'Marketplace lelang dan e-commerce fullstack dengan simulasi live bidding, database serverless LibSQL, komparasi spesifikasi produk, dan faktur digital QR.',
         img: '/projects/tokopedia.png',
-        link: 'https://baye-ecommerce-marketplace.vercel.app',
-        label: 'baye-ecommerce-marketplace.vercel.app'
+        link: 'https://github.com/mazkev/baye-ecommerce-marketplace',
+        label: 'github.com/mazkev/baye-ecommerce-marketplace'
       },
       {
         title: '2. Go & React C2C Escrow Marketplace',
@@ -483,12 +483,12 @@ const commonText = {
     job1Title: 'Application Support Engineer',
     job1Company: 'PT PLN Icon+',
     job1Date: '2023 - Present',
-    job1Bullet1: 'Investigated and resolved technical operational and incident tickets for enterprise utility platforms with a strict 100% SLA compliance rate, ensuring zero-downtime operations.',
-    job1Bullet2: 'Authored and executed complex SQL queries across PostgreSQL, Oracle, and MySQL for transactional data validation, data auditing, anomaly rectification, and executive operational reporting.',
-    job1Bullet3: 'Monitored nationwide enterprise system workflows and microservices 24/7, proactively identifying transaction failures, API synchronization bottlenecks, and external service latency spikes.',
-    job1Bullet4: 'Investigated application log telemetry (trace IDs, stack traces), conducted Root Cause Analyses (RCA), and collaborated directly with core backend developers to verify and deploy production bug hotfixes.',
-    job1Bullet5: 'Documented recurring operational incident runbooks and standardized SQL query templates, accelerating triage duration for similar tickets and staging UAT patch verifications.',
-    job2Company: 'Independent Engineering & Open Source Projects',
+    job1Bullet1: 'Investigated and resolved complex production incidents for nationwide enterprise utility platforms, consistently maintaining over 98% SLA compliance.',
+    job1Bullet2: 'Authored advanced analytical SQL queries across PostgreSQL, Oracle, and MySQL for transactional reconciliation, anomaly investigation, and staged data patch verification under strict change management.',
+    job1Bullet3: 'Monitored enterprise microservices and third-party API synchronizations via log telemetry dashboards (ELK/APM) within operational on-call rotations.',
+    job1Bullet4: 'Analyzed distributed trace IDs and application stack traces to deliver comprehensive Root Cause Analysis (RCA) reports and collaborate with core developers on hotfix verification.',
+    job1Bullet5: 'Standardized operational runbooks and investigative SQL query repositories, significantly reducing Mean Time to Resolve (MTTR) for recurring technical incidents.',
+    job2Company: 'Independent Software Engineering & Portfolio Projects',
     job2Date: '2023 - Present',
     degree: 'Bachelor of Computer Science / Information Technology (S.Kom)',
     university: 'Universitas AMIKOM • GPA: 3.42 / 4.00',
@@ -504,12 +504,12 @@ const commonText = {
     job1Title: 'Application Support Engineer',
     job1Company: 'PT PLN Icon+',
     job1Date: '2023 - Sekarang',
-    job1Bullet1: 'Menginvestigasi dan menyelesaikan tiket insiden teknis serta permintaan operasional produksi sistem enterprise dengan kepatuhan SLA mencapai 100% tepat waktu tanpa keterlambatan.',
-    job1Bullet2: 'Merancang dan mengeksekusi query SQL terstruktur tingkat lanjut pada database PostgreSQL, Oracle, dan MySQL untuk validasi integritas transaksi, pelaporan operasional, dan perbaikan data anomali.',
-    job1Bullet3: 'Memantau operasional alur microservices & sistem digital enterprise 24/7, mendeteksi secara proaktif kegagalan transaksi pembayaran, bottleneck sinkronisasi API, dan error integrasi pihak ketiga.',
-    job1Bullet4: 'Menganalisis application log error (trace ID, stack trace), menyusun laporan Root Cause Analysis (RCA), serta berkoordinasi langsung dengan tim pengembang inti untuk pengujian patch dan rilis hotfix API.',
-    job1Bullet5: 'Menyusun dokumentasi prosedur operasional (runbook) dan standarisasi template query SQL untuk kendala berulang, mempercepat durasi penanganan tiket dan verifikasi pengujian patch di lingkungan staging.',
-    job2Company: 'Pengembangan Mandiri & Proyek Open Source',
+    job1Bullet1: 'Menginvestigasi dan menyelesaikan insiden teknis serta anomali operasional pada sistem enterprise berskala nasional dengan konsistensi pencapaian target SLA di atas 98%.',
+    job1Bullet2: 'Merancang query SQL analitis kompleks (PostgreSQL, Oracle, MySQL) untuk rekonsiliasi data transaksional, audit anomali, serta menyusun skrip perbaikan data terverifikasi sesuai prosedur change management.',
+    job1Bullet3: 'Memantau kesehatan layanan microservices enterprise dan integrasi API pihak ketiga (payment gateway/partner) melalui dashboard telemetri log & APM dalam rotasi operasional on-call.',
+    job1Bullet4: 'Menganalisis error logs dan trace ID untuk menyusun laporan Root Cause Analysis (RCA), mereproduksi issue di staging, serta berkolaborasi dengan core developer dalam validasi patch dan hotfix rilis.',
+    job1Bullet5: 'Menyusun dokumentasi runbook teknis dan standarisasi repositori query investigasi, berhasil memangkas durasi MTTR (Mean Time to Resolve) untuk kendala operasional berulang.',
+    job2Company: 'Pengembangan Mandiri & Portofolio Proyek Rekayasa',
     job2Date: '2023 - Sekarang',
     degree: 'Sarjana Ilmu Komputer / Teknik Informatika (S.Kom)',
     university: 'Universitas AMIKOM • IPK: 3.42 / 4.00',
@@ -550,40 +550,40 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
     : (lang === 'id' ? `/resume-${activeRole}-id.pdf` : `/resume-${activeRole}.pdf`);
 
   const job2Title = lang === 'en'
-    ? (activeRole === 'backend' ? 'AI-Assisted Backend Systems & Architecture' : activeRole === 'frontend' ? 'AI-Assisted Frontend & Mobile Engineering' : 'AI-Assisted Software Engineer & Open Source Contributor')
-    : (activeRole === 'backend' ? 'Rekayasa Sistem Backend & Arsitektur Berbasis AI' : activeRole === 'frontend' ? 'Rekayasa Frontend & Mobile Berbasis AI' : 'AI-Assisted Software Engineer & Kontributor Open Source');
+    ? (activeRole === 'backend' ? 'Backend Systems Engineer (Independent Projects)' : activeRole === 'frontend' ? 'Frontend & Mobile Engineer (Independent Projects)' : 'Software Engineer (Independent Projects)')
+    : (activeRole === 'backend' ? 'Backend Systems Engineer (Proyek Rekayasa Mandiri)' : activeRole === 'frontend' ? 'Frontend & Mobile Engineer (Proyek Mandiri)' : 'Software Engineer (Proyek Rekayasa Mandiri)');
 
   const job2Bullets = lang === 'en' ? [
-    'Pioneered human-AI pair programming workflows with frontier models (Gemini 2.5, Claude 3.7, OpenAI APIs) to accelerate architectural design, relational schema modeling, and automated test suite generation.',
+    'Independently architected, developed, and tested modular software systems, establishing robust engineering standards, clean code practices, and comprehensive automated test suites.',
     activeRole === 'backend'
-      ? 'Independently architected, developed, and audited 19 production-grade backend microservices applying Clean Architecture (DDD) and Docker containerization.'
+      ? 'Independently architected, developed, and audited 20+ production-grade backend microservices applying Clean Architecture (DDD) and Docker containerization.'
       : activeRole === 'frontend'
-      ? 'Independently architected, developed, and audited 48+ frontend and mobile applications with responsive state management, dual-layer 60 FPS canvas graphics, and mobile navigation.'
-      : 'Independently architected, developed, and audited 82 production-grade repositories applying Clean Architecture (DDD) and Docker containerization.',
+      ? 'Independently architected, developed, and audited 20+ frontend web and mobile applications with responsive state management, dual-layer 60 FPS canvas graphics, and mobile navigation.'
+      : 'Independently architected, developed, and audited 20+ production-grade software repositories applying Clean Architecture (DDD) and Docker containerization.',
     'Architected normalized relational database schemas with structured foreign keys, strict server-side schema validation, and decoupled domain layers (handler, service, repository) for long-term maintainability.',
     activeRole === 'backend'
       ? 'Developed a digital wallet simulation lab exploring concurrency safety and preventing double-spending via PostgreSQL row-level locks (SELECT FOR UPDATE) and Redis caching.'
       : activeRole === 'frontend'
       ? 'Engineered interactive user interfaces featuring dual-layer 60 FPS graphics (React-Konva), responsive state machines (Zustand, Signals), and cross-platform mobile apps (React Native Expo, Flutter).'
-      : 'Engineered high-concurrency transactional architectures with PostgreSQL ACID row-level locks, Redis cache-aside patterns, RabbitMQ decoupled event brokers, and dual-layer 60 FPS canvas graphics.',
+      : 'Engineered responsive fullstack architectures with PostgreSQL ACID transactions, Redis cache-aside caching, and real-time WebSocket communication.',
     activeRole === 'backend'
       ? 'Audited microservice security contracts, implemented Token Bucket distributed rate limiting, and maintained containerized orchestration environments.'
       : activeRole === 'frontend'
       ? 'Deployed and maintained 12 production applications live on Vercel with mobile-first responsiveness, accessible design systems, and instantaneous page hydrations.'
       : 'Deployed and maintained 12 production applications live on Vercel with serverless database connectivity, reactive Next.js 16 Server Components, and zero-downtime deployment pipelines.'
   ] : [
-    'Menerapkan alur kerja rekayasa perangkat lunak modern berbasis AI (Gemini 2.5, Claude 3.7, OpenAI APIs) untuk akselerasi perancangan arsitektur sistem, pemodelan skema relasional, dan generasi automated unit test.',
+    'Merancang, membangun, dan menguji modul perangkat lunak secara mandiri dengan fokus pada arsitektur modular, clean code, serta pembuatan automated test suite untuk menjamin keandalan sistem.',
     activeRole === 'backend'
-      ? 'Secara mandiri merancang, membangun, dan mengaudit 19 repositori sistem backend microservices berstandar Clean Architecture (DDD) dan kontainerisasi Docker.'
+      ? 'Secara mandiri merancang, membangun, dan mengaudit 20+ layanan backend microservices berstandar Clean Architecture (DDD) dan kontainerisasi Docker.'
       : activeRole === 'frontend'
-      ? 'Secara mandiri merancang, membangun, dan mengaudit 48+ aplikasi frontend dan mobile dengan state management reaktif, kanvas grafis dual-layer 60 FPS, dan navigasi mobile.'
-      : 'Secara mandiri merancang, membangun, dan mengaudit 82 repositori perangkat lunak berstandar Clean Architecture (DDD) dan kontainerisasi Docker.',
+      ? 'Secara mandiri merancang, membangun, dan mengaudit 20+ aplikasi frontend web dan mobile dengan state management reaktif, kanvas grafis dual-layer 60 FPS, dan navigasi mobile.'
+      : 'Secara mandiri merancang, membangun, dan mengaudit 20+ repositori proyek perangkat lunak unggulan berstandar Clean Architecture (DDD) dan kontainerisasi Docker.',
     'Merancang skema database relasional ternormalisasi, validasi skema input ketat di sisi API, dan pemisahan lapisan logika bisnis (handler, service, repository) untuk kemudahan pemeliharaan kode jangka panjang.',
     activeRole === 'backend'
       ? 'Membangun simulasi dompet digital sebagai proyek mandiri untuk mempelajari penanganan konkurensi dan pencegahan double-spending via row-level locks PostgreSQL (SELECT FOR UPDATE) dan caching Redis.'
       : activeRole === 'frontend'
       ? 'Membangun antarmuka pengguna interaktif berperforma tinggi dengan kanvas grafis dual-layer 60 FPS (React-Konva), state reaktif (Zustand, Signals), dan mobile cross-platform (React Native Expo, Flutter).'
-      : 'Mengintegrasikan arsitektur konkurensi tinggi dengan transaksi atomik ACID & row-level locks PostgreSQL, caching Redis cache-aside, message broker RabbitMQ, dan kanvas dual-layer 60 FPS.',
+      : 'Merancang arsitektur aplikasi fullstack responsif dengan transaksi atomik ACID PostgreSQL, caching performa Redis cache-aside, dan komunikasi real-time WebSocket.',
     activeRole === 'backend'
       ? 'Melakukan audit keamanan endpoint API, menerapkan rate limiting terdistribusi Token Bucket, serta mengelola orkestrasi kontainer Docker Compose.'
       : activeRole === 'frontend'
@@ -889,19 +889,19 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                   
                   <div className="space-y-1 text-xs print:text-[9px] text-slate-800 leading-relaxed font-medium">
                     <p>
-                      <strong>{lang === 'id' ? 'Bahasa Pemrograman:' : 'Programming Languages:'}</strong> {currentRole.skillsLanguages}
+                      <strong>{activeRole === 'backend' ? (lang === 'id' ? 'Bahasa Backend & Sistem:' : 'Backend Languages:') : activeRole === 'frontend' ? (lang === 'id' ? 'Bahasa Pemrograman Web:' : 'Frontend Languages:') : (lang === 'id' ? 'Bahasa Pemrograman:' : 'Programming Languages:')}</strong> {currentRole.skillsLanguages}
                     </p>
                     <p>
-                      <strong>{lang === 'id' ? 'Framework & Arsitektur:' : 'Frameworks & Architecture:'}</strong> {currentRole.skillsFrameworks}
+                      <strong>{activeRole === 'backend' ? (lang === 'id' ? 'Framework & Microservices:' : 'Frameworks & Microservices:') : activeRole === 'frontend' ? (lang === 'id' ? 'Framework UI & Mobile:' : 'UI Frameworks & Mobile:') : (lang === 'id' ? 'Framework & Platform:' : 'Frameworks & Web Platforms:')}</strong> {currentRole.skillsFrameworks}
                     </p>
                     <p>
-                      <strong>{activeRole === 'backend' ? (lang === 'id' ? 'Database & Message Broker:' : 'Databases & Message Brokers:') : activeRole === 'frontend' ? (lang === 'id' ? 'State & Grafis Interaktif:' : 'State & Interactive Graphics:') : (lang === 'id' ? 'Database & Messaging:' : 'Databases & Messaging:')}</strong> {currentRole.skillsDatabases}
+                      <strong>{activeRole === 'backend' ? (lang === 'id' ? 'Database, Cache & Queue:' : 'Databases, Caching & Queues:') : activeRole === 'frontend' ? (lang === 'id' ? 'State & Grafis Interaktif:' : 'State & Interactive Graphics:') : (lang === 'id' ? 'Database & Penyimpanan Data:' : 'Databases & Data Integration:')}</strong> {currentRole.skillsDatabases}
                     </p>
                     <p>
-                      <strong>{lang === 'id' ? 'AI & Agentic Engineering:' : 'AI & Agentic Engineering:'}</strong> {currentRole.skillsAi}
+                      <strong>{activeRole === 'frontend' ? (lang === 'id' ? 'AI & Rekayasa UI:' : 'AI & UI Engineering:') : activeRole === 'backend' ? (lang === 'id' ? 'AI & Arsitektur Sistem:' : 'AI & Systems Engineering:') : (lang === 'id' ? 'Rekayasa Berbasis AI:' : 'AI-Assisted Engineering:')}</strong> {currentRole.skillsAi}
                     </p>
                     <p>
-                      <strong>{lang === 'id' ? 'DevOps, Cloud & Tooling:' : 'DevOps, Cloud & Tooling:'}</strong> {currentRole.skillsDevOps}
+                      <strong>{activeRole === 'frontend' ? (lang === 'id' ? 'Tooling, Build & Deployment:' : 'Tooling, Build & Deployments:') : activeRole === 'backend' ? (lang === 'id' ? 'DevOps & Infrastruktur:' : 'DevOps & Infrastructure:') : (lang === 'id' ? 'DevOps & Deployment Cloud:' : 'DevOps & Cloud Deployments:')}</strong> {currentRole.skillsDevOps}
                     </p>
                   </div>
                 </div>
@@ -1105,52 +1105,52 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                       </div>
                       <div className="grid grid-cols-2 gap-1 text-[10px] print:text-[8px] font-mono">
                         <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>1. Canvass Design Studio:</strong>
-                          <a href="https://canva-clone-fawn.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">canva-clone-fawn.vercel.app</a>
+                          <strong>1. SE Marketplace C2C:</strong>
+                          <a href="https://semarketplace.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">semarketplace.vercel.app</a>
                         </div>
                         <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>2. Spotify Music Player:</strong>
-                          <a href="https://spotify-clonez.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">spotify-clonez.vercel.app</a>
-                        </div>
-                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>3. MarketX Angular Store:</strong>
-                          <a href="https://market-x-angular.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">market-x-angular.vercel.app</a>
-                        </div>
-                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>4. Trello Kanban Suite:</strong>
-                          <a href="https://trello-azure-five.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">trello-azure-five.vercel.app</a>
-                        </div>
-                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>5. BayE Auction Store:</strong>
-                          <a href="https://baye-ecommerce-marketplace.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">baye-ecommerce-marketplace.vercel.app</a>
-                        </div>
-                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>6. Nexus Workspace:</strong>
+                          <strong>2. Nexus Workspace Studio:</strong>
                           <a href="https://nexus-project-mu.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">nexus-project-mu.vercel.app</a>
                         </div>
                         <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>7. Indofooty Match Hub:</strong>
+                          <strong>3. Spotify Music Player:</strong>
+                          <a href="https://spotify-clonez.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">spotify-clonez.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>4. Indofooty Match Hub:</strong>
                           <a href="https://indofooty.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">indofooty.vercel.app</a>
                         </div>
                         <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>8. AI Wireframer Lab:</strong>
-                          <a href="https://ai-component-wireframer.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">ai-component-wireframer.vercel.app</a>
+                          <strong>5. Canva Design Studio:</strong>
+                          <a href="https://canva-clone-fawn.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">canva-clone-fawn.vercel.app</a>
                         </div>
                         <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>9. Umrah Travel Portal:</strong>
-                          <a href="https://umrah-travel-landing.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">umrah-travel-landing.vercel.app</a>
+                          <strong>6. Trello Kanban Suite:</strong>
+                          <a href="https://trello-azure-five.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">trello-azure-five.vercel.app</a>
                         </div>
                         <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>10. Cloud Simulator:</strong>
-                          <a href="https://cloud-console-simulator.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">cloud-console-simulator.vercel.app</a>
+                          <strong>7. MarketX Angular Store:</strong>
+                          <a href="https://market-x-angular.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">market-x-angular.vercel.app</a>
                         </div>
                         <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>11. Snake AI Pathfinding:</strong>
-                          <a href="https://snake-ai-pathfinding.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">snake-ai-pathfinding.vercel.app</a>
-                        </div>
-                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>12. HubSpot CRM Platform:</strong>
+                          <strong>8. HubSpot Enterprise CRM:</strong>
                           <a href="https://hub-spot-clone-five.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">hub-spot-clone-five.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>9. Tokopedia React Store:</strong>
+                          <a href="https://tokopedia-react.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">tokopedia-react.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>10. Vue 3 Luxury E-Commerce:</strong>
+                          <a href="https://aplikasi-vue.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">aplikasi-vue.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>11. Learn Go Code Sandbox:</strong>
+                          <a href="https://learn-go-app-swart.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">learn-go-app-swart.vercel.app</a>
+                        </div>
+                        <div className="p-1 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>12. Developer Portfolio:</strong>
+                          <a href="https://mazkev.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">mazkev.vercel.app</a>
                         </div>
                       </div>
                     </div>
@@ -1273,11 +1273,11 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                       </div>
                       <div className="grid grid-cols-2 gap-1 text-[10px] print:text-[7.5px] font-mono">
                         <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>1. BayE Auction Store:</strong>
-                          <a href="https://baye-ecommerce-marketplace.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">baye-ecommerce-marketplace.vercel.app</a>
+                          <strong>1. SE Marketplace C2C:</strong>
+                          <a href="https://semarketplace.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">semarketplace.vercel.app</a>
                         </div>
                         <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>2. Nexus Workspace:</strong>
+                          <strong>2. Nexus Workspace Studio:</strong>
                           <a href="https://nexus-project-mu.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">nexus-project-mu.vercel.app</a>
                         </div>
                         <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
@@ -1289,36 +1289,36 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                           <a href="https://indofooty.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">indofooty.vercel.app</a>
                         </div>
                         <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>5. AI Wireframer Lab:</strong>
-                          <a href="https://ai-component-wireframer.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">ai-component-wireframer.vercel.app</a>
-                        </div>
-                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>6. Umrah Travel Portal:</strong>
-                          <a href="https://umrah-travel-landing.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">umrah-travel-landing.vercel.app</a>
-                        </div>
-                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>7. Cloud Simulator:</strong>
-                          <a href="https://cloud-console-simulator.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">cloud-console-simulator.vercel.app</a>
-                        </div>
-                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>8. Snake AI Pathfinding:</strong>
-                          <a href="https://snake-ai-pathfinding.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">snake-ai-pathfinding.vercel.app</a>
-                        </div>
-                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>9. Canvass Design Studio:</strong>
+                          <strong>5. Canva Visual Design Studio:</strong>
                           <a href="https://canva-clone-fawn.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">canva-clone-fawn.vercel.app</a>
                         </div>
                         <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>10. Trello Kanban Suite:</strong>
+                          <strong>6. Trello Kanban Workspace:</strong>
                           <a href="https://trello-azure-five.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">trello-azure-five.vercel.app</a>
                         </div>
                         <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>11. MarketX Angular Store:</strong>
+                          <strong>7. MarketX Angular Store:</strong>
                           <a href="https://market-x-angular.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">market-x-angular.vercel.app</a>
                         </div>
                         <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
-                          <strong>12. HubSpot CRM Platform:</strong>
+                          <strong>8. HubSpot Enterprise CRM:</strong>
                           <a href="https://hub-spot-clone-five.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">hub-spot-clone-five.vercel.app</a>
+                        </div>
+                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>9. Tokopedia React Store:</strong>
+                          <a href="https://tokopedia-react.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">tokopedia-react.vercel.app</a>
+                        </div>
+                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>10. Vue 3 Luxury E-Commerce:</strong>
+                          <a href="https://aplikasi-vue.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">aplikasi-vue.vercel.app</a>
+                        </div>
+                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>11. Learn Go Code Sandbox:</strong>
+                          <a href="https://learn-go-app-swart.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">learn-go-app-swart.vercel.app</a>
+                        </div>
+                        <div className="p-1 px-1.5 rounded bg-slate-50 border border-slate-200 flex justify-between items-center">
+                          <strong>12. Developer Portfolio:</strong>
+                          <a href="https://mazkev.vercel.app" target="_blank" rel="noreferrer" className="text-emerald-700 hover:underline">mazkev.vercel.app</a>
                         </div>
                       </div>
                     </div>
