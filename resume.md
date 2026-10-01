@@ -66,7 +66,6 @@ Sangat mahir dalam **AI-Assisted Software Engineering**, berkolaborasi intensif 
 
 **Universitas AMIKOM** — *Bachelor of Computer Science / Sarjana Informatika (S.Kom)*  
 **Periode**: 2017 – 2023 | **IPK (GPA)**: **3.42 / 4.00**  
-*(Selesai Ujian Sidang Skripsi: Desember 2022 | Ijazah / Wisuda Resmi: 2023)*  
 *Fokus Studi: Rekayasa Perangkat Lunak, Struktur Data & Algoritma, Basis Data Relasional, Jaringan Komputer.*
 
 ---

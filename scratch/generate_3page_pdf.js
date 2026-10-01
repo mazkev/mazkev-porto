@@ -688,9 +688,6 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
     : 'Sarjana Ilmu Komputer / Teknik Informatika (S.Kom)';
   const eduUni = 'Universitas AMIKOM • GPA: 3.42 / 4.00';
   const eduDate = '2017 - 2023';
-  const eduNote = isEn 
-    ? '(Thesis Defense: Dec 2022 | Official Degree / Graduation: 2023)'
-    : '(Selesai Ujian Sidang: Des 2022 | Ijazah / Wisuda Resmi: 2023)';
 
   return `<!DOCTYPE html>
 <html lang="${lang}">
@@ -1154,7 +1151,6 @@ ${repoBlock('nextjs-football-sport-portal', 'https://github.com/mazkev/nextjs-fo
           <strong style="font-size: 8.5pt;">${eduDegree}</strong>
           <span style="color: #64748b;"> • </span>
           <span style="font-size: 8.2pt; font-weight: 600; color: #334155;">${eduUni}</span>
-          <span style="font-size: 7.2pt; color: #64748b; font-family: monospace;"> ${eduNote}</span>
         </div>
         <span class="job-date">${eduDate}</span>
       </div>

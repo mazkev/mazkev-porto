@@ -493,7 +493,7 @@ const commonText = {
     degree: 'Bachelor of Computer Science / Information Technology (S.Kom)',
     university: 'Universitas AMIKOM • GPA: 3.42 / 4.00',
     eduDate: '2017 - 2023',
-    eduNote: '(Thesis Defense: Dec 2022 | Official Degree / Graduation: 2023)',
+    eduNote: '',
   },
   id: {
     downloadBtn: 'Unduh PDF',
@@ -514,7 +514,7 @@ const commonText = {
     degree: 'Sarjana Ilmu Komputer / Teknik Informatika (S.Kom)',
     university: 'Universitas AMIKOM • IPK: 3.42 / 4.00',
     eduDate: '2017 - 2023',
-    eduNote: '(Selesai Ujian Sidang: Des 2022 | Ijazah / Wisuda Resmi: 2023)',
+    eduNote: '',
   }
 };
 
@@ -920,7 +920,6 @@ export default function ResumeViewer({ isOpen, onClose }: ResumeViewerProps) {
                       <span className="font-bold text-slate-700">
                         {t.university}
                       </span>
-                      <span className="text-slate-500 text-[10px] print:text-[8px] font-mono"> {t.eduNote}</span>
                     </div>
                     <span className="text-[10px] print:text-[8px] font-mono font-bold text-slate-900 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-300">
                       {t.eduDate}

@@ -61,9 +61,6 @@ function generateExecutiveHtml(lang) {
     : 'Sarjana Ilmu Komputer / Teknik Informatika (S.Kom)';
   const eduUni = 'Universitas AMIKOM • GPA: 3.42 / 4.00';
   const eduDate = '2017 - 2023';
-  const eduNote = isEn 
-    ? '(Thesis Defense: Dec 2022 | Official Degree / Graduation: 2023)'
-    : '(Selesai Ujian Sidang: Des 2022 | Ijazah / Wisuda Resmi: 2023)';
 
   return `<!DOCTYPE html>
 <html lang="${lang}">
@@ -382,7 +379,7 @@ function generateExecutiveHtml(lang) {
       <div class="edu-row">
         <div>
           <strong style="font-size: 8pt; color: #0f172a;">${eduDegree}</strong>
-          <div style="font-size: 7.2pt; color: #475569;">${eduUni} <span style="color: #64748b;">${eduNote}</span></div>
+          <div style="font-size: 7.2pt; color: #475569;">${eduUni}</div>
         </div>
         <span class="job-date">${eduDate}</span>
       </div>
